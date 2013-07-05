@@ -1,0 +1,183 @@
+/*  CSS  para secciones  */
+.cuerpo
+{
+width:100%;height:100%;background-color:#F5F5F5; border-style:solid;border-width:1px; border-color:#C9C9C9; margin:0;padding:0;display:table; padding:1px;     text-align:center;
+}
+.cabecera
+{
+width: 100%; height:110px; background-color:#84B5DD;  text-align:center; 
+}
+
+.cabecera1
+{
+width: 100%; height:182px; background-color:#0C2158;  text-align:center; 
+}
+.panel
+{
+float:left; width: 78%; text-align:left; padding:2px; margin:4px;
+}
+
+
+.acceso
+{
+ moz-border-radius: 15px 15px 15px 15px;
+      /*para Safari y Chrome*/
+ webkit-border-radius: 15px 15px 10px 15px;
+      /*para IE */
+behavior:url(border.htc);
+      /* para Opera */
+ border-radius: 15px 15px 15px 15px;
+
+text-align:center;
+	  
+height: 450px;
+margin-top: 20px;
+width: 80%;
+margin-right: auto;
+margin-left: auto;
+background-color:#CDD5E0;
+
+}
+
+/* CSS  para Enlaces   */
+
+.enlace
+{
+font-family:13px;
+color:#0054A8;
+	
+}
+
+#menuv {
+float:left; 
+width: 20%; 
+border-width: 1px 1px 0 1px;
+border: 1px solid #ACCFE8;
+text-align:left;
+
+
+font: 13px "Geneva", Arial, Helvetica, sans-serif;
+}
+#menuv ul, li {
+list-style-type: none;
+
+}
+
+#menuv ul {
+margin: 0;
+padding: 0;
+
+}
+
+#menuv li {
+border-bottom: 1px solid #ACCFE8;
+}
+
+#menuv a {
+text-decoration: none;
+color:#069;
+background:#CFE9F1;
+display: block;
+padding: 14px 28px;
+
+}
+
+#menuv a:hover {
+background:#96C6E2;
+font: 14px "Geneva", Arial, Helvetica, sans-serif;
+}
+
+#menuv a:active {
+background:#B9D7EE;
+font: 12px "Geneva", Arial, Helvetica, sans-serif;
+}
+
+
+/* CSS  parafuentes   */
+
+.linked
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+border-bottom: 1px solid #F9C;
+background:#CC3
+}
+
+.titulo
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#FFF;	
+}
+
+.titulo1
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.subtitulo
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.titu
+{
+font: 16px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+.titu1
+{
+font: 14px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+.titu2
+{
+font: 14px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.letra_frm
+{
+font: 12px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.tit_frm
+{
+font: 11px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.subtitulo1
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.aviso
+{
+font: 16px "Geneva", Arial, Helvetica, sans-serif;
+color:#F00;
+}
+
+.title
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+color:#06C;
+}
+
+.title1
+{
+font: 12px "Geneva", Arial, Helvetica, sans-serif;
+color:#06C;
+}
+.letra
+{
+font: 12px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+.letra_min
+{
+font: 10px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
