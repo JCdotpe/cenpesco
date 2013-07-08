@@ -33,6 +33,8 @@
 					echo '</thead>';
 					echo '<tbody>';
 					$k = 1;
+					$nform2 = NULL;
+					$nform = NULL;
 					foreach($tables as $row){
 						echo "<tr>";
 						echo "<td>". $k++ ."</td>";
