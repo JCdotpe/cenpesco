@@ -6,7 +6,7 @@
   <div class="span3">
           <div class="well sidebar-nav cen-sidebar cen-sidebar-fix">
             <ul class="nav nav-list">
-              <li class="nav-header">Opcionesxxx</li>
+              <li class="nav-header">Opciones</li>
 
               <li><a href="<?php echo base_url('convocatoria/consulta'); ?>" target="_blank">Módulo de consulta</a></li>
             
@@ -37,7 +37,7 @@
                     <div class="accordion-group">
                       <div class="accordion-heading">
                         <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                         Departamentos en oferta
+                         Departamentos
                         </a>
                       </div>
                       <div id="collapseTwo" class="accordion-body collapse">
