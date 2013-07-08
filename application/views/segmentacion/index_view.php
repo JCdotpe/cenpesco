@@ -37,7 +37,7 @@
                     <div class="accordion-group">
                       <div class="accordion-heading">
                         <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                         Departamentos Caletas
+                         Departamentos en oferta
                         </a>
                       </div>
                       <div id="collapseTwo" class="accordion-body collapse">
