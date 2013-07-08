@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= 'http://dontemplates.com/cenpesco/';
- $config['base_url']	= 'http://localhost:8070/cenpesco/';
+ $config['base_url']	= 'http://localhost/cenpesco/';
 //$config['base_url']	= 'http://cenpesco.e-proyectos.org/';
 
 /*
