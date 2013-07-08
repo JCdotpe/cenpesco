@@ -1,16 +1,32 @@
 <?php
 class Marco_model extends CI_Model{
 
-    function get_dptos(){
-    	$this->db->select('COD_DEPARTAMENTO, DES_DISTRITO');
-    	$this->db->where_in('ID_DEPARTAMENTO', array(16,20,21));
-    	$this->db->where('ID_PROVINCIA',0);
-    	$this->db->where('ID_DISTRITO',0);
-    	$this->db->where('COD_DEPARTAMENTO !=','99');
-    	$this->db->order_by('DES_DISTRITO','asc');
+  //   function get_dptos(){
+  //   	$this->db->select('COD_DEPARTAMENTO, DES_DISTRITO');
+  //   	$this->db->where_in('ID_DEPARTAMENTO', array(16,20,21));
+  //   	$this->db->where('ID_PROVINCIA',0);
+  //   	$this->db->where('ID_DISTRITO',0);
+  //   	$this->db->where('COD_DEPARTAMENTO !=','99');
+  //   	$this->db->order_by('DES_DISTRITO','asc');
+  //   	$q = $this->db->get('marco');
+		// return $q;
+  //   }   
+    function get_sede(){
+    	$this->db->select('SEDE_COD,NOM_SEDE');
+    	$this->db->distinct('SEDE_COD');
+    	$this->db->order_by('NOM_SEDE');
     	$q = $this->db->get('marco');
-		return $q;
-    }   
+    	return $q;
+    }
+    function get_dep_by_sede($sede){
+    	$this->db->select('CCDD,DEPARTAMENTO');
+    	$this->db->distinct('CCDD');
+    	$this->db->where('SEDE_COD',$sede);
+    	$this->db->order_by('DEPARTAMENTO');
+    	$q = $this->db->get('marco');
+    	return $q;
+    }
+
     function get_odei ($sede){
 		if ($sede == 99){ $sedes = range(1,26);}else{ $sedes = $sede;}
 		$this->db->distinct('ODEI_COD');

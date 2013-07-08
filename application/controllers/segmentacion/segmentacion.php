@@ -30,9 +30,7 @@ class Segmentacion extends CI_Controller {
 			show_404();
 			die();
 		}
-		
-		$this->load->model('pesca_model');
-		$this->load->model('ubigeo_model');
+		$this->load->model('marco_model');	
 	}
 
 
@@ -42,7 +40,9 @@ class Segmentacion extends CI_Controller {
 			//$data['onload'] = 'init()';
 			//$data['fluid'] = TRUE;
 			$data['title'] = 'Rutas y Segmentación';
-			$data['dptos'] = $this->ubigeo_model->get_dptos();
+
+			$data['sede'] = $this->marco_model->get_sede(); 
+
 			$data['main_content'] = 'segmentacion/index_view';
 			//$data['main_content'] = 'segmentacion/leaf_view';
 	        $this->load->view('backend/includes/template', $data);

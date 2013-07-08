@@ -21,6 +21,32 @@ class Marco_ajax extends CI_Controller {
 		show_404();
 	}
 
+	public function get_ajax_dep($c)
+	{
+		$this->output->cache(30);
+		$sede = $this->input->post('code');
+		$is_ajax = $this->input->post('ajax');
+		if ($is_ajax) {
+			$data['datos'] = $this->marco_model->get_dep_by_sede($sede)->result();
+			$this->load->view('backend/json/json_view', $data);
+		}else {
+			show_404();			
+		}
+	}
+	public function get_ajax_equipo($c)
+	{
+		$this->output->cache(30);
+		$sede = $this->input->post('code');
+		$is_ajax = $this->input->post('ajax');
+		if ($is_ajax) {
+			$data['datos'] = $this->marco_model->get_dep_by_sede($sede)->result();
+			$this->load->view('backend/json/json_view', $data);
+		}else {
+			show_404();			
+		}
+	}
+	
+
 	public function get_ajax_prov($c)
 	{
 		$this->output->cache(30);
