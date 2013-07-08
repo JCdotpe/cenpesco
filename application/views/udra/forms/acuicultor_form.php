@@ -134,7 +134,7 @@ echo form_open($this->uri->uri_string(),$attr);
 		echo '<div class="row-fluid">';
 
 			echo '<div class="span12 titulos">';
-				echo '<h5>A. UBICACION GEOGRAFICA</h5>';
+				echo '<h5>A. UBICACION GEOGRAFICAAAAAA</h5>';
 			echo '</div>';							
 	
 			echo '<div class="row-fluid span11">';

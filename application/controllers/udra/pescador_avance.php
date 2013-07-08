@@ -22,7 +22,7 @@ class Pescador_avance extends CI_Controller {
 		$this->lang->load('tank_auth');	
 		$this->load->model('udra_pescador_model');
 		$this->load->model('pesca_piloto_model');
-		$this->load->model('ubigeo_piloto_model');
+		$this->load->model('marco_model');
 		$this->load->helper('date');
 		// date_default_timezone_set('America/Lima');		
 
@@ -41,7 +41,6 @@ class Pescador_avance extends CI_Controller {
 				break;
 			}
 		}
-
 		//If not author is BENDER!
 		if (!$flag) {
 			show_404();

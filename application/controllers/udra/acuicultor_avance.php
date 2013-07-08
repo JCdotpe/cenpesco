@@ -18,7 +18,7 @@ class Acuicultor_avance extends CI_Controller {
 		$this->lang->load('tank_auth');	
 		$this->load->model('udra_acuicultor_model');
 		$this->load->model('pesca_piloto_model');
-		$this->load->model('ubigeo_piloto_model');
+		$this->load->model('marco_model');
 		$this->load->helper('date');
 		date_default_timezone_set('America/Lima');
 		if (!$this->tank_auth->is_logged_in()) {
@@ -50,15 +50,18 @@ class Acuicultor_avance extends CI_Controller {
 		$data['title'] = 'Avance UDRA';
 		$data['user_id']	= $this->tank_auth->get_user_id();
 		$data['username']	= $this->tank_auth->get_username();
-		$departamento = $this->ubigeo_piloto_model->get_dpto_by_code($this->tank_auth->get_ubigeo()); //PILOTO
-		$data['tables'] = $this->udra_acuicultor_model->get_acuicultores($departamento); 
+		foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
+			$odei[] = $key->ODEI_COD;
+		}				
+		//$departamento	 = $this->marco_model->get_dpto_by_odei($odei);		
+		$data['tables'] = $this->udra_acuicultor_model->get_acuicultores_by_sede($odei); 
 		$data['main_content'] = 'udra/acuicultor_avance_view';
 		$data['option'] = 4;
 				
-		$seccion_completos = array();
-		$seccion_incompletos = array();
+		$seccion_completos = NULL;
+		$seccion_incompletos = NULL;
 
-		$forms = $this->udra_acuicultor_model->get_forms($departamento); // obtiene los ID de forms ingresados en 1ra tabla
+		$forms = $this->udra_acuicultor_model->get_forms($odei); // obtiene los ID de forms ingresados en 1ra tabla
 		if($forms->num_rows() > 0){
 	
 			foreach($forms->result() as $filas){
