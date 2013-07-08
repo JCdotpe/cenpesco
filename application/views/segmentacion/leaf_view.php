@@ -14,7 +14,7 @@
   <div class="span3">
           <div class="well sidebar-nav cen-sidebar cen-sidebar-fix">
             <ul class="nav nav-list">
-              <li class="nav-header">Opciones</li>
+              <li class="nav-header">Opcionesppp</li>
               <li><a href="<?php echo base_url('convocatoria/consulta'); ?>" target="_blank">Módulo de consulta</a></li>
               <li>
                   <div class="accordion" id="accordion2">
