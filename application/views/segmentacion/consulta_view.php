@@ -143,16 +143,16 @@ $(function(){
           var url = null;
           var cod = null;
           var op =null;
-
+          
           switch(event.target.id){
               case 'NOM_SEDE':
                   sel     = $("#NOM_DD");
-                  url     = CI.base_url + "ajax/marco_ajax/get_ajax_dep/" + $(this).val();
+                  url     = CI.rest_url + "segmentacion/dep/sede/" + $(this).val() + "/format/json";
                   op      = 1;
                   break;
               case 'NOM_DD':
                   sel     = $("#EQUIPO");
-                  url     = CI.base_url + "ajax/marco_ajax/get_ajax_equipo/"  + sede.val()  + "/" + $(this).val();
+                  url     = CI.rest_url + "ajax/marco_ajax/get_ajax_equipo/"  + sede.val()  + "/" + $(this).val();
                   op      = 2;
                   break;   
           }     

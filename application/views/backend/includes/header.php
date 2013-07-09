@@ -49,6 +49,7 @@
         <!--
             var CI = {
               'base_url': '<?php echo site_url(); ?>' + '/',
+              'rest_url': 'http://192.168.221.28/rest/index.php/cenpesco/',
               'site_url': '<?php echo base_url(); ?>',
               'year' : <?php echo date("Y"); ?>,
               'cct' : $.cookie('csrf_cookie_c')
