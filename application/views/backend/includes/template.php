@@ -3,7 +3,11 @@
 if(isset($nav)){
 		$this->load->view('backend/includes/nav'); 
 }else{
-		echo '<div class="container-fluid">';
+		if(isset($contclass)){
+			echo '<div class="' . $contclass . '">';
+		}else{
+			echo '<div class="container-fluid">';	
+		}
 } 
 ?>
 <?php $this->load->view($main_content); ?>
@@ -16,4 +20,8 @@ if(!isset($static)){
 	}
 }
 ?>
-<?php $this->load->view('backend/includes/footer'); ?>
+<?php 
+if(!isset($nofoot)){
+$this->load->view('backend/includes/footer'); 
+}
+?>

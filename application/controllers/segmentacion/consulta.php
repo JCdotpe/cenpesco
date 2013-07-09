@@ -22,7 +22,8 @@ class Consulta extends CI_Controller {
 			//$data['onload'] = 'init()';
 			//$data['fluid'] = TRUE;
 			$data['title'] = 'Rutas y Segmentación';
-
+			$data['nofoot'] = TRUE;	
+			$data['contclass'] = 'map_container';	
 			$data['sede'] = $this->marco_model->get_sede(); 
 			$data['dptos'] = $this->ubigeo_model->get_dptos();
 			$data['main_content'] = 'segmentacion/consulta_view';
