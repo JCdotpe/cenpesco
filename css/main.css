@@ -94,8 +94,14 @@ color:#fff;
   text-align: left;
   margin-top: 1px !important;
   padding: 8px 0px !important;
-  margin-bottom: 1px !important;   
-}
+  margin-bottom: 1px !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+
+  /*margin-left: 2px !important;   
+
+*/}
+
 
 .inputs1 {
   font-weight: bolder !important;

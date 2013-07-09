@@ -136,8 +136,8 @@ $T_PES =array(
 	'maxlength'	=> 4,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
-
 );
+
 $T_ACUI =array(
 	'name'	=> 'T_ACUI',
 	'id'	=> 'T_ACUI',
@@ -145,8 +145,17 @@ $T_ACUI =array(
 	'maxlength'	=> 4,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
-
 );
+
+$T_PES_ACUI =array(
+	'name'	=> 'T_PES_ACUI',
+	'id'	=> 'T_PES_ACUI',
+	'value'	=> $T_PES_ACUI,
+	'maxlength'	=> 4,
+	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",
+);
+
 $T_EMB =array(
 	'name'	=> 'T_EMB',
 	'id'	=> 'T_EMB',
@@ -171,9 +180,8 @@ $DNI_EMP =array(
 	'maxlength'	=> 8,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
-
 );
-
+//DETALLE --------------------------------------------------------------
 
 $P2 =array(
 	'name'	=> 'P2',
@@ -189,6 +197,7 @@ $P3 =array(
 	'value'	=> set_value('P3'),
 	'maxlength'	=> 1,
 	'class' => $span_class,
+	'onkeypress'=>"return solo_1_to_2(event)",		
 );
 $P4 =array(
 	'name'	=> 'P4',
@@ -196,6 +205,7 @@ $P4 =array(
 	'value'	=> set_value('P4'),
 	'maxlength'	=> 8,
 	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",		
 );
 
 $P5 =array(
@@ -204,6 +214,7 @@ $P5 =array(
 	'value'	=> set_value('P5'),
 	'maxlength'	=> 1,
 	'class' => $span_class,
+	'onkeypress'=>"return solo_1_to_3(event)",	
 );
 $P6 =array(
 	'name'	=> 'P6',
@@ -211,6 +222,8 @@ $P6 =array(
 	'value'	=> set_value('P6'),
 	'maxlength'	=> 1,
 	'class' => $span_class,
+	'onkeypress'=>"return solo_1_to_9(event)",	
+
 );
 
 $P7 =array(
@@ -219,7 +232,7 @@ $P7 =array(
 	'value'	=> set_value('P7'),
 	'maxlength'	=> 100,
 	'class' => $span_class,
-	'onkeypress'=>"return soloLetras(event)",	
+	'onkeypress'=>"return alfa_numericos(event)",	
 );
 $P8 =array(
 	'name'	=> 'P8',
@@ -227,6 +240,7 @@ $P8 =array(
 	'value'	=> set_value('P8'),
 	'maxlength'	=> 10,
 	'class' => $span_class,
+	'onkeypress'=>"return alfa_numericos(event)",		
 );
 $P9 =array(
 	'name'	=> 'P9',
@@ -234,6 +248,7 @@ $P9 =array(
 	'value'	=> set_value('P9'),
 	'maxlength'	=> 10,
 	'class' => $span_class,
+	'onkeypress'=>"return alfa_numericos(event)",		
 );
 $P10 =array(
 	'name'	=> 'P10',
@@ -241,6 +256,7 @@ $P10 =array(
 	'value'	=> set_value('P10'),
 	'maxlength'	=> 10,
 	'class' => $span_class,
+	'onkeypress'=>"return alfa_numericos(event)",		
 );
 $P11 =array(
 	'name'	=> 'P11',
@@ -248,7 +264,7 @@ $P11 =array(
 	'value'	=> set_value('P11'),
 	'maxlength'	=> 3,
 	'class' => $span_class,
-
+	'onkeypress'=>"return soloNumeros(event)",
 );
 $P12 =array(
 	'name'	=> 'P12',
@@ -256,6 +272,7 @@ $P12 =array(
 	'value'	=> set_value('P12'),
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'onkeypress'=>"return alfa_numericos(event)",	
 );
 $P13 = array(
 	'name'	=> 'P13',
@@ -263,6 +280,7 @@ $P13 = array(
 	'value'	=> set_value('P13'),
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'onkeypress'=>"return alfa_numericos(event)",	
 );
 $P14 =array(
 	'name'	=> 'P14',
@@ -270,6 +288,8 @@ $P14 =array(
 	'value'	=> set_value('P14'),
 	'maxlength'	=> 5,
 	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",
+
 );
 $P15 = array(
 	'name'	=> 'P15',
@@ -277,7 +297,7 @@ $P15 = array(
 	'value'	=> set_value('P15'),
 	'maxlength'	=> 2,
 	'class' => $span_class,
-	//'style'  => 'width:100%',
+	'onkeypress'=>"return soloNumeros(event)",
 );
 $T_F_D_m =array(
 	'name'	=> 'T_F_D_m',
@@ -285,6 +305,7 @@ $T_F_D_m =array(
 	'value'	=> $T_F_D['value'],
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",		
 );
 $T_PES_m =array(
 	'name'	=> 'T_PES_m',
@@ -292,6 +313,7 @@ $T_PES_m =array(
 	'value'	=> $T_PES['value'],
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",		
 );
 $T_ACUI_m =array(
 	'name'	=> 'T_ACUI_m',
@@ -299,6 +321,15 @@ $T_ACUI_m =array(
 	'value'	=> $T_ACUI['value'],
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",		
+);
+$T_PES_ACUI_m =array(
+	'name'	=> 'T_PES_ACUI_m',
+	'id'	=> 'T_PES_ACUI_m',
+	'value'	=> $T_PES_ACUI['value'],
+	'maxlength'	=> 4,
+	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",		
 );
 $T_EMB_m =array(
 	'name'	=> 'T_EMB_m',
@@ -306,7 +337,9 @@ $T_EMB_m =array(
 	'value'	=> $T_EMB['value'],
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'onkeypress'=>"return soloNumeros(event)",	
 );
+
 $OBS =array(
 	'name'	=> 'OBS',
 	'id'	=> 'OBS',
@@ -315,6 +348,7 @@ $OBS =array(
 	'class' => $span_class,
 	'rows'	=> 3,
 	'cols'	=> 10,
+	'onkeypress'=>"return alfa_numericos(event)",	
 );
 
 
@@ -345,7 +379,7 @@ $OBS =array(
 	$selected_NOM_CCPP_proc = (set_value('CCPP_PROC_f')) ?  set_value('CCPP_PROC_f') : '';	
 
 // FORM 1 --------------------------------------------------------------------------------------------->
-$attr = array('class' => 'form-val','id' => 'frm_reg_pesc', 'style' => 'overflow: auto;');
+$attr = array('class' => 'form-val','id' => 'frm_reg_pesc' ,'name' => 'frm_reg_pesc', 'style' => 'overflow: auto;');
 echo form_open($this->uri->uri_string(),$attr); 
 
 	if ($this->session->flashdata('msgbox')==='busca'){
@@ -404,6 +438,14 @@ echo form_open($this->uri->uri_string(),$attr);
 			    echo ' Usuario PILOTO no esta permitido guardar';
 		    echo '</div>';
 	    echo '</div>';
+	}elseif($this->session->flashdata('msgbox')==='UDRA'){
+		echo '<div class="row-fluid">';
+		    echo '<div class="alert alert-info">';
+			    echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+			    echo '<strong>ADVERTENCIA! </strong>';
+			    echo ' El centro poblado no está registrado en UDRA';
+		    echo '</div>';
+	    echo '</div>';
 	}
 
 	echo '<div class="row-fluid ">';
@@ -412,7 +454,7 @@ echo form_open($this->uri->uri_string(),$attr);
 		echo '</div>';	
 	echo '</div>'; 
 
-	echo '<div class="well modulo">';
+	echo '<div class="well modulo" id="div_registro_pes">';
 
 		echo '<div class="row-fluid">';
 
@@ -420,7 +462,7 @@ echo form_open($this->uri->uri_string(),$attr);
 			echo '<div class="row-fluid" id="reg_ubicacion">'; 
 
 				//A.-----------------------------------------
-				echo '<div class="span4 preguntas">';
+				echo '<div class="span4 preguntas" style="padding-bottom: 23px !important">';
 
 					echo '<div class="span12 titulos">';
 						echo '<h5>A. UBICACION GEOGRAFICA</h5>';
@@ -620,149 +662,168 @@ echo form_open($this->uri->uri_string(),$attr);
 
 					echo '<div class="row-fluid ">';
 
-						//D.-----------------------------------------
-						echo '<div class="span6 preguntas">';
+						echo '<div class="span6">';
 
-							echo '<div class="row-fluid">';
+							echo '<div class="row-fluid ">';
+								//D.-----------------------------------------
+								echo '<div class="preguntas">';
 
-								echo '<div class="span12 titulos">';
-									echo '<h5>D. AUTORIDAD</h5>';
-								echo '</div>';	
+									echo '<div class="row-fluid">';
 
-							echo '</div>'; 
+										echo '<div class="span12 titulos">';
+											echo '<h5>D. AUTORIDAD</h5>';
+										echo '</div>';	
 
-							echo '<div class="row-fluid">';
+									echo '</div>'; 
 
-								echo '<div class="control-group grupos span8">';
-									echo form_label('APELLIDOS Y NOMBRES',$NOM_AUT['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($NOM_AUT); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($NOM_AUT['name']) . '</div>';								
-									echo '</div>';	
-								echo '</div>'; 
+									echo '<div class="row-fluid">';
 
-								echo '<div class="control-group grupos span4">';
-									echo form_label('DNI',$DNI_AUT['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($DNI_AUT); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($DNI_AUT['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+										echo '<div class="control-group grupos span8">';
+											echo form_label('APELLIDOS Y NOMBRES',$NOM_AUT['id'],$label1);
+											echo '<div class="controls">';
+												echo form_input($NOM_AUT); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error($NOM_AUT['name']) . '</div>';								
+											echo '</div>';	
+										echo '</div>'; 
+
+										echo '<div class="control-group grupos span4">';
+											echo form_label('DNI',$DNI_AUT['id'],$label1);
+											echo '<div class="controls">';
+												echo form_input($DNI_AUT); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error($DNI_AUT['name']) . '</div>';
+											echo '</div>';	
+										echo '</div>'; 
+										
+									echo '</div>';
 								
+								echo '</div>';  //D
 							echo '</div>';
-						
-						echo '</div>';  //D
 
-						// E -------------------------
-						echo '<div class="span6 preguntas">';
+							echo '<div class="row-fluid ">';
+								// E -------------------------
+								echo '<div class="preguntas" style="padding-bottom: 17px !important">';
 
-							echo '<div class="row-fluid">';
+									echo '<div class="row-fluid">';
 
-								echo '<div class="span12 titulos">';
-									echo '<h5>E. DATOS DEL EMPADRONADOR/JEFE DE BRIGADA</h5>';
+										echo '<div class="span12 titulos">';
+											echo '<h5>E. DATOS DEL EMPADRONADOR/JEFE DE BRIGADA</h5>';
+										echo '</div>';
+
+									echo '</div>';
+
+									echo '<div class="row-fluid">';
+
+										echo '<div class="control-group grupos span8">';
+											echo form_label('APELLIDOS Y NOMBRES',$NOM_EMP['id'],$label1);
+											echo '<div class="controls">';
+												echo form_input($NOM_EMP); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error($NOM_EMP['name']) . '</div>';
+											echo '</div>';	
+										echo '</div>'; 
+
+										echo '<div class="control-group grupos span4">';
+											echo form_label('DNI',$DNI_EMP['id'],$label1);
+											echo '<div class="controls">';
+												echo form_input($DNI_EMP); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error($DNI_EMP['name']) . '</div>';
+											echo '</div>';	
+										echo '</div>'; 
+
+									echo '</div>';
+
+								echo '</div>'; 	// E
+							echo '</div>';
+
+						echo '</div>';
+
+						echo '<div class="span6">';
+							// F -----------------------
+							echo '<div class="preguntas">';
+
+								echo '<div class="row-fluid">';
+
+									echo '<div class="span12 titulos">';
+										echo '<h5>F.  RESUMEN DEL REGISTRO</h5>';
+									echo '</div>';
+
 								echo '</div>';
 
-							echo '</div>';
+								echo '<div class="row-fluid">';
 
-							echo '<div class="row-fluid">';
+									echo '<div class="control-group span6 grupos_span3">';
+										echo form_label('Filas',$T_F_D['id'],$label1);
+										echo '<div class="controls">';
+											echo form_input($T_F_D); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($T_F_D['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
 
-								echo '<div class="control-group grupos span8">';
-									echo form_label('APELLIDOS Y NOMBRES',$NOM_EMP['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($NOM_EMP); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($NOM_EMP['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+									echo '<div class="control-group span6 grupos_span3">';
+										echo form_label('Pescadores',$T_PES['id'],$label1);
+										echo '<div class="controls">';
+											echo form_input($T_PES); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($T_PES['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
 
-								echo '<div class="control-group grupos span4">';
-									echo form_label('DNI',$DNI_EMP['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($DNI_EMP); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($DNI_EMP['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+								echo '</div>';
 
-							echo '</div>';
+								echo '<div class="row-fluid">';
 
-						echo '</div>'; 	// E
+									echo '<div class="control-group span6 grupos_span3">';
+										echo form_label('Acuicultores',$T_ACUI['id'],$label1);
+										echo '<div class="controls">';
+											echo form_input($T_ACUI); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($T_ACUI['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+									echo '<div class="control-group span6 grupos_span3">';
+										echo form_label('Pescadores y Acuicultores',$T_PES_ACUI['id'],$label1);
+										echo '<div class="controls">';
+											echo form_input($T_PES_ACUI); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($T_PES_ACUI['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';
+
+								echo '<div class="row-fluid">';
+
+	
+
+									echo '<div class="control-group offset3 span6 grupos_span3">';
+										echo form_label('Embarcaciones',$T_EMB['id'],$label1);
+										echo '<div class="controls">';
+											echo form_input($T_EMB); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($T_EMB['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';
+
+							echo '</div>'; 	//F	
+
+						echo '</div>';
 
 					echo '</div>'; 
 
-					echo '<div class="row-fluid ">';
 
-					// F -----------------------
-						echo '<div class="offset6 span6 preguntas">';
-
-							echo '<div class="row-fluid">';
-
-								echo '<div class="span12 titulos">';
-									echo '<h5>F.  RESUMEN DEL REGISTRO</h5>';
-								echo '</div>';
-
-							echo '</div>';
-
-							echo '<div class="row-fluid">';
-
-								echo '<div class="control-group span3 grupos_span3">';
-									echo form_label('Filas',$T_F_D['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($T_F_D); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($T_F_D['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-								echo '<div class="control-group span3 grupos_span3">';
-									echo form_label('Pescadores',$T_PES['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($T_PES); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($T_PES['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-								echo '<div class="control-group span3 grupos_span3">';
-									echo form_label('Acuicultores',$T_ACUI['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($T_ACUI); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($T_ACUI['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-								echo '<div class="control-group span3 grupos_span3">';
-									echo form_label('Embarcaciones',$T_EMB['id'],$label1);
-									echo '<div class="controls">';
-										echo form_input($T_EMB); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($T_EMB['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-
-							echo '</div>';
-
-						echo '</div>'; 					
-					echo '</div>'; 
 
 				echo '</div>';  // B-------------------------
 
 			echo '</div>';   //A - B - C
 
-
-			//FILA 2
-			echo '<div class="row-fluid ">'; 
-
-
-
 	
-
-			echo '</div>';   //f 2
-
 		echo '</div>'; 
 
 	echo '</div>'; 
@@ -1264,6 +1325,12 @@ if($detalle){
 		    echo '<div class="alert alert-error">';
 			    echo '<button class="close" data-dismiss="alert" type="button">×</button>';
 			    echo '<strong>Error 4! </strong>';
+			    echo ' El N° de pescadores-acuicultores declaradas no coincide con la cantidad declaradas en el resumen de registro.';						    
+			    echo '</div>';							
+		}elseif ($error===5) {
+		    echo '<div class="alert alert-error">';
+			    echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+			    echo '<strong>Error 5! </strong>';
 			    echo ' El N° de embarcaciones declaradas no coincide con la cantidad declaradas en el resumen de registro.';						    
 			    echo '</div>';							
 		}
@@ -1555,6 +1622,7 @@ echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dia
 		
 					echo '<div class="span12 preguntas">';
 
+
 						echo '<div class="row-fluid">';
 
 							echo '<div class="span12 titulos">';
@@ -1565,7 +1633,7 @@ echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dia
 
 						echo '<div class="row-fluid">';
 	
-							echo '<div class="control-group span3">';
+							echo '<div class="control-group span6">';
 								echo form_label('Filas',$T_F_D_m['id'],$label1);
 								echo '<div class="controls">';
 									echo form_input($T_F_D_m); 
@@ -1574,7 +1642,7 @@ echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dia
 								echo '</div>';	
 							echo '</div>'; 
 
-							echo '<div class="control-group span3">';
+							echo '<div class="control-group span6">';
 								echo form_label('Pescadores',$T_PES_m['id'],$label1);
 								echo '<div class="controls">';
 									echo form_input($T_PES_m); 
@@ -1583,7 +1651,11 @@ echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dia
 								echo '</div>';	
 							echo '</div>'; 
 
-							echo '<div class="control-group span3">';
+						echo '</div>';
+
+						echo '<div class="row-fluid">';
+	
+							echo '<div class="control-group span6">';
 								echo form_label('Acuicultores',$T_ACUI_m['id'],$label1);
 								echo '<div class="controls">';
 									echo form_input($T_ACUI_m); 
@@ -1592,7 +1664,20 @@ echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dia
 								echo '</div>';	
 							echo '</div>'; 
 
-							echo '<div class="control-group span3">';
+							echo '<div class="control-group span6">';
+								echo form_label('Pescadores y Acuicultores',$T_PES_ACUI_m['id'],$label1);
+								echo '<div class="controls">';
+									echo form_input($T_PES_ACUI_m); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($T_PES_ACUI_m['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
+
+						echo '</div>';
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="control-group offset3 span6">';
 								echo form_label('Embarcaciones',$T_EMB_m['id'],$label1);
 								echo '<div class="controls">';
 									echo form_input($T_EMB_m); 
@@ -1601,9 +1686,7 @@ echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dia
 								echo '</div>';	
 							echo '</div>'; 
 
-
 						echo '</div>';
-
 					echo '</div>'; 
 			
 			echo '</div>'; 
@@ -1631,12 +1714,97 @@ echo '</div>';
 
 <script type="text/javascript">
 
+
+///////////////////////////////////////////////////////////////////////////////
+// <<=================== E N T E R   L I K E  T A B  ======================>>//
+    $('input').keydown( function(e) {
+            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+            var array_otros = ['S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //SECCCION 3
+                                'S5_2_7','S5_3_17', // SECCION 5
+                                'S6_3_6','S6_4_15']; // SECCION 6
+            var array_libres = ['P8','P9','P10','P11','P12','P13'];
+	  	 	var array_ninguno = ['S3_8_6','S3_8_10','S3_18_5','S6_3_7','S7_2_10','S7_6_4','S7_8_20','S7_16_5']; // NINGUNOS
+
+            if(key == 13) {
+                e.preventDefault();
+                var inputs = $(this).closest('form').find(':input:enabled:visible');
+                $(this).blur();  
+                if ( inArray($(this).attr('id'), array_libres )) {// CAMPOS LIBRES: no requieren ingreso obligatorio
+                    inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                    return;
+                }
+                if ($(this).val()==""){
+                // NO VACIOS
+                    // if( $(this).attr('id') == 'P4' ){// PREGUNTA CON OTRO Y UN SOLO INGRESO
+                    //     if (inArray($(this).attr('id'),array_libres) ) {
+                    //     	var inp = this;
+                    //     	var con = 0;
+                    //     	if ($(inp).val() == ""){
+                    //     		con++;
+                    //     	}
+                    //     	if (con => 1) {
+                    //     		alert("Debe ingresar al menos uno de los datos de direccion");
+                        		
+                    //     	} else{};
+                    //         inputs.eq( inputs.index(this)+ 1 ).focus();                              
+                    //     } else{
+                    //         inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                    //     }
+                    // }                
+                    alert("Campo requerido");
+                    inputs.eq( inputs.index(this)).focus(); 
+                }else{
+
+                        inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                                            
+                }
+            }else if (key == 37) {
+                var inputs = $(this).closest('form').find(':input:enabled');
+                if ($(this).val()==""){// NO VACIOS
+                    alert("Campo requerido");
+                    inputs.eq( inputs.index(this)).focus(); 
+                }else{
+                    inputs.eq( inputs.index(this)- 1).focus();  
+                    inputs.eq( inputs.index(this)- 1).select();                  	
+                }
+
+            }
+            else if(key == 9){
+                return false;
+            }
+        });
+// <<=================== E N T E R   L I K E  T A B  ======================>>//
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 // VALIDA TECLAS =========================================================================>
 
 function soloLetras(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+    especiales = [8, 37, 39];
+
+    tecla_especial = false
+    for(var i in especiales) {
+        if(key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+
+    if(letras.indexOf(tecla) == -1 && !tecla_especial)
+        return false;
+}
+
+function alfa_numericos(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz123456789.;,";
     especiales = [8, 37, 39];
 
     tecla_especial = false
@@ -1677,6 +1845,85 @@ function soloNumeros(e) {
     if(letras.indexOf(tecla) == -1 && !tecla_especial)
         return false;
 }
+// <<======= S O L O   D E C I M A L ES ===========>>//
+    function solo_1_to_9(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "0123456789.";
+        especiales = [8,9, 37, 39];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
+// <<======= S O L O   D E C I M A L ES ===========>>//
+
+// <<======= S O L O   N U M E R O S  1 - 2 ===========>>//
+    function solo_1_to_2(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "129";
+        especiales = [8,9, 37, 39];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
+// =======>> S O L O   N U M E R O S  1 - 2 <<===========//
+
+// <<======= S O L O   N U M E R O S  1 - 3 ===========>>//
+    function solo_1_to_3(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "1239";
+        especiales = [8,9, 37, 39];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
+// =======>> S O L O   N U M E R O S  1 - 3 <<===========//
+
+// <<======= S O L O   N U M E R O S  1 - 9 ===========>>//
+    function solo_1_to_9(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "123456789";
+        especiales = [8,9, 37, 39];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
+// =======>> S O L O   N U M E R O S  1 - 9 <<===========//
 
 //<=====================
 
@@ -1729,6 +1976,16 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un valor");
 
 
+///////////////////////////////////////////
+	$("#P2").focus();
+///////////////////////////////////////////
+      $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          return false;
+        }
+      });
+// window.clo
 
 
 // R E G I S T R O    D E P E S C A D O R E S ------------------------------------------------------------------>
@@ -1822,6 +2079,12 @@ $("#frm_reg_pesc").validate({
             range: [0,9998],              
          },   
         T_ACUI:{
+            required: true,
+            number: true,
+            maxlength: 4, 
+            range: [0,9998],             
+         },   
+        T_PES_ACUI:{
             required: true,
             number: true,
             maxlength: 4, 
@@ -1932,6 +2195,11 @@ $("#frm_reg_pesc").validate({
             number: "Solo números", 
             range: "Ingrese numeros entre 0  y 9998",          
          },   
+        T_PES_ACUI:{
+            required: "Ingrese N° ACUICULTORES",
+            number: "Solo números", 
+            range: "Ingrese numeros entre 0  y 9998",          
+         },            
         T_EMB:{
             required: "Ingrese TOTAL EMBARCACIONES",
             number: "Solo números",
@@ -2012,7 +2280,7 @@ $("#form_registro_dat").validate({
          },
         P7:{
             required: true,
-            validName: true,
+            //alphanumeric: true,
             maxlength: 100, 
          },
         P8:{
@@ -2143,231 +2411,68 @@ $("#form_registro_dat").validate({
     //     }
     // });
 
-    $("#P3").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ) {
-            return;
-        }
-        // PERMITE: 1 - 2
-        else if( event.keyCode == 97 || event.keyCode == 98 || event.keyCode == 49 || event.keyCode == 50) {
-            return;
-        }
-        else {
-            event.preventDefault(); 
-        }
-    });
-
-    $("#P4").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter 
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13){
-                 return;
-        }
-        // PERMITE: 0 - 9      
-        else if ((event.keyCode >= 96 && event.keyCode <= 105)|| (event.keyCode >= 48 && event.keyCode <= 57)) {
-                 return;
-        }
-        else {
-            event.preventDefault(); 
-        }
-    });
-
-    $("#P5").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ){
-                 return;
-        }
-        // PERMITE: 1 - 2, 9
-        else if (event.keyCode == 97 || event.keyCode == 98 || event.keyCode == 105|| event.keyCode == 49 || event.keyCode == 50 || event.keyCode == 57  ) {
-                 return;
-        }
-        else {
-            event.preventDefault(); 
-        }
-    });
-
-    $("#P6").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ){
-                 return;
-        }
-        // PERMITE: 1 - 7 , 9
-        else if ((event.keyCode >= 97 && event.keyCode <= 103)|| event.keyCode == 105 || (event.keyCode >= 49 && event.keyCode <= 55) || event.keyCode == 57) {
-                 return;
-        }
-        else {
-            event.preventDefault(); 
-        }
-    });
-
-    // $("#P7").keydown(function(event) {
-    //     // PERMITE: backspace, delete, tab, escape,  enter, space
-    //     if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || event.keyCode == 32 ){
-    //              return;
+    // $("#P3").keydown(function(event) {
+    //     // PERMITE: backspace, delete, tab, escape,  enter
+    //     if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ) {
+    //         return;
     //     }
-    //     // PERMITE: 0 - 9, A - Z, Ñ        
-    //     else if ((event.keyCode >= 96 && event.keyCode <= 105) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 164 || event.keyCode == 165) {
-    //              return;
+    //     // PERMITE: 1 - 2
+    //     else if( event.keyCode == 97 || event.keyCode == 98 || event.keyCode == 49 || event.keyCode == 50) {
+    //         return;
     //     }
     //     else {
-    //         event.preventDefault();
+    //         event.preventDefault(); 
     //     }
     // });
 
-    $("#P8").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ){
-                 return;
-        }
-        // PERMITE: 0 - 9, A - Z, Ñ        
-        else if ((event.keyCode >= 96 && event.keyCode <= 105) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 164 || event.keyCode == 165) {
-                 return;
-        }
-        else {
-            event.preventDefault();
-        }
-    });
 
-    $("#P9").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ){
-                 return;
-        }
-        // PERMITE: 0 - 9, A - Z, Ñ        
-        else if ((event.keyCode >= 96 && event.keyCode <= 105) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 164 || event.keyCode == 165) {
-                 return;
-        }
-        else {
-            event.preventDefault();
-        }
-    });
 
-    $("#P10").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13  ){
-                 return;
-        }
-        // PERMITE: 0 - 9, A - Z, Ñ        
-        else if ((event.keyCode >= 96 && event.keyCode <= 105) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 164 || event.keyCode == 165) {
-                 return;
-        }
-        else {
-            event.preventDefault();
-        }
-    });
-
-    $("#P11").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter 
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13){
-                 return;
-        }
-        // PERMITE: 0 - 9      
-        else if ((event.keyCode >= 96 && event.keyCode <= 105)|| (event.keyCode >= 48 && event.keyCode <= 57)) {
-                 return;
-        }
-        else {
-            event.preventDefault(); 
-        }
-    });
-
-    $("#P12").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13  ){
-                 return;
-        }
-        // PERMITE: 0 - 9, A - Z, Ñ        
-        else if ((event.keyCode >= 96 && event.keyCode <= 105) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 164 || event.keyCode == 165) {
-                 return;
-        }
-        else {
-            event.preventDefault();
-        }
-    });
-
-    $("#P13").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13  ){
-                 return;
-        }
-        // PERMITE: 0 - 9, A - Z, Ñ        
-        else if ((event.keyCode >= 96 && event.keyCode <= 105) || (event.keyCode >= 48 && event.keyCode <= 57) || (event.keyCode >= 65 && event.keyCode <= 90) || event.keyCode == 164 || event.keyCode == 165) {
-                 return;
-        }
-        else {
-            event.preventDefault();
-        }
-    });
-    $("#P14").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13  ){
-                 return;
-        }
-        // PERMITE: 0 - 9, punto (.)    
-        else if ((event.keyCode >= 96 && event.keyCode <= 105)|| (event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode == 110) {
-                 return;
-        }
-        else {
-            event.preventDefault();
-        }
-    });
-    $("#P15").keydown(function(event) {
-        // PERMITE: backspace, delete, tab, escape,  enter 
-        if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13){
-                 return;
-        }
-        // PERMITE: 0 - 9      
-        else if ((event.keyCode >= 96 && event.keyCode <= 105)|| (event.keyCode >= 48 && event.keyCode <= 57)) {
-                 return;
-        }
-        else {
-            event.preventDefault(); 
-        }
-    });
 
 
 // ENTER como TAB -----------------------------------
-$('#frm_reg_pesc').ready(function() {
-   //$('#CAT').focus();
-       
-   $('input:text').bind("keydown", function(e) {
-      var n = $("input:text").length;
-      if (e.which == 13)
-      { //Enter key
-        e.preventDefault(); //Skip default behavior of the enter key
-        var nextIndex = $('input:text').index(this) + 1;
-        if(nextIndex < n)
-          $('input:text')[nextIndex].focus();
-        else
-        {
-          $('input:text')[nextIndex-1].blur();
-          $('#send').click();
-        }
-      }
-    });
-  });
+	// $('#frm_reg_pesc').ready(function() {
+	//    //$('#CAT').focus();
+	       
+	//    $('input:text').bind("keydown", function(e) {
+	//       var n = $("input:text").length;
+	//       if (e.which == 13)
+	//       { //Enter key
+	//         e.preventDefault(); //Skip default behavior of the enter key
+	//         var nextIndex = $('input:text').index(this) + 1;
+	//         if(nextIndex < n)
+	//           $('input:text')[nextIndex].focus();
+	//         else
+	//         {
+	//           $('input:text')[nextIndex-1].blur();
+	//           $('#send').click();
+	//         }
+	//       }
+	//     });
+	//   });
 
-$('#form_registro_dt').ready(function() {
-  // $('input:text:first').focus();
-       
-   $('input:text').bind("keydown", function(e) {
-      var n = $("input:text").length;
-      if (e.which == 13)
-      { //Enter key
-        e.preventDefault(); //Skip default behavior of the enter key
-        var nextIndex = $('input:text').index(this) + 1;
-        if(nextIndex < n)
-          $('input:text')[nextIndex].focus();
-        else
-        {
-          $('input:text')[nextIndex-1].blur();
-          $('#send').click();
-        }
-      }
-    });
-   
-    $('#send').click(function() {
-       alert('Form Submitted');
-    });
-  });
+	// $('#form_registro_dt').ready(function() {
+	//   // $('input:text:first').focus();
+	       
+	//    $('input:text').bind("keydown", function(e) {
+	//       var n = $("input:text").length;
+	//       if (e.which == 13)
+	//       { //Enter key
+	//         e.preventDefault(); //Skip default behavior of the enter key
+	//         var nextIndex = $('input:text').index(this) + 1;
+	//         if(nextIndex < n)
+	//           $('input:text')[nextIndex].focus();
+	//         else
+	//         {
+	//           $('input:text')[nextIndex-1].blur();
+	//           $('#send').click();
+	//         }
+	//       }
+	//     });
+	   
+	//     $('#send').click(function() {
+	//        alert('Form Submitted');
+	//     });
+	//   });
 
 //$('#T_EMB_m').bind('click', function(){alert('probando');});
 //$('#CAT').keypress(function(){alert('probando');});
@@ -2517,14 +2622,14 @@ $("#NOM_DD_2, #NOM_PP_2, #NOM_DI_2, #NOM_CCPP_2").change(function(event) {
                         sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
                    }
 	                    if (op==3){
-	                    	if (data.PUNTO_CONC == 1){
+	                    	//if (data.PUNTO_CONC == 1){
 	                    		sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
 	                    		sel2.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
 	                    	
-	                    	}else if (data.PUNTO_CONC == 0){
+	                    	//}else if (data.PUNTO_CONC == 0){
 	                    		//sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
-	                    		sel2.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
-	                    	}	
+	                    		//sel2.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
+	                    	//}	
 	                    }  
                 });
 
@@ -2564,6 +2669,10 @@ $("#frm_reg_mod").validate({
             required: true,
             numeric: true,
         },
+        T_PES_aCUI_m: {
+            required: true,
+            numeric: true,
+        },        
         T_EMB_m: {
             required:true,
             numeric:true,
@@ -2579,6 +2688,10 @@ $("#frm_reg_mod").validate({
             numeric: "sólo números",
         },
         T_ACUI_m: {
+            required: "Ingrese FILAS",
+            numeric: "sólo números",
+        },
+        T_PES_ACUI_m: {
             required: "Ingrese FILAS",
             numeric: "sólo números",
         },
@@ -2696,14 +2809,14 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f, #CCPP_PROC_f").change(function(
 	                        sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
 	                   }
 	                    if (op==3){
-	                    	if (data.PUNTO_CONC == 1){
+	                    	//if (data.PUNTO_CONC == 1){
 	                    		sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
 	                    		sel2.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
 	                    	
-	                    	}else if (data.PUNTO_CONC == 0){
+	                    	//}else if (data.PUNTO_CONC == 0){
 	                    		//sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
-	                    		sel2.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
-	                    	}	
+	                    		//sel2.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
+	                    	//}	
 	                    }                    	
 	                });
 	               
@@ -2733,7 +2846,13 @@ if (!$detalle) { ?>;
 $("#NOM_DD_f").trigger('change');
 $("#NOM_DD_2").trigger('change');
 
-<?php } ?>;
+	<?php }else {  ?>
+$('#div_registro_pes input').attr('readonly', 'readonly');
+$('#div_registro_pes select').attr('readonly', 'readonly');
+
+
+<?php 
+} ?>;
 
 });
 

@@ -88,6 +88,7 @@ class Registro_pescadores extends CI_Controller {
 			$data['T_F_D'] = '';
 			$data['T_PES'] = '';
 			$data['T_ACUI'] = '';
+			$data['T_PES_ACUI'] = '';
 			$data['T_EMB'] = '';
 			$data['NOM_EMP'] = '';
 			$data['DNI_EMP'] = '';
@@ -138,6 +139,7 @@ class Registro_pescadores extends CI_Controller {
 					$this->form_validation->set_rules('T_F_D','TOTAL FILAS','required|numeric');
 					$this->form_validation->set_rules('T_PES','TOTAL PESCADORES','required|numeric');
 					$this->form_validation->set_rules('T_ACUI','TOTAL ACUICULTORES','required|numeric');
+					$this->form_validation->set_rules('T_PES_ACUI','TOTAL ACUICULTORES','required|numeric');
 					$this->form_validation->set_rules('T_EMB','TOTAL EMBARCACIONES','required|numeric');
 
 					$this->form_validation->set_rules('NOM_EMP','NOMBRE EMPADRONADOR','required');
@@ -182,6 +184,7 @@ class Registro_pescadores extends CI_Controller {
 							'T_F_D'	=> $this->input->post('T_F_D'),
 							'T_PES'	=> $this->input->post('T_PES'),
 							'T_ACUI'=> $this->input->post('T_ACUI'),
+							'T_PES_ACUI'=> $this->input->post('T_ACUI'),
 							'T_EMB'	=> $this->input->post('T_EMB'),
 
 							'NOM_EMP'=> strtoupper($this->input->post('NOM_EMP')),
@@ -286,6 +289,7 @@ class Registro_pescadores extends CI_Controller {
 		$data['T_F_D'] = $cabecera->row('T_F_D');
 		$data['T_PES'] = $cabecera->row('T_PES');
 		$data['T_ACUI'] = $cabecera->row('T_ACUI');
+		$data['T_PES_ACUI'] = $cabecera->row('T_PES_ACUI');
 		$data['T_EMB'] = $cabecera->row('T_EMB');
 		$data['NOM_EMP'] = $cabecera->row('NOM_EMP');
 		$data['DNI_EMP'] = $cabecera->row('DNI_EMP');
@@ -355,6 +359,7 @@ class Registro_pescadores extends CI_Controller {
 			$this->form_validation->set_rules('T_F_D_m','TOTAL FILAS','required|numeric');
 			$this->form_validation->set_rules('T_PES_m','TOTAL PESCADORES','required|numeric');
 			$this->form_validation->set_rules('T_ACUI_m','TOTAL ACUICULTORES','required|numeric');
+			$this->form_validation->set_rules('T_PES_ACUI_m','TOTAL PESCADORES-ACUICULTORES','required|numeric');
 			$this->form_validation->set_rules('T_EMB_m','TOTAL EMBARCACIONES','required|numeric');
 
 			if ($this->form_validation->run()=== TRUE){
@@ -363,6 +368,7 @@ class Registro_pescadores extends CI_Controller {
 					'T_F_D' => $this->input->post('T_F_D_m'),
 					'T_PES' => $this->input->post('T_PES_m'),
 					'T_ACUI'=> $this->input->post('T_ACUI_m'),
+					'T_PES_ACUI'=> $this->input->post('T_PES_ACUI_m'),
 					'T_EMB' => $this->input->post('T_EMB_m')
 					);
 
@@ -380,12 +386,15 @@ class Registro_pescadores extends CI_Controller {
 			$pes_t = $this->registro_pescadores_model->get_pescadores_t($id); //declaradas
 			$pes_i = $this->registro_pescadores_dat_model->get_pescadores_i($id); //ingresadas
 			$acui_t = $this->registro_pescadores_model->get_acuicultores_t($id);
-			$acui_i = $this->registro_pescadores_dat_model->get_acuicultores_i($id);
+			$pes_acui_i = $this->registro_pescadores_dat_model->get_pes_acuicultores_i($id);
+			$pes_acui_t = $this->registro_pescadores_model->get_pes_acuicultores_t($id);
+			$acui_i = $this->registro_pescadores_dat_model->get_acuicultores_i($id);			
 			$emb_t = $this->registro_pescadores_model->get_embarcaciones_t($id);
 			$emb_i = $this->registro_pescadores_dat_model->get_embarcaciones_i($id);
 
 			$cabecera = $this->registro_pescadores_model->get_detalles($id);
-			$data['obs'] = $cabecera->row('OBS');;
+			$data['obs'] = $cabecera->row('OBS');
+			echo '<script> alert("'.$pes_acui_t.'- '.$pes_acui_i. '");</script>';
 
 			if($num_filas>$num_filas_t){ 
 				$data['error'] = 1;
@@ -396,8 +405,11 @@ class Registro_pescadores extends CI_Controller {
 			}elseif ($acui_i<>$acui_t) {
 				$data['error'] = 3;
 				$this->load->view('backend/includes/template', $data);
-			}elseif ($emb_i<>$emb_t) {
+			}elseif ($pes_acui_i<>$pes_acui_t) {
 				$data['error'] = 4;
+				$this->load->view('backend/includes/template', $data);
+			}elseif ($emb_i<>$emb_t) {
+				$data['error'] = 5;
 				$this->load->view('backend/includes/template', $data);
 			}else{
 				$registros = array('OBS' => $this->input->post('OBS'));

@@ -51,6 +51,14 @@ class Registro_pescadores_dat_model extends CI_MODEL
 		$q = $this->db->get('registro_pescadores_dat');
 		return $q->num_rows();
 	}
+		function get_pes_acuicultores_i($id)
+	{	
+		$this->db->where('id_reg',$id);
+		$this->db->where('P5',3);
+		$this->db->select('P5');
+		$q = $this->db->get('registro_pescadores_dat');
+		return $q->num_rows();
+	}	
 		function get_embarcaciones_i($id)
 	{	
 		$this->db->where('id_reg',$id);
