@@ -169,6 +169,9 @@ color:#fff;
 #map img {
   max-width: none;
 }
+#map_seg img {
+  max-width: none;
+}
 #map { height: 600px !important;  }
 
 .map_container{
