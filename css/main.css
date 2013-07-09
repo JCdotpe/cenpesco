@@ -175,7 +175,16 @@ color:#fff;
 #map img {
   max-width: none;
 }
+#map_seg img {
+  max-width: none;
+}
 #map { height: 600px !important;  }
+
+.map_container{
+  position: absolute;
+  width: 100%;
+  height: 100%
+}
 
 .strip-table{
   background-color: #E3F3FF;
@@ -543,4 +552,26 @@ text-shadow: none;
 
 .navbar-inverse .brand, .navbar-inverse .nav > li > a {
     color: #6B787F;
+}
+
+.filtro_map{
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  padding: 7px 12px !important;
+  background: #fff;
+  margin: 0;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+
+
+.filtro_map .control-group{
+  margin-left: 0;
+}
+
+
+.filtro_map .control-group .controls {
+  margin-left: 0;
 }
