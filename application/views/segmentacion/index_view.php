@@ -10,7 +10,7 @@
 
               <li><a href="<?php echo site_url('segmentacion/consulta'); ?>" target="_blank">Módulo de consulta</a></li>
             
-              <li>
+<!--               <li>
                   <div class="accordion" id="accordion3">
                     <div class="accordion-group">
                       <div class="accordion-heading">
@@ -22,15 +22,15 @@
                         <div class="accordion-inner">
                             <label class="checkbox">
                             <?php 
-                                echo form_checkbox('piloto', 'piloto', FALSE, 'class="piloto-cp-checkbox"');
-                                echo 'Centros Poblados';
+                                // echo form_checkbox('piloto', 'piloto', FALSE, 'class="piloto-cp-checkbox"');
+                                // echo 'Centros Poblados';
                             ?>
                             </label>
                         </div>
                       </div>
                     </div>
                   </div>
-              </li>   
+              </li>    -->
 
               <li>
                   <div class="accordion" id="accordion2">
