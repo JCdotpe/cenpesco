@@ -459,9 +459,9 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f").change(function(event) {
                         sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
                    }
                     if (op==3){
-                        if (data.PUNTO_CONC == 1){
+                        //if (data.PUNTO_CONC == 1){
                             sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>'); 
-                        }
+                        //}
                     }
                 });
                

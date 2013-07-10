@@ -22,7 +22,7 @@ class Home extends CI_Controller {
 			$data['nav'] = TRUE;
 			$data['title'] = 'Inicio';
 			$data['main_content'] = 'convocatoria/bienvenida_view';
-		 	$this->load->view('backend/includes/template', $data);
+		 	//$this->load->view('backend/includes/template', $data);
 	    } else {
 			$data['home'] = TRUE;
 			$data['nav'] = TRUE;

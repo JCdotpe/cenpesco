@@ -462,7 +462,7 @@ echo form_open($this->uri->uri_string(),$attr);
 			echo '<div class="row-fluid" id="reg_ubicacion">'; 
 
 				//A.-----------------------------------------
-				echo '<div class="span4 preguntas" style="padding-bottom: 23px !important">';
+				echo '<div class="span4 preguntas" style="padding-bottom: 23px !important" id="SEC1">';
 
 					echo '<div class="span12 titulos">';
 						echo '<h5>A. UBICACION GEOGRAFICA</h5>';
@@ -578,7 +578,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 					echo '<div class="row-fluid ">';
 
-						echo '<div class="span6 preguntas">';
+						echo '<div class="span6 preguntas" id="SEC2">';
 
 							echo '<div class="span12 titulos">';
 								echo '<h5>B. PROCEDENCIA</h5>';
@@ -610,7 +610,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '</div>'; 
 
-						echo '<div class="span6 preguntas">';
+						echo '<div class="span6 preguntas" id="SEC3">';
 
 							echo '<div class="span12 titulos">';
 								echo '<h5>C. FECHA</h5>';
@@ -666,7 +666,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '<div class="row-fluid ">';
 								//D.-----------------------------------------
-								echo '<div class="preguntas">';
+								echo '<div class="preguntas" id="SEC4">';
 
 									echo '<div class="row-fluid">';
 
@@ -703,7 +703,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '<div class="row-fluid ">';
 								// E -------------------------
-								echo '<div class="preguntas" style="padding-bottom: 17px !important">';
+								echo '<div class="preguntas" style="padding-bottom: 17px !important" id="SEC5">';
 
 									echo '<div class="row-fluid">';
 
@@ -742,9 +742,9 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="span6">';
 							// F -----------------------
-							echo '<div class="preguntas">';
+							echo '<div class="preguntas" id="SEC6">';
 
-								echo '<div class="row-fluid">';
+								echo '<div class="row-fluid" >';
 
 									echo '<div class="span12 titulos">';
 										echo '<h5>F.  RESUMEN DEL REGISTRO</h5>';
@@ -797,8 +797,6 @@ echo form_open($this->uri->uri_string(),$attr);
 								echo '</div>';
 
 								echo '<div class="row-fluid">';
-
-	
 
 									echo '<div class="control-group offset3 span6 grupos_span3">';
 										echo form_label('Embarcaciones',$T_EMB['id'],$label1);
@@ -872,7 +870,7 @@ if($detalle){
 			//Fila 1
 			echo '<div class="row-fluid ">';
 
-				echo '<div class="span12 preguntas">';
+				echo '<div class="span12 preguntas" id="SEC7">';
 
 					echo '<div class="row-fluid">';
 
@@ -1001,7 +999,7 @@ if($detalle){
 			//fila 2
 			echo '<div class="row-fluid ">';
 
-				echo '<div class="span10 preguntas">';
+				echo '<div class="span10 preguntas" id="SEC8">';
 
 					echo '<div class="row-fluid">';
 
@@ -1254,7 +1252,7 @@ if($detalle){
 				echo '</div>';	
 					
 
-				echo '<div class="span2 preguntas">';
+				echo '<div class="span2 preguntas" style="padding-bottom: 28px !important" id="SEC9">';
 
 					echo '<div class="row-fluid">';
 
@@ -1710,9 +1708,43 @@ echo '</div>';
 ?>
 
 
+<!-- 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////   /////////////            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////   ////////////   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////   ////////////   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////   ////////////   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////   ////////////              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////   ///////////////////////   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////  ///////   ///////////////////////   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////  ///////   ///////////////////////   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////           /////////////             ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -->
 
 
 <script type="text/javascript">
+
+///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////  D I V     S E L E C C I O N A D O   \\\\\\\\\\\\\\\\\\\\\
+    $(document).ready(function(){
+        for ( s = 1; s < 10; s++) {
+              $("#SEC"+s).focusin(function(){
+                //$(this).css("background-color","#A9D0F5");
+                $(this).css("border","3px solid #ff9900");
+              });   
+              $("#SEC"+s).focusout(function(){
+                $(this).css("border","1px solid #989898");
+              });              
+                   	
+        };
+    });
+//\\\\\\\\\\\\\\\\\\  D I V     S E L E C C I O N A D O   /////////////////////
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
+
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1732,8 +1764,21 @@ echo '</div>';
                 if ( inArray($(this).attr('id'), array_libres )) {// CAMPOS LIBRES: no requieren ingreso obligatorio
                     inputs.eq( inputs.index(this)+ 1 ).focus(); 
                     return;
-                }
-                if ($(this).val()==""){
+                }else if($(this).attr('id') == 'P14'){
+                	var conx = 0;
+                	$.each(array_libres, function(key , value)  {
+                		if ($("#" + value).val() =="" ){
+                			conx++;
+                		}
+                	})
+                	if($(this).val()=="" && conx == 6){
+                    	alert("Debe ingresar al menos un dato en N° Puerta, Block, Interior, N° Piso, KM, Lote");
+                        inputs.eq( inputs.index(this) - 6 ).focus(); 
+                	}else{
+                		inputs.eq( inputs.index(this) + 1 ).focus(); 
+                	}
+                                            
+                }else if ($(this).val()==""){
                 // NO VACIOS
                     // if( $(this).attr('id') == 'P4' ){// PREGUNTA CON OTRO Y UN SOLO INGRESO
                     //     if (inArray($(this).attr('id'),array_libres) ) {
@@ -1754,7 +1799,6 @@ echo '</div>';
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
                 }else{
-
                         inputs.eq( inputs.index(this)+ 1 ).focus(); 
                                             
                 }

@@ -73,7 +73,7 @@ class Marco_model extends CI_Model{
 	function get_ccpp_by_odei ($sede,$odei,$dep,$prov,$dist)
 	{	
 		$this->db->distinct('CODCCPP');
-		$this->db->select('CODCCPP,CENTRO_POBLADO,PUNTO_CONC');
+		$this->db->select('CODCCPP,CENTRO_POBLADO');
 		if ($sede < 99) {	
 			$this->db->where('SEDE_COD',$sede);
 			$this->db->where_in('ODEI_COD',$odei); 	}	

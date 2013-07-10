@@ -394,7 +394,7 @@ class Registro_pescadores extends CI_Controller {
 
 			$cabecera = $this->registro_pescadores_model->get_detalles($id);
 			$data['obs'] = $cabecera->row('OBS');
-			echo '<script> alert("'.$pes_acui_t.'- '.$pes_acui_i. '");</script>';
+			//echo '<script> alert("'.$pes_acui_t.'- '.$pes_acui_i. '");</script>';
 
 			if($num_filas>$num_filas_t){ 
 				$data['error'] = 1;

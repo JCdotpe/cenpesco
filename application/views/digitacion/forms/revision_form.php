@@ -77,36 +77,21 @@ echo '<div class="span12">';
 echo form_open($this->uri->uri_string(),$attr); 
 /////////////////////////////////////////////////////////////
 //Empadronador_DNI
-$NROFORM = array(
-	'name'	=> 'NFORM',
-	'id'	=> 'NFORM',
-	'maxlength'	=> 6,
-	'class' => 'offset5 span2',
-);
 
-    echo form_hidden('comunidad_id', '');
-	echo '<div class="well modulo">';
-            echo '<h3 style="text-align:center">Formulario de Comunidad</h3>';
-			echo '<div class="control-group">';
-			echo form_label('NRO FORMULARIO','NFORM',$labelnroform);
-				echo '<div class="controls">';	
-					echo form_input($NROFORM); 
-				echo '</div>';
-			echo '</div>';
-	echo '</div>';  
+
+ 
 
 ////////////////////////////////SECCION I
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
-			echo '<h4>SECCION I. LOCALIZACIÓN DEL PUNTO DE CONCENTRACIÓN</h4>';
+			echo '<h4>REVISION</h4>';
 			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
 
 			echo '<div class="span12">';	
-					echo '<div class="control-group span6">';
+					echo '<div class="control-group span3">';
+
+							echo form_label('DEPARTAMENTO','NOM_DD',$label1);
 							echo '<div class="controls span3">';
-								echo form_label('DEPARTAMENTO','NOM_DD',$label1);
-							echo '</div>';								
-							echo '<div class="controls span1">';
 								echo form_input($CCDD); 
 							echo '</div>';	
 							echo '<div class="controls span6">';
@@ -115,28 +100,21 @@ $NROFORM = array(
 					echo '</div>';  
 
 
-					echo '<div class="control-group span6">';
+					echo '<div class="control-group span3">';
+									echo form_label('DISTRITO','NOM_DI',$label1);
 									echo '<div class="controls span3">';
-										echo form_label('DISTRITO','NOM_DI',$label1);
-									echo '</div>';	
-									echo '<div class="controls span1">';
 										echo form_input($CCDI); 
 									echo '</div>';	
 
 									echo '<div class="controls span6">';
 										echo form_dropdown('NOM_DI', $distArray, FALSE,'class="span12" id="NOM_DI"'); 
 									echo '</div>';	
-					echo '</div>'; 					
-			echo '</div>'; 
-			
+					echo '</div>'; 	
 
-			echo '<div class="span12">';
 
-					echo '<div class="control-group span6">';
-								echo '<div class="controls span3">';
+					echo '<div class="control-group span3">';
 									echo form_label('PROVINCIA','NOM_PP',$label1);
-								echo '</div>';		
-								echo '<div class="controls span1">';
+								echo '<div class="controls span3">';
 									echo form_input($CCPP); 
 								echo '</div>';	
 
@@ -146,20 +124,23 @@ $NROFORM = array(
 
 					echo '</div>'; 
 
-					echo '<div class="control-group span6">';
-								echo '<div class="controls span3">';
-									echo form_label('CENTRO POBLADO','NOM_CCPP',$label1);
-								echo '</div>';	
-								echo '<div class="controls span2">';
+					echo '<div class="control-group span3">';
+								echo form_label('CENTRO POBLADO','NOM_CCPP',$label1);
+								echo '<div class="controls span5">';
 									echo form_input($COD_CCPP); 
 								echo '</div>';	
 								echo '<div class="controls span6">';
 									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
 								echo '</div>';	
 
-					echo '</div>'; 			
+					echo '</div>'; 		
 
-			echo '</div>'; 	
+
+
+			echo '</div>'; 
+			
+
+
 
 		echo '</div>'; 			
 	echo '</div>'; 				
