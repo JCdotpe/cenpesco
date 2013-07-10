@@ -63,19 +63,19 @@ var gmarkers = [];
       var category = "";
 
       var infowindow = new google.maps.InfoWindow({ 
-        size: new google.maps.Size(150,50)
+        size: new google.maps.Size(300,400)
         });
 
       // A function to create the marker and set up the event window
       function createMarkerLEN(latlng,name,html,category,icon) {
           var contentString = html;
           var color = null;
-              if(icon=== 'PIURA')
-                color = CI.base_url + 'img/blank2.png';
-              else if(icon=== 'LORETO')
-                color = CI.base_url + 'img/blank1.png';      
-              else if(icon=== 'PUNO')
-                color = CI.base_url + 'img/blank3.png';               
+              if(icon=== 'A')
+                color = CI.site_url + 'img/blank1.png';
+              else if(icon=== 'B')
+                color = CI.site_url + 'img/blank3.png';      
+              // else if(icon=== 'PUNO')
+              //   color = CI.base_url + 'img/blank3.png';               
                    
           var marker = new google.maps.Marker({
               position: latlng,
@@ -98,7 +98,7 @@ var gmarkers = [];
 
       function initialize() {
           var myOptions = {
-            zoom: 5,
+            zoom: 6,
             center: new google.maps.LatLng(-7.1663,-71.455078),
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             zoomControl: true,
@@ -216,12 +216,13 @@ $(function(){
 
 
 $("#EQUIPO").change(function() {
-        // var form_data = {
-        //     csrf_token_c: CI.cct,
-        //     ajax:1
-        // };
+        for (var i=0; i<gmarkers.length; i++) {
+          if (gmarkers[i].mycategory == '1') {
+            gmarkers[i].setVisible(false);
+          }
+        } 
         $.ajax({   
-            url: CI.rest_url + "segmentacion/ubigeo/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + $(this).val(),
+            url: CI.rest_url + "segmentacion/mapas/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + $(this).val(),
             type:'GET',
             // data:form_data,
             dataType:'json',
@@ -230,12 +231,11 @@ $("#EQUIPO").change(function() {
                     var lat = data.laty;
                     var lng = data.longx;                
                     var point = new google.maps.LatLng(lat,lng);
-                    var html = "<div class='marker activeMarker'><div class='markerInfo activeInfo' style='display: block;'><h3>CCPP - " + data.centro_poblado + "</h3><p><b>DEPARTAMENTO:</b> "+data.departamento+"</p><p><b>PROVINCIA:</b> "+data.provincia+"</p><p><b>DISTRITO:</b> "+data.distrito+"</p></div></div>";     
-                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1',data.departamento);
+                    var html = "<div class='marker activeMarker'><div class='markerInfo activeInfo' style='display: block;'><h3>CCPP - " + data.centro_poblado + "</h3><p><b>DEPARTAMENTO:</b> "+data.departamento+"</p><p><b>PROVINCIA:</b> "+data.provincia+"</p><p><b>DISTRITO:</b> "+data.distrito+"</p><p><b>NUMERACION:</b> "+data.numeracion+"</p></div></div>";     
+                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV);
                 });
             }
         });   
-
 });
 
 
