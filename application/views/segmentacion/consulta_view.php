@@ -189,7 +189,6 @@ $(function(){
                   $.each(json_data, function(i, data){
                       if (op==1){
                           sel.append('<option value="' + data.CCDD + '">' + data.DEPARTAMENTO + '</option>');
-                         $("#NOM_DD").trigger('change');
                           
                       }
                       if (op==2){
@@ -197,7 +196,13 @@ $(function(){
                           // $("#EQUIPO").trigger('change');
                      }
                   });
-                 
+                 if(op==1){
+                    $("#NOM_DD").trigger('change');
+                 }
+
+                if(op==2){
+                    $("#EQUIPO").trigger('change');
+                 }                
               }
           });   
        }

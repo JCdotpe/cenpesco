@@ -22,11 +22,15 @@
 			                <tr>
 			                  <th>Departamento</th>
 			                  <th>Centros Poblados</th>
+                        <th>Coordinador Departamental</th>
+                        <th>Asistente de Coordinador</th>
 			                  <th>Empadronadores</th>
-			                  <th>Jefes de Brigada</th>
 			                  <th>Total</th>
-			                  <th>PEA a Capacitar</th>
-			                  <th>Inscritos</th>
+			                  <th>Inscritos</th>                       
+                        <th>Coordinador Departamental</th>
+                        <th>Asistente de Coordinador</th>
+                        <th>Empadronadores</th>
+                        <th>PEA a Capacitar</th>
 			                  <th>Seleccionados</th>
 			                </tr>
 			              </thead>
@@ -36,11 +40,18 @@
 			                <tr class="<?= ($i++ % 2 == 0) ? "strip-table" : ""; ?>">
 			                  <td><?php echo $p->SEDE; ?></td>
 			                  <td><?php echo $p->centro_poblado; ?></td>
+                        <td><?php echo $p->coordinador_departamental; ?></td>
+                        <td><?php echo $p->asis_coordinador_departamental; ?></td>
 			                  <td><?php echo $p->empadronadores; ?></td>
-			                  <td><?php echo $p->jefe_brigada; ?></td>
 			                  <td><?php echo $p->total_pea; ?></td>
-			                  <td><?php echo $p->pea_capacitar; ?></td>
 			                  <td style="color:green"><?php echo $nro[$p->SEDE_COD]->numero; ?></td>
+                        <?php $class4 = ($nro_4[$p->SEDE_COD]->numero >= $p->coordinador_departamental) ? 'green' : 'red'; ?>
+                        <td style="color:<?php echo $class4; ?>"><?php echo $nro_4[$p->SEDE_COD]->numero; ?></td>
+                        <?php $class3 = ($nro_3[$p->SEDE_COD]->numero >= $p->asis_coordinador_departamental) ? 'green' : 'red'; ?>
+                        <td style="color:<?php echo $class3; ?>"><?php echo $nro_3[$p->SEDE_COD]->numero; ?></td>
+                        <?php $class1 = ($nro_1[$p->SEDE_COD]->numero >= $p->empadronadores) ? 'green' : 'red'; ?>
+                        <td style="color:<?php echo $class1; ?>"><?php echo $nro_1[$p->SEDE_COD]->numero; ?></td> 
+                        <td><?php echo $p->pea_capacitar; ?></td>                      
 			                  <td><?php echo $nrocap[$p->SEDE_COD]->numero; ?></td>
 			                </tr>                               
 			         <?php } 	?>       

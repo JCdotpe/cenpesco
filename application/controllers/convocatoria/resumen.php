@@ -50,12 +50,21 @@ class Resumen extends CI_Controller {
 			$data['ptsdep'] = $this->pea_model->get_pea_ubigeo_by_dep();
 			$nro = null;
 			$nrocap = null;
+			$nro_1 = null;
+			$nro_3 = null;
+			$nro_4 = null;
 			foreach($data['ptsdep']->result() as $p){
 				$nro[$p->SEDE_COD] = $this->regs_model->get_nro_regs_by_dep($p->SEDE_COD,0)->row();		
 				$nrocap[$p->SEDE_COD] = $this->regs_model->get_nro_regs_by_dep($p->SEDE_COD,2)->row();	
+				$nro_1[$p->SEDE_COD] = $this->regs_model->get_nro_regs_by_dep($p->SEDE_COD,0,1)->row();	
+				$nro_3[$p->SEDE_COD] = $this->regs_model->get_nro_regs_by_dep($p->SEDE_COD,0,3)->row();	
+				$nro_4[$p->SEDE_COD] = $this->regs_model->get_nro_regs_by_dep($p->SEDE_COD,0,4)->row();	
 			}
 			$data['nro'] = $nro;
 			$data['nrocap'] = $nrocap;
+			$data['nro_1'] = $nro_1;
+			$data['nro_3'] = $nro_3;
+			$data['nro_4'] = $nro_4;
 			//$data['dptoskml'] = givemethefuckingkml($this->ubigeo_model->get_kml_dep()->result());
 			$data['main_content'] = 'convocatoria/resumen_view';
 	        $this->load->view('backend/includes/template', $data);

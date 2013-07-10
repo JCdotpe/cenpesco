@@ -72,12 +72,14 @@ class Regs_model extends CI_Model{
         return $q;
     }      
 
-    function get_nro_regs_by_dep($dep,$st){
+    function get_nro_regs_by_dep($dep,$st,$cargo = null){
         $this->db->select('COUNT(id) as numero');
         if($dep != -1)
         $this->db->where('cod_odei',$dep);
         if($st != 0)
         $this->db->where('estado',$st);
+        if(!is_null($cargo))
+        $this->db->where('cargo',$cargo);   
         $this->db->where('activo',1);
         $q = $this->db->get('regs');
         return $q;
