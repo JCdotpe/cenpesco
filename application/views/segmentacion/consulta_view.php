@@ -49,7 +49,12 @@ $span_class =  'span12';
                 echo '</div>';  
           echo '</div>'; 
 
-
+          // echo '<div class="row-fluid control-group span9">';
+          //       echo form_label('RUTA','RUTA',$label1);
+          //       echo '<div class="controls span">';
+          //         echo form_dropdown('RUTA', $equipoArray, FALSE,'class="span12" id="RUTA"'); 
+          //       echo '</div>';  
+          // echo '</div>'; 
 ?>
 
 <script type="text/javascript">
@@ -135,59 +140,64 @@ var gmarkers = [];
 $(function(){
   initialize();
 // CARGA COMBOS UBIGEO ---------------------------------------------------------------------->
-
-  $("#NOM_SEDE, #NOM_DD, #EQUIPO").change(function(event) {
-          var sel = null;
           var sede = $('#NOM_SEDE');
           var dep = $('#NOM_DD');
+  $("#NOM_SEDE, #NOM_DD, #EQUIPO").change(function(event) {
+          var sel = null;
+
           var url = null;
           var cod = null;
           var op =null;
-          
+
+
+
           switch(event.target.id){
               case 'NOM_SEDE':
                   sel     = $("#NOM_DD");
-                  url     = CI.rest_url + "segmentacion/dep/sede/" + $(this).val() + "/format/json";
+                  url     = CI.rest_url + "segmentacion/dep/sede/" + $(this).val();
                   op      = 1;
                   break;
               case 'NOM_DD':
                   sel     = $("#EQUIPO");
-                  url     = CI.rest_url + "ajax/marco_ajax/get_ajax_equipo/"  + sede.val()  + "/" + $(this).val();
+                  url     = CI.rest_url + "segmentacion/equipo/sede/" + sede.val() + "/dep/" + $(this).val();
                   op      = 2;
-                  break;   
+                  break;
+               // case 'EQUIPO':
+               //    sel     = $("#RUTA");
+               //    url     = CI.rest_url + "segmentacion/ubigeo/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + $(this).val();
+               //    op      = 3;
+               //    break;                      
           }     
           
-          var form_data = {
-              code: $(this).val(),
-              csrf_token_c: CI.cct,
-              dep: dep.val(),
-              ajax:1
-          };
+          // var form_data = {
+          //     code: $(this).val(),
+          //     csrf_token_c: CI.cct,
+          //     dep: dep.val(),
+          //     ajax:1
+          // };
 
           if(event.target.id != 'EQUIPO')
           {
 
           $.ajax({
               url: url,
-              type:'POST',
-              data:form_data,
+              type:'GET',
+              // data:form_data,
               dataType:'json',
               success:function(json_data){
                   sel.empty();
-                    
                   $.each(json_data, function(i, data){
                       if (op==1){
                           sel.append('<option value="' + data.CCDD + '">' + data.DEPARTAMENTO + '</option>');
+                         $("#NOM_DD").trigger('change');
+                          
                       }
                       if (op==2){
-                          sel.append('<option value="' + data.CCDD + '">' + data.DEPARTAMENTO + '</option>');
+                          sel.append('<option value="' + data.equipo + '">' + data.equipo + '</option>');
+                          // $("#EQUIPO").trigger('change');
                      }
-
                   });
                  
-                  if (op==1){
-                      $("#NOM_DD").trigger('change');
-                      }  
               }
           });   
        }
@@ -200,9 +210,31 @@ $(function(){
 
 
 
+$("#EQUIPO").change(function() {
+        // var form_data = {
+        //     csrf_token_c: CI.cct,
+        //     ajax:1
+        // };
+        $.ajax({   
+            url: CI.rest_url + "segmentacion/ubigeo/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + $(this).val(),
+            type:'GET',
+            // data:form_data,
+            dataType:'json',
+            success:function(json_data){
+                $.each(json_data, function(i, data){
+                    var lat = data.laty;
+                    var lng = data.longx;                
+                    var point = new google.maps.LatLng(lat,lng);
+                    var html = "<div class='marker activeMarker'><div class='markerInfo activeInfo' style='display: block;'><h3>CCPP - " + data.centro_poblado + "</h3><p><b>DEPARTAMENTO:</b> "+data.departamento+"</p><p><b>PROVINCIA:</b> "+data.provincia+"</p><p><b>DISTRITO:</b> "+data.distrito+"</p></div></div>";     
+                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1',data.departamento);
+                });
+            }
+        });   
+
+});
+
 
  }); 
-
 
   
 
