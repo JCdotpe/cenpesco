@@ -91,8 +91,8 @@ var gmarkers = [];
             //    }
             // </style>        
           var marker = new MarkerWithLabel({
-              draggable: true,
-              raiseOnDrag: true,
+              draggable: false,
+              raiseOnDrag: false,
               position: latlng,
               map: map,
               icon: color,
