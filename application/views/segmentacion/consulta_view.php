@@ -254,7 +254,7 @@ $("#EQUIPO").change(function() {
                     var lng = data.longx;                
                     var point = new google.maps.LatLng(lat,lng);
                     var html = "<div class='marker activeMarker'><div class='markerInfo activeInfo' style='display: block;'><h3>CCPP - " + data.centro_poblado + "</h3><p><b>DEPARTAMENTO:</b> "+data.departamento+"</p><p><b>PROVINCIA:</b> "+data.provincia+"</p><p><b>DISTRITO:</b> "+data.distrito+"</p><p><b>NUMERACION:</b> "+data.numeracion+"</p></div></div>";     
-                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV,data.centro_poblado);
+                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV,data.centro_poblado + '-' + data.numeracion);
                 });
             }
         });   
