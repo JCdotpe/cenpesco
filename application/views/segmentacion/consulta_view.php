@@ -1,7 +1,19 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
 <script src="<?php echo base_url('js/vendor/geoxmlv3.js'); ?>"></script>
 <script src="<?php echo base_url('js/vendor/glabel.js'); ?>"></script>
-
+            <style type="text/css">
+               .glabels {
+  background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #191C59;
+    font-family: "Lucida Grande","Arial",sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    width: auto;
+               }
+            </style>   
 <?php 
 
 $label1=  array('class' => 'preguntas_sub2');
@@ -77,19 +89,7 @@ var gmarkers = [];
                 color = CI.site_url + 'img/blank3.png';      
               // else if(icon=== 'PUNO')
               //   color = CI.base_url + 'img/blank3.png';               
-            // <style type="text/css">
-            //    .glabels {
-            //      color: red;
-            //      background-color: white;
-            //      font-family: "Lucida Grande", "Arial", sans-serif;
-            //      font-size: 10px;
-            //      font-weight: bold;
-            //      text-align: center;
-            //      width: 40px;
-            //      border: 2px solid black;
-            //      white-space: nowrap;
-            //    }
-            // </style>        
+     
           var marker = new MarkerWithLabel({
               draggable: false,
               raiseOnDrag: false,
@@ -100,7 +100,7 @@ var gmarkers = [];
               zIndex: Math.round(latlng.lat()*-100000)<<5,
               labelContent: texto,
               labelAnchor: new google.maps.Point(22, 0),
-              // labelClass: "glabels", // the CSS class for the label
+              labelClass: "glabels", // the CSS class for the label
               labelStyle: {opacity: 0.75}
               });
               // === Store the category and name info as a marker properties ===
