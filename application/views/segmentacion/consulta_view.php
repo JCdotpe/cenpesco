@@ -1,5 +1,6 @@
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
 <script src="<?php echo base_url('js/vendor/geoxmlv3.js'); ?>"></script>
+<script src="<?php echo base_url('js/vendor/glabel.js'); ?>"></script>
 
 <?php 
 
@@ -67,7 +68,7 @@ var gmarkers = [];
         });
 
       // A function to create the marker and set up the event window
-      function createMarkerLEN(latlng,name,html,category,icon) {
+      function createMarkerLEN(latlng,name,html,category,icon,texto) {
           var contentString = html;
           var color = null;
               if(icon=== 'A')
@@ -76,13 +77,31 @@ var gmarkers = [];
                 color = CI.site_url + 'img/blank3.png';      
               // else if(icon=== 'PUNO')
               //   color = CI.base_url + 'img/blank3.png';               
-                   
-          var marker = new google.maps.Marker({
+            // <style type="text/css">
+            //    .glabels {
+            //      color: red;
+            //      background-color: white;
+            //      font-family: "Lucida Grande", "Arial", sans-serif;
+            //      font-size: 10px;
+            //      font-weight: bold;
+            //      text-align: center;
+            //      width: 40px;
+            //      border: 2px solid black;
+            //      white-space: nowrap;
+            //    }
+            // </style>        
+          var marker = new MarkerWithLabel({
+              draggable: true,
+              raiseOnDrag: true,
               position: latlng,
               map: map,
               icon: color,
               title: name,
-              zIndex: Math.round(latlng.lat()*-100000)<<5
+              zIndex: Math.round(latlng.lat()*-100000)<<5,
+              labelContent: texto,
+              labelAnchor: new google.maps.Point(22, 0),
+              // labelClass: "glabels", // the CSS class for the label
+              labelStyle: {opacity: 0.75}
               });
               // === Store the category and name info as a marker properties ===
               marker.mycategory = category;                                 
@@ -94,6 +113,9 @@ var gmarkers = [];
               infowindow.setContent(contentString); 
               infowindow.open(map,marker);
               });
+
+
+
       }
 
       function initialize() {
@@ -232,7 +254,7 @@ $("#EQUIPO").change(function() {
                     var lng = data.longx;                
                     var point = new google.maps.LatLng(lat,lng);
                     var html = "<div class='marker activeMarker'><div class='markerInfo activeInfo' style='display: block;'><h3>CCPP - " + data.centro_poblado + "</h3><p><b>DEPARTAMENTO:</b> "+data.departamento+"</p><p><b>PROVINCIA:</b> "+data.provincia+"</p><p><b>DISTRITO:</b> "+data.distrito+"</p><p><b>NUMERACION:</b> "+data.numeracion+"</p></div></div>";     
-                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV);
+                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV,data.centro_poblado);
                 });
             }
         });   
