@@ -62,9 +62,9 @@ $active_record = TRUE;
 //$db['default']['username'] = 'unsmc001_cenpesc';
 //$db['default']['password'] = 'Inei2013az';
 //$db['default']['database'] = 'unsmc001_cenpesco';
- $db['default']['hostname'] = 'localhost';
- $db['default']['username'] = 'root';
- $db['default']['password'] = '';
+ $db['default']['hostname'] = '192.168.221.253';
+ $db['default']['username'] = 'user_cenpesco';
+ $db['default']['password'] = 'cenpesco123';
  $db['default']['database'] = 'cenpesco';
 
 $db['default']['dbdriver'] = 'mysql';

@@ -71,7 +71,7 @@ $COD_CCPP = array(
 	$ccppArray = array(-1 => '-'); 
 
 
-$attr = array('class' => 'form-vertical form-auth','id' => 'frm_comunidad');
+$attr = array('class' => 'form-vertical form-auth','id' => 'frm_revision');
 echo '<div class="row-fluid">';
 echo '<div class="span12">';
 echo form_open($this->uri->uri_string(),$attr); 
@@ -84,31 +84,33 @@ echo form_open($this->uri->uri_string(),$attr);
 ////////////////////////////////SECCION I
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
+
 			echo '<h4>REVISION</h4>';
+
 			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
 
-			echo '<div class="span12">';	
-					echo '<div class="control-group span3">';
+			echo '<div class="row-fluid">';	
+					echo '<div class="control-group span2">';
 
 							echo form_label('DEPARTAMENTO','NOM_DD',$label1);
 							echo '<div class="controls span3">';
 								echo form_input($CCDD); 
 							echo '</div>';	
-							echo '<div class="controls span6">';
+							echo '<div class="controls span8">';
 								echo form_dropdown('NOM_DD', $ubidepaArray, FALSE,'class="span12" id="NOM_DD"'); 
 							echo '</div>';
 					echo '</div>';  
 
 
-					echo '<div class="control-group span3">';
-									echo form_label('DISTRITO','NOM_DI',$label1);
-									echo '<div class="controls span3">';
-										echo form_input($CCDI); 
-									echo '</div>';	
+					echo '<div class="control-group span2">';
+							echo form_label('DISTRITO','NOM_DI',$label1);
+							echo '<div class="controls span3">';
+								echo form_input($CCDI); 
+							echo '</div>';	
 
-									echo '<div class="controls span6">';
-										echo form_dropdown('NOM_DI', $distArray, FALSE,'class="span12" id="NOM_DI"'); 
-									echo '</div>';	
+							echo '<div class="controls span8">';
+								echo form_dropdown('NOM_DI', $distArray, FALSE,'class="span12" id="NOM_DI"'); 
+							echo '</div>';	
 					echo '</div>'; 	
 
 
@@ -118,7 +120,7 @@ echo form_open($this->uri->uri_string(),$attr);
 									echo form_input($CCPP); 
 								echo '</div>';	
 
-								echo '<div class="controls span6">';
+								echo '<div class="controls span8">';
 									echo form_dropdown('NOM_PP', $provArray, FALSE,'class="span12" id="NOM_PP"'); 
 								echo '</div>';	
 
@@ -126,19 +128,28 @@ echo form_open($this->uri->uri_string(),$attr);
 
 					echo '<div class="control-group span3">';
 								echo form_label('CENTRO POBLADO','NOM_CCPP',$label1);
-								echo '<div class="controls span5">';
+								echo '<div class="controls span4">';
 									echo form_input($COD_CCPP); 
 								echo '</div>';	
-								echo '<div class="controls span6">';
+								echo '<div class="controls span7">';
 									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
 								echo '</div>';	
 
 					echo '</div>'; 		
+			
+					echo '<div class="control-group span2">';
+								echo form_label('CENTRO POBLADO','NOM_CCPP',$label1);
+								echo '<div class="controls span4">';
+									echo form_input($COD_CCPP); 
+								echo '</div>';	
+								echo '<div class="controls span7">';
+									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
 
+					echo '</div>'; 	
 
 
 			echo '</div>'; 
-			
 
 
 
@@ -151,52 +162,10 @@ echo form_close();
 		echo '</div>'; 			
 	echo '</div>'; 		
 ?>
-<div class="row-fluid hide" id="comunidades_tabs" style="margin-top:10px">
-	<div class="span12" id="insidetabs" style="text-align:center">
-		<div class="tabbable"> <!-- Only required for left/right tabs -->
-		  <ul class="nav nav-tabs" style="text-align:center">
-		    <li id="ctab2"><a href="#tab2" data-toggle="tab">Seccion II</a></li>
-		    <li id="ctab3"><a href="#tab3" data-toggle="tab">Seccion III</a></li>
-		    <li id="ctab4"><a href="#tab4" data-toggle="tab">Seccion IV</a></li>
-		    <li id="ctab5"><a href="#tab5" data-toggle="tab">Seccion V</a></li>
-		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Seccion VI</a></li>
-		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Seccion VII</a></li>
-		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Seccion VIII</a></li>
-		    <li id="ctab9"><a href="#tab9" data-toggle="tab">Seccion IX</a></li>
-		    <li id="cinfo"><a href="#info" data-toggle="tab">Info</a></li>
-		  </ul>
-		  <div class="tab-content">
-		    <div class="tab-pane" id="tab2">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion2_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab3">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion3_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab4">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion4_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab5">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion5_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab6">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion6_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab7">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion7_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab8">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion8_form'); ?></p>
-		    </div>    
-		    <div class="tab-pane" id="tab9">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion9_form'); ?></p>
-		    </div>          
-		    <div class="tab-pane" id="info">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/info_form'); ?></p>
-		    </div>                             
-		  </div>
-		</div>
-	</div>
-</div>
+
+
+
+
 
 <!-- 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -595,6 +564,7 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+
       $(window).keydown(function(event){
         if(event.keyCode == 13) {
           event.preventDefault();
@@ -744,7 +714,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un valor");
 
 //validacion
-$("#frm_comunidad").validate({
+$("#frm_revision").validate({
     rules: {
         NFORM:{
             required: true,
@@ -826,7 +796,7 @@ $("#frm_comunidad").validate({
             NOM_CCPP : $('#NOM_CCPP :selected').text(),
             ajax:1
         };
-        var bsub = $( "#frm_comunidad :submit" );
+        var bsub = $( "#frm_revision :submit" );
         bsub.attr("disabled", "disabled");
         $.ajax({
             url: CI.base_url + "digitacion/comunidad/consulta",
@@ -843,10 +813,10 @@ $("#frm_comunidad").validate({
 				            dataType:'json',
 				            success:function(json){
 				            	//alert(json.msg);
-				            	$("#frm_comunidad :input").attr("disabled", true);
+				            	$("#frm_revision :input").attr("disabled", true);
 				            	//insercion correcta
 				            	if(json.flag == 1){
-				            		$('#frm_comunidad').trigger('submit');
+				            		$('#frm_revision').trigger('submit');
 				            	}else{
 				            	//error en la insercion	
 				            	}
@@ -854,7 +824,7 @@ $("#frm_comunidad").validate({
 				        });    
 				              		
             	}else if(json.flag == 1){ //registro encontrado, ver secciones que faltan 
-            		$("#frm_comunidad :input").attr("disabled", true);              
+            		$("#frm_revision :input").attr("disabled", true);              
             		$('#comunidades_tabs').removeClass('hide');
                     $("input[name='comunidad_id']").val(json.idx);   // guarda el ID de COMUNIDAD.
 				    var i = 0;
