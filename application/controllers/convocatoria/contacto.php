@@ -13,7 +13,7 @@ class Contacto extends CI_Controller {
 		$this->load->model('contacto_model');
 		$this->load->helper('date');
 		// if (!$this->tank_auth->is_logged_in()) {
-		// 	redirect('');
+			redirect('');
 		// }
 	}
 

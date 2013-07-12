@@ -309,7 +309,7 @@
           },
           { "bSortable": true, "bSearchable": true, 
             "mRender": function(data, type, full) {
-              return '<a href="<?php echo base_url("convocatoria/registrados/download/'+ data +'") ?>">CV</a>';
+              return '<a href="<?php echo site_url("convocatoria/registrados/download/'+ data +'") ?>">CV</a>';
             }
           },           
           { "bVisible": true, "bSearchable": true, "bSortable": true },

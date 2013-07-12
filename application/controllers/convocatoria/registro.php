@@ -20,7 +20,7 @@ class Registro extends CI_Controller {
 		$this->load->model('ubigeo_model');
 		$this->load->model('regs_model');
 		// if (!$this->tank_auth->is_logged_in()) {
-		// 	redirect('');
+		 	redirect('');
 		// }
 		 
 

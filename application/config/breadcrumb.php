@@ -184,7 +184,7 @@ $config['partial_replace'] = array();
  * If we set $config['exclude'] = array('stocks', 'warehouse') then from this URL "http://localhost/arstock/warehouse/stocks/insert"
  * we get breadcrumb: Home > Insert
  */
-$config['exclude'] = array('auth','site','convocatoria');
+$config['exclude'] = array('auth','site','convocatoria','convocatoria_inicio');
 
 /**
  * ------------------------------------

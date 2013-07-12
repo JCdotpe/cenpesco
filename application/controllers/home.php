@@ -17,12 +17,12 @@ class Home extends CI_Controller {
 	{
 		if (!$this->tank_auth->is_logged_in()) {
 			// redirect('convocatoria/registro');
-			// redirect('convocatoria/convocatoria_inicio');
-			$data['convocatoria'] = TRUE;
-			$data['nav'] = TRUE;
-			$data['title'] = 'Inicio';
-			$data['main_content'] = 'convocatoria/bienvenida_view';
-		 	$this->load->view('backend/includes/template', $data);
+			redirect('convocatoria/convocatoria_inicio');
+			// $data['convocatoria'] = TRUE;
+			// $data['nav'] = TRUE;
+			// $data['title'] = 'Inicio';
+			// $data['main_content'] = 'convocatoria/bienvenida_view';
+		 // 	$this->load->view('backend/includes/template', $data);
 	    } else {
 			$data['home'] = TRUE;
 			$data['nav'] = TRUE;

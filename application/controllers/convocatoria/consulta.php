@@ -11,7 +11,7 @@ class Consulta extends CI_Controller {
 		$this->lang->load('tank_auth');	
 		$this->load->model('regs_model');
 		// if (!$this->tank_auth->is_logged_in()) {
-		// 	redirect('');
+		 	redirect('');
 		// }
 	}
 

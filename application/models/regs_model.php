@@ -108,7 +108,21 @@ class Regs_model extends CI_Model{
         $q = $this->db->get('regs');
         return $q;
     }   
-
+     function get_regs_by_state_odei($dep){
+        $this->db->select('dni');
+        $this->db->select('ap_paterno');
+        $this->db->select('ap_materno');
+        $this->db->select('nombre1');
+        $this->db->select('nombre2');
+        $this->db->select('ap_paterno');
+        $this->db->select('estado');
+        $this->db->where('cod_odei',$dep);
+        $this->db->where('activo',1);
+        $this->db->order_by('estado','desc');
+        $this->db->order_by('order_n','asc');
+        $q = $this->db->get('regs');
+        return $q;
+    }  
     function validate_file_download($id){
         $this->db->select('cv');
         $this->db->where('id',$id);
