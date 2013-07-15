@@ -110,11 +110,11 @@ class Regs_model extends CI_Model{
     }   
      function get_regs_by_state_odei($dep){
         $this->db->select('dni');
-        $this->db->select('ap_paterno');
-        $this->db->select('ap_materno');
-        $this->db->select('nombre1');
-        $this->db->select('nombre2');
-        $this->db->select('ap_paterno');
+        $this->db->select('UPPER(ap_paterno) as ap_paterno');
+        $this->db->select('UPPER(ap_materno) as ap_materno');
+        $this->db->select('UPPER(nombre1) as nombre1');
+        $this->db->select('UPPER(nombre2) as nombre2');
+        // $this->db->select('ap_paterno');
         $this->db->select('estado');
         $this->db->where('cod_odei',$dep);
         $this->db->where('activo',1);
