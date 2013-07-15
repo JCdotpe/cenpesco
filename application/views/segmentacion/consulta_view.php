@@ -13,6 +13,7 @@
     white-space: nowrap;
     width: auto;
                }
+               
             </style>   
 <?php 
 
