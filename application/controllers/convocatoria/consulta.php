@@ -11,7 +11,7 @@ class Consulta extends CI_Controller {
 		$this->lang->load('tank_auth');	
 		$this->load->model('regs_model');
 		// if (!$this->tank_auth->is_logged_in()) {
-		 	redirect('');
+		 	// redirect('');
 		// }
 	}
 
@@ -32,13 +32,13 @@ class Consulta extends CI_Controller {
 					$show = '';
 					switch($res->row()->estado){
 						case 1:
-							$show = 'actualmente inscrito para el cargo de <b>' . $cargos[$res->row()->cargo] . '</b>.';
+							$show = ' <b>No fue seleccionado para la capacitación.</b>.';
 							break;
 						case 2:
-							$show = 'apto para capacitación. Presentarse el día 18/05/2013 a las 8:00 am en la ODEI con su Curriculum para el curso de capacitación.';
+							$show = 'Seleccionado para capacitación.';
 							break;							
 					}
-					$data['msg'] = 'El estado de su postulación se encuentra ' . $show;
+					$data['msg'] = 'El estado de su postulación es: ' . $show;
 					
 				}else{
 					$data['msg'] = 'No esta inscrito en esta Convocatoria';	

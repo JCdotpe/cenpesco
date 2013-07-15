@@ -1,9 +1,12 @@
 
 <!-- <h3 style="color:red;">Las inscripciones para la prueba piloto han finalizado. Gracias por su participación.</h3> -->
 <!-- <h5>Verifica el estado de tu postulación en el modulo de consulta. A partir del día de mañána a las 10:00 am se estarán mostrando los resultados del proceso de convocatoria.</h5> -->
-<h3 style="color:red;">Resultados de la Convocatoria</h3>
+<h2 style="text-align:center;color: #454545; font-weight: 200;">PRIMER CENSO NACIONAL DE PESCA CONTINENTAL 2013</h2>
+<h3 style="text-align:center;color: #454545; font-weight: 200;">SELECCIONADOS PARA EL CURSO DE CAPACITACIÓN</h3>
 <!-- <h5>Presentarse el día 18/05/2013 a las 8:00 am en la ODEI con su Curriculum para el curso de capacitación.</h5> -->
-
+<p>EL personal seleccionado, deberá presentarse el día martes 16 de julio del presente a la Oficina Departamental o Zonal del INEI donde postula, para dejar su CV documentado, con fotografía actual tamaño carnet. En el caso del personla seleccionado en  Lima se deberá presentar en la Av. Arnaldo Márquez 1511 Oficina 506 Jesus María .</p>
+<p>El personal seleccionado deberá tener disponibilidad para asistir al curso de capacitación en la ciudad de Lima desde el 18/07/2013 al 26/07/2013; los pasajes y gastos en la ciudad de Lima estarán a cargo del INEI.</p>
+<p>Al finalizar el curso se selecionará al personal aprobado para cubrir las vacantes requeridas según la convocatoria para el trabajo operativo en el departamento al cual postuló.</p>
 <div class="well modulo">
 
     <?php foreach($odeis->result() as $o){ ?>
@@ -24,7 +27,7 @@
 					<thead>
 						<tr>
 						<th>N°</th>
-						<th>DNI N°</th>
+						<!-- <th>DNI N°</th> -->
 						<th>APELLIDO PATERNO</th>
 						<th>APELLIDO MATERNO</th>
 						<th>PRIMER NOMBRE</th>
@@ -38,7 +41,7 @@
 					foreach($dd[$o->COD_DEPARTAMENTO]->result() as $row){
 						echo "<tr>";
 						echo "<td>". $contador = $contador+ 1 ."</td>";
-						echo "<td>". $row->dni ."</td>";
+						// echo "<td>". $row->dni ."</td>";
 						echo "<td>". $row->ap_paterno ."</td>";
 						echo "<td>". $row->ap_materno ."</td>";
 						echo "<td>". $row->nombre1 ."</td>";

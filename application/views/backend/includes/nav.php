@@ -55,11 +55,11 @@
 
           </ul>            
               <?php } }elseif($this->uri->segment(1) == 'convocatoria' || isset($convocatoria)){?>
-<!--                <ul class="nav"> 
-                   <li><a href="<?php echo site_url('convocatoria/registro'); ?>">Inscripción</a></li> 
+                <ul class="nav"> 
+                  <!--  <li><a href="<?php //echo site_url('convocatoria/registro'); ?>">Inscripción</a></li>  -->
                    <li><a href="<?php echo site_url('convocatoria/consulta'); ?>">Consulta de Inscripción</a></li>  
-                   <li><a href="<?php echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>   
-                </ul>       -->
+                   <!-- <li><a href="<?php //echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>    -->
+                </ul>       
          
             <?php }?>
        
