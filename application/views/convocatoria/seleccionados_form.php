@@ -4,7 +4,7 @@
 <h2 style="text-align:center;color: #454545; font-weight: 200;">PRIMER CENSO NACIONAL DE PESCA CONTINENTAL 2013</h2>
 <h3 style="text-align:center;color: #454545; font-weight: 200;">SELECCIONADOS PARA EL CURSO DE CAPACITACIÓN</h3>
 <!-- <h5>Presentarse el día 18/05/2013 a las 8:00 am en la ODEI con su Curriculum para el curso de capacitación.</h5> -->
-<p>EL personal seleccionado, deberá presentarse el día martes 16 de julio del presente a la Oficina Departamental o Zonal del INEI donde postula, para dejar su CV documentado, con fotografía actual tamaño carnet. En el caso del personla seleccionado en  Lima se deberá presentar en la Av. Arnaldo Márquez 1511 Oficina 506 Jesus María .</p>
+<p>El personal seleccionado, deberá presentarse el día martes 16 de julio del presente a la Oficina Departamental o Zonal del INEI donde postula, para dejar su CV documentado, con fotografía actual tamaño carnet. En el caso del personal seleccionado en  Lima se deberá presentar en la Av. Arnaldo Márquez 1511 Oficina 506 Jesus María .</p>
 <p>El personal seleccionado deberá tener disponibilidad para asistir al curso de capacitación en la ciudad de Lima desde el 18/07/2013 al 26/07/2013; los pasajes y gastos en la ciudad de Lima estarán a cargo del INEI.</p>
 <p>Al finalizar el curso se selecionará al personal aprobado para cubrir las vacantes requeridas según la convocatoria para el trabajo operativo en el departamento al cual postuló.</p>
 <div class="well modulo">
@@ -47,9 +47,9 @@
 						echo "<td>". $row->nombre1 ."</td>";
 						echo "<td>". $row->nombre2 ."</td>";
 						if($row->estado ==2){
-						echo "<td>SELECCIONADO</td>"	;
+						echo "<td>SELECCIONADO PARA CAPACITACIÓN</td>"	;
 						}else {
-							echo "<td>NO SELECCIONADO</td>"	;
+							echo "<td>NO SELECCIONADO PARA CAPACITACIÓN</td>"	;
 						}
 						echo "</tr>";  
 					}
