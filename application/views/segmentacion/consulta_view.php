@@ -1,3 +1,7 @@
+<div id="header" style="display: block;">
+  <a id="logo" href="#"><img src="http://webinei.inei.gob.pe/convocatorias/cnpc/img/brand.png" alt="I CENPESCO"></a> 
+</div>    
+
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
 <script src="<?php echo base_url('js/vendor/geoxmlv3.js'); ?>"></script>
 <script src="<?php echo base_url('js/vendor/glabel.js'); ?>"></script>

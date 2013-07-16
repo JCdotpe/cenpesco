@@ -556,8 +556,8 @@ text-shadow: none;
 
 .filtro_map{
   position: absolute;
-  top: 25px;
-  left: 25px;
+  bottom: 25px;
+  left: 20px;
   padding: 7px 12px !important;
   background: #fff;
   margin: 0;
@@ -574,4 +574,12 @@ text-shadow: none;
 
 .filtro_map .control-group .controls {
   margin-left: 0;
+}
+
+
+#header {
+    background: none repeat scroll 0 0 #FFFFFF !important;
+    border-bottom: 7px solid #00A1C7 !important;
+    padding: 10px 20px 5px;
+    position: relative;
 }
