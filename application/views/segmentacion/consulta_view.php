@@ -9,7 +9,7 @@
                .glabels {
   background: none repeat scroll 0 0 transparent;
     border: 0 none;
-    color: #191C59;
+    color: #000;
     font-family: "Lucida Grande","Arial",sans-serif;
     font-size: 10px;
     font-weight: bold;
@@ -158,10 +158,10 @@ var gmarkers = [];
               infowindow.close();
               });
 
-          var kmlURL = CI.base_url + "kml/demo.kml?nocache|=" + Math.round(new Date().getTime());
-          var kmlURL = "http://www.uxglass.com/kml/demo.kml?nocache|=" + Math.round(new Date().getTime());
-          kmlLayer = new google.maps.KmlLayer(kmlURL, {preserveViewport:true});
-          kmlLayer.setMap(map);
+          // var kmlURL = CI.base_url + "kml/demo.kml?nocache|=" + Math.round(new Date().getTime());
+          // var kmlURL = "http://www.uxglass.com/kml/demo.kml?nocache|=" + Math.round(new Date().getTime());
+          // kmlLayer = new google.maps.KmlLayer(kmlURL, {preserveViewport:true});
+          // kmlLayer.setMap(map);
           }
 
 $(function(){

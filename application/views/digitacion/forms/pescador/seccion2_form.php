@@ -7,20 +7,20 @@ $paisesArray= array(-1 => '-');
 		}
 	// CARGAR COMBOS
 
-		$depaArray = array(-1 =>'-');
-		foreach($departamentos->result() as $filas)
-		{
-			$depaArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
-		}
+		// $depaArray = array(-1 =>'-');
+		// foreach($departamentos->result() as $filas)
+		// {
+		// 	$depaArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
+		// }
 
 		$ubidepaArray = NULL;
 		foreach($departamento->result() as $filas)
 		{
-			$ubidepaArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
+			$ubidepaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);
 		}
 
 		$depaxArray = array(-1 =>'-');
-		foreach($departamentox->result() as $filas)
+		foreach($departamentos->result() as $filas)
 		{
 			$depaxArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
 		}
@@ -265,54 +265,134 @@ $S2_13 = array(
 	'class' => $span_class,
 );
 
+// //q actividad
+// $S2_14 = array(
+// 	'name'	=> 'S2_14',
+// 	'id'	=> 'S2_14',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
 
-//q actividad
-$S2_14 = array(
-	'name'	=> 'S2_14',
-	'id'	=> 'S2_14',
+// //otra actividad
+// $S2_14_O = array(
+// 	'name'	=> 'S2_14_O',
+// 	'id'	=> 'S2_14_O',
+// 	'maxlength'	=> 80,
+// 	'class' => $span_class,
+// );
+//A q actividad se dedica
+//agricola
+$S2_14_1 = array(
+	'name'	=> 'S2_14_1',
+	'id'	=> 'S2_14_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//otra actividad
-$S2_14_O = array(
-	'name'	=> 'S2_14_O',
-	'id'	=> 'S2_14_O',
-	'maxlength'	=> 80,
-	'class' => $span_class,
-);
-
-//tradicion familiar
-$S2_15_1 = array(
-	'name'	=> 'S2_15_1',
-	'id'	=> 'S2_15_1',
+//pecuaria
+$S2_14_2 = array(
+	'name'	=> 'S2_14_2',
+	'id'	=> 'S2_14_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Necesidad economica
-$S2_15_2 = array(
-	'name'	=> 'S2_15_2',
-	'id'	=> 'S2_15_2',
+//acuicola
+$S2_14_3 = array(
+	'name'	=> 'S2_14_3',
+	'id'	=> 'S2_14_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
+//caza
+$S2_14_4 = array(
+	'name'	=> 'S2_14_4',
+	'id'	=> 'S2_14_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//construcion
+$S2_14_5 = array(
+	'name'	=> 'S2_14_2',
+	'id'	=> 'S2_14_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//comercio
+$S2_14_6 = array(
+	'name'	=> 'S2_14_3',
+	'id'	=> 'S2_14_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
 //Otra
-$S2_15_3 = array(
-	'name'	=> 'S2_15_3',
-	'id'	=> 'S2_15_3',
+$S2_14_7 = array(
+	'name'	=> 'S2_14_4',
+	'id'	=> 'S2_14_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//especifique
+$S2_14_7_O = array(
+	'name'	=> 'S2_14_2',
+	'id'	=> 'S2_14_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//notiene
+$S2_14_8 = array(
+	'name'	=> 'S2_14_3',
+	'id'	=> 'S2_14_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
-//Otra Especifique
-$S2_15_3_O = array(
-	'name'	=> 'S2_15_3_O',
-	'id'	=> 'S2_15_3_O',
-	'maxlength'	=> 100,
+
+//A q actividad se dedica
+
+$S2_15 = array(
+	'name'	=> 'S2_15',
+	'id'	=> 'S2_15',
+	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+
+//especifique
+$S2_15_O = array(
+	'name'	=> 'S2_15_O',
+	'id'	=> 'S2_15_O',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//tradicion familiar
+// $S2_15_1 = array(
+// 	'name'	=> 'S2_15_1',
+// 	'id'	=> 'S2_15_1',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
+
+// //Necesidad economica
+// $S2_15_2 = array(
+// 	'name'	=> 'S2_15_2',
+// 	'id'	=> 'S2_15_2',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
+
+// //Otra
+// $S2_15_3 = array(
+// 	'name'	=> 'S2_15_3',
+// 	'id'	=> 'S2_15_3',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
+
+// //Otra Especifique
+// $S2_15_3_O = array(
+// 	'name'	=> 'S2_15_3_O',
+// 	'id'	=> 'S2_15_3_O',
+// 	'maxlength'	=> 100,
+// 	'class' => $span_class,
+// );
 
 //años pesca
 $S2_16 = array(
@@ -322,13 +402,93 @@ $S2_16 = array(
 	'class' => $span_class,
 );
 
-//estado civil
-$S2_17 = array(
-	'name'	=> 'S2_17',
-	'id'	=> 'S2_17',
+// //estado civil
+// $S2_17 = array(
+// 	'name'	=> 'S2_17',
+// 	'id'	=> 'S2_17',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
+
+
+//vaso  de leche 
+$S2_17_1 = array(
+	'name'	=> 'S2_17_1',
+	'id'	=> 'S2_17_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+
+// comedor popular
+$S2_17_2 = array(
+	'name'	=> 'S2_17_2',
+	'id'	=> 'S2_17_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//desayuno o alimentacion
+$S2_17_3 = array(
+	'name'	=> 'S2_17_3',
+	'id'	=> 'S2_17_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//seguro integral de salud
+$S2_17_4 = array(
+	'name'	=> 'S2_17_1',
+	'id'	=> 'S2_17_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// programa juntos
+$S2_17_5 = array(
+	'name'	=> 'S2_17_2',
+	'id'	=> 'S2_17_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// programa bono de gratitud
+$S2_17_6 = array(
+	'name'	=> 'S2_17_3',
+	'id'	=> 'S2_17_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//programa cuna mas
+$S2_17_7 = array(
+	'name'	=> 'S2_17_3',
+	'id'	=> 'S2_17_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// otro
+$S2_17_8 = array(
+	'name'	=> 'S2_17_2',
+	'id'	=> 'S2_17_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//otro-especifique
+$S2_17_8_O = array(
+	'name'	=> 'S2_17_3',
+	'id'	=> 'S2_17_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//ninguno
+$S2_17_9 = array(
+	'name'	=> 'S2_17_3',
+	'id'	=> 'S2_17_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
 
 
 
@@ -1701,34 +1861,244 @@ echo '<div class="row-fluid">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 14
-		echo '<div class="question">';
+		// echo '<div class="question">';
+		// 	echo '<p>14. ¿A qué otra actividad se dedica?</p>';	
+		// 		echo '<div class="row-fluid">';
+		// 			echo '<div class="span12">';
+		// 					echo '<div class="control-group offset1 span4">';
+		// 						echo '<div class="controls">';
+		// 								echo form_input($S2_14); 
+		// 							echo '<span class="help-inline"></span>';
+		// 							echo '<div class="help-block error">' . form_error($S2_14['name']) . '</div>';
+		// 						echo '</div>';	
+		// 					echo '</div>'; 	
+
+
+		// 					echo '<div class="control-group offset2 span1">';	
+		// 						echo form_label('Otra', $S2_14_O['id'], $label_class);
+		// 					echo '</div>'; 
+
+		// 					echo '<div class="control-group span4">';
+		// 						echo '<div class="controls">';
+		// 								echo form_input($S2_14_O); 
+		// 							echo '<span class="help-inline"></span>';
+		// 							echo '<div class="help-block error">' . form_error($S2_14_O['name']) . '</div>';
+		// 						echo '</div>';	
+		// 					echo '</div>'; 	
+
+		// 			echo '</div>';	
+		// 		echo '</div>';	
+		// echo '</div>';
+
+
+echo '<div class="question">';
 			echo '<p>14. ¿A qué otra actividad se dedica?</p>';	
+
 				echo '<div class="row-fluid">';
-					echo '<div class="span12">';
-							echo '<div class="control-group offset1 span4">';
-								echo '<div class="controls">';
-										echo form_input($S2_14); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_14['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
+					echo '<div class="span6">';
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span4">';
+
+								echo '<p>Agrícola</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_1); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_1['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span4">';
+
+								echo '<p>Pecuaria</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_2); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_2['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span4">';
+
+								echo '<p>Acuicola</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_3); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_3['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span4">';
+
+								echo '<p>Caza</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_4); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_4['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+				echo '</div>'; 			
+				echo '<div class="span6">';		
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span2">';
+
+								echo '<p>Construcción</p>';
+
+							echo '</div>';	
+
+							echo '<div class="offset2 span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_5); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_5['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span2">';
+
+								echo '<p>Comercio</p>';
+
+							echo '</div>';	
+
+							echo '<div class="offset2 span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_6); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_6['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 						
+				echo '</div>'; 			
+			echo '</div>'; 	
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span2">';
+
+								echo '<p>Otro</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_7); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_7['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
 
 
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S2_14_O['id'], $label_class);
-							echo '</div>'; 
+							echo '<div class="span2">';
 
-							echo '<div class="control-group span4">';
-								echo '<div class="controls">';
-										echo form_input($S2_14_O); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_14_O['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
+								echo '<p><b>Especifique</b></p>';
 
-					echo '</div>';	
-				echo '</div>';	
-		echo '</div>';
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_7_O); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_7_O['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';		
+
+
+						echo '</div>'; 	
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span2">';
+
+								echo '<p>No tiene otra actividad</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_14_8); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_14_8['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 	
+
+		echo '</div>';					
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 14
 
@@ -1774,7 +2144,7 @@ echo '<div class="row-fluid">';
 
 							echo '<div class="offset1 span4">';
 
-								echo '<p>Tradición familiar</p>';
+								echo '<p></p>';
 
 							echo '</div>';	
 
@@ -1782,9 +2152,9 @@ echo '<div class="row-fluid">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_15_1); 
+										echo form_input($S2_15); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_15_1['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_15['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -1792,49 +2162,49 @@ echo '<div class="row-fluid">';
 
 						echo '</div>'; 	
 
-						echo '<div class="row-fluid">';
+		// 				echo '<div class="row-fluid">';
 
-							echo '<div class="offset1 span4">';
+		// 					echo '<div class="offset1 span4">';
 
-								echo '<p>Necesidad económica</p>';
+		// 						echo '<p>Necesidad económica</p>';
 
-							echo '</div>';	
+		// 					echo '</div>';	
 
-							echo '<div class="span2">';
+		// 					echo '<div class="span2">';
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S2_15_2); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_15_2['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+		// 						echo '<div class="control-group">';
+		// 							echo '<div class="controls">';
+		// 								echo form_input($S2_15_2); 
+		// 								echo '<span class="help-inline"></span>';
+		// 								echo '<div class="help-block error">' . form_error($S2_15_2['name']) . '</div>';
+		// 							echo '</div>';	
+		// 						echo '</div>'; 
 
-							echo '</div>';							
+		// 					echo '</div>';							
 
-						echo '</div>'; 		
+		// 				echo '</div>'; 		
 
-						echo '<div class="row-fluid">';
+		// 				echo '<div class="row-fluid">';
 
-							echo '<div class="offset1 span4">';
+		// 					echo '<div class="offset1 span4">';
 
-								echo '<p>Otra</p>';
+		// 						echo '<p>Otra</p>';
 
-							echo '</div>';	
+		// 					echo '</div>';	
 
-							echo '<div class="span2">';
+		// 					echo '<div class="span2">';
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S2_15_3); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_15_3['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+		// 						echo '<div class="control-group">';
+		// 							echo '<div class="controls">';
+		// 								echo form_input($S2_15_3); 
+		// 								echo '<span class="help-inline"></span>';
+		// 								echo '<div class="help-block error">' . form_error($S2_15_3['name']) . '</div>';
+		// 							echo '</div>';	
+		// 						echo '</div>'; 
 
-							echo '</div>';							
+		// 					echo '</div>';							
 
-						echo '</div>'; 						
+		// 				echo '</div>'; 						
 
 						echo '<div class="row-fluid">';
 
@@ -1848,9 +2218,9 @@ echo '<div class="row-fluid">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_15_3_O); 
+										echo form_input($S2_15_O); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_15_3_O['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_15_O['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -1886,18 +2256,254 @@ echo '<div class="row-fluid">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 17
 
-		echo '<div class="question">';
-			echo '<p>17. En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
+
+
+
+echo '<div class="question">';
+			echo '<p>17. En los últimos 12 meses, ¿Usted o algún miembro de su hogar ha sido beneficiado de algún programa social, como: (Lea cada alternativa y circule uno o más códigos)</p>';	
+
 				echo '<div class="row-fluid">';
-							echo '<div class="control-group offset4 span4">';
-								echo '<div class="controls">';
-										echo form_input($S2_17); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_17['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-				echo '</div>';	
-		echo '</div>';
+					echo '<div class="span6">';
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span6">';
+
+								echo '<p>Vaso de leche</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_1); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_1['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span6">';
+
+								echo '<p>Comedor popular?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_2); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_2['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span6">';
+
+								echo '<p>Desayuno o alimentación escolar (Qali warma)?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_3); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_3['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span6">';
+
+								echo '<p>Seguro Integral de Salud (SIS)?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_4); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_4['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span6">';
+
+								echo '<p>Programa Juntos?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_5); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_5['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+				echo '</div>'; 			
+				echo '<div class="span6">';		
+
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span4">';
+
+								echo '<p>Programa bono de gratitud (Pensión 65)?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="offset1 span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_6); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_6['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 	
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span4">';
+
+								echo '<p>Programa Cuna Más?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="offset1 span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_7); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_7['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 	
+
+				echo '</div>'; 	
+			echo '</div>'; 	
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span3">';
+
+								echo '<p>Otro</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_8); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_8['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+
+							echo '<div class="span2">';
+
+								echo '<p><b>Especifique</b></p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_8_O); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_8_O['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';		
+
+
+						echo '</div>'; 	
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="span3">';
+
+								echo '<p>Ninguno</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_17_9); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_17_9['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 	
+
+		echo '</div>';					
+
+
+		// echo '<div class="question">';
+		// 	echo '<p>17. En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
+		// 		echo '<div class="row-fluid">';
+		// 					echo '<div class="control-group offset4 span4">';
+		// 						echo '<div class="controls">';
+		// 								echo form_input($S2_17); 
+		// 							echo '<span class="help-inline"></span>';
+		// 							echo '<div class="help-block error">' . form_error($S2_17['name']) . '</div>';
+		// 						echo '</div>';	
+		// 					echo '</div>'; 	
+		// 		echo '</div>';	
+		// echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 17

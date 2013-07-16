@@ -65,7 +65,7 @@ class Pescador_model extends CI_MODEL
 
     function get_ccpp($dpto,$prov,$dist)
     {
-        $sql = 'SELECT SUBSTRING(CCPP, 7) as CCPP, CENTRO_POBLADO FROM (marco_pesca) WHERE CCPP LIKE ? ORDER BY CENTRO_POBLADO asc';
+        $sql = 'SELECT SUBSTRING(idcartogr, 7) as CCPP, CENTRO_POBLADO FROM (ccpp) WHERE idcartogr LIKE ? ORDER BY CENTRO_POBLADO asc';
         $q = $this->db->query($sql, array( $dpto . $prov . $dist .'%'));
 
         // $this->db->select('SUBSTRING("CCPP",7) as CCPP');

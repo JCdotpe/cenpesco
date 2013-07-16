@@ -47,18 +47,23 @@ class Pescador extends CI_Controller {
 		$this->load->model('ubigeo_model');	
 		$this->load->model('ubigeo_piloto_model');	
 		$this->load->model('pescador_model');	
+		$this->load->model('ccpp_model');	
+		$this->load->model('marco_model');	
 	}
 
 
 	public function index()
 	{
 			//cabecera
-			$data['departamentox'] = $this->ubigeo_model->get_dptos();
-			$data['departamento'] = $this->ubigeo_piloto_model->get_dpto_by_code($this->tank_auth->get_ubigeo());
+			// $data['departamentox'] = $this->ubigeo_model->get_dptos();
+			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
+				$odei[] = $key->ODEI_COD;
+			}			
+			$data['departamento'] =  $this->marco_model->get_dpto_by_odei($odei); 
 			
 			$data['nav'] = TRUE;
 			//regular
-			$data['departamentos'] = $this->ubigeo_piloto_model->get_dptos();
+			$data['departamentos'] = $this->ubigeo_model->get_dptos();
 			$data['pais']=$this->pais_model->select_pais();
 			$data['title'] = 'Formulario Pescador';
 			$data['main_content'] = 'digitacion/pescador_view';
@@ -117,8 +122,22 @@ class Pescador extends CI_Controller {
 	public function insertar()
 	{
 		$is_ajax = $this->input->post('ajax');
-		if($is_ajax){
+	
+			if($is_ajax){
+			$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
+			if ($od->num_rows() == 1){
+				$ODEI_COD = $od->row('ODEI_COD');
+				$NOM_ODEI = $od->row('NOM_ODEI');
+				$NOM_SEDE= $od->row('NOM_SEDE');				
+			}else{
+    				// $this->session->set_flashdata('msgbox','error_odei');
+        // 			redirect('/digitacion');					
+			}					
 			$c_data = array(
+					'SEDE_COD'	=> $this->tank_auth->get_ubigeo(),
+					'NOM_SEDE'	=> $NOM_SEDE,				
+					'ODEI_COD'	=> $ODEI_COD,
+					'NOM_ODEI'	=> $NOM_ODEI,				
 					'id' =>  $this->input->post('CCDD') . $this->input->post('CCPP') . $this->input->post('CCDI') . $this->input->post('COD_CCPP') . $this->input->post('NFORM'),
 					'NFORM' => $this->input->post('NFORM'),
 					'CCDD' => $this->input->post('CCDD'),

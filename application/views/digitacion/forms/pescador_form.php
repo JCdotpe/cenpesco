@@ -63,7 +63,7 @@ $COD_CCPP = array(
 		$ubidepaArray = NULL;
 		foreach($departamento->result() as $filas)
 		{
-			$ubidepaArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
+			$ubidepaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);
 		}
 
 	$provArray = array(-1 => '-'); 
@@ -164,7 +164,7 @@ $NROFORM = array(
 	echo '</div>'; 				
 
 echo form_submit('consulta', 'Consulta','class="btn btn-primary pull-right"');
-echo anchor(base_url('digitacion/pescador'), 'Nuevo Formato','class="btn btn-success pull-left"');
+echo anchor(site_url('digitacion/pescador'), 'Nuevo Formato','class="btn btn-success pull-left"');
 echo form_close(); 
 		echo '</div>'; 			
 	echo '</div>'; 		
@@ -246,21 +246,21 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
             case 'NOM_DD':
                 sel     = $("#NOM_PP");
                 $('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/ubigeo_ajax_piloto/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
                 op      = 1;
                 break;
 
             case 'NOM_PP':
                 sel     = $("#NOM_DI");
                 $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/ubigeo_ajax_piloto/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
             case 'NOM_DI':
                 sel     = $("#NOM_CCPP");
                 $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/ubigeo_ajax_piloto/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 
@@ -293,10 +293,10 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
                 }                
                 $.each(json_data, function(i, data){
                     if (op==1){
-                        sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
+                        sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');
                     }
                     if (op==2){
-                        sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
+                        sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
                    }
                     if (op==3){
                         sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');}
