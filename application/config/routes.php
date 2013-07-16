@@ -45,6 +45,7 @@ $route['cap'] = "cap/capacitacion";
 $route['rutas-segmentacion'] = "segmentacion/segmentacion";
 $route['digitacion'] = "digitacion/digitacion";
 $route['udra'] = "udra/udra";
+$route['monitoreo'] = "monitoreo/monitoreo";
 $route['tabulados'] = "tabulados/tabulados";
 $route['ajax'] = "ajax/ajax.php";
 $route['404_override'] = '';

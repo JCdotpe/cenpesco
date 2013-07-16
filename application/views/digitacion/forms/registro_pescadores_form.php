@@ -110,7 +110,6 @@ $F_M =array(
 	'maxlength'	=> 2,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
-
 );
 $F_A =array(
 	'name'	=> 'F_A',
@@ -2114,7 +2113,7 @@ $("#frm_reg_pesc").validate({
             required: true,
             number: true,
             maxlength: 4,  
-            range: [1,9998],           
+            range: [0,9998],           
          },   
         T_PES:{
             required: true,

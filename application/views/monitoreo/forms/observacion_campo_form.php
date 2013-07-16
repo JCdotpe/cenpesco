@@ -132,6 +132,22 @@ $span_class =  'span12';
 			'class' => $span_class,
 			'onkeypress'=>"return solo_0_to_1(event)",
 		);
+		$E_PREG =array(
+			'name'	=> 'E_PREG',
+			'id'	=> 'E_PREG',
+			//'value'	=> $E_PREG,
+			'maxlength'	=> 1,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_0_to_1(event)",
+		);
+		$E_SOND =array(
+			'name'	=> 'E_SOND',
+			'id'	=> 'E_SOND',
+			//'value'	=> $E_SOND,
+			'maxlength'	=> 1,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_0_to_1(event)",
+		);
 		$E_OMI =array(
 			'name'	=> 'E_OMI',
 			'id'	=> 'E_OMI',
@@ -139,7 +155,7 @@ $span_class =  'span12';
 			'maxlength'	=> 1,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_0_to_1(event)",
-		);
+		);				
 		$DES_E =array(
 			'name'	=> 'DES_E',
 			'id'	=> 'DES_E',
@@ -168,7 +184,7 @@ $span_class =  'span12';
 	$ccppArray = array(-1 => '-'); 
 
 
-$attr = array('class' => 'form-vertical form-auth','id' => 'frm_revision');
+$attr = array('class' => 'form-vertical form-auth','id' => 'frm_observacion_campo');
 echo '<div class="row-fluid">';
 echo '<div class="span12">';
 echo form_open($this->uri->uri_string(),$attr); 
@@ -182,7 +198,7 @@ echo form_open($this->uri->uri_string(),$attr);
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
 
-			echo '<h4>REVISION</h4>';
+			echo '<h4>OBSERVACION DE CAMPO</h4>';
 
 			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
 
@@ -245,11 +261,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group grupos span3">';
+							echo '<div class="control-group span3">';
 
 								echo form_label('DIA','F_D',$label1);
-
-								echo '<div class="controls">';
+								echo '<div class="controls span12">';
 									echo form_input($F_D); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_D['name']) . '</div>';
@@ -257,11 +272,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos offset1 span3">';
+							echo '<div class="control-group  offset1 span3">';
 
 								echo form_label('MES','F_M',$label1);
-
-								echo '<div class="controls">';
+								echo '<div class="controls span12">';
 									echo form_input($F_M); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_M['name']) . '</div>';
@@ -275,7 +289,7 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FECHA
 
 				// FUNCIONARIO	
-					echo '<div class="span4 titulos">';
+					echo '<div class="span7 titulos">';
 
 						echo '<div class="span12 titulos">';
 							echo '<h5> DATOS DEL FUNCIONARIO</h5>';
@@ -283,7 +297,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group grupos span10">';
+							echo '<div class="control-group grupos span7">';
 
 								echo form_label('Nombre  y apellidos','NOM',$label1);
 
@@ -295,12 +309,12 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span2">';
+							echo '<div class="control-group grupos  span5">';
 
 								echo form_label('Cargo','CARGO',$label1);
 
 								echo '<div class="controls">';
-									echo form_input($CARGO); 
+									echo form_dropdown('CARGO', $cargos, FALSE,'class="span12" id="CARGO"'); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($CARGO['name']) . '</div>';
 								echo '</div>';	
@@ -313,7 +327,7 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FUNCIONARIO
 
 				// TIPO FORMULARIO	
-					echo '<div class="span6 titulos">';
+					echo '<div class="span3 titulos">';
 
 						echo '<div class="offset1 span11 titulos">';
 							echo '<h5>TIPO DE FORMULARIO</h5>';
@@ -321,60 +335,60 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group offset1 grupos span2">';
+							echo '<div class="control-group offset1 grupos span10">';
 
-								echo form_label('Pescador','F_PES',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($F_PES); 
+								echo form_label('Formulario','F_PES',$label1);
+								echo '<div class="controls  span12">';
+									echo form_dropdown('CARGO', $formularios, FALSE,'class="span12" id="CARGO"'); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_PES['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span2">';
+							// echo '<div class="control-group grupos  span2">';
 
-								echo form_label('Acuicultor','F_ACU',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($F_ACU); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($F_ACU['name']) . '</div>';
-								echo '</div>';	
+							// 	echo form_label('Acuicultor','F_ACU',$label1);
+							// 	echo '<div class="controls offset1 span8">';
+							// 		echo form_input($F_ACU); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($F_ACU['name']) . '</div>';
+							// 	echo '</div>';	
 
-							echo '</div>'; 
+							// echo '</div>'; 
 
-							echo '<div class="control-group grupos  span2">';
+							// echo '<div class="control-group grupos  span2">';
 
-								echo form_label('Comunidades','F_COM',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($F_COM); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($F_COM['name']) . '</div>';
-								echo '</div>';	
+							// 	echo form_label('Comunidades','F_COM',$label1);
+							// 	echo '<div class="controls offset1 span8">';
+							// 		echo form_input($F_COM); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($F_COM['name']) . '</div>';
+							// 	echo '</div>';	
 
-							echo '</div>'; 
+							// echo '</div>'; 
 
-							echo '<div class="control-group grupos span2">';
+							// echo '<div class="control-group grupos span2">';
 
-								echo form_label('Seccion','SEC',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($SEC); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
-								echo '</div>';	
+							// 	echo form_label('Seccion','SEC',$label1);
+							// 	echo '<div class="controls offset1 span8">';
+							// 		echo form_input($SEC); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
+							// 	echo '</div>';	
 
-							echo '</div>'; 
+							// echo '</div>'; 
 
-							echo '<div class="control-group grupos  span2">';
+							// echo '<div class="control-group grupos  span2">';
 
-								echo form_label('N° de preg.','PREG_N',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($PREG_N); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
-								echo '</div>';	
+							// 	echo form_label('Pregunta','PREG_N',$label1);
+							// 	echo '<div class="controls offset1 span8">';
+							// 		echo form_input($PREG_N); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
+							// 	echo '</div>';	
 
-							echo '</div>'; 
+							// echo '</div>'; 
 
 						
 						echo '</div>';
@@ -386,69 +400,89 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="row-fluid">';	
 
-
 				// OBSERVACIONES	
 					echo '<div class="span12 titulos">';
 
 						echo '<div class="span12 titulos">';
-							echo '<h5> OBSERVACIONES</h5>';
+							echo '<h5> TIPO DE ERROR</h5>';
 						echo '</div>';
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group grupos span1">';
+							echo '<div class="span7">';
 
-								echo form_label('Error de concepto','E_CONC',$label1);
+								echo '<div class="control-group grupos span2">';
 
-								echo '<div class="controls offset1 span9">';
-									echo form_input($E_CONC); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($E_CONC['name']) . '</div>';
-								echo '</div>';	
+									echo form_label('Concepto','E_CONC',$label1);
+									echo '<div class="controls offset1 span9">';
+										echo form_input($E_CONC); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($E_CONC['name']) . '</div>';
+									echo '</div>';	
+
+								echo '</div>'; 
+
+								echo '<div class="control-group grupos  span2">';
+
+									echo form_label('Diligenciamiento','E_DILIG',$label1);
+									echo '<div class="controls offset1 span9">';
+										echo form_input($E_DILIG); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($E_DILIG['name']) . '</div>';
+									echo '</div>';	
+
+								echo '</div>'; 
+
+								echo '<div class="control-group grupos  span2">';
+
+									echo form_label('Pregunta','E_PREG',$label1);
+									echo '<div class="controls offset1 span9">';
+										echo form_input($E_PREG); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($E_PREG['name']) . '</div>';
+									echo '</div>';	
+
+								echo '</div>'; 
+
+								echo '<div class="control-group grupos  span2">';
+
+									echo form_label('Sondeo','E_SOND',$label1);
+									echo '<div class="controls offset1 span9">';
+										echo form_input($E_SOND); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($E_SOND['name']) . '</div>';
+									echo '</div>';	
+
+								echo '</div>'; 
+
+								echo '<div class="control-group grupos  span2">';
+
+									echo form_label('Omision','E_OMI',$label1);
+									echo '<div class="controls offset1 span9">';
+										echo form_input($E_OMI); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($E_OMI['name']) . '</div>';
+									echo '</div>';	
+
+								echo '</div>'; 
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span1">';
-
-								echo form_label('Error de diligenciamiento','E_DILIG',$label1);
-
-								echo '<div class="controls offset1 span9">';
-									echo form_input($E_DILIG); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($E_DILIG['name']) . '</div>';
-								echo '</div>';	
-
-							echo '</div>'; 
-
-							echo '<div class="control-group grupos  span1">';
-
-								echo form_label('Error de omision','E_OMI',$label1);
-
-								echo '<div class="controls offset1 span9">';
-									echo form_input($E_OMI); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($E_OMI['name']) . '</div>';
-								echo '</div>';	
-
-							echo '</div>'; 
-
-							echo '<div class="control-group grupos  span9">';
-								echo '<div class="offset1 span2">';
+							echo '<div class="control-group grupos  span5">';
+								echo '<div class="span3">';
 									echo form_label('Descripccion del error:','DES_E',$label1);
 								echo '</div>'; 	
-								echo '<div class="controls span9 ">';
+								echo '<div class="controls span9">';
 									echo form_textarea($DES_E); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($DES_E['name']) . '</div>';
 								echo '</div>';	
-
 							echo '</div>'; 													
 						echo '</div>';
 
 					echo '</div>';
 
 				// OBSERVACIONES
-
 
 								
 			echo '</div>'; 
@@ -459,7 +493,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="span1">';
 				//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
-				echo '<a href="'. site_url('digitacion/revision/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
+				echo '<a href="'. site_url('digitacion/observacion_campo/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
 		   	echo '</div>';
 
 			echo '<div class="offset5 extra span5">';
@@ -473,62 +507,6 @@ echo form_open($this->uri->uri_string(),$attr);
 	echo '</div>'; 			
 echo '</div>'; 	
 
-		/*echo '<div class="row-fluid" style="width: 1800px !important">';
-
-			echo '<div class="span12">';
-
-				// echo '<table border="1" class="table table-hover table-condensed">';
-				// 	echo '<thead>';
-				// 		echo '<tr>';
-				// 		echo '<th style="width: 10px !important">N°</th>';
-				// 		echo '<th style="width: 160px !important">Departamento</th>';
-				// 		echo '<th style="width: 160px !important">Provincia</th>';
-				// 		echo '<th style="width: 160px !important">Distrito</th>';
-				// 		echo '<th style="width: 180px !important">Centro Poblado</th>';
-				// 		echo '<th style="width: 20px !important">Día</th>';
-				// 		echo '<th style="width: 20px !important">Mes</th>';
-				// 		echo '<th style="width: 190px !important">Funcionario</th>';
-				// 		echo '<th style="width: 10px !important">Cargo </th>';
-				// 		echo '<th style="width: 200px !important">Formulario Pescador</th>';
-				// 		echo '<th style="width: 200px !important">Formulario Acuicultor</th>';
-				// 		echo '<th style="width: 200px !important">Formulario Comunidades</th>';
-				// 		echo '<th style="width: 10px !important">Seccion</th>';
-				// 		echo '<th style="width: 10px !important">Pregunta</th>';
-				// 		echo '<th style="width: 250px !important">Error de concepto</th>';
-				// 		echo '<th style="width: 250px !important">Error de diligenciamiento</th>';
-				// 		echo '<th style="width: 250px !important">Error de omision</th>';
-				// 		echo '<th style="width: 1000px !important">Descripccion del error</th>';
-				// 		echo '</tr>';
-				// 	echo '</thead>';
-				// 	echo '<tbody>';
-				// 	$num = 1;
-				// 	foreach($tables as $row){
-				// 		echo "<tr>";
-				// 			echo "<td>". $num++ ."</td>";
-				// 			echo "<td>". $row->NOM_DD ."</td>";
-				// 			echo "<td>". $row->NOM_PP ."</td>";
-				// 			echo "<td>". $row->NOM_DI ."</td>";
-				// 			echo "<td>". $row->NOM_CCPP ."</td>";
-				// 			echo "<td>". $row->F_D ."</td>";
-				// 			echo "<td>". $row->F_M ."</td>";
-				// 			echo "<td>". $row->NOM ."</td>";
-				// 			echo "<td>". $row->CARGO ."</td>";
-				// 			echo "<td>". $row->F_PES."</td>";
-				// 			echo "<td>". $row->F_ACU."</td>";
-				// 			echo "<td>". $row->F_COM."</td>";
-				// 			echo "<td>". $row->SEC."</td>";
-				// 			echo "<td>". $row->PREG_N."</td>";
-				// 			echo "<td>". $row->E_CONC."</td>";
-				// 			echo "<td>". $row->E_DILIG."</td>";
-				// 			echo "<td>". $row->E_OMI."</td>";
-				// 			echo "<td>". $row->DES_E."</td>";						
-				// 		echo "</tr>";  }
-				// 	echo '</tbody>';
-				// echo '</table>';
-
-			echo '</div>'; 	
-
-		echo '</div>'; */
 
 
 ?>
@@ -1111,7 +1089,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un valor");
 
 //validacion
-$("#frm_revision").validate({
+$("#frm_observacion_campo").validate({
     rules: {
 
         NOM_DD: {
@@ -1188,11 +1166,21 @@ $("#frm_revision").validate({
            number: true,
            range: [0,1],     
 		},
-		E_OMI :{
+		E_PREG :{
            required: true,
            number: true,
            range: [0,1],     
 		},
+		E_SOND :{
+           required: true,
+           number: true,
+           range: [0,1],     
+		},		
+		E_OMI :{
+           required: true,
+           number: true,
+           range: [0,1],     
+		},				
 		DES_E :{
            required: true,
            maxlength:100,
@@ -1215,14 +1203,14 @@ $("#frm_revision").validate({
            valueNotEquals: 'Seleccione Centro Poblado',
          },  
        F_D: {
-           range: 'Día válido',
-           maxlength: 'Día válido',
-           exactlength: 'Día válido',           
+           range: 'Día no válido',
+           maxlength: 'Día no válido',
+           exactlength: 'Día no válido',           
          },  
        F_M: {
-           range: 'Mes válido',
-           maxlength: 'Mes válido',
-           exactlength: 'Mes válido',  
+           range: 'Mes no válido',
+           maxlength: 'Mes no válido',
+           exactlength: 'Mes no válido',  
          },  
                                       
 //FIN MESSAGES
@@ -1314,14 +1302,16 @@ $("#frm_revision").validate({
 			PREG_N :$("#PREG_N").val(),
 			E_CONC :$("#E_CONC").val(),
 			E_DILIG :$("#E_DILIG").val(),
+			E_PREG :$("#E_PREG").val(),
+			E_SOND :$("#E_SOND").val(),
 			E_OMI :$("#E_OMI").val(),
 			DES_E :$("#DES_E").val(),
             ajax:1
         };
-        var bsub = $( "#frm_revision :submit" );
+        var bsub = $( "#frm_observacion_campo :submit" );
         //bsub.attr("disabled", "disabled");
         $.ajax({
-            url: CI.base_url + "digitacion/revision/grabar",
+            url: CI.base_url + "digitacion/observacion_campo/grabar",
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -1344,69 +1334,7 @@ $("#frm_revision").validate({
 
         		$('.extra').empty();
         		$('.extra').append(mensaje);              	
-            	/*if(json.flag == 0){//cuando no fue registrado
-				        $.ajax({
-				            url: CI.base_url + "digitacion/comunidad/insertar",
-				            type:'POST',
-				            data:form_data,
-				            dataType:'json',
-				            success:function(json){
-				            	//alert(json.msg);
-				            	$("#frm_revision :input").attr("disabled", true);
-				            	//insercion correcta
-				            	if(json.flag == 1){
-				            		$('#frm_revision').trigger('submit');
-				            	}else{
-				            	//error en la insercion	
-				            	}
-				            }
-				        });    
-				              		
-            	}else if(json.flag == 1){ //registro encontrado, ver secciones que faltan 
-            		$("#frm_revision :input").attr("disabled", true);              
-            		$('#comunidades_tabs').removeClass('hide');
-                    $("input[name='comunidad_id']").val(json.idx);   // guarda el ID de COMUNIDAD.
-				    var i = 0;
-                    var flagi = false;
-					$.each( json.secciones, function( key, value ) { //key = seccciones, value = 1 || 2
-                        //alert(value);
-						if(value != 0){// oculta las secciones que ya tienen el registro.
-								if(key == 9){
-									$('#cinfo').remove();
-									$('#info').remove();						
-								}else{	
-									$('#tab'+ key).remove();
-									$('#ctab'+ key).remove();
-								}
-								
-						}else { //muestra secciones 
-                            //activar tab     
-                            if(!flagi){                                  
-                                if(key == 9){
-                                    $('#cinfo').addClass('active');
-                                    $('#info').addClass('active');                                               
-                                }else{                                 
-                                    $('#ctab'+ key).addClass('active');
-                                    $('#tab'+ key).addClass('active');
-                                }       
-                            }
-                            flagi = true;                 
-                        }
-                        i++;
-					});
-					if(!flagi){
-						alert('Formulario completado');
-					}else{
-                        alert('Por favor complete la informacion en las secciones a continuacion');   
-                    }
-            	}else if(json.flag == 2){
-                    alert('El Nro de formulario no coincide con  UDRA');
-                    bsub.removeAttr('disabled');    
-                }else if(json.flag == 3){ 
-                    alert('Debe ingresar la UDRA primero, no puede ingresar el formulario.');
-                    bsub.removeAttr('disabled');    
-                }*/
-            // bsub.removeAttr('disabled');  
+            
 
             }
         });     

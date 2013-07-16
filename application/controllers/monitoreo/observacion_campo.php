@@ -1,17 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Revision extends CI_Controller {
-	protected $secciones = array(
-					2 => 'Seccion II',
-					3 => 'Seccion III',
-					4 => 'Seccion IV',
-					5 => 'Seccion V',
-					6 => 'Seccion VI',
-					7 => 'Seccion VII',
-					8 => 'Seccion VIII',
-					9 => 'Seccion IX',
-					10 => 'Info',
-	);
+class observacion_campo extends CI_Controller {
+
 
 	function __construct()
 	{
@@ -31,7 +21,7 @@ class Revision extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 5 && $role->rolename == 'Digitación'){
+			if($role->role_id == 8 && $role->rolename == 'Monitoreo de campo'){
 				$flag = TRUE;
 				break;
 			}
@@ -46,7 +36,7 @@ class Revision extends CI_Controller {
 		$this->load->model('pesca_piloto_model');	
 		$this->load->model('ubigeo_model');	
 		$this->load->model('marco_model');	
-		$this->load->model('revision_model');	
+		$this->load->model('observacion_campo_model');	
 		$this->load->model('ccpp_model');	
 
 	}
@@ -57,7 +47,7 @@ class Revision extends CI_Controller {
 			$data['nav'] = TRUE;
 			//regular
 			//$data['departamentos'] = $this->ubigeo_piloto_model->get_dptos();
-			$data['title'] = 'Revision';
+			$data['title'] = 'Observacion de Campo';
 
 			//cabecera
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
@@ -66,8 +56,17 @@ class Revision extends CI_Controller {
 			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
 			
 			//regular
-			$data['tables'] = $this->revision_model->get_todo($odei);
-			$data['main_content'] = 'digitacion/revision_view';
+			$data['cargos'] =  array(	-1 => '-',
+										 1 => 'COORDINADOR DEPARTAMENTAL',
+										 2 => 'SUPERVISOR NACIONAL',
+										 3 => 'JEFE DE BRIGADA' );
+			$data['formularios'] =  array(	-1 => '-',
+										 1 => 'F. PESCADOR',
+										 2 => 'F. ACUICULTOR',
+										 3 => 'F. COMUNIDADES' );
+			$data['option'] = 2;
+			$data['tables'] = $this->observacion_campo_model->get_todo($odei);
+			$data['main_content'] = 'monitoreo/observacion_campo_view';
 	        $this->load->view('backend/includes/template', $data);
 
 	}
@@ -112,6 +111,8 @@ class Revision extends CI_Controller {
 					'PREG_N' => $this->input->post('PREG_N'),
 					'E_CONC' => $this->input->post('E_CONC'),
 					'E_DILIG' => $this->input->post('E_DILIG'),
+					'E_PREG' => $this->input->post('E_PREG'),
+					'E_SOND' => $this->input->post('E_SOND'),
 					'E_OMI' => $this->input->post('E_OMI'),
 					'DES_E' => $this->input->post('DES_E'),
 					'activo'=>1,
@@ -120,7 +121,7 @@ class Revision extends CI_Controller {
 					'last_ip' => $this->input->ip_address(),
 					'user_agent' => $this->agent->agent_string(),
 					);
-				$revision = $this->revision_model->consulta_ccpp($CCDD,$CCPP,$CCDI,$COD_CCPP);
+				$revision = $this->observacion_campo_model->consulta_ccpp($CCDD,$CCPP,$CCDI,$COD_CCPP);
 
 			if ($this->tank_auth->get_ubigeo()<99) {
 
@@ -129,7 +130,7 @@ class Revision extends CI_Controller {
 					if($revision >= 1){
 						$datos['operacion'] = 0; // ya existe el centro poblado
 					}else{
-						$filas = $this->revision_model->insertar($registro);
+						$filas = $this->observacion_campo_model->insertar($registro);
 						if ($filas ==1) {
 							$datos['operacion'] = 1;	// guardado exitosamente				
 						}else {
@@ -137,16 +138,12 @@ class Revision extends CI_Controller {
 						}
 					}
 				}else {
-					$datos['operacion'] = 7; // no usuario piloto
+					$datos['operacion'] = 7; // ODEI en doble ubigeo
 				}
 
 			}else{
-					$datos['operacion'] = 99; //ODEI en doble ubigeo
+					$datos['operacion'] = 99; //no usuario piloto
 			}	
-
-
-
-
 
 			// $datos['secciones'] = $udra;	
 			$data['datos'] = $datos;
@@ -168,8 +165,8 @@ class Revision extends CI_Controller {
 		}
 		
 		//regular
-		$data['tables'] = $this->revision_model->get_todo($odei);
-		$data['main_content'] = 'digitacion/revision_tabla_view';
+		$data['tables'] = $this->observacion_campo_model->get_todo($odei);
+		$data['main_content'] = 'monitoreo/observacion_campo_tabla_view';
         $this->load->view('backend/includes/template', $data);
 
 	}

@@ -23,15 +23,15 @@
 				<th style="width: 20px !important">Mes</th>
 				<th style="width: 190px !important">Funcionario</th>
 				<th style="width: 10px !important">Cargo </th>
-				<th style="width: 200px !important">Formulario Pescador</th>
-				<th style="width: 200px !important">Formulario Acuicultor</th>
-				<th style="width: 200px !important">Formulario Comunidades</th>
-				<th style="width: 10px !important">Seccion</th>
-				<th style="width: 10px !important">Pregunta</th>
-				<th style="width: 250px !important">Error de concepto</th>
-				<th style="width: 250px !important">Error de diligenciamiento</th>
-				<th style="width: 250px !important">Error de omision</th>
-				<th style="width: 1000px !important">Descripccion del error</th>
+				<th style ="text-align: center">Formulario Pescador</th>
+				<th style ="text-align: center">Formulario Acuicultor</th>
+				<th style ="text-align: center">Formulario Comunidades</th>
+				<th style ="text-align: center">Seccion</th>
+				<th style ="text-align: center">Pregunta</th>
+				<th style ="text-align: center">Error de concepto</th>
+				<th style ="text-align: center">Error de diligenciamiento</th>
+				<th style ="text-align: center">Error de omision</th>
+				<th style ="text-align: center">Descripccion del error</th>
 				</tr>
 			</thead>
 			<tbody>
