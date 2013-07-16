@@ -55,7 +55,6 @@ class observacion_campo extends CI_Controller {
 			}
 			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
 			
-			//regular
 			$data['cargos'] =  array(	-1 => '-',
 										 1 => 'COORDINADOR DEPARTAMENTAL',
 										 2 => 'SUPERVISOR NACIONAL',
@@ -104,9 +103,7 @@ class observacion_campo extends CI_Controller {
 					'F_M' => $this->input->post('F_M'),
 					'NOM' => $this->input->post('NOM'),
 					'CARGO' => $this->input->post('CARGO'),
-					'F_PES' => $this->input->post('F_PES'),
-					'F_ACU' => $this->input->post('F_ACU'),
-					'F_COM' => $this->input->post('F_COM'),
+					'T_FORM' => $this->input->post('T_FORM'),
 					'SEC' => $this->input->post('SECC'),
 					'PREG_N' => $this->input->post('PREG_N'),
 					'E_CONC' => $this->input->post('E_CONC'),

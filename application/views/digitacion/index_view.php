@@ -13,9 +13,9 @@
  -->              
               <li ><a href="http://cenpesco.e-proyectos.org/acuicultor/">Acuicultor</a></li> 
               <li ><a href="<?php echo site_url('digitacion/comunidad'); ?>">Comunidad</a></li>
-              <li ><a href="<?php echo site_url('digitacion/revision'); ?>">Revision en Gavinete</a></li>
+<!--               <li ><a href="<?php echo site_url('digitacion/revision'); ?>">Revision en Gavinete</a></li>
               <li ><a href="<?php echo site_url('digitacion/avance'); ?>">Avance de campo</a></li>
-              <li ><a href="<?php echo site_url('digitacion/observacion_campo'); ?>">Observacion de campo</a></li>
+              <li ><a href="<?php echo site_url('digitacion/observacion_campo'); ?>">Observacion de campo</a></li> -->
 
               
             </ul>

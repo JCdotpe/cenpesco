@@ -102,13 +102,13 @@ class Avance extends CI_Controller {
 					'P_COMP' => $this->input->post('P_COMP'),
 					'P_INC' => $this->input->post('P_INC'),
 					'P_RECH' => $this->input->post('P_RECH'),
+					'E_TOTAL_P' => $this->input->post('E_TOTAL_P'),
 
 					'A_TOTAL' => $this->input->post('A_TOTAL'),
 					'A_COMP' => $this->input->post('A_COMP'),
 					'A_INC' => $this->input->post('A_INC'),
 					'A_RECH' => $this->input->post('A_RECH'),
-
-					'E_TOTAL' => $this->input->post('E_TOTAL'),
+					'E_TOTAL_A' => $this->input->post('E_TOTAL_A'),
 
 					'activo'=>1,
 					'user_id'=>$this->tank_auth->get_user_id(),

@@ -66,39 +66,15 @@ $span_class =  'span12';
 			'onkeypress'=>"return solo_letras(event)",
 
 		);
-		$CARGO =array(
-			'name'	=> 'CARGO',
-			'id'	=> 'CARGO',
-			//'value'	=> $CARGO,
-			'maxlength'	=> 1,
-			'class' => $span_class,
-			'onkeypress'=>"return solo_1_to_3(event)",
-		);
-	// D. FUNCIONARIO
-		$F_PES =array(
-			'name'	=> 'F_PES',
-			'id'	=> 'F_PES',
-			//'value'	=> $F_PES,
-			'maxlength'	=> 1,
-			'class' => $span_class,
-			'onkeypress'=>"return solo_0_to_1(event)",
-		);
-		$F_ACU =array(
-			'name'	=> 'F_ACU',
-			'id'	=> 'F_ACU',
-			//'value'	=> $F_ACU,
-			'maxlength'	=> 1,
-			'class' => $span_class,
-			'onkeypress'=>"return solo_0_to_1(event)",
-		);
-		$F_COM =array(
-			'name'	=> 'F_COM',
-			'id'	=> 'F_COM',
-			//'value'	=> $F_COM,
-			'maxlength'	=> 1,
-			'class' => $span_class,
-			'onkeypress'=>"return solo_0_to_1(event)",
-		);
+		// $CARGO =array(
+		// 	'name'	=> 'CARGO',
+		// 	'id'	=> 'CARGO',
+		// 	//'value'	=> $CARGO,
+		// 	'maxlength'	=> 1,
+		// 	'class' => $span_class,
+		// 	'onkeypress'=>"return solo_1_to_3(event)",
+		// );
+	// D. FORMULARIOS
 		$SEC =array(
 			'name'	=> 'SEC',
 			'id'	=> 'SEC',
@@ -244,6 +220,7 @@ echo form_open($this->uri->uri_string(),$attr);
 								echo '</div>';	
 								echo '<div class="controls span7">';
 									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
+									echo '<div class="help-block error">' . form_error('NOM_CCPP') . '</div>';	
 								echo '</div>';	
 
 					echo '</div>'; 		
@@ -272,7 +249,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group  offset1 span3">';
+							echo '<div class="control-group  offset2 span3">';
 
 								echo form_label('MES','F_M',$label1);
 								echo '<div class="controls span12">';
@@ -304,7 +281,7 @@ echo form_open($this->uri->uri_string(),$attr);
 								echo '<div class="controls">';
 									echo form_input($NOM); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($NOM['name']) . '</div>';
+									//echo '<div class="help-block error">' . form_error($NOM['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
@@ -316,7 +293,7 @@ echo form_open($this->uri->uri_string(),$attr);
 								echo '<div class="controls">';
 									echo form_dropdown('CARGO', $cargos, FALSE,'class="span12" id="CARGO"'); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($CARGO['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error('CARGO') . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
@@ -337,11 +314,11 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '<div class="control-group offset1 grupos span10">';
 
-								echo form_label('Formulario','F_PES',$label1);
+								echo form_label('Formulario','T_FORM',$label1);
 								echo '<div class="controls  span12">';
-									echo form_dropdown('CARGO', $formularios, FALSE,'class="span12" id="CARGO"'); 
+									echo form_dropdown('T_FORM', $formularios, FALSE,'class="span12" id="T_FORM"'); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($F_PES['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error('T_FORM') . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
@@ -483,20 +460,20 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '</div>';
 
 				// OBSERVACIONES
-
-								
+			
 			echo '</div>'; 
+
 		echo '</div>'; 			
 	echo '</div>'; 		
 
 		echo '<div class="row-fluid">';
 
-			echo '<div class="span1">';
+			echo '<div class="span6">';
 				//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
-				echo '<a href="'. site_url('digitacion/observacion_campo/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
+				echo '<a href="'. site_url('monitoreo/observacion_campo/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
 		   	echo '</div>';
 
-			echo '<div class="offset5 extra span5">';
+			echo '<div class="extra span5">';
 		    echo '</div>';
 			echo '<div >';
 						echo form_submit('Enviar', 'Enviar','class="btn btn-primary pull-right"');
@@ -584,7 +561,7 @@ var opcion = 0;
 
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
-    $('input').keydown( function(e) {
+    $('input,select').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
             var array_otros = ['S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //SECCCION 3
                                 'S5_2_7','S5_3_17', // SECCION 5
@@ -605,34 +582,19 @@ var opcion = 0;
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
                 }else{
-                    if ( inArray($(this).attr('id'), array_otros )) {// BUSCA CAMPOS que requieren ESPECIFICAR
-                        if ($(this).val() == 1 ) {
-                            inputs.eq( inputs.index(this)+ 1 ).focus();  
+                    if ( $(this).attr('id') == "E_OMI" ) {// CAMPO ESPECIAL
+                    	var sum = parseInt(inputs.eq( inputs.index(this)-1).val()) + parseInt(inputs.eq( inputs.index(this)-2).val())+ parseInt(inputs.eq( inputs.index(this)-3).val())+ parseInt(inputs.eq( inputs.index(this)-4).val())+ parseInt($(this).val()) ;  
+                        if (sum == 0 ) {
+                        	alert("Debe seleccionar al menos un error");
+                            inputs.eq( inputs.index(this)-4).focus();  
+                            inputs.eq( inputs.index(this)-4).select();  
                         } else{
-                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
-                        }
-                    } else if ( inArray($(this).attr('id'), array_ninguno )) {// BUSCA CAMPOS NINGUNO
-                        if (!ningunos(this)) {
-                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
-                        	inputs.eq( inputs.index(this) ).focus();  
-                        	inputs.eq( inputs.index(this) ).select();  
-                        } else{
-                        	inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                        };
-                    } else if( $(this).attr('id') == 'S3_1' ){// PREGUNTA CON OTRO Y UN SOLO INGRESO
-                        if ($(this).val() == 4 ) {
-                            inputs.eq( inputs.index(this)+ 1 ).focus();                              
-                        } else{
-                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
-                        }
-                    }else if( $(this).attr('id') == 'S7_15' ){// PREGUNTA CON OTRO Y UN SOLO INGRESO
-                        if ($(this).val() == 6 ) {
-                            inputs.eq( inputs.index(this)+ 1 ).focus();                              
-                        } else{
-                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 1 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
                         }
                     }else{
                         inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                        inputs.eq( inputs.index(this)+ 1 ).select(); 
                    }                         
                 }
             }else if (key == 37) {
@@ -1043,7 +1005,7 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
 
 
 $.extend(jQuery.validator.messages, {
-     required: "Campo obligatorio",
+     required: "Requerido",
     // remote: "Please fix this field.",
     // email: "Please enter a valid email address.",
     // url: "Please enter a valid URL.",
@@ -1128,23 +1090,11 @@ $("#frm_observacion_campo").validate({
 		},
 		CARGO :{
            required: true,
-           number: true,
-           range: [1,3],           
+           valueNotEquals: -1,           
 		},
-		F_PES :{
+		T_FORM :{
            required: true,
-           number: true,
-           range: [0,1],     
-		},
-		F_ACU :{
-           required: true,
-           number: true,
-           range: [0,1],     
-		},
-		F_COM :{
-           required: true,
-           number: true,
-           range: [0,1],     
+           valueNotEquals: -1,    
 		},
 		SEC :{
            required: true,
@@ -1295,7 +1245,7 @@ $("#frm_observacion_campo").validate({
 			F_M :$("#F_M").val(),
 			NOM :$("#NOM").val(),
 			CARGO :$("#CARGO").val(),
-			F_PES :$("#F_PES").val(),
+			T_FORM :$("#T_FORM").val(),
 			F_ACU :$("#F_ACU").val(),
 			F_COM :$("#F_COM").val(),
 			SECC :$("#SEC").val(),
@@ -1311,7 +1261,7 @@ $("#frm_observacion_campo").validate({
         var bsub = $( "#frm_observacion_campo :submit" );
         //bsub.attr("disabled", "disabled");
         $.ajax({
-            url: CI.base_url + "digitacion/observacion_campo/grabar",
+            url: CI.base_url + "monitoreo/observacion_campo/grabar",
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -1323,7 +1273,9 @@ $("#frm_observacion_campo").validate({
 		    		mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
 			   			$('input:text').val("");
 			   			$('textarea').val("");
-			   			$('#NOM_DD').trigger('change');            		
+			   			$('select').val(-1);
+			   			$('#NOM_DD').trigger('change');
+
             	}else if(json.operacion == 7){
 		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
             	}else if(json.operacion == 8){
@@ -1333,7 +1285,8 @@ $("#frm_observacion_campo").validate({
             	}
 
         		$('.extra').empty();
-        		$('.extra').append(mensaje);              	
+        		$('.extra').hide().append(mensaje);              	
+        		$('.extra').show('slow');              	
             
 
             }

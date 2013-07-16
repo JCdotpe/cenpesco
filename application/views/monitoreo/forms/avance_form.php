@@ -281,6 +281,7 @@ echo form_open($this->uri->uri_string(),$attr);
 								echo '</div>';	
 								echo '<div class="controls span7">';
 									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
+									echo '<div class="help-block error">' . form_error('NOM_CCPP') . '</div>';	
 								echo '</div>';	
 
 					echo '</div>'; 		
@@ -583,12 +584,12 @@ echo form_open($this->uri->uri_string(),$attr);
 
 		echo '<div class="row-fluid">';
 
-			echo '<div class="span1">';
+			echo '<div class="span6">';
 				//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
 				echo '<a href="'. site_url('monitoreo/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
 		   	echo '</div>';
 
-			echo '<div class="offset5 extra span5">';
+			echo '<div class="extra span5">';
 		    echo '</div>';
 			echo '<div >';
 						echo form_submit('Enviar', 'Enviar','class="btn btn-primary pull-right"');
@@ -1491,6 +1492,7 @@ $("#frm_avance_campo").validate({
 		    		mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
 			   			$('input:text').val("");
 			   			$('textarea').val("");
+			   			$('select').val(-1);
 			   			$('#NOM_DD').trigger('change');            		
             	}else if(json.operacion == 7){
 		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
@@ -1501,7 +1503,8 @@ $("#frm_avance_campo").validate({
             	}
 
         		$('.extra').empty();
-        		$('.extra').append(mensaje);              	
+        		$('.extra').hide().append(mensaje);              	
+        		$('.extra').show('slow');              	
             	/*if(json.flag == 0){//cuando no fue registrado
 				        $.ajax({
 				            url: CI.base_url + "digitacion/comunidad/insertar",

@@ -15,22 +15,20 @@
 				<th style="width: 10px !important">N°</th>
 				<th style="width: 160px !important">SEDE</th>
 				<th style="width: 160px !important">ODEI</th>				
-				<th style="width: 160px !important">Departamento</th>
-				<th style="width: 160px !important">Provincia</th>
-				<th style="width: 160px !important">Distrito</th>
-				<th style="width: 180px !important">Centro Poblado</th>
-				<th style="width: 20px !important">Día</th>
-				<th style="width: 20px !important">Mes</th>
-				<th style="width: 190px !important">Funcionario</th>
-				<th style="width: 10px !important">Cargo </th>
-				<th style ="text-align: center">Formulario Pescador</th>
-				<th style ="text-align: center">Formulario Acuicultor</th>
-				<th style ="text-align: center">Formulario Comunidades</th>
+				<th style="width: 160px !important">DEPARTAMENTO</th>
+				<th style="width: 160px !important">PROVINCIA</th>
+				<th style="width: 160px !important">DISTRITO</th>
+				<th style="width: 180px !important">CENTRO POBLADO</th>
+				<th style="width: 20px !important">DÍA</th>
+				<th style="width: 20px !important">MES</th>
+				<th style="width: 190px !important">FUNCIONARIO</th>
+				<th style="width: 10px !important">CARGO </th>
+				<th style ="text-align: center">FORMULARIO</th>
 				<th style ="text-align: center">Seccion</th>
 				<th style ="text-align: center">Pregunta</th>
-				<th style ="text-align: center">Error de concepto</th>
-				<th style ="text-align: center">Error de diligenciamiento</th>
-				<th style ="text-align: center">Error de omision</th>
+				<th style ="text-align: center">Error concepto</th>
+				<th style ="text-align: center">Error diligenciamiento</th>
+				<th style ="text-align: center">Error omision</th>
 				<th style ="text-align: center">Descripccion del error</th>
 				</tr>
 			</thead>
@@ -50,9 +48,7 @@
 					echo "<td>". $row->F_M ."</td>";
 					echo "<td>". $row->NOM ."</td>";
 					echo "<td>". $row->CARGO ."</td>";
-					echo "<td>". $row->F_PES."</td>";
-					echo "<td>". $row->F_ACU."</td>";
-					echo "<td>". $row->F_COM."</td>";
+					echo "<td>". $row->T_FORM."</td>";
 					echo "<td>". $row->SEC."</td>";
 					echo "<td>". $row->PREG_N."</td>";
 					echo "<td>". $row->E_CONC."</td>";
