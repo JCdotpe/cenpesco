@@ -1,6 +1,5 @@
-<div id="header" style="display: block;">
-  <a id="logo" href="#"><img src="http://webinei.inei.gob.pe/convocatorias/cnpc/img/brand.png" alt="I CENPESCO"></a> 
-</div>    
+
+  
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3&amp;sensor=false"></script>
 <script src="<?php echo base_url('js/vendor/geoxmlv3.js'); ?>"></script>
@@ -277,3 +276,25 @@ $("#EQUIPO").change(function() {
 
 
 </script>
+
+</div>
+
+
+<div id="header" style="display: block;">
+  <a id="logo" href="#"><img src="http://webinei.inei.gob.pe/convocatorias/cnpc/img/brand.png" alt="I CENPESCO"></a> 
+  <div id="oted">Oficina Técnica de Estadísticas Departamentales - OTED</div>
+</div>    
+
+
+<div id="footer">
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span9">
+      <p>LEYENDA:  <img src="<?php echo base_url('img/blank1.png') ; ?>" />  Centros poblado de concentración (MET. 1), <img src="<?php echo base_url('img/blank3.png') ; ?>" /> Centros poblados convocados (MET. 1), <img src="<?php echo base_url('img/blank2.png') ; ?>" /> Centro poblado (MET. 2)</p>
+    </div>
+    <div class="span3">
+      <p class="pull-right">JEFE DE BRIGADA</p>
+    </div>    
+  </div>
+</div>
+</div>  

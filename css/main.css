@@ -95,7 +95,7 @@ color:#fff;
   margin-top: 1px !important;
   padding: 8px 0px !important;
   margin-bottom: 1px !important;
-  padding-left: 10px !important;
+  padding-left: 0px !important;
   padding-right: 10px !important;
 
   /*margin-left: 2px !important;   
@@ -556,7 +556,7 @@ text-shadow: none;
 
 .filtro_map{
   position: absolute;
-  bottom: 25px;
+  bottom: 50px;
   left: 20px;
   padding: 7px 12px !important;
   background: #fff;
@@ -583,3 +583,49 @@ text-shadow: none;
     padding: 10px 20px 5px;
     position: relative;
 }
+
+#footer{
+    background: none repeat scroll 0 0 #333;
+    bottom: 0;
+    color: #C2C2C2;
+    padding: 5px 0 3px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    display: block;
+      border-top: 1px solid #000;
+
+}
+
+#footer{
+  font-size: 80%
+}
+
+
+#footer p{
+  margin: 0;
+}
+
+#footer .row-fluid [class*="span"]{
+min-height: 22px;
+}
+
+#footer .pull-right{
+  color: #F4EB13;
+}
+
+#footer img{
+  margin-left: 15px;
+  padding-right: 5px;
+}
+
+#oted{
+  position: absolute;
+  height: 30px;
+  right: 20px;
+  top: 33px;
+  text-align: right;
+  text-transform: uppercase;
+  color: #00A1C7;
+}
+
