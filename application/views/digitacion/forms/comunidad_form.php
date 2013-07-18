@@ -165,7 +165,7 @@ $NROFORM = array(
 	echo '</div>'; 				
 
 echo form_submit('consulta', 'Consulta','class="btn btn-primary pull-right"');
-echo anchor(base_url('digitacion/comunidad'), 'Nuevo Formato','class="btn btn-success pull-left"');
+echo anchor(site_url('digitacion/comunidad'), 'Nuevo Formato','class="btn btn-success pull-left"');
 echo form_close(); 
 		echo '</div>'; 			
 	echo '</div>'; 		
@@ -389,6 +389,7 @@ echo form_close();
                             return;
                         }                
                         if (!esp){//verifica si el input es seguido de ESPECIFIQUE
+                        	document.blur();
                             $("#S"+sc+"_"+p_pase+"_1").focus();
                             $("#S"+sc+"_"+p_pase).focus();      
                         }
@@ -396,7 +397,6 @@ echo form_close();
                         for (x = p_actual+1;x<p_pase;x++){
                             $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
                         }
-
                         if (!esp) {
                             p_focus = p_actual+1;
                             $("#S"+sc+"_"+p_focus).focus();

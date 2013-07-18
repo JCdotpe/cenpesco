@@ -10,7 +10,7 @@
 		<table border="1" class="table table-hover table-condensed" >
 			<thead>
 				<tr>
-				<th style="width: 10px !important">N°</th>
+				<th style="width: 10px !important">NSSS°</th>
 				<th style="width: 160px !important">SEDE</th>
 				<th style="width: 160px !important">ODEI</th>				
 				<th style="width: 160px !important">Departamento</th>

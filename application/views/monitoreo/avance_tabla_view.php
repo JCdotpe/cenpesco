@@ -1,13 +1,16 @@
 				
 
 <div class="row-fluid">
-
-<h4>AVANCE DE CAMPO </4>
-
-
+	<h4>AVANCE DE CAMPO </4>
 </div>
+
+<div class="row-fluid" style="padding-bottom: 20px !important">
+	<div class="btn btn-success pull-left"><?php echo anchor('monitoreo/avance/export','Exportar Excel'); ?></div>
+</div>
+
 <div class="row-fluid" style="width: 1800px !important">
-</div>
+
+
 
 		<table border="1" class="table table-hover table-condensed" >
 			<thead>
@@ -46,7 +49,7 @@
 			<tbody>
 <?php 						
 			$num = 1;
-			foreach($tables as $row){
+			foreach($tables->result() as $row){
 				echo "<tr>";
 					echo "<td>". $num++ ."</td>";
 					echo '<td>'. $row->NOM_SEDE ."</td>";
@@ -81,3 +84,5 @@
 		echo '</table>';
 
 ?>
+
+</div>

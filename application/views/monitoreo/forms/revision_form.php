@@ -75,6 +75,32 @@ $span_class =  'span12';
 			'onkeypress'=>"return solo_1_to_3(event)",
 		);
 	// D. secciones
+
+		$F_PES =array(
+			'name'	=> 'F_PES',
+			'id'	=> 'F_PES',
+			//'value'	=> $F_PES,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+		);
+		$F_ACU =array(
+			'name'	=> 'F_ACU',
+			'id'	=> 'F_ACU',
+			//'value'	=> $F_ACU,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+		);
+		$F_COM =array(
+			'name'	=> 'F_COM',
+			'id'	=> 'F_COM',
+			//'value'	=> $F_COM,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+		);		
+
 		$SEC =array(
 			'name'	=> 'SEC',
 			'id'	=> 'SEC',
@@ -250,7 +276,7 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FECHA
 
 				// FUNCIONARIO	
-					echo '<div class="span7 titulos">';
+					echo '<div class="span6 titulos">';
 
 						echo '<div class="span12 titulos">';
 							echo '<h5> DATOS DEL FUNCIONARIO</h5>';
@@ -288,7 +314,7 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FUNCIONARIO
 
 				// TIPO FORMULARIO	
-					echo '<div class="span3 titulos">';
+					echo '<div class="span4 titulos">';
 
 						echo '<div class="offset1 span11 titulos">';
 							echo '<h5>TIPO DE FORMULARIO</h5>';
@@ -296,19 +322,73 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group offset1 grupos span10">';
+							// echo '<div class="control-group offset1 grupos span10">';
 
-								echo form_label('Formulario','T_FORM',$label1);
-								echo '<div class="controls  span12">';
-									echo form_dropdown('T_FORM', $formularios, FALSE,'class="span12" id="T_FORM"'); 
+							// 	echo form_label('Formulario','T_FORM',$label1);
+							// 	echo '<div class="controls  span12">';
+							// 		echo form_dropdown('T_FORM', $formularios, FALSE,'class="span12" id="T_FORM"'); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error('T_FORM') . '</div>';
+							// 	echo '</div>';	
+
+							// echo '</div>'; 
+
+							echo '<div class="control-group grupos  span4">';
+
+								echo form_label('Pescador','F_PES',$label1);
+								echo '<div class="controls offset1 span8">';
+									echo form_input($F_PES); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('T_FORM') . '</div>';
+									echo '<div class="help-block error">' . form_error($F_PES['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
 
+							echo '<div class="control-group grupos  span4">';
 
+								echo form_label('Acuicultor','F_ACU',$label1);
+								echo '<div class="controls offset1 span8">';
+									echo form_input($F_ACU); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($F_ACU['name']) . '</div>';
+								echo '</div>';	
 
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span4">';
+
+								echo form_label('Comunidades','F_COM',$label1);
+								echo '<div class="controls offset1 span8">';
+									echo form_input($F_COM); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($F_COM['name']) . '</div>';
+								echo '</div>';	
+
+							echo '</div>'; 
+
+							// echo '<div class="control-group grupos span2">';
+
+							// 	echo form_label('Seccion','SEC',$label1);
+							// 	echo '<div class="controls offset1 span8">';
+							// 		echo form_input($SEC); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
+							// 	echo '</div>';	
+
+							// echo '</div>'; 
+
+							// echo '<div class="control-group grupos  span2">';
+
+							// 	echo form_label('Pregunta','PREG_N',$label1);
+							// 	echo '<div class="controls offset1 span8">';
+							// 		echo form_input($PREG_N); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
+							// 	echo '</div>';	
+
+							// echo '</div>'; 
+
+						
 						echo '</div>';
 
 					echo '</div>';
@@ -525,7 +605,7 @@ var opcion = 0;
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
                 }else{
-                    if ( $(this).attr('id') == "E_OMI" ) {// BUSCA CAMPOS que requieren ESPECIFICAR
+                    if ( $(this).attr('id') == "E_OMI" ) {// CAMPO ESPECIAL
                     	var sum = parseInt(inputs.eq( inputs.index(this)-1).val()) + parseInt(inputs.eq( inputs.index(this)-2).val())+ parseInt($(this).val()) ;  
                         if (sum == 0 ) {
                         	alert("Debe seleccionar al menos un error");
@@ -725,7 +805,7 @@ var opcion = 0;
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
         letras = "0123456789";
-        especiales = [8, 9, 37, 39, 46];
+        especiales = [8, 9, 37, 39];
 
         tecla_especial = false
         for(var i in especiales) {
@@ -1041,10 +1121,21 @@ $("#frm_revision").validate({
            required: true,
            valueNotEquals: -1,         
 		},
-       T_FORM: {
+		F_PES :{
            required: true,
-           valueNotEquals: -1,
-         }, 
+           number: true,
+           range: [0,9999],    
+		},
+		F_ACU :{
+           required: true,
+           number: true,
+           range: [0,9999],    
+		},
+		F_COM :{
+           required: true,
+           number: true,
+           range: [0,9999],    
+		},	
 		SEC :{
            required: true,
            number: true,
@@ -1184,7 +1275,9 @@ $("#frm_revision").validate({
 			F_M :$("#F_M").val(),
 			NOM :$("#NOM").val(),
 			CARGO :$("#CARGO").val(),
-			T_FORM :$("#T_FORM").val(),
+			F_PES :$("#F_PES").val(),
+			F_ACU :$("#F_ACU").val(),
+			F_COM :$("#F_COM").val(),
 			SECC :$("#SEC").val(),
 			PREG_N :$("#PREG_N").val(),
 			E_CONC :$("#E_CONC").val(),

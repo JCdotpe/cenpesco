@@ -6,8 +6,14 @@
 
 
 </div>
-<div class="row-fluid" style="width: 1800px !important">
+
+<div class="row-fluid" style="padding-bottom: 20px !important">
+	<div class="btn btn-success pull-left"><?php echo anchor('monitoreo/revision/export','Exportar Excel'); ?></div>
 </div>
+
+
+<div class="row-fluid" style="width: 1800px !important">
+
 
 		<table border="1" class="table table-hover table-condensed" >
 			<thead>
@@ -23,7 +29,9 @@
 				<th style="width: 20px !important">MES</th>
 				<th style="width: 190px !important">FUNCIONARIO</th>
 				<th style="width: 10px !important">CARGO </th>
-				<th style ="text-align: center">FORMULARIO</th>
+				<th style ="text-align: center">F. Pescador</th>
+				<th style ="text-align: center">F. Acuicultor</th>
+				<th style ="text-align: center">F. Comunidades</th>
 				<th style ="text-align: center">Seccion</th>
 				<th style ="text-align: center">Pregunta</th>
 				<th style ="text-align: center">Error concepto</th>
@@ -35,7 +43,7 @@
 			<tbody>
 <?php 						
 			$num = 1;
-			foreach($tables as $row){
+			foreach($tables->result() as $row){
 				echo "<tr>";
 					echo "<td>". $num++ ."</td>";
 					echo "<td>". $row->NOM_SEDE ."</td>";
@@ -48,7 +56,9 @@
 					echo "<td>". $row->F_M ."</td>";
 					echo "<td>". $row->NOM ."</td>";
 					echo "<td>". $row->CARGO ."</td>";
-					echo "<td>". $row->T_FORM."</td>";
+					echo '<td style ="text-align: center">'. $row->F_PES."</td>";
+					echo '<td style ="text-align: center">'. $row->F_ACU."</td>";
+					echo '<td style ="text-align: center">'. $row->F_COM."</td>";
 					echo "<td>". $row->SEC."</td>";
 					echo "<td>". $row->PREG_N."</td>";
 					echo "<td>". $row->E_CONC."</td>";
@@ -60,3 +70,4 @@
 		echo '</table>';
 
 ?>
+</div>

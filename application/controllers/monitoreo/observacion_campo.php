@@ -11,6 +11,7 @@ class observacion_campo extends CI_Controller {
 		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');		
+		$this->load->library('phpexcel');		
 
 		//User is logged in
 		if (!$this->tank_auth->is_logged_in()) {
@@ -59,10 +60,6 @@ class observacion_campo extends CI_Controller {
 										 1 => 'COORDINADOR DEPARTAMENTAL',
 										 2 => 'SUPERVISOR NACIONAL',
 										 3 => 'JEFE DE BRIGADA' );
-			$data['formularios'] =  array(	-1 => '-',
-										 1 => 'F. PESCADOR',
-										 2 => 'F. ACUICULTOR',
-										 3 => 'F. COMUNIDADES' );
 			$data['option'] = 2;
 			$data['tables'] = $this->observacion_campo_model->get_todo($odei);
 			$data['main_content'] = 'monitoreo/observacion_campo_view';
@@ -103,7 +100,9 @@ class observacion_campo extends CI_Controller {
 					'F_M' => $this->input->post('F_M'),
 					'NOM' => $this->input->post('NOM'),
 					'CARGO' => $this->input->post('CARGO'),
-					'T_FORM' => $this->input->post('T_FORM'),
+					'F_PES' => $this->input->post('F_PES'),
+					'F_ACU' => $this->input->post('F_ACU'),
+					'F_COM' => $this->input->post('F_COM'),
 					'SEC' => $this->input->post('SECC'),
 					'PREG_N' => $this->input->post('PREG_N'),
 					'E_CONC' => $this->input->post('E_CONC'),
@@ -167,6 +166,124 @@ class observacion_campo extends CI_Controller {
         $this->load->view('backend/includes/template', $data);
 
 	}
+
+
+    public function export(){
+
+		foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
+			$odei[] = $key->ODEI_COD;
+		}
+		
+		//regular
+		$registros = $this->observacion_campo_model->get_todo($odei);    	
+
+		// Propiedades del archivo excel
+			$this->phpexcel->getProperties()
+			->setTitle("Observacion de campo")
+			->setDescription("Observacion");
+
+		// Setiar la solapa que queda actia al abrir el excel
+		$this->phpexcel->setActiveSheetIndex(0);
+
+		// Solapa excel para trabajar con PHP
+		$sheet = $this->phpexcel->getActiveSheet(0);
+		$sheet->setTitle("Observacion de campo");
+		$sheet->getColumnDimension('A')->setWidth(10);
+		$sheet->getColumnDimension('B')->setWidth(25);
+		$sheet->getColumnDimension('D')->setWidth(25);
+		$sheet->getColumnDimension('F')->setWidth(25);
+		$sheet->getColumnDimension('H')->setWidth(25);
+		$sheet->getColumnDimension('J')->setWidth(25);
+		$sheet->getColumnDimension('L')->setWidth(25);
+		$sheet->getColumnDimension('O')->setWidth(35);
+		$sheet->getColumnDimension('X')->setWidth(15);
+		$sheet->getColumnDimension('AA')->setWidth(50);
+
+
+		//NOMBRE CELDAS
+				$sheet->setCellValue('A2','SEDE_COD');
+				$sheet->setCellValue('B2','SEDE');
+				$sheet->setCellValue('C2','ODEI' );
+				$sheet->setCellValue('D2','ODEI_COD' );
+				$sheet->setCellValue('E2','CCDD' );
+				$sheet->setCellValue('F2','DEPARTAMENTO' );
+				$sheet->setCellValue('G2','CCPP' );
+				$sheet->setCellValue('H2','PROVINCIA' );
+				$sheet->setCellValue('I2','CCDI' );
+				$sheet->setCellValue('J2','DISTRITO' );
+				$sheet->setCellValue('K2','COD_CCPP' );
+				$sheet->setCellValue('L2','CENTRO POBLADO' );
+				$sheet->setCellValue('M2','DIA ' );
+				$sheet->setCellValue('N2', 'MES' );
+				$sheet->setCellValue('O2', 'NOMBRES Y APELLIDOS' );
+				$sheet->setCellValue('P2', 'CARGO' );
+				$sheet->setCellValue('Q2', 'F. PESCADOR.' );
+				$sheet->setCellValue('R2', 'F. ACUICULTOR.' );
+				$sheet->setCellValue('S2', 'F. COMUNIDAD.' );
+				$sheet->setCellValue('T2', 'SECCION' );
+				$sheet->setCellValue('U2', 'PREGUNTA.' );
+				$sheet->setCellValue('V2', 'E_CONC.' );
+				$sheet->setCellValue('W2', 'E_DILIG.' );
+				$sheet->setCellValue('X2','E_PREG ');
+				$sheet->setCellValue('Y2',' E_SOND');
+				$sheet->setCellValue('Z2',' E_OMI.');
+				$sheet->setCellValue('AA2',' DESCRIPCIÓN DEL ERROR');
+
+		//CELDAS
+
+     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle('A2:AA2');
+        $headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+
+
+		$total = $registros->num_rows()+2;
+		$numberStyle1 = $this->phpexcel->getActiveSheet(0)->getStyle('A3:A'.$total);
+		$numberStyle1->getNumberFormat()->setFormatCode('00');
+
+		$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('C3:C'.$total);
+		$numberStyle2->getNumberFormat()->setFormatCode('00');
+
+		$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('E3:E'.$total);
+		$numberStyle2->getNumberFormat()->setFormatCode('00');
+
+		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('G3:G'.$total);
+		$numberStyle3->getNumberFormat()->setFormatCode('00');		
+
+		$numberStyle4 = $this->phpexcel->getActiveSheet(0)->getStyle('I3:I'.$total);
+		$numberStyle4->getNumberFormat()->setFormatCode('00');
+
+		$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('K3:K'.$total);
+		$numberStyle2->getNumberFormat()->setFormatCode('0000');
+
+		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('M3:M'.$total);
+		$numberStyle3->getNumberFormat()->setFormatCode('00');	
+
+		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('N3:N'.$total);
+		$numberStyle3->getNumberFormat()->setFormatCode('00');	
+				$row = 2;
+				$col = 0;
+				 foreach($registros->result() as $filas){
+				    $row ++;
+				    //$rec = 0;
+					 foreach($filas as $cols){
+				  		$sheet->getCellByColumnAndRow($col++, $row)->setValue($cols);
+					 }
+					 $col =0;
+				}
+		// Salida
+		header("Content-Type: application/vnd.ms-excel");
+		$nombreArchivo = 'ObservacionCampo_'.date('YmdHis');
+		header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\"");
+		header("Cache-Control: max-age=0");
+		// Genera Excel
+
+		$writer = PHPExcel_IOFactory::createWriter($this->phpexcel, "Excel5");
+		//$writer = new PHPExcel_Writer_Excel2007($this->phpexcel);
+
+		$writer->save('php://output');
+		exit;
+ 	}
+
+
 
 
 

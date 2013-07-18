@@ -17,9 +17,12 @@ class Revision_model extends CI_MODEL
 	}
 
     function get_todo($odei)
-    {   $this->db->where_in('SEDE_COD',$odei);
+    {   
+        $this->db->select('SEDE_COD,NOM_SEDE,ODEI_COD,NOM_ODEI,CCDD,NOM_DD,CCPP,NOM_PP,CCDI,NOM_DI,COD_CCPP,NOM_CCPP,F_D,F_M,
+                        NOM,CARGO,F_PES,F_ACU,F_COM,SEC,PREG_N,E_CONC,E_DILIG,E_OMI,DES_E');
+        $this->db->where_in('SEDE_COD',$odei);
         $q = $this->db->get('revision_gabinete');
-        return $q->result();
+        return $q;
     }
 
     function insertar($data){
