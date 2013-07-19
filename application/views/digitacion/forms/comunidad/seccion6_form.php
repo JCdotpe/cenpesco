@@ -629,7 +629,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 									echo '</div>'; 	
 
 									echo '<div class="control-group-pp  span4">';	
-										echo form_label('PAN TBC', $S6_4_9['id'], $label_class);
+										echo form_label(' tuberculosis y familia (PANTBC)', $S6_4_9['id'], $label_class);
 									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	

@@ -283,13 +283,17 @@ echo form_close();
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
     $('input').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-            var array_otros = ['S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //SECCCION 3
+            var array_otros = [ 'S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //SECCCION 3
                                 'S5_2_7','S5_3_17', // SECCION 5
                                 'S6_3_6','S6_4_15']; // SECCION 6
             var array_libres = ['S6_2_2_A','S6_2_3_A'];
             var array_especiales = ['S3_1','S7_15'];
 	  	 	var array_ninguno = ['S3_8_6','S3_8_10','S3_18_5','S6_3_7','S7_2_10','S7_6_4','S7_8_20','S7_16_5']; // NINGUNOS
-
+	  	 	var array_pases = {
+	  	 		'S3_2' : [1,2, 3 ],
+	  	 		'S3_3' : [1,2, 3 ],
+	  	 		};
+	  	 	//codigo, value
             if(key == 13) {
                 e.preventDefault();
                 var inputs = $(this).closest('form').find(':input:enabled:visible');
@@ -308,7 +312,16 @@ echo form_close();
                         } else{
                             inputs.eq( inputs.index(this)+ 2 ).focus();                             
                         }
-                    } else if ( inArray($(this).attr('id'), array_ninguno )) {// BUSCA CAMPOS NINGUNO
+                    } else if ( inArray($(this).attr('id'), array_pases )) {// BUSCA CAMPOS NINGUNO
+                        // if (!ningunos(this)) {
+                        // 	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+                        // 	inputs.eq( inputs.index(this) ).focus();  
+                        // 	inputs.eq( inputs.index(this) ).select();  
+                        // } else{
+                        // 	inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                        // };
+                        alert('entrro');
+                    }else if ( inArray($(this).attr('id'), array_ninguno )) {// BUSCA CAMPOS NINGUNO
                         if (!ningunos(this)) {
                         	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
                         	inputs.eq( inputs.index(this) ).focus();  
@@ -717,7 +730,7 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
 
 
 $.extend(jQuery.validator.messages, {
-     required: "Campo obligatorio",
+     required: "Requerido",
     // remote: "Please fix this field.",
     // email: "Please enter a valid email address.",
     // url: "Please enter a valid URL.",

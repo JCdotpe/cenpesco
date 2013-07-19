@@ -10,7 +10,7 @@ class Revision extends CI_Controller {
 		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');	
-		$this->load->library('phpexcel');				
+		$this->load->library('PHPExcel');				
 
 		//User is logged in
 		if (!$this->tank_auth->is_logged_in()) {
@@ -170,117 +170,203 @@ class Revision extends CI_Controller {
 		foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
 			$odei[] = $key->ODEI_COD;
 		}
-		
-		//regular
 		$registros = $this->revision_model->get_todo($odei);    	
 
-		// Propiedades del archivo excel
-			$this->phpexcel->getProperties()
-			->setTitle("Observacion en gavinete")
-			->setDescription("Revision en gavinete");
-
-		// Setiar la solapa que queda actia al abrir el excel
-		$this->phpexcel->setActiveSheetIndex(0);
-
-		// Solapa excel para trabajar con PHP
+		// pestaña
 		$sheet = $this->phpexcel->getActiveSheet(0);
-		$sheet->setTitle("Revision de gavinete");
-		$sheet->getColumnDimension('A')->setWidth(10);
-		$sheet->getColumnDimension('B')->setWidth(25);
-		$sheet->getColumnDimension('D')->setWidth(25);
-		$sheet->getColumnDimension('F')->setWidth(25);
-		$sheet->getColumnDimension('H')->setWidth(25);
-		$sheet->getColumnDimension('J')->setWidth(25);
-		$sheet->getColumnDimension('L')->setWidth(25);
-		$sheet->getColumnDimension('O')->setWidth(35);
-		$sheet->getColumnDimension('y')->setWidth(50);
+		
+
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet->getColumnDimension('A')->setWidth(10);
+			$sheet->getColumnDimension('B')->setWidth(25);
+			$sheet->getColumnDimension('D')->setWidth(25);
+			$sheet->getColumnDimension('F')->setWidth(25);
+			$sheet->getColumnDimension('H')->setWidth(25);
+			$sheet->getColumnDimension('J')->setWidth(25);
+			$sheet->getColumnDimension('K')->setWidth(15);
+			$sheet->getColumnDimension('L')->setWidth(35);
+			$sheet->getColumnDimension('O')->setWidth(35);
+			$sheet->getColumnDimension('Q')->setWidth(15);
+			$sheet->getColumnDimension('R')->setWidth(15);
+			$sheet->getColumnDimension('S')->setWidth(15);
+			$sheet->getColumnDimension('V')->setWidth(12);
+			$sheet->getColumnDimension('W')->setWidth(12);
+			$sheet->getColumnDimension('X')->setWidth(12);
+			$sheet->getColumnDimension('y')->setWidth(50);
+			$sheet->getRowDimension(6)->setRowHeight(20);
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+
+		// TITULOS
+			$sheet->setCellValue('A2','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet->mergeCells('A2:Y2');
+			$sheet->setCellValue('A3','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet->mergeCells('A3:Y3');
+			$sheet->setCellValue('A4','REPORTE DE REVISIÓN EN GAVINETE ' );
+			$sheet->mergeCells('A4:Y4');
+			$sheet->getStyle('A2:Y4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet->getStyle('A2:AY4')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet->getStyle('A2:Y2')->getFont()->setname('Arial black')->setSize(16);	
+			$sheet->getStyle('A3:Y4')->getFont()->setname('Arial')->setSize(16);	
+
+			// LOGO
+	          $objDrawing = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing->setWorksheet($sheet);
+	          $objDrawing->setName("inei");
+	          $objDrawing->setDescription("Inei");
+	          $objDrawing->setPath("img/inei.jpeg");
+	          $objDrawing->setCoordinates('B1');
+	          $objDrawing->setHeight(80);
+	          $objDrawing->setOffsetX(1);
+	          $objDrawing->setOffsetY(5);
+
+	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing2->setWorksheet($sheet);
+	          $objDrawing2->setName("produce");
+	          $objDrawing2->setDescription("Produce");
+	          $objDrawing2->setPath("img/produce.jpg");
+	          $objDrawing2->setCoordinates('W1');
+	          $objDrawing2->setHeight(73);
+	          $objDrawing2->setOffsetX(1);
+	          $objDrawing2->setOffsetY(5);
+		// TITULOS
+
+		// CABECERA ESPECIAL
+			/*$sheet->setCellValue('P5','COMUNIDADES');
+			$sheet->mergeCells('P5:S5');
+			$sheet->setCellValue('T5','PESCADOR ' );
+			$sheet->mergeCells('T5:X5');
+			$sheet->setCellValue('Y5','ACUICULTOR ' );
+			$sheet->mergeCells('Y5:AC5');
+			$sheet->getStyle('A5:AC5')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet->getStyle('A5:AC5')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet->getStyle('A5:AC5')->getFont()->setname('Arial')->setSize(13);	
+			$sheet->getStyle("P5:AC5")->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));*/
+		// CABECERA ESPECIAL
+
+		// CABECERA
+			// INICIO DE LA  cabecera
+			$cab = 6;	
+				
+			// NOMBRE CABECERAS
+					$sheet->setCellValue('A'.$cab,'COD');
+					$sheet->setCellValue('B'.$cab,'SEDE');
+					$sheet->setCellValue('C'.$cab,'COD' );
+					$sheet->setCellValue('D'.$cab,'ODEI' );
+					$sheet->setCellValue('E'.$cab,'CCDD' );
+					$sheet->setCellValue('F'.$cab,'DEPARTAMENTO' );
+					$sheet->setCellValue('G'.$cab,'CCPP' );
+					$sheet->setCellValue('H'.$cab,'PROVINCIA' );
+					$sheet->setCellValue('I'.$cab,'CCDI' );
+					$sheet->setCellValue('J'.$cab,'DISTRITO' );
+					$sheet->setCellValue('K'.$cab,'COD_CCPP' );
+					$sheet->setCellValue('L'.$cab,'CENTRO POBLADO' );
+					$sheet->setCellValue('M'.$cab,'DIA ' );
+					$sheet->setCellValue('N'.$cab, 'MES' );
+					$sheet->setCellValue('O'.$cab, 'NOMBRES Y APELLIDOS' );
+					$sheet->setCellValue('P'.$cab, 'CARGO' );
+					$sheet->setCellValue('Q'.$cab, 'N. F. PESC.' );
+					$sheet->setCellValue('R'.$cab, 'N. F. ACUI.' );
+					$sheet->setCellValue('S'.$cab, 'N. F. COMU.' );
+					$sheet->setCellValue('T'.$cab, 'SECC.' );
+					$sheet->setCellValue('U'.$cab, 'PREG.' );
+					$sheet->setCellValue('V'.$cab, 'E_CONC.' );
+					$sheet->setCellValue('W'.$cab, 'E_DILIG.' );
+					$sheet->setCellValue('X'.$cab, 'E_OMI');
+					$sheet->setCellValue('Y'.$cab, 'DESCRIPCIÓN DEL ERROR');
+			// NOMBRE CABECERAS
+
+			// ESTILOS  CABECERAS
+				$sheet->getStyle("A".$cab.":Y".$cab)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+				$sheet->getStyle("A".$cab.":Y".$cab)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+				$sheet->getStyle("A".$cab.":Y".$cab)->getFont()->setname('Arial')->setSize(11);
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":Y".$cab);
+		        $headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+
+				$sheet->getStyle("A".$cab.":Y".$cab)->applyFromArray(array(
+				'borders' => array(
+							'allborders' => array(
+											'style' => PHPExcel_Style_Border::BORDER_THIN)
+						)
+				));
+			// ESTILOS  CABECERAS
+		// CABECERA
+
+	    // CUERPO
+			$total = $registros->num_rows()+ $cab;
+			$numberStyle1 = $this->phpexcel->getActiveSheet(0)->getStyle('A3:A'.$total);
+			$numberStyle1->getNumberFormat()->setFormatCode('00');
+
+			$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('C3:C'.$total);
+			$numberStyle2->getNumberFormat()->setFormatCode('00');
+
+			$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('E3:E'.$total);
+			$numberStyle2->getNumberFormat()->setFormatCode('00');
+
+			$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('G3:G'.$total);
+			$numberStyle3->getNumberFormat()->setFormatCode('00');		
+
+			$numberStyle4 = $this->phpexcel->getActiveSheet(0)->getStyle('I3:I'.$total);
+			$numberStyle4->getNumberFormat()->setFormatCode('00');
+
+			$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('K3:K'.$total);
+			$numberStyle2->getNumberFormat()->setFormatCode('0000');
+
+			$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('M3:M'.$total);
+			$numberStyle3->getNumberFormat()->setFormatCode('00');	
+
+			$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('N3:N'.$total);
+			$numberStyle3->getNumberFormat()->setFormatCode('00');	
+
+			//bordes cuerpo
+			$sheet->getStyle("A".($cab+1).":Y".$total)->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));
+
+			// EXPORTACION A EXCEL
+	 			
+			$row = $cab;
+			$col = 0;
+			 foreach($registros->result() as $filas){
+			    $row ++;
+				 foreach($filas as $cols){
+			  		$sheet->getCellByColumnAndRow($col++, $row)->setValue($cols);
+				 }
+				 $col =0;
+			}
+ 		// CUERPO
+
+		// SALIDA EXCEL
+			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
+
+			// Propiedades del archivo excel
+				$sheet->setTitle("Revisión en gavinete");
+				$this->phpexcel->getProperties()
+				->setTitle("Revisión en gavinete")
+				->setDescription("Revisión en gavinete");
+
+			header("Content-Type: application/vnd.ms-excel");
+			$nombreArchivo = 'RevisionGavinete_'.date('YmdHis');
+			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\"");
+			header("Cache-Control: max-age=0");
+			
+			// Genera Excel
+			$writer = PHPExcel_IOFactory::createWriter($this->phpexcel, "Excel5");
+			//$writer = new PHPExcel_Writer_Excel2007($this->phpexcel);
+
+			$writer->save('php://output');
+			exit;
+		// SALIDA EXCEL
 
 
-		//NOMBRE CELDAS
-				$sheet->setCellValue('A2','SEDE_COD');
-				$sheet->setCellValue('B2','SEDE');
-				$sheet->setCellValue('C2','ODEI' );
-				$sheet->setCellValue('D2','ODEI_COD' );
-				$sheet->setCellValue('E2','CCDD' );
-				$sheet->setCellValue('F2','DEPARTAMENTO' );
-				$sheet->setCellValue('G2','CCPP' );
-				$sheet->setCellValue('H2','PROVINCIA' );
-				$sheet->setCellValue('I2','CCDI' );
-				$sheet->setCellValue('J2','DISTRITO' );
-				$sheet->setCellValue('K2','COD_CCPP' );
-				$sheet->setCellValue('L2','CENTRO POBLADO' );
-				$sheet->setCellValue('M2','DIA ' );
-				$sheet->setCellValue('N2', 'MES' );
-				$sheet->setCellValue('O2', 'NOMBRES Y APELLIDOS' );
-				$sheet->setCellValue('P2', 'CARGO' );
-				$sheet->setCellValue('Q2', 'F. PESCADOR.' );
-				$sheet->setCellValue('R2', 'F. ACUICULTOR.' );
-				$sheet->setCellValue('S2', 'F. COMUNIDAD.' );
-				$sheet->setCellValue('T2', 'SECCION' );
-				$sheet->setCellValue('U2', 'PREGUNTA.' );
-				$sheet->setCellValue('V2', 'E_CONC.' );
-				$sheet->setCellValue('W2', 'E_DILIG.' );
-				$sheet->setCellValue('X2','E_OMI');
-				$sheet->setCellValue('Y2','  DESCRIPCIÓN DEL ERROR');
-
-
-		//CELDAS
-
-     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle('A2:y2');
-        $headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
-
-
-		$total = $registros->num_rows()+2;
-		$numberStyle1 = $this->phpexcel->getActiveSheet(0)->getStyle('A3:A'.$total);
-		$numberStyle1->getNumberFormat()->setFormatCode('00');
-
-		$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('C3:C'.$total);
-		$numberStyle2->getNumberFormat()->setFormatCode('00');
-
-		$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('E3:E'.$total);
-		$numberStyle2->getNumberFormat()->setFormatCode('00');
-
-		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('G3:G'.$total);
-		$numberStyle3->getNumberFormat()->setFormatCode('00');		
-
-		$numberStyle4 = $this->phpexcel->getActiveSheet(0)->getStyle('I3:I'.$total);
-		$numberStyle4->getNumberFormat()->setFormatCode('00');
-
-		$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('K3:K'.$total);
-		$numberStyle2->getNumberFormat()->setFormatCode('0000');
-
-		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('M3:M'.$total);
-		$numberStyle3->getNumberFormat()->setFormatCode('00');	
-
-		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('N3:N'.$total);
-		$numberStyle3->getNumberFormat()->setFormatCode('00');	
-
-		$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('N3:N'.$total);
-		$numberStyle3->getNumberFormat()->setFormatCode('00');		
-				$row = 2;
-				$col = 0;
-				 foreach($registros->result() as $filas){
-				    $row ++;
-				    //$rec = 0;
-					 foreach($filas as $cols){
-				  		$sheet->getCellByColumnAndRow($col++, $row)->setValue($cols);
-					 }
-					 $col =0;
-				}
-		// Salida
-		header("Content-Type: application/vnd.ms-excel");
-		$nombreArchivo = 'RevisionGavinete_'.date('YmdHis');
-		header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\"");
-		header("Cache-Control: max-age=0");
-		// Genera Excel
-
-		$writer = PHPExcel_IOFactory::createWriter($this->phpexcel, "Excel5");
-		//$writer = new PHPExcel_Writer_Excel2007($this->phpexcel);
-
-		$writer->save('php://output');
-		exit;
  	}
-
 
 }
 

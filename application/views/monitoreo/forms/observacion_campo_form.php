@@ -333,7 +333,7 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '<div class="span4 titulos">';
 
 						echo '<div class="offset1 span11 titulos">';
-							echo '<h5>TIPO DE FORMULARIO</h5>';
+							echo '<h5>N° DE FORMULARIO</h5>';
 						echo '</div>';
 
 						echo '<div class="row-fluid">';
@@ -382,27 +382,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							// echo '<div class="control-group grupos span2">';
 
-							// 	echo form_label('Seccion','SEC',$label1);
-							// 	echo '<div class="controls offset1 span8">';
-							// 		echo form_input($SEC); 
-							// 		echo '<span class="help-inline"></span>';
-							// 		echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
-							// 	echo '</div>';	
-
-							// echo '</div>'; 
-
-							// echo '<div class="control-group grupos  span2">';
-
-							// 	echo form_label('Pregunta','PREG_N',$label1);
-							// 	echo '<div class="controls offset1 span8">';
-							// 		echo form_input($PREG_N); 
-							// 		echo '<span class="help-inline"></span>';
-							// 		echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
-							// 	echo '</div>';	
-
-							// echo '</div>'; 
 
 						
 						echo '</div>';
@@ -414,8 +394,32 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="row-fluid">';	
 
+				echo '<div class="span2 titulos" style="padding-top: 41px !important">';
+					echo '<div class="control-group grupos span6">';
+
+						echo form_label('Seccion','SEC',$label1);
+						echo '<div class="controls span12">';
+							echo form_input($SEC); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
+						echo '</div>';	
+
+					echo '</div>'; 
+
+					echo '<div class="control-group grupos  span6">';
+
+						echo form_label('Pregunta','PREG_N',$label1);
+						echo '<div class="controls  span12">';
+							echo form_input($PREG_N); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
+						echo '</div>';	
+
+					echo '</div>'; 
+				echo '</div>';
+
 				// OBSERVACIONES	
-					echo '<div class="span12 titulos">';
+					echo '<div class="span10 titulos">';
 
 						echo '<div class="span12 titulos">';
 							echo '<h5> TIPO DE ERROR</h5>';
@@ -423,7 +427,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="span7">';
+							echo '<div class="span8">';
 
 								echo '<div class="control-group grupos span2">';
 
@@ -482,7 +486,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span5">';
+							echo '<div class="control-group grupos  span4">';
 								echo '<div class="span3">';
 									echo form_label('Descripccion del error:','DES_E',$label1);
 								echo '</div>'; 	
@@ -619,7 +623,7 @@ var opcion = 0;
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
                 }else{
-                    if ( $(this).attr('id') == "E_OMI" ) {// CAMPO ESPECIAL
+                    if ( $(this).attr('id') == "E_OMI" ) {// CAMPO ESPECIAL: 
                     	var sum = parseInt(inputs.eq( inputs.index(this)-1).val()) + parseInt(inputs.eq( inputs.index(this)-2).val())+ parseInt(inputs.eq( inputs.index(this)-3).val())+ parseInt(inputs.eq( inputs.index(this)-4).val())+ parseInt($(this).val()) ;  
                         if (sum == 0 ) {
                         	alert("Debe seleccionar al menos un error");
@@ -627,6 +631,41 @@ var opcion = 0;
                             inputs.eq( inputs.index(this)-4).select();  
                         } else{
                             inputs.eq( inputs.index(this)+ 1 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                        }
+                    }else if ( $(this).attr('id') == "F_PES" ) {// CAMPO ESPECIAL: 
+                        if ($(this).val() > 0 ) {
+                            inputs.eq( inputs.index(this)+1).val(0);  
+                            inputs.eq( inputs.index(this)+2).val(0);  
+                            inputs.eq( inputs.index(this)+3).focus();  
+                        } else{
+                            inputs.eq( inputs.index(this)+ 1 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                        }
+                    }else if ( $(this).attr('id') == "F_ACU" ) {// CAMPO ESPECIAL: 
+                        if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) ) {
+                        	alert('Sólo puede ingresar en un solo formulario');
+                            inputs.eq( inputs.index(this)-1).focus();  
+                            inputs.eq( inputs.index(this)-1).select();  
+                        } else if ($(this).val() > 0) {
+                            inputs.eq( inputs.index(this)+ 1 ).val(0);                             
+                            inputs.eq( inputs.index(this)+ 2 ).focus(); 
+                            inputs.eq( inputs.index(this)+ 2 ).select();                             
+                        }else{
+                            inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                        }
+                    }else if ( $(this).attr('id') == "F_COM" ) {// CAMPO ESPECIAL: 
+                        if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) && (inputs.eq( inputs.index(this)-2).val() > 0 ) ) {
+                        	alert('Sólo puede ingresar en un solo formulario');
+                            inputs.eq( inputs.index(this)-2).focus();  
+                            inputs.eq( inputs.index(this)-2).select();  
+                        } else if (($(this).val()  == 0 ) && (inputs.eq( inputs.index(this)-1).val() == 0 ) && (inputs.eq( inputs.index(this)-2).val() == 0 )) {
+                        	alert('Debe ingresar en información en un formulario');
+                            inputs.eq( inputs.index(this)- 2 ).focus(); 
+                            inputs.eq( inputs.index(this)- 2 ).select();                             
+                        }else{
+                            inputs.eq( inputs.index(this)+ 1 ).focus(); 
                             inputs.eq( inputs.index(this)+ 1 ).select();                             
                         }
                     }else{
@@ -1278,6 +1317,17 @@ $("#frm_observacion_campo").validate({
 
 
     submitHandler: function(form) {
+
+
+	if (($("#F_PES").val()  == 0 ) && ($("#F_ACU").val() == 0 ) && ($("#F_COM").val() == 0 )) {
+		alert("Tiene que ingresar en un formulario");
+		$("#F_PES").focus();
+	}else if (( ($("#F_ACU").val() > 0 ) && ($("#F_COM").val() > 0 )) || ( ($("#F_PES").val()  > 0 ) && ($("#F_ACU").val() > 0 ) ) || ( ($("#F_PES").val()  > 0 ) && ($("#F_COM").val() > 0 ) ) )  {
+		alert("Sólo puede ingresar en un formulario");
+		$("#F_PES").focus();
+	}else{
+
+
     	//Consulta de form pescador
         var form_data = {
             csrf_token_c: CI.cct,
@@ -1339,7 +1389,10 @@ $("#frm_observacion_campo").validate({
 
             }
         });     
-          	
+     
+	}
+
+
     }       
 });
 

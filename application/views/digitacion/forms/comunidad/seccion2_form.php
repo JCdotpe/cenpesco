@@ -15,7 +15,7 @@ $ccppArray = array(-1 => ' -');
 
 $labelnroform=  array('class' => 'preguntas_sub2 nroformpesc');
 $label1=  array('class' => 'preguntas_sub2');
-$label_class =  array('class' => 'control-label pesc_f');
+$label_class =  array('class' => 'control-label pesc_f preguntas_sub');
 $label1=  array('class' => 'preguntas_sub2');
 $label_horizontal=  array('class' => 'control-label_left  preguntas_sub');
 $label_horizontal2=  array('class' => 'control-label_left span4 preguntas_sub');
@@ -169,56 +169,49 @@ echo form_open($this->uri->uri_string(),$attr);
 			
 
 	
-	echo '<div class="row-fluid">';
+	echo '<div class="row-fluid preguntas" id="SEC2_1">';
 
-		echo '<div class="span12">';
-			echo '<p>1. Apellidos y Nombres</p>';
-			echo '<div class="row-fluid">';
+		echo '<div class="row-fluid preguntas_sub">';
+				echo '<p>1. Apellidos y Nombres</p>';	
+		echo '</div>'; 	
 
-				//echo '<div class="span12">';
-					
-					echo '<div class="span3">';
-						echo '<div class="control-group">';
-							 echo form_label('Ap. Paterno', $S2_1_AP['id'], $label_class);
-							 echo '<div class="controls">'; 
-								echo form_input($S2_1_AP); 
-								echo '<span class="help-inline"></span>';
-								echo '<div class="help-block error">' . form_error($S2_1_AP['name']) . '</div>';
-							echo '</div>';
+		echo '<div class="row-fluid "  >';
+				
+				echo '<div class="span4">';
+					echo '<div class="control-group">';
+						 echo form_label('Ap. Paterno', $S2_1_AP['id'], $label_class);
+						 echo '<div class="controls span11">'; 
+							echo form_input($S2_1_AP); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($S2_1_AP['name']) . '</div>';
 						echo '</div>';
-					echo '</div>'; 
+					echo '</div>';
+				echo '</div>'; 
 
-					echo '<div class="span3">';
-						echo '<div class="control-group">';
-							 echo form_label('Ap. Materno', $S2_1_AM['id'], $label_class);
-							echo '<div class="controls">'; 
-								echo form_input($S2_1_AM); 
-								echo '<span class="help-inline"></span>';
-								echo '<div class="help-block error">' . form_error($S2_1_AM['name']) . '</div>';
+				echo '<div class="span4">';
+					echo '<div class="control-group">';
+						 echo form_label('Ap. Materno', $S2_1_AM['id'], $label_class);
+						echo '<div class="controls span11">'; 
+							echo form_input($S2_1_AM); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($S2_1_AM['name']) . '</div>';
 
-							echo '</div>';
 						echo '</div>';
-					echo '</div>'; 
+					echo '</div>';
+				echo '</div>'; 
 
-					echo '<div class="span6">';
-						echo '<div class="control-group">';
-							echo form_label('Nombres', $S2_1_NOM['id'], $label_class);
-							echo '<div class="controls">'; 
-								echo form_input($S2_1_NOM); 
-								echo '<span class="help-inline"></span>';
-								echo '<div class="help-block error">' . form_error($S2_1_NOM['name']) . '</div>';
-							echo '</div>';
+				echo '<div class="span4">';
+					echo '<div class="control-group">';
+						echo form_label('Nombres', $S2_1_NOM['id'], $label_class);
+						echo '<div class="controls span11">'; 
+							echo form_input($S2_1_NOM); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($S2_1_NOM['name']) . '</div>';
 						echo '</div>';
-					echo '</div>'; 
+					echo '</div>';
+				echo '</div>'; 
 
-				//echo '</div>'; 
-
-			echo '</div>';
-
-		echo '</div>'; 
-
-
-
+		echo '</div>';
 
 	echo '</div>'; 				
 
@@ -234,10 +227,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="row-fluid">';
 
-			echo '<div class="span6">';
+			echo '<div class="span6 preguntas" id="SEC2_2">';
 					echo '<div class="control-group">';
 					echo form_label('2. Cargo', $S2_2_CARGO['id'], $label_class);	
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_2_CARGO); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_2_CARGO['name']) . '</div>';
@@ -245,7 +238,7 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '</div>'; 	
 			echo '</div>'; 	
 
-			echo '<div class="span6">';
+			echo '<div class="span6 preguntas" id="SEC2_3">';
 
 					echo form_label('3. Tiempo en el cargo',$S2_3_A['id'],$label_horizontal);	
 
@@ -282,10 +275,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="row-fluid">';
 
-			echo '<div class="offset1 span1">';
+			echo '<div class="span4 preguntas" style="padding-bottom: 12px !important" id="SEC2_4">';
 					echo '<div class="control-group">';
 					echo form_label('4. Sexo', $S2_4['id'], $label_class);	
-						echo '<div class="controls">';
+						echo '<div class="controls offset4 span4">';
 							echo form_input($S2_4); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_4['name']) . '</div>';
@@ -293,57 +286,60 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '</div>'; 	
 			echo '</div>'; 	
 
-			echo '<div class="offset1 span2">';
-					echo '<div class="control-group">';
+			echo '<div class=" span4 preguntas" id="SEC2_5">';
+					echo '<div class="control-group span6">';
 					echo form_label('5. DNI', $S2_5['id'], $label_class);
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_5); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_5['name']) . '</div>';
 						echo '</div>';	
 					echo '</div>'; 	
-			echo '</div>'; 	
 
-			echo '<div class="span2">';
-					echo '<div class="control-group">';
+			// echo '</div>'; 	
+
+			// echo '<div class="span2">';
+
+					echo '<div class="control-group span6">';
 					echo form_label('Verifique DNI', $S2_5_DD['id'], $label_class);
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_5_DD); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_5_DD['name']) . '</div>';
 						echo '</div>';	
 					echo '</div>'; 	
+
 			echo '</div>'; 	
 
-			echo '<div class="span2">';
-					echo '<div class="control-group">';
+			echo '<div class="span4 preguntas" id="SEC2_6">';
+
+					echo '<div class="control-group span6">';
 					echo form_label('6. RUC', $S2_6['id'], $label_class);
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_6); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_6['name']) . '</div>';
 						echo '</div>';	
 					echo '</div>'; 	
-			echo '</div>'; 	
 
-			echo '<div class="span2">';
-					echo '<div class="control-group">';
+					echo '<div class="control-group span6">';
 					echo form_label('Verifique RUC', $S2_6_DD['id'], $label_class);
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_6_DD); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_6_DD['name']) . '</div>';
 						echo '</div>';	
 					echo '</div>'; 	
+
 			echo '</div>'; 	
 	echo '</div>';
 
 	echo '<div class="row-fluid">';
 
-			echo '<div class="span4">';
+			echo '<div class="span4 preguntas" id="SEC2_7">';
 					echo '<div class="control-group">';
 					echo form_label('7. Número teléfono celular', $S2_7['id'], $label_class);	
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_7); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_7['name']) . '</div>';
@@ -351,10 +347,10 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '</div>'; 	
 			echo '</div>'; 	
 
-			echo '<div class="span4">';
+			echo '<div class="span4 preguntas" id="SEC2_8">';
 					echo '<div class="control-group">';
 					echo form_label('8. Número teléfono fijo / comunitario', $S2_8['id'], $label_class);
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_8); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_8['name']) . '</div>';
@@ -362,10 +358,10 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '</div>'; 	
 			echo '</div>'; 	
 
-			echo '<div class="span4">';
+			echo '<div class="span4 preguntas" id="SEC2_9">';
 					echo '<div class="control-group">';
 					echo form_label('9. Correo Electrónico', $S2_9['id'], $label_class);
-						echo '<div class="controls">';
+						echo '<div class="controls span11">';
 							echo form_input($S2_9); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error($S2_9['name']) . '</div>';
@@ -382,10 +378,15 @@ echo form_open($this->uri->uri_string(),$attr);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////Fila 3
-	echo '<p>10. Ubicación de la comunidad a la que representa</p>';	
+	
 
-	echo '<div class="row-fluid">';
+	echo '<div class="row-fluid preguntas" id="SEC2_10">';
 
+		echo '<div class="row-fluid preguntas_sub">';
+				echo '<p>10. Ubicación de la comunidad a la que representa</p>';	
+		echo '</div>'; 	
+
+		echo '<div class="row-fluid preguntas_sub">';
 			echo '<div class="span3">';
 					echo '<div class="control-group">';
 					echo form_label('10.1. Departamento', 'S2_10_DD_COD', $label_class);	
@@ -429,6 +430,8 @@ echo form_open($this->uri->uri_string(),$attr);
 						echo '</div>';	
 					echo '</div>'; 	
 			echo '</div>'; 	
+
+		echo '</div>';
 
 	echo '</div>';
 

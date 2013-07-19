@@ -317,7 +317,7 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '<div class="span4 titulos">';
 
 						echo '<div class="offset1 span11 titulos">';
-							echo '<h5>TIPO DE FORMULARIO</h5>';
+							echo '<h5>N° DE FORMULARIO</h5>';
 						echo '</div>';
 
 						echo '<div class="row-fluid">';
@@ -615,13 +615,48 @@ var opcion = 0;
                             inputs.eq( inputs.index(this)+ 1 ).focus();                             
                             inputs.eq( inputs.index(this)+ 1 ).select();                             
                         }
+                    }else if ( $(this).attr('id') == "F_PES" ) {// CAMPO ESPECIAL: 
+                        if ($(this).val() > 0 ) {
+                            inputs.eq( inputs.index(this)+1).val(0);  
+                            inputs.eq( inputs.index(this)+2).val(0);  
+                            inputs.eq( inputs.index(this)+3).focus();  
+                        } else{
+                            inputs.eq( inputs.index(this)+ 1 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                        }
+                    }else if ( $(this).attr('id') == "F_ACU" ) {// CAMPO ESPECIAL: 
+                        if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) ) {
+                        	alert('Sólo puede ingresar en un solo formulario');
+                            inputs.eq( inputs.index(this)-1).focus();  
+                            inputs.eq( inputs.index(this)-1).select();  
+                        } else if ($(this).val() > 0) {
+                            inputs.eq( inputs.index(this)+ 1 ).val(0);                             
+                            inputs.eq( inputs.index(this)+ 2 ).focus(); 
+                            inputs.eq( inputs.index(this)+ 2 ).select();                             
+                        }else{
+                            inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                        }
+                    }else if ( $(this).attr('id') == "F_COM" ) {// CAMPO ESPECIAL: 
+                        if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) && (inputs.eq( inputs.index(this)-2).val() > 0 ) ) {
+                        	alert('Sólo puede ingresar en un solo formulario');
+                            inputs.eq( inputs.index(this)-2).focus();  
+                            inputs.eq( inputs.index(this)-2).select();  
+                        } else if (($(this).val()  == 0 ) && (inputs.eq( inputs.index(this)-1).val() == 0 ) && (inputs.eq( inputs.index(this)-2).val() == 0 )) {
+                        	alert('Debe ingresar en información solo un formulario');
+                            inputs.eq( inputs.index(this)- 2 ).focus(); 
+                            inputs.eq( inputs.index(this)- 2 ).select();                             
+                        }else{
+                            inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                        }
                     }else{
                         inputs.eq( inputs.index(this)+ 1 ).focus(); 
                         inputs.eq( inputs.index(this)+ 1 ).select(); 
                    }                         
                 }
             }else if (key == 37) {
-                var inputs = $(this).closest('form').find(':input:enabled');
+                var inputs = $(this).closest('form').find(':input:enabled:visible');
                 if ($(this).val()==""){// NO VACIOS
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
@@ -1260,127 +1295,82 @@ $("#frm_revision").validate({
 
 
     submitHandler: function(form) {
-    	//Consulta de form pescador
-        var form_data = {
-            csrf_token_c: CI.cct,
-            CCDD: $('#NOM_DD').val(),
-            NOM_DD: $('#NOM_DD :selected').text(),
-            CCPP: $('#NOM_PP').val(),
-            NOM_PP : $('#NOM_PP :selected').text(),
-            CCDI: $('#NOM_DI').val(),
-            NOM_DI : $('#NOM_DI :selected').text(),
-            COD_CCPP : $('#NOM_CCPP').val(),
-            NOM_CCPP : $('#NOM_CCPP :selected').text(),
-            F_D :$("#F_D").val(),
-			F_M :$("#F_M").val(),
-			NOM :$("#NOM").val(),
-			CARGO :$("#CARGO").val(),
-			F_PES :$("#F_PES").val(),
-			F_ACU :$("#F_ACU").val(),
-			F_COM :$("#F_COM").val(),
-			SECC :$("#SEC").val(),
-			PREG_N :$("#PREG_N").val(),
-			E_CONC :$("#E_CONC").val(),
-			E_DILIG :$("#E_DILIG").val(),
-			E_OMI :$("#E_OMI").val(),
-			DES_E :$("#DES_E").val(),
-            ajax:1
-        };
-        var bsub = $( "#frm_revision :submit" );
-        //bsub.attr("disabled", "disabled");
-        $.ajax({
-            url: CI.base_url + "monitoreo/revision/grabar",
-            type:'POST',
-            data:form_data,
-            dataType:'json',
-            success:function(json){
-            	var mensaje;
-            	if(json.operacion == 0){
-		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>El centro poblado ya está registrado</div>')
-            	}else if(json.operacion == 1){    
-		    		mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
-			   			$('input:text').val("");
-			   			$('textarea').val("");
-			   			$('select').val(-1);
-			   			$('#NOM_DD').trigger('change');            		
-            	}else if(json.operacion == 7){
-		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
-            	}else if(json.operacion == 8){
-		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, no se pudo registrar</div>')         		
-            	}else if(json.operacion == 99){
-		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>Usuario PILOTO no esta permitido guardar</div>')
-            	}
 
-        		$('.extra').empty();
-        		$('.extra').hide().append(mensaje);   
-        		$('.extra').show('slow');             	
-            	/*if(json.flag == 0){//cuando no fue registrado
-				        $.ajax({
-				            url: CI.base_url + "digitacion/comunidad/insertar",
-				            type:'POST',
-				            data:form_data,
-				            dataType:'json',
-				            success:function(json){
-				            	//alert(json.msg);
-				            	$("#frm_revision :input").attr("disabled", true);
-				            	//insercion correcta
-				            	if(json.flag == 1){
-				            		$('#frm_revision').trigger('submit');
-				            	}else{
-				            	//error en la insercion	
-				            	}
-				            }
-				        });    
-				              		
-            	}else if(json.flag == 1){ //registro encontrado, ver secciones que faltan 
-            		$("#frm_revision :input").attr("disabled", true);              
-            		$('#comunidades_tabs').removeClass('hide');
-                    $("input[name='comunidad_id']").val(json.idx);   // guarda el ID de COMUNIDAD.
-				    var i = 0;
-                    var flagi = false;
-					$.each( json.secciones, function( key, value ) { //key = seccciones, value = 1 || 2
-                        //alert(value);
-						if(value != 0){// oculta las secciones que ya tienen el registro.
-								if(key == 9){
-									$('#cinfo').remove();
-									$('#info').remove();						
-								}else{	
-									$('#tab'+ key).remove();
-									$('#ctab'+ key).remove();
-								}
-								
-						}else { //muestra secciones 
-                            //activar tab     
-                            if(!flagi){                                  
-                                if(key == 9){
-                                    $('#cinfo').addClass('active');
-                                    $('#info').addClass('active');                                               
-                                }else{                                 
-                                    $('#ctab'+ key).addClass('active');
-                                    $('#tab'+ key).addClass('active');
-                                }       
-                            }
-                            flagi = true;                 
-                        }
-                        i++;
-					});
-					if(!flagi){
-						alert('Formulario completado');
-					}else{
-                        alert('Por favor complete la informacion en las secciones a continuacion');   
-                    }
-            	}else if(json.flag == 2){
-                    alert('El Nro de formulario no coincide con  UDRA');
-                    bsub.removeAttr('disabled');    
-                }else if(json.flag == 3){ 
-                    alert('Debe ingresar la UDRA primero, no puede ingresar el formulario.');
-                    bsub.removeAttr('disabled');    
-                }*/
-            // bsub.removeAttr('disabled');  
 
-            }
-        });     
-          	
+		if (($("#F_PES").val()  == 0 ) && ($("#F_ACU").val() == 0 ) && ($("#F_COM").val() == 0 )) {
+			alert("Tiene que ingresar en un formulario");
+			$("#F_PES").focus();
+		}else if (( ($("#F_ACU").val() > 0 ) && ($("#F_COM").val() > 0 )) || ( ($("#F_PES").val()  > 0 ) && ($("#F_ACU").val() > 0 ) ) || ( ($("#F_PES").val()  > 0 ) && ($("#F_COM").val() > 0 ) ) )  {
+			alert("Sólo puede ingresar en un formulario");
+			$("#F_PES").focus();
+		}else{
+
+	    	//Consulta de form pescador
+	        var form_data = {
+	            csrf_token_c: CI.cct,
+	            CCDD: $('#NOM_DD').val(),
+	            NOM_DD: $('#NOM_DD :selected').text(),
+	            CCPP: $('#NOM_PP').val(),
+	            NOM_PP : $('#NOM_PP :selected').text(),
+	            CCDI: $('#NOM_DI').val(),
+	            NOM_DI : $('#NOM_DI :selected').text(),
+	            COD_CCPP : $('#NOM_CCPP').val(),
+	            NOM_CCPP : $('#NOM_CCPP :selected').text(),
+	            F_D :$("#F_D").val(),
+				F_M :$("#F_M").val(),
+				NOM :$("#NOM").val(),
+				CARGO :$("#CARGO").val(),
+				F_PES :$("#F_PES").val(),
+				F_ACU :$("#F_ACU").val(),
+				F_COM :$("#F_COM").val(),
+				SECC :$("#SEC").val(),
+				PREG_N :$("#PREG_N").val(),
+				E_CONC :$("#E_CONC").val(),
+				E_DILIG :$("#E_DILIG").val(),
+				E_OMI :$("#E_OMI").val(),
+				DES_E :$("#DES_E").val(),
+	            ajax:1
+	        };
+	        var bsub = $( "#frm_revision :submit" );
+	        //bsub.attr("disabled", "disabled");
+	        $.ajax({
+	            url: CI.base_url + "monitoreo/revision/grabar",
+	            type:'POST',
+	            data:form_data,
+	            dataType:'json',
+	            success:function(json){
+	            	var mensaje;
+	            	if(json.operacion == 0){
+			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>El centro poblado ya está registrado</div>')
+	            	}else if(json.operacion == 1){    
+			    		mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
+				   			$('input:text').val("");
+				   			$('textarea').val("");
+				   			$('select').val(-1);
+				   			$('#NOM_DD').trigger('change');            		
+	            	}else if(json.operacion == 7){
+			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
+	            	}else if(json.operacion == 8){
+			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, no se pudo registrar</div>')         		
+	            	}else if(json.operacion == 99){
+			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>Usuario PILOTO no esta permitido guardar</div>')
+	            	}
+
+	        		$('.extra').empty();
+	        		$('.extra').hide().append(mensaje);   
+	        		$('.extra').show('slow');             	
+	 
+
+	            }
+	        });     
+	       
+
+		};
+
+
+
+
+
     }       
 });
 
