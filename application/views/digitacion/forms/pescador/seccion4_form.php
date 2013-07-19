@@ -106,6 +106,14 @@ $S4_3_1 = array(
 	'class' => $span_class,
 );
 
+//nombre vida
+$S4_3_1_1 = array(
+	'name'	=> 'S4_3_1_1',
+	'id'	=> 'S4_3_1_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
 //pensiones
 $S4_3_2 = array(
 	'name'	=> 'S4_3_2',
@@ -114,7 +122,13 @@ $S4_3_2 = array(
 	'class' => $span_class,
 );
 
-
+//nom pensiones
+$S4_3_2_1 = array(
+	'name'	=> 'S4_3_2_1',
+	'id'	=> 'S4_3_2_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
 //no afiliado
 $S4_3_3 = array(
 	'name'	=> 'S4_3_3',
@@ -608,7 +622,7 @@ echo '<div class="well modulo">';
 			echo '<p>3. ¿Está afiliado a algún tipo de seguro:</p>';	
 						echo '<div class="row-fluid">';
 
-							echo '<div class="offset2 span2">';
+							echo '<div class="offset1 span2">';
 								echo '<p>De Vida?</p>';
 							echo '</div>';	
 
@@ -622,10 +636,24 @@ echo '<div class="well modulo">';
 								echo '</div>'; 
 							echo '</div>';	
 
-						echo '</div>'; 				
+							echo '<div class="span2">';
+								echo '<p>Nombre</p>';
+							echo '</div>';	
+
+							echo '<div class="span4">';
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S4_3_1_1); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S4_3_1_1['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+							echo '</div>';	
+						echo '</div>'; 			
+
 						echo '<div class="row-fluid">';
 
-							echo '<div class="offset2 span2">';
+							echo '<div class="offset1 span2">';
 								echo '<p>De Pensiones?</p>';
 							echo '</div>';	
 
@@ -639,11 +667,24 @@ echo '<div class="well modulo">';
 								echo '</div>'; 
 							echo '</div>';	
 
+							echo '<div class="span2">';
+								echo '<p>Nombre</p>';
+							echo '</div>';	
+
+							echo '<div class="span4">';
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S4_3_2_1); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S4_3_2_1['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+							echo '</div>';	
 						echo '</div>'; 	
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="offset2 span2">';
+							echo '<div class="offset1 span2">';
 								echo '<p>No está afiliado</p>';
 							echo '</div>';	
 

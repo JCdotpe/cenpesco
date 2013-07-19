@@ -64,24 +64,7 @@ $S3_300_O = array(
 
 
 //techos
-$S3_300A = array(
-	'name'	=> 'S3_300A',
-	'id'	=> 'S3_300A',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//otro
-$S3_300A_O = array(
-	'name'	=> 'S3_300A_O',
-	'id'	=> 'S3_300A_O',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
-
-
-//abastecimiento agua
-$S3_400 = array(
+$S3_400= array(
 	'name'	=> 'S3_400',
 	'id'	=> 'S3_400',
 	'maxlength'	=> 1,
@@ -96,7 +79,8 @@ $S3_400_O = array(
 	'class' => $span_class,
 );
 
-//tiene servicio agua
+
+//abastecimiento agua
 $S3_500 = array(
 	'name'	=> 'S3_500',
 	'id'	=> 'S3_500',
@@ -104,31 +88,15 @@ $S3_500 = array(
 	'class' => $span_class,
 );
 
-//horas al dia
-$S3_500A = array(
-	'name'	=> 'S3_500A',
-	'id'	=> 'S3_500A',
-	'maxlength'	=> 2,
+//otro
+$S3_500_O = array(
+	'name'	=> 'S3_500_O',
+	'id'	=> 'S3_500_O',
+	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
-//dias
-$S3_500B = array(
-	'name'	=> 'S3_500B',
-	'id'	=> 'S3_500B',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//dias horas
-$S3_500C = array(
-	'name'	=> 'S3_500C',
-	'id'	=> 'S3_500C',
-	'maxlength'	=> 2,
-	'class' => $span_class,
-);
-
-//alumbrado electrico por red publica
+//tiene servicio agua
 $S3_600 = array(
 	'name'	=> 'S3_600',
 	'id'	=> 'S3_600',
@@ -136,154 +104,194 @@ $S3_600 = array(
 	'class' => $span_class,
 );
 
+//horas al dia
+$S3_600A = array(
+	'name'	=> 'S3_600A',
+	'id'	=> 'S3_600A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+//dias
+$S3_600B = array(
+	'name'	=> 'S3_600B',
+	'id'	=> 'S3_600B',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//dias horas
+$S3_600C = array(
+	'name'	=> 'S3_600C',
+	'id'	=> 'S3_600C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+//asdasd
+$S3_700 = array(
+	'name'	=> 'S3_700',
+	'id'	=> 'S3_700',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//alumbrado electrico por red publica
+$S3_800 = array(
+	'name'	=> 'S3_800',
+	'id'	=> 'S3_800',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
 //Equipo de sonido
-$S3_701 = array(
-	'name'	=> 'S3_701',
-	'id'	=> 'S3_701',
+$S3_901 = array(
+	'name'	=> 'S3_901',
+	'id'	=> 'S3_901',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //Televisor a color
-$S3_702 = array(
-	'name'	=> 'S3_702',
-	'id'	=> 'S3_702',
+$S3_902 = array(
+	'name'	=> 'S3_902',
+	'id'	=> 'S3_902',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //DVD
-$S3_703 = array(
-	'name'	=> 'S3_703',
-	'id'	=> 'S3_703',
+$S3_903 = array(
+	'name'	=> 'S3_903',
+	'id'	=> 'S3_903',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //licuadora
-$S3_704 = array(
-	'name'	=> 'S3_704',
-	'id'	=> 'S3_704',
+$S3_904 = array(
+	'name'	=> 'S3_904',
+	'id'	=> 'S3_904',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //refrigeradora
-$S3_705 = array(
-	'name'	=> 'S3_705',
-	'id'	=> 'S3_705',
+$S3_905 = array(
+	'name'	=> 'S3_905',
+	'id'	=> 'S3_905',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //plancha
-$S3_706 = array(
-	'name'	=> 'S3_706',
-	'id'	=> 'S3_706',
+$S3_906 = array(
+	'name'	=> 'S3_906',
+	'id'	=> 'S3_906',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //cocina
-$S3_707 = array(
-	'name'	=> 'S3_707',
-	'id'	=> 'S3_707',
+$S3_907 = array(
+	'name'	=> 'S3_907',
+	'id'	=> 'S3_907',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //computadora
-$S3_708 = array(
-	'name'	=> 'S3_708',
-	'id'	=> 'S3_708',
+$S3_908 = array(
+	'name'	=> 'S3_908',
+	'id'	=> 'S3_908',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //Lavadora
-$S3_709 = array(
-	'name'	=> 'S3_709',
-	'id'	=> 'S3_709',
+$S3_909 = array(
+	'name'	=> 'S3_909',
+	'id'	=> 'S3_909',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //Horno
-$S3_710 = array(
-	'name'	=> 'S3_710',
-	'id'	=> 'S3_710',
+$S3_910 = array(
+	'name'	=> 'S3_910',
+	'id'	=> 'S3_910',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //ninguno
-$S3_711 = array(
-	'name'	=> 'S3_711',
-	'id'	=> 'S3_711',
+$S3_911 = array(
+	'name'	=> 'S3_911',
+	'id'	=> 'S3_911',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //tel fijo
-$S3_801 = array(
-	'name'	=> 'S3_801',
-	'id'	=> 'S3_801',
+$S3_1001 = array(
+	'name'	=> 'S3_1001',
+	'id'	=> 'S3_1001',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //cel
-$S3_802 = array(
-	'name'	=> 'S3_802',
-	'id'	=> 'S3_802',
+$S3_1002 = array(
+	'name'	=> 'S3_1002',
+	'id'	=> 'S3_1002',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //internet
-$S3_803 = array(
-	'name'	=> 'S3_803',
-	'id'	=> 'S3_803',
+$S3_1003 = array(
+	'name'	=> 'S3_1003',
+	'id'	=> 'S3_1003',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //cable
-$S3_804 = array(
-	'name'	=> 'S3_804',
-	'id'	=> 'S3_804',
+$S3_1004 = array(
+	'name'	=> 'S3_1004',
+	'id'	=> 'S3_1004',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //ninguno
-$S3_805 = array(
-	'name'	=> 'S3_805',
-	'id'	=> 'S3_805',
+$S3_1005 = array(
+	'name'	=> 'S3_1005',
+	'id'	=> 'S3_1005',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //espacio de la vivienda para realizar alguna actividad 
-$S3_900 = array(
-	'name'	=> 'S3_900',
-	'id'	=> 'S3_900',
+$S3_1100 = array(
+	'name'	=> 'S3_1100',
+	'id'	=> 'S3_1100',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 
-$S3_900E = array(
-	'name'	=> 'S3_900E',
-	'id'	=> 'S3_900E',
+$S3_1100E = array(
+	'name'	=> 'S3_1100E',
+	'id'	=> 'S3_1100E',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
 
-$S3_900E_COD = array(
-	'name'	=> 'S3_900E_COD',
-	'id'	=> 'S3_900E_COD',
+$S3_1100E_COD = array(
+	'name'	=> 'S3_1100E_COD',
+	'id'	=> 'S3_1100E_COD',
 	'maxlength'	=> 4,
 	'class' => $span_class,
 	'readonly' => 'readonly',
@@ -431,43 +439,9 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////FIN PREGUNTA 3
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 3
-		echo '<div class="question">';
-			echo '<p>3.A ¿El material de construcción predominante en los techos de su vivienda es de:</p>';	
-				echo '<div class="row-fluid">';
-					echo '<div class="span12">';
-							echo '<div class="control-group offset1 span4">';
-								echo '<div class="controls">';
-										echo form_input($S3_300A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S3_300A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-
-
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S3_300A_O['id'], $label_class);
-							echo '</div>'; 
-
-							echo '<div class="control-group span4">';
-								echo '<div class="controls">';
-										echo form_input($S3_300A_O); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S3_300A_O['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-
-					echo '</div>';	
-				echo '</div>';	
-		echo '</div>';
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 3
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 4
 		echo '<div class="question">';
-			echo '<p>4. ¿El abastecimiento de agua en la vivienda, procede de:</p>';	
+			echo '<p>4. ¿El material de construcción predominante en los techos de su vivienda es de:</p>';	
 				echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 							echo '<div class="control-group offset1 span4">';
@@ -498,6 +472,129 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////FIN PREGUNTA 4
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 5
+		echo '<div class="question">';
+			echo '<p>5. ¿El abastecimiento de agua en la vivienda, procede de:</p>';	
+				echo '<div class="row-fluid">';
+					echo '<div class="span12">';
+							echo '<div class="control-group offset1 span4">';
+								echo '<div class="controls">';
+										echo form_input($S3_500); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S3_500['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset2 span1">';	
+								echo form_label('Otra', $S3_500_O['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span4">';
+								echo '<div class="controls">';
+										echo form_input($S3_400_O); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S3_500_O['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+					echo '</div>';	
+				echo '</div>';	
+		echo '</div>';
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 5
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 6
+
+
+		echo '<div class="question">';
+			echo '<p>6. ¿La vivienda tiene el servicio de agua todos los días de la semana?</p>';
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S3_600); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S3_600['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';
+
+							echo '<div class="span5">';
+
+								echo '<p>6A. ¿Cuántas horas al día?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S3_600A); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S3_600A['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset4 span5">';
+
+								echo '<p>6B. ¿Cuántas días a la semana tiene este servicio?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S3_600B); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S3_600B['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset4 span5">';
+
+								echo '<p>6C. ¿Cuántas horas al día?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S3_600C); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S3_600C['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 						
+
+		echo '</div>';
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 6
+
 
 	echo '</div>'; 	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -520,119 +617,47 @@ echo '<div class="well modulo">';
 	echo '<div class="span6">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 5
-
-
-		echo '<div class="question">';
-			echo '<p>5. ¿La vivienda tiene el servicio de agua todos los días de la semana?</p>';
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_500); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_500['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';
-
-							echo '<div class="offset1 span5">';
-
-								echo '<p>5A. ¿Cuántas horas al día?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_500A); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_500A['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset4 span5">';
-
-								echo '<p>5B. ¿Cuántas días a la semana tiene este servicio?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_500B); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_500B['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset4 span5">';
-
-								echo '<p>5C. ¿Cuántas horas al día?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_500C); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_500C['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 						
-
-		echo '</div>';
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 5
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 6
+/////////////////////////////////////////////PREGUNTA 7
 
 		echo '<div class="question">';
-			echo '<p>6. ¿La vivienda tiene alumbrado eléctrico por red pública?</p>';	
+			echo '<p>7. ¿El baño o servicio higiénico que tiene su vivienda, está conectado a:</p>';	
 				echo '<div class="row-fluid">';
 							echo '<div class="control-group offset4 span4">';
 								echo '<div class="controls">';
-										echo form_input($S3_600); 
+										echo form_input($S3_700); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S3_600['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S3_700['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 				echo '</div>';	
 		echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 6
-
+/////////////////////////////////////////////FIN PREGUNTA 7
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 7
+/////////////////////////////////////////////PREGUNTA 8
 
 		echo '<div class="question">';
-			echo '<p>7. ¿Su vivienda cuenta con:</p>';	
+			echo '<p>8. ¿La vivienda tiene alumbrado eléctrico por red pública?</p>';	
+				echo '<div class="row-fluid">';
+							echo '<div class="control-group offset4 span4">';
+								echo '<div class="controls">';
+										echo form_input($S3_800); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S3_800['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+				echo '</div>';	
+		echo '</div>';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 8
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 9
+
+		echo '<div class="question">';
+			echo '<p>9. ¿Su vivienda cuenta con:</p>';	
 
 						echo '<div class="row-fluid">';
 
@@ -646,9 +671,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_701); 
+										echo form_input($S3_901); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_701['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_901['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -665,9 +690,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_707); 
+										echo form_input($S3_907); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_707['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_907['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -691,9 +716,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_702); 
+										echo form_input($S3_902); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_702['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_902['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -709,9 +734,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_708); 
+										echo form_input($S3_908); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_708['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_908['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -738,9 +763,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_703); 
+										echo form_input($S3_903); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_703['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_903['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -757,9 +782,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_709); 
+										echo form_input($S3_909); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_709['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_909['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -783,9 +808,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_704); 
+										echo form_input($S3_904); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_704['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_904['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -802,9 +827,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_710); 
+										echo form_input($S3_910); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_710['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_910['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -827,9 +852,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_705); 
+										echo form_input($S3_905); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_705['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_905['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -846,9 +871,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_711); 
+										echo form_input($S3_911); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_711['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_911['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -872,9 +897,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_706); 
+										echo form_input($S3_906); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_706['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_906['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -884,13 +909,13 @@ echo '<div class="well modulo">';
 		echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 7
+/////////////////////////////////////////////FIN PREGUNTA 9
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 8
+/////////////////////////////////////////////PREGUNTA 10
 		echo '<div class="question">';
-			echo '<p>8. ¿Su vivienda cuenta con:</p>';	
+			echo '<p>10. ¿Su vivienda cuenta con:</p>';	
 
 						echo '<div class="row-fluid">';
 
@@ -904,9 +929,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_801); 
+										echo form_input($S3_1001); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_801['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_1001['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -923,9 +948,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_802); 
+										echo form_input($S3_1002); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_802['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_1002['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -945,9 +970,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_803); 
+										echo form_input($S3_1003); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_803['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_1003['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -964,9 +989,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_804); 
+										echo form_input($S3_1004); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_804['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_1004['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -988,9 +1013,9 @@ echo '<div class="well modulo">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S3_805); 
+										echo form_input($S3_1005); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_805['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S3_1005['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -1000,41 +1025,41 @@ echo '<div class="well modulo">';
 
 		echo '</div>';	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 8
+/////////////////////////////////////////////FIN PREGUNTA 10
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 9
+/////////////////////////////////////////////PREGUNTA 11
 		echo '<div class="question">';
-			echo '<p>9. ¿Utiliza algún espacio de la vivienda para realizar alguna actividad</p>';	
+			echo '<p>11. ¿Utiliza algún espacio de la vivienda para realizar alguna actividad</p>';	
 				echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 							echo '<div class="control-group offset1 span2">';
 								echo '<div class="controls">';
-										echo form_input($S3_900); 
+										echo form_input($S3_1100); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S3_900['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S3_1100['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 
 
 							echo '<div class="control-group offset1 span1">';	
-								echo form_label('Especifique', $S3_900E['id'], $label_class);
+								echo form_label('Especifique', $S3_1100E['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group offset1 span3">';
 								echo '<div class="controls">';
-										echo form_input($S3_900E); 
+										echo form_input($S3_1100E); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S3_900E['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S3_1100E['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 
 							echo '<div class="control-group span2">';
 								echo '<div class="controls">';
-										echo form_input($S3_900E_COD); 
+										echo form_input($S3_1100E_COD); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S3_900E['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S3_1100E_COD['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 					echo '</div>';	

@@ -11,6 +11,17 @@ $span_class =  'span12';
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
+
+		$depaxArray = array(-1 =>'-');
+		foreach($departamentos->result() as $filas)
+		{
+			$depaxArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
+		}
+$provArray = array(-1 => ' -'); 
+$distArray = array(-1 => ' -'); 
+$ccppArray = array(-1 => ' -');
+
+
 //SECCION 5
 //rio
 $S5_1_1 = array(
@@ -56,30 +67,30 @@ $S5_1_3_1 = array(
 	'class' => $span_class,
 );
 
-//aguas sub
-$S5_1_4 = array(
-	'name'	=> 'S5_1_4',
-	'id'	=> 'S5_1_4',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//qaguas sub
-$S5_1_4_1 = array(
-	'name'	=> 'S5_1_4_1',
-	'id'	=> 'S5_1_4_1',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
+// //aguas sub
+// $S5_1_4 = array(
+// 	'name'	=> 'S5_1_4',
+// 	'id'	=> 'S5_1_4',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
+// //qaguas sub
+// $S5_1_4_1 = array(
+// 	'name'	=> 'S5_1_4_1',
+// 	'id'	=> 'S5_1_4_1',
+// 	'maxlength'	=> 50,
+// 	'class' => $span_class,
+// );
 
 //marisma
-$S5_1_5 = array(
+$S5_1_4 = array(
 	'name'	=> 'S5_1_5',
 	'id'	=> 'S5_1_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //qmarisma
-$S5_1_5_1 = array(
+$S5_1_4_1 = array(
 	'name'	=> 'S5_1_5_1',
 	'id'	=> 'S5_1_5_1',
 	'maxlength'	=> 50,
@@ -87,59 +98,59 @@ $S5_1_5_1 = array(
 );
 
 //quebrada
-$S5_1_6 = array(
+$S5_1_5 = array(
 	'name'	=> 'S5_1_6',
 	'id'	=> 'S5_1_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //qquebrada
-$S5_1_6_1 = array(
+$S5_1_5_1 = array(
 	'name'	=> 'S5_1_6_1',
 	'id'	=> 'S5_1_6_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
-//desh
-$S5_1_7 = array(
-	'name'	=> 'S5_1_7',
-	'id'	=> 'S5_1_7',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//qdesh
-$S5_1_7_1 = array(
-	'name'	=> 'S5_1_7_1',
-	'id'	=> 'S5_1_7_1',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
+// //desh
+// $S5_1_6 = array(
+// 	'name'	=> 'S5_1_7',
+// 	'id'	=> 'S5_1_7',
+// 	'maxlength'	=> 1,
+// 	'class' => $span_class,
+// );
+// //qdesh
+// $S5_1_6_1 = array(
+// 	'name'	=> 'S5_1_7_1',
+// 	'id'	=> 'S5_1_7_1',
+// 	'maxlength'	=> 50,
+// 	'class' => $span_class,
+// );
 
 //cocha
-$S5_1_8 = array(
+$S5_1_6 = array(
 	'name'	=> 'S5_1_8',
 	'id'	=> 'S5_1_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //qcocha
-$S5_1_8_1 = array(
+$S5_1_6_1 = array(
 	'name'	=> 'S5_1_8_1',
 	'id'	=> 'S5_1_8_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
-//cocha
-$S5_1_8 = array(
+//reserv
+$S5_1_7 = array(
 	'name'	=> 'S5_1_8',
 	'id'	=> 'S5_1_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//qcocha
-$S5_1_8_1 = array(
+//reserv
+$S5_1_7_1 = array(
 	'name'	=> 'S5_1_8_1',
 	'id'	=> 'S5_1_8_1',
 	'maxlength'	=> 50,
@@ -147,7 +158,7 @@ $S5_1_8_1 = array(
 );
 
 //otro
-$S5_1_9 = array(
+$S5_1_8 = array(
 	'name'	=> 'S5_1_9',
 	'id'	=> 'S5_1_9',
 	'maxlength'	=> 1,
@@ -155,7 +166,7 @@ $S5_1_9 = array(
 );
 
 //otro especifique
-$S5_1_9_O = array(
+$S5_1_8_O = array(
 	'name'	=> 'S5_1_9_O',
 	'id'	=> 'S5_1_9_O',
 	'maxlength'	=> 50,
@@ -163,7 +174,7 @@ $S5_1_9_O = array(
 );
 
 //nombre otro
-$S5_1_9_1 = array(
+$S5_1_8_1 = array(
 	'name'	=> 'S5_1_9_1',
 	'id'	=> 'S5_1_9_1',
 	'maxlength'	=> 50,
@@ -369,356 +380,1546 @@ $S5_2_21_O = array(
 	'class' => $span_class,
 );
 
-
-//Boquichico
-$S5_3_1 = array(
-	'name'	=> 'S5_3_1',
-	'id'	=> 'S5_3_1',
+//
+$S5_3 = array(
+	'name'	=> 'S5_3',
+	'id'	=> 'S5_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Doncella
-$S5_3_2 = array(
-	'name'	=> 'S5_3_2',
-	'id'	=> 'S5_3_2',
-	'maxlength'	=> 1,
+//horas
+$S5_3_H = array(
+	'name'	=> 'S5_3_H',
+	'id'	=> 'S5_3_H',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
-//Llambina
-$S5_3_3 = array(
-	'name'	=> 'S5_3_3',
-	'id'	=> 'S5_3_3',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Zungaru
-$S5_3_4 = array(
-	'name'	=> 'S5_3_4',
-	'id'	=> 'S5_3_4',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Palometa
-$S5_3_5 = array(
-	'name'	=> 'S5_3_5',
-	'id'	=> 'S5_3_5',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Ractacara
-$S5_3_6 = array(
-	'name'	=> 'S5_3_6',
-	'id'	=> 'S5_3_6',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Sardina
-$S5_3_7 = array(
-	'name'	=> 'S5_3_7',
-	'id'	=> 'S5_3_7',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Paiche
-$S5_3_8 = array(
-	'name'	=> 'S5_3_8',
-	'id'	=> 'S5_3_8',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Gamitana
-$S5_3_9 = array(
-	'name'	=> 'S5_3_9',
-	'id'	=> 'S5_3_9',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Paco
-$S5_3_10 = array(
-	'name'	=> 'S5_3_10',
-	'id'	=> 'S5_3_10',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Dorado
-$S5_3_11 = array(
-	'name'	=> 'S5_3_11',
-	'id'	=> 'S5_3_11',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Sabalo
-$S5_3_12 = array(
-	'name'	=> 'S5_3_12',
-	'id'	=> 'S5_3_12',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//Palometa
-$S5_3_13 = array(
-	'name'	=> 'S5_3_13',
-	'id'	=> 'S5_3_13',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Carachama
-$S5_3_14 = array(
-	'name'	=> 'S5_3_14',
-	'id'	=> 'S5_3_14',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Lisa
-$S5_3_15 = array(
-	'name'	=> 'S5_3_15',
-	'id'	=> 'S5_3_15',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Lisa
-$S5_3_15 = array(
-	'name'	=> 'S5_3_15',
-	'id'	=> 'S5_3_15',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Corvina
-$S5_3_16 = array(
-	'name'	=> 'S5_3_16',
-	'id'	=> 'S5_3_16',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Langostino
-$S5_3_17 = array(
-	'name'	=> 'S5_3_17',
-	'id'	=> 'S5_3_17',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Camaron de rio
-$S5_3_18 = array(
-	'name'	=> 'S5_3_18',
-	'id'	=> 'S5_3_18',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Trucha
-$S5_3_19 = array(
-	'name'	=> 'S5_3_19',
-	'id'	=> 'S5_3_19',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//Pejerrey argentino
-$S5_3_20 = array(
-	'name'	=> 'S5_3_20',
-	'id'	=> 'S5_3_20',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-
-//otro1
-$S5_3_21 = array(
-	'name'	=> 'S5_3_21',
-	'id'	=> 'S5_3_21',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//otro1 esp
-$S5_3_21_O = array(
-	'name'	=> 'S5_3_21_O',
-	'id'	=> 'S5_3_21_O',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
-
-//otro2
-$S5_3_22 = array(
-	'name'	=> 'S5_3_22',
-	'id'	=> 'S5_3_22',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//otro2 esp
-$S5_3_22_O = array(
-	'name'	=> 'S5_3_22_O',
-	'id'	=> 'S5_3_22_O',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
-
-//otro3
-$S5_3_23 = array(
-	'name'	=> 'S5_3_23',
-	'id'	=> 'S5_3_23',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//otro3 esp
-$S5_3_23_O = array(
-	'name'	=> 'S5_3_23_O',
-	'id'	=> 'S5_3_23_O',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
-
-//otro4
-$S5_3_23 = array(
-	'name'	=> 'S5_3_23',
-	'id'	=> 'S5_3_23',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//otro4 esp
-$S5_3_23_O = array(
-	'name'	=> 'S5_3_23_O',
-	'id'	=> 'S5_3_23_O',
-	'maxlength'	=> 50,
-	'class' => $span_class,
-);
-
-//otro5
-$S5_3_24 = array(
-	'name'	=> 'S5_3_24',
-	'id'	=> 'S5_3_24',
-	'maxlength'	=> 1,
-	'class' => $span_class,
-);
-//otro5 esp
-$S5_3_24_O = array(
-	'name'	=> 'S5_3_24_O',
-	'id'	=> 'S5_3_24_O',
-	'maxlength'	=> 50,
+//minitos
+$S5_3_M = array(
+	'name'	=> 'S5_3_M',
+	'id'	=> 'S5_3_M',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
 
-//cambios climaticos
-$S5_4_1 = array(
-	'name'	=> 'S5_4_1',
-	'id'	=> 'S5_4_1',
+//
+$S5_4 = array(
+	'name'	=> 'S5_4',
+	'id'	=> 'S5_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//contaminacion del agua
-$S5_4_2 = array(
-	'name'	=> 'S5_4_2',
-	'id'	=> 'S5_4_2',
-	'maxlength'	=> 1,
+//horas
+$S5_4_H = array(
+	'name'	=> 'S5_4_H',
+	'id'	=> 'S5_4_H',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//minutos
+$S5_4_M = array(
+	'name'	=> 'S5_4_M',
+	'id'	=> 'S5_4_M',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
-//dificultad de financiamiento
-$S5_4_3 = array(
-	'name'	=> 'S5_4_3',
-	'id'	=> 'S5_4_3',
-	'maxlength'	=> 1,
+
+
+/////////////////////////////////////
+//agallera
+$S5_5_1 = array(
+	'name'	=> 'S5_5_1',
+	'id'	=> 'S5_5_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//agallera c
+$S5_5_1_C = array(
+	'name'	=> 'S5_5_1_C',
+	'id'	=> 'S5_5_1_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//agallera 1
+$S5_5_1_1 = array(
+	'name'	=> 'S5_5_1_1',
+	'id'	=> 'S5_5_1_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//agallera 2
+$S5_5_1_2 = array(
+	'name'	=> 'S5_5_1_2',
+	'id'	=> 'S5_5_1_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//agallera 3
+$S5_5_1_3 = array(
+	'name'	=> 'S5_5_1_3',
+	'id'	=> 'S5_5_1_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//agallera 4
+$S5_5_1_4 = array(
+	'name'	=> 'S5_5_1_4',
+	'id'	=> 'S5_5_1_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//agallera 4
+$S5_5_1_5 = array(
+	'name'	=> 'S5_5_1_5',
+	'id'	=> 'S5_5_1_5',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////////
+//Trasmallo
+$S5_5_2 = array(
+	'name'	=> 'S5_5_2',
+	'id'	=> 'S5_5_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Trasmallo c
+$S5_5_2_C = array(
+	'name'	=> 'S5_5_2_C',
+	'id'	=> 'S5_5_2_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Trasmallo 1
+$S5_5_2_1 = array(
+	'name'	=> 'S5_5_2_1',
+	'id'	=> 'S5_5_2_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Trasmallo 2
+$S5_5_2_2 = array(
+	'name'	=> 'S5_5_2_2',
+	'id'	=> 'S5_5_2_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Trasmallo 3
+$S5_5_2_3 = array(
+	'name'	=> 'S5_5_2_3',
+	'id'	=> 'S5_5_2_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Trasmallo 4
+$S5_5_2_4 = array(
+	'name'	=> 'S5_5_2_4',
+	'id'	=> 'S5_5_2_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Trasmallo 4
+$S5_5_2_5 = array(
+	'name'	=> 'S5_5_2_5',
+	'id'	=> 'S5_5_2_5',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
-//falta de politicas adecuadas
-$S5_4_4 = array(
-	'name'	=> 'S5_4_4',
-	'id'	=> 'S5_4_4',
-	'maxlength'	=> 1,
+/////////////////////////////////////////
+//Hondera
+$S5_5_3 = array(
+	'name'	=> 'S5_5_3',
+	'id'	=> 'S5_5_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Hondera c
+$S5_5_3_C = array(
+	'name'	=> 'S5_5_3_C',
+	'id'	=> 'S5_5_3_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Hondera 1
+$S5_5_3_1 = array(
+	'name'	=> 'S5_5_3_1',
+	'id'	=> 'S5_5_3_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Hondera 2
+$S5_5_3_2 = array(
+	'name'	=> 'S5_5_3_2',
+	'id'	=> 'S5_5_3_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Hondera 3
+$S5_5_3_3 = array(
+	'name'	=> 'S5_5_3_3',
+	'id'	=> 'S5_5_3_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Hondera 4
+$S5_5_3_4 = array(
+	'name'	=> 'S5_5_3_4',
+	'id'	=> 'S5_5_3_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Hondera 4
+$S5_5_3_5 = array(
+	'name'	=> 'S5_5_3_5',
+	'id'	=> 'S5_5_3_5',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////////
+//Tarrafa
+$S5_5_4 = array(
+	'name'	=> 'S5_5_4',
+	'id'	=> 'S5_5_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Tarrafa c
+$S5_5_4_C = array(
+	'name'	=> 'S5_5_4_C',
+	'id'	=> 'S5_5_4_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Tarrafa 1
+$S5_5_4_1 = array(
+	'name'	=> 'S5_5_4_1',
+	'id'	=> 'S5_5_4_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Tarrafa 2
+$S5_5_4_2 = array(
+	'name'	=> 'S5_5_4_2',
+	'id'	=> 'S5_5_4_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Tarrafa 3
+$S5_5_4_3 = array(
+	'name'	=> 'S5_5_4_3',
+	'id'	=> 'S5_5_4_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Tarrafa 4
+$S5_5_4_4 = array(
+	'name'	=> 'S5_5_4_4',
+	'id'	=> 'S5_5_4_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Tarrafa 5
+$S5_5_4_5 = array(
+	'name'	=> 'S5_5_4_5',
+	'id'	=> 'S5_5_4_5',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
-//infraestructura inadecuada
-$S5_4_5 = array(
-	'name'	=> 'S5_4_5',
-	'id'	=> 'S5_4_5',
-	'maxlength'	=> 1,
+/////////////////////////////////////////
+//Arrastradora
+$S5_5_5 = array(
+	'name'	=> 'S5_5_5',
+	'id'	=> 'S5_5_5',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Arrastradora c
+$S5_5_5_C = array(
+	'name'	=> 'S5_5_5_C',
+	'id'	=> 'S5_5_5_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Arrastradora 1
+$S5_5_5_1 = array(
+	'name'	=> 'S5_5_5_1',
+	'id'	=> 'S5_5_5_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Arrastradora 2
+$S5_5_5_2 = array(
+	'name'	=> 'S5_5_5_2',
+	'id'	=> 'S5_5_5_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Arrastradora 3
+$S5_5_5_3 = array(
+	'name'	=> 'S5_5_5_3',
+	'id'	=> 'S5_5_5_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Arrastradora 4
+$S5_5_5_4 = array(
+	'name'	=> 'S5_5_5_4',
+	'id'	=> 'S5_5_5_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Arrastradora 5
+$S5_5_5_5 = array(
+	'name'	=> 'S5_5_5_5',
+	'id'	=> 'S5_5_5_5',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
-//inseguridad ciudadana
-$S5_4_6 = array(
-	'name'	=> 'S5_4_6',
-	'id'	=> 'S5_4_6',
-	'maxlength'	=> 1,
+/////////////////////////////////////////
+//Capiccuhuana
+$S5_5_6 = array(
+	'name'	=> 'S5_5_6',
+	'id'	=> 'S5_5_6',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Capiccuhuana c
+$S5_5_6_C = array(
+	'name'	=> 'S5_5_6_C',
+	'id'	=> 'S5_5_6_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Capiccuhuana 1
+$S5_5_6_1 = array(
+	'name'	=> 'S5_5_6_1',
+	'id'	=> 'S5_5_6_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Capiccuhuana 2
+$S5_5_6_2 = array(
+	'name'	=> 'S5_5_6_2',
+	'id'	=> 'S5_5_6_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Capiccuhuana 3
+$S5_5_6_3 = array(
+	'name'	=> 'S5_5_6_3',
+	'id'	=> 'S5_5_6_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Capiccuhuana 4
+$S5_5_6_4 = array(
+	'name'	=> 'S5_5_6_4',
+	'id'	=> 'S5_5_6_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Capiccuhuana 5
+$S5_5_6_5 = array(
+	'name'	=> 'S5_5_6_5',
+	'id'	=> 'S5_5_6_5',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
-//dificultad otro
-$S5_4_7 = array(
-	'name'	=> 'S5_4_7',
-	'id'	=> 'S5_4_7',
-	'maxlength'	=> 1,
+/////////////////////////////////////////
+//Chinchorro
+$S5_5_7 = array(
+	'name'	=> 'S5_5_7',
+	'id'	=> 'S5_5_7',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Chinchorro c
+$S5_5_7_C = array(
+	'name'	=> 'S5_5_7_C',
+	'id'	=> 'S5_5_7_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Chinchorro 1
+$S5_5_7_1 = array(
+	'name'	=> 'S5_5_7_1',
+	'id'	=> 'S5_5_7_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Chinchorro 2
+$S5_5_7_2 = array(
+	'name'	=> 'S5_5_7_2',
+	'id'	=> 'S5_5_7_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Chinchorro 3
+$S5_5_7_3 = array(
+	'name'	=> 'S5_5_7_3',
+	'id'	=> 'S5_5_7_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Chinchorro 4
+$S5_5_7_4 = array(
+	'name'	=> 'S5_5_7_4',
+	'id'	=> 'S5_5_7_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Chinchorro 5
+$S5_5_7_5 = array(
+	'name'	=> 'S5_5_7_5',
+	'id'	=> 'S5_5_7_5',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////////
+//Aissaccahuanna
+$S5_5_8 = array(
+	'name'	=> 'S5_5_8',
+	'id'	=> 'S5_5_8',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Aissaccahuanna c
+$S5_5_8_C = array(
+	'name'	=> 'S5_5_8_C',
+	'id'	=> 'S5_5_8_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Aissaccahuanna 1
+$S5_5_8_1 = array(
+	'name'	=> 'S5_5_8_1',
+	'id'	=> 'S5_5_8_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Aissaccahuanna 2
+$S5_5_8_2 = array(
+	'name'	=> 'S5_5_8_2',
+	'id'	=> 'S5_5_8_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Aissaccahuanna 3
+$S5_5_8_3 = array(
+	'name'	=> 'S5_5_8_3',
+	'id'	=> 'S5_5_8_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Aissaccahuanna 4
+$S5_5_8_4 = array(
+	'name'	=> 'S5_5_8_4',
+	'id'	=> 'S5_5_8_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//Aissaccahuanna 5
+$S5_5_8_5 = array(
+	'name'	=> 'S5_5_8_5',
+	'id'	=> 'S5_5_8_5',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
-//otro especifique
-$S5_4_7_O = array(
-	'name'	=> 'S5_4_7_O',
-	'id'	=> 'S5_4_7_O',
+/////////////////////////////////////
+//Otro
+$S5_5_9 = array(
+	'name'	=> 'S5_5_9',
+	'id'	=> 'S5_5_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Otro e
+$S5_5_9_O = array(
+	'name'	=> 'S5_5_9_O',
+	'id'	=> 'S5_5_9_O',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 
-//ninguno
-$S5_4_8 = array(
-	'name'	=> 'S5_4_8',
-	'id'	=> 'S5_4_8',
+//Otro c
+$S5_5_9_C = array(
+	'name'	=> 'S5_5_9_C',
+	'id'	=> 'S5_5_9_C',
+	'maxlength'	=> 3,
+	'class' => $span_class,
+);
+
+//otro 1
+$S5_5_9_1 = array(
+	'name'	=> 'S5_5_9_1',
+	'id'	=> 'S5_5_9_1',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//otro 2
+$S5_5_9_2 = array(
+	'name'	=> 'S5_5_9_2',
+	'id'	=> 'S5_5_9_2',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//otro 3
+$S5_5_9_3 = array(
+	'name'	=> 'S5_5_9_3',
+	'id'	=> 'S5_5_9_3',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//otro 4
+$S5_5_9_4 = array(
+	'name'	=> 'S5_5_9_4',
+	'id'	=> 'S5_5_9_4',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+//otro 5
+$S5_5_9_5 = array(
+	'name'	=> 'S5_5_9_5',
+	'id'	=> 'S5_5_9_5',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Aparejos - Lineas y anzuelos
+$S5_5_10 = array(
+	'name'	=> 'S5_5_10',
+	'id'	=> 'S5_5_10',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Aparejos - Lineas y anzuelos c
+$S5_5_10_C = array(
+	'name'	=> 'S5_5_10_C',
+	'id'	=> 'S5_5_10_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Aparejos -Arpon
+$S5_5_11 = array(
+	'name'	=> 'S5_5_11',
+	'id'	=> 'S5_5_11',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Aparejos -Arpon c
+$S5_5_11_C = array(
+	'name'	=> 'S5_5_11_C',
+	'id'	=> 'S5_5_11_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Aparejos -Farpa
+$S5_5_12 = array(
+	'name'	=> 'S5_5_12',
+	'id'	=> 'S5_5_12',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Aparejos -Farpa c
+$S5_5_12_C = array(
+	'name'	=> 'S5_5_12_C',
+	'id'	=> 'S5_5_12_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Aparejos -Espineles
+$S5_5_13 = array(
+	'name'	=> 'S5_5_13',
+	'id'	=> 'S5_5_13',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Aparejos -Espineles c
+$S5_5_13_C = array(
+	'name'	=> 'S5_5_13_C',
+	'id'	=> 'S5_5_13_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Aparejos -Otro
+$S5_5_14 = array(
+	'name'	=> 'S5_5_14',
+	'id'	=> 'S5_5_14',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Aparejos -Otro e
+$S5_5_14_O = array(
+	'name'	=> 'S5_5_14_O',
+	'id'	=> 'S5_5_14_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+//Aparejos -Otro c
+$S5_5_14_C = array(
+	'name'	=> 'S5_5_14_C',
+	'id'	=> 'S5_5_14_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Trampa-Nasa
+$S5_5_15 = array(
+	'name'	=> 'S5_5_15',
+	'id'	=> 'S5_5_15',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Trampa-Tapaje
+$S5_5_16 = array(
+	'name'	=> 'S5_5_16',
+	'id'	=> 'S5_5_16',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Trampa-Otro
+$S5_5_17 = array(
+	'name'	=> 'S5_5_17',
+	'id'	=> 'S5_5_17',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//Trampa-Otro e
+$S5_5_17_O = array(
+	'name'	=> 'S5_5_17_O',
+	'id'	=> 'S5_5_17_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Acarahuazu
+$S5_6_1 = array(
+	'name'	=> 'S5_6_1',
+	'id'	=> 'S5_6_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_1_C = array(
+	'name'	=> 'S5_6_1_C',
+	'id'	=> 'S5_6_1_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Bagre
+$S5_6_2 = array(
+	'name'	=> 'S5_6_2',
+	'id'	=> 'S5_6_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_2_C = array(
+	'name'	=> 'S5_6_2_C',
+	'id'	=> 'S5_6_2_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Bocón
+$S5_6_3 = array(
+	'name'	=> 'S5_6_3',
+	'id'	=> 'S5_6_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_3_C = array(
+	'name'	=> 'S5_6_3_C',
+	'id'	=> 'S5_6_3_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Boquichico
+$S5_6_4 = array(
+	'name'	=> 'S5_6_4',
+	'id'	=> 'S5_6_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_4_C = array(
+	'name'	=> 'S5_6_4_C',
+	'id'	=> 'S5_6_4_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Bujurqui
+$S5_6_5 = array(
+	'name'	=> 'S5_6_4',
+	'id'	=> 'S5_6_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_5_C = array(
+	'name'	=> 'S5_6_5_C',
+	'id'	=> 'S5_6_5_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Camarón de río
+$S5_6_6 = array(
+	'name'	=> 'S5_6_6',
+	'id'	=> 'S5_6_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_6_C = array(
+	'name'	=> 'S5_6_6_C',
+	'id'	=> 'S5_6_6_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Carachama
+$S5_6_7 = array(
+	'name'	=> 'S5_6_7',
+	'id'	=> 'S5_6_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_7_C = array(
+	'name'	=> 'S5_6_7_C',
+	'id'	=> 'S5_6_7_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Carachi amarillo
+$S5_6_8 = array(
+	'name'	=> 'S5_6_8',
+	'id'	=> 'S5_6_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_8_C = array(
+	'name'	=> 'S5_6_8_C',
+	'id'	=> 'S5_6_8_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Carachi negro
+$S5_6_9 = array(
+	'name'	=> 'S5_6_9',
+	'id'	=> 'S5_6_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_9_C = array(
+	'name'	=> 'S5_6_9_C',
+	'id'	=> 'S5_6_9_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Chambira
+$S5_6_10 = array(
+	'name'	=> 'S5_6_10',
+	'id'	=> 'S5_6_10',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_10_C = array(
+	'name'	=> 'S5_6_10_C',
+	'id'	=> 'S5_6_10_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Chiochio
+$S5_6_11 = array(
+	'name'	=> 'S5_6_11',
+	'id'	=> 'S5_6_11',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_11_C = array(
+	'name'	=> 'S5_6_11_C',
+	'id'	=> 'S5_6_11_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Corvina
+$S5_6_12 = array(
+	'name'	=> 'S5_6_12',
+	'id'	=> 'S5_6_12',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_12_C = array(
+	'name'	=> 'S5_6_12_C',
+	'id'	=> 'S5_6_12_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Dentón
+$S5_6_13 = array(
+	'name'	=> 'S5_6_13',
+	'id'	=> 'S5_6_13',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_13_C = array(
+	'name'	=> 'S5_6_13_C',
+	'id'	=> 'S5_6_13_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Doncella
+$S5_6_14 = array(
+	'name'	=> 'S5_6_14',
+	'id'	=> 'S5_6_14',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_14_C = array(
+	'name'	=> 'S5_6_14_C',
+	'id'	=> 'S5_6_14_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Dorado
+$S5_6_15 = array(
+	'name'	=> 'S5_6_15',
+	'id'	=> 'S5_6_15',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_15_C = array(
+	'name'	=> 'S5_6_15_C',
+	'id'	=> 'S5_6_15_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Fasaco
+$S5_6_16 = array(
+	'name'	=> 'S5_6_16',
+	'id'	=> 'S5_6_16',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_16_C = array(
+	'name'	=> 'S5_6_16_C',
+	'id'	=> 'S5_6_16_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Ispi
+$S5_6_17 = array(
+	'name'	=> 'S5_6_17',
+	'id'	=> 'S5_6_17',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_17_C = array(
+	'name'	=> 'S5_6_17_C',
+	'id'	=> 'S5_6_17_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Langostino
+$S5_6_18 = array(
+	'name'	=> 'S5_6_18',
+	'id'	=> 'S5_6_18',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_18_C = array(
+	'name'	=> 'S5_6_18_C',
+	'id'	=> 'S5_6_18_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Lisa
+$S5_6_19 = array(
+	'name'	=> 'S5_6_19',
+	'id'	=> 'S5_6_19',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_19_C = array(
+	'name'	=> 'S5_6_19_C',
+	'id'	=> 'S5_6_19_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Llambina
+$S5_6_20 = array(
+	'name'	=> 'S5_6_20',
+	'id'	=> 'S5_6_20',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_20_C = array(
+	'name'	=> 'S5_6_20_C',
+	'id'	=> 'S5_6_20_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Manitoa
+$S5_6_21 = array(
+	'name'	=> 'S5_6_21',
+	'id'	=> 'S5_6_21',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_21_C = array(
+	'name'	=> 'S5_6_21_C',
+	'id'	=> 'S5_6_21_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Maparate
+$S5_6_22 = array(
+	'name'	=> 'S5_6_22',
+	'id'	=> 'S5_6_22',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_22_C = array(
+	'name'	=> 'S5_6_22_C',
+	'id'	=> 'S5_6_22_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Mauri
+$S5_6_23 = array(
+	'name'	=> 'S5_6_23',
+	'id'	=> 'S5_6_23',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_23_C = array(
+	'name'	=> 'S5_6_23_C',
+	'id'	=> 'S5_6_23_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Mota
+$S5_6_24 = array(
+	'name'	=> 'S5_6_24',
+	'id'	=> 'S5_6_24',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_24_C = array(
+	'name'	=> 'S5_6_24_C',
+	'id'	=> 'S5_6_24_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Novia
+$S5_6_25 = array(
+	'name'	=> 'S5_6_25',
+	'id'	=> 'S5_6_25',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_25_C = array(
+	'name'	=> 'S5_6_25_C',
+	'id'	=> 'S5_6_25_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Paco
+$S5_6_26 = array(
+	'name'	=> 'S5_6_26',
+	'id'	=> 'S5_6_26',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_26_C = array(
+	'name'	=> 'S5_6_26_C',
+	'id'	=> 'S5_6_26_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Palometa
+$S5_6_27 = array(
+	'name'	=> 'S5_6_27',
+	'id'	=> 'S5_6_27',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_27_C = array(
+	'name'	=> 'S5_6_26_C',
+	'id'	=> 'S5_6_26_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Paña, piraña
+$S5_6_28 = array(
+	'name'	=> 'S5_6_28',
+	'id'	=> 'S5_6_28',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_28_C = array(
+	'name'	=> 'S5_6_28_C',
+	'id'	=> 'S5_6_28_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Pejerrey
+$S5_6_29 = array(
+	'name'	=> 'S5_6_29',
+	'id'	=> 'S5_6_29',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_29_C = array(
+	'name'	=> 'S5_6_29_C',
+	'id'	=> 'S5_6_29_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Ractacara
+$S5_6_30 = array(
+	'name'	=> 'S5_6_30',
+	'id'	=> 'S5_6_30',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_30_C = array(
+	'name'	=> 'S5_6_30_C',
+	'id'	=> 'S5_6_30_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Sabalo
+$S5_6_31 = array(
+	'name'	=> 'S5_6_31',
+	'id'	=> 'S5_6_31',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_31_C = array(
+	'name'	=> 'S5_6_31_C',
+	'id'	=> 'S5_6_31_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Sardina
+$S5_6_32 = array(
+	'name'	=> 'S5_6_32',
+	'id'	=> 'S5_6_32',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_32_C = array(
+	'name'	=> 'S5_6_32_C',
+	'id'	=> 'S5_6_32_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Shiripira
+$S5_6_33 = array(
+	'name'	=> 'S5_6_33',
+	'id'	=> 'S5_6_33',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_33_C = array(
+	'name'	=> 'S5_6_33_C',
+	'id'	=> 'S5_6_33_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Shuyo
+$S5_6_34 = array(
+	'name'	=> 'S5_6_34',
+	'id'	=> 'S5_6_34',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_34_C = array(
+	'name'	=> 'S5_6_34_C',
+	'id'	=> 'S5_6_34_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Tilapia
+$S5_6_35 = array(
+	'name'	=> 'S5_6_35',
+	'id'	=> 'S5_6_35',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_35_C = array(
+	'name'	=> 'S5_6_35_C',
+	'id'	=> 'S5_6_35_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Trucha
+$S5_6_36 = array(
+	'name'	=> 'S5_6_36',
+	'id'	=> 'S5_6_36',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_36_C = array(
+	'name'	=> 'S5_6_36_C',
+	'id'	=> 'S5_6_36_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Trucha
+$S5_6_37 = array(
+	'name'	=> 'S5_6_37',
+	'id'	=> 'S5_6_37',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_37_C = array(
+	'name'	=> 'S5_6_37_C',
+	'id'	=> 'S5_6_37_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Yaraqui
+$S5_6_38 = array(
+	'name'	=> 'S5_6_38',
+	'id'	=> 'S5_6_38',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_38_C = array(
+	'name'	=> 'S5_6_38_C',
+	'id'	=> 'S5_6_38_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Yulilla
+$S5_6_39 = array(
+	'name'	=> 'S5_6_39',
+	'id'	=> 'S5_6_39',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_39_C = array(
+	'name'	=> 'S5_6_39_C',
+	'id'	=> 'S5_6_39_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Zungaro
+$S5_6_40 = array(
+	'name'	=> 'S5_6_40',
+	'id'	=> 'S5_6_40',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_40_C = array(
+	'name'	=> 'S5_6_40_C',
+	'id'	=> 'S5_6_40_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+/////////////////////////////////////
+//Especies hidrobiológicas que extrae - Otro
+$S5_6_41 = array(
+	'name'	=> 'S5_6_41',
+	'id'	=> 'S5_6_41',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_41_O = array(
+	'name'	=> 'S5_6_41_O',
+	'id'	=> 'S5_6_41_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_41_C = array(
+	'name'	=> 'S5_6_41_C',
+	'id'	=> 'S5_6_41_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Anguila eléctrica
+$S5_6_42 = array(
+	'name'	=> 'S5_6_42',
+	'id'	=> 'S5_6_42',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_42_C = array(
+	'name'	=> 'S5_6_42_C',
+	'id'	=> 'S5_6_42_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Arahuana
+$S5_6_43 = array(
+	'name'	=> 'S5_6_43',
+	'id'	=> 'S5_6_43',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_43_C = array(
+	'name'	=> 'S5_6_43_C',
+	'id'	=> 'S5_6_43_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Coydoras jumbo
+$S5_6_44 = array(
+	'name'	=> 'S5_6_44',
+	'id'	=> 'S5_6_44',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_44_C = array(
+	'name'	=> 'S5_6_44_C',
+	'id'	=> 'S5_6_44_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales -  Escalar amazónico
+$S5_6_45 = array(
+	'name'	=> 'S5_6_45',
+	'id'	=> 'S5_6_45',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_45_C = array(
+	'name'	=> 'S5_6_45_C',
+	'id'	=> 'S5_6_45_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales -  Neón tetra
+$S5_6_46 = array(
+	'name'	=> 'S5_6_46',
+	'id'	=> 'S5_6_46',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_46_C = array(
+	'name'	=> 'S5_6_46_C',
+	'id'	=> 'S5_6_46_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales -  Pez disco
+$S5_6_47 = array(
+	'name'	=> 'S5_6_47',
+	'id'	=> 'S5_6_47',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_47_C = array(
+	'name'	=> 'S5_6_47_C',
+	'id'	=> 'S5_6_47_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales -  Tucunare
+$S5_6_48 = array(
+	'name'	=> 'S5_6_48',
+	'id'	=> 'S5_6_48',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_48_C = array(
+	'name'	=> 'S5_6_48_C',
+	'id'	=> 'S5_6_48_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_49 = array(
+	'name'	=> 'S5_6_49',
+	'id'	=> 'S5_6_49',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_6_49_O = array(
+	'name'	=> 'S5_6_49_O',
+	'id'	=> 'S5_6_49_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_49_C = array(
+	'name'	=> 'S5_6_49_C',
+	'id'	=> 'S5_6_49_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+
+//////////////////////////////////////////
+$S5_7 = array(
+	'name'	=> 'S5_7',
+	'id'	=> 'S5_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 
-//Venta
-$S5_5_1 = array(
-	'name'	=> 'S5_5_1',
-	'id'	=> 'S5_5_1',
+//Cual es el lugar de desembarque : Puerto
+//////////////////////////////////////////
+$S5_8_1 = array(
+	'name'	=> 'S5_8_1',
+	'id'	=> 'S5_8_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Trueque
-$S5_5_2 = array(
-	'name'	=> 'S5_5_2',
-	'id'	=> 'S5_5_2',
+$S5_8_1_1 = array(
+	'name'	=> 'S5_8_1_1',
+	'id'	=> 'S5_8_1_1',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+//Cual es el lugar de desembarque : Playa
+//////////////////////////////////////////
+$S5_8_2 = array(
+	'name'	=> 'S5_8_2',
+	'id'	=> 'S5_8_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//autoconsumo
-$S5_5_3 = array(
-	'name'	=> 'S5_5_3',
-	'id'	=> 'S5_5_3',
+$S5_8_2_1 = array(
+	'name'	=> 'S5_8_2_1',
+	'id'	=> 'S5_8_2_1',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+//Cual es el lugar de desembarque : Desembarcadero pesquero artesanal 
+//////////////////////////////////////////
+$S5_8_3 = array(
+	'name'	=> 'S5_8_3',
+	'id'	=> 'S5_8_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//perdida
-$S5_5_4 = array(
-	'name'	=> 'S5_5_4',
-	'id'	=> 'S5_5_4',
+$S5_8_3_1 = array(
+	'name'	=> 'S5_8_3_1',
+	'id'	=> 'S5_8_3_1',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+//Cual es el lugar de desembarque : Otro
+//////////////////////////////////////////
+$S5_8_4 = array(
+	'name'	=> 'S5_8_4',
+	'id'	=> 'S5_8_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//otro
-$S5_5_5 = array(
-	'name'	=> 'S5_5_5',
-	'id'	=> 'S5_5_5',
-	'maxlength'	=> 1,
+$S5_8_4_1 = array(
+	'name'	=> 'S5_8_4_1',
+	'id'	=> 'S5_8_4_1',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
-//otro especifique
-$S5_5_5_O = array(
-	'name'	=> 'S5_5_5_O',
-	'id'	=> 'S5_5_5_O',
-	'maxlength'	=> 50,
+$S5_8_4_O = array(
+	'name'	=> 'S5_8_4_O',
+	'id'	=> 'S5_8_4_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 
 
+/////////////////////////////////////////////
+//Cual es el lugar de desembarque : Otro
+//////////////////////////////////////////
+$S5_9_1 = array(
+	'name'	=> 'S5_9_1',
+	'id'	=> 'S5_9_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_2 = array(
+	'name'	=> 'S5_9_2',
+	'id'	=> 'S5_9_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_3 = array(
+	'name'	=> 'S5_9_3',
+	'id'	=> 'S5_9_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_4 = array(
+	'name'	=> 'S5_9_4',
+	'id'	=> 'S5_9_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_9_5 = array(
+	'name'	=> 'S5_9_5',
+	'id'	=> 'S5_9_5',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_6 = array(
+	'name'	=> 'S5_9_6',
+	'id'	=> 'S5_9_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_7 = array(
+	'name'	=> 'S5_9_7',
+	'id'	=> 'S5_9_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_9_8 = array(
+	'name'	=> 'S5_9_8',
+	'id'	=> 'S5_9_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_9 = array(
+	'name'	=> 'S5_9_9',
+	'id'	=> 'S5_9_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_10 = array(
+	'name'	=> 'S5_9_10',
+	'id'	=> 'S5_9_10',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_9_11 = array(
+	'name'	=> 'S5_9_11',
+	'id'	=> 'S5_9_11',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_9_12 = array(
+	'name'	=> 'S5_9_12',
+	'id'	=> 'S5_9_12',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_13 = array(
+	'name'	=> 'S5_9_13',
+	'id'	=> 'S5_9_13',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S5_9_14 = array(
+	'name'	=> 'S5_9_14',
+	'id'	=> 'S5_9_14',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_9_14_O = array(
+	'name'	=> 'S5_9_14_O',
+	'id'	=> 'S5_9_14_O',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_9_15 = array(
+	'name'	=> 'S5_9_15',
+	'id'	=> 'S5_9_15',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+///////////////////////////////////////////////
+
+$S5_10_1 = array(
+	'name'	=> 'S5_10_1',
+	'id'	=> 'S5_10_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_10_2 = array(
+	'name'	=> 'S5_10_2',
+	'id'	=> 'S5_10_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S5_10_3 = array(
+	'name'	=> 'S5_10_3',
+	'id'	=> 'S5_10_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
@@ -881,11 +2082,50 @@ echo '<div class="well modulo">';
 
 				echo '</div>';	
 
+				// echo '<div class="row-fluid">';		
+
+				// 		echo '<div class="offset1 span2">';
+
+				// 			echo '<p>Aguas subterráneas?</p>';
+
+				// 		echo '</div>';	
+
+				// 		echo '<div class="span2">';
+				// 			echo '<div class="control-group">';
+				// 				echo '<div class="controls">';
+				// 					echo form_input($S5_1_4); 
+				// 					echo '<span class="help-inline"></span>';
+				// 					echo '<div class="help-block error">' . form_error($S5_1_4['name']) . '</div>';
+				// 				echo '</div>';	
+				// 			echo '</div>'; 
+
+				// 		echo '</div>';
+
+				// 		echo '<div class="span3">';
+
+				// 			echo '<p>Nombre de la fuente</p>';
+
+				// 		echo '</div>';	
+
+				// 		echo '<div class="span4">';
+				// 			echo '<div class="control-group">';
+				// 				echo '<div class="controls">';
+				// 					echo form_input($S5_1_4_1); 
+				// 					echo '<span class="help-inline"></span>';
+				// 					echo '<div class="help-block error">' . form_error($S5_1_4_1['name']) . '</div>';
+				// 				echo '</div>';	
+				// 			echo '</div>'; 
+
+				// 		echo '</div>';
+
+				// echo '</div>';	
+
+
 				echo '<div class="row-fluid">';		
 
 						echo '<div class="offset1 span2">';
 
-							echo '<p>Aguas subterráneas?</p>';
+							echo '<p>Marisma?</p>';
 
 						echo '</div>';	
 
@@ -919,12 +2159,11 @@ echo '<div class="well modulo">';
 
 				echo '</div>';	
 
-
 				echo '<div class="row-fluid">';		
 
 						echo '<div class="offset1 span2">';
 
-							echo '<p>Marisma?</p>';
+							echo '<p>Quebrada?</p>';
 
 						echo '</div>';	
 
@@ -958,11 +2197,53 @@ echo '<div class="well modulo">';
 
 				echo '</div>';	
 
+
+
+				// echo '<div class="row-fluid">';		
+
+				// 		echo '<div class="offset1 span2">';
+
+				// 			echo '<p>Deshielo?</p>';
+
+				// 		echo '</div>';	
+
+				// 		echo '<div class="span2">';
+				// 			echo '<div class="control-group">';
+				// 				echo '<div class="controls">';
+				// 					echo form_input($S5_1_7); 
+				// 					echo '<span class="help-inline"></span>';
+				// 					echo '<div class="help-block error">' . form_error($S5_1_7['name']) . '</div>';
+				// 				echo '</div>';	
+				// 			echo '</div>'; 
+
+				// 		echo '</div>';
+
+				// 		echo '<div class="span3">';
+
+				// 			echo '<p>Nombre de la fuente</p>';
+
+				// 		echo '</div>';	
+
+				// 		echo '<div class="span4">';
+				// 			echo '<div class="control-group">';
+				// 				echo '<div class="controls">';
+				// 					echo form_input($S5_1_7_1); 
+				// 					echo '<span class="help-inline"></span>';
+				// 					echo '<div class="help-block error">' . form_error($S5_1_7_1['name']) . '</div>';
+				// 				echo '</div>';	
+				// 			echo '</div>'; 
+
+				// 		echo '</div>';
+
+				// echo '</div>';	
+
+
+
 				echo '<div class="row-fluid">';		
 
 						echo '<div class="offset1 span2">';
 
-							echo '<p>Quebrada?</p>';
+							echo '<p>Cocha?</p>';
 
 						echo '</div>';	
 
@@ -994,7 +2275,9 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-				echo '</div>';	
+				echo '</div>';
+
+
 
 
 
@@ -1002,7 +2285,7 @@ echo '<div class="well modulo">';
 
 						echo '<div class="offset1 span2">';
 
-							echo '<p>Deshielo?</p>';
+							echo '<p>Reservorio?</p>';
 
 						echo '</div>';	
 
@@ -1034,15 +2317,13 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-				echo '</div>';	
-
-
+				echo '</div>';
 
 				echo '<div class="row-fluid">';		
 
 						echo '<div class="offset1 span2">';
 
-							echo '<p>Cocha?</p>';
+							echo '<p>Otro</p>';
 
 						echo '</div>';	
 
@@ -1052,6 +2333,28 @@ echo '<div class="well modulo">';
 									echo form_input($S5_1_8); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($S5_1_8['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
+
+						echo '</div>';
+
+
+				echo '</div>';
+
+				echo '<div class="row-fluid">';		
+
+						echo '<div class="offset1 span2">';
+
+							echo '<p>Especifique</p>';
+
+						echo '</div>';	
+
+						echo '<div class="span2">';
+							echo '<div class="control-group">';
+								echo '<div class="controls">';
+									echo form_input($S5_1_8_O); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_1_8_O['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 
 
@@ -1076,66 +2379,6 @@ echo '<div class="well modulo">';
 
 				echo '</div>';
 
-				echo '<div class="row-fluid">';		
-
-						echo '<div class="offset1 span2">';
-
-							echo '<p>Otro</p>';
-
-						echo '</div>';	
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S5_1_9); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S5_1_9['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
-						echo '</div>';
-
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';		
-
-						echo '<div class="offset1 span2">';
-
-							echo '<p>Especifique</p>';
-
-						echo '</div>';	
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S5_1_9_O); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S5_1_9_O['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
-						echo '</div>';
-
-						echo '<div class="span3">';
-
-							echo '<p>Nombre de la fuente</p>';
-
-						echo '</div>';	
-
-						echo '<div class="span4">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S5_1_9_1); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S5_1_9_1['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
-						echo '</div>';
-
-				echo '</div>';
-
 
 		echo '</div>'; 
 
@@ -1152,22 +2395,19 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////PREGUNTA 2
 
 		echo '<div class="question">';
-			echo '<p>2. ¿Cuáles son los aparejos o artes de pesca que usted utiliza?</p>';	
+			echo '<p>2. ¿La zona donde pesca se encuentra en:</p>';	
 
 
 				echo '<div class="row-fluid">';		
 
-					//columna1
-					echo '<div class="span6 question">';		
-						echo '<p><b>Redes cortineras</b></p>';	
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
 
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Agallera', $S5_2_1['id'], $label_class);
+							echo '<div class="span6">';
+
+									echo '<div class="control-group span5">';	
+										echo form_label('Su comunidad', $S5_2_1['id'], $label_class);
 									echo '</div>'; 	
 											
-									echo '<div class="control-group offset1 span3">';
+									echo '<div class="control-group span5">';
 										echo '<div class="controls">';
 												echo form_input($S5_2_1); 
 											echo '<span class="help-inline"></span>';
@@ -1176,16 +2416,14 @@ echo '<div class="well modulo">';
 									echo '</div>'; 	
 
 							echo '</div>';	
-						echo '</div>';	
 
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
+							echo '<div class="span6">';
 
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Transmallo', $S5_2_2['id'], $label_class);
+									echo '<div class="control-group span5">';	
+										echo form_label('Otra Comunidad', $S5_2_2['id'], $label_class);
 									echo '</div>'; 	
 											
-									echo '<div class="control-group offset1 span3">';
+									echo '<div class="control-group span5">';
 										echo '<div class="controls">';
 												echo form_input($S5_2_2); 
 											echo '<span class="help-inline"></span>';
@@ -1194,444 +2432,352 @@ echo '<div class="well modulo">';
 									echo '</div>'; 	
 
 							echo '</div>';	
+
+			echo '</div>'; 
+
+		echo '<div class="row-fluid">';		
+			echo '<div class="offset2 span8">';
+					echo '<div class="control-group">';
+					echo form_label('Departamento', 'S5_2_DD_COD', $label_class);	
+						echo '<div class="controls">';
+							echo form_dropdown('S5_2_DD_COD', $depaxArray, FALSE,'class=" span12" id="S5_2_DD_COD"'); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error('S5_2_DD_COD') . '</div>';
 						echo '</div>';	
+					echo '</div>'; 	
 
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Paichetera', $S5_2_3['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_3); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_3['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
+					echo '<div class="control-group">';
+					echo form_label('Provincia', 'S5_2_PP_COD', $label_class);
+						echo '<div class="controls">';
+							echo form_dropdown('S5_2_PP_COD', $provArray, FALSE,'class="span12" id="S5_2_PP_COD"'); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error('S5_2_PP_COD') . '</div>';
 						echo '</div>';	
+					echo '</div>'; 	
 
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Gamitanera', $S5_2_4['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_4); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_4['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Otro', $S5_2_5['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_5); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_5['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
+					echo '<div class="control-group">';
+					echo form_label('Distrito', 'S5_2_DI_COD', $label_class);
+						echo '<div class="controls">';
+								echo form_dropdown('S5_2_DI_COD', $distArray, FALSE,'class="span12" id="S5_2_DI_COD"'); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error('S5_2_DI_COD') . '</div>';
 						echo '</div>';	
+					echo '</div>';
 
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-											
-									echo '<div class="control-group offset1 span10">';
-									echo form_label('Especifique', $S5_2_5_O['id'], $label_class);
-										echo '<div class="controls">';
-												echo form_input($S5_2_5_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_5_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
+					echo '<div class="control-group">';
+					echo form_label('Centro Poblado', 'S5_2_CCPP_COD', $label_class);
+						echo '<div class="controls">';
+								echo form_dropdown('S5_2_CCPP_COD', $ccppArray, FALSE,'class="span12" id="S5_2_CCPP_COD"'); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error('S5_2_CCPP_COD') . '</div>';
 						echo '</div>';	
-					echo '</div>';	
-
-					//columna2
-
-					echo '<div class="span6 question">';	
-						echo '<p><b>Aparejos</b></p>';		
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Líneas y anzuelos', $S5_2_13['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_13); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_13['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Arpón', $S5_2_14['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_14); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_14['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Farfa', $S5_2_15['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_15); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_15['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Espineles', $S5_2_16['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_16); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_16['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Otro', $S5_2_17['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_17); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_17['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-											
-									echo '<div class="control-group offset1 span10">';
-									echo form_label('Especifique', $S5_2_17_O['id'], $label_class);
-										echo '<div class="controls">';
-												echo form_input($S5_2_17_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_17_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-					echo '</div>';	
-				echo '</div>';	
-
-
-
-
-		//2da fila
-				echo '<div class="row-fluid ">';		
-
-					//columna1
-					echo '<div class="span6 question">';		
-						echo '<p><b>Redes de cerco</b></p>';	
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Hondera', $S5_2_6['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_6); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_6['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Tarrafa', $S5_2_7['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_7); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_7['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Arrastradora', $S5_2_8['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_8); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_8['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Capiccahuana', $S5_2_9['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_9); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_9['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Chinchorros', $S5_2_10['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_10); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_10['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Aissaccahuanna', $S5_2_11['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_11); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_11['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Otro', $S5_2_12['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_12); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_12['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-											
-									echo '<div class="control-group offset1 span10">';
-									echo form_label('Especifique', $S5_2_12_O['id'], $label_class);
-										echo '<div class="controls">';
-												echo form_input($S5_2_12_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_12_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-
-					echo '</div>';	
-
-					//columna2
-
-					echo '<div class="span6 question">';	
-						echo '<p><b>Trampas</b></p>';		
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Nasas', $S5_2_18['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_18); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_18['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Tapajes', $S5_2_19['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_19); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_19['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Tramperos', $S5_2_20['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_20); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_20['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Otro', $S5_2_21['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_2_21); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_21['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-											
-									echo '<div class="control-group offset1 span10">';
-									echo form_label('Especifique', $S5_2_21_O['id'], $label_class);
-										echo '<div class="controls">';
-												echo form_input($S5_2_21_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_2_21_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-				echo '</div>';	
-
-
-
-
-
-
-echo '</div>'; 	
-			echo '</div>';					
+					echo '</div>'; 	
+			echo '</div>'; 
+		echo '</div>'; 	
+echo '</div>';					
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 2
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 3
+		echo '<div class="question">';
+			echo '<p>3. Generalmente , ¿Qué tiempo demora en desplazarse a su zona de pesca?</p>';
+				echo '<div class="row-fluid">';
+					echo '<div class="span12">';
+
+						    echo '<div class="control-group span1">';	
+								echo form_label('', $S5_3['id'], $label_class);
+							echo '</div>'; 	
+									
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S5_3); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_3['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Horas', $S5_3_H['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S5_3_H); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_3_H['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Minutos', $S5_3_M['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S5_3_M); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_3_M['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 			
+	
+
+					echo '</div>';	
+				echo '</div>';	
+		echo '</div>';
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 3
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 4
+		echo '<div class="question">';
+			echo '<p>4.Generalmente , ¿Cuánto dura su faena de pesca?</p>';
+				echo '<div class="row-fluid">';
+					echo '<div class="span12">';
+
+						    echo '<div class="control-group span1">';	
+								echo form_label('', $S5_4['id'], $label_class);
+							echo '</div>'; 	
+									
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S5_4); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_4['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Horas', $S5_4_H['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S5_4_H); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_4_H['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Minutos', $S5_4_M['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S5_4_M); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S5_4_M['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 			
+	
+
+					echo '</div>';	
+				echo '</div>';	
+		echo '</div>';
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 4
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 5
+		echo '<div class="question">';
+			echo '<p>5. ¿Cuáles son las artes o aparejos de pesca que usted utiliza?</p>';
+				echo '<div class="row-fluid">';
+
+
+
+			echo '<table class="table table-condensed" id="emb_table">';
+              echo '<thead>';
+                echo '<tr>';
+                  echo '<th class="span1"></th>';
+                   echo '<th class="span1"></th>';
+                  echo '<th class="span1"></th>';
+                  echo '<th class="span9 center" colspan="5">Longitud de malla (Pulgadas)</th>';
+                echo '</tr>';
+              echo '</thead>';
+              echo '<tbody>';
+               echo '<tr>';
+               	 echo '<td><b>REDES<b/></td>';
+                  echo '<td></td>';
+                  echo '<td>¿Cuántas?</td>';
+                  echo '<td>1</td>';
+                  echo '<td>2</td>';
+                  echo '<td>3</td>';
+                  echo '<td>4</td>';       
+                  echo '<td>5</td>';
+               echo '</tr>';              
+               echo '<tr>';
+                  echo '<td>Agallera</td>';
+                  echo '<td>' . form_input($S5_5_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_1_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_1_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_1_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_1_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_1_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_1_5) . '</td>';                                                 
+                echo '</tr>';
+               echo '<tr>';
+                  echo '<td>Trasmallo</td>';
+                  echo '<td>' . form_input($S5_5_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_2_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_2_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_2_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_2_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_2_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_2_5) . '</td>';                                                 
+                echo '</tr>'; 
+                echo '<tr>';
+                  echo '<td>Hondera</td>';
+                  echo '<td>' . form_input($S5_5_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_3_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_3_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_3_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_3_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_3_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_3_5) . '</td>';                                                 
+                echo '</tr>';         
+                echo '<tr>';
+                  echo '<td>Tarrafa</td>';
+                  echo '<td>' . form_input($S5_5_4) . '</td>';
+                  echo '<td>' . form_input($S5_5_4_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_4_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_4_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_4_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_4_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_4_5) . '</td>';                                                 
+                echo '</tr>';            
+                echo '<tr>';
+                  echo '<td>Arrastradora</td>';
+                  echo '<td>' . form_input($S5_5_5) . '</td>';
+                  echo '<td>' . form_input($S5_5_5_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_5_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_5_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_5_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_5_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_5_5) . '</td>';                                                 
+                echo '</tr>';   
+                echo '<tr>';
+                  echo '<td>Capiccuhuana</td>';
+                  echo '<td>' . form_input($S5_5_6) . '</td>';
+                  echo '<td>' . form_input($S5_5_6_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_6_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_6_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_6_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_6_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_6_5) . '</td>';                                                 
+                echo '</tr>';       
+                echo '<tr>';
+                  echo '<td>Chinchorro</td>';
+                  echo '<td>' . form_input($S5_5_7) . '</td>';
+                  echo '<td>' . form_input($S5_5_7_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_7_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_7_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_7_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_7_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_7_5) . '</td>';                                                 
+                echo '</tr>';          
+                echo '<tr>';
+                  echo '<td>Aissaccahuanna</td>';
+                  echo '<td>' . form_input($S5_5_8) . '</td>';
+                  echo '<td>' . form_input($S5_5_8_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_8_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_8_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_8_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_8_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_8_5) . '</td>';                                                 
+                echo '</tr>';     
+                echo '<tr>';
+                  echo '<td>' . form_input($S5_5_9_O) . ' </td>';
+                  echo '<td>' . form_input($S5_5_9) . '</td>';
+                  echo '<td>' . form_input($S5_5_9_C) . '</td>';
+                  echo '<td>' . form_input($S5_5_9_1) . '</td>';
+                  echo '<td>' . form_input($S5_5_9_2) . '</td>';
+                  echo '<td>' . form_input($S5_5_9_3) . '</td>';
+                  echo '<td>' . form_input($S5_5_9_4) . '</td>';       
+                  echo '<td>' . form_input($S5_5_9_5) . '</td>';                                                 
+                echo '</tr>';       
+
+               	echo '<td><b>APAREJOS<b/></td>';
+                  echo '<td></td>';
+                  echo '<td>¿Cuántas?</td>';
+                  echo '<td></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';       
+                  echo '<td></td>';  
+                echo '</tr>';  
+
+                echo '<tr>';
+                  echo '<td>Lineas y anzuelos</td>';
+                  echo '<td>' . form_input($S5_5_10) . '</td>';
+                  echo '<td>' . form_input($S5_5_10_C) . '</td>';                                              
+                echo '</tr>';   
+                echo '<tr>';
+                  echo '<td>Arpon</td>';
+                  echo '<td>' . form_input($S5_5_11) . '</td>';
+                  echo '<td>' . form_input($S5_5_11_C) . '</td>';                                              
+                echo '</tr>';   
+                echo '<tr>';
+                  echo '<td>Farpa</td>';
+                  echo '<td>' . form_input($S5_5_12) . '</td>';
+                  echo '<td>' . form_input($S5_5_12_C) . '</td>';                                              
+                echo '</tr>';   
+                echo '<tr>';
+                  echo '<td>Espineles</td>';
+                  echo '<td>' . form_input($S5_5_13) . '</td>';
+                  echo '<td>' . form_input($S5_5_13_C) . '</td>';                                              
+                echo '</tr>';   
+                echo '<tr>';
+                  echo '<td>Espineles</td>';
+                  echo '<td>' . form_input($S5_5_13) . '</td>';
+                  echo '<td>' . form_input($S5_5_13_C) . '</td>';                                              
+                echo '</tr>';   
+                echo '<tr>';
+                  echo '<td>' . form_input($S5_5_14_O) . '</td>';
+                  echo '<td>' . form_input($S5_5_14) . '</td>';
+                  echo '<td>' . form_input($S5_5_14_C) . '</td>';                                              
+                echo '</tr>';  
+
+
+               	echo '<td><b>TRAMPA<b/></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';
+                  echo '<td></td>';       
+                  echo '<td></td>';  
+                echo '</tr>';  
+                echo '<tr>';
+                  echo '<td>Trampa</td>';
+                  echo '<td>' . form_input($S5_5_15) . '</td>';                                         
+                echo '</tr>';  
+                echo '<tr>';
+                  echo '<td>Tapaje</td>';
+                  echo '<td>' . form_input($S5_5_16) . '</td>';                                         
+                echo '</tr>';  
+                echo '<tr>';
+                  echo '<td>' . form_input($S5_5_17_O) . '</td>';
+                  echo '<td>' . form_input($S5_5_17) . '</td>';                                         
+                echo '</tr>';  
+              echo '</tbody>';
+            echo '</table>';		
+
+
+
+
+
+				echo '</div>';	
+		echo '</div>';				
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 5
+
+
+
 
 
 
@@ -1656,862 +2802,431 @@ echo '</div>';
 	echo '<div class="span6">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 3
-
-		echo '<div class="question">';
-			echo '<p>3. ¿Qué especies extrae mayormente durante su faena de pesca?</p>';	
-
-				echo '<div class="row-fluid">';		
-
-					//columna1
-					echo '<div class="span6">';		
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Boquichico', $S5_3_1['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_1); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_1['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Doncella', $S5_3_2['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_2); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_2['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Llambina', $S5_3_3['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_3); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_3['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Zungaro', $S5_3_4['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_4); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_4['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Palometa', $S5_3_5['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_5); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_5['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Ractacara', $S5_3_6['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_6); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_6['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Sardina', $S5_3_7['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_7); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_7['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Paiche', $S5_3_8['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_8); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_8['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Gamitana', $S5_3_9['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_9); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_9['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Paco', $S5_3_10['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_10); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_10['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';						
-
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Dorado', $S5_3_11['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_11); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_11['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-
-					echo '</div>';	
-
-					//columna2
-
-					echo '<div class="span6">';		
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Sabalo', $S5_3_12['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_12); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_12['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Yahuarachi', $S5_3_13['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_13); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_13['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Carachama', $S5_3_14['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_14); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_14['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Lisa', $S5_3_15['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_15); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_15['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';		
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Corvina', $S5_3_16['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_16); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_16['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Langostino', $S5_3_17['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_17); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_17['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Camarón de río', $S5_3_18['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_18); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_18['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Trucha', $S5_3_19['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_19); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_19['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="control-group offset1 span3">';	
-										echo form_label('Pejerrey argentino', $S5_3_20['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group offset1 span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_20); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_20['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-					//fincolumna2
-					echo '</div>';	
-
+/////////////////////////////////////////////PREGUNTA 6
+			echo '<div class="question">';
+			echo '<p>6. ¿Qué especies extrae mayormente durante su faena de pesca?</p>';
+				echo '<div class="row-fluid">';
+					echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span1 center">Tipo de Redes</th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span1 center">Tipo de Redes</th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Acarahuazu</td>';
+					                  echo '<td>' . form_input($S5_6_1) . '</td>';
+					                  echo '<td>' . form_input($S5_6_1_C) . '</td>';
+					                  echo '<td>Mauri</td>';
+					                  echo '<td>' . form_input($S5_6_23) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_23_C) . '</td>';     
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Bagre</td>';
+					                  echo '<td>' . form_input($S5_6_2) . '</td>';
+					                  echo '<td>' . form_input($S5_6_2_C) . '</td>';
+					                  echo '<td>Mota</td>';
+					                  echo '<td>' . form_input($S5_6_24) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_24_C) . '</td>';    
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Bocón</td>';
+					                  echo '<td>' . form_input($S5_6_3) . '</td>';
+					                  echo '<td>' . form_input($S5_6_3_C) . '</td>';
+					                  echo '<td>Novia</td>';
+					                  echo '<td>' . form_input($S5_6_25) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_25_C) . '</td>';    
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Boquichico</td>';
+					                  echo '<td>' . form_input($S5_6_4) . '</td>';
+					                  echo '<td>' . form_input($S5_6_4_C) . '</td>';
+					                  echo '<td>Paco</td>';
+					                  echo '<td>' . form_input($S5_6_26) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_26_C) . '</td>';  
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Bujurqui</td>';
+					                  echo '<td>' . form_input($S5_6_5) . '</td>';
+					                  echo '<td>' . form_input($S5_6_5_C) . '</td>';
+					                  echo '<td>Palometa</td>';
+					                  echo '<td>' . form_input($S5_6_27) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_27_C) . '</td>';    
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Camaron de rio</td>';
+					                  echo '<td>' . form_input($S5_6_6) . '</td>';
+					                  echo '<td>' . form_input($S5_6_6_C) . '</td>';
+					                  echo '<td>Paña, piraña</td>';
+					                  echo '<td>' . form_input($S5_6_28) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_28_C) . '</td>'; 
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Carachama</td>';
+					                  echo '<td>' . form_input($S5_6_7) . '</td>';
+					                  echo '<td>' . form_input($S5_6_7_C) . '</td>';
+					                  echo '<td>Pejerrey</td>';
+					                  echo '<td>' . form_input($S5_6_29) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_29_C) . '</td>'; 
+					               echo '</tr>'; 			
+					               echo '<tr>';
+					                  echo '<td>Carachi amarillo</td>';
+					                  echo '<td>' . form_input($S5_6_8) . '</td>';
+					                  echo '<td>' . form_input($S5_6_8_C) . '</td>';
+					                  echo '<td>Ractacara</td>';
+					                  echo '<td>' . form_input($S5_6_30) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_30_C) . '</td>'; 
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Carachi negro</td>';
+					                  echo '<td>' . form_input($S5_6_9) . '</td>';
+					                  echo '<td>' . form_input($S5_6_9_C) . '</td>';
+					                  echo '<td>Sabalo</td>';
+					                  echo '<td>' . form_input($S5_6_31) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_31_C) . '</td>';    
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Chambira</td>';
+					                  echo '<td>' . form_input($S5_6_10) . '</td>';
+					                  echo '<td>' . form_input($S5_6_10_C) . '</td>';
+					                  echo '<td>Sardina</td>';
+					                  echo '<td>' . form_input($S5_6_32) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_32_C) . '</td>';      
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Chiochio</td>';
+					                  echo '<td>' . form_input($S5_6_11) . '</td>';
+					                  echo '<td>' . form_input($S5_6_11_C) . '</td>';
+					                  echo '<td>Shiripira</td>';
+					                  echo '<td>' . form_input($S5_6_33) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_33_C) . '</td>';     
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Corvina</td>';
+					                  echo '<td>' . form_input($S5_6_12) . '</td>';
+					                  echo '<td>' . form_input($S5_6_12_C) . '</td>';
+					                  echo '<td>Shuyo</td>';
+					                  echo '<td>' . form_input($S5_6_34) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_34_C) . '</td>';     
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Dentón</td>';
+					                  echo '<td>' . form_input($S5_6_13) . '</td>';
+					                  echo '<td>' . form_input($S5_6_13_C) . '</td>';
+					                  echo '<td>Tilapia</td>';
+					                  echo '<td>' . form_input($S5_6_35) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_35_C) . '</td>';     
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Doncella</td>';
+					                  echo '<td>' . form_input($S5_6_14) . '</td>';
+					                  echo '<td>' . form_input($S5_6_14_C) . '</td>';
+					                  echo '<td>Trucha</td>';
+					                  echo '<td>' . form_input($S5_6_36) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_36_C) . '</td>';       
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Dorado</td>';
+					                  echo '<td>' . form_input($S5_6_15) . '</td>';
+					                  echo '<td>' . form_input($S5_6_15_C) . '</td>';
+					                  echo '<td>Yahuarachi</td>';
+					                  echo '<td>' . form_input($S5_6_37) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_37_C) . '</td>';         
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Fasaco</td>';
+					                  echo '<td>' . form_input($S5_6_16) . '</td>';
+					                  echo '<td>' . form_input($S5_6_16_C) . '</td>';
+					                  echo '<td>Yaraqui</td>';
+					                  echo '<td>' . form_input($S5_6_38) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_38_C) . '</td>';     
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Ispi</td>';
+					                  echo '<td>' . form_input($S5_6_17) . '</td>';
+					                  echo '<td>' . form_input($S5_6_17_C) . '</td>';
+					                  echo '<td>Yulilla</td>';
+					                  echo '<td>' . form_input($S5_6_39) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_39_C) . '</td>';    
+					               echo '</tr>'; 				
+					               echo '<tr>';
+					                  echo '<td>Langostino</td>';
+					                  echo '<td>' . form_input($S5_6_18) . '</td>';
+					                  echo '<td>' . form_input($S5_6_18_C) . '</td>';
+					                  echo '<td>Zungaro</td>';
+					                  echo '<td>' . form_input($S5_6_40) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_41_C) . '</td>';   
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Lisa</td>';
+					                  echo '<td>' . form_input($S5_6_19) . '</td>';
+					                  echo '<td>' . form_input($S5_6_19_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_41_O) . '</td>';
+					                  echo '<td>' . form_input($S5_6_41) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_41_C) . '</td>'; 
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Llambina</td>';
+					                  echo '<td>' . form_input($S5_6_20) . '</td>';
+					                  echo '<td>' . form_input($S5_6_20_C) . '</td>';
+					                  echo '<td></td>';
+					                  echo '<td></td>';   
+					                  echo '<td></td>';     
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Manitoa</td>';
+					                  echo '<td>' . form_input($S5_6_21) . '</td>';
+					                  echo '<td>' . form_input($S5_6_21_C) . '</td>';
+					                  echo '<td></td>';
+					                  echo '<td></td>';   
+					                  echo '<td></td>';     
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Maparate</td>';
+					                  echo '<td>' . form_input($S5_6_22) . '</td>';
+					                  echo '<td>' . form_input($S5_6_22_C) . '</td>';
+					                  echo '<td></td>';
+					                  echo '<td></td>';   
+					                  echo '<td></td>';     
+					               echo '</tr>'; 					               			               			               					               						               		               			               				               					               			               					               					               						               				               					               		               					               					               					               					               					                          
+			              echo '</tbody>';
+			            echo '</table>';		
+
+			            echo '<h4>Peces Ornamentales</h4>';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span1 center">Tipo de Redes</th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span1 center">Tipo de Redes</th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Anguila eléctrica</td>';
+					                  echo '<td>' . form_input($S5_6_42) . '</td>';
+					                  echo '<td>' . form_input($S5_6_42_C) . '</td>';
+					                  echo '<td>Pez disco</td>';
+					                  echo '<td>' . form_input($S5_6_47) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_47_C) . '</td>';     
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Arahuana</td>';
+					                  echo '<td>' . form_input($S5_6_43) . '</td>';
+					                  echo '<td>' . form_input($S5_6_43_C) . '</td>';
+					                  echo '<td>Tucunare</td>';
+					                  echo '<td>' . form_input($S5_6_48) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_48_C) . '</td>';     
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Coydoras jumbo</td>';
+					                  echo '<td>' . form_input($S5_6_44) . '</td>';
+					                  echo '<td>' . form_input($S5_6_44_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_49_O) . '</td>';
+					                  echo '<td>' . form_input($S5_6_49) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_49_C) . '</td>'; 
+					               echo '</tr>';  	
+					               echo '<tr>';
+					                  echo '<td>Escalar amazónico</td>';
+					                  echo '<td>' . form_input($S5_6_45) . '</td>';
+					                  echo '<td>' . form_input($S5_6_45_C) . '</td>';
+					                  echo '<td></td>';
+					                  echo '<td></td>';   
+					                  echo '<td></td>';     
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Neón tetra</td>';
+					                  echo '<td>' . form_input($S5_6_46) . '</td>';
+					                  echo '<td>' . form_input($S5_6_46_C) . '</td>';
+					                  echo '<td></td>';
+					                  echo '<td></td>';   
+					                  echo '<td></td>';     
+					               echo '</tr>';  					                						               				               					               
+			              echo '</tbody>';
+			            echo '</table>';	
 
 				echo '</div>';	
+		echo '</div>';						               
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 6		
 
 
-				echo '<div class="question">';
-						echo '<div class="row-fluid">';
-								echo '<div class="span12">';
-
-											echo '<div class="offset1 span2">';	
-												echo form_label('Otro', $S5_3_21['id'], $label_class);
-											echo '</div>'; 	
-													
-											echo '<div class="control-group span2">';
-												echo '<div class="controls">';
-														echo form_input($S5_3_21); 
-													echo '<span class="help-inline"></span>';
-													echo '<div class="help-block error">' . form_error($S5_3_21['name']) . '</div>';
-												echo '</div>';	
-											echo '</div>'; 	
-
-											echo '<div class="offset1 span2">';	
-												echo form_label('Especifique', $S5_3_21_O['id'], $label_class);
-											echo '</div>'; 	
-													
-											echo '<div class="control-group span3">';
-												echo '<div class="controls">';
-														echo form_input($S5_3_21_O); 
-													echo '<span class="help-inline"></span>';
-													echo '<div class="help-block error">' . form_error($S5_3_21_O['name']) . '</div>';
-												echo '</div>';	
-											echo '</div>'; 	
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 7
+		echo '<div class="question">';
+			echo '<p>7. ¿Su condición de pescador es:</p>';	
+				echo '<div class="row-fluid">';
+							echo '<div class="control-group offset4 span4">';
+								echo '<div class="controls">';
+										echo form_input($S5_7); 
+									echo '<div class="help-block error">' . form_error($S5_7['name']) . '</div>';
 								echo '</div>';	
-						echo '</div>';	
-
-
-
-				
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="offset1 span2">';	
-										echo form_label('Otro', $S5_3_22['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group span2">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_22); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_22['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-									echo '<div class="offset1 span2">';	
-										echo form_label('Especifique', $S5_3_22_O['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_22_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_22_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="offset1 span2">';	
-										echo form_label('Otro', $S5_3_23['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group span2">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_23); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_23['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-									echo '<div class="offset1 span2">';	
-										echo form_label('Especifique', $S5_3_23_O['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_23_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_23_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-
-						echo '<div class="row-fluid">';
-							echo '<div class="span12">';
-
-									echo '<div class="offset1 span2">';	
-										echo form_label('Otro', $S5_3_24['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group span2">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_24); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_24['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-									echo '<div class="offset1 span2">';	
-										echo form_label('Especifique', $S5_3_24_O['id'], $label_class);
-									echo '</div>'; 	
-											
-									echo '<div class="control-group span3">';
-										echo '<div class="controls">';
-												echo form_input($S5_3_24_O); 
-											echo '<span class="help-inline"></span>';
-											echo '<div class="help-block error">' . form_error($S5_3_24_O['name']) . '</div>';
-										echo '</div>';	
-									echo '</div>'; 	
-
-							echo '</div>';	
-						echo '</div>';	
-				
+							echo '</div>'; 	
 				echo '</div>';	
-		echo '</div>';					
+		echo '</div>';							
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 3
-
+/////////////////////////////////////////////PREGUNTA 7
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 4
-
+/////////////////////////////////////////////PREGUNTA 8
 		echo '<div class="question">';
-			echo '<p>4. ¿Qué factores dificultan su actividad de pesca?</p>';	
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Cambios climáticos</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_1); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_1['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Contaminación del agua</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_2); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_2['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Dificultad de financiamiento</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_3); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_3['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Falta de políticas adecuadas</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_4); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_4['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Infraestructura inadecuada</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_5); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_5['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Inseguridad ciudadana</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_6); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_6['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 						
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Otro</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_7); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_7['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-
-							echo '<div class="span2">';
-
-								echo '<p>Especifique</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span3">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_7_O); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_7_O['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';		
-
-
-						echo '</div>'; 	
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Ninguna</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_4_8); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_4_8['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 	
-
-		echo '</div>';					
+			echo '<p>8. ¿Cuál es el lugar de desembarque?</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span5"></th>';
+					                  echo '<th class="span2"></th>';
+					                  echo '<th class="span5 center">Nombre</th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Puerto</td>';
+					                  echo '<td>' . form_input($S5_8_1) . '</td>';
+					                  echo '<td>' . form_input($S5_8_1_1) . '</td>'; 
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Playa</td>';
+					                  echo '<td>' . form_input($S5_8_2) . '</td>';
+					                  echo '<td>' . form_input($S5_8_2_1) . '</td>'; 
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Desembarcadero pesquero artesanal</td>';
+					                  echo '<td>' . form_input($S5_8_3) . '</td>';
+					                  echo '<td>' . form_input($S5_8_3_1) . '</td>'; 
+					               echo '</tr>'; 					                					                						               				               					               
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S5_8_4_O) . '</td>';
+					                  echo '<td>' . form_input($S5_8_4) . '</td>';
+					                  echo '<td>' . form_input($S5_8_4_1) . '</td>'; 
+					               echo '</tr>'; 						               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';				            
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 4
-
-
+/////////////////////////////////////////////PREGUNTA 8
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 5
-
+/////////////////////////////////////////////PREGUNTA 9
 		echo '<div class="question">';
-			echo '<p>5. ¿Cuál es el destino de su producción?</p>';	
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Venta</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_5_1); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_5_1['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Trueque</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_5_2); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_5_2['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Autoconsumo</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_5_3); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_5_3['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Pérdida</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_5_4); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_5_4['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span4">';
-
-								echo '<p>Otro</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_5_5); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_5_5['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';			
-
-							echo '<div class="span2">';
-
-								echo '<p>Especifique</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span3">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S5_5_5_O); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S5_5_5_O['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-						echo '</div>'; 
-
-		echo '</div>';					
+			echo '<p>9. ¿Qué problemas encuentra en su actividad de pesca?</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span8"></th>';
+					                  echo '<th class="span4"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Cambios climáticos</td>';
+					                  echo '<td>' . form_input($S5_9_1) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Contaminación del agua</td>';
+					                  echo '<td>' . form_input($S5_9_2) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Falta de financiamiento</td>';
+					                  echo '<td>' . form_input($S5_9_3) . '</td>';
+					               echo '</tr>'; 					                					                						               				               					               
+					               echo '<tr>';
+					                  echo '<td>Altos costos de equipos, materiales e insumos</td>';
+					                  echo '<td>' . form_input($S5_9_4) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					               echo '<td>Conflictos por utilización de las fuentes hídricas</td>';
+					                  echo '<td>' . form_input($S5_9_5) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					               echo '<td>Falta de sistemas de frio para preservar la producción</td>';
+					                  echo '<td>' . form_input($S5_9_6) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					               echo '<td>Falta de capacitación y asistencia técnica</td>';
+					                  echo '<td>' . form_input($S5_9_7) . '</td>';
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					               echo '<td>Infraestructura inadecuada</td>';
+					                  echo '<td>' . form_input($S5_9_8) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					               echo '<td>Falta de vías de acceso</td>';
+					                  echo '<td>' . form_input($S5_9_9) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					               echo '<td>Pesca indiscriminada</td>';
+					                  echo '<td>' . form_input($S5_9_10) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					               echo '<td>Inseguridad ciudadana</td>';
+					                  echo '<td>' . form_input($S5_9_11) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					               echo '<td>Uso de productos tóxicos</td>';
+					                  echo '<td>' . form_input($S5_9_12) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					               echo '<td>Uso de explosivos</td>';
+					                  echo '<td>' . form_input($S5_9_13) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					               echo '<td>' . form_input($S5_9_14_O) . '</td>';
+					                  echo '<td>' . form_input($S5_9_14) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					               echo '<td>NINGUNO</td>';
+					                  echo '<td>' . form_input($S5_9_15) . '</td>';
+					               echo '</tr>'; 						               				               					               					               				               					               				               						               			               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 5
+/////////////////////////////////////////////PREGUNTA 9
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 10
+				echo '<div class="question">';
+			echo '<p>10. En los últimos 5 años, ¿Cree usted que:</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span5"></th>';
+					                  echo '<th class="span2"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>1. La cantidad de peces</td>';
+					                  echo '<td>' . form_input($S5_10_1) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>2. La variedad de peces</td>';
+					                  echo '<td>' . form_input($S5_10_2) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>3. El tamaño de peces</td>';
+					                  echo '<td>' . form_input($S5_10_3) . '</td>';
+					               echo '</tr>'; 					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';		
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 10
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2549,6 +3264,93 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+$("#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD").change(function(event) {
+        var sel = null;
+        var dep = $('#S5_2_DD_COD');
+        var prov = $('#S5_2_PP_COD');
+        var dist = $('#S5_2_DI_COD');
+        var url = null;
+        var cod = null;
+        var op =null;
+
+        var mivalue = ($(this).val() == -1) ? '-' : $(this).val();
+        switch(event.target.id){
+            case 'S5_2_DD_COD':
+                sel     = $("#S5_2_PP_COD");
+                //$('#CCDD').val(mivalue); 
+                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
+                op      = 1;
+                break;
+
+            case 'S5_2_PP_COD':
+                sel     = $("#S5_2_DI_COD");
+                // $('#CCPP').val(mivalue);                 
+                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                op      = 2;
+                break;
+
+            case 'S5_2_DI_COD':
+                sel     = $("#S5_2_CCPP_COD");
+                // $("#CCDI").val(mivalue);          
+                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_ccpp_all/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                op      = 3;
+                break;  
+
+            case 'S5_2_CCPP_COD':
+                // $("#COD_CCPP").val(mivalue);           
+                break;  
+        }     
+        
+        var form_data = {
+            code: $(this).val(),
+            csrf_token_c: CI.cct,
+            dep: dep.val(),
+            prov:prov.val(),
+            dist:dist.val(),
+            ajax:1
+        };
+
+        if(event.target.id != 'S5_2_CCPP_COD')
+        {
+
+        $.ajax({
+            url: url,
+            type:'POST',
+            data:form_data,
+            dataType:'json',
+            success:function(json_data){
+                sel.empty();
+                if (op==3){
+                    sel.append('<option value="-1"> - </option>');
+                }                
+                $.each(json_data, function(i, data){
+                    if (op==1){
+                        sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
+                    }
+                    if (op==2){
+                        sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
+                   }
+                    if (op==3){
+                        sel.append('<option value="' + data.CCPP + '">' + data.CENTRO_POBLADO + '</option>');}
+                });
+               
+                if (op==1){
+                    $("#S5_2_PP_COD").trigger('change');
+                    }  
+                if (op==2){
+                    $("#S5_2_DI_COD").trigger('change');
+                }
+                if (op==3){
+                    $("#S5_2_CCPP_COD").trigger('change');
+                }
+
+
+            }
+        });   
+     }
+  
+}); 
+
 	// $("#seccion5").on("submit", function(event) {
 	// 	$('#seccion5').trigger('validate');
  // 	});

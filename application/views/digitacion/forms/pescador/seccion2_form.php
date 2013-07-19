@@ -311,36 +311,36 @@ $S2_14_4 = array(
 );
 //construcion
 $S2_14_5 = array(
-	'name'	=> 'S2_14_2',
-	'id'	=> 'S2_14_2',
+	'name'	=> 'S2_14_5',
+	'id'	=> 'S2_14_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //comercio
 $S2_14_6 = array(
-	'name'	=> 'S2_14_3',
-	'id'	=> 'S2_14_3',
+	'name'	=> 'S2_14_6',
+	'id'	=> 'S2_14_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //Otra
 $S2_14_7 = array(
-	'name'	=> 'S2_14_4',
-	'id'	=> 'S2_14_4',
+	'name'	=> 'S2_14_7',
+	'id'	=> 'S2_14_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //especifique
 $S2_14_7_O = array(
-	'name'	=> 'S2_14_2',
-	'id'	=> 'S2_14_2',
-	'maxlength'	=> 1,
+	'name'	=> 'S2_14_7_O',
+	'id'	=> 'S2_14_7_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 //notiene
 $S2_14_8 = array(
-	'name'	=> 'S2_14_3',
-	'id'	=> 'S2_14_3',
+	'name'	=> 'S2_14_8',
+	'id'	=> 'S2_14_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
@@ -359,7 +359,7 @@ $S2_15 = array(
 $S2_15_O = array(
 	'name'	=> 'S2_15_O',
 	'id'	=> 'S2_15_O',
-	'maxlength'	=> 1,
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 //tradicion familiar
@@ -431,60 +431,60 @@ $S2_17_2 = array(
 $S2_17_3 = array(
 	'name'	=> 'S2_17_3',
 	'id'	=> 'S2_17_3',
-	'maxlength'	=> 1,
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 
 //seguro integral de salud
 $S2_17_4 = array(
-	'name'	=> 'S2_17_1',
-	'id'	=> 'S2_17_1',
+	'name'	=> 'S2_17_4',
+	'id'	=> 'S2_17_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // programa juntos
 $S2_17_5 = array(
-	'name'	=> 'S2_17_2',
-	'id'	=> 'S2_17_2',
+	'name'	=> 'S2_17_5',
+	'id'	=> 'S2_17_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // programa bono de gratitud
 $S2_17_6 = array(
-	'name'	=> 'S2_17_3',
-	'id'	=> 'S2_17_3',
+	'name'	=> 'S2_17_6',
+	'id'	=> 'S2_17_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //programa cuna mas
 $S2_17_7 = array(
-	'name'	=> 'S2_17_3',
-	'id'	=> 'S2_17_3',
+	'name'	=> 'S2_17_7',
+	'id'	=> 'S2_17_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // otro
 $S2_17_8 = array(
-	'name'	=> 'S2_17_2',
-	'id'	=> 'S2_17_2',
+	'name'	=> 'S2_17_8',
+	'id'	=> 'S2_17_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //otro-especifique
 $S2_17_8_O = array(
-	'name'	=> 'S2_17_3',
-	'id'	=> 'S2_17_3',
-	'maxlength'	=> 1,
+	'name'	=> 'S2_17_8_O',
+	'id'	=> 'S2_17_8_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 //ninguno
 $S2_17_9 = array(
-	'name'	=> 'S2_17_3',
-	'id'	=> 'S2_17_3',
+	'name'	=> 'S2_17_9',
+	'id'	=> 'S2_17_9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
@@ -493,90 +493,118 @@ $S2_17_9 = array(
 
 
 //nivel conyugue
-$S2_18 = array(
-	'name'	=> 'S2_18',
-	'id'	=> 'S2_18',
+$S2_19 = array(
+	'name'	=> 'S2_19',
+	'id'	=> 'S2_19',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //grado conyugue
-$S2_18G = array(
-	'name'	=> 'S2_18G',
-	'id'	=> 'S2_18G',
+$S2_19G = array(
+	'name'	=> 'S2_19G',
+	'id'	=> 'S2_19G',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //año conyugue
-$S2_18A = array(
-	'name'	=> 'S2_18A',
-	'id'	=> 'S2_18A',
+$S2_19A = array(
+	'name'	=> 'S2_19A',
+	'id'	=> 'S2_19A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // Cuidado del hogar
-$S2_19_1 = array(
-	'name'	=> 'S2_19_1',
-	'id'	=> 'S2_19_1',
+$S2_20_1 = array(
+	'name'	=> 'S2_20_1',
+	'id'	=> 'S2_20_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // Comerciante
-$S2_19_2 = array(
-	'name'	=> 'S2_19_2',
-	'id'	=> 'S2_19_2',
+$S2_20_2 = array(
+	'name'	=> 'S2_20_2',
+	'id'	=> 'S2_20_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // Pescador
-$S2_19_3 = array(
-	'name'	=> 'S2_19_3',
-	'id'	=> 'S2_19_3',
+$S2_20_3 = array(
+	'name'	=> 'S2_20_3',
+	'id'	=> 'S2_20_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // Recolector
-$S2_19_4 = array(
-	'name'	=> 'S2_19_4',
-	'id'	=> 'S2_19_4',
+$S2_20_4 = array(
+	'name'	=> 'S2_20_4',
+	'id'	=> 'S2_20_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // Otro
-$S2_19_5 = array(
-	'name'	=> 'S2_19_5',
-	'id'	=> 'S2_19_5',
+$S2_20_5 = array(
+	'name'	=> 'S2_20_5',
+	'id'	=> 'S2_20_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // Otro especifique
-$S2_19_5_O = array(
-	'name'	=> 'S2_19_5_O',
-	'id'	=> 'S2_19_5_O',
+$S2_20_6 = array(
+	'name'	=> 'S2_20_6',
+	'id'	=> 'S2_20_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+// Otro especifique
+$S2_20_7 = array(
+	'name'	=> 'S2_20_7',
+	'id'	=> 'S2_20_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+// Otro especifique
+$S2_20_8 = array(
+	'name'	=> 'S2_20_8',
+	'id'	=> 'S2_20_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+// Otro especifique
+$S2_20_9 = array(
+	'name'	=> 'S2_20_9',
+	'id'	=> 'S2_20_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// Otro especifique
+$S2_20_9_O = array(
+	'name'	=> 'S2_20_9_O',
+	'id'	=> 'S2_20_9_O',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 
-
 // tiene hjos
-$S2_20 = array(
-	'name'	=> 'S2_20',
-	'id'	=> 'S2_20',
+$S2_21 = array(
+	'name'	=> 'S2_21',
+	'id'	=> 'S2_21',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 // cuantos hijos
-$S2_21 = array(
-	'name'	=> 'S2_21',
-	'id'	=> 'S2_21',
+$S2_22 = array(
+	'name'	=> 'S2_22',
+	'id'	=> 'S2_22',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
@@ -584,651 +612,883 @@ $S2_21 = array(
 
 ///////////////////////////hijo 1
 // nro orden
-$S2_22_1_1 = array(
-	'name'	=> 'S2_22_1_1',
-	'id'	=> 'S2_22_1_1',
+$S2_23_1_1 = array(
+	'name'	=> 'S2_23_1_1',
+	'id'	=> 'S2_23_1_1',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_1 = array(
-	'name'	=> 'S2_22_2_1',
-	'id'	=> 'S2_22_2_1',
+$S2_23_2_1 = array(
+	'name'	=> 'S2_23_2_1',
+	'id'	=> 'S2_23_2_1',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_1 = array(
-	'name'	=> 'S2_22_3_1',
-	'id'	=> 'S2_22_3_1',
+$S2_23_3_1 = array(
+	'name'	=> 'S2_23_3_1',
+	'id'	=> 'S2_23_3_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_1 = array(
-	'name'	=> 'S2_22_4_1',
-	'id'	=> 'S2_22_4_1',
+$S2_23_4_1A = array(
+	'name'	=> 'S2_23_4_1A',
+	'id'	=> 'S2_23_4_1A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad m
+$S2_23_4_1M = array(
+	'name'	=> 'S2_23_4_1M',
+	'id'	=> 'S2_23_4_1M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_1 = array(
-	'name'	=> 'S2_22_5_1',
-	'id'	=> 'S2_22_5_1',
+$S2_23_5_1 = array(
+	'name'	=> 'S2_23_5_1',
+	'id'	=> 'S2_23_5_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_1 = array(
-	'name'	=> 'S2_22_6_1',
-	'id'	=> 'S2_22_6_1',
+$S2_23_6_1 = array(
+	'name'	=> 'S2_23_6_1',
+	'id'	=> 'S2_23_6_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_1 = array(
-	'name'	=> 'S2_22_7_1',
-	'id'	=> 'S2_22_7_1',
+$S2_23_7_1 = array(
+	'name'	=> 'S2_23_7_1',
+	'id'	=> 'S2_23_7_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_1 = array(
-	'name'	=> 'S2_22_8_1',
-	'id'	=> 'S2_22_8_1',
-	'maxlength'	=> 1,
+$S2_23_8_1 = array(
+	'name'	=> 'S2_23_8_1',
+	'id'	=> 'S2_23_8_1',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_1 = array(
-	'name'	=> 'S2_22_9_1',
-	'id'	=> 'S2_22_9_1',
+$S2_23_9_1 = array(
+	'name'	=> 'S2_23_9_1',
+	'id'	=> 'S2_23_9_1',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//institucion n o p
+$S2_23_10_1 = array(
+	'name'	=> 'S2_23_10_1',
+	'id'	=> 'S2_23_10_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_1_O = array(
+	'name'	=> 'S2_23_11_1_O',
+	'id'	=> 'S2_23_11_1_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 1
 ///////////////////////////hijo 2
 // nro orden
-$S2_22_1_2 = array(
-	'name'	=> 'S2_22_1_2',
-	'id'	=> 'S2_22_1_2',
+$S2_23_1_2 = array(
+	'name'	=> 'S2_23_1_2',
+	'id'	=> 'S2_23_1_2',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_2 = array(
-	'name'	=> 'S2_22_2_2',
-	'id'	=> 'S2_22_2_2',
+$S2_23_2_2 = array(
+	'name'	=> 'S2_23_2_2',
+	'id'	=> 'S2_23_2_2',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_2 = array(
-	'name'	=> 'S2_22_3_2',
-	'id'	=> 'S2_22_3_2',
+$S2_23_3_2 = array(
+	'name'	=> 'S2_23_3_2',
+	'id'	=> 'S2_23_3_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_2 = array(
-	'name'	=> 'S2_22_4_2',
-	'id'	=> 'S2_22_4_2',
+$S2_23_4_2A = array(
+	'name'	=> 'S2_23_4_2A',
+	'id'	=> 'S2_23_4_2A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad m
+$S2_23_4_2M = array(
+	'name'	=> 'S2_23_4_2M',
+	'id'	=> 'S2_23_4_2M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_2 = array(
-	'name'	=> 'S2_22_5_2',
-	'id'	=> 'S2_22_5_2',
+$S2_23_5_2 = array(
+	'name'	=> 'S2_23_5_2',
+	'id'	=> 'S2_23_5_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_2 = array(
-	'name'	=> 'S2_22_6_2',
-	'id'	=> 'S2_22_6_2',
+$S2_23_6_2 = array(
+	'name'	=> 'S2_23_6_2',
+	'id'	=> 'S2_23_6_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_2 = array(
-	'name'	=> 'S2_22_7_2',
-	'id'	=> 'S2_22_7_2',
+$S2_23_7_2 = array(
+	'name'	=> 'S2_23_7_2',
+	'id'	=> 'S2_23_7_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_2 = array(
-	'name'	=> 'S2_22_8_2',
-	'id'	=> 'S2_22_8_2',
-	'maxlength'	=> 1,
+$S2_23_8_2 = array(
+	'name'	=> 'S2_23_8_2',
+	'id'	=> 'S2_23_8_2',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_2 = array(
-	'name'	=> 'S2_22_9_2',
-	'id'	=> 'S2_22_9_2',
+$S2_23_9_2 = array(
+	'name'	=> 'S2_23_9_2',
+	'id'	=> 'S2_23_9_2',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+//institucion n o p
+$S2_23_10_2 = array(
+	'name'	=> 'S2_23_10_2',
+	'id'	=> 'S2_23_10_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_2_O = array(
+	'name'	=> 'S2_23_11_2_O',
+	'id'	=> 'S2_23_11_2_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 2
 ///////////////////////////hijo 3
 // nro orden
-$S2_22_1_3 = array(
-	'name'	=> 'S2_22_1_3',
-	'id'	=> 'S2_22_1_3',
+$S2_23_1_3 = array(
+	'name'	=> 'S2_23_1_3',
+	'id'	=> 'S2_23_1_3',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_3 = array(
-	'name'	=> 'S2_22_2_3',
-	'id'	=> 'S2_22_2_3',
+$S2_23_2_3 = array(
+	'name'	=> 'S2_23_2_3',
+	'id'	=> 'S2_23_2_3',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_3 = array(
-	'name'	=> 'S2_22_3_3',
-	'id'	=> 'S2_22_3_3',
+$S2_23_3_3 = array(
+	'name'	=> 'S2_23_3_3',
+	'id'	=> 'S2_23_3_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_3 = array(
-	'name'	=> 'S2_22_4_3',
-	'id'	=> 'S2_22_4_3',
+$S2_23_4_3A = array(
+	'name'	=> 'S2_23_4_3A',
+	'id'	=> 'S2_23_4_3A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad m
+$S2_23_4_3M = array(
+	'name'	=> 'S2_23_4_3M',
+	'id'	=> 'S2_23_4_3M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_3 = array(
-	'name'	=> 'S2_22_5_3',
-	'id'	=> 'S2_22_5_3',
+$S2_23_5_3 = array(
+	'name'	=> 'S2_23_5_3',
+	'id'	=> 'S2_23_5_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_3 = array(
-	'name'	=> 'S2_22_6_3',
-	'id'	=> 'S2_22_6_3',
+$S2_23_6_3 = array(
+	'name'	=> 'S2_23_6_3',
+	'id'	=> 'S2_23_6_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_3 = array(
-	'name'	=> 'S2_22_7_3',
-	'id'	=> 'S2_22_7_3',
+$S2_23_7_3 = array(
+	'name'	=> 'S2_23_7_3',
+	'id'	=> 'S2_23_7_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_3 = array(
-	'name'	=> 'S2_22_8_3',
-	'id'	=> 'S2_22_8_3',
-	'maxlength'	=> 1,
+$S2_23_8_3 = array(
+	'name'	=> 'S2_23_8_3',
+	'id'	=> 'S2_23_8_3',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_3 = array(
-	'name'	=> 'S2_22_9_3',
-	'id'	=> 'S2_22_9_3',
+$S2_23_9_3 = array(
+	'name'	=> 'S2_23_9_3',
+	'id'	=> 'S2_23_9_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_3 = array(
+	'name'	=> 'S2_23_10_3',
+	'id'	=> 'S2_23_10_3',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_3_O = array(
+	'name'	=> 'S2_23_11_3_O',
+	'id'	=> 'S2_23_11_3_O',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 3
 ///////////////////////////hijo 4
 // nro orden
-$S2_22_1_4 = array(
-	'name'	=> 'S2_22_1_4',
-	'id'	=> 'S2_22_1_4',
+$S2_23_1_4 = array(
+	'name'	=> 'S2_23_1_4',
+	'id'	=> 'S2_23_1_4',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_4 = array(
-	'name'	=> 'S2_22_2_4',
-	'id'	=> 'S2_22_2_4',
+$S2_23_2_4 = array(
+	'name'	=> 'S2_23_2_4',
+	'id'	=> 'S2_23_2_4',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_4 = array(
-	'name'	=> 'S2_22_3_4',
-	'id'	=> 'S2_22_3_4',
+$S2_23_3_4 = array(
+	'name'	=> 'S2_23_3_4',
+	'id'	=> 'S2_23_3_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_4 = array(
-	'name'	=> 'S2_22_4_4',
-	'id'	=> 'S2_22_4_4',
+$S2_23_4_4A = array(
+	'name'	=> 'S2_23_4_4A',
+	'id'	=> 'S2_23_4_4A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+// edad m
+$S2_23_4_4M = array(
+	'name'	=> 'S2_23_4_4M',
+	'id'	=> 'S2_23_4_4M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_4 = array(
-	'name'	=> 'S2_22_5_4',
-	'id'	=> 'S2_22_5_4',
+$S2_23_5_4 = array(
+	'name'	=> 'S2_23_5_4',
+	'id'	=> 'S2_23_5_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_4 = array(
-	'name'	=> 'S2_22_6_4',
-	'id'	=> 'S2_22_6_4',
+$S2_23_6_4 = array(
+	'name'	=> 'S2_23_6_4',
+	'id'	=> 'S2_23_6_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_4 = array(
-	'name'	=> 'S2_22_7_4',
-	'id'	=> 'S2_22_7_4',
+$S2_23_7_4 = array(
+	'name'	=> 'S2_23_7_4',
+	'id'	=> 'S2_23_7_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_4 = array(
-	'name'	=> 'S2_22_8_4',
-	'id'	=> 'S2_22_8_4',
-	'maxlength'	=> 1,
+$S2_23_8_4 = array(
+	'name'	=> 'S2_23_8_4',
+	'id'	=> 'S2_23_8_4',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_4 = array(
-	'name'	=> 'S2_22_9_4',
-	'id'	=> 'S2_22_9_4',
+$S2_23_9_4 = array(
+	'name'	=> 'S2_23_9_4',
+	'id'	=> 'S2_23_9_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+//institucion n o p
+$S2_23_10_4 = array(
+	'name'	=> 'S2_23_10_4',
+	'id'	=> 'S2_23_10_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_4_O = array(
+	'name'	=> 'S2_23_11_4_O',
+	'id'	=> 'S2_23_11_4_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+
 ///////////////////////////fin hijo 4
 ///////////////////////////hijo 5
 // nro orden
-$S2_22_1_5 = array(
-	'name'	=> 'S2_22_1_5',
-	'id'	=> 'S2_22_1_5',
+$S2_23_1_5 = array(
+	'name'	=> 'S2_23_1_5',
+	'id'	=> 'S2_23_1_5',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_5 = array(
-	'name'	=> 'S2_22_2_5',
-	'id'	=> 'S2_22_2_5',
+$S2_23_2_5 = array(
+	'name'	=> 'S2_23_2_5',
+	'id'	=> 'S2_23_2_5',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_5 = array(
-	'name'	=> 'S2_22_3_5',
-	'id'	=> 'S2_22_3_5',
+$S2_23_3_5 = array(
+	'name'	=> 'S2_23_3_5',
+	'id'	=> 'S2_23_3_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_5 = array(
-	'name'	=> 'S2_22_4_5',
-	'id'	=> 'S2_22_4_5',
+$S2_23_4_5A = array(
+	'name'	=> 'S2_23_4_5A',
+	'id'	=> 'S2_23_4_5A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad m
+$S2_23_4_5M = array(
+	'name'	=> 'S2_23_4_5M',
+	'id'	=> 'S2_23_4_5M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_5 = array(
-	'name'	=> 'S2_22_5_5',
-	'id'	=> 'S2_22_5_5',
+$S2_23_5_5 = array(
+	'name'	=> 'S2_23_5_5',
+	'id'	=> 'S2_23_5_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_5 = array(
-	'name'	=> 'S2_22_6_5',
-	'id'	=> 'S2_22_6_5',
+$S2_23_6_5 = array(
+	'name'	=> 'S2_23_6_5',
+	'id'	=> 'S2_23_6_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_5 = array(
-	'name'	=> 'S2_22_7_5',
-	'id'	=> 'S2_22_7_5',
+$S2_23_7_5 = array(
+	'name'	=> 'S2_23_7_5',
+	'id'	=> 'S2_23_7_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_5 = array(
-	'name'	=> 'S2_22_8_5',
-	'id'	=> 'S2_22_8_5',
-	'maxlength'	=> 1,
+$S2_23_8_5 = array(
+	'name'	=> 'S2_23_8_5',
+	'id'	=> 'S2_23_8_5',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_5 = array(
-	'name'	=> 'S2_22_9_5',
-	'id'	=> 'S2_22_9_5',
+$S2_23_9_5 = array(
+	'name'	=> 'S2_23_9_5',
+	'id'	=> 'S2_23_9_5',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_5 = array(
+	'name'	=> 'S2_23_10_5',
+	'id'	=> 'S2_23_10_5',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_5_O = array(
+	'name'	=> 'S2_23_11_5_O',
+	'id'	=> 'S2_23_11_5_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 5
 ///////////////////////////hijo 6
 // nro orden
-$S2_22_1_6 = array(
-	'name'	=> 'S2_22_1_6',
-	'id'	=> 'S2_22_1_6',
+$S2_23_1_6 = array(
+	'name'	=> 'S2_23_1_6',
+	'id'	=> 'S2_23_1_6',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_6 = array(
-	'name'	=> 'S2_22_2_6',
-	'id'	=> 'S2_22_2_6',
+$S2_23_2_6 = array(
+	'name'	=> 'S2_23_2_6',
+	'id'	=> 'S2_23_2_6',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_6 = array(
-	'name'	=> 'S2_22_3_6',
-	'id'	=> 'S2_22_3_6',
+$S2_23_3_6 = array(
+	'name'	=> 'S2_23_3_6',
+	'id'	=> 'S2_23_3_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_6 = array(
-	'name'	=> 'S2_22_4_6',
-	'id'	=> 'S2_22_4_6',
+$S2_23_4_6A = array(
+	'name'	=> 'S2_23_4_6A',
+	'id'	=> 'S2_23_4_6A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad m
+$S2_23_4_6M = array(
+	'name'	=> 'S2_23_4_6M',
+	'id'	=> 'S2_23_4_6M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_6 = array(
-	'name'	=> 'S2_22_5_6',
-	'id'	=> 'S2_22_5_6',
+$S2_23_5_6 = array(
+	'name'	=> 'S2_23_5_6',
+	'id'	=> 'S2_23_5_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_6 = array(
-	'name'	=> 'S2_22_6_6',
-	'id'	=> 'S2_22_6_6',
+$S2_23_6_6 = array(
+	'name'	=> 'S2_23_6_6',
+	'id'	=> 'S2_23_6_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_6 = array(
-	'name'	=> 'S2_22_7_6',
-	'id'	=> 'S2_22_7_6',
+$S2_23_7_6 = array(
+	'name'	=> 'S2_23_7_6',
+	'id'	=> 'S2_23_7_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_6 = array(
-	'name'	=> 'S2_22_8_6',
-	'id'	=> 'S2_22_8_6',
-	'maxlength'	=> 1,
+$S2_23_8_6 = array(
+	'name'	=> 'S2_23_8_6',
+	'id'	=> 'S2_23_8_6',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_6 = array(
-	'name'	=> 'S2_22_9_6',
-	'id'	=> 'S2_22_9_6',
+$S2_23_9_6 = array(
+	'name'	=> 'S2_23_9_6',
+	'id'	=> 'S2_23_9_6',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_6 = array(
+	'name'	=> 'S2_23_10_6',
+	'id'	=> 'S2_23_10_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_6_O = array(
+	'name'	=> 'S2_23_11_6_O',
+	'id'	=> 'S2_23_11_6_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 6
 ///////////////////////////hijo 7
 // nro orden
-$S2_22_1_7 = array(
-	'name'	=> 'S2_22_1_7',
-	'id'	=> 'S2_22_1_7',
+$S2_23_1_7 = array(
+	'name'	=> 'S2_23_1_7',
+	'id'	=> 'S2_23_1_7',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_7 = array(
-	'name'	=> 'S2_22_2_7',
-	'id'	=> 'S2_22_2_7',
+$S2_23_2_7 = array(
+	'name'	=> 'S2_23_2_7',
+	'id'	=> 'S2_23_2_7',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_7 = array(
-	'name'	=> 'S2_22_3_7',
-	'id'	=> 'S2_22_3_7',
+$S2_23_3_7 = array(
+	'name'	=> 'S2_23_3_7',
+	'id'	=> 'S2_23_3_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_7 = array(
-	'name'	=> 'S2_22_4_7',
-	'id'	=> 'S2_22_4_7',
+$S2_23_4_7A = array(
+	'name'	=> 'S2_23_4_7A',
+	'id'	=> 'S2_23_4_7A',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad m
+$S2_23_4_7M = array(
+	'name'	=> 'S2_23_4_7M',
+	'id'	=> 'S2_23_4_7M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_7 = array(
-	'name'	=> 'S2_22_5_7',
-	'id'	=> 'S2_22_5_7',
+$S2_23_5_7 = array(
+	'name'	=> 'S2_23_5_7',
+	'id'	=> 'S2_23_5_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_7 = array(
-	'name'	=> 'S2_22_6_7',
-	'id'	=> 'S2_22_6_7',
+$S2_23_6_7 = array(
+	'name'	=> 'S2_23_6_7',
+	'id'	=> 'S2_23_6_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_7 = array(
-	'name'	=> 'S2_22_7_7',
-	'id'	=> 'S2_22_7_7',
+$S2_23_7_7 = array(
+	'name'	=> 'S2_23_7_7',
+	'id'	=> 'S2_23_7_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_7 = array(
-	'name'	=> 'S2_22_8_7',
-	'id'	=> 'S2_22_8_7',
-	'maxlength'	=> 1,
+$S2_23_8_7 = array(
+	'name'	=> 'S2_23_8_7',
+	'id'	=> 'S2_23_8_7',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_7 = array(
-	'name'	=> 'S2_22_9_7',
-	'id'	=> 'S2_22_9_7',
+$S2_23_9_7 = array(
+	'name'	=> 'S2_23_9_7',
+	'id'	=> 'S2_23_9_7',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_7 = array(
+	'name'	=> 'S2_23_10_7',
+	'id'	=> 'S2_23_10_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_7_O = array(
+	'name'	=> 'S2_23_11_7_O',
+	'id'	=> 'S2_23_11_7_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 7
 ///////////////////////////hijo 8
 // nro orden
-$S2_22_1_8 = array(
-	'name'	=> 'S2_22_1_8',
-	'id'	=> 'S2_22_1_8',
+$S2_23_1_8 = array(
+	'name'	=> 'S2_23_1_8',
+	'id'	=> 'S2_23_1_8',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_8 = array(
-	'name'	=> 'S2_22_2_8',
-	'id'	=> 'S2_22_2_8',
+$S2_23_2_8 = array(
+	'name'	=> 'S2_23_2_8',
+	'id'	=> 'S2_23_2_8',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_8 = array(
-	'name'	=> 'S2_22_3_8',
-	'id'	=> 'S2_22_3_8',
+$S2_23_3_8 = array(
+	'name'	=> 'S2_23_3_8',
+	'id'	=> 'S2_23_3_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_8 = array(
-	'name'	=> 'S2_22_4_8',
-	'id'	=> 'S2_22_4_8',
+$S2_23_4_8A = array(
+	'name'	=> 'S2_23_4_8A',
+	'id'	=> 'S2_23_4_8A',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
+// edad m
+$S2_23_4_8M = array(
+	'name'	=> 'S2_23_4_8M',
+	'id'	=> 'S2_23_4_8M',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
 // vive con usted
-$S2_22_5_8 = array(
-	'name'	=> 'S2_22_5_8',
-	'id'	=> 'S2_22_5_8',
+$S2_23_5_8 = array(
+	'name'	=> 'S2_23_5_8',
+	'id'	=> 'S2_23_5_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_8 = array(
-	'name'	=> 'S2_22_6_8',
-	'id'	=> 'S2_22_6_8',
+$S2_23_6_8 = array(
+	'name'	=> 'S2_23_6_8',
+	'id'	=> 'S2_23_6_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_8 = array(
-	'name'	=> 'S2_22_7_8',
-	'id'	=> 'S2_22_7_8',
+$S2_23_7_8 = array(
+	'name'	=> 'S2_23_7_8',
+	'id'	=> 'S2_23_7_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_8 = array(
-	'name'	=> 'S2_22_8_8',
-	'id'	=> 'S2_22_8_8',
-	'maxlength'	=> 1,
+$S2_23_8_8 = array(
+	'name'	=> 'S2_23_8_8',
+	'id'	=> 'S2_23_8_8',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_8 = array(
-	'name'	=> 'S2_22_9_8',
-	'id'	=> 'S2_22_9_8',
+$S2_23_9_8 = array(
+	'name'	=> 'S2_23_9_8',
+	'id'	=> 'S2_23_9_8',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_8 = array(
+	'name'	=> 'S2_23_10_8',
+	'id'	=> 'S2_23_10_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_8_O = array(
+	'name'	=> 'S2_23_11_8_O',
+	'id'	=> 'S2_23_11_8_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 8
 ///////////////////////////hijo 9
 // nro orden
-$S2_22_1_9 = array(
-	'name'	=> 'S2_22_1_9',
-	'id'	=> 'S2_22_1_9',
+$S2_23_1_9 = array(
+	'name'	=> 'S2_23_1_9',
+	'id'	=> 'S2_23_1_9',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_9 = array(
-	'name'	=> 'S2_22_2_9',
-	'id'	=> 'S2_22_2_9',
+$S2_23_2_9 = array(
+	'name'	=> 'S2_23_2_9',
+	'id'	=> 'S2_23_2_9',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_9 = array(
-	'name'	=> 'S2_22_3_9',
-	'id'	=> 'S2_22_3_9',
+$S2_23_3_9 = array(
+	'name'	=> 'S2_23_3_9',
+	'id'	=> 'S2_23_3_9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_9 = array(
-	'name'	=> 'S2_22_4_9',
-	'id'	=> 'S2_22_4_9',
+$S2_23_4_9A = array(
+	'name'	=> 'S2_23_4_9A',
+	'id'	=> 'S2_23_4_9A',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
+// edad m
+$S2_23_4_9M = array(
+	'name'	=> 'S2_23_4_9M',
+	'id'	=> 'S2_23_4_9M',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
 // vive con usted
-$S2_22_5_9 = array(
-	'name'	=> 'S2_22_5_9',
-	'id'	=> 'S2_22_5_9',
+$S2_23_5_9 = array(
+	'name'	=> 'S2_23_5_9',
+	'id'	=> 'S2_23_5_9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_9 = array(
-	'name'	=> 'S2_22_6_9',
-	'id'	=> 'S2_22_6_9',
+$S2_23_6_9 = array(
+	'name'	=> 'S2_23_6_9',
+	'id'	=> 'S2_23_6_9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_9 = array(
-	'name'	=> 'S2_22_7_9',
-	'id'	=> 'S2_22_7_9',
+$S2_23_7_9 = array(
+	'name'	=> 'S2_23_7_9',
+	'id'	=> 'S2_23_7_9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_9 = array(
-	'name'	=> 'S2_22_8_9',
-	'id'	=> 'S2_22_8_9',
-	'maxlength'	=> 1,
+$S2_23_8_9 = array(
+	'name'	=> 'S2_23_8_9',
+	'id'	=> 'S2_23_8_9',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_9 = array(
-	'name'	=> 'S2_22_9_9',
-	'id'	=> 'S2_22_9_9',
+$S2_23_9_9 = array(
+	'name'	=> 'S2_23_9_9',
+	'id'	=> 'S2_23_9_9',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_9 = array(
+	'name'	=> 'S2_23_10_9',
+	'id'	=> 'S2_23_10_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_9_O = array(
+	'name'	=> 'S2_23_11_9_O',
+	'id'	=> 'S2_23_11_9_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 9
 ///////////////////////////hijo 10
 // nro orden
-$S2_22_1_10 = array(
-	'name'	=> 'S2_22_1_10',
-	'id'	=> 'S2_22_1_10',
+$S2_23_1_10 = array(
+	'name'	=> 'S2_23_1_10',
+	'id'	=> 'S2_23_1_10',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // nombre
-$S2_22_2_10 = array(
-	'name'	=> 'S2_22_2_10',
-	'id'	=> 'S2_22_2_10',
+$S2_23_2_10 = array(
+	'name'	=> 'S2_23_2_10',
+	'id'	=> 'S2_23_2_10',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 // sexo
-$S2_22_3_10 = array(
-	'name'	=> 'S2_22_3_10',
-	'id'	=> 'S2_22_3_10',
+$S2_23_3_10 = array(
+	'name'	=> 'S2_23_3_10',
+	'id'	=> 'S2_23_3_10',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // edad
-$S2_22_4_10 = array(
-	'name'	=> 'S2_22_4_10',
-	'id'	=> 'S2_22_4_10',
+$S2_23_4_10A = array(
+	'name'	=> 'S2_23_4_1A0',
+	'id'	=> 'S2_23_4_1A0',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+// edad
+$S2_23_4_10M = array(
+	'name'	=> 'S2_23_4_1A0',
+	'id'	=> 'S2_23_4_1A0',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // vive con usted
-$S2_22_5_10 = array(
-	'name'	=> 'S2_22_5_10',
-	'id'	=> 'S2_22_5_10',
+$S2_23_5_10 = array(
+	'name'	=> 'S2_23_5_10',
+	'id'	=> 'S2_23_5_10',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // depende economicamente
-$S2_22_6_10 = array(
-	'name'	=> 'S2_22_6_10',
-	'id'	=> 'S2_22_6_10',
+$S2_23_6_10 = array(
+	'name'	=> 'S2_23_6_10',
+	'id'	=> 'S2_23_6_10',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // limitacion
-$S2_22_7_10 = array(
-	'name'	=> 'S2_22_7_10',
-	'id'	=> 'S2_22_7_10',
+$S2_23_7_10 = array(
+	'name'	=> 'S2_23_7_10',
+	'id'	=> 'S2_23_7_10',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 // ultimo nivel
-$S2_22_8_10 = array(
-	'name'	=> 'S2_22_8_10',
-	'id'	=> 'S2_22_8_10',
-	'maxlength'	=> 1,
+$S2_23_8_10 = array(
+	'name'	=> 'S2_23_8_10',
+	'id'	=> 'S2_23_8_10',
+	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 // ocupacion actual
-$S2_22_9_10 = array(
-	'name'	=> 'S2_22_9_10',
-	'id'	=> 'S2_22_9_10',
+$S2_23_9_10 = array(
+	'name'	=> 'S2_23_9_10',
+	'id'	=> 'S2_23_9_10',
 	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//institucion n o p
+$S2_23_10_10 = array(
+	'name'	=> 'S2_23_10_10',
+	'id'	=> 'S2_23_10_10',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+// escuela
+$S2_23_11_10_O = array(
+	'name'	=> 'S2_23_11_10_O',
+	'id'	=> 'S2_23_11_10_O',
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 ///////////////////////////fin hijo 10
@@ -1794,7 +2054,7 @@ echo '<div class="row-fluid">';
 				echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 
-							echo '<div class="control-group offset1 span1">';	
+							echo '<div class="control-group  span1">';	
 								echo form_label('Nivel', $S2_12['id'], $label_class);
 							echo '</div>'; 	
 									
@@ -2513,48 +2773,56 @@ echo '<div class="question">';
 /////////////////////////////////////////////PREGUNTA 18
 
 		echo '<div class="question">';
-			echo '<p>18. ¿Cuál fue el último nivel, grado o año de estudios que aprobó su cónyuge?</p>';	
+			echo '<p>18. ¿En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
 				echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 
-
-							echo '<div class="control-group offset1 span1">';	
-								echo form_label('Nivel', $S2_18['id'], $label_class);
+							echo '<div class="control-group">';
+								echo '<div class="controls offset3 span6 ">';
+										echo form_dropdown('S2_18', $ecivil, FALSE,'class="span12" id="S2_18"'); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error('S2_18') . '</div>';
+								echo '</div>';	
 							echo '</div>'; 	
+
+
+							// echo '<div class="control-group offset1 span1">';	
+							// 	echo form_label('Nivel', $S2_18['id'], $label_class);
+							// echo '</div>'; 	
 									
-							echo '<div class="control-group span2">';
-								echo '<div class="controls">';
-										echo form_input($S2_18); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_18['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
+							// echo '<div class="control-group span2">';
+							// 	echo '<div class="controls">';
+							// 			echo form_input($S2_18); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($S2_18['name']) . '</div>';
+							// 	echo '</div>';	
+							// echo '</div>'; 	
 
 
-							echo '<div class="control-group offset1 span1">';	
-								echo form_label('Grado', $S2_18A['id'], $label_class);
-							echo '</div>'; 
+							// echo '<div class="control-group offset1 span1">';	
+							// 	echo form_label('Grado', $S2_18A['id'], $label_class);
+							// echo '</div>'; 
 
-							echo '<div class="control-group span2">';
-								echo '<div class="controls">';
-										echo form_input($S2_18A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_18A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
+							// echo '<div class="control-group span2">';
+							// 	echo '<div class="controls">';
+							// 			echo form_input($S2_18A); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($S2_18A['name']) . '</div>';
+							// 	echo '</div>';	
+							// echo '</div>'; 	
 
 
-							echo '<div class="control-group offset1 span1">';	
-								echo form_label('Año', $S2_18G['id'], $label_class);
-							echo '</div>'; 
+							// echo '<div class="control-group offset1 span1">';	
+							// 	echo form_label('Año', $S2_18G['id'], $label_class);
+							// echo '</div>'; 
 
-							echo '<div class="control-group span2">';
-								echo '<div class="controls">';
-										echo form_input($S2_18G); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_18G['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
+							// echo '<div class="control-group span2">';
+							// 	echo '<div class="controls">';
+							// 			echo form_input($S2_18G); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($S2_18G['name']) . '</div>';
+							// 	echo '</div>';	
+							// echo '</div>'; 	
 
 
 
@@ -2569,7 +2837,59 @@ echo '<div class="question">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 19
 		echo '<div class="question">';
-			echo '<p>19. ¿A qué se dedica su cónyuge? </p>';	
+			echo '<p>19. ¿Cuál fue el último nivel, grado o año de estudios que aprobó su cónyuge/conviviente? </p>';
+				echo '<div class="row-fluid">';
+					echo '<div class="span12">';
+
+						    echo '<div class="control-group offset1 span1">';	
+								echo form_label('Nivel', $S2_19['id'], $label_class);
+							echo '</div>'; 	
+									
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S2_19); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S2_19['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Grado', $S2_19A['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S2_19A); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S2_19A['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Año', $S2_19G['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S2_19G); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S2_19G['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 			
+	
+
+					echo '</div>';	
+				echo '</div>';	
+		echo '</div>';
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 19
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 20
+
+		echo '<div class="question">';
+			echo '<p>20. ¿A qué actividad se dedica su cónyuge/conviviente?</p>';	
 				echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 
@@ -2585,9 +2905,9 @@ echo '<div class="question">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_19_1); 
+										echo form_input($S2_20_1); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_19_1['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_20_1['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -2599,7 +2919,7 @@ echo '<div class="question">';
 
 							echo '<div class="offset1 span4">';
 
-								echo '<p>Comerciante</p>';
+								echo '<p>Agrícola</p>';
 
 							echo '</div>';	
 
@@ -2607,9 +2927,9 @@ echo '<div class="question">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_19_2); 
+										echo form_input($S2_20_2); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_19_2['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_20_2['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -2621,7 +2941,7 @@ echo '<div class="question">';
 
 							echo '<div class="offset1 span4">';
 
-								echo '<p>Pescador(a)</p>';
+								echo '<p>Pecuaria(a)</p>';
 
 							echo '</div>';	
 
@@ -2629,9 +2949,9 @@ echo '<div class="question">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_19_3); 
+										echo form_input($S2_20_3); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_19_3['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_20_3['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -2643,7 +2963,7 @@ echo '<div class="question">';
 
 							echo '<div class="offset1 span4">';
 
-								echo '<p>Recolector(a)</p>';
+								echo '<p>Acuícola</p>';
 
 							echo '</div>';	
 
@@ -2651,15 +2971,110 @@ echo '<div class="question">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_19_4); 
+										echo form_input($S2_20_4); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_19_4['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_20_4['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
 							echo '</div>';							
 
 						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset1 span4">';
+
+								echo '<p>Pesca</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_20_5); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_20_5['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset1 span4">';
+
+								echo '<p>Caza</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_20_6); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_20_6['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset1 span4">';
+
+								echo '<p>Construcción</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_20_7); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_20_7['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset1 span4">';
+
+								echo '<p>Comercio</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span2">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S2_20_8); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S2_20_8['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 
+
+
+
+
+
+
+
 
 						echo '<div class="row-fluid">';
 
@@ -2673,9 +3088,9 @@ echo '<div class="question">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_19_5); 
+										echo form_input($S2_20_9); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_19_5['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_20_9['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
@@ -2697,46 +3112,31 @@ echo '<div class="question">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
-										echo form_input($S2_19_5_O); 
+										echo form_input($S2_20_9_O); 
 										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S2_19_5_O['name']) . '</div>';
+										echo '<div class="help-block error">' . form_error($S2_20_9_O['name']) . '</div>';
 									echo '</div>';	
 								echo '</div>'; 
 
 							echo '</div>';							
 
-						echo '</div>'; 	
+						echo '</div>'; 
 
-					echo '</div>';	
-				echo '</div>';	
-		echo '</div>';
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 19
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 20
 
-		echo '<div class="question">';
-			echo '<p>20. ¿Tiene hijos(as)?</p>';	
-				echo '<div class="row-fluid">';
-							echo '<div class="control-group offset4 span4">';
-								echo '<div class="controls">';
-										echo form_input($S2_20); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_20['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-				echo '</div>';	
+							echo '</div>';							
+
+						echo '</div>'; 
+
 		echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 20
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 21
 
 		echo '<div class="question">';
-			echo '<p>21. ¿Cuántos hijos(as) tiene en total?</p>';	
+			echo '<p>21. ¿Tiene hijos(as)?</p>';	
 				echo '<div class="row-fluid">';
 							echo '<div class="control-group offset4 span4">';
 								echo '<div class="controls">';
@@ -2750,6 +3150,25 @@ echo '<div class="question">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 21
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 22
+
+		echo '<div class="question">';
+			echo '<p>22. ¿Cuántos hijos(as) tiene en total?</p>';	
+				echo '<div class="row-fluid">';
+							echo '<div class="control-group offset4 span4">';
+								echo '<div class="controls">';
+										echo form_input($S2_22); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S2_22['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+				echo '</div>';	
+		echo '</div>';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 22
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2784,137 +3203,170 @@ echo '</div>';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-	//PREGUNTA 22 
+	//PREGUNTA 23
 
 echo '<div class="row-fluid">';
 	echo '<div class="span12">';	
 		echo '<div class="question">';
-			echo '<p style="text-align:center">22. Información de los hijos(as):</p>';	
+			echo '<p style="text-align:center">23. Información de los hijos(as):</p>';	
 
 			echo '<table class="table table-condensed">';
               echo '<thead>';
                 echo '<tr>';
-                  echo '<th class="span1">22.1 N° de Orden</th>';
-                  echo '<th class="span4">22.2 Nombre</th>';
-                  echo '<th class="span1">22.3 Sexo</th>';
-                  echo '<th class="span1">22.4 Edad</th>';
-                  echo '<th class="span1">22.5 ¿Su hijo(a) vive con usted?</th>';
-                  echo '<th class="span1">22.6 ¿Su hijo(a) depende económicamente de usted?</th>';
-                  echo '<th class="span1">22.7 ¿Su hijo(a) tiene algún tipo de limitación o dificultad para desarrollar sus  actividades diarias?</th>';
-                  echo '<th class="span1">22.8 ¿Cuál es el último nivel de estudios aprobado?</th>';
-                  echo '<th class="span1">22.9 ¿Cuál es su ocupación actual?</th>';
+                  echo '<th class="span1">23.1 N° de Orden</th>';
+                  echo '<th class="span4">23.2 Nombre</th>';
+                  echo '<th class="span1">23.3 Sexo</th>';
+                  echo '<th class="span1">23.4 Edad Años</th>';
+                  echo '<th class="span1">23.4 Edad Meses</th>';
+                  echo '<th class="span1">23.5 ¿Su hijo(a) vive con usted?</th>';
+                  echo '<th class="span1">23.6 ¿Su hijo(a) depende económicamente de usted?</th>';
+                  echo '<th class="span1">23.7 ¿Su hijo(a) tiene algún tipo de limitación o dificultad para desarrollar sus  actividades diarias?</th>';
+                  echo '<th class="span1">23.8 ¿Cuál es el último nivel de estudios aprobado?</th>';
+                  echo '<th class="span1">23.9 ¿Actualmente se encuentra estudiando?</th>';
+                  echo '<th class="span1">23.10 ¿La institución educativa a la que asiste es:</th>';
+                  echo '<th class="span2">23.11 Actualmente ¿A qué actividad se dedica?</th>';
                 echo '</tr>';
               echo '</thead>';
               echo '<tbody>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_1) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_1) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_1_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_1A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_1M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_1) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_1) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_10_1) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_1_O) . '</td>';                                    
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_2) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_2) . '</td>';  
+                  echo '<td>' . form_input($S2_23_1_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_2A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_2M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_2) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_2) . '</td>';  
+                  echo '<td>' . form_input($S2_23_10_2) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_2_O) . '</td>';                         
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_3) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_3) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_1_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_3A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_3M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_3) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_3) . '</td>';      
+                  echo '<td>' . form_input($S2_23_10_3) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_3_O) . '</td>';                                                       
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_4) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_4) . '</td>';   
+                  echo '<td>' . form_input($S2_23_1_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_4A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_4M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_4) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_4) . '</td>';   
+                  echo '<td>' . form_input($S2_23_10_4) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_4_O) . '</td>';                         
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_5) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_5) . '</td>';                                
+                  echo '<td>' . form_input($S2_23_1_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_5A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_5M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_5) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_5) . '</td>';   
+                  echo '<td>' . form_input($S2_23_10_5) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_5_O) . '</td>';                                                      
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_6) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_6) . '</td>';   
+                  echo '<td>' . form_input($S2_23_1_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_6A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_6M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_6) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_6) . '</td>';   
+                  echo '<td>' . form_input($S2_23_10_6) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_6_O) . '</td>';                         
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_7) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_7) . '</td>';                                   
+                  echo '<td>' . form_input($S2_23_1_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_7A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_7M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_7) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_7) . '</td>';      
+                  echo '<td>' . form_input($S2_23_10_7) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_7_O) . '</td>';                                                      
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_8) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_8) . '</td>';   
+                  echo '<td>' . form_input($S2_23_1_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_8A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_8M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_8) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_8) . '</td>';   
+                  echo '<td>' . form_input($S2_23_10_8) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_8_O) . '</td>';                         
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_9) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_9) . '</td>';                                
+                  echo '<td>' . form_input($S2_23_1_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_9A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_9M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_9) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_9) . '</td>';       
+                  echo '<td>' . form_input($S2_23_10_9) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_9_O) . '</td>';                                                  
                 echo '</tr>';
                 echo '<tr>';
-                  echo '<td>' . form_input($S2_22_1_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_2_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_3_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_4_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_5_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_6_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_7_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_8_10) . '</td>';
-                  echo '<td>' . form_input($S2_22_9_10) . '</td>';  
+                  echo '<td>' . form_input($S2_23_1_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_2_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_3_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_10A) . '</td>';
+                  echo '<td>' . form_input($S2_23_4_10M) . '</td>';
+                  echo '<td>' . form_input($S2_23_5_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_6_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_7_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_8_10) . '</td>';
+                  echo '<td>' . form_input($S2_23_9_10) . '</td>';  
+                  echo '<td>' . form_input($S2_23_10_10) . '</td>';                                    
+                  echo '<td>' . form_input($S2_23_11_10_O) . '</td>';                         
                 echo '</tr>';                                                
               echo '</tbody>';
             echo '</table>';		

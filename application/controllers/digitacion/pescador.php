@@ -54,6 +54,16 @@ class Pescador extends CI_Controller {
 
 	public function index()
 	{
+
+			$data['ecivil'] = array(
+								-1=> '-',
+								1 => 'Conviviente',
+								2 => 'Casado(a)',
+								3 => 'Separado(a)',
+								4 => 'Viudo(a)',
+								5 => 'Divorciado(a)',
+								6 => 'Soltero(a)',
+				);		
 			//cabecera
 			// $data['departamentox'] = $this->ubigeo_model->get_dptos();
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
