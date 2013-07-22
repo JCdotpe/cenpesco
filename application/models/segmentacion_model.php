@@ -80,7 +80,7 @@ class Segmentacion_model extends CI_MODEL {
 	 public function get_jefe($sede, $dep, $equi)
 	{
 		
-		$q = $this->db->query("select  DISTINCT(SEDE_OPERATIVA),  DEPARTAMENTO_SEDE,  EQUIPO,  RUTA,  NOMBRE_Y_APELLIDOS_DEL_EMPADRONADOR from data_empadronador  
+		$q = $this->db->query("select  DISTINCT(SEDE_OPERATIVA),  DEPARTAMENTO_SEDE,  EQUIPO,  NOMBRE_Y_APELLIDOS_DEL_JEFE_DE_EQUIPO from data_jefe_equipo 
 		where sede_operativa = (select  distinct(nom_sede) from marco where sede_cod = '". $sede ."') 
 		and departamento_sede = (select  distinct(departamento) from marco where ccdd = '". $dep ."') 
 		and equipo = ". $equi );
@@ -102,11 +102,11 @@ class Segmentacion_model extends CI_MODEL {
 			  FECHA_INICIO,
 			  FECHA_FINAL,
 			  TRASLADO,
-			  TRABAJO,
+			  SUPERVISION,
 			  VIAJE_SEDE_ODEI,
 			  RETROALIMENTACION,
-			  TOTAL_DE_DIAS,
-			  MOV_LOCAL decim,
+			  TOTAL_DIAS,
+			  MOV_LOCAL,
 			  PASAJE_TRASLADO,
 			  GASTO_OPERATIVO,
 			  MOVILIDAD_LOCAL_S,
@@ -138,16 +138,11 @@ class Segmentacion_model extends CI_MODEL {
 			  CCPP_CV21,
 			  CCPP_CV22,
 			  CCPP_CV23
-			from data_empadronador  
+			from data_jefe_equipo  
 			where sede_operativa = (select  distinct(nom_sede) from marco where sede_cod = '". $sede ."') 
 			and departamento_sede = (select  distinct(departamento) from marco where ccdd = '". $dep ."') 
 			and equipo = ". $equi);
 		return $q;
-
-
- 
-
-
 
 
 	}

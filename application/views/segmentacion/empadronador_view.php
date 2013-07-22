@@ -318,7 +318,7 @@ $("#RUTA").change(function() {
 
         $('#export').click(function() {
 
-            window.location = CI.base_url + 'segmentacion/consulta/export_emp/'+ $("#NOM_SEDE").val()+'/'+$("#NOM_SEDE").val() +'/'+$("#EQUIPO").val()+'/'+$("#RUTA").val();  
+            window.location = CI.base_url + 'segmentacion/consulta/export_emp/'+ $("#NOM_SEDE").val()+'/'+$("#NOM_DD").val() +'/'+$("#EQUIPO").val()+'/'+$("#RUTA").val();  
   
           } );
 

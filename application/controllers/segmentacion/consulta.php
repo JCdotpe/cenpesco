@@ -36,7 +36,6 @@ class Consulta extends CI_Controller {
 			//$data['main_content'] = 'segmentacion/leaf_view';
 	        $this->load->view('backend/includes/template', $data);
 	        //$this->load->view('segmentacion/openlayers_view', $data);
-
 	}
 
     public function export_emp($sede, $dep, $equi, $ruta){
@@ -313,10 +312,10 @@ class Consulta extends CI_Controller {
 			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
 
 			// Propiedades del archivo excel
-				$sheet->setTitle("Programación-rutas-empadronador");
+				$sheet->setTitle("Programacion-rutas-empadronador");
 				$this->phpexcel->getProperties()
 				->setTitle("Programación  de rutas empadronador")
-				->setDescription("Programación  de rutas empadronador");
+				->setDescription("Programacion  de rutas empadronador");
 
 			header("Content-Type: application/vnd.ms-excel");
 			$nombreArchivo = 'ProgramacionRutasEmpadronador_'.date('YmdHis');
@@ -336,7 +335,6 @@ class Consulta extends CI_Controller {
 
 		$filtros = $this->segmentacion_model->get_jefe($sede, $dep, $equi);    	
 		$registros = $this->segmentacion_model->get_all_jefe($sede, $dep, $equi);    	
-
 		// pestaña
 		$sheet = $this->phpexcel->getActiveSheet(0);
 		
@@ -386,7 +384,7 @@ class Consulta extends CI_Controller {
 			$sheet->mergeCells('A3:AU3');
 			$sheet->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
 			$sheet->mergeCells('A5:AU5');
-			$sheet->setCellValue('A7','PROGRAMACION DE RUTAS DEL EMPADRONADOR' );
+			$sheet->setCellValue('A7','PROGRAMACION DE RUTAS DEL JEFE DE EQUIPO' );
 			$sheet->mergeCells('A7:AU7');
 			$sheet->getStyle('A3:AU7')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
 			$sheet->getStyle('A3:AU7')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
@@ -421,8 +419,8 @@ class Consulta extends CI_Controller {
 					$sheet->setCellValue('B10','DEPARTAMENTO:');
 					$sheet->mergeCells('B10:C10');
 					$sheet->setCellValue('B11','EQUIPO:');
-					$sheet->mergeCells('B11:C11');
-					$sheet->setCellValue('B12','RUTA:');
+					// $sheet->mergeCells('B11:C11');
+					// $sheet->setCellValue('B12','RUTA:');
 					$sheet->mergeCells('B12:C12');
 					$sheet->setCellValue('D9',$filtros->row('SEDE_OPERATIVA'));
 					$sheet->mergeCells('D9:E9');
@@ -430,24 +428,24 @@ class Consulta extends CI_Controller {
 					$sheet->mergeCells('D10:E10');
 					$sheet->setCellValue('D11',$filtros->row('EQUIPO'));
 					$sheet->mergeCells('D11:E11');
-					$sheet->setCellValue('D12',$filtros->row('RUTA'));
-					$sheet->mergeCells('D12:E12');
+					// $sheet->setCellValue('D12',$filtros->row('RUTA'));
+					// $sheet->mergeCells('D12:E12');
 
-					$sheet->getStyle("D9:E12")->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
-			     	$sheet->getStyle("B9:C12")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
-			     	$sheet->getStyle("D9:E12")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
-					$sheet->getStyle("B9:C12")->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+					$sheet->getStyle("D9:E11")->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+			     	$sheet->getStyle("B9:C11")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+			     	$sheet->getStyle("D9:E11")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+					$sheet->getStyle("B9:C11")->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
 
-					$sheet->getStyle("B9:E12")->applyFromArray(array(
+					$sheet->getStyle("B9:E11")->applyFromArray(array(
 					'borders' => array(
 								'allborders' => array(
 												'style' => PHPExcel_Style_Border::BORDER_THIN)
 							)
 					));
 
-					$sheet->setCellValue('Y10','NOMBRE Y APELLIDOS DEL EMPADRONADOR');
+					$sheet->setCellValue('Y10','NOMBRE Y APELLIDOS DEL JEFE DE EQUIPO');
 					$sheet->mergeCells('Y10:AU10');
-					$sheet->setCellValue('Y11',$filtros->row('NOMBRE_Y_APELLIDOS_DEL_EMPADRONADOR'));
+					$sheet->setCellValue('Y11',$filtros->row('NOMBRE_Y_APELLIDOS_DEL_JEFE_DE_EQUIPO'));
 					$sheet->mergeCells('Y11:AU11');
 
 			     	$sheet->getStyle("Y10:AU10")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');

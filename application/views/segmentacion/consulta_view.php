@@ -71,7 +71,7 @@ $span_class =  'span12';
                 echo '<a id="export" class="btn btn-inverse span12" href="#">Exportar a excel</a>';
                 echo '</div>';  
           echo '</div>'; 
-          
+
 
           // echo '<div class="row-fluid control-group span9">';
           //       echo form_label('RUTA','RUTA',$label1);
@@ -311,7 +311,7 @@ $("#EQUIPO").change(function() {
 
         $('#export').click(function() {
 
-            window.location = CI.base_url + 'segmentacion/consulta/export_jefe/'+ $("#NOM_SEDE").val()+'/'+$("#NOM_SEDE").val() +'/'+$("#EQUIPO").val();  
+            window.location = CI.base_url + 'segmentacion/consulta/export_jefe/'+ $("#NOM_SEDE").val()+ '/'+ $("#NOM_DP").val() + '/' +$("#EQUIPO").val();  
   
           } );
 
