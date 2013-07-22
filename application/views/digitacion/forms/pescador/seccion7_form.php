@@ -31,14 +31,6 @@ $S7_101A = array(
 	'class' => $span_class,
 );
 
-// Dinero de terceros S/. DD
-$S7_101A_DD = array(
-	'name'	=> 'S7_101A_DD',
-	'id'	=> 'S7_101A_DD',
-	'maxlength'	=> 5,
-	'class' => $span_class,
-);
-
 // Dinero propio
 $S7_102 = array(
 	'name'	=> 'S7_102',
@@ -51,15 +43,6 @@ $S7_102 = array(
 $S7_102A = array(
 	'name'	=> 'S7_102A',
 	'id'	=> 'S7_102A',
-	'maxlength'	=> 5,
-	'class' => $span_class,
-);
-
-
-// Dinero propio S/. DD
-$S7_102A_DD = array(
-	'name'	=> 'S7_102A_DD',
-	'id'	=> 'S7_102A_DD',
 	'maxlength'	=> 5,
 	'class' => $span_class,
 );
@@ -78,6 +61,10 @@ $S7_104 = array(
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+
+///////////////////////////////////////////////////
+
+
 
 // Pariente/Amigo
 $S7_201 = array(
@@ -102,8 +89,7 @@ $S7_203 = array(
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Otro
+//  banco
 $S7_204 = array(
 	'name'	=> 'S7_204',
 	'id'	=> 'S7_204',
@@ -111,14 +97,176 @@ $S7_204 = array(
 	'class' => $span_class,
 );
 
+//  financiera
+$S7_205 = array(
+	'name'	=> 'S7_205',
+	'id'	=> 'S7_205',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+// Otro
+$S7_206 = array(
+	'name'	=> 'S7_206',
+	'id'	=> 'S7_206',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
 //Otro Especifique
-$S7_204_O = array(
-	'name'	=> 'S7_204_O',
-	'id'	=> 'S7_204_O',
+$S7_206_O = array(
+	'name'	=> 'S7_206_O',
+	'id'	=> 'S7_206_O',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
+////////////////////////////////////////////////////////////
+
+$S7_3_1 = array(
+	'name'	=> 'S7_3_1',
+	'id'	=> 'S7_3_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_1_C = array(
+	'name'	=> 'S7_3_1_C',
+	'id'	=> 'S7_3_1_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_2 = array(
+	'name'	=> 'S7_3_2',
+	'id'	=> 'S7_3_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_2_C = array(
+	'name'	=> 'S7_3_2_C',
+	'id'	=> 'S7_3_2_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_3 = array(
+	'name'	=> 'S7_3_3',
+	'id'	=> 'S7_3_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_3_C = array(
+	'name'	=> 'S7_3_3_C',
+	'id'	=> 'S7_3_3_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_4 = array(
+	'name'	=> 'S7_3_4',
+	'id'	=> 'S7_3_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_4_C = array(
+	'name'	=> 'S7_3_4_C',
+	'id'	=> 'S7_3_4_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_5 = array(
+	'name'	=> 'S7_3_5',
+	'id'	=> 'S7_3_5',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_5_C = array(
+	'name'	=> 'S7_3_5_C',
+	'id'	=> 'S7_3_5_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_6 = array(
+	'name'	=> 'S7_3_6',
+	'id'	=> 'S7_3_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_6_C = array(
+	'name'	=> 'S7_3_6_C',
+	'id'	=> 'S7_3_6_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_7 = array(
+	'name'	=> 'S7_3_7',
+	'id'	=> 'S7_3_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_7_C = array(
+	'name'	=> 'S7_3_7_C',
+	'id'	=> 'S7_3_7_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_8 = array(
+	'name'	=> 'S7_3_8',
+	'id'	=> 'S7_3_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_8_C = array(
+	'name'	=> 'S7_3_8_C',
+	'id'	=> 'S7_3_8_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_9 = array(
+	'name'	=> 'S7_3_9',
+	'id'	=> 'S7_3_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_9_C = array(
+	'name'	=> 'S7_3_9_C',
+	'id'	=> 'S7_3_9_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_10 = array(
+	'name'	=> 'S7_3_10',
+	'id'	=> 'S7_3_10',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_10_C = array(
+	'name'	=> 'S7_3_10_C',
+	'id'	=> 'S7_3_10_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_11 = array(
+	'name'	=> 'S7_3_11',
+	'id'	=> 'S7_3_11',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_11_C = array(
+	'name'	=> 'S7_3_11_C',
+	'id'	=> 'S7_3_11_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+$S7_3_12 = array(
+	'name'	=> 'S7_3_12',
+	'id'	=> 'S7_3_12',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S7_3_12_C = array(
+	'name'	=> 'S7_3_12_C',
+	'id'	=> 'S7_3_12_C',
+	'maxlength'	=> 5,
+	'class' => $span_class,
+);
+//////////////////////////////////////////
 
 
 //Tabla vii
@@ -908,7 +1056,7 @@ echo '<div class="well modulo">';
 
 					echo '<div class="offset1 span11">';
 
-						echo '<div class="offset8 span3">';
+						echo '<div class="offset7 span3">';
 							echo '<p>S/. </p>';
 						echo '</div>'; 
 
@@ -944,15 +1092,6 @@ echo '<div class="well modulo">';
 							echo '</div>'; 
 						echo '</div>'; 
 
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S7_101A_DD); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S7_101A_DD['name']) . '</div>';
-									echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
 					echo '</div>'; 
 
 				echo '</div>';		
@@ -986,15 +1125,7 @@ echo '<div class="well modulo">';
 							echo '</div>'; 
 						echo '</div>'; 
 
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S7_102A_DD); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S7_102A_DD['name']) . '</div>';
-									echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
+
 					echo '</div>'; 
 
 				echo '</div>';	
@@ -1049,25 +1180,6 @@ echo '<div class="well modulo">';
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN COLUMNA 1
-	echo '</div>'; 	
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////COLUMNA 2
-	echo '<div class="span6">';
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 2
 
 		echo '<div class="question">';
@@ -1097,9 +1209,9 @@ echo '<div class="well modulo">';
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
-									echo form_input($S7_203); 
+									echo form_input($S7_204); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_203['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S7_204['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 
 
@@ -1107,7 +1219,7 @@ echo '<div class="well modulo">';
 
 						echo '<div class="span3 preguntas_sub2">';
 
-							echo '<p>Caja municipal o rural</p>';
+							echo '<p>Banco</p>';
 
 						echo '</div>';	
 
@@ -1117,13 +1229,15 @@ echo '<div class="well modulo">';
 				echo '</div>';
 	
 
+
+
 				echo '<div class="row-fluid">';		
 
 					echo '<div class="offset1 span11">';
 
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
-								echo '<div class="controls ">';
+								echo '<div class="controls">';
 									echo form_input($S7_202); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($S7_202['name']) . '</div>';
@@ -1134,16 +1248,65 @@ echo '<div class="well modulo">';
 
 						echo '<div class="span3 preguntas_sub2">';
 
-							echo '<p>Comerciante o intermediario</p>';
+							echo '<p>Comerciante o intermediario?</p>';
 
 						echo '</div>';	
 
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
-									echo form_input($S7_204); 
+									echo form_input($S7_205); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_204['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S7_205['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
+
+						echo '</div>';
+
+						echo '<div class="span3 preguntas_sub2">';
+
+							echo '<p>Financiera?</p>';
+
+						echo '</div>';	
+
+
+					echo '</div>';
+
+				echo '</div>';
+
+
+
+
+
+
+
+				echo '<div class="row-fluid">';		
+
+					echo '<div class="offset1 span11">';
+
+						echo '<div class="span2">';
+							echo '<div class="control-group">';
+								echo '<div class="controls ">';
+									echo form_input($S7_203); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S7_203['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
+
+						echo '</div>';
+
+						echo '<div class="span3 preguntas_sub2">';
+
+							echo '<p>Caja municipal o rural?</p>';
+
+						echo '</div>';	
+
+						echo '<div class="span2">';
+							echo '<div class="control-group">';
+								echo '<div class="controls">';
+									echo form_input($S7_206); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S7_206['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 
 
@@ -1158,9 +1321,9 @@ echo '<div class="well modulo">';
 						echo '<div class="span4">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
-									echo form_input($S7_204_O); 
+									echo form_input($S7_206_O); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_204_O['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S7_206_O['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 
 
@@ -1175,6 +1338,116 @@ echo '<div class="well modulo">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 2
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 3
+				echo '<div class="question">';
+			echo '<p>3. En los últimos 12 meses, ¿En qué meses realizó su actividad de pesca?</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span3"></th>';
+					                  echo '<th class="span1">Meses</th>';
+					                   echo '<th class="span3">Cantidad</th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Agosto 2012</td>';
+					                  echo '<td>' . form_input($S7_3_1) . '</td>';
+					                  echo '<td>' . form_input($S7_3_1_C) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Setiembre 2012</td>';
+					                  echo '<td>' . form_input($S7_3_2) . '</td>';
+					                  echo '<td>' . form_input($S7_3_2_C) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Octubre 2012</td>';
+					                  echo '<td>' . form_input($S7_3_3) . '</td>';
+					                  echo '<td>' . form_input($S7_3_3_C) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Noviembre 2012</td>';
+					                  echo '<td>' . form_input($S7_3_4) . '</td>';
+					                  echo '<td>' . form_input($S7_3_4_C) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Diciembre 2012</td>';
+					                  echo '<td>' . form_input($S7_3_5) . '</td>';
+					                  echo '<td>' . form_input($S7_3_5_C) . '</td>';
+					               echo '</tr>';
+					               echo '<tr>';
+					                  echo '<td>Enero 2013</td>';
+					                  echo '<td>' . form_input($S7_3_6) . '</td>';
+					                  echo '<td>' . form_input($S7_3_6_C) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Febrero 2013</td>';
+					                  echo '<td>' . form_input($S7_3_7) . '</td>';
+					                  echo '<td>' . form_input($S7_3_7_C) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Marzo 2013</td>';
+					                  echo '<td>' . form_input($S7_3_8) . '</td>';
+					                  echo '<td>' . form_input($S7_3_8_C) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Abril 2013</td>';
+					                  echo '<td>' . form_input($S7_3_9) . '</td>';
+					                  echo '<td>' . form_input($S7_3_9_C) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Mayo 2013</td>';
+					                  echo '<td>' . form_input($S7_3_10) . '</td>';
+					                  echo '<td>' . form_input($S7_3_10_C) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Junio 2013</td>';
+					                  echo '<td>' . form_input($S7_3_11) . '</td>';
+					                  echo '<td>' . form_input($S7_3_11_C) . '</td>';
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Julio 2013</td>';
+					                  echo '<td>' . form_input($S7_3_12) . '</td>';
+					                  echo '<td>' . form_input($S7_3_12_C) . '</td>';
+					               echo '</tr>'; 					               			               				               					               					               				               				                					               				               					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';		
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 3
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN COLUMNA 1
+	echo '</div>'; 	
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////COLUMNA 2
+	echo '<div class="span6">';
+
+
 
 
 

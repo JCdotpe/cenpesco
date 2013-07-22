@@ -20,35 +20,64 @@ $S6_1 = array(
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+$S6_2 = array(
+	'name'	=> 'S6_2',
+	'id'	=> 'S6_2',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
 
 //01
-$S6_2_1 = array(
-	'name'	=> 'S6_2_1',
-	'id'	=> 'S6_2_1',
-	'maxlength'	=> 100,
-	'class' => $span_class,
-);
-//02
-$S6_2_2 = array(
-	'name'	=> 'S6_2_2',
-	'id'	=> 'S6_2_2',
-	'maxlength'	=> 100,
-	'class' => $span_class,
-);
-//03
-$S6_2_3 = array(
-	'name'	=> 'S6_2_3',
-	'id'	=> 'S6_2_3',
-	'maxlength'	=> 100,
-	'class' => $span_class,
-);
-//organizaciones productivas
-$S6_3 = array(
-	'name'	=> 'S6_3',
-	'id'	=> 'S6_3',
+$S6_3_1 = array(
+	'name'	=> 'S6_3_1',
+	'id'	=> 'S6_3_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+//02
+$S6_3_2 = array(
+	'name'	=> 'S6_3_2',
+	'id'	=> 'S6_3_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//03
+$S6_3_3 = array(
+	'name'	=> 'S6_3_3',
+	'id'	=> 'S6_3_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//4
+$S6_3_4 = array(
+	'name'	=> 'S6_3_4',
+	'id'	=> 'S6_3_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//5
+$S6_3_5 = array(
+	'name'	=> 'S6_3_5',
+	'id'	=> 'S6_3_5',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//6
+$S6_3_6 = array(
+	'name'	=> 'S6_3_6',
+	'id'	=> 'S6_3_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//5
+$S6_3_5_O = array(
+	'name'	=> 'S6_3_5_O',
+	'id'	=> 'S6_3_5_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+
+
 //MYPE
 $S6_4 = array(
 	'name'	=> 'S6_4',
@@ -56,7 +85,18 @@ $S6_4 = array(
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
+$S6_5 = array(
+	'name'	=> 'S6_5',
+	'id'	=> 'S6_5',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S6_6 = array(
+	'name'	=> 'S6_6',
+	'id'	=> 'S6_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
@@ -115,55 +155,68 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 1
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 2
 
 		echo '<div class="question">';
-			echo '<p>2.	¿A cuál o cuáles pertenece?</p>';	
+			echo '<p>2. ¿Cuál es el nombre de la organización a la que pertenece?</p>';	
 				echo '<div class="row-fluid">';
-							echo '<div class="offset3 span1">';	
-								echo form_label('1.', $S6_2_1['id'], $label_class);
-							echo '</div>'; 	
-							echo '<div class="control-group span4">';
+							echo '<div class="control-group offset4 span4">';
 								echo '<div class="controls">';
-										echo form_input($S6_2_1); 
+										echo form_input($S6_2); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S6_2_1['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($S6_2['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 				echo '</div>';	
-
-				echo '<div class="row-fluid">';
-							echo '<div class="offset3 span1">';	
-								echo form_label('2.', $S6_2_2['id'], $label_class);
-							echo '</div>'; 					
-							echo '<div class="control-group span4">';
-								echo '<div class="controls">';
-										echo form_input($S6_2_2); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S6_2_2['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-				echo '</div>';	
-
-				echo '<div class="row-fluid">';
-							echo '<div class="offset3 span1">';	
-								echo form_label('3.', $S6_2_3['id'], $label_class);
-							echo '</div>'; 						
-							echo '<div class="control-group span4">';
-								echo '<div class="controls">';
-										echo form_input($S6_2_3); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S6_2_3['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-				echo '</div>';					
 		echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 2
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 3
+				echo '<div class="question">';
+			echo '<p>3. ¿Qué beneficios obtiene de su organización?</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="span5"></th>';
+					                  echo '<th class="span2"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Aumenta los ingresos</td>';
+					                  echo '<td>' . form_input($S6_3_1) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Disminuye los costos</td>';
+					                  echo '<td>' . form_input($S6_3_2) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Recibe asistencia técnica</td>';
+					                  echo '<td>' . form_input($S6_3_3) . '</td>';
+					               echo '</tr>'; 				
+					               echo '<tr>';
+					                  echo '<td>Mejora posicionamiento en el mercado</td>';
+					                  echo '<td>' . form_input($S6_3_4) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S6_3_5_O) . '</td>';
+					                  echo '<td>' . form_input($S6_3_5) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>NINGUNO</td>';
+					                  echo '<td>' . form_input($S6_3_6) . '</td>';
+					               echo '</tr>'; 			               					               					               	                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';		
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 3
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,30 +237,12 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////COLUMNA 2
 	echo '<div class="span6">';
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////PREGUNTA 3
-
-		echo '<div class="question">';
-			echo '<p>3. ¿Pertenece a una o más organizaciones productivas (MYPES, Talleres comunales, entre otras)?</p>';	
-				echo '<div class="row-fluid">';
-							echo '<div class="control-group offset4 span4">';
-								echo '<div class="controls">';
-										echo form_input($S6_3); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S6_3['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-				echo '</div>';	
-		echo '</div>';
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////FIN PREGUNTA 3
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 4
 
 		echo '<div class="question">';
-			echo '<p>4. ¿Está interesado en constituirse como empresa?</p>';	
+			echo '<p>4. ¿Cuenta usted con permiso para desarrollar su actividad de pesca?</p>';	
 				echo '<div class="row-fluid">';
 							echo '<div class="control-group offset4 span4">';
 								echo '<div class="controls">';
@@ -222,8 +257,42 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 4
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 5
 
+		echo '<div class="question">';
+			echo '<p>5. ¿Su permiso se encuentra vigente?</p>';	
+				echo '<div class="row-fluid">';
+							echo '<div class="control-group offset4 span4">';
+								echo '<div class="controls">';
+										echo form_input($S6_5); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S6_5['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+				echo '</div>';	
+		echo '</div>';
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 5
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 6
+
+		echo '<div class="question">';
+			echo '<p>6. ¿Pertenece a una o más organizaciones productivas (MYPES, Talleres comunales, entre otras)?</p>';	
+				echo '<div class="row-fluid">';
+							echo '<div class="control-group offset4 span4">';
+								echo '<div class="controls">';
+										echo form_input($S6_6); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S6_6['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+				echo '</div>';	
+		echo '</div>';
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////FIN PREGUNTA 6
 
 
 
