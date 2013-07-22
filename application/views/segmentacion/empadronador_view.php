@@ -67,18 +67,22 @@ $span_class =  'span12';
           echo '</div>'; 
 
           echo '<div class="row-fluid control-group span9">';
+                echo form_label('RUTA','RUTA',$label1);
+                echo '<div class="controls span">';
+                  echo form_dropdown('RUTA', $equipoArray, FALSE,'class="span12" id="RUTA"'); 
+                echo '</div>';  
+          echo '</div>'; 
+
+
+          echo '<div class="row-fluid control-group span9">';
                 echo '<div class="controls span">';
                 echo '<a id="export" class="btn btn-inverse span12" href="#">Exportar a excel</a>';
                 echo '</div>';  
           echo '</div>'; 
+
+
           
 
-          // echo '<div class="row-fluid control-group span9">';
-          //       echo form_label('RUTA','RUTA',$label1);
-          //       echo '<div class="controls span">';
-          //         echo form_dropdown('RUTA', $equipoArray, FALSE,'class="span12" id="RUTA"'); 
-          //       echo '</div>';  
-          // echo '</div>'; 
 ?>
 
 <script type="text/javascript">
@@ -99,7 +103,7 @@ var gmarkers = [];
               else if(icon=== 'B')
                 color = CI.site_url + 'img/blank3.png';      
               else if(icon=== 'C')
-                color = CI.site_url + 'img/blank2.png';                 
+                color = CI.site_url + 'img/blank2.png';               
      
           var marker = new MarkerWithLabel({
               draggable: false,
@@ -175,6 +179,8 @@ $(function(){
 // CARGA COMBOS UBIGEO ---------------------------------------------------------------------->
           var sede = $('#NOM_SEDE');
           var dep = $('#NOM_DD');
+          var equipo = $('#EQUIPO');
+          var ruta = $('#RUTA');
   $("#NOM_SEDE, #NOM_DD, #EQUIPO").change(function(event) {
           var sel = null;
 
@@ -192,14 +198,14 @@ $(function(){
                   break;
               case 'NOM_DD':
                   sel     = $("#EQUIPO");
-                  url     = CI.rest_url + "segmentacion/equipo/sede/" + sede.val() + "/dep/" + $(this).val();
+                  url     = CI.rest_url + "segmentacion/equipo_emp/sede/" + sede.val() + "/dep/" + $(this).val();
                   op      = 2;
                   break;
-               // case 'EQUIPO':
-               //    sel     = $("#RUTA");
-               //    url     = CI.rest_url + "segmentacion/ubigeo/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + $(this).val();
-               //    op      = 3;
-               //    break;                      
+               case 'EQUIPO':
+                  sel     = $("#RUTA");
+                  url     = CI.rest_url + "segmentacion/ruta/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + equipo.val();
+                  op      = 3;
+                  break;                      
           }     
           
           // var form_data = {
@@ -209,7 +215,7 @@ $(function(){
           //     ajax:1
           // };
 
-          if(event.target.id != 'EQUIPO')
+          if(event.target.id != 'RUTA')
           {
 
           $.ajax({
@@ -222,12 +228,15 @@ $(function(){
                   $.each(json_data, function(i, data){
                       if (op==1){
                           sel.append('<option value="' + data.CCDD + '">' + data.DEPARTAMENTO + '</option>');
-                          
                       }
                       if (op==2){
                           sel.append('<option value="' + data.equipo + '">' + data.equipo + '</option>');
                           // $("#EQUIPO").trigger('change');
                      }
+                      if (op==3){
+                          sel.append('<option value="' + data.ruta + '">' + data.ruta + '</option>');
+                         $("#RUTA").trigger('change');
+                     }                     
                   });
                  if(op==1){
                     $("#NOM_DD").trigger('change');
@@ -248,14 +257,14 @@ $(function(){
 
 
 
-$("#EQUIPO").change(function() {
+$("#RUTA").change(function() {
         for (var i=0; i<gmarkers.length; i++) {
           if (gmarkers[i].mycategory == '1') {
             gmarkers[i].setVisible(false);
           }
         } 
         $.ajax({   
-            url: CI.rest_url + "segmentacion/mapas/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + $(this).val(),
+            url: CI.rest_url + "segmentacion/empadronador/sede/" + sede.val() + "/dep/" + dep.val() + "/equipo/" + equipo.val() + "/ruta/" + $(this).val(),
             type:'GET',
             // data:form_data,
             dataType:'json',
@@ -265,7 +274,7 @@ $("#EQUIPO").change(function() {
                     var lng = data.longx;                
                     var point = new google.maps.LatLng(lat,lng);
                     var html = "<div class='marker activeMarker'><div class='markerInfo activeInfo' style='display: block;'><h3>CCPP - " + data.centro_poblado + "</h3><p><b>DEPARTAMENTO:</b> "+data.departamento+"</p><p><b>PROVINCIA:</b> "+data.provincia+"</p><p><b>DISTRITO:</b> "+data.distrito+"</p><p><b>NUMERACION:</b> "+data.numeracion+"</p></div></div>";     
-                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV,data.centro_poblado + ' [' + data.numeracion+ ']'  + ' - '+data.ccpp_acomp);
+                    var marker = createMarkerLEN(point, data.centro_poblado, html, '1', data.CONC_CONV,data.centro_poblado + ' [' + data.numeracion+ ']' + ' - '+data.ccpp_acomp);
                 });
             }
         });   
@@ -301,23 +310,24 @@ $("#EQUIPO").change(function() {
     </div>
 
     <div class="span3">
-      <p class="pull-right">JEFE DE BRIGADA</p>
-     
-    </div>    
+        <p class="pull-right">JEFE DE BRIGADA</p>        
+    </div>       
 
- 
 
       <script type="text/javascript">
 
         $('#export').click(function() {
 
-            window.location = CI.base_url + 'segmentacion/consulta/export_jefe/'+ $("#NOM_SEDE").val()+'/'+$("#NOM_SEDE").val() +'/'+$("#EQUIPO").val();  
+            window.location = CI.base_url + 'segmentacion/consulta/export_emp/'+ $("#NOM_SEDE").val()+'/'+$("#NOM_SEDE").val() +'/'+$("#EQUIPO").val()+'/'+$("#RUTA").val();  
   
           } );
 
       </script>
 
+    
+      </div> 
 
+    </div>    
   </div>
 </div>
 </div>  
