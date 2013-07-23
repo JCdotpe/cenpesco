@@ -12,7 +12,6 @@ $span_class =  'span12';
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
-//Normatividad pesquera (tallas mínimas, redes)
 $S8_1_1 = array(
 	'name'	=> 'S8_1_1',
 	'id'	=> 'S8_1_1',
@@ -20,15 +19,12 @@ $S8_1_1 = array(
 	'class' => $span_class,
 );
 
-//Buenas Practicas
 $S8_1_2 = array(
 	'name'	=> 'S8_1_2',
 	'id'	=> 'S8_1_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Normas sanitarias
 $S8_1_3 = array(
 	'name'	=> 'S8_1_3',
 	'id'	=> 'S8_1_3',
@@ -36,7 +32,6 @@ $S8_1_3 = array(
 	'class' => $span_class,
 );
 
-// Tecnología pesquera
 $S8_1_4 = array(
 	'name'	=> 'S8_1_4',
 	'id'	=> 'S8_1_4',
@@ -44,15 +39,12 @@ $S8_1_4 = array(
 	'class' => $span_class,
 );
 
-// Cuidado del medio ambiente
 $S8_1_5 = array(
 	'name'	=> 'S8_1_5',
 	'id'	=> 'S8_1_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//  No conoce
 $S8_1_6 = array(
 	'name'	=> 'S8_1_6',
 	'id'	=> 'S8_1_6',
@@ -60,248 +52,331 @@ $S8_1_6 = array(
 	'class' => $span_class,
 );
 
-//  ¿Ha recibido alguna capacitación relacionada a la pesca?
+$S8_1_7 = array(
+	'name'	=> 'S8_1_7',
+	'id'	=> 'S8_1_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S8_1_8 = array(
+	'name'	=> 'S8_1_8',
+	'id'	=> 'S8_1_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+$S8_1_9 = array(
+	'name'	=> 'S8_1_9',
+	'id'	=> 'S8_1_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
+
+///////////////////////////////////////////////
 $S8_2 = array(
 	'name'	=> 'S8_2',
 	'id'	=> 'S8_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Ministerio de Produccion
+
+///////////////////////////////////////
+
 $S8_3_1 = array(
 	'name'	=> 'S8_3_1',
 	'id'	=> 'S8_3_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Ministerio de Agricultura
 $S8_3_2 = array(
 	'name'	=> 'S8_3_2',
 	'id'	=> 'S8_3_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Ministerio de Ambiente
 $S8_3_3 = array(
 	'name'	=> 'S8_3_3',
 	'id'	=> 'S8_3_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Organización no Gubernamental
 $S8_3_4 = array(
 	'name'	=> 'S8_3_4',
 	'id'	=> 'S8_3_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//otro
 $S8_3_5 = array(
 	'name'	=> 'S8_3_5',
 	'id'	=> 'S8_3_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Otro especifique
-$S8_3_5_O = array(
-	'name'	=> 'S8_3_5_O',
-	'id'	=> 'S8_3_5_O',
+$S8_3_6 = array(
+	'name'	=> 'S8_3_6',
+	'id'	=> 'S8_3_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_3_7 = array(
+	'name'	=> 'S8_3_7',
+	'id'	=> 'S8_3_7',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_3_8 = array(
+	'name'	=> 'S8_3_8',
+	'id'	=> 'S8_3_8',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_3_9 = array(
+	'name'	=> 'S8_3_9',
+	'id'	=> 'S8_3_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_3_10 = array(
+	'name'	=> 'S8_3_10',
+	'id'	=> 'S8_3_10',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_3_10_O = array(
+	'name'	=> 'S8_3_10_O',
+	'id'	=> 'S8_3_10_O',
 	'maxlength'	=> 100,
 	'class' => $span_class,
 );
-//Normatividad pesquera 
+
+/////////////////////////////////
 $S8_4_1 = array(
 	'name'	=> 'S8_4_1',
 	'id'	=> 'S8_4_1',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Normatividad pesquera Pagado
 $S8_4_1A = array(
 	'name'	=> 'S8_4_1A',
 	'id'	=> 'S8_4_1A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Normatividad pesquera Gratuito
-$S8_4_1B = array(
-	'name'	=> 'S8_4_1B',
-	'id'	=> 'S8_4_1B',
+$S8_4_1L = array(
+	'name'	=> 'S8_4_1L',
+	'id'	=> 'S8_4_1L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-// Buenas prácticas de pesca 
 $S8_4_2 = array(
 	'name'	=> 'S8_4_2',
 	'id'	=> 'S8_4_2',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Buenas prácticas de pesca PAgad
 $S8_4_2A = array(
-	'name'	=> 'S8_4_2',
-	'id'	=> 'S8_4_2',
+	'name'	=> 'S8_4_2A',
+	'id'	=> 'S8_4_2A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Buenas prácticas de pesca Gratuito
-$S8_4_2B = array(
-	'name'	=> 'S8_4_2',
-	'id'	=> 'S8_4_2',
+$S8_4_2L = array(
+	'name'	=> 'S8_4_2L',
+	'id'	=> 'S8_4_2L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//  Normas sanitarias 
 $S8_4_3 = array(
 	'name'	=> 'S8_4_3',
 	'id'	=> 'S8_4_3',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Normas sanitarias - Pagado
 $S8_4_3A = array(
 	'name'	=> 'S8_4_3A',
 	'id'	=> 'S8_4_3A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Normas sanitarias - Gratuito
-$S8_4_3B = array(
-	'name'	=> 'S8_4_3B',
-	'id'	=> 'S8_4_3B',
+$S8_4_3L = array(
+	'name'	=> 'S8_4_3L',
+	'id'	=> 'S8_4_3L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-// Tecnología pesquera 
 $S8_4_4 = array(
 	'name'	=> 'S8_4_4',
 	'id'	=> 'S8_4_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Tecnología pesquera  - Pagado
 $S8_4_4A = array(
 	'name'	=> 'S8_4_4A',
 	'id'	=> 'S8_4_4A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Tecnología pesquera  - Gratuito
-$S8_4_4B = array(
-	'name'	=> 'S8_4_4B',
-	'id'	=> 'S8_4_4B',
+$S8_4_4L = array(
+	'name'	=> 'S8_4_4L',
+	'id'	=> 'S8_4_4L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Formalización 
 $S8_4_5 = array(
 	'name'	=> 'S8_4_5',
 	'id'	=> 'S8_4_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Formalización  - Pagado
 $S8_4_5A = array(
 	'name'	=> 'S8_4_5A',
 	'id'	=> 'S8_4_5A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-// Formalización  - Gratuito
-$S8_4_5B = array(
-	'name'	=> 'S8_4_5B',
-	'id'	=> 'S8_4_5B',
+$S8_4_5L = array(
+	'name'	=> 'S8_4_5L',
+	'id'	=> 'S8_4_5L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Comercialización
 $S8_4_6 = array(
 	'name'	=> 'S8_4_6',
 	'id'	=> 'S8_4_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Comercialización - Pagado
 $S8_4_6A = array(
 	'name'	=> 'S8_4_6A',
 	'id'	=> 'S8_4_6A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Comercialización - Gratuito
-$S8_4_6B = array(
-	'name'	=> 'S8_4_6B',
-	'id'	=> 'S8_4_6B',
+$S8_4_6L = array(
+	'name'	=> 'S8_4_6L',
+	'id'	=> 'S8_4_6L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-// Seguridad social 
 $S8_4_7 = array(
 	'name'	=> 'S8_4_7',
 	'id'	=> 'S8_4_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-//Seguridad social - Pagado
 $S8_4_7A = array(
 	'name'	=> 'S8_4_7A',
 	'id'	=> 'S8_4_7A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Seguridad social - Gratuito
-$S8_4_7B = array(
-	'name'	=> 'S8_4_7B',
-	'id'	=> 'S8_4_7B',
+$S8_4_7L = array(
+	'name'	=> 'S8_4_7L',
+	'id'	=> 'S8_4_7L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Otro 
 $S8_4_8 = array(
 	'name'	=> 'S8_4_8',
 	'id'	=> 'S8_4_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Otro Especifique
-$S8_4_8_O = array(
-	'name'	=> 'S8_4_8_O',
-	'id'	=> 'S8_4_8_O',
-	'maxlength'	=> 100,
-	'class' => $span_class,
-);
-
-//Otro - Pagado
 $S8_4_8A = array(
 	'name'	=> 'S8_4_8A',
 	'id'	=> 'S8_4_8A',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
-
-//Otro - Gratuito
-$S8_4_8B = array(
-	'name'	=> 'S8_4_8B',
-	'id'	=> 'S8_4_8B',
+$S8_4_8L = array(
+	'name'	=> 'S8_4_8L',
+	'id'	=> 'S8_4_8L',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
+$S8_4_9 = array(
+	'name'	=> 'S8_4_9',
+	'id'	=> 'S8_4_9',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_4_9_O = array(
+	'name'	=> 'S8_4_9_O',
+	'id'	=> 'S8_4_9_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S8_4_9A = array(
+	'name'	=> 'S8_4_9A',
+	'id'	=> 'S8_4_9A',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_4_9L = array(
+	'name'	=> 'S8_4_9L',
+	'id'	=> 'S8_4_9L',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+//////////////////////////////////
+$S8_5_1 = array(
+	'name'	=> 'S8_5_1',
+	'id'	=> 'S8_5_1',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S8_5_2 = array(
+	'name'	=> 'S8_5_2',
+	'id'	=> 'S8_5_2',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S8_5_3 = array(
+	'name'	=> 'S8_5_3',
+	'id'	=> 'S8_5_3',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+////////////////////////////////
+$S8_6_1 = array(
+	'name'	=> 'S8_6_1',
+	'id'	=> 'S8_6_1',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_6_2 = array(
+	'name'	=> 'S8_6_2',
+	'id'	=> 'S8_6_2',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_6_3 = array(
+	'name'	=> 'S8_6_3',
+	'id'	=> 'S8_6_3',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_6_4 = array(
+	'name'	=> 'S8_6_4',
+	'id'	=> 'S8_6_4',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_6_5 = array(
+	'name'	=> 'S8_6_5',
+	'id'	=> 'S8_6_5',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+$S8_6_6 = array(
+	'name'	=> 'S8_6_6',
+	'id'	=> 'S8_6_6',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
+
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
@@ -343,141 +418,57 @@ echo '<div class="well modulo">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 1
-
-		echo '<div class="question">';
-			echo '<p>1.	¿Usted conoce de: </p>';	
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Normatividad pesquera (tallas mínimas, redes)?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_1_1); 
-										echo '<div class="help-block error">' . form_error($S8_1_1['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Buenas Prácticas?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_1_2); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_1_2['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Normas sanitarias?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_1_3); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_1_3['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Tecnología pesquera?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_1_4); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_1_4['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-					
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Cuidado del medio ambiente?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_1_5); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_1_5['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>NO CONOCE</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_1_6); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_1_6['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-		echo '</div>';					
+				echo '<div class="question">';
+			echo '<p>1. ¿Usted conoce de:</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="offset1 span6"></th>';
+					                   echo '<th class="span3"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Pesca sostenible?</td>';
+					                  echo '<td>' . form_input($S8_1_1) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Normatividad pesquera?</td>';
+					                  echo '<td>' . form_input($S8_1_2) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Normas sanitarias?</td>';
+					                  echo '<td>' . form_input($S8_1_3) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Tecnología pesquera?</td>';
+					                  echo '<td>' . form_input($S8_1_4) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Manejo ambiental?</td>';
+					                  echo '<td>' . form_input($S8_1_5) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Formalización?</td>';
+					                  echo '<td>' . form_input($S8_1_6) . '</td>';
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Comercialización?</td>';
+					                  echo '<td>' . form_input($S8_1_7) . '</td>';
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Gestión Empresarial?</td>';
+					                  echo '<td>' . form_input($S8_1_8) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>NO CONOCE</td>';
+					                  echo '<td>' . form_input($S8_1_9) . '</td>';
+					               echo '</tr>'; 					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';				
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 1
 
@@ -505,142 +496,61 @@ echo '<div class="well modulo">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 3
-
 		echo '<div class="question">';
 			echo '<p>3. ¿Quién le brindó la capacitación?</p>';	
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Ministerio de Producción</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_3_1); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_3_1['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Ministerio de Agricultura</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_3_2); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_3_2['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Ministerio del Ambiente</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_3_3); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_3_3['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Organización No Gubernamental (ONG)</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_3_4); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_3_4['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-					
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Otro</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_3_5); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_3_5['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 
-
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span7">';
-
-								echo '<p>Especifique</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span3">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S8_3_5_O); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S8_3_5_O['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';							
-
-						echo '</div>'; 						
-		echo '</div>';					
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="offset1 span6"></th>';
+					                   echo '<th class="span3"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Ministerio de Producción (PRODUCE)</td>';
+					                  echo '<td>' . form_input($S8_3_1) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Fondo Nacional de Desarrollo Pesquero (FONDEPES)</td>';
+					                  echo '<td>' . form_input($S8_3_2) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Instituto de Investigación de la Amazonía Peruana (IIAP)</td>';
+					                  echo '<td>' . form_input($S8_3_3) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Ministerio del Ambiente (MINAM)</td>';
+					                  echo '<td>' . form_input($S8_3_4) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Servicio Nacional de Sanidad Pesquera (SANIPES)</td>';
+					                  echo '<td>' . form_input($S8_3_5) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Instituto del Mar del Perú (IMARPE)</td>';
+					                  echo '<td>' . form_input($S8_3_6) . '</td>';
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Dirección Regional de la Producción (DIREPRO)</td>';
+					                  echo '<td>' . form_input($S8_3_7) . '</td>';
+					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>Gobierno Regional</td>';
+					                  echo '<td>' . form_input($S8_3_8) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Organización No Gubernamental (ONG)</td>';
+					                  echo '<td>' . form_input($S8_3_9) . '</td>';
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S8_3_10_O) . '</td>';
+					                  echo '<td>' . form_input($S8_3_10) . '</td>';
+					               echo '</tr>'; 					               					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 3
 
@@ -668,384 +578,159 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 4
 
-		echo '<div class="question">';
+				echo '<div class="question">';
 			echo '<p>4. ¿Cuáles fueron los cursos o temas de capacitación recibidos?</p>';	
-
-
 				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span6 preguntas_sub">';
-							echo '<h5>Cursos o temas</h5>';
-						echo '</div>'; 
-
-						echo '<div class="offset2 span2 preguntas_sub">';
-							echo '<h5>Pagado</h5>';
-						echo '</div>'; 		
-
-						echo '<div class="span2 preguntas_sub">';
-							echo '<h5>Gratuito</h5>';
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-			
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_1); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_1['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 	
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Normatividad pesquera (tallas minimas, redes)</p>';
-						echo '</div>'; 
-	
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_1A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_1A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_1B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_1B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_2); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_2['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 	
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Buenas prácticas de pesca</p>';
-						echo '</div>'; 
-	
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_2A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_2A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_2B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_2B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_3); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_3['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Normas sanitarias</p>';
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_3A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_3A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 		
-
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_3B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_3B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_4); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_4['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>tecnologia pesquera</p>';
-						echo '</div>'; 
-		
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_4A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_4A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_4B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_4B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_5); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_5['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Formalización</p>';
-						echo '</div>'; 
-		
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_5A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_5A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_5B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_5B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_6); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_6['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 		
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Comercializacion</p>';
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_6A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_6A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_6B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_6B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_7); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_7['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 		
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Seguridad social</p>';
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_7A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_7A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_7B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_7B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
-
-				echo '<div class="row-fluid">';
-					
-					echo '<div class="offset1 span11">';
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_8); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_8['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 	
-
-						echo '<div class="span1 preguntas_sub2">';
-							echo '<p>Otro</p>';
-						echo '</div>'; 
-
-						echo '<div class="span5">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_8_O); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_8_O['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 		
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_8A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_8A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S8_4_8B); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S8_4_8B['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-						echo '</div>'; 
-
-					echo '</div>'; 
-
-				echo '</div>';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="offset1 span4">Cursos o temas</th>';
+					                  	echo '<th class="span2"></th>';
+					                   echo '<th class="span2">Pagado/Gratuito</th>';
+					                   echo '<th class="span2">Lo aplica?</th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Pesca sostenible </td>';
+					                  echo '<td>' . form_input($S8_4_1) . '</td>';
+					                  echo '<td>' . form_input($S8_4_1A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_1L) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Normatividad pesquera</td>';
+					                  echo '<td>' . form_input($S8_4_2) . '</td>';
+					                  echo '<td>' . form_input($S8_4_2A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_2L) . '</td>';
+					               echo '</tr>';   			
+					               echo '<tr>';
+					                  echo '<td>Normas sanitarias</td>';
+					                  echo '<td>' . form_input($S8_4_3) . '</td>';
+					                  echo '<td>' . form_input($S8_4_3A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_3L) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Tecnología pesquera</td>';
+					                  echo '<td>' . form_input($S8_4_4) . '</td>';
+					                  echo '<td>' . form_input($S8_4_4A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_4L) . '</td>';
+					               echo '</tr>';  	
+					               echo '<tr>';
+					                  echo '<td>Manejo ambiental</td>';
+					                  echo '<td>' . form_input($S8_4_5) . '</td>';
+					                  echo '<td>' . form_input($S8_4_5A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_5L) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Formalización</td>';
+					                  echo '<td>' . form_input($S8_4_6) . '</td>';
+					                  echo '<td>' . form_input($S8_4_6A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_6L) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Comercialización</td>';
+					                  echo '<td>' . form_input($S8_4_7) . '</td>';
+					                  echo '<td>' . form_input($S8_4_7A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_7L) . '</td>';
+					               echo '</tr>';  
+					               echo '<tr>';
+					                  echo '<td>Gestión empresarial</td>';
+					                  echo '<td>' . form_input($S8_4_8) . '</td>';
+					                  echo '<td>' . form_input($S8_4_8A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_8L) . '</td>';
+					               echo '</tr>';  					               	
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S8_4_9_O) . '</td>';
+					                  echo '<td>' . form_input($S8_4_9) . '</td>';
+					                  echo '<td>' . form_input($S8_4_9A) . '</td>';
+					                  echo '<td>' . form_input($S8_4_9L) . '</td>';
+					               echo '</tr>';  						               					               					               						               				                					               	               					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';	
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 4
-	echo '</div>';
 
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 5
+				echo '<div class="question">';
+			echo '<p>5. ¿En qué temas necesita capacitarse?</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="offset2 span1"></th>';
+					                   echo '<th class="span7"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>1.</td>';
+					                  echo '<td>' . form_input($S8_5_1) . '</td>';
+					               echo '</tr>';   	
+					               echo '<tr>';
+					                  echo '<td>2.</td>';
+					                  echo '<td>' . form_input($S8_5_2) . '</td>';
+					               echo '</tr>';  	
+					               echo '<tr>';
+					                  echo '<td>3.</td>';
+					                  echo '<td>' . form_input($S8_5_3) . '</td>';
+					               echo '</tr>'; 					               				               				               				               					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';		
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 5
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 6
+		echo '<div class="question">';
+			echo '<p>6. ¿Cómo calificaría el apoyo al sector pesquero del:</p>';	
+				echo '<div class="row-fluid">';
+						echo '<table class="table table-condensed" id="emb_table">';
+					              echo '<thead>';
+					                echo '<tr>';
+					                  echo '<th class="offset1 span6">Institución</th>';
+					                   echo '<th class="span3"></th>';
+					                echo '</tr>';
+					              echo '</thead>';
+					              echo '<tbody>';
+					               echo '<tr>';
+					                  echo '<td>Ministerio de Producción (PRODUCE)</td>';
+					                  echo '<td>' . form_input($S8_6_1) . '</td>';
+					               echo '</tr>';   
+					               echo '<tr>';
+					                  echo '<td>Fondo Nacional de Desarrollo Pesquero (FONDEPES)</td>';
+					                  echo '<td>' . form_input($S8_6_2) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Instituto Tecnológico Pesquero (ITP)?</td>';
+					                  echo '<td>' . form_input($S8_6_3) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Instituto del Mar del Perú (IMARPE)?</td>';
+					                  echo '<td>' . form_input($S8_6_4) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Ministerio del Ambiente (MINAM)?</td>';
+					                  echo '<td>' . form_input($S8_6_5) . '</td>';
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>Servicio Nacional de Sanidad Pesquera (SANIPES)?</td>';
+					                  echo '<td>' . form_input($S8_6_6) . '</td>';
+					               echo '</tr>'; 		    					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
+			              echo '</tbody>';
+			            echo '</table>';	
+				echo '</div>';	
+		echo '</div>';
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////PREGUNTA 6
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
