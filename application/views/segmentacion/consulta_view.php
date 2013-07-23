@@ -311,7 +311,7 @@ $("#EQUIPO").change(function() {
 
         $('#export').click(function() {
 
-            window.location = CI.base_url + 'segmentacion/consulta/export_jefe/'+ $("#NOM_SEDE").val()+ '/'+ $("#NOM_DP").val() + '/' +$("#EQUIPO").val();  
+            window.location = CI.base_url + 'segmentacion/consulta/export_jefe/'+ $("#NOM_SEDE").val()+ '/'+ $("#NOM_DD").val() + '/' +$("#EQUIPO").val();  
   
           } );
 
