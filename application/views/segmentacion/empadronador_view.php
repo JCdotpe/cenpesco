@@ -235,8 +235,7 @@ $(function(){
                      }
                       if (op==3){
                           sel.append('<option value="' + data.ruta + '">' + data.ruta + '</option>');
-                         $("#RUTA").trigger('change');
-                     }                     
+                                             }                     
                   });
                  if(op==1){
                     $("#NOM_DD").trigger('change');
@@ -244,7 +243,11 @@ $(function(){
 
                 if(op==2){
                     $("#EQUIPO").trigger('change');
-                 }                
+                 }      
+
+                if(op==3){
+                    $("#RUTA").trigger('change');
+                 }                                
               }
           });   
        }
@@ -310,7 +313,7 @@ $("#RUTA").change(function() {
     </div>
 
     <div class="span3">
-        <p class="pull-right">JEFE DE BRIGADA</p>        
+        <p class="pull-right">EMPADRONADOR</p>        
     </div>       
 
 

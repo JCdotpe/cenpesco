@@ -8,7 +8,8 @@
             <ul class="nav nav-list">
               <li class="nav-header">Opciones</li>
 
-              <li><a href="<?php echo site_url('segmentacion/consulta'); ?>" target="_blank">Módulo de consulta</a></li>
+              <li><a href="<?php echo site_url('segmentacion/consulta'); ?>" target="_blank">Módulo de consulta - Jefe de Brigada</a></li>
+               <li><a href="<?php echo site_url('segmentacion/consulta/index/1'); ?>" target="_blank">Módulo de consulta - Empadronador</a></li>
             
 <!--               <li>
                   <div class="accordion" id="accordion3">
