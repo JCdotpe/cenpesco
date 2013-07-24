@@ -84,30 +84,30 @@ $S5_1_3_1 = array(
 
 //marisma
 $S5_1_4 = array(
-	'name'	=> 'S5_1_5',
-	'id'	=> 'S5_1_5',
+	'name'	=> 'S5_1_4',
+	'id'	=> 'S5_1_4',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //qmarisma
 $S5_1_4_1 = array(
-	'name'	=> 'S5_1_5_1',
-	'id'	=> 'S5_1_5_1',
+	'name'	=> 'S5_1_4_1',
+	'id'	=> 'S5_1_4_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
 //quebrada
 $S5_1_5 = array(
-	'name'	=> 'S5_1_6',
-	'id'	=> 'S5_1_6',
+	'name'	=> 'S5_1_5',
+	'id'	=> 'S5_1_5',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //qquebrada
 $S5_1_5_1 = array(
-	'name'	=> 'S5_1_6_1',
-	'id'	=> 'S5_1_6_1',
+	'name'	=> 'S5_1_5_1',
+	'id'	=> 'S5_1_5_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
@@ -129,54 +129,54 @@ $S5_1_5_1 = array(
 
 //cocha
 $S5_1_6 = array(
-	'name'	=> 'S5_1_8',
-	'id'	=> 'S5_1_8',
+	'name'	=> 'S5_1_6',
+	'id'	=> 'S5_1_6',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //qcocha
 $S5_1_6_1 = array(
-	'name'	=> 'S5_1_8_1',
-	'id'	=> 'S5_1_8_1',
+	'name'	=> 'S5_1_6_1',
+	'id'	=> 'S5_1_6_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
 //reserv
 $S5_1_7 = array(
-	'name'	=> 'S5_1_8',
-	'id'	=> 'S5_1_8',
+	'name'	=> 'S5_1_7',
+	'id'	=> 'S5_1_7',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 //reserv
 $S5_1_7_1 = array(
-	'name'	=> 'S5_1_8_1',
-	'id'	=> 'S5_1_8_1',
+	'name'	=> 'S5_1_7_1',
+	'id'	=> 'S5_1_7_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
 //otro
 $S5_1_8 = array(
-	'name'	=> 'S5_1_9',
-	'id'	=> 'S5_1_9',
+	'name'	=> 'S5_1_8',
+	'id'	=> 'S5_1_8',
 	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
 //otro especifique
 $S5_1_8_O = array(
-	'name'	=> 'S5_1_9_O',
-	'id'	=> 'S5_1_9_O',
+	'name'	=> 'S5_1_8_O',
+	'id'	=> 'S5_1_8_O',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
 
 //nombre otro
 $S5_1_8_1 = array(
-	'name'	=> 'S5_1_9_1',
-	'id'	=> 'S5_1_9_1',
+	'name'	=> 'S5_1_8_1',
+	'id'	=> 'S5_1_8_1',
 	'maxlength'	=> 50,
 	'class' => $span_class,
 );
@@ -3396,7 +3396,11 @@ $("#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD").change(function(ev
 		    	var seccion5_data = $("#seccion5").serializeArray();
 			    seccion5_data.push(
 			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}, 
+			        {name: 'S5_2_DD',value:$('#S5_2_DD_COD :selected').text()},
+					{name: 'S5_2_PP',value:$('#S5_2_PP_COD :selected').text()},    
+					{name: 'S5_2_DI',value:$('#S5_2_DI_COD :selected').text()},    
+					{name: 'S5_2_CCPP',value:$('#S5_2_CCPP_COD :selected').text()}			           
 			    );
 				
 		        var bsub5 = $( "#seccion5 :submit" );
