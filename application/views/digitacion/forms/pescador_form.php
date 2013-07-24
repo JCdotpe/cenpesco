@@ -84,12 +84,9 @@ $NROFORM = array(
 	'class' => 'offset5 span2',
 );
 
-
-
     echo form_hidden('pescador_id', '');
 	echo '<div class="well modulo">';
 			echo '<div class="control-group">';
-      echo '<h4 style="text-align:center">FORMULARIO CENSAL DEL PESCADOR Y EMBARCACIONES PESQUERAS<h4>';
 			echo form_label('NRO FORMULARIO','NFORM',$labelnroform);
 				echo '<div class="controls">';	
 					echo form_input($NROFORM); 
