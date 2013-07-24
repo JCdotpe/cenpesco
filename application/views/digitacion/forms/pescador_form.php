@@ -160,7 +160,23 @@ $NROFORM = array(
 
 			echo '</div>'; 	
 
-		echo '</div>'; 			
+
+            echo '<div class="12">';    
+                    echo '<div class="control-group ">';
+                            echo '<div class="controls offset3 span2">';
+                                echo form_label('TIPO DE ACTIVIDAD','TAC',$label1);
+                            echo '</div>';                              
+                            echo '<div class="controls span3">';
+                                echo form_dropdown('TAC', $tac, FALSE,'class="span12" id="TAC"'); 
+                            echo '</div>';
+                    echo '</div>';             
+            echo '</div>'; 
+
+		echo '</div>'; 	
+
+
+
+
 	echo '</div>'; 				
 
 echo form_submit('consulta', 'Consulta','class="btn btn-primary pull-right"');
@@ -396,7 +412,11 @@ $("#pesca_dor").validate({
        NOM_CCPP: {
            required: true,
            valueNotEquals: -1,
-         },                                                                                 
+         },  
+        TAC: {
+           required: true,
+           valueNotEquals: -1,
+         },                                                                                         
 //FIN RULES
     },
 
@@ -417,7 +437,9 @@ $("#pesca_dor").validate({
        NOM_CCPP: {
            valueNotEquals: 'Seleccione Centro Poblado',
          },  
-                                       
+         TAC: {
+           valueNotEquals: 'Seleccione Tipo de Actividad',
+         },                                       
 //FIN MESSAGES
     },
     errorPlacement: function(error, element) {
@@ -452,6 +474,7 @@ $("#pesca_dor").validate({
             NOM_DI : $('#NOM_DI :selected').text(),
             COD_CCPP : $('#NOM_CCPP').val(),
             NOM_CCPP : $('#NOM_CCPP :selected').text(),
+            TAC: $('#TAC').val(),
             ajax:1
         };
         var bsub = $( "#pesca_dor :submit" );

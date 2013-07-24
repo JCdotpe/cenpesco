@@ -43,43 +43,28 @@ class Pesc_seccion9 extends CI_Controller {
 		if($is_ajax){
 			
 			$fields = $this->pescador_model->get_fields('pesc_seccion9');
-			$embs = $this->input->post('S9_2');
-			$flag = 1; 
-			$msg = 'Se ha registrado satisfactoriamente la Seccion IX';
-
-			$c_data['S9_1'] = $this->input->post('S9_1');
-			$c_data['S9_2'] = $embs;
-			$c_data['pescador_id'] = $this->input->post('pescador_id');
+			foreach ($fields as $a=>$b) {
+				if(!in_array($b, array('id','user_id','last_ip','user_agent','created','modified'))){
+					$c_data[$b] = $this->input->post($b);
+				}
+			}	
 			$c_data['user_id'] = $this->tank_auth->get_user_id();
 			$c_data['created'] = date('Y-m-d H:i:s');
 			$c_data['last_ip'] =  $this->input->ip_address();
-			$c_data['user_agent'] = $this->agent->agent_string();			
+			$c_data['user_agent'] = $this->agent->agent_string();
 
-			if(!is_null($embs) && $embs!=0 && is_numeric($embs) && $embs != ''){
-				for ($i=1; $i <= $embs; $i++) { 
-					foreach ($fields as $a=>$b) {
-						if(!in_array($b, array('id','S9_1','S9_2','pescador_id','user_id','last_ip','user_agent','created','modified'))){
-							$c_data[$b] = $this->input->post($b . '_' . $i);
-						}
-					}	
+			//print_r($c_data);
 
-					if(!$this->pescador_model->insert_pesc_seccion('pesc_seccion9',$c_data)){
-						$flag = 0;
-						$msg = 'Error ingresando embarcacion ' . $i . ', por favor intentalo nuevamente';
-						break;
-					}		
-				}
-			}else{
-					if(!$this->pescador_model->insert_no_emb($c_data)){
-						$flag = 0;
-						$msg = 'Error en el registro, por favor intentalo nuevamente';
-						break;
-					}	
+			$flag = 0;
+			$msg = 'Error inesperado, por favor intentalo nuevamente';
+			if($this->pescador_model->insert_pesc_seccion('pesc_seccion9',$c_data) > 0){
+				$flag = 1;
+				$msg = 'Se ha registrado satisfactoriamente la Seccion IX';
 			}
 			$datos['flag'] = $flag;	
 			$datos['msg'] = $msg;	
 			$data['datos'] = $datos;
-			$this->load->view('backend/json/json_view', $data);		
+			$this->load->view('backend/json/json_view', $data);	
 
 		}else{
 			show_404();;

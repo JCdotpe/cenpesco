@@ -149,10 +149,7 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 	echo '</div>';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-  echo '</div>';
+  // echo '</div>';
 
 
 
@@ -172,7 +169,7 @@ echo '<div class="row-fluid">';
 		echo '<div class="question">';
 			echo '<p style="text-align:center"></p>';	
 
-			echo '<table class="table table-condensed" id="emb_table">';
+			echo '<table class="table table-condensed" id="embarcacionex">';
               echo '<thead>';
                 echo '<tr>';
                   echo '<th class="span1">3. Embarcación N°</th>';
@@ -214,10 +211,9 @@ echo '<div class="row-fluid">';
             echo '</table>';		
 
 
-
+    echo '</div>';        
 		echo '</div>';
 	echo '</div>';
-echo '</div>'; 
 
 
 
@@ -227,7 +223,7 @@ echo '<div class="row-fluid">';
     echo '<div class="question">';
       echo '<p style="text-align:center"></p>'; 
 
-      echo '<table class="table table-condensed" id="emb_table2">';
+      echo '<table class="table table-condensed" id="embarcacionex2">';
               echo '<thead>';
                 echo '<tr>';
                   echo '<th class="span1">3. Embarcación N°</th>';
@@ -274,14 +270,16 @@ echo '<div class="row-fluid">';
 
     echo '</div>';
   echo '</div>';
-echo '</div>'; 
+
 echo '</div>'; 
 
+echo '</div>'; 
 
 echo form_submit('send', 'Guardar','class="btn btn-primary pull-right"');
 echo form_close(); 
     echo '</div>';      
-  echo '</div>';  
+  echo '</div>';
+  
 //FIN COLUMNAS SECCION IX
 
  ?>
@@ -292,10 +290,10 @@ $(function(){
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 $('#S9_2').keyup(function(event) {
 
-  $('#emb_table tr').remove('.embx');
-  $('#emb_table2 tr').remove('.embx2');
+  $('#embarcacionex tr').remove('.embarc');
+  $('#embarcacionex2 tr').remove('.embarc2');
   for(var i=1; i<=$(this).val();i++){
-    var asd = '<tr class="embx">';
+    var asd = '<tr class="embarc">';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_3' + '_' + i + '" id="S9_3' + '_' + i + '" readonly value="' + i + '" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_4' + '_' + i + '" id="S9_4' + '_' + i + '" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_5' + '_' + i + '" id="S9_5' + '_' + i + '" value="" ><input type="text" class="span12" maxlength="100" name="S9_5' + '_' + i + '_O" id="S9_5' + '_' + i + '_O" value="" >Especifique</td>';
@@ -305,16 +303,16 @@ $('#S9_2').keyup(function(event) {
     asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_A" id="S9_9' + '_' + i + '_A" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_M" id="S9_9' + '_' + i + '_M" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="2" name="S9_10' + '_' + i + '_MED" id="S9_10' + '_' + i + '_MED" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ></td>';
+    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_2" id="S9_10' + '_' + i + '_2" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_3" id="S9_10' + '_' + i + '_3" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ></td>';
     asd += '</tr>';
-    $('#emb_table > tbody').append(asd);
+    $('#embarcacionex > tbody').append(asd);
     // $('#emb_table > tbody:last').append('<tr class="embx"><td><input type="text" class="span12" maxlength="80" name="S9_3_1' + '_' + i + '" id="S9_3_1' + '_' + i + '" value="' + i + '" ></td></tr>');
-    var asd2 = '<tr class="embx2">';
+    var asd2 = '<tr class="embarc2">';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_33' + '_' + i + '" id="S9_33' + '_' + i + '" readonly value="' + i + '" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_15' + '_' + i + '" id="S9_15' + '_' + i + '" value="" ></td>';
@@ -322,8 +320,8 @@ $('#S9_2').keyup(function(event) {
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_20_T' + '_' + i + '" id="S9_20_T' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_20_C' + '_' + i + '" id="S9_20_C' + '_' + i + '" value="" ></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ></td>';
@@ -331,7 +329,7 @@ $('#S9_2').keyup(function(event) {
     asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ></td>';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_23' + '_' + i + '" id="S9_23' + '_' + i + '" value="" ></td>';
     asd2 += '</tr>'; 
-    $('#emb_table2 > tbody').append(asd2);
+    $('#embarcacionex2 > tbody').append(asd2);
   }
 });
 

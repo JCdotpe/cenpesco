@@ -418,7 +418,7 @@ echo '<div class="well modulo">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 1
-				echo '<div class="question">';
+		echo '<div class="question">';
 			echo '<p>1. ¿Usted conoce de:</p>';	
 				echo '<div class="row-fluid">';
 						echo '<table class="table table-condensed" id="emb_table">';
@@ -578,7 +578,7 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 4
 
-				echo '<div class="question">';
+		echo '<div class="question">';
 			echo '<p>4. ¿Cuáles fueron los cursos o temas de capacitación recibidos?</p>';	
 				echo '<div class="row-fluid">';
 						echo '<table class="table table-condensed" id="emb_table">';
@@ -657,7 +657,7 @@ echo '<div class="well modulo">';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 5
-				echo '<div class="question">';
+		echo '<div class="question">';
 			echo '<p>5. ¿En qué temas necesita capacitarse?</p>';	
 				echo '<div class="row-fluid">';
 						echo '<table class="table table-condensed" id="emb_table">';

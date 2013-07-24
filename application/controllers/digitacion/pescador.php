@@ -64,6 +64,12 @@ class Pescador extends CI_Controller {
 								5 => 'Divorciado(a)',
 								6 => 'Soltero(a)',
 				);		
+			$data['tac'] = array(
+								-1 => '-',
+								1 => 'Pesca',
+								2 => 'Acuicola',
+								3 => 'Ambas',
+				);					
 			//cabecera
 			// $data['departamentox'] = $this->ubigeo_model->get_dptos();
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
@@ -158,6 +164,7 @@ class Pescador extends CI_Controller {
 					'NOM_DI' => $this->input->post('NOM_DI'),
 					'COD_CCPP'=> $this->input->post('COD_CCPP'),
 					'NOM_CCPP'=> $this->input->post('NOM_CCPP'),
+					'TAC'=> $this->input->post('TAC'),
 					'activo'=>1,
 					'user_id'=>$this->tank_auth->get_user_id(),
 					'created'=> date('Y-m-d H:i:s'),
