@@ -23,15 +23,15 @@ $span_class =  'span12';
 		'maxlength'	=> 1,
 		'class' => $span_class,
 		'onkeypress'=>"return solo_1_to_2(event)",
-		'onblur' =>'pase_preguntas(4,1,4,false,2,2,true,true)',
+		//'onblur' =>'pase_preguntas(4,1,4,false,2,2,true,true)',
 	);
-	$S4_1_1 = array(
-		'name'	=> 'S4_1_1',
-		'id'	=> 'S4_1_1',
+	$S4_1_C = array(
+		'name'	=> 'S4_1_C',
+		'id'	=> 'S4_1_C',
 		'maxlength'	=> 2,
 		'class' => $span_class,
 		'onkeypress'=>"return solo_numeros(event)",
-		'onblur'=> 'especifique(this,S4_1,1)',
+		//'onblur'=> 'especifique(this,S4_1,1)',
 	);
 //pregunta 2
 	$S4_2_1 = array(
@@ -221,14 +221,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 									echo '</div>'; 	
 
 									echo '<div class="control-group offset1 span2">';	
-										echo form_label('¿Cuántos?', $S4_1_1['id'], $label_class);
+										echo form_label('¿Cuántos?', $S4_1_C['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group span2">';
 										echo '<div class="controls">';
-												echo form_input($S4_1_1); 
+												echo form_input($S4_1_C); 
 											//echo '<span class="help-inline-pp"></span>';
-											echo '<div class="help-block error">' . form_error($S4_1_1['name']) . '</div>';
+											echo '<div class="help-block error">' . form_error($S4_1_C['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
 							echo '</div>';	
@@ -240,11 +240,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 2
-				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 200px !important" id="SEC4_2">';
+				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 187px !important" id="SEC4_2">';
 						echo form_label('2.	¿Los niveles que brindan estos centros educativos son: (Ingrese uno o más códigos):', $S4_2_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Educación Inicial?', $S4_2_1['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_2_1); 
 											echo '<span class="help-inline-pp"></span>';
@@ -252,15 +255,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span5">';	
-										echo form_label('Educación Inicial?', $S4_2_1['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Educación Primaria?', $S4_2_2['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_2_2); 
 											echo '<span class="help-inline-pp"></span>';
@@ -268,15 +271,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Educación Primaria?', $S4_2_2['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Educación Secundaria?', $S4_2_3['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_2_3); 
 											echo '<span class="help-inline-pp"></span>';
@@ -284,15 +287,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Educación Secundaria?', $S4_2_3['id'], $label_class);
-									echo '</div>'; 
-
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Superior No Universitaria?', $S4_2_4['id'], $label_class);
+									echo '</div>'; 
+
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_2_4); 
 											echo '<span class="help-inline-pp"></span>';
@@ -300,25 +303,21 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Superior No Universitaria?', $S4_2_4['id'], $label_class);
-									echo '</div>'; 
-
 							echo '</div>';	
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Superior Universitaria?', $S4_2_5['id'], $label_class);
+									echo '</div>'; 
+
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_2_5); 
 											echo '<span class="help-inline-pp"></span>';
 											echo '<div class="help-block error">' . form_error($S4_2_5['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
-
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Superior Universitaria?', $S4_2_5['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';										
@@ -354,7 +353,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 	
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Agua por red pública?', $S4_3_1['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_1); 
 											echo '<span class="help-inline-pp"></span>';
@@ -362,14 +364,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span5">';	
-										echo form_label('Agua por red pública?', $S4_3_1['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Pozo?', $S4_3_2['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_2); 
 											echo '<span class="help-inline-pp"></span>';
@@ -377,9 +379,6 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Pozo?', $S4_3_2['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
@@ -388,7 +387,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Alumbrado eléctrico?', $S4_3_3['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_3); 
 											echo '<span class="help-inline-pp"></span>';
@@ -396,15 +398,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Alumbrado eléctrico?', $S4_3_3['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Panel solar?', $S4_3_4['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_4); 
 											echo '<span class="help-inline-pp"></span>';
@@ -412,14 +414,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Panel solar?', $S4_3_4['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';		
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Generador eléctrico?', $S4_3_5['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_5); 
 											echo '<span class="help-inline-pp"></span>';
@@ -427,9 +429,6 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Generador eléctrico?', $S4_3_5['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 
@@ -439,7 +438,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Servicio  higiénico conectado a red pública?', $S4_3_6['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_6); 
 											echo '<span class="help-inline-pp"></span>';
@@ -447,14 +449,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Servicio  higiénico conectado a red pública?', $S4_3_6['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Letrina?', $S4_3_7['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_7); 
 											echo '<span class="help-inline-pp"></span>';
@@ -462,14 +464,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Letrina?', $S4_3_7['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Pozo séptico?', $S4_3_8['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_8); 
 											echo '<span class="help-inline-pp"></span>';
@@ -477,14 +479,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Pozo séptico?', $S4_3_8['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Pozo ciego?', $S4_3_9['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_9); 
 											echo '<span class="help-inline-pp"></span>';
@@ -492,9 +494,6 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Pozo ciego?', $S4_3_9['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 
@@ -504,7 +503,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('	Computadora?', $S4_3_10['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_10); 
 											echo '<span class="help-inline-pp"></span>';
@@ -512,14 +514,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('	Computadora?', $S4_3_10['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('	Televisor?', $S4_3_11['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_11); 
 											echo '<span class="help-inline-pp"></span>';
@@ -527,14 +529,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('	Televisor?', $S4_3_11['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';		
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('	DVD?', $S4_3_12['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_12); 
 											echo '<span class="help-inline-pp"></span>';
@@ -542,14 +544,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('	DVD?', $S4_3_12['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('	Pizarra acrílica?', $S4_3_13['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S4_3_13); 
 											echo '<span class="help-inline-pp"></span>';
@@ -557,9 +559,6 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('	Pizarra acrílica?', $S4_3_13['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';																																																														
 				echo '</div>';
@@ -612,9 +611,10 @@ $(function(){
 		            required: true,
 		            digits: true,
 		         },   
-				S4_1_1: {
+				S4_1_C: {
 		            required: false,
 		            digits: true,
+		            ranges: [[1,20],[99]],
 		         },   
 				S4_2_1: {
 		            required: true,

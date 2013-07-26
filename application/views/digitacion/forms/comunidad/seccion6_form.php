@@ -22,7 +22,7 @@ $span_class =  'span12';
 		'maxlength'	=> 1,
 		'class' => $span_class,
 		'onkeypress'=>"return solo_1_to_2(event)",
-		'onblur' =>'pase_preguntas(6,1,3,false,2,2,false,false,this)',
+		//'onblur' =>'pase_preguntas(6,1,3,false,2,2,false,false,this)',
 	);
 //pregunta 2
 	$S6_2_1_A = array(
@@ -97,7 +97,7 @@ $span_class =  'span12';
 		'id'	=> 'S6_3_6_O',
 		'maxlength'	=> 100,
 		'class' => $span_class,
-		'onblur'=> 'especifique(this,S6_3_6,1)',
+		//'onblur'=> 'especifique(this,S6_3_6,1)',
 		'onkeypress'=>"return solo_letras(event)",
 	);	
 	$S6_3_7 = array(
@@ -219,7 +219,7 @@ $span_class =  'span12';
 		'id'	=> 'S6_4_15_O',
 		'maxlength'	=> 100,
 		'class' => $span_class,
-		'onblur'=> 'especifique(this,S6_4_15,1)',
+		//'onblur'=> 'especifique(this,S6_4_15,1)',
 		'onkeypress'=>"return solo_letras(event)",
 	);
 /////////////////////////////////////////////////////////////
@@ -343,11 +343,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 3
-				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 40px !important" id="SEC6_3">';
+				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 89px !important" id="SEC6_3">';
 						echo form_label('3.	¿En su comunidad existe: (Ingrese uno o más códigos):', $S6_3_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Club de madres?', $S6_3_1['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_1); 
 											echo '<span class="help-inline-pp"></span>';
@@ -355,15 +358,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span5">';	
-										echo form_label('Club de madres?', $S6_3_1['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Asociación de padres de familia ?', $S6_3_2['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_2); 
 											echo '<span class="help-inline-pp"></span>';
@@ -371,15 +374,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Asociación de padres de familia ?', $S6_3_2['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Comité de autodefensa (Rondas)?', $S6_3_3['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_3); 
 											echo '<span class="help-inline-pp"></span>';
@@ -387,15 +390,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Comité de autodefensa (Rondas)?', $S6_3_3['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Asociación de pescadores?', $S6_3_4['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_4); 
 											echo '<span class="help-inline-pp"></span>';
@@ -403,16 +406,16 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Asociación de pescadores?', $S6_3_4['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
 
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Asociación de acuicultores?', $S6_3_5['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_5); 
 											echo '<span class="help-inline-pp"></span>';
@@ -420,15 +423,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Asociación de acuicultores?', $S6_3_5['id'], $label_class);
-									echo '</div>'; 
-
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Otro?', $S6_3_6['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_6); 
 											echo '<span class="help-inline-pp"></span>';
@@ -436,11 +438,16 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Otro?', $S6_3_6['id'], $label_class);
+
+							echo '</div>';	
+						echo '</div>';	
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo '<div class="control-group-pp offset1 span2">';
+										echo form_label('Especifique', $S6_3_6_O['id'], $label_class);
 									echo '</div>'; 
 
-									echo '<div class="control-group-pp span5">';
+									echo '<div class="control-group-pp span7">';
 										echo '<div class="controls">';
 												echo form_input($S6_3_6_O); 
 											echo '<span class="help-inline-pp"></span>';
@@ -449,20 +456,20 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 									echo '</div>'; 	
 
 							echo '</div>';	
-						echo '</div>';	
+						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Ninguno', $S6_3_7['id'], $label_class);
+									echo '</div>'; 
+
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_3_7); 
 											echo '<span class="help-inline-pp"></span>';
 											echo '<div class="help-block error">' . form_error($S6_3_7['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
-
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Ninguno', $S6_3_7['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';	
@@ -497,7 +504,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 	
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Vaso de leche?', $S6_4_1['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_1); 
 											echo '<span class="help-inline-pp"></span>';
@@ -505,14 +515,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span5">';	
-										echo form_label('Vaso de leche?', $S6_4_1['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Canasta alimentaria?', $S6_4_2['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_2); 
 											echo '<span class="help-inline-pp"></span>';
@@ -520,15 +530,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Canasta alimentaria?', $S6_4_2['id'], $label_class);
-									echo '</div>'; 
 
 							echo '</div>';	
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Comedor popular?', $S6_4_3['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_3); 
 											echo '<span class="help-inline-pp"></span>';
@@ -536,15 +546,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp span5">';	
-										echo form_label('Comedor popular?', $S6_4_3['id'], $label_class);
-									echo '</div>'; 
-
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Desayuno o alimentación escolar (Qali Warma)?  ', $S6_4_4['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_4); 
 											echo '<span class="help-inline-pp"></span>';
@@ -552,14 +561,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span6">';	
-										echo form_label('Desayuno o alimentación escolar (Qali Warma)?  ', $S6_4_4['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';		
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Textos y útiles escolares?', $S6_4_5['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_5); 
 											echo '<span class="help-inline-pp"></span>';
@@ -567,15 +576,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Textos y útiles escolares?', $S6_4_5['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Seguro Integral de Salud (SIS)?', $S6_4_6['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_6); 
 											echo '<span class="help-inline-pp"></span>';
@@ -583,14 +592,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Seguro Integral de Salud (SIS)?', $S6_4_6['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Programa Nacional de Movilización por la Alfabetización ( PRONAMA)', $S6_4_7['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_7); 
 											echo '<span class="help-inline-pp"></span>';
@@ -598,14 +607,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span9">';	
-										echo form_label('Programa Nacional de Movilización por la Alfabetización ( PRONAMA)', $S6_4_7['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Planificación familiar?', $S6_4_8['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_8); 
 											echo '<span class="help-inline-pp"></span>';
@@ -613,14 +622,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('Planificación familiar?', $S6_4_8['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label(' tuberculosis y familia (PANTBC)', $S6_4_9['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_9); 
 											echo '<span class="help-inline-pp"></span>';
@@ -628,15 +637,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label(' tuberculosis y familia (PANTBC)', $S6_4_9['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Programa de vacunas (inmunizaciones)?', $S6_4_10['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_10); 
 											echo '<span class="help-inline-pp"></span>';
@@ -644,14 +653,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span6">';	
-										echo form_label('Programa de vacunas (inmunizaciones)?', $S6_4_10['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('	Programa Juntos?', $S6_4_11['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_11); 
 											echo '<span class="help-inline-pp"></span>';
@@ -659,14 +668,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span6">';	
-										echo form_label('	Programa Juntos?', $S6_4_11['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';		
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('	Programa Sembrando?', $S6_4_12['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_12); 
 											echo '<span class="help-inline-pp"></span>';
@@ -674,14 +683,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span4">';	
-										echo form_label('	Programa Sembrando?', $S6_4_12['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Programa Bono de Gratitud (Pensión 65)?', $S6_4_13['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_13); 
 											echo '<span class="help-inline-pp"></span>';
@@ -689,15 +698,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span6">';	
-										echo form_label('Programa Bono de Gratitud (Pensión 65)?', $S6_4_13['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';		
 
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Programa Cuna Más?', $S6_4_14['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_14); 
 											echo '<span class="help-inline-pp"></span>';
@@ -705,14 +714,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span5">';	
-										echo form_label('Programa Cuna Más?', $S6_4_14['id'], $label_class);
-									echo '</div>'; 
 							echo '</div>';	
 						echo '</div>';		
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
-									echo '<div class="control-group-pp offset1 span2">';
+									echo '<div class="control-group-pp offset1 span7">';	
+										echo form_label('Otro?', $S6_4_15['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
 												echo form_input($S6_4_15); 
 											echo '<span class="help-inline-pp"></span>';
@@ -720,11 +729,15 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 										echo '</div>';	
 									echo '</div>'; 	
 
-									echo '<div class="control-group-pp  span2">';	
-										echo form_label('Otro?', $S6_4_15['id'], $label_class);
+							echo '</div>';	
+						echo '</div>';	
+							echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo '<div class="control-group-pp offset1 span2">';
+										echo form_label('Especifique', $S6_4_15_O['id'], $label_class);
 									echo '</div>'; 
 
-									echo '<div class="control-group-pp span5">';
+									echo '<div class="control-group-pp span7">';
 										echo '<div class="controls">';
 												echo form_input($S6_4_15_O); 
 											echo '<span class="help-inline-pp"></span>';
@@ -734,7 +747,6 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 							echo '</div>';	
 						echo '</div>';	
-	
 				echo '</div>';
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// FIN PREGUNTA 4
@@ -790,11 +802,11 @@ $(function(){
 		            validName: true,
 		         },   
 				S6_2_2_A: {
-		            required: true,
+		            //required: true,
 		            validName: true,
 		         },   
 				S6_2_3_A: {
-		            required: true,
+		            //required: true,
 		            validName: true,
 		         },   
 				S6_3_1: {

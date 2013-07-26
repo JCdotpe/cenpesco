@@ -181,7 +181,7 @@ echo form_close();
 		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Seccion VI</a></li>
 		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Seccion VII</a></li>
 		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Seccion VIII</a></li>
-		    <li id="ctab9"><a href="#tab9" data-toggle="tab">Seccion IX</a></li>
+		    <!-- <li id="ctab9"><a href="#tab9" data-toggle="tab">Seccion IX</a></li> -->
 		    <li id="cinfo"><a href="#info" data-toggle="tab">Info</a></li>
 		  </ul>
 		  <div class="tab-content">
@@ -206,9 +206,9 @@ echo form_close();
 		    <div class="tab-pane" id="tab8">
 		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion8_form'); ?></p>
 		    </div>    
-		    <div class="tab-pane" id="tab9">
+		    <!-- <div class="tab-pane" id="tab9">
 		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion9_form'); ?></p>
-		    </div>          
+		    </div>    -->       
 		    <div class="tab-pane" id="info">
 		      <p><?php $this->load->view('digitacion/forms/comunidad/info_form'); ?></p>
 		    </div>                             
@@ -260,8 +260,10 @@ echo form_close();
   	function ningunos(inp){
         var acu = 0;
         var sc = ($(inp).attr('id')).substring(1,2);
-        var preg = ($(inp).attr('id')).substring(3,4);
-        //alert("seccion: " + sc + " preg: " +preg);
+        var preg = ($(inp).attr('id')).substring(3,4);        
+        if ( $.isNumeric(($(inp).attr('id')).substring(4,5) ) ) {
+        	var preg = ($(inp).attr('id')).substring(3,5);
+        };
         $("#SEC"+sc+"_"+preg).find(':input').each(function() {
             var elemento = this;
             if ($(elemento).val() == 1){
@@ -283,20 +285,52 @@ echo form_close();
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
     $('input').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-            var array_otros = [ 'S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //SECCCION 3
-                                'S5_2_7','S5_3_17', // SECCION 5
-                                'S6_3_6','S6_4_15']; // SECCION 6
-            var array_libres = ['S6_2_2_A','S6_2_3_A'];
-            var array_especiales = ['S3_1','S7_15'];
-	  	 	var array_ninguno = ['S3_8_6','S3_8_10','S3_18_5','S6_3_7','S7_2_10','S7_6_4','S7_8_20','S7_16_5']; // NINGUNOS
-	  	 	var array_pases = {
-	  	 		'S3_2' : [1,2, 3 ],
-	  	 		'S3_3' : [1,2, 3 ],
-	  	 		};
-	  	 	//codigo, value
+
+            // CAMPOS SIN PASE
+	            var array_otros_v = [ 'S3_4_4','S3_8_4','S3_10_5','S3_12_6','S3_16_5','S3_17_8','S3_17_9','S3_18_7','S3_18_8','S3_19_4', //SECCCION 3
+	                                'S5_2_7','S5_3_17', // SECCION 5
+	                                'S6_3_6','S6_4_15', // SECCION 6
+	                                'S7_1_9','S7_5_41','S7_5_49','S7_6_3','S7_7_14','S7_7_15','S7_8_18','S7_9_13','S7_10_9','S7_13_12',// SECCION 7
+	                                'S7_2_1','S7_2_2','S7_2_3','S7_2_4','S7_2_5','S7_2_6','S7_2_7','S7_12_1','S7_12_2','S7_12_3',
+	                                'S8_3_10','S8_2_1','S8_2_2','S8_2_3','S8_2_4','S8_2_5','S8_2_6','S8_2_7','S8_2_8','S8_2_9','S8_2_10','S8_2_11']; // SECCION 8
+	                               
+	            var array_otros_u = [];
+	            	array_otros_u['S3_1'] 	= 4;
+	            	array_otros_u['S7_15'] 	= 6;	
+
+	            var array_otros_esp = ['S7_2_8','S7_12_4','S8_2_12']; // OTROS especiales
+
+	            var array_especiales_tras = ['S3_20_1','S3_20_2','S3_20_3','S3_20_4','S3_20_5'];// TIPO TRANSPORTE SECCION 3	  	 
+	            var array_especiales_tras2 = ['S3_20_6','S3_20_7','S3_20_8','S3_20_9'];	// TIPO TRANSPORTE SECCION 3	 
+
+		  	 	var array_ninguno = ['S3_5_3','S3_11_6','S3_19_5','S6_3_7','S7_6_4','S7_7_16','S7_8_20','S7_16_5']; // NINGUNOS  
+		  	 	                              
+	            var array_libres = ['S6_2_2_A','S6_2_3_A'];
+
+            //  CAMPOS CON PASE
+		  	 	var array_pases =  []; //[varios_codigo, preg_pase, opcion_inicial, opcion_final, especifica, especifica_valor, ninguno, termina]
+		  	 		array_pases['S3_2'] = [0,5,2,2,0,0,0,0];
+		  	 		array_pases['S3_3'] = [1,5,4,5,0,0,0,0];
+		  	 		array_pases['S3_7'] = [0,9,4,5,0,0,0,0];
+		  	 		array_pases['S3_6_5'] = [1,9,2,5,1,0,0,0];
+		  	 		array_pases['S3_9_6'] = [1,11,2,6,0,0,1,0];
+		  	 		array_pases['S3_15'] = [0,19,2,2,0,0,0,0];
+		  	 		array_pases['S4_1'] = [0,4,2,2,1,1,0,1];
+		  	 		array_pases['S5_1'] = [0,3,2,2,0,0,0,0];
+		  	 		array_pases['S6_1'] = [0,3,2,2,0,0,0,0];
+		  	 		array_pases['S7_1_9'] = [1,17,3,9,1,1,0,1];
+		  	 		array_pases['S7_2_9'] = [1,7,9,9,0,0,1,0];
+		  	 		array_pases['S7_8_19'] = [1,10,19,19,0,0,1,0];
+		  	 		array_pases['S7_11'] = [0,17,2,2,0,0,0,1];
+		  	 		array_pases['S7_14'] = [0,17,2,2,0,0,0,1];
+		  	 		array_pases['S8_1'] = [0,5,2,2,0,0,0,1];
+	  	 		
+
+ 	 
+
             if(key == 13) {
                 e.preventDefault();
-                var inputs = $(this).closest('form').find(':input:enabled:visible');
+                var inputs = $(this).closest('form').find(':input:enabled');
                 $(this).blur();  
                 if ( inArray($(this).attr('id'), array_libres )) {// CAMPOS LIBRES: no requieren ingreso obligatorio
                     inputs.eq( inputs.index(this)+ 1 ).focus(); 
@@ -306,46 +340,229 @@ echo form_close();
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
                 }else{
-                    if ( inArray($(this).attr('id'), array_otros )) {// BUSCA CAMPOS que requieren ESPECIFICAR
+                
+                	for (key in array_pases){
+
+                		if ($(this).attr('id') == key) {
+                    			//alert(array_pases[key][0]);
+							        var sc 			= key.substring(1,2);
+							        var code		= array_pases[key][0];
+							        var p_actual 	= parseInt(key.substring(3,4)); 
+							        if ( $.isNumeric( key.substring(3,4) ) ) {
+							        	var p_actual = parseInt(key.substring(3,5));   };
+							        var p_pase 		= array_pases[key][1];
+							        var sub_ini 	= array_pases[key][2];
+							        var sub_fin 	= array_pases[key][3];
+							        var esp 		= array_pases[key][4];
+							        var esp_val		= array_pases[key][5];
+							        var ning		= array_pases[key][6];
+							        var termina_s 	= array_pases[key][7];
+							        var cont 		= 0;
+					               if (code == 1){ //valida si son de varios codigos
+					                    for (y = sub_ini; y <= sub_fin; y++){
+					                        //if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){
+					                        if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){//1 si fue seleccionado
+					                            cont++;
+					                        }
+					                    }
+					                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
+					                        for (x = p_actual+1;x<p_pase;x++){
+					                            $("#SEC"+sc+"_"+x+' :input').attr('disabled','disabled');
+					                            inputs = $(this).closest('form').find(':input:enabled');
+					                        }
+					                        if (esp == 1){// es seguido de ESPECIFIQUE
+					                            if($(this).val() == 1)  { // valor 1, debe especificar
+					                            	inputs.eq( inputs.index(this) + 1 ).focus();
+					                            	inputs.eq( inputs.index(this) + 1 ).select();
+					                            }else{
+					                            	if (termina_s == 1) {alert("Finalice esta sección");};
+					                            	inputs.eq( inputs.index(this) + 1 ).val('');
+													inputs.eq( inputs.index(this) + 2).focus();
+													inputs.eq( inputs.index(this) + 2).select();
+					                            }
+					                        }else if (ning == 1) { // VALIDA CAMPOS NINGUNO
+					                        	if (!ningunos(this)) {
+						                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+						                        	inputs.eq( inputs.index(this) ).focus();  
+						                        	inputs.eq( inputs.index(this) ).select();  
+					                        	}else{
+					                        		if (termina_s == 1) {alert("Finalice esta sección");};
+					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
+					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
+					                        	};
+                       						}else{
+					                        	inputs.eq( inputs.index(this) + 1 ).focus();
+					                        	inputs.eq( inputs.index(this) + 1 ).select();
+					                        }
+					                    }else if(cont <= 0){
+					                        for (x = p_actual+1;x<p_pase;x++){
+					                            $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
+					                            inputs = $(this).closest('form').find(':input:enabled');
+					                        }
+					                        if (esp == 1) { // es seguido de ESPECIFIQUE
+					                            if($(this).val() == 1)  { // valor 1, debe especificar
+					                            	inputs.eq( inputs.index(this) + 1 ).focus();
+					                            	inputs.eq( inputs.index(this) + 1 ).select();
+					                            }else{
+					                            	inputs.eq( inputs.index(this) + 1 ).val('');
+					                            	inputs.eq( inputs.index(this) + 2 ).focus();
+					                            	inputs.eq( inputs.index(this) + 2 ).select();
+					                            }
+					                        }else if (ning == 1) { // VALIDA CAMPOS NINGUNO
+					                        	if (!ningunos(this)) {
+						                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+						                        	inputs.eq( inputs.index(this) ).focus();  
+						                        	inputs.eq( inputs.index(this) ).select();  
+					                        	} else{
+					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
+					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
+					                        	};
+                       						}else{
+					                        	inputs.eq( inputs.index(this) + 1 ).focus();
+					                        	inputs.eq( inputs.index(this) + 1 ).select();
+					                        }
+					                    }
+					                    return; // end ************************
+					                }else{ // de sun solo codigo
+					                    for (y = sub_ini; y <= sub_fin; y++){
+					                        if ($("#S"+sc+"_"+p_actual).val() == y){ //si fue ingresado dentro del rango
+					                            cont++;
+					                        }
+					                    }
+					                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
+					                        for (x = p_actual+1;x<p_pase;x++){
+					                            $("#SEC"+sc+"_"+x+' :input').attr('disabled','disabled');
+					                            inputs = $(this).closest('form').find(':input:enabled');
+					                        }
+					                        if(esp == 1){// es seguido de ESPECIFIQUE
+					                            if($(this).val() == esp_val)  { // valor 1, debe especificar
+					                            	inputs.eq( inputs.index(this) + 1 ).focus();
+					                            	inputs.eq( inputs.index(this) + 1 ).select();
+					                            }else{
+					                            	if (termina_s == 1) {alert("Finalice esta sección");};
+					                            	inputs.eq( inputs.index(this) + 1 ).val('');
+													inputs.eq( inputs.index(this) + 2).focus();
+													inputs.eq( inputs.index(this) + 2).select();
+					                            }
+					                        }else if (ning == 1) {// VALIDA CAMPOS NINGUNO
+					                        	if (!ningunos(this)) {
+						                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+						                        	inputs.eq( inputs.index(this) ).focus();  
+						                        	inputs.eq( inputs.index(this) ).select();  
+					                        	} else{
+					                        		if (termina_s == 1) {alert("Finalice esta sección");};
+					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
+					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
+					                        	};
+                       						}else{
+					                        	inputs.eq( inputs.index(this) + 1 ).focus();
+					                        	inputs.eq( inputs.index(this) + 1 ).select();
+					                        }
+					                    }else if(cont <= 0){
+					                        for (x = p_actual+1;x<p_pase;x++){
+					                            $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
+					                            inputs = $(this).closest('form').find(':input:enabled');
+					                        }   
+					                        //if (termina_s == 1) { inputs.eq( inputs.index(this) + 1).removeAttr('disabled'); alert('oa');}
+					                        if (esp == 1){// es seguido de ESPECIFIQUE
+					                            if($(this).val() == esp_val)  { // valor de la opcion, debe especificar
+					                            	inputs.eq( inputs.index(this) + 1 ).focus();
+					                            	inputs.eq( inputs.index(this) + 1 ).select();
+					                            }else{
+					                            	inputs.eq( inputs.index(this) + 1 ).val('');
+													inputs.eq( inputs.index(this) + 2).focus();
+													inputs.eq( inputs.index(this) + 2).select();
+					                            }
+					                        } else if (ning == 1) {// VALIDA CAMPOS NINGUNO
+					                        	if (!ningunos(this)) {
+						                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+						                        	inputs.eq( inputs.index(this) ).focus();  
+						                        	inputs.eq( inputs.index(this) ).select();  
+					                        	} else{
+					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
+					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
+					                        	};
+                       						}else{
+
+					                        	inputs.eq( inputs.index(this) + 1 ).focus();
+					                        	inputs.eq( inputs.index(this) + 1 ).select();
+					                        }
+					                    }
+					                    return; //end  ***************************
+					                }
+                		} 
+                	}
+                	// LOS CAMPOS DE PREGUNTAS SIN PASE/////////////////////////////////////////////////////////////////
+                    if ( inArray($(this).attr('id'), array_otros_v )) {// CAMPOS OTROS de VARIOS ingresos
                         if ($(this).val() == 1 ) {
                             inputs.eq( inputs.index(this)+ 1 ).focus();  
+                            inputs.eq( inputs.index(this)+ 1 ).select();  
                         } else{
+                        	inputs.eq( inputs.index(this)+ 1 ).val('');
                             inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 2 ).select();                             
                         }
-                    } else if ( inArray($(this).attr('id'), array_pases )) {// BUSCA CAMPOS NINGUNO
-                        // if (!ningunos(this)) {
-                        // 	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
-                        // 	inputs.eq( inputs.index(this) ).focus();  
-                        // 	inputs.eq( inputs.index(this) ).select();  
-                        // } else{
-                        // 	inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                        // };
-                        alert('entrro');
-                    }else if ( inArray($(this).attr('id'), array_ninguno )) {// BUSCA CAMPOS NINGUNO
+                    }else if( array_otros_u[$(this).attr('id')] >= 1 ){//  CAMPOS OTRO, de UN solo ingreso
+                        if ($(this).val() == array_otros_u[$(this).attr('id')] ) {
+                            inputs.eq( inputs.index(this)+ 1 ).focus();                              
+                            inputs.eq( inputs.index(this)+ 1 ).select();                              
+                        } else{
+                        	inputs.eq( inputs.index(this)+ 1 ).val('');
+                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 2 ).select();                             
+                        }
+                    } else if ( inArray($(this).attr('id'), array_ninguno )) {// VALIDA CAMPOS NINGUNO
                         if (!ningunos(this)) {
                         	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
                         	inputs.eq( inputs.index(this) ).focus();  
                         	inputs.eq( inputs.index(this) ).select();  
                         } else{
-                        	inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+                        	inputs.eq( inputs.index(this) + 1 ).select(); 
                         };
-                    } else if( $(this).attr('id') == 'S3_1' ){// PREGUNTA CON OTRO Y UN SOLO INGRESO
-                        if ($(this).val() == 4 ) {
-                            inputs.eq( inputs.index(this)+ 1 ).focus();                              
+                    } else if ( inArray($(this).attr('id'), array_especiales_tras )) {// VALIDA CAMPOS traslado
+                        if ($(this).val() == 1) {
+                        	inputs.eq( inputs.index(this) + 1).focus();  
+                        	inputs.eq( inputs.index(this) + 1).select();  
                         } else{
-                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
-                        }
-                    }else if( $(this).attr('id') == 'S7_15' ){// PREGUNTA CON OTRO Y UN SOLO INGRESO
-                        if ($(this).val() == 6 ) {
-                            inputs.eq( inputs.index(this)+ 1 ).focus();                              
+                        	inputs.eq( inputs.index(this) + 1 ).val(99)  ;  
+                        	inputs.eq( inputs.index(this) + 2 ).val(99)  ;  
+                        	inputs.eq( inputs.index(this) + 3 ).val(9)  ;  
+                        	inputs.eq( inputs.index(this) + 4 ).focus(); 
+                        	inputs.eq( inputs.index(this) + 4 ).select(); 
+                        };
+                    }else if ( inArray($(this).attr('id'), array_especiales_tras2 )) {// VALIDA CAMPOS traslado 2
+                        if ($(this).val() == 1) {
+                        	inputs.eq( inputs.index(this) + 1).focus();  
+                        	inputs.eq( inputs.index(this) + 1).select();  
                         } else{
-                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                        	inputs.eq( inputs.index(this) + 1 ).val(99)  ;  
+                        	inputs.eq( inputs.index(this) + 2 ).val(99)  ;  
+                        	inputs.eq( inputs.index(this) + 3 ).focus(); 
+                        	inputs.eq( inputs.index(this) + 3 ).select(); 
+                        };
+                    }else  if ( inArray($(this).attr('id'), array_otros_esp )) {// CAMPOS OTROS de VARIOS ingresos
+                        if ($(this).val() == 1 ) {
+                            inputs.eq( inputs.index(this)+ 1 ).focus();  
+                            inputs.eq( inputs.index(this)+ 1 ).select();  
+                        } else{
+                        	inputs.eq( inputs.index(this)+ 1 ).val('');
+                        	inputs.eq( inputs.index(this)+ 2 ).val('');
+                            inputs.eq( inputs.index(this)+ 3 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 3 ).select();                             
                         }
-                    }else{
-                        inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                    }else{// permite el pase a los inputs ya con datos
+	                	for (key in array_pases){
+	                		if (inputs.eq( inputs.index(this)-1).attr('id') == key){
+	                			if( (array_pases[key][7] == 1) && (inputs.eq( inputs.index(this) - 1 ).val() >= array_pases[key][2] ) ){	alert('Finalice esta sección');	}
+	                		}
+	                	}
+                        inputs.eq( inputs.index(this) + 1 ).focus(); 
+                        inputs.eq( inputs.index(this) + 1 ).select(); 
                    }                         
                 }
-            }else if (key == 37) {
+            //}else if (key == 37) {
+            }else if (key == 27) {
                 var inputs = $(this).closest('form').find(':input:enabled');
                 if ($(this).val()==""){// NO VACIOS
                     alert("Campo requerido");
@@ -354,7 +571,6 @@ echo form_close();
                     inputs.eq( inputs.index(this)- 1).focus();  
                     inputs.eq( inputs.index(this)- 1).select();                  	
                 }
-
             }
             else if(key == 9){
                 return false;
@@ -467,6 +683,26 @@ echo form_close();
 //\\\\\\\\\\\\\\\\\\\\\\ E S P E C I F I C A R   O T R O  /////////////////////  
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
+///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+////////////////////////// S O L O     L  E T R A S - 2 \\\\\\\\\\\\\\\\\\\\\\\
+    function solo_letras_2(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = " áéíóúabcdefghijklmnñopqrstuvwxyz.,";
+        especiales = [8, 9,37, 39,127];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
+//\\\\\\\\\\\\\\\\\\\\\\\\ S O L O     L  E T R A S - /////////////////////////  
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
 
 ///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -609,7 +845,7 @@ echo form_close();
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
         letras = "0123459";
-        especiales = [8, 9, 37, 39, 46];
+        especiales = [8, 9, 37, 39];
 
         tecla_especial = false
         for(var i in especiales) {
@@ -623,6 +859,27 @@ echo form_close();
             return false;
     }
 // =======>> S O L O   N U M E R O S  1 - 5 <<===========//   
+
+// <<======= S O L O   N U M E R O S  1 - 6 ===========>>//   
+    function solo_1_to_6(e) {
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "01234569";
+        especiales = [8, 9, 37, 39];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
+// =======>> S O L O   N U M E R O S  1 - 6 <<===========//  
+
 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
@@ -774,6 +1031,26 @@ $.validator.addMethod("peruDate",function(value, element) {
  $.validator.addMethod("valueNotEquals", function(value, element, arg){
     return arg != value;
 }, "Seleccione un valor");
+
+ $.validator.addMethod(
+    "ranges",
+     function(value, element, ranges) {
+        var noUpperBound = false;
+        var valid = false;
+        for(var i=0; i<ranges.length; i++) {
+            if(ranges[i].length == 1) { 
+                noUpperBound = true;
+            }
+            if(value >= ranges[i][0] && (value <= ranges[i][1] || noUpperBound)) {
+                valid = true;
+                break;
+            }            
+        }
+
+        return this.optional(element) || valid;
+    },
+    "Ingrese valores permitidos"
+ );
 
 //validacion
 $("#frm_comunidad").validate({

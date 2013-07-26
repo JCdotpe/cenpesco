@@ -42,7 +42,10 @@ class Consulta extends CI_Controller {
 
 		$filtros = $this->segmentacion_model->get_empadronador($sede, $dep, $equi, $ruta);    	
 		$registros = $this->segmentacion_model->get_all_empadronador($sede, $dep, $equi, $ruta);    	
-
+		if ($registros->num_rows() === 0 ){
+			$this->session->set_flashdata('msgbox',1);
+			redirect('/segmentacion/consulta/index/1');			
+		}   
 		// pestaña
 		$sheet = $this->phpexcel->getActiveSheet(0);
 		
@@ -58,8 +61,8 @@ class Consulta extends CI_Controller {
 			$sheet->getColumnDimension('J')->setWidth(7);
 			$sheet->getColumnDimension('K')->setWidth(7);
 			$sheet->getColumnDimension('L')->setWidth(7);
-			$sheet->getColumnDimension('L')->setWidth(7);
-			$sheet->getColumnDimension('L')->setWidth(7);
+			$sheet->getColumnDimension('M')->setWidth(7);
+			$sheet->getColumnDimension('N')->setWidth(7);
 			$sheet->getColumnDimension('O')->setWidth(7);
 			$sheet->getColumnDimension('P')->setWidth(7);
 			$sheet->getColumnDimension('Q')->setWidth(7);
@@ -157,7 +160,7 @@ class Consulta extends CI_Controller {
 					$sheet->mergeCells('Y11:AU11');
 
 			     	$sheet->getStyle("Y10:AU10")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
-			     	$sheet->getStyle("Y10:AU11")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+			     	$sheet->getStyle("Y10:AU10")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 					$sheet->getStyle("Y10:AU10")->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
 
 					$sheet->getStyle("Y10:AU11")->applyFromArray(array(
@@ -334,7 +337,11 @@ class Consulta extends CI_Controller {
     public function export_jefe($sede, $dep, $equi){
 
 		$filtros = $this->segmentacion_model->get_jefe($sede, $dep, $equi);    	
-		$registros = $this->segmentacion_model->get_all_jefe($sede, $dep, $equi);    	
+		$registros = $this->segmentacion_model->get_all_jefe($sede, $dep, $equi);
+		if ($registros->num_rows() === 0 ){
+			$this->session->set_flashdata('msgbox',1);
+			redirect('/segmentacion/consulta');			
+		}    	
 		// pestaña
 		$sheet = $this->phpexcel->getActiveSheet(0);
 		
@@ -350,8 +357,8 @@ class Consulta extends CI_Controller {
 			$sheet->getColumnDimension('J')->setWidth(7);
 			$sheet->getColumnDimension('K')->setWidth(7);
 			$sheet->getColumnDimension('L')->setWidth(7);
-			$sheet->getColumnDimension('L')->setWidth(7);
-			$sheet->getColumnDimension('L')->setWidth(7);
+			$sheet->getColumnDimension('M')->setWidth(7);
+			$sheet->getColumnDimension('N')->setWidth(7);
 			$sheet->getColumnDimension('O')->setWidth(7);
 			$sheet->getColumnDimension('P')->setWidth(7);
 			$sheet->getColumnDimension('Q')->setWidth(7);
@@ -491,7 +498,7 @@ class Consulta extends CI_Controller {
 					$sheet->setCellValue('K'.$cab,'Días de Operación de Campo' );
 					$sheet->mergeCells('K'.$cab.':O'.$cab);
 					$sheet->setCellValue('K'.($cab+1),'Traslado' );
-					$sheet->setCellValue('L'.($cab+1),'Trabajo' );
+					$sheet->setCellValue('L'.($cab+1),'Supervisión' );
 					$sheet->setCellValue('M'.($cab+1),'Viaje Sede ODEI ' );
 					$sheet->setCellValue('N'.($cab+1), 'Retroalimentaciòn' );
 					$sheet->setCellValue('O'.($cab+1), 'TOTAL DE DIAS' );
@@ -535,7 +542,7 @@ class Consulta extends CI_Controller {
 		// CABECERA
 
 	    // CUERPO
-			$total = $registros->num_rows()+ ($cab+1);
+			$total = $registros->num_rows() + ($cab+1);
 			$numberStyle1 = $this->phpexcel->getActiveSheet(0)->getStyle('P'.($cab+1).':W'.$total);
 			$numberStyle1->getNumberFormat()->setFormatCode('0.00');
 

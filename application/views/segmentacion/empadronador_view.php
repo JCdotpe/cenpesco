@@ -80,11 +80,19 @@ $span_class =  'span12';
                 echo '</div>';  
           echo '</div>'; 
 
-
-          
+          if ($this->session->flashdata('msgbox') === 1){
+            echo '<div class="row-fluid control-group span9" id="msgbox">';
+              echo '<div class="alert alert-info">';
+                echo '<button class="close" data-dismiss="alert" type="button" onclick="borrar();">×</button>';
+                echo '<strong>ADVERTENCIA! </strong>';
+                echo ' No existe detalle para esta ruta';
+              echo '</div>';
+            echo '</div>';
+          }
 
 ?>
-
+<script type="text/javascript"> function borrar(){  $('#msgbox').remove();}</script>
+          
 <script type="text/javascript">
 var gmarkers = [];
       var map = null;
