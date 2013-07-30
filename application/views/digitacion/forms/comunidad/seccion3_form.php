@@ -687,7 +687,7 @@ $span_class =  'span12';
 			'class' => $span_class,
 			'onkeypress'=>"return solo_0_to_1(event)",			
 		);		
-		//otro
+		//perdida biodiversidad
 		$S3_18_5 = array(
 			'name'	=> 'S3_18_5',
 			'id'	=> 'S3_18_5',
@@ -695,31 +695,47 @@ $span_class =  'span12';
 			'class' => $span_class,
 			'onkeypress'=>"return solo_0_to_1(event)",			
 		);		
-		//especifique
-		$S3_18_5_O = array(
-			'name'	=> 'S3_18_5_O',
-			'id'	=> 'S3_18_5_O',
-			'maxlength'	=> 100,
-			'class' => $span_class,
-			'onkeypress'=>"return solo_letras(event)",	
-			//'onblur'=> 'especifique(this,S3_18_5,1)',					
-		);
-		//otro
+		//alteracion
 		$S3_18_6 = array(
 			'name'	=> 'S3_18_6',
 			'id'	=> 'S3_18_6',
 			'maxlength'	=> 1,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_0_to_1(event)",			
+		);				
+		//otro
+		$S3_18_7 = array(
+			'name'	=> 'S3_18_7',
+			'id'	=> 'S3_18_7',
+			'maxlength'	=> 1,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_0_to_1(event)",			
 		);		
 		//especifique
-		$S3_18_6_O = array(
-			'name'	=> 'S3_18_6_O',
-			'id'	=> 'S3_18_6_O',
+		$S3_18_7_O = array(
+			'name'	=> 'S3_18_7_O',
+			'id'	=> 'S3_18_7_O',
 			'maxlength'	=> 100,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_letras(event)",	
-			//'onblur'=> 'especifique(this,S3_18_6,1)',					
+			//'onblur'=> 'especifique(this,S3_18_7,1)',					
+		);
+		//otro
+		$S3_18_8 = array(
+			'name'	=> 'S3_18_8',
+			'id'	=> 'S3_18_8',
+			'maxlength'	=> 1,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_0_to_1(event)",			
+		);		
+		//especifique
+		$S3_18_8_O = array(
+			'name'	=> 'S3_18_8_O',
+			'id'	=> 'S3_18_8_O',
+			'maxlength'	=> 100,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_letras(event)",	
+			//'onblur'=> 'especifique(this,S3_18_8,1)',					
 		);					
 	// PREGUNTA 19 /  existe violencia
 		//domestica
@@ -851,6 +867,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_1_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_1_M = array(
@@ -858,6 +875,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_1_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//horas
 		$S3_21_1_2_H = array(
@@ -865,6 +883,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_2_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_2_M = array(
@@ -872,6 +891,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_2_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//horas
 		$S3_21_1_3_H = array(
@@ -879,6 +899,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_3_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_3_M = array(
@@ -886,6 +907,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_3_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//horas
 		$S3_21_1_4_H = array(
@@ -893,6 +915,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_4_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_4_M = array(
@@ -900,6 +923,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_4_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//horas
 		$S3_21_1_5_H = array(
@@ -907,6 +931,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_5_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_5_M = array(
@@ -914,6 +939,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_5_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//horas
 		$S3_21_1_6_H = array(
@@ -921,6 +947,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_6_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_6_M = array(
@@ -928,6 +955,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_6_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);				
 		//horas
 		$S3_21_1_7_H = array(
@@ -935,6 +963,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_7_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_7_M = array(
@@ -942,6 +971,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_7_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		//horas
 		$S3_21_1_8_H = array(
@@ -949,6 +979,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_8_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_8_M = array(
@@ -956,6 +987,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_8_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);	
 		//horas
 		$S3_21_1_9_H = array(
@@ -963,6 +995,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_1_9_H',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 		//minutos
 		$S3_21_2_9_M = array(
@@ -970,6 +1003,7 @@ $span_class =  'span12';
 			'id'	=> 'S3_21_2_9_M',
 			'maxlength'	=> 2,
 			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);														
 	// PREGUNTA 22
 		//via
@@ -2496,20 +2530,46 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 											echo '<div class="help-block error">' . form_error($S3_18_4['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
-
-
 							echo '</div>';	
-						echo '</div>';		
+						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra', $S3_18_5['id'], $label_class);
+										echo form_label('Pérdida de biodiversidad', $S3_18_5['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
 												echo form_input($S3_18_5); 
 											echo '<span class="help-inline-pp"></span>';
 											echo '<div class="help-block error">' . form_error($S3_18_5['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 	
+							echo '</div>';	
+						echo '</div>';			
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo '<div class="span7 offset1">';	
+										echo form_label('Alteración del ecosistema acuático', $S3_18_6['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
+										echo '<div class="controls">';
+												echo form_input($S3_18_6); 
+											echo '<span class="help-inline-pp"></span>';
+											echo '<div class="help-block error">' . form_error($S3_18_6['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 	
+							echo '</div>';	
+						echo '</div>';												
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo '<div class="span7 offset1">';	
+										echo form_label('Otra', $S3_18_7['id'], $label_class);
+									echo '</div>'; 
+									echo '<div class="control-group-pp  span2">';
+										echo '<div class="controls">';
+												echo form_input($S3_18_7); 
+											echo '<span class="help-inline-pp"></span>';
+											echo '<div class="help-block error">' . form_error($S3_18_7['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
 
@@ -2519,14 +2579,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 							echo '<div class="span12">';
 			
 									echo '<div class="span2 offset1">';	
-										echo form_label('Especifique', $S3_18_5_O['id'], $label_class);
+										echo form_label('Especifique', $S3_18_7_O['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group-pp span7">';
 										echo '<div class="controls">';
-												echo form_input($S3_18_5_O); 
+												echo form_input($S3_18_7_O); 
 											echo '<span class="help-inline-pp"></span>';
-											echo '<div class="help-block error">' . form_error($S3_18_5_O['name']) . '</div>';
+											echo '<div class="help-block error">' . form_error($S3_18_7_O['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
 
@@ -2535,13 +2595,13 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra', $S3_18_6['id'], $label_class);
+										echo form_label('Otra', $S3_18_8['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
-												echo form_input($S3_18_6); 
+												echo form_input($S3_18_8); 
 											echo '<span class="help-inline-pp"></span>';
-											echo '<div class="help-block error">' . form_error($S3_18_6['name']) . '</div>';
+											echo '<div class="help-block error">' . form_error($S3_18_8['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
 
@@ -2551,14 +2611,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp offset1 span2">';
-										echo form_label('Especifique', $S3_18_6_O['id'], $label_class);
+										echo form_label('Especifique', $S3_18_8_O['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group-pp span7">';
 										echo '<div class="controls">';
-												echo form_input($S3_18_6_O); 
+												echo form_input($S3_18_8_O); 
 											echo '<span class="help-inline-pp"></span>';
-											echo '<div class="help-block error">' . form_error($S3_18_6_O['name']) . '</div>';
+											echo '<div class="help-block error">' . form_error($S3_18_8_O['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
 
@@ -3358,7 +3418,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_6_5_O : {
-		    		required: true,						
+		    		//required: true,						
 		            validName: true,
 					maxlength:100,
 				}, 	
@@ -3737,25 +3797,37 @@ $.extend(jQuery.validator.messages, {
 		            number: true,
 		            exactlength: 1,
 		        }, 	
-				//otro
+				//perdidad bio
 				S3_18_5 : {
 		    		required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 
+				//ecosistema
+				S3_18_6 : {
+		    		required: true,
+		            number: true,
+		            exactlength: 1,
+		        }, 			        			        
+				//otro
+				S3_18_7 : {
+		    		required: true,
+		            number: true,
+		            exactlength: 1,
+		        }, 
 				//especifique
-				S3_18_5_O :{
+				S3_18_7_O :{
 		            validName: true,
 					maxlength:100,
 		         }, 
 				//otro
-				S3_18_6 : {
+				S3_18_8 : {
 		    		required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 	
 				//especifique
-				S3_18_6_O :{
+				S3_18_8_O :{
 		            validName: true,
 					maxlength:100,
 		         }, 					
@@ -3853,126 +3925,126 @@ $.extend(jQuery.validator.messages, {
 			//PREGUNTA 20
 				//horas
 				S3_21_1_1_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_1_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 
 				//horas
 				S3_21_1_2_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_2_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 
 				//horas
 				S3_21_1_3_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_3_M: {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 
 				//horas
 				S3_21_1_4_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_4_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 
 				//horas
 				S3_21_1_5_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_5_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 
 				//horas
 				S3_21_1_6_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_6_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 		
 				//horas
 				S3_21_1_7_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_7_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 	
 				//horas
 				S3_21_1_8_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_8_M : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
 		        }, 
 				//horas
 				S3_21_1_9_H : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            maxlength: 2,
 		            range:[0,99],
 		        }, 
 				//minutos
 				S3_21_2_9_M : {
-		    		required: true,
+					//required: true,
 		            number: true,
 		            maxlength: 2,
 		            ranges:[[0,59],[99]]
@@ -3980,31 +4052,31 @@ $.extend(jQuery.validator.messages, {
 			//PREGUNTA 21
 				//via
 				S3_22_1_V : {
-		    		required: true,
+					//required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 
 				//via
 				S3_22_2_V : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 
 				//via
 				S3_22_3_V : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 
 				//via
 				S3_22_4_V : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 	
 				//via
 				S3_22_5_V : {
-		    		required: true,
+		    		//required: true,
 		            number: true,
 		            exactlength: 1,
 		        }, 					
@@ -4168,7 +4240,7 @@ $.extend(jQuery.validator.messages, {
 			    );
 				
 		        var bsub3 = $( "#seccion3 :submit" );
-		        bsub3.attr("disabled", "disabled");
+		        //bsub3.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/comunidad_seccion3",
 		            type:'POST',

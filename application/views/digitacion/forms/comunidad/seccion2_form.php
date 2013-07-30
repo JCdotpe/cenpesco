@@ -644,7 +644,23 @@ $("#seccion2").validate({
 		    	S2_9: {
 		            //required: true,
 		            email: true,
-		        }, 			                			               	         	         		           		           		         		                                                                             
+		        }, 		
+				S2_10_DD_COD:{
+		           required: true,
+		           valueNotEquals: -1,	
+				},
+				S2_10_PP_COD:{
+		           required: true,
+		           valueNotEquals: -1,	
+				},	
+				S2_10_DI_COD:{
+		           required: true,
+		           valueNotEquals: -1,	
+				},							
+				S2_10_CCPP_COD: {
+		           required: true,
+		           valueNotEquals: -1,						
+				}		        	                			               	         	         		           		           		         		                                                                             
 			//FIN RULES
 		    },
 
@@ -787,7 +803,7 @@ $("#seccion2").validate({
 			    // }
 				
 		        var bsub2 = $( "#seccion2 :submit" );
-		        bsub2.attr("disabled", "disabled");
+		        //bsub2.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/comunidad_seccion2",
 		            type:'POST',

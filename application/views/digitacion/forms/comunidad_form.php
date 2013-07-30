@@ -205,10 +205,7 @@ echo form_close();
 		    </div>
 		    <div class="tab-pane" id="tab8">
 		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion8_form'); ?></p>
-		    </div>    
-		    <!-- <div class="tab-pane" id="tab9">
-		      <p><?php $this->load->view('digitacion/forms/comunidad/seccion9_form'); ?></p>
-		    </div>    -->       
+		    </div>         
 		    <div class="tab-pane" id="info">
 		      <p><?php $this->load->view('digitacion/forms/comunidad/info_form'); ?></p>
 		    </div>                             
@@ -235,6 +232,13 @@ echo form_close();
  -->
 
 <script type="text/javascript">
+
+	$('#NFORM').blur(function (){
+	   n = $(this).val().toString();
+	   while(n.length < 5) n = "0" + n;
+	   return $(this).val(n);
+	});
+
 ///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 ////////////////////  D I V     S E L E C C I O N A D O   \\\\\\\\\\\\\\\\\\\\\
     $(document).ready(function(){
@@ -283,7 +287,7 @@ echo form_close();
 
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
-    $('input').keydown( function(e) {
+    $('input,textarea').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
 
             // CAMPOS SIN PASE
@@ -302,15 +306,19 @@ echo form_close();
 
 	            var array_especiales_tras = ['S3_20_1','S3_20_2','S3_20_3','S3_20_4','S3_20_5'];// TIPO TRANSPORTE SECCION 3	  	 
 	            var array_especiales_tras2 = ['S3_20_6','S3_20_7','S3_20_8','S3_20_9'];	// TIPO TRANSPORTE SECCION 3	 
+	            var array_especiales_min = ['S3_21_2_1_M','S3_21_2_2_M','S3_21_2_3_M','S3_21_2_4_M','S3_21_2_5_M','S3_21_2_6_M','S3_21_2_7_M','S3_21_2_8_M','S3_21_2_9_M'];	// minutos SECCION 3	 
 
 		  	 	var array_ninguno = ['S3_5_3','S3_11_6','S3_19_5','S6_3_7','S7_6_4','S7_7_16','S7_8_20','S7_16_5']; // NINGUNOS  
+
+		  	 	var array_demas_no_vacios = ['S7_3_12','S7_4_12']; // otros campos no empty  
+
 		  	 	                              
-	            var array_libres = ['S6_2_2_A','S6_2_3_A'];
+	            var array_libres = ['S6_2_2_A','S6_2_3_A','S2_7','S2_8','S2_9'];
 
             //  CAMPOS CON PASE
 		  	 	var array_pases =  []; //[varios_codigo, preg_pase, opcion_inicial, opcion_final, especifica, especifica_valor, ninguno, termina]
 		  	 		array_pases['S3_2'] = [0,5,2,2,0,0,0,0];
-		  	 		array_pases['S3_3'] = [1,5,4,5,0,0,0,0];
+		  	 		array_pases['S3_3'] = [0,5,4,5,0,0,0,0];
 		  	 		array_pases['S3_7'] = [0,9,4,5,0,0,0,0];
 		  	 		array_pases['S3_6_5'] = [1,9,2,5,1,0,0,0];
 		  	 		array_pases['S3_9_6'] = [1,11,2,6,0,0,1,0];
@@ -323,7 +331,7 @@ echo form_close();
 		  	 		array_pases['S7_8_19'] = [1,10,19,19,0,0,1,0];
 		  	 		array_pases['S7_11'] = [0,17,2,2,0,0,0,1];
 		  	 		array_pases['S7_14'] = [0,17,2,2,0,0,0,1];
-		  	 		array_pases['S8_1'] = [0,5,2,2,0,0,0,1];
+		  	 		array_pases['S8_1'] = [0,4,2,2,0,0,0,0];
 	  	 		
 
  	 
@@ -348,7 +356,7 @@ echo form_close();
 							        var sc 			= key.substring(1,2);
 							        var code		= array_pases[key][0];
 							        var p_actual 	= parseInt(key.substring(3,4)); 
-							        if ( $.isNumeric( key.substring(3,4) ) ) {
+							        if ( $.isNumeric( key.substring(4,5) ) ) {
 							        	var p_actual = parseInt(key.substring(3,5));   };
 							        var p_pase 		= array_pases[key][1];
 							        var sub_ini 	= array_pases[key][2];
@@ -358,6 +366,7 @@ echo form_close();
 							        var ning		= array_pases[key][6];
 							        var termina_s 	= array_pases[key][7];
 							        var cont 		= 0;
+							        var cont_2 		= 0;
 					               if (code == 1){ //valida si son de varios codigos
 					                    for (y = sub_ini; y <= sub_fin; y++){
 					                        //if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){
@@ -365,7 +374,13 @@ echo form_close();
 					                            cont++;
 					                        }
 					                    }
-					                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
+					                    for (z = 1; z < sub_ini; z++){
+					                        //if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){
+					                        if ($("#S"+sc+"_"+p_actual+"_"+z).val() == 1){//1 si fue seleccionado
+					                            cont_2++;
+					                        }
+					                    }					                    
+					                    if(cont >= 1 && cont_2 == 0){// valida si se encontro al menos un codigo en el rango
 					                        for (x = p_actual+1;x<p_pase;x++){
 					                            $("#SEC"+sc+"_"+x+' :input').attr('disabled','disabled');
 					                            inputs = $(this).closest('form').find(':input:enabled');
@@ -394,7 +409,12 @@ echo form_close();
 					                        	inputs.eq( inputs.index(this) + 1 ).focus();
 					                        	inputs.eq( inputs.index(this) + 1 ).select();
 					                        }
-					                    }else if(cont <= 0){
+					                    }else if(cont == 0 && cont_2 == 0){// valida si se encontro al menos un codigo en el rango
+					                        	alert("Tiene que seleccionar en al menos una alternativa ");
+					                        	inputs.eq( inputs.index(this) ).focus();
+					                        	inputs.eq( inputs.index(this) ).select();
+					                        
+					                    }else {
 					                        for (x = p_actual+1;x<p_pase;x++){
 					                            $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
 					                            inputs = $(this).closest('form').find(':input:enabled');
@@ -455,6 +475,7 @@ echo form_close();
 					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
 					                        	};
                        						}else{
+                       							if (termina_s == 1) {alert("Finalice esta sección");};
 					                        	inputs.eq( inputs.index(this) + 1 ).focus();
 					                        	inputs.eq( inputs.index(this) + 1 ).select();
 					                        }
@@ -498,9 +519,27 @@ echo form_close();
                             inputs.eq( inputs.index(this)+ 1 ).focus();  
                             inputs.eq( inputs.index(this)+ 1 ).select();  
                         } else{
-                        	inputs.eq( inputs.index(this)+ 1 ).val('');
+                        	inputs.eq( inputs.index(this)+ 1 ).val(''); // limpia el campo de especifique
+                        	if ( ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_ninguno ) ) || ( inArray(inputs.eq( inputs.index(this)+ 4 ).attr('id'), array_ninguno )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_v )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_esp )) ||  ( array_pases[inputs.eq( inputs.index(this)+ 3 ).attr('id')] ) ){
+                        		//
+                        	} else {
+                        		var acu = 0;
+	                        	var sc = ($(this).attr('id')).substring(1,2); 
+	                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };  	                        	
+	                        	
+		                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+		                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+		                        	})
+							        if (acu === 0 ) {
+							        	alert('Tiene que seleccionar en al menos una alternativa ');
+			                            inputs.eq( inputs.index(this)).focus();                             
+			                            inputs.eq( inputs.index(this) ).select(); return;						        	
+							        }                         		
+                        	}
                             inputs.eq( inputs.index(this)+ 2 ).focus();                             
-                            inputs.eq( inputs.index(this)+ 2 ).select();                             
+                            inputs.eq( inputs.index(this)+ 2 ).select(); 
                         }
                     }else if( array_otros_u[$(this).attr('id')] >= 1 ){//  CAMPOS OTRO, de UN solo ingreso
                         if ($(this).val() == array_otros_u[$(this).attr('id')] ) {
@@ -511,23 +550,64 @@ echo form_close();
                             inputs.eq( inputs.index(this)+ 2 ).focus();                             
                             inputs.eq( inputs.index(this)+ 2 ).select();                             
                         }
-                    } else if ( inArray($(this).attr('id'), array_ninguno )) {// VALIDA CAMPOS NINGUNO
+                    }else  if ( inArray($(this).attr('id'), array_otros_esp )) {// CAMPOS OTROS de VARIOS ingresos especiales
+                        if ($(this).val() == 1 ) {
+                            inputs.eq( inputs.index(this)+ 1 ).focus();  
+                            inputs.eq( inputs.index(this)+ 1 ).select();  
+                        } else{
+                        	if ( ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_ninguno ) ) || ( inArray(inputs.eq( inputs.index(this)+ 4 ).attr('id'), array_ninguno )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_v )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_esp )) ||  ( array_pases[inputs.eq( inputs.index(this)+ 3 ).attr('id')] ) ){
+                        		//
+                        	} else {                        	
+                        		var acu = 0;
+	                        	var sc = ($(this).attr('id')).substring(1,2); 
+	                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };  	                        	
+		                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+		                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+		                        	})
+							        if (acu === 0 ) {
+							        	alert('Tiene que seleccionar en al menos una alternativa ');
+			                            inputs.eq( inputs.index(this)).focus();                             
+			                            inputs.eq( inputs.index(this) ).select(); return;						        	
+							        } 
+							}
+                        	inputs.eq( inputs.index(this)+ 1 ).val('');
+                        	inputs.eq( inputs.index(this)+ 2 ).val('');
+                            inputs.eq( inputs.index(this)+ 3 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 3 ).select();                             
+                        }
+                    }else if ( inArray($(this).attr('id'), array_ninguno )) {// VALIDA CAMPOS NINGUNO
                         if (!ningunos(this)) {
                         	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
                         	inputs.eq( inputs.index(this) ).focus();  
                         	inputs.eq( inputs.index(this) ).select();  
                         } else{
-                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
-                        	inputs.eq( inputs.index(this) + 1 ).select(); 
+                        	var sc = ($(this).attr('id')).substring(1,2);
+                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };                        	
+                        	var acu =0;
+	                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+	                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+	                        	})
+						        if (acu == 0 ) {
+						        	alert('Tiene que seleccionar en al menos una alternativa ');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
                         };
                     } else if ( inArray($(this).attr('id'), array_especiales_tras )) {// VALIDA CAMPOS traslado
                         if ($(this).val() == 1) {
                         	inputs.eq( inputs.index(this) + 1).focus();  
                         	inputs.eq( inputs.index(this) + 1).select();  
                         } else{
-                        	inputs.eq( inputs.index(this) + 1 ).val(99)  ;  
-                        	inputs.eq( inputs.index(this) + 2 ).val(99)  ;  
-                        	inputs.eq( inputs.index(this) + 3 ).val(9)  ;  
+                        	inputs.eq( inputs.index(this) + 1 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 2 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 3 ).val('')  ;  
                         	inputs.eq( inputs.index(this) + 4 ).focus(); 
                         	inputs.eq( inputs.index(this) + 4 ).select(); 
                         };
@@ -536,27 +616,70 @@ echo form_close();
                         	inputs.eq( inputs.index(this) + 1).focus();  
                         	inputs.eq( inputs.index(this) + 1).select();  
                         } else{
-                        	inputs.eq( inputs.index(this) + 1 ).val(99)  ;  
-                        	inputs.eq( inputs.index(this) + 2 ).val(99)  ;  
+                        	if ($(this).attr('id') == 'S3_20_9') { // valida al deja el foco, si los inputs son todos ceros
+                        		var acum = 0;
+                        		for (var i = 1; i <= 9; i++) {
+                        			acum = acum + parseInt($("#S3_20_"+i).val());
+                        		};
+                        		if (acum == 0) {alert('Tiene que seleccionar en al menos una alternativa '); inputs.eq( inputs.index(this)).focus();  inputs.eq( inputs.index(this) ).select(); return;};
+                        	} 
+                        	inputs.eq( inputs.index(this) + 1 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 2 ).val('')  ;  
                         	inputs.eq( inputs.index(this) + 3 ).focus(); 
                         	inputs.eq( inputs.index(this) + 3 ).select(); 
                         };
-                    }else  if ( inArray($(this).attr('id'), array_otros_esp )) {// CAMPOS OTROS de VARIOS ingresos
-                        if ($(this).val() == 1 ) {
-                            inputs.eq( inputs.index(this)+ 1 ).focus();  
-                            inputs.eq( inputs.index(this)+ 1 ).select();  
-                        } else{
-                        	inputs.eq( inputs.index(this)+ 1 ).val('');
-                        	inputs.eq( inputs.index(this)+ 2 ).val('');
-                            inputs.eq( inputs.index(this)+ 3 ).focus();                             
-                            inputs.eq( inputs.index(this)+ 3 ).select();                             
-                        }
+                    }else if ( inArray($(this).attr('id'),array_especiales_min ) ) {// VALIDA MINUTOS Y HORAS seccion III
+                    	//alert(inputs.eq( inputs.index(this)-2).val()  + '-'+ inputs.eq( inputs.index(this)-1 ==0).val() + '-'+ inputs.eq( inputs.index(this) ==0).val()) ;
+						        if ( inputs.eq( inputs.index(this)-2).val() == 1 && inputs.eq( inputs.index(this)-1 ).val()==0 && inputs.eq( inputs.index(this) ).val()==0 ) {
+						        	alert('Error en horas o minutos debe de haber un dato diferente de cero');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
+                    }else if ( inArray($(this).attr('id'), array_demas_no_vacios )) {// VALIDA CAMPOS no vacios
+                        	var sc = ($(this).attr('id')).substring(1,2);
+                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };                        	
+                        	var acu =0;
+	                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+	                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+	                        	})
+						        if (acu == 0 ) {
+						        	alert('Tiene que seleccionar en al menos una alternativa ');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
+                    }else if ( $(this).attr('id') == 'S4_2_5') {// VALIDA CAMPOS de educacion NO TODO debe ser 2
+                        	var sc = ($(this).attr('id')).substring(1,2);
+                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };                        	
+                        	var acu =0;
+	                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+	                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+	                        	})
+						        if (acu == 10 ) {
+						        	alert('Tiene que seleccionar en al menos una afirmativa ');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
                     }else{// permite el pase a los inputs ya con datos
-	                	for (key in array_pases){
-	                		if (inputs.eq( inputs.index(this)-1).attr('id') == key){
-	                			if( (array_pases[key][7] == 1) && (inputs.eq( inputs.index(this) - 1 ).val() >= array_pases[key][2] ) ){	alert('Finalice esta sección');	}
-	                		}
-	                	}
+                    	if(  !( $(this).attr('id') == 'S4_1_C')  ){
+		                	for (key in array_pases){ // si el INPUT fue seguido de 
+		                		if (inputs.eq( inputs.index(this)-1).attr('id') == key){
+		                			if(  (array_pases[key][7] == 1) &&   (inputs.eq( inputs.index(this) - 1 ).val() == array_pases[key][5] )  ){	alert('Finalice esta sección');}
+		                		}
+		                	}
+		                }
                         inputs.eq( inputs.index(this) + 1 ).focus(); 
                         inputs.eq( inputs.index(this) + 1 ).select(); 
                    }                         
@@ -864,7 +987,7 @@ echo form_close();
     function solo_1_to_6(e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = "01234569";
+        letras = "1234569";
         especiales = [8, 9, 37, 39];
 
         tecla_especial = false
@@ -982,7 +1105,6 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
 }); 
 
 //departamento
-
  $("#NOM_DD").trigger('change');
 
 
@@ -1172,11 +1294,15 @@ $("#frm_comunidad").validate({
                         //alert(value);
 						if(value != 0){// oculta las secciones que ya tienen el registro.
 								if(key == 9){
-									$('#cinfo').remove();
-									$('#info').remove();						
+									//$('#cinfo').remove();
+									//$('#info').remove();		
+                                    $('#cinfo').removeClass('active');
+                                    $('#info').removeClass('active');  													
 								}else{	
-									$('#tab'+ key).remove();
-									$('#ctab'+ key).remove();
+									//$('#tab'+ key).remove();
+									//$('#ctab'+ key).remove();
+									$('#ctab'+ key).removeClass('active');
+                                    $('#tab'+ key).removeClass('active');
 								}
 								
 						}else { //muestra secciones 

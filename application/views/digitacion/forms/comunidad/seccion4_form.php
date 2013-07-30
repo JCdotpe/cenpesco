@@ -636,10 +636,10 @@ $(function(){
 		            required: true,
 		            digits: true,
 		         },   
-				S4_2_5_O: {
-		            required: false,
-		            validName: true,
-		         },   
+				// S4_2_5_O: {
+		  //           required: false,
+		  //           validName: true,
+		  //        },   
 				S4_3_1: {
 		            required: true,
 		            digits: true,
@@ -771,7 +771,7 @@ $(function(){
 			    );
 				
 		        var bsub4 = $( "#seccion4 :submit" );
-		        bsub4.attr("disabled", "disabled");
+		        //bsub4.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/comunidad_seccion4",
 		            type:'POST',

@@ -1227,7 +1227,7 @@ $span_class =  'span12';
 		'id'	=> 'S7_11',
 		'maxlength'	=> 1,
 		'class' => $span_class,
-		'onkeypress'=>"return solo_0_to_1(event)",
+		'onkeypress'=>"return solo_1_to_2(event)",
 	);
 //pregunta 12
 	$S7_12_1 = array(
@@ -5529,19 +5529,20 @@ $(function(){
 		    },		    
 		    submitHandler: function(form) {
 
-		    	//seccion 5 serial
-		    	var seccion4_data = $("#seccion7").serializeArray();
-			    seccion4_data.push(
+		    	//seccion 7 serial
+		    	var seccion7_data = $("#seccion7").serializeArray();
+			    seccion7_data.push(
 			        {name: 'ajax',value:1},
 			        {name: 'comunidad_id',value:$("input[name='comunidad_id']").val()}      
 			    );
-				
+
+
 		        var bsub4 = $( "#seccion7 :submit" );
-		        bsub4.attr("disabled", "disabled");
+		        //bsub4.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/comunidad_seccion7",
 		            type:'POST',
-		            data:seccion4_data,
+		            data:seccion7_data,
 		            dataType:'json',
 		            success:function(json){
 						alert(json.msg);
@@ -5550,7 +5551,45 @@ $(function(){
 						// $('#pesc_tabs').removeClass('hide');
 						$('#frm_comunidad').trigger('submit');
 		            }
-		        });     
+		        });  
+
+		        // desactivar  SECCION 8
+			        	var cont = 0; var cont_2 = 0;
+	                    for (y = 3; y <= 9; y++){
+	                        if ($("#S7_1_"+y).val() == 1){//1 si fue seleccionado
+	                            cont++;
+	                        }
+	                    }
+	                    for (z = 1; z < 3; z++){
+	                        if  ($("#S7_1_"+z).val() == 1){//1 si fue seleccionado
+	                            cont_2++;
+	                        }
+	                    }
+
+                    if ( cont >=1 && cont_2 ==0) {
+                    	$('#seccion8 :input').attr('disabled','disabled');
+				        $.ajax({
+				            url: CI.base_url + "digitacion/comunidad_seccion8/salto/1",
+				            type:'POST',
+				            data:{ajax: 1,comunidad_id:$("input[name='comunidad_id']").val(), csrf_token_c:CI.cct},
+				            dataType:'json',
+				            success:function(json){
+								alert(json.msg);
+				            }
+				        });    
+                    } else{
+                    	$('#seccion8 :input').removeAttr('disabled');
+				        $.ajax({
+				            url: CI.base_url + "digitacion/comunidad_seccion8/salto/0",
+				            type:'POST',
+				            data:{ajax: 1,comunidad_id:$("input[name='comunidad_id']").val(), csrf_token_c:CI.cct},
+				            dataType:'json',
+				            success:function(json){
+								alert(json.msg);
+				            }
+				        });  
+                    }
+                //
 		          	
 		    }       
 		});

@@ -271,7 +271,7 @@ $(function(){
 		            number: true,
 		            maxlength:2,
 		            exactlength:2,	
-		            range:[7,8],	            
+		            range:[8,9],	            
 		         },     
 				F_A : {
 		            required: true,
@@ -369,7 +369,7 @@ $(function(){
 			    );
 				
 		        var bsubinfo = $( "#comunidad_info :submit" );
-		        bsubinfo.attr("disabled", "disabled");
+		        //bsubinfo.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/comunidad_info",
 		            type:'POST',

@@ -4,7 +4,17 @@
 */
 class Comunidad_model extends CI_MODEL
 {
-	
+    function consulta_udra($dep,$prov,$dist,$ccpp)
+    {
+        $this->db->select('FORMULARIOS');
+        $this->db->where('CCDD',$dep);
+        $this->db->where('CCPP',$prov);
+        $this->db->where('CCDI',$dist);
+        $this->db->where('COD_CCPP',$ccpp);       
+        $q = $this->db->get('udra_comunidad');
+        return $q;
+    }	
+
 	function consulta($nro,$dep,$prov,$dist,$ccpp)
 	{
 		$this->db->select('id');
@@ -19,6 +29,13 @@ class Comunidad_model extends CI_MODEL
 		return $q;
 	}
 
+    function consulta_in_seccion($cod,$seccion)
+    {
+        //$this->db->select('comunidad_id');
+        $this->db->where('comunidad_id',$cod);
+        $q = $this->db->get($seccion);
+        return $q;
+    }
     function insert_comunidad($data){
 		$this->db->insert('comunidad', $data);
 		return $this->db->affected_rows() > 0;
@@ -44,25 +61,27 @@ class Comunidad_model extends CI_MODEL
     }   
 
 
-    function insert_comunidad_seccion($table,$data){//inserta en las tablas comunidades
+    function insert_comunidad_seccion($table,$data){//inserta en las tablas de las secciones comunidades
         $this->db->insert($table, $data);
         return $this->db->affected_rows() > 0;
     }   
+
+
+    function update_comunidad_seccion($table,$data,$id){//update en las tablas de las secciones comunidades
+        $this->db->where('comunidad_id',$id);
+        $this->db->update($table, $data);
+        return $this->db->affected_rows() > 0;
+    }   
+
+
+
+
     function insert_no_emb($data){
         $this->db->insert('pesc_seccion9', $data);
         return $this->db->affected_rows() > 0;
     } 
 
-    function consulta_udra($dep,$prov,$dist,$ccpp)
-    {
-        $this->db->select('FORMULARIOS');
-        $this->db->where('CCDD',$dep);
-        $this->db->where('CCPP',$prov);
-        $this->db->where('CCDI',$dist);
-        $this->db->where('COD_CCPP',$ccpp);       
-        $q = $this->db->get('udra_comunidad');
-        return $q;
-    }
+
 
     function get_ccpp($dpto,$prov,$dist)
     {

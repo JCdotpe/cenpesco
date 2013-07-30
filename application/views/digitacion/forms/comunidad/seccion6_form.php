@@ -995,7 +995,7 @@ $(function(){
 			    );
 				
 		        var bsub4 = $( "#seccion6 :submit" );
-		        bsub4.attr("disabled", "disabled");
+		        //bsub4.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/comunidad_seccion6",
 		            type:'POST',
