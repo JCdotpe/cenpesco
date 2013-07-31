@@ -10,6 +10,7 @@ class Auth extends CI_Controller
 		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');
+		$this->load->model('tank_auth/users');
 	}
 
 	function index()
@@ -112,6 +113,21 @@ class Auth extends CI_Controller
 		session_destroy();		
 		$this->tank_auth->logout();
 		$this->_show_message($this->lang->line('auth_message_logged_out'));
+
+	}
+	function change_password_cenpesco($tipo = null){
+		$usuarios = $this->users->users_cenpesco($tipo);
+		$cont = 0;
+		foreach ($usuarios->result() as $key ) {
+			if ($this->tank_auth->change_password_cenpesco($key->id,$key->username, $tipo)) {
+				$cont++;
+			}
+			
+		}
+
+			$data['msg'] = $cont .' actualizados';
+			$data['main_content'] = 'backend/login/passwd_change_view';
+    		$this->load->view('backend/includes/template', $data);		
 
 	}
 

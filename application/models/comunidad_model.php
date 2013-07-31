@@ -73,7 +73,11 @@ class Comunidad_model extends CI_MODEL
         return $this->db->affected_rows() > 0;
     }   
 
-
+    function get_all_by_seccion($table,$id){//update en las tablas de las secciones comunidades
+        $this->db->where('comunidad_id',$id);
+        $q = $this->db->get($table);
+        return $q;
+    }   
 
 
     function insert_no_emb($data){

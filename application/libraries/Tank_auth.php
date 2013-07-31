@@ -419,7 +419,22 @@ class Tank_auth
 		}
 		return FALSE;
 	}
-
+	function change_password_cenpesco($user,$new_pass, $tipo)
+	{
+			// Check if old password correct
+			$hasher = new PasswordHash(
+					$this->ci->config->item('phpass_hash_strength', 'tank_auth'),
+					$this->ci->config->item('phpass_hash_portable', 'tank_auth'));
+						// success
+				// Hash new password using phpass
+				$hashed_password = $hasher->HashPassword($new_pass);
+				// Replace old password with new one
+				 if ($this->ci->users->change_password_cenpesco($user, $hashed_password, $tipo) >= 1){
+				 	return true;
+				 }else{
+				 	return false;
+				 };
+	}
 	/**
 	 * Change user email (only when user is logged in) and return some data about user:
 	 * user_id, username, new_email, new_email_key.

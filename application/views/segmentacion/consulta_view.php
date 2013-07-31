@@ -255,6 +255,7 @@ $(function(){
   //departamento
 
    $("#NOM_SEDE").trigger('change');
+   $("#NOM_SEDE").trigger('change');
 
 
 

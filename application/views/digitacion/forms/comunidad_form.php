@@ -284,6 +284,26 @@ echo form_close();
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  N I N G U N O  ///////////////////////////////
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
+///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/////////////////////////////  N O   V A C I O S  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	function vacios_otros(inp){
+		var acu = 0;
+    	var sc = ($(inp).attr('id')).substring(1,2); 
+    	var pr = ($(inp).attr('id')).substring(3,4);
+        if ( $.isNumeric( ($(inp).attr('id')).substring(4,5) ) ) {
+        	var pr = ($(inp).attr('id')).substring(3,5)  };  	                        	
+    	
+        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+        		  if ($.isNumeric($(inp).val())) { acu = acu + parseInt( $(inp).val() ) };
+        	})
+	        if (acu === 0 ) {
+				return true;     	
+	        }else{
+	        	return false;
+	        }   
+	}
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\  N O   V A C I O S //////////////////////////////
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
@@ -313,7 +333,7 @@ echo form_close();
 		  	 	var array_demas_no_vacios = ['S7_3_12','S7_4_12']; // otros campos no empty  
 
 		  	 	                              
-	            var array_libres = ['S6_2_2_A','S6_2_3_A','S2_7','S2_8','S2_9'];
+	            var array_libres = ['S6_2_2_A','S6_2_3_A','S2_7','S2_8','S2_9','OBS'];
 
             //  CAMPOS CON PASE
 		  	 	var array_pases =  []; //[varios_codigo, preg_pase, opcion_inicial, opcion_final, especifica, especifica_valor, ninguno, termina]
@@ -520,24 +540,23 @@ echo form_close();
                             inputs.eq( inputs.index(this)+ 1 ).select();  
                         } else{
                         	inputs.eq( inputs.index(this)+ 1 ).val(''); // limpia el campo de especifique
-                        	if ( ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_ninguno ) ) || ( inArray(inputs.eq( inputs.index(this)+ 4 ).attr('id'), array_ninguno )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_v )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_esp )) ||  ( array_pases[inputs.eq( inputs.index(this)+ 3 ).attr('id')] ) ){
-                        		//
-                        	} else {
-                        		var acu = 0;
-	                        	var sc = ($(this).attr('id')).substring(1,2); 
-	                        	var pr = ($(this).attr('id')).substring(3,4);
-						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
-						        	var pr = ($(this).attr('id')).substring(3,5)  };  	                        	
-	                        	
-		                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
-		                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
-		                        	})
-							        if (acu === 0 ) {
-							        	alert('Tiene que seleccionar en al menos una alternativa ');
-			                            inputs.eq( inputs.index(this)).focus();                             
-			                            inputs.eq( inputs.index(this) ).select(); return;						        	
-							        }                         		
-                        	}
+                        	if( ($(this).attr('id') == 'S3_4_4') ){
+                        		if (vacios_otros(this)) {
+					        	alert('Tiene que seleccionar en al menos una alternativa ');
+				                inputs.eq( inputs.index(this)).focus();                             
+				                inputs.eq( inputs.index(this) ).select(); return;	
+                        		}         
+                        	}else if ( ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_ninguno ) ) || ( inArray(inputs.eq( inputs.index(this)+ 4 ).attr('id'), array_ninguno ) ) 
+                        				|| ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_v ))  
+                        				|| ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_esp )) || ( array_pases[inputs.eq( inputs.index(this)+ 3 ).attr('id')] ) || ( array_pases[inputs.eq( inputs.index(this)+ 2 ).attr('id')] ) ){
+	                        		//
+                        	}else if ($(this).attr('id') == 'S7_5_41') {
+									//
+                        	}else if ( vacios_otros(this) ) {
+					        	alert('Tiene que seleccionar en al menos una alternativa ');
+				                inputs.eq( inputs.index(this)).focus();                             
+				                inputs.eq( inputs.index(this) ).select(); return;	
+                        	}                        		
                             inputs.eq( inputs.index(this)+ 2 ).focus();                             
                             inputs.eq( inputs.index(this)+ 2 ).select(); 
                         }

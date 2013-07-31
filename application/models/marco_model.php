@@ -18,6 +18,14 @@ class Marco_model extends CI_Model{
     	$q = $this->db->get('marco');
     	return $q;
     }
+    function get_sede_by_cod($cod){
+        $this->db->select('SEDE_COD,NOM_SEDE');
+        $this->db->where('SEDE_COD',$cod);
+        $this->db->distinct('SEDE_COD');
+        $this->db->order_by('NOM_SEDE');
+        $q = $this->db->get('marco');
+        return $q;
+    }    
     function get_dep_by_sede($sede){
     	$this->db->select('CCDD,DEPARTAMENTO');
     	$this->db->distinct('CCDD');

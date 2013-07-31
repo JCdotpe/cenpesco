@@ -25,7 +25,8 @@ class Consulta extends CI_Controller {
 			$data['title'] = 'Rutas y Segmentación';
 			$data['nofoot'] = TRUE;	
 			$data['contclass'] = 'map_container';	
-			$data['sede'] = $this->marco_model->get_sede(); 
+			$data['sede'] = $this->marco_model->get_sede_by_cod($this->tank_auth->get_ubigeo()); 
+			//$data['sede'] = $this->marco_model->get_odei(); 
 			$data['dptos'] = $this->ubigeo_model->get_dptos();
 			
 			if (is_null($tipo)){
