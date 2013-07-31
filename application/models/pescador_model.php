@@ -19,10 +19,19 @@ class Pescador_model extends CI_MODEL
 		return $q;
 	}
 
+    function consulta_in_seccion($cod,$seccion)
+    {
+        //$this->db->select('comunidad_id');
+        $this->db->where('pescador_id',$cod);
+        $q = $this->db->get($seccion);
+        return $q;
+    }
+    
     function insert_pesc($data){
 		$this->db->insert('pescador', $data);
 		return $this->db->affected_rows() > 0;
     }   
+ 
 
     function seccion_disponible($NFORM,$CCDD,$CCPP,$CCDI,$COD_CCPP,$seccion){
 		$this->db->select('s.pescador_id');
@@ -37,7 +46,8 @@ class Pescador_model extends CI_MODEL
         $q = $this->db->get();
 		return $q->num_rows();
     }   
-    
+
+
     function get_fields($table){
         $q = $this->db->list_fields($table);
         return $q;
@@ -47,6 +57,13 @@ class Pescador_model extends CI_MODEL
         $this->db->insert($table, $data);
         return $this->db->affected_rows() > 0;
     }   
+
+    function update_pesc_seccion($table,$data,$id){//update 
+        $this->db->where('pescador_id',$id);
+        $this->db->update($table, $data);
+        return $this->db->affected_rows() > 0;
+    }  
+
     function insert_no_emb($data){
         $this->db->insert('pesc_seccion9', $data);
         return $this->db->affected_rows() > 0;

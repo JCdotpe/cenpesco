@@ -43,24 +43,52 @@ class Pesc_info extends CI_Controller {
 		if($is_ajax){
 
 			$fields = $this->pescador_model->get_fields('pesc_info');
+			$id = $this->input->post('pescador_id');
 			foreach ($fields as $a=>$b) {
 				if(!in_array($b, array('id','user_id','last_ip','user_agent','created','modified'))){
 					$c_data[$b] = $this->input->post($b);
 				}
 			}	
-			$c_data['user_id'] = $this->tank_auth->get_user_id();
-			$c_data['created'] = date('Y-m-d H:i:s');
-			$c_data['last_ip'] =  $this->input->ip_address();
-			$c_data['user_agent'] = $this->agent->agent_string();
+			// $c_data['user_id'] = $this->tank_auth->get_user_id();
+			// $c_data['created'] = date('Y-m-d H:i:s');
+			// $c_data['last_ip'] =  $this->input->ip_address();
+			// $c_data['user_agent'] = $this->agent->agent_string();
 
 			//print_r($c_data);
 
-			$flag = 0;
-			$msg = 'Error inesperado, por favor intentalo nuevamente';
-			if($this->pescador_model->insert_pesc_seccion('pesc_info',$c_data) > 0){
-				$flag = 1;
-				$msg = 'Se ha registrado satisfactoriamente la Seccion de Informacion';
+			// $flag = 0;
+			// $msg = 'Error inesperado, por favor intentalo nuevamente';
+			// if($this->pescador_model->insert_pesc_seccion('pesc_info',$c_data) > 0){
+			// 	$flag = 1;
+			// 	$msg = 'Se ha registrado satisfactoriamente la Seccion de Informacion';
+			// }
+			if ($this->pescador_model->consulta_in_seccion($id,'pesc_info')->num_rows() == 0) {
+				// inserta nuevo registro
+					$c_data['user_id'] = $this->tank_auth->get_user_id();
+					$c_data['created'] = date('Y-m-d H:i:s');
+					$c_data['last_ip'] =  $this->input->ip_address();
+					$c_data['user_agent'] = $this->agent->agent_string();
+					$flag = 0;
+					$msg = 'Error inesperado, por favor intentalo nuevamente';
+					if($this->pescador_model->insert_pesc_seccion('pesc_info',$c_data) > 0){
+						$flag = 1;
+						$msg = 'Se ha registrado satisfactoriamente la Seccion Info';
+					}
+			} else {
+				// actualiza
+					$c_data['user_id'] = $this->tank_auth->get_user_id();
+					$c_data['last_ip'] =  $this->input->ip_address();
+					$c_data['modified'] = date('Y-m-d H:i:s');
+					$c_data['user_agent'] = $this->agent->agent_string();
+					$flag = 0;
+					$msg = 'Error inesperado, por favor intentalo nuevamente';
+					if($this->pescador_model->update_pesc_seccion('pesc_info',$c_data,$id) > 0){
+						$flag = 1;
+						$msg = 'Se ha modificado satisfactoriamente la Seccion Info';
+					}
+
 			}
+			
 			$datos['flag'] = $flag;	
 			$datos['msg'] = $msg;	
 			$data['datos'] = $datos;

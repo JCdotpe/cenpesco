@@ -481,7 +481,7 @@ $("#pesca_dor").validate({
             ajax:1
         };
         var bsub = $( "#pesca_dor :submit" );
-        bsub.attr("disabled", "disabled");
+        // bsub.attr("disabled", "disabled");
         $.ajax({
             url: CI.base_url + "digitacion/pescador/consulta",
             type:'POST',
@@ -516,11 +516,15 @@ $("#pesca_dor").validate({
 					$.each( json.secciones, function( key, value ) {
 						if(value != 0){
 								if(key == 10){
-									$('#cinfo').remove();
-									$('#info').remove();						
+									// $('#cinfo').remove();
+									// $('#info').remove();		
+                   $('#cinfo').removeClass('active'); 
+                   $('#info').removeClass('active');                     				
 								}else{	
-									$('#tab'+ key).remove();
-									$('#ctab'+ key).remove();
+									// $('#tab'+ key).remove();
+									// $('#ctab'+ key).remove();
+                   $('#tab'+ key).removeClass('active'); 
+                   $('#ctab'+ key).removeClass('active');                         
 								}
 								
 						}else{
