@@ -287,12 +287,34 @@ $(function(){
  // 	}); 
 		//validacion
 		$("#pesc_info").validate({
-		    rules: {           
+		    rules: {   
+		    	OBS: {
+		            maxlength: 1000,
+		         },    		            
 		    	F_D: {
-		            required: true,
-		            digits: true,
+		            exactlength: 2,
+		            digits: true, 
 		         },     
-		                                                                             
+		    	F_M: {
+		            exactlength: 2,
+		            digits: true, 
+		         },   	
+		    	F_A: {
+		            exactlength: 4,
+		            digits: true, 
+		         },   	
+		    	RES: {
+		    		digits: true, 	
+		            range:[1,3],
+		         },  
+		    	EMP: {	
+		            validName: true,
+		         },  
+		    	EMP_DNI: {	
+		            digits:true,
+		            range: [1,99999999],
+		            exactlength: 8, 
+		         },  		         		         		         	         	                                                                             
 			//FIN RULES
 		    },
 

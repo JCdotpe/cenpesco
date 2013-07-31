@@ -189,27 +189,27 @@ echo '<div class="well modulo">';
 					              echo '<tbody>';
 					               echo '<tr>';
 					                  echo '<td>Aumenta los ingresos</td>';
-					                  echo '<td>' . form_input($S6_3_1) . '</td>';
+					                  echo '<td>' . form_input($S6_3_1) . '<div class="help-block error">' . form_error($S6_3_1['name']) . '</div></td>';
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>Disminuye los costos</td>';
-					                  echo '<td>' . form_input($S6_3_2) . '</td>';
+					                  echo '<td>' . form_input($S6_3_2) . '<div class="help-block error">' . form_error($S6_3_2['name']) . '</div></td>';
 					               echo '</tr>';  
 					               echo '<tr>';
 					                  echo '<td>Recibe asistencia técnica</td>';
-					                  echo '<td>' . form_input($S6_3_3) . '</td>';
+					                  echo '<td>' . form_input($S6_3_3) . '<div class="help-block error">' . form_error($S6_3_3['name']) . '</div></td>';
 					               echo '</tr>'; 				
 					               echo '<tr>';
 					                  echo '<td>Mejora posicionamiento en el mercado</td>';
-					                  echo '<td>' . form_input($S6_3_4) . '</td>';
+					                  echo '<td>' . form_input($S6_3_4) . '<div class="help-block error">' . form_error($S6_3_4['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
-					                  echo '<td>' . form_input($S6_3_5_O) . '</td>';
-					                  echo '<td>' . form_input($S6_3_5) . '</td>';
+					                  echo '<td>' . form_input($S6_3_5_O) . '<div class="help-block error">' . form_error($S6_3_5_O['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S6_3_5) . '<div class="help-block error">' . form_error($S6_3_5['name']) . '</div></td>';
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>NINGUNO</td>';
-					                  echo '<td>' . form_input($S6_3_6) . '</td>';
+					                  echo '<td>' . form_input($S6_3_6) . '<div class="help-block error">' . form_error($S6_3_6['name']) . '</div></td>';
 					               echo '</tr>'; 			               					               					               	                					                						               				               					               					               
 			              echo '</tbody>';
 			            echo '</table>';	
@@ -347,10 +347,51 @@ $(function(){
 	 $("#seccion6").validate({
 		    rules: {           
 		    	S6_1: {
-		            required: true,
 		            digits: true,
+		            range:[1,2],
 		         },     
-		                                                                             
+		    	S6_2: {
+					maxlength: 100,
+		         }, 
+		    	S6_3_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S6_3_2: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S6_3_3: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S6_3_4: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S6_3_5: {
+		            digits: true,
+		            range:[0,1],
+		         },		
+		    	S6_3_5_O: {
+					maxlength: 100,
+		         },	
+		    	S6_3_6: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S6_4: {
+		            digits: true,
+		            range:[1,2],
+		         },	
+		    	S6_5: {
+		            digits: true,
+		            range:[1,2],
+		         },	
+		    	S6_6: {
+		            digits: true,
+		            range:[1,2],
+		         },				         			         		         		         		                  	         		         	         	          		                                                                             
 			//FIN RULES
 		    },
 

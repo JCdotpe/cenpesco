@@ -1119,10 +1119,139 @@ $(function(){
 		$("#seccion3").validate({
 		    rules: {           
 		    	S3_100: {
-		            required: true,
-		            digits: true,
-		         },     
-		                                                                             
+		            digits:true,
+		            range:[1,6],
+		         },  
+		        S3_100_O:{
+					maxlength: 100, 
+		         }, 			            
+		    	S3_200: {
+		            digits:true,
+		            range:[1,8],
+		         }, 		
+		        S3_200_O:{
+					maxlength: 100, 
+		         },
+		    	S3_300: {
+		            digits:true,
+		            range:[1,7],
+		         }, 		
+		        S3_300_O:{
+					maxlength: 100, 
+		         }, 
+		    	S3_400: {
+		            digits:true,
+		            range:[1,8],
+		         }, 		
+		        S3_400_O:{
+					maxlength: 100, 
+		         }, 
+		    	S3_500: {
+		            digits:true,
+		            range:[1,8],
+		         }, 		
+		        S3_500_O:{
+					maxlength: 100, 
+		         }, 	
+		    	S3_600: {
+		            digits:true,
+		            range:[1,2],
+		         }, 
+		    	S3_600A: {
+		            digits:true,
+		            range:[0,24],
+		         }, 
+		    	S3_600B: {
+		            digits:true,
+		            range:[1,7],
+		         }, 	
+		    	S3_600C: {
+		            digits:true,
+		            range:[0,24],
+		         }, 
+		    	S3_700: {
+		            digits:true,
+		            range:[1,7],
+		         }, 
+		    	S3_800: {
+		            digits:true,
+		            range:[1,2],
+		         }, 	
+		    	S3_901: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_902: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_903: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_904: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_905: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_906: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_907: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_908: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_909: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_910: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_911: {
+		            digits:true,
+		            range:[0,1],
+		         }, 
+		    	S3_1001: {
+		            digits:true,
+		            range:[0,1],
+		         }, 
+		    	S3_1002: {
+		            digits:true,
+		            range:[0,1],
+		         }, 
+		    	S3_1003: {
+		            digits:true,
+		            range:[0,1],
+		         }, 	
+		    	S3_1004: {
+		            digits:true,
+		            range:[0,1],
+		         }, 
+		    	S3_1005: {
+		            digits:true,
+		            range:[0,1],
+		         },		
+		    	S3_1100: {
+		            digits:true,
+		            range:[1,2],
+		         },	
+		    	S3_1100E: {
+					maxlength: 100,
+		         },		
+		    	S3_1100E_COD: {
+		            digits:true,
+		            range:[1,9998],
+		         },			         	         		                  			         	         		                			         	         	         	         		         	         		         		         	         		         		         	         			         		          		                                                                                      
 			//FIN RULES
 		    },
 

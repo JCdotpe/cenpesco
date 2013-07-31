@@ -295,39 +295,39 @@ $('#S9_2').keyup(function(event) {
   for(var i=1; i<=$(this).val();i++){
     var asd = '<tr class="embarc">';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_3' + '_' + i + '" id="S9_3' + '_' + i + '" readonly value="' + i + '" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_4' + '_' + i + '" id="S9_4' + '_' + i + '" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_5' + '_' + i + '" id="S9_5' + '_' + i + '" value="" ><input type="text" class="span12" maxlength="100" name="S9_5' + '_' + i + '_O" id="S9_5' + '_' + i + '_O" value="" >Especifique</td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_6' + '_' + i + '" id="S9_6' + '_' + i + '" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_7' + '_' + i + '" id="S9_7' + '_' + i + '" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="4" name="S9_8' + '_' + i + '" id="S9_8' + '_' + i + '" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_A" id="S9_9' + '_' + i + '_A" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_M" id="S9_9' + '_' + i + '_M" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_10' + '_' + i + '_MED" id="S9_10' + '_' + i + '_MED" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_2" id="S9_10' + '_' + i + '_2" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_3" id="S9_10' + '_' + i + '_3" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ></td>';
+    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_4' + '_' + i + '" id="S9_4' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_5' + '_' + i + '" id="S9_5' + '_' + i + '" value="" ><div class="help-block error"></div><input type="text" class="span12" maxlength="100" name="S9_5' + '_' + i + '_O" id="S9_5' + '_' + i + '_O" value="" >Especifique</td>';
+    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_6' + '_' + i + '" id="S9_6' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_7' + '_' + i + '" id="S9_7' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="4" name="S9_8' + '_' + i + '" id="S9_8' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_A" id="S9_9' + '_' + i + '_A" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_M" id="S9_9' + '_' + i + '_M" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_10' + '_' + i + '_MED" id="S9_10' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_2" id="S9_10' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_3" id="S9_10' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd += '</tr>';
     $('#embarcacionex > tbody').append(asd);
     // $('#emb_table > tbody:last').append('<tr class="embx"><td><input type="text" class="span12" maxlength="80" name="S9_3_1' + '_' + i + '" id="S9_3_1' + '_' + i + '" value="' + i + '" ></td></tr>');
     var asd2 = '<tr class="embarc2">';
     asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_33' + '_' + i + '" id="S9_33' + '_' + i + '" readonly value="' + i + '" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_15' + '_' + i + '" id="S9_15' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_16' + '_' + i + '" id="S9_16' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_2" id="S9_22' + '_' + i + '_2" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_23' + '_' + i + '" id="S9_23' + '_' + i + '" value="" ></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_15' + '_' + i + '" id="S9_15' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_16' + '_' + i + '" id="S9_16' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_2" id="S9_22' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_23' + '_' + i + '" id="S9_23' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 += '</tr>'; 
     $('#embarcacionex2 > tbody').append(asd2);
   }
@@ -338,12 +338,735 @@ $('#S9_2').keyup(function(event) {
   // }); 
       //validacion
       $("#seccion9").validate({
-          rules: {           
+          rules: {        
             S9_1: {
-                  required: true,
-                  digits: true,
+                digits: true,
+                range:[1,2],
+               },  
+            S9_2: {
+                digits: true,
+                range:[1,6],
+               },                 
+//embarcacion 1
+            S9_3_1: {
+                digits: true,
+                range:[1,6],
                },     
-                                                                                   
+            S9_4_1: {
+                digits: true,
+                range:[1,5],
+               },   
+            S9_5_1: {
+                digits: true,
+                range:[1,7],
+               }, 
+            S9_5_1_O: {
+                maxlength: 100,
+               },                    
+            S9_6_1: {
+                digits: true,
+                range:[1,7],
+               },   
+            S9_7_1: {
+                digits: true,
+                range:[1,4],
+               },   
+            S9_8_1: {
+                digits: true,
+                range:[1950,2013],
+               },  
+            S9_9_1_A: {
+                digits: true,
+                range:[0,20],
+               },  
+            S9_9_1_M: {
+                digits: true,
+                range:[0,11],
+               },  
+            S9_10_1_MED: {
+                digits: true,
+                range:[1,2],
+               },  
+            S9_10_1_1: {
+                number: true,
+                range:[0.1,40],
+               },  
+            S9_10_1_2: {
+                number: true,
+                range:[0.1,15],
+               },  
+            S9_10_1_3: {
+                number: true,
+                range:[0.1,10],
+               },  
+            S9_11_1: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_12_1: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_13_1: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_14_1: {
+                maxlength: 100,
+               }, 
+            S9_15_1: {
+                digits: true,
+                range:[1,3],
+               }, 
+            S9_16_1: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_17_1: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_18_1: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_19_1: {
+                digits: true,
+                range:[10,98],
+               }, 
+            S9_20_1_T: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_20_1_C: {
+                digits: true,
+                range:[1,20000],
+               }, 
+            S9_21_1: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_1_MED: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_1_1: {
+                number: true,
+                range:[0.1,40],
+               },   
+            S9_22_1_2: {
+                number: true,
+                range:[0.1,15],
+               },        
+            S9_22_1_3: {
+                number: true,
+                range:[0.1,10],
+               },    
+            S9_23_1: {
+                digits: true,
+                range:[1,3],
+               },    
+//embarcacion 1  
+//embarcacion 2
+            S9_3_2: {
+                digits: true,
+                range:[1,6],
+               },     
+            S9_4_2: {
+                digits: true,
+                range:[1,5],
+               },   
+            S9_5_2: {
+                digits: true,
+                range:[1,7],
+               }, 
+            S9_5_2_O: {
+                maxlength: 100,
+               },                    
+            S9_6_2: {
+                digits: true,
+                range:[1,7],
+               },   
+            S9_7_2: {
+                digits: true,
+                range:[1,4],
+               },   
+            S9_8_2: {
+                digits: true,
+                range:[1950,2013],
+               },  
+            S9_9_2_A: {
+                digits: true,
+                range:[0,20],
+               },  
+            S9_9_2_M: {
+                digits: true,
+                range:[0,11],
+               },  
+            S9_10_2_MED: {
+                digits: true,
+                range:[1,2],
+               },  
+            S9_10_2_1: {
+                number: true,
+                range:[0.1,40],
+               },  
+            S9_10_2_2: {
+                number: true,
+                range:[0.1,15],
+               },  
+            S9_10_2_3: {
+                number: true,
+                range:[0.1,10],
+               },  
+            S9_11_2: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_12_2: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_13_2: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_14_2: {
+                maxlength: 100,
+               }, 
+            S9_15_2: {
+                digits: true,
+                range:[1,3],
+               }, 
+            S9_16_2: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_17_2: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_18_2: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_19_2: {
+                digits: true,
+                range:[10,98],
+               }, 
+            S9_20_2_T: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_20_2_C: {
+                digits: true,
+                range:[1,20000],
+               }, 
+            S9_21_2: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_2_MED: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_2_1: {
+                number: true,
+                range:[0.1,40],
+               },   
+            S9_22_2_2: {
+                number: true,
+                range:[0.1,15],
+               },        
+            S9_22_2_3: {
+                number: true,
+                range:[0.1,10],
+               },    
+            S9_23_2: {
+                digits: true,
+                range:[1,3],
+               },    
+//embarcacion 2                   
+//embarcacion 3
+            S9_3_3: {
+                digits: true,
+                range:[1,6],
+               },     
+            S9_4_3: {
+                digits: true,
+                range:[1,5],
+               },   
+            S9_5_3: {
+                digits: true,
+                range:[1,7],
+               }, 
+            S9_5_3_O: {
+                maxlength: 100,
+               },                    
+            S9_6_3: {
+                digits: true,
+                range:[1,7],
+               },   
+            S9_7_3: {
+                digits: true,
+                range:[1,4],
+               },   
+            S9_8_3: {
+                digits: true,
+                range:[1950,2013],
+               },  
+            S9_9_3_A: {
+                digits: true,
+                range:[0,20],
+               },  
+            S9_9_3_M: {
+                digits: true,
+                range:[0,11],
+               },  
+            S9_10_3_MED: {
+                digits: true,
+                range:[1,2],
+               },  
+            S9_10_3_1: {
+                number: true,
+                range:[0.1,40],
+               },  
+            S9_10_3_2: {
+                number: true,
+                range:[0.1,15],
+               },  
+            S9_10_3_3: {
+                number: true,
+                range:[0.1,10],
+               },  
+            S9_11_3: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_12_3: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_13_3: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_14_3: {
+                maxlength: 100,
+               }, 
+            S9_15_3: {
+                digits: true,
+                range:[1,3],
+               }, 
+            S9_16_3: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_17_3: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_18_3: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_19_3: {
+                digits: true,
+                range:[10,98],
+               }, 
+            S9_20_3_T: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_20_3_C: {
+                digits: true,
+                range:[1,20000],
+               }, 
+            S9_21_3: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_3_MED: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_3_1: {
+                number: true,
+                range:[0.1,40],
+               },   
+            S9_22_3_2: {
+                number: true,
+                range:[0.1,15],
+               },        
+            S9_22_3_3: {
+                number: true,
+                range:[0.1,10],
+               },    
+            S9_23_3: {
+                digits: true,
+                range:[1,3],
+               },    
+//embarcacion 3    
+//embarcacion 4
+            S9_3_4: {
+                digits: true,
+                range:[1,6],
+               },     
+            S9_4_4: {
+                digits: true,
+                range:[1,5],
+               },   
+            S9_5_4: {
+                digits: true,
+                range:[1,7],
+               }, 
+            S9_5_4_O: {
+                maxlength: 100,
+               },                    
+            S9_6_4: {
+                digits: true,
+                range:[1,7],
+               },   
+            S9_7_4: {
+                digits: true,
+                range:[1,4],
+               },   
+            S9_8_4: {
+                digits: true,
+                range:[1950,2013],
+               },  
+            S9_9_4_A: {
+                digits: true,
+                range:[0,20],
+               },  
+            S9_9_4_M: {
+                digits: true,
+                range:[0,11],
+               },  
+            S9_10_4_MED: {
+                digits: true,
+                range:[1,2],
+               },  
+            S9_10_4_1: {
+                number: true,
+                range:[0.1,40],
+               },  
+            S9_10_4_2: {
+                number: true,
+                range:[0.1,15],
+               },  
+            S9_10_4_3: {
+                number: true,
+                range:[0.1,10],
+               },  
+            S9_11_4: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_12_4: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_13_4: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_14_4: {
+                maxlength: 100,
+               }, 
+            S9_15_4: {
+                digits: true,
+                range:[1,3],
+               }, 
+            S9_16_4: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_17_4: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_18_4: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_19_4: {
+                digits: true,
+                range:[10,98],
+               }, 
+            S9_20_4_T: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_20_4_C: {
+                digits: true,
+                range:[1,20000],
+               }, 
+            S9_21_4: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_4_MED: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_4_1: {
+                number: true,
+                range:[0.1,40],
+               },   
+            S9_22_4_2: {
+                number: true,
+                range:[0.1,15],
+               },        
+            S9_22_4_3: {
+                number: true,
+                range:[0.1,10],
+               },    
+            S9_23_4: {
+                digits: true,
+                range:[1,3],
+               },    
+//embarcacion 4      
+//embarcacion 5
+            S9_3_5: {
+                digits: true,
+                range:[1,6],
+               },     
+            S9_4_5: {
+                digits: true,
+                range:[1,5],
+               },   
+            S9_5_5: {
+                digits: true,
+                range:[1,7],
+               }, 
+            S9_5_5_O: {
+                maxlength: 100,
+               },                    
+            S9_6_5: {
+                digits: true,
+                range:[1,7],
+               },   
+            S9_7_5: {
+                digits: true,
+                range:[1,4],
+               },   
+            S9_8_5: {
+                digits: true,
+                range:[1950,2013],
+               },  
+            S9_9_5_A: {
+                digits: true,
+                range:[0,20],
+               },  
+            S9_9_5_M: {
+                digits: true,
+                range:[0,11],
+               },  
+            S9_10_5_MED: {
+                digits: true,
+                range:[1,2],
+               },  
+            S9_10_5_1: {
+                number: true,
+                range:[0.1,40],
+               },  
+            S9_10_5_2: {
+                number: true,
+                range:[0.1,15],
+               },  
+            S9_10_5_3: {
+                number: true,
+                range:[0.1,10],
+               },  
+            S9_11_5: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_12_5: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_13_5: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_14_5: {
+                maxlength: 100,
+               }, 
+            S9_15_5: {
+                digits: true,
+                range:[1,3],
+               }, 
+            S9_16_5: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_17_5: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_18_5: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_19_5: {
+                digits: true,
+                range:[10,98],
+               }, 
+            S9_20_5_T: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_20_5_C: {
+                digits: true,
+                range:[1,20000],
+               }, 
+            S9_21_5: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_5_MED: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_5_1: {
+                number: true,
+                range:[0.1,40],
+               },   
+            S9_22_5_2: {
+                number: true,
+                range:[0.1,15],
+               },        
+            S9_22_5_3: {
+                number: true,
+                range:[0.1,10],
+               },    
+            S9_23_5: {
+                digits: true,
+                range:[1,3],
+               },    
+//embarcacion 5         
+//embarcacion 6
+            S9_3_6: {
+                digits: true,
+                range:[1,6],
+               },     
+            S9_4_6: {
+                digits: true,
+                range:[1,5],
+               },   
+            S9_5_6: {
+                digits: true,
+                range:[1,7],
+               }, 
+            S9_5_6_O: {
+                maxlength: 100,
+               },                    
+            S9_6_6: {
+                digits: true,
+                range:[1,7],
+               },   
+            S9_7_6: {
+                digits: true,
+                range:[1,4],
+               },   
+            S9_8_6: {
+                digits: true,
+                range:[1950,2013],
+               },  
+            S9_9_6_A: {
+                digits: true,
+                range:[0,20],
+               },  
+            S9_9_6_M: {
+                digits: true,
+                range:[0,11],
+               },  
+            S9_10_6_MED: {
+                digits: true,
+                range:[1,2],
+               },  
+            S9_10_6_1: {
+                number: true,
+                range:[0.1,40],
+               },  
+            S9_10_6_2: {
+                number: true,
+                range:[0.1,15],
+               },  
+            S9_10_6_3: {
+                number: true,
+                range:[0.1,10],
+               },  
+            S9_11_6: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_12_6: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_13_6: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_14_6: {
+                maxlength: 100,
+               }, 
+            S9_15_6: {
+                digits: true,
+                range:[1,3],
+               }, 
+            S9_16_6: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_17_6: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_18_6: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_19_6: {
+                digits: true,
+                range:[10,98],
+               }, 
+            S9_20_6_T: {
+                digits: true,
+                range:[1,4],
+               }, 
+            S9_20_6_C: {
+                digits: true,
+                range:[1,20000],
+               }, 
+            S9_21_6: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_6_MED: {
+                digits: true,
+                range:[1,2],
+               }, 
+            S9_22_6_1: {
+                number: true,
+                range:[0.1,40],
+               },   
+            S9_22_6_2: {
+                number: true,
+                range:[0.1,15],
+               },        
+            S9_22_6_3: {
+                number: true,
+                range:[0.1,10],
+               },    
+            S9_23_6: {
+                digits: true,
+                range:[1,3],
+               },    
+//embarcacion 6                                    
         //FIN RULES
           },
 

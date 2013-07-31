@@ -1196,10 +1196,190 @@ $(function(){
 		$("#seccion4").validate({
 		    rules: {           
 		    	S4_1: {
-		            required: true,
 		            digits: true,
+		            range:[1,2],
 		         },     
-		                                                                             
+		    	S4_2_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_2_1_1: {
+		            digits: true,
+		            range:[1,2],
+		         }, 	
+		    	S4_2_2: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_2_2_1: {
+		            digits: true,
+		            range:[1,2],
+		         }, 		
+		    	S4_2_3: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_2_3_1: {
+		            digits: true,
+		            range:[1,2],
+		         }, 
+		    	S4_2_4: {
+		            digits: true,
+		            range:[0,1],
+		         }, 		
+		    	S4_2_4_O: {
+					maxlength: 100, 
+		         }, 	
+		    	S4_2_4_1: {
+		            digits: true,
+		            range:[1,2],
+		         }, 
+		    	S4_3_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_3_1_1: {
+					maxlength: 100,
+		         }, 	
+		    	S4_3_2: {
+		            digits: true,
+		            range:[0,1],
+		         }, 		 
+		    	S4_3_2_1: {
+					maxlength: 100,
+		         }, 
+		    	S4_3_3: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_4_1: {
+		            digits: true,
+		            range:[1,2],
+		         }, 	
+		    	S4_4_1_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_2: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_3: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_4: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_5: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_6: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_7: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_8: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_9: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_10: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_4_1_11: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_4_1_12: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_5_1: {
+		            digits: true,
+		            range:[1,2],
+		         }, 	
+		    	S4_5_1_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_2: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_5_1_3: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_4: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_5: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_6: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_5_1_7: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_8: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_5_1_9: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_10: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_5_1_11: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_5_1_12: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_6_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_6_2: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_6_3: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_6_4: {
+		            digits: true,
+		            range:[0,1],
+		         }, 	
+		    	S4_6_5: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S4_6_6: {
+		            digits: true,
+		            range:[0,1],
+		         }, 		         	         		         		         		         	         		         		         		         	         	         		         	         	         	         	         	         		         		                 	         			         			         	                  		         		         	         	         	         	                                                                             
 			//FIN RULES
 		    },
 

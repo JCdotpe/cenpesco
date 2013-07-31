@@ -439,7 +439,7 @@ $S5_5_1 = array(
 $S5_5_1_C = array(
 	'name'	=> 'S5_5_1_C',
 	'id'	=> 'S5_5_1_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //agallera 1
@@ -489,7 +489,7 @@ $S5_5_2 = array(
 $S5_5_2_C = array(
 	'name'	=> 'S5_5_2_C',
 	'id'	=> 'S5_5_2_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Trasmallo 1
@@ -540,7 +540,7 @@ $S5_5_3 = array(
 $S5_5_3_C = array(
 	'name'	=> 'S5_5_3_C',
 	'id'	=> 'S5_5_3_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Hondera 1
@@ -590,7 +590,7 @@ $S5_5_4 = array(
 $S5_5_4_C = array(
 	'name'	=> 'S5_5_4_C',
 	'id'	=> 'S5_5_4_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Tarrafa 1
@@ -641,7 +641,7 @@ $S5_5_5 = array(
 $S5_5_5_C = array(
 	'name'	=> 'S5_5_5_C',
 	'id'	=> 'S5_5_5_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Arrastradora 1
@@ -692,7 +692,7 @@ $S5_5_6 = array(
 $S5_5_6_C = array(
 	'name'	=> 'S5_5_6_C',
 	'id'	=> 'S5_5_6_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Capiccuhuana 1
@@ -743,7 +743,7 @@ $S5_5_7 = array(
 $S5_5_7_C = array(
 	'name'	=> 'S5_5_7_C',
 	'id'	=> 'S5_5_7_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Chinchorro 1
@@ -793,7 +793,7 @@ $S5_5_8 = array(
 $S5_5_8_C = array(
 	'name'	=> 'S5_5_8_C',
 	'id'	=> 'S5_5_8_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 //Aissaccahuanna 1
@@ -2612,93 +2612,93 @@ echo '</div>';
                echo '</tr>';              
                echo '<tr>';
                   echo '<td>Agallera</td>';
-                  echo '<td>' . form_input($S5_5_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_1_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_1_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_1_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_1_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_1_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_1_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_1) . '<div class="help-block error">' . form_error($S5_5_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_1_C) . '<div class="help-block error">' . form_error($S5_5_1_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_1_1) . '<div class="help-block error">' . form_error($S5_5_1_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_1_2) . '<div class="help-block error">' . form_error($S5_5_1_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_1_3) . '<div class="help-block error">' . form_error($S5_5_1_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_1_4) . '<div class="help-block error">' . form_error($S5_5_1_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_1_5) . '<div class="help-block error">' . form_error($S5_5_1_5['name']) . '</div></td>';                                                 
                 echo '</tr>';
                echo '<tr>';
                   echo '<td>Trasmallo</td>';
-                  echo '<td>' . form_input($S5_5_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_2_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_2_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_2_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_2_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_2_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_2_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_2) . '<div class="help-block error">' . form_error($S5_5_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_2_C) . '<div class="help-block error">' . form_error($S5_5_2_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_2_1) . '<div class="help-block error">' . form_error($S5_5_2_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_2_2) . '<div class="help-block error">' . form_error($S5_5_2_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_2_3) . '<div class="help-block error">' . form_error($S5_5_2_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_2_4) . '<div class="help-block error">' . form_error($S5_5_2_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_2_5) . '<div class="help-block error">' . form_error($S5_5_2_5['name']) . '</div></td>';                                                 
                 echo '</tr>'; 
                 echo '<tr>';
                   echo '<td>Hondera</td>';
-                  echo '<td>' . form_input($S5_5_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_3_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_3_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_3_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_3_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_3_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_3_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_3) . '<div class="help-block error">' . form_error($S5_5_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_3_C) . '<div class="help-block error">' . form_error($S5_5_3_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_3_1) . '<div class="help-block error">' . form_error($S5_5_3_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_3_2) . '<div class="help-block error">' . form_error($S5_5_3_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_3_3) . '<div class="help-block error">' . form_error($S5_5_3_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_3_4) . '<div class="help-block error">' . form_error($S5_5_3_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_3_5) . '<div class="help-block error">' . form_error($S5_5_3_5['name']) . '</div></td>';                                                 
                 echo '</tr>';         
                 echo '<tr>';
                   echo '<td>Tarrafa</td>';
-                  echo '<td>' . form_input($S5_5_4) . '</td>';
-                  echo '<td>' . form_input($S5_5_4_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_4_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_4_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_4_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_4_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_4_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_4) . '<div class="help-block error">' . form_error($S5_5_4['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_4_C) . '<div class="help-block error">' . form_error($S5_5_4_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_4_1) . '<div class="help-block error">' . form_error($S5_5_4_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_4_2) . '<div class="help-block error">' . form_error($S5_5_4_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_4_3) . '<div class="help-block error">' . form_error($S5_5_4_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_4_4) . '<div class="help-block error">' . form_error($S5_5_4_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_4_5) . '<div class="help-block error">' . form_error($S5_5_4_5['name']) . '</div></td>';                                                 
                 echo '</tr>';            
                 echo '<tr>';
                   echo '<td>Arrastradora</td>';
-                  echo '<td>' . form_input($S5_5_5) . '</td>';
-                  echo '<td>' . form_input($S5_5_5_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_5_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_5_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_5_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_5_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_5_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_5) . '<div class="help-block error">' . form_error($S5_5_5['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_5_C) . '<div class="help-block error">' . form_error($S5_5_5_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_5_1) . '<div class="help-block error">' . form_error($S5_5_5_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_5_2) . '<div class="help-block error">' . form_error($S5_5_5_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_5_3) . '<div class="help-block error">' . form_error($S5_5_5_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_5_4) . '<div class="help-block error">' . form_error($S5_5_5_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_5_5) . '<div class="help-block error">' . form_error($S5_5_5_5['name']) . '</div></td>';                                                 
                 echo '</tr>';   
                 echo '<tr>';
                   echo '<td>Capiccuhuana</td>';
-                  echo '<td>' . form_input($S5_5_6) . '</td>';
-                  echo '<td>' . form_input($S5_5_6_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_6_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_6_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_6_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_6_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_6_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_6) . '<div class="help-block error">' . form_error($S5_5_6['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_6_C) . '<div class="help-block error">' . form_error($S5_5_6_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_6_1) . '<div class="help-block error">' . form_error($S5_5_6_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_6_2) . '<div class="help-block error">' . form_error($S5_5_6_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_6_3) . '<div class="help-block error">' . form_error($S5_5_6_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_6_4) . '<div class="help-block error">' . form_error($S5_5_6_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_6_5) . '<div class="help-block error">' . form_error($S5_5_6_5['name']) . '</div></td>';                                                 
                 echo '</tr>';       
                 echo '<tr>';
                   echo '<td>Chinchorro</td>';
-                  echo '<td>' . form_input($S5_5_7) . '</td>';
-                  echo '<td>' . form_input($S5_5_7_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_7_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_7_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_7_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_7_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_7_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_7) . '<div class="help-block error">' . form_error($S5_5_7['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_7_C) . '<div class="help-block error">' . form_error($S5_5_7_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_7_1) . '<div class="help-block error">' . form_error($S5_5_7_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_7_2) . '<div class="help-block error">' . form_error($S5_5_7_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_7_3) . '<div class="help-block error">' . form_error($S5_5_7_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_7_4) . '<div class="help-block error">' . form_error($S5_5_7_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_7_5) . '<div class="help-block error">' . form_error($S5_5_7_5['name']) . '</div></td>';                                                 
                 echo '</tr>';          
                 echo '<tr>';
                   echo '<td>Aissaccahuanna</td>';
-                  echo '<td>' . form_input($S5_5_8) . '</td>';
-                  echo '<td>' . form_input($S5_5_8_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_8_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_8_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_8_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_8_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_8_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_8) . '<div class="help-block error">' . form_error($S5_5_8['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_8_C) . '<div class="help-block error">' . form_error($S5_5_8_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_8_1) . '<div class="help-block error">' . form_error($S5_5_8_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_8_2) . '<div class="help-block error">' . form_error($S5_5_8_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_8_3) . '<div class="help-block error">' . form_error($S5_5_8_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_8_4) . '<div class="help-block error">' . form_error($S5_5_8_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_8_5) . '<div class="help-block error">' . form_error($S5_5_8_5['name']) . '</div></td>';                                                 
                 echo '</tr>';     
                 echo '<tr>';
-                  echo '<td>' . form_input($S5_5_9_O) . ' </td>';
-                  echo '<td>' . form_input($S5_5_9) . '</td>';
-                  echo '<td>' . form_input($S5_5_9_C) . '</td>';
-                  echo '<td>' . form_input($S5_5_9_1) . '</td>';
-                  echo '<td>' . form_input($S5_5_9_2) . '</td>';
-                  echo '<td>' . form_input($S5_5_9_3) . '</td>';
-                  echo '<td>' . form_input($S5_5_9_4) . '</td>';       
-                  echo '<td>' . form_input($S5_5_9_5) . '</td>';                                                 
+                  echo '<td>' . form_input($S5_5_9_O) . '<div class="help-block error">' . form_error($S5_5_9_O['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_9) . '<div class="help-block error">' . form_error($S5_5_9['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_9_C) . '<div class="help-block error">' . form_error($S5_5_9_C['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_9_1) . '<div class="help-block error">' . form_error($S5_5_9_1['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_9_2) . '<div class="help-block error">' . form_error($S5_5_9_2['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_9_3) . '<div class="help-block error">' . form_error($S5_5_9_3['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_9_4) . '<div class="help-block error">' . form_error($S5_5_9_4['name']) . '</div></td>';       
+                  echo '<td>' . form_input($S5_5_9_5) . '<div class="help-block error">' . form_error($S5_5_9_5['name']) . '</div></td>';                                                 
                 echo '</tr>';       
 
                	echo '<td><b>APAREJOS<b/></td>';
@@ -2713,33 +2713,28 @@ echo '</div>';
 
                 echo '<tr>';
                   echo '<td>Lineas y anzuelos</td>';
-                  echo '<td>' . form_input($S5_5_10) . '</td>';
-                  echo '<td>' . form_input($S5_5_10_C) . '</td>';                                              
+                  echo '<td>' . form_input($S5_5_10) . '<div class="help-block error">' . form_error($S5_5_10['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_10_C) . '<div class="help-block error">' . form_error($S5_5_10_C['name']) . '</div></td>';                                              
                 echo '</tr>';   
                 echo '<tr>';
                   echo '<td>Arpon</td>';
-                  echo '<td>' . form_input($S5_5_11) . '</td>';
-                  echo '<td>' . form_input($S5_5_11_C) . '</td>';                                              
+                  echo '<td>' . form_input($S5_5_11) . '<div class="help-block error">' . form_error($S5_5_11['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_11_C) . '<div class="help-block error">' . form_error($S5_5_11_C['name']) . '</div></td>';                                              
                 echo '</tr>';   
                 echo '<tr>';
                   echo '<td>Farpa</td>';
-                  echo '<td>' . form_input($S5_5_12) . '</td>';
-                  echo '<td>' . form_input($S5_5_12_C) . '</td>';                                              
+                  echo '<td>' . form_input($S5_5_12) . '<div class="help-block error">' . form_error($S5_5_12['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_12_C) . '<div class="help-block error">' . form_error($S5_5_12_C['name']) . '</div></td>';                                              
                 echo '</tr>';   
                 echo '<tr>';
                   echo '<td>Espineles</td>';
-                  echo '<td>' . form_input($S5_5_13) . '</td>';
-                  echo '<td>' . form_input($S5_5_13_C) . '</td>';                                              
+                  echo '<td>' . form_input($S5_5_13) . '<div class="help-block error">' . form_error($S5_5_13['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_13_C) . '<div class="help-block error">' . form_error($S5_5_13_C['name']) . '</div></td>';                                              
                 echo '</tr>';   
                 echo '<tr>';
-                  echo '<td>Espineles</td>';
-                  echo '<td>' . form_input($S5_5_13) . '</td>';
-                  echo '<td>' . form_input($S5_5_13_C) . '</td>';                                              
-                echo '</tr>';   
-                echo '<tr>';
-                  echo '<td>' . form_input($S5_5_14_O) . '</td>';
-                  echo '<td>' . form_input($S5_5_14) . '</td>';
-                  echo '<td>' . form_input($S5_5_14_C) . '</td>';                                              
+                  echo '<td>' . form_input($S5_5_14_O) . '<div class="help-block error">' . form_error($S5_5_14_O['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_14) . '<div class="help-block error">' . form_error($S5_5_14['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_14_C) . '<div class="help-block error">' . form_error($S5_5_14_C['name']) . '</div></td>';                                              
                 echo '</tr>';  
 
 
@@ -2754,15 +2749,15 @@ echo '</div>';
                 echo '</tr>';  
                 echo '<tr>';
                   echo '<td>Trampa</td>';
-                  echo '<td>' . form_input($S5_5_15) . '</td>';                                         
+                  echo '<td>' . form_input($S5_5_15) . '<div class="help-block error">' . form_error($S5_5_15['name']) . '</div></td>';                                         
                 echo '</tr>';  
                 echo '<tr>';
                   echo '<td>Tapaje</td>';
-                  echo '<td>' . form_input($S5_5_16) . '</td>';                                         
+                  echo '<td>' . form_input($S5_5_16) . '<div class="help-block error">' . form_error($S5_5_16['name']) . '</div></td>';                                         
                 echo '</tr>';  
                 echo '<tr>';
-                  echo '<td>' . form_input($S5_5_17_O) . '</td>';
-                  echo '<td>' . form_input($S5_5_17) . '</td>';                                         
+                  echo '<td>' . form_input($S5_5_17_O) . '<div class="help-block error">' . form_error($S5_5_17_O['name']) . '</div></td>';
+                  echo '<td>' . form_input($S5_5_17) . '<div class="help-block error">' . form_error($S5_5_17['name']) . '</div></td>';                                         
                 echo '</tr>';  
               echo '</tbody>';
             echo '</table>';		
@@ -2820,176 +2815,176 @@ echo '</div>';
 					              echo '<tbody>';
 					               echo '<tr>';
 					                  echo '<td>Acarahuazu</td>';
-					                  echo '<td>' . form_input($S5_6_1) . '</td>';
-					                  echo '<td>' . form_input($S5_6_1_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_1) . '<div class="help-block error">' . form_error($S5_6_1['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_1_C) . '<div class="help-block error">' . form_error($S5_6_1_C['name']) . '</div></td>';
 					                  echo '<td>Mauri</td>';
-					                  echo '<td>' . form_input($S5_6_23) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_23_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_23) . '<div class="help-block error">' . form_error($S5_6_23['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_23_C) . '<div class="help-block error">' . form_error($S5_6_23_C['name']) . '</div></td>';     
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>Bagre</td>';
-					                  echo '<td>' . form_input($S5_6_2) . '</td>';
-					                  echo '<td>' . form_input($S5_6_2_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_2) . '<div class="help-block error">' . form_error($S5_6_2['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_2_C) . '<div class="help-block error">' . form_error($S5_6_2_C['name']) . '</div></td>';
 					                  echo '<td>Mota</td>';
-					                  echo '<td>' . form_input($S5_6_24) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_24_C) . '</td>';    
+					                  echo '<td>' . form_input($S5_6_24) . '<div class="help-block error">' . form_error($S5_6_24['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_24_C) . '<div class="help-block error">' . form_error($S5_6_24_C['name']) . '</div></td>';    
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Bocón</td>';
-					                  echo '<td>' . form_input($S5_6_3) . '</td>';
-					                  echo '<td>' . form_input($S5_6_3_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_3) . '<div class="help-block error">' . form_error($S5_6_3['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_3_C) . '<div class="help-block error">' . form_error($S5_6_3_C['name']) . '</div></td>';
 					                  echo '<td>Novia</td>';
-					                  echo '<td>' . form_input($S5_6_25) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_25_C) . '</td>';    
+					                  echo '<td>' . form_input($S5_6_25) . '<div class="help-block error">' . form_error($S5_6_25['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_25_C) . '<div class="help-block error">' . form_error($S5_6_25_C['name']) . '</div></td>';    
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Boquichico</td>';
-					                  echo '<td>' . form_input($S5_6_4) . '</td>';
-					                  echo '<td>' . form_input($S5_6_4_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_4) . '<div class="help-block error">' . form_error($S5_6_4['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_4_C) . '<div class="help-block error">' . form_error($S5_6_4_C['name']) . '</div></td>';
 					                  echo '<td>Paco</td>';
-					                  echo '<td>' . form_input($S5_6_26) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_26_C) . '</td>';  
+					                  echo '<td>' . form_input($S5_6_26) . '<div class="help-block error">' . form_error($S5_6_26['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_26_C) . '<div class="help-block error">' . form_error($S5_6_26_C['name']) . '</div></td>';  
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Bujurqui</td>';
-					                  echo '<td>' . form_input($S5_6_5) . '</td>';
-					                  echo '<td>' . form_input($S5_6_5_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_5) . '<div class="help-block error">' . form_error($S5_6_5['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_5_C) . '<div class="help-block error">' . form_error($S5_6_5_C['name']) . '</div></td>';
 					                  echo '<td>Palometa</td>';
-					                  echo '<td>' . form_input($S5_6_27) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_27_C) . '</td>';    
+					                  echo '<td>' . form_input($S5_6_27) . '<div class="help-block error">' . form_error($S5_6_27['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_27_C) . '<div class="help-block error">' . form_error($S5_6_27_C['name']) . '</div></td>';    
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Camaron de rio</td>';
-					                  echo '<td>' . form_input($S5_6_6) . '</td>';
-					                  echo '<td>' . form_input($S5_6_6_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_6) . '<div class="help-block error">' . form_error($S5_6_6['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_6_C) . '<div class="help-block error">' . form_error($S5_6_6_C['name']) . '</div></td>';
 					                  echo '<td>Paña, piraña</td>';
-					                  echo '<td>' . form_input($S5_6_28) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_28_C) . '</td>'; 
+					                  echo '<td>' . form_input($S5_6_28) . '<div class="help-block error">' . form_error($S5_6_28['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_28_C) . '<div class="help-block error">' . form_error($S5_6_28_C['name']) . '</div></td>'; 
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Carachama</td>';
-					                  echo '<td>' . form_input($S5_6_7) . '</td>';
-					                  echo '<td>' . form_input($S5_6_7_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_7) . '<div class="help-block error">' . form_error($S5_6_7['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_7_C) . '<div class="help-block error">' . form_error($S5_6_7_C['name']) . '</div></td>';
 					                  echo '<td>Pejerrey</td>';
-					                  echo '<td>' . form_input($S5_6_29) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_29_C) . '</td>'; 
+					                  echo '<td>' . form_input($S5_6_29) . '<div class="help-block error">' . form_error($S5_6_29['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_29_C) . '<div class="help-block error">' . form_error($S5_6_29_C['name']) . '</div></td>'; 
 					               echo '</tr>'; 			
 					               echo '<tr>';
 					                  echo '<td>Carachi amarillo</td>';
-					                  echo '<td>' . form_input($S5_6_8) . '</td>';
-					                  echo '<td>' . form_input($S5_6_8_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_8) . '<div class="help-block error">' . form_error($S5_6_8['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_8_C) . '<div class="help-block error">' . form_error($S5_6_8_C['name']) . '</div></td>';
 					                  echo '<td>Ractacara</td>';
-					                  echo '<td>' . form_input($S5_6_30) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_30_C) . '</td>'; 
+					                  echo '<td>' . form_input($S5_6_30) . '<div class="help-block error">' . form_error($S5_6_30['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_30_C) . '<div class="help-block error">' . form_error($S5_6_30_C['name']) . '</div></td>'; 
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Carachi negro</td>';
-					                  echo '<td>' . form_input($S5_6_9) . '</td>';
-					                  echo '<td>' . form_input($S5_6_9_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_9) . '<div class="help-block error">' . form_error($S5_6_9['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_9_C) . '<div class="help-block error">' . form_error($S5_6_9_C['name']) . '</div></td>';
 					                  echo '<td>Sabalo</td>';
-					                  echo '<td>' . form_input($S5_6_31) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_31_C) . '</td>';    
+					                  echo '<td>' . form_input($S5_6_31) . '<div class="help-block error">' . form_error($S5_6_31['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_31_C) . '<div class="help-block error">' . form_error($S5_6_31_C['name']) . '</div></td>';    
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Chambira</td>';
-					                  echo '<td>' . form_input($S5_6_10) . '</td>';
-					                  echo '<td>' . form_input($S5_6_10_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_10) . '<div class="help-block error">' . form_error($S5_6_10['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_10_C) . '<div class="help-block error">' . form_error($S5_6_10_C['name']) . '</div></td>';
 					                  echo '<td>Sardina</td>';
-					                  echo '<td>' . form_input($S5_6_32) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_32_C) . '</td>';      
+					                  echo '<td>' . form_input($S5_6_32) . '<div class="help-block error">' . form_error($S5_6_32['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_32_C) . '<div class="help-block error">' . form_error($S5_6_32_C['name']) . '</div></td>';      
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Chiochio</td>';
-					                  echo '<td>' . form_input($S5_6_11) . '</td>';
-					                  echo '<td>' . form_input($S5_6_11_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_11) . '<div class="help-block error">' . form_error($S5_6_11['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_11_C) . '<div class="help-block error">' . form_error($S5_6_11_C['name']) . '</div></td>';
 					                  echo '<td>Shiripira</td>';
-					                  echo '<td>' . form_input($S5_6_33) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_33_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_33) . '<div class="help-block error">' . form_error($S5_6_33['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_33_C) . '<div class="help-block error">' . form_error($S5_6_33_C['name']) . '</div></td>';     
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Corvina</td>';
-					                  echo '<td>' . form_input($S5_6_12) . '</td>';
-					                  echo '<td>' . form_input($S5_6_12_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_12) . '<div class="help-block error">' . form_error($S5_6_12['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_12_C) . '<div class="help-block error">' . form_error($S5_6_12_C['name']) . '</div></td>';
 					                  echo '<td>Shuyo</td>';
-					                  echo '<td>' . form_input($S5_6_34) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_34_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_34) . '<div class="help-block error">' . form_error($S5_6_34['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_34_C) . '<div class="help-block error">' . form_error($S5_6_34_C['name']) . '</div></td>';     
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Dentón</td>';
-					                  echo '<td>' . form_input($S5_6_13) . '</td>';
-					                  echo '<td>' . form_input($S5_6_13_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_13) . '<div class="help-block error">' . form_error($S5_6_13['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_13_C) . '<div class="help-block error">' . form_error($S5_6_13_C['name']) . '</div></td>';
 					                  echo '<td>Tilapia</td>';
-					                  echo '<td>' . form_input($S5_6_35) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_35_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_35) . '<div class="help-block error">' . form_error($S5_6_35['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_35_C) . '<div class="help-block error">' . form_error($S5_6_35_C['name']) . '</div></td>';     
 					               echo '</tr>'; 		
 					               echo '<tr>';
 					                  echo '<td>Doncella</td>';
-					                  echo '<td>' . form_input($S5_6_14) . '</td>';
-					                  echo '<td>' . form_input($S5_6_14_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_14) . '<div class="help-block error">' . form_error($S5_6_14['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_14_C) . '<div class="help-block error">' . form_error($S5_6_14_C['name']) . '</div></td>';
 					                  echo '<td>Trucha</td>';
-					                  echo '<td>' . form_input($S5_6_36) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_36_C) . '</td>';       
+					                  echo '<td>' . form_input($S5_6_36) . '<div class="help-block error">' . form_error($S5_6_36['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_36_C) . '<div class="help-block error">' . form_error($S5_6_36_C['name']) . '</div></td>';       
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Dorado</td>';
-					                  echo '<td>' . form_input($S5_6_15) . '</td>';
-					                  echo '<td>' . form_input($S5_6_15_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_15) . '<div class="help-block error">' . form_error($S5_6_15['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_15_C) . '<div class="help-block error">' . form_error($S5_6_15_C['name']) . '</div></td>';
 					                  echo '<td>Yahuarachi</td>';
-					                  echo '<td>' . form_input($S5_6_37) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_37_C) . '</td>';         
+					                  echo '<td>' . form_input($S5_6_37) . '<div class="help-block error">' . form_error($S5_6_37['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_37_C) . '<div class="help-block error">' . form_error($S5_6_37_C['name']) . '</div></td>';         
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Fasaco</td>';
-					                  echo '<td>' . form_input($S5_6_16) . '</td>';
-					                  echo '<td>' . form_input($S5_6_16_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_16) . '<div class="help-block error">' . form_error($S5_6_16['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_16_C) . '<div class="help-block error">' . form_error($S5_6_16_C['name']) . '</div></td>';
 					                  echo '<td>Yaraqui</td>';
-					                  echo '<td>' . form_input($S5_6_38) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_38_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_38) . '<div class="help-block error">' . form_error($S5_6_38['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_38_C) . '<div class="help-block error">' . form_error($S5_6_38_C['name']) . '</div></td>';     
 					               echo '</tr>'; 		
 					               echo '<tr>';
 					                  echo '<td>Ispi</td>';
-					                  echo '<td>' . form_input($S5_6_17) . '</td>';
-					                  echo '<td>' . form_input($S5_6_17_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_17) . '<div class="help-block error">' . form_error($S5_6_17['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_17_C) . '<div class="help-block error">' . form_error($S5_6_17_C['name']) . '</div></td>';
 					                  echo '<td>Yulilla</td>';
-					                  echo '<td>' . form_input($S5_6_39) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_39_C) . '</td>';    
+					                  echo '<td>' . form_input($S5_6_39) . '<div class="help-block error">' . form_error($S5_6_39['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_39_C) . '<div class="help-block error">' . form_error($S5_6_39_C['name']) . '</div></td>';    
 					               echo '</tr>'; 				
 					               echo '<tr>';
 					                  echo '<td>Langostino</td>';
-					                  echo '<td>' . form_input($S5_6_18) . '</td>';
-					                  echo '<td>' . form_input($S5_6_18_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_18) . '<div class="help-block error">' . form_error($S5_6_18['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_18_C) . '<div class="help-block error">' . form_error($S5_6_18_C['name']) . '</div></td>';
 					                  echo '<td>Zungaro</td>';
-					                  echo '<td>' . form_input($S5_6_40) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_41_C) . '</td>';   
+					                  echo '<td>' . form_input($S5_6_40) . '<div class="help-block error">' . form_error($S5_6_40['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_41_C) . '<div class="help-block error">' . form_error($S5_6_41_C['name']) . '</div></td>';   
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Lisa</td>';
-					                  echo '<td>' . form_input($S5_6_19) . '</td>';
-					                  echo '<td>' . form_input($S5_6_19_C) . '</td>';
-					                  echo '<td>' . form_input($S5_6_41_O) . '</td>';
-					                  echo '<td>' . form_input($S5_6_41) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_41_C) . '</td>'; 
+					                  echo '<td>' . form_input($S5_6_19) . '<div class="help-block error">' . form_error($S5_6_19['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_19_C) . '<div class="help-block error">' . form_error($S5_6_19_C['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_41_O) . '<div class="help-block error">' . form_error($S5_6_41_O['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_41) . '<div class="help-block error">' . form_error($S5_6_41['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_41_C) . '<div class="help-block error">' . form_error($S5_6_41_C['name']) . '</div></td>'; 
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Llambina</td>';
-					                  echo '<td>' . form_input($S5_6_20) . '</td>';
-					                  echo '<td>' . form_input($S5_6_20_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_20) . '<div class="help-block error">' . form_error($S5_6_20['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_20_C) . '<div class="help-block error">' . form_error($S5_6_20_C['name']) . '</div></td>';
 					                  echo '<td></td>';
 					                  echo '<td></td>';   
 					                  echo '<td></td>';     
 					               echo '</tr>'; 		
 					               echo '<tr>';
 					                  echo '<td>Manitoa</td>';
-					                  echo '<td>' . form_input($S5_6_21) . '</td>';
-					                  echo '<td>' . form_input($S5_6_21_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_21) . '<div class="help-block error">' . form_error($S5_6_21['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_21_C) . '<div class="help-block error">' . form_error($S5_6_21_C['name']) . '</div></td>';
 					                  echo '<td></td>';
 					                  echo '<td></td>';   
 					                  echo '<td></td>';     
 					               echo '</tr>'; 		
 					               echo '<tr>';
 					                  echo '<td>Maparate</td>';
-					                  echo '<td>' . form_input($S5_6_22) . '</td>';
-					                  echo '<td>' . form_input($S5_6_22_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_22) . '<div class="help-block error">' . form_error($S5_6_22['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_22_C) . '<div class="help-block error">' . form_error($S5_6_22_C['name']) . '</div></td>';
 					                  echo '<td></td>';
 					                  echo '<td></td>';   
 					                  echo '<td></td>';     
@@ -3012,40 +3007,40 @@ echo '</div>';
 					              echo '<tbody>';
 					               echo '<tr>';
 					                  echo '<td>Anguila eléctrica</td>';
-					                  echo '<td>' . form_input($S5_6_42) . '</td>';
-					                  echo '<td>' . form_input($S5_6_42_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_42) . '<div class="help-block error">' . form_error($S5_6_42['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_42_C) . '<div class="help-block error">' . form_error($S5_6_42_C['name']) . '</div></td>';
 					                  echo '<td>Pez disco</td>';
-					                  echo '<td>' . form_input($S5_6_47) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_47_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_47) . '<div class="help-block error">' . form_error($S5_6_47['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_47_C) . '<div class="help-block error">' . form_error($S5_6_47_C['name']) . '</div></td>';     
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>Arahuana</td>';
-					                  echo '<td>' . form_input($S5_6_43) . '</td>';
-					                  echo '<td>' . form_input($S5_6_43_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_43) . '<div class="help-block error">' . form_error($S5_6_43['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_43_C) . '<div class="help-block error">' . form_error($S5_6_43_C['name']) . '</div></td>';
 					                  echo '<td>Tucunare</td>';
-					                  echo '<td>' . form_input($S5_6_48) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_48_C) . '</td>';     
+					                  echo '<td>' . form_input($S5_6_48) . '<div class="help-block error">' . form_error($S5_6_48['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_48_C) . '<div class="help-block error">' . form_error($S5_6_48_C['name']) . '</div></td>';     
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>Coydoras jumbo</td>';
-					                  echo '<td>' . form_input($S5_6_44) . '</td>';
-					                  echo '<td>' . form_input($S5_6_44_C) . '</td>';
-					                  echo '<td>' . form_input($S5_6_49_O) . '</td>';
-					                  echo '<td>' . form_input($S5_6_49) . '</td>';   
-					                  echo '<td>' . form_input($S5_6_49_C) . '</td>'; 
+					                  echo '<td>' . form_input($S5_6_44) . '<div class="help-block error">' . form_error($S5_6_44['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_44_C) . '<div class="help-block error">' . form_error($S5_6_44_C['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_49_O) . '<div class="help-block error">' . form_error($S5_6_49_O['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_49) . '<div class="help-block error">' . form_error($S5_6_49['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_49_C) . '<div class="help-block error">' . form_error($S5_6_49_C['name']) . '</div></td>'; 
 					               echo '</tr>';  	
 					               echo '<tr>';
 					                  echo '<td>Escalar amazónico</td>';
-					                  echo '<td>' . form_input($S5_6_45) . '</td>';
-					                  echo '<td>' . form_input($S5_6_45_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_45) . '<div class="help-block error">' . form_error($S5_6_45['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_45_C) . '<div class="help-block error">' . form_error($S5_6_45_C['name']) . '</div></td>';
 					                  echo '<td></td>';
 					                  echo '<td></td>';   
 					                  echo '<td></td>';     
 					               echo '</tr>'; 
 					               echo '<tr>';
 					                  echo '<td>Neón tetra</td>';
-					                  echo '<td>' . form_input($S5_6_46) . '</td>';
-					                  echo '<td>' . form_input($S5_6_46_C) . '</td>';
+					                  echo '<td>' . form_input($S5_6_46) . '<div class="help-block error">' . form_error($S5_6_46['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_6_46_C) . '<div class="help-block error">' . form_error($S5_6_46_C['name']) . '</div></td>';
 					                  echo '<td></td>';
 					                  echo '<td></td>';   
 					                  echo '<td></td>';     
@@ -3091,23 +3086,23 @@ echo '</div>';
 					              echo '<tbody>';
 					               echo '<tr>';
 					                  echo '<td>Puerto</td>';
-					                  echo '<td>' . form_input($S5_8_1) . '</td>';
-					                  echo '<td>' . form_input($S5_8_1_1) . '</td>'; 
+					                  echo '<td>' . form_input($S5_8_1) . '<div class="help-block error">' . form_error($S5_8_1['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_8_1_1) . '<div class="help-block error">' . form_error($S5_8_1_1['name']) . '</div></td>'; 
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>Playa</td>';
-					                  echo '<td>' . form_input($S5_8_2) . '</td>';
-					                  echo '<td>' . form_input($S5_8_2_1) . '</td>'; 
+					                  echo '<td>' . form_input($S5_8_2) . '<div class="help-block error">' . form_error($S5_8_2['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_8_2_1) . '<div class="help-block error">' . form_error($S5_8_2_1['name']) . '</div></td>'; 
 					               echo '</tr>';  
 					               echo '<tr>';
 					                  echo '<td>Desembarcadero pesquero artesanal</td>';
-					                  echo '<td>' . form_input($S5_8_3) . '</td>';
-					                  echo '<td>' . form_input($S5_8_3_1) . '</td>'; 
+					                  echo '<td>' . form_input($S5_8_3) . '<div class="help-block error">' . form_error($S5_8_3['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_8_3_1) . '<div class="help-block error">' . form_error($S5_8_3_1['name']) . '</div></td>'; 
 					               echo '</tr>'; 					                					                						               				               					               
 					               echo '<tr>';
-					                  echo '<td>' . form_input($S5_8_4_O) . '</td>';
-					                  echo '<td>' . form_input($S5_8_4) . '</td>';
-					                  echo '<td>' . form_input($S5_8_4_1) . '</td>'; 
+					                  echo '<td>' . form_input($S5_8_4_O) . '<div class="help-block error">' . form_error($S5_8_4_O['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_8_4) . '<div class="help-block error">' . form_error($S5_8_4['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_8_4_1) . '<div class="help-block error">' . form_error($S5_8_4_1['name']) . '</div></td>'; 
 					               echo '</tr>'; 						               
 			              echo '</tbody>';
 			            echo '</table>';	
@@ -3131,63 +3126,63 @@ echo '</div>';
 					              echo '<tbody>';
 					               echo '<tr>';
 					                  echo '<td>Cambios climáticos</td>';
-					                  echo '<td>' . form_input($S5_9_1) . '</td>';
+					                  echo '<td>' . form_input($S5_9_1) . '<div class="help-block error">' . form_error($S5_9_1['name']) . '</div></td>';
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>Contaminación del agua</td>';
-					                  echo '<td>' . form_input($S5_9_2) . '</td>';
+					                  echo '<td>' . form_input($S5_9_2) . '<div class="help-block error">' . form_error($S5_9_2['name']) . '</div></td>';
 					               echo '</tr>';  
 					               echo '<tr>';
 					                  echo '<td>Falta de financiamiento</td>';
-					                  echo '<td>' . form_input($S5_9_3) . '</td>';
+					                  echo '<td>' . form_input($S5_9_3) . '<div class="help-block error">' . form_error($S5_9_3['name']) . '</div></td>';
 					               echo '</tr>'; 					                					                						               				               					               
 					               echo '<tr>';
 					                  echo '<td>Altos costos de equipos, materiales e insumos</td>';
-					                  echo '<td>' . form_input($S5_9_4) . '</td>';
+					                  echo '<td>' . form_input($S5_9_4) . '<div class="help-block error">' . form_error($S5_9_4['name']) . '</div></td>';
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					               echo '<td>Conflictos por utilización de las fuentes hídricas</td>';
-					                  echo '<td>' . form_input($S5_9_5) . '</td>';
+					                  echo '<td>' . form_input($S5_9_5) . '<div class="help-block error">' . form_error($S5_9_5['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
 					               echo '<td>Falta de sistemas de frio para preservar la producción</td>';
-					                  echo '<td>' . form_input($S5_9_6) . '</td>';
+					                  echo '<td>' . form_input($S5_9_6) . '<div class="help-block error">' . form_error($S5_9_6['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
 					               echo '<td>Falta de capacitación y asistencia técnica</td>';
-					                  echo '<td>' . form_input($S5_9_7) . '</td>';
+					                  echo '<td>' . form_input($S5_9_7) . '<div class="help-block error">' . form_error($S5_9_7['name']) . '</div></td>';
 					               echo '</tr>'; 		
 					               echo '<tr>';
 					               echo '<td>Infraestructura inadecuada</td>';
-					                  echo '<td>' . form_input($S5_9_8) . '</td>';
+					                  echo '<td>' . form_input($S5_9_8) . '<div class="help-block error">' . form_error($S5_9_8['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
 					               echo '<td>Falta de vías de acceso</td>';
-					                  echo '<td>' . form_input($S5_9_9) . '</td>';
+					                  echo '<td>' . form_input($S5_9_9) . '<div class="help-block error">' . form_error($S5_9_9['name']) . '</div></td>';
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					               echo '<td>Pesca indiscriminada</td>';
-					                  echo '<td>' . form_input($S5_9_10) . '</td>';
+					                  echo '<td>' . form_input($S5_9_10) . '<div class="help-block error">' . form_error($S5_9_10['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
 					               echo '<td>Inseguridad ciudadana</td>';
-					                  echo '<td>' . form_input($S5_9_11) . '</td>';
+					                  echo '<td>' . form_input($S5_9_11) . '<div class="help-block error">' . form_error($S5_9_11['name']) . '</div></td>';
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					               echo '<td>Uso de productos tóxicos</td>';
-					                  echo '<td>' . form_input($S5_9_12) . '</td>';
+					                  echo '<td>' . form_input($S5_9_12) . '<div class="help-block error">' . form_error($S5_9_12['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
 					               echo '<td>Uso de explosivos</td>';
-					                  echo '<td>' . form_input($S5_9_13) . '</td>';
+					                  echo '<td>' . form_input($S5_9_13) . '<div class="help-block error">' . form_error($S5_9_13['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
-					               echo '<td>' . form_input($S5_9_14_O) . '</td>';
-					                  echo '<td>' . form_input($S5_9_14) . '</td>';
+					               echo '<td>' . form_input($S5_9_14_O) . '<div class="help-block error">' . form_error($S5_9_14_O['name']) . '</div></td>';
+					                  echo '<td>' . form_input($S5_9_14) . '<div class="help-block error">' . form_error($S5_9_14['name']) . '</div></td>';
 					               echo '</tr>'; 	
 					               echo '<tr>';
 					               echo '<td>NINGUNO</td>';
-					                  echo '<td>' . form_input($S5_9_15) . '</td>';
+					                  echo '<td>' . form_input($S5_9_15) . '<div class="help-block error">' . form_error($S5_9_15['name']) . '</div></td>';
 					               echo '</tr>'; 						               				               					               					               				               					               				               						               			               
 			              echo '</tbody>';
 			            echo '</table>';	
@@ -3211,15 +3206,15 @@ echo '</div>';
 					              echo '<tbody>';
 					               echo '<tr>';
 					                  echo '<td>1. La cantidad de peces</td>';
-					                  echo '<td>' . form_input($S5_10_1) . '</td>';
+					                  echo '<td>' . form_input($S5_10_1) . '<div class="help-block error">' . form_error($S5_10_1['name']) . '</div></td>';
 					               echo '</tr>';   
 					               echo '<tr>';
 					                  echo '<td>2. La variedad de peces</td>';
-					                  echo '<td>' . form_input($S5_10_2) . '</td>';
+					                  echo '<td>' . form_input($S5_10_2) . '<div class="help-block error">' . form_error($S5_10_2['name']) . '</div></td>';
 					               echo '</tr>';  
 					               echo '<tr>';
 					                  echo '<td>3. El tamaño de peces</td>';
-					                  echo '<td>' . form_input($S5_10_3) . '</td>';
+					                  echo '<td>' . form_input($S5_10_3) . '<div class="help-block error">' . form_error($S5_10_3['name']) . '</div></td>';
 					               echo '</tr>'; 					                					                						               				               					               					               
 			              echo '</tbody>';
 			            echo '</table>';	
@@ -3358,10 +3353,1072 @@ $("#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD").change(function(ev
 		$("#seccion5").validate({
 		    rules: {           
 		    	S5_1_1: {
-		            required: true,
 		            digits: true,
+		            range:[0,1],
 		         },     
-		                                                                             
+		    	S5_1_1_1: {
+					maxlength: 50,
+		         }, 
+		    	S5_1_2: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_2_1: {
+					maxlength: 50,
+		         }, 
+		    	S5_1_3: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_3_1: {
+					maxlength: 50,
+		         }, 	
+		    	S5_1_4: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_4_1: {
+					maxlength: 50,
+		         }, 
+		    	S5_1_5: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_5_1: {
+					maxlength: 50,
+		         }, 
+		    	S5_1_6: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_6_1: {
+					maxlength: 50,
+		         }, 	
+		    	S5_1_7: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_7_1: {
+					maxlength: 50,
+		         }, 	
+		    	S5_1_8: {
+		            digits: true,
+		            range:[0,1],
+		         },     
+		    	S5_1_8_O: {
+					maxlength: 50,
+		         }, 		         
+		    	S5_1_8_1: {
+					maxlength: 50,
+		         }, 
+		    	S5_2_1: {
+		            digits: true,
+		            range:[0,1],
+		         }, 
+		    	S5_3: {
+		            digits: true,
+		            range:[1,4],
+		         }, 
+		    	S5_3_H: {
+		            digits: true,
+		            range:[0,23],
+		         }, 
+		    	S5_3_M: {
+		            digits: true,
+		            range:[0,59],
+		         }, 	
+		    	S5_4: {
+		            digits: true,
+		            range:[1,4],
+		         }, 
+		    	S5_4_H: {
+		            digits: true,
+		            range:[0,23],
+		         }, 
+		    	S5_4_M: {
+		            digits: true,
+		            range:[0,59],
+		         }, 
+//redes
+//red1
+		    	S5_5_1: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_1_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_1_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_1_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_1_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_1_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_1_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	
+//red1
+		    	S5_5_2: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_2_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_2_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_2_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_2_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_2_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_2_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	
+//red1
+		    	S5_5_3: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_3_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_3_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_3_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_3_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_3_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_3_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1		
+//red1
+		    	S5_5_4: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_4_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_4_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_4_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_4_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_4_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_4_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	        
+//red1
+		    	S5_5_5: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_5_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_5_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_5_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_5_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_5_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+
+		    	S5_5_5_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	  	      
+//red1
+		    	S5_5_6: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_6_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_6_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_6_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_6_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_6_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_6_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	  
+//red1
+		    	S5_5_7: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_7_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_7_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_7_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_7_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_7_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_7_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	 	
+//red1
+		    	S5_5_8: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_8_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_8_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_8_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_8_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_8_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_8_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	 	
+//red1
+		    	S5_5_9: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_9_O: {
+					maxlength: 100,
+		         },			         
+		    	S5_5_9_C: {
+		            digits: true,
+		            range:[0,100],
+		         },		
+		    	S5_5_9_1: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_9_2: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_9_3: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+		    	S5_5_9_4: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+		    	S5_5_9_5: {
+		            digits: true,
+		            range:[1,20],
+		         },		
+//end red1	 	    
+
+
+//aparejo
+		    	S5_5_10: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_10_C: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+//aparejo
+//aparejo
+		    	S5_5_11: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_11_C: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+//aparejo
+//aparejo
+		    	S5_5_12: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_12_C: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+//aparejo
+
+//aparejo
+		    	S5_5_13: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_13_C: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+//aparejo
+//aparejo
+		    	S5_5_14: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_14_O: {
+					maxlength: 100,
+		         },			         
+		    	S5_5_14_C: {
+		            digits: true,
+		            range:[1,20],
+		         },	
+//aparejo
+//trampa
+		    	S5_5_15: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+//trampa
+//trampa
+		    	S5_5_16: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+//trampa
+//trampa
+		    	S5_5_17: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_5_17_O: {
+					maxlength: 100,
+		         },			         
+//trampa
+//especie
+		    	S5_6_1: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_1_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_2: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_2_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_3: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_3_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_4: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_4_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_5: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_5_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_6: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_6_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_7: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_7_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_8: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_8_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_9: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_9_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_10: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_10_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_11: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_11_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_12: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_12_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+
+//especie
+		    	S5_6_13: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_13_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_14: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_14_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_15: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_15_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_16: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_16_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_17: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_17_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_18: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_18_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_19: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_19_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_20: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_20_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_21: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_21_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_22: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_22_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_23: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_23_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_24: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_24_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_25: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_25_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_26: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_26_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_27: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_27_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_28: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_28_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_29: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_29_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_30: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_30_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_31: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_31_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_32: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_32_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_33: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_33_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_34: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_34_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_35: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_35_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_36: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_36_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_37: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_37_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_38: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_38_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_39: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_39_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_40: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_40_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_41: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_41_O: {
+					maxlength: 100,
+		         },				         
+		    	S5_6_41_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_42: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_42_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_43: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_43_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_44: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_44_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_45: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_45_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_46: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_46_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_47: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_47_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_48: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_48_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+//especie
+		    	S5_6_49: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_6_49_O: {
+					maxlength: 100,
+		         },			         
+		    	S5_6_49_C: {
+		            digits: true,
+		            range:[1,9],
+		         },			         
+//especie
+
+		    	S5_7: {
+		            digits: true,
+		            range:[1,2],
+		         },	
+
+		    	S5_8_1: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_8_1_1: {
+					maxlength: 100,
+		         },	
+
+		    	S5_8_2: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_8_2_1: {
+					maxlength: 100,
+		         },	
+
+		    	S5_8_3: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_8_3_1: {
+					maxlength: 100,
+		         },	
+
+		    	S5_8_4: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_8_4_O: {
+					maxlength: 100,
+		         },			         
+		    	S5_8_4_1: {
+					maxlength: 100,
+		         },		
+
+
+
+		    	S5_9_1: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_2: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_3: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_4: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+
+		    	S5_9_5: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_6: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_7: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_8: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_9: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_10: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+
+		    	S5_9_11: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_12: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_13: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_14: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+		    	S5_9_14_O: {
+					maxlength: 100,
+		         },			         
+		    	S5_9_15: {
+		            digits: true,
+		            range:[0,1],
+		         },	
+
+
+		    	S5_10_1: {
+		            digits: true,
+		            range:[1,3],
+		         },	
+		    	S5_10_2: {
+		            digits: true,
+		            range:[1,3],
+		         },	
+		    	S5_10_3: {
+		            digits: true,
+		            range:[1,3],
+		         },	
+
+
+
+
+
+
+
+
+
 			//FIN RULES
 		    },
 
