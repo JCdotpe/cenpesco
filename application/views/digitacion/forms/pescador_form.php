@@ -508,52 +508,207 @@ $("#pesca_dor").validate({
 				        });    
 				//form encontrado, ver secciones que faltan               		
             	}else if(json.flag == 1){ 
-            		$("#pesca_dor :input").attr("disabled", true);              
-            		$('#pesc_tabs').removeClass('hide');
-                    $("input[name='pescador_id']").val(json.idx);    
-				    var i = 0;
-                    var flagi = false;
-					$.each( json.secciones, function( key, value ) {
-						if(value != 0){
-								if(key == 10){
-									// $('#cinfo').remove();
-									// $('#info').remove();		
-                   $('#cinfo').removeClass('active'); 
-                   $('#info').removeClass('active');                     				
-								}else{	
-									// $('#tab'+ key).remove();
-									// $('#ctab'+ key).remove();
-                   $('#tab'+ key).removeClass('active'); 
-                   $('#ctab'+ key).removeClass('active');                         
-								}
-								
-						}else{
-                            //activar tab     
-                            if(!flagi){                                  
-                                if(key == 10){
-                                    $('#cinfo').addClass('active');
-                                    $('#info').addClass('active');                                               
-                                }else{                                 
-                                    $('#ctab'+ key).addClass('active');
-                                    $('#tab'+ key).addClass('active');
-                                }       
-                            }
-                            flagi = true;                 
-                        }
-                        i++;
-					});
-					if(!flagi){
-						alert('Formulario completado');
-					}else{
-                        alert('Por favor complete la informacion en las secciones a continuacion');   
-                    }
-            	}else if(json.flag == 2){
-                    alert('El Nro de formulario no coincide con la UDRA');
-                    bsub.removeAttr('disabled');    
-                }else if(json.flag == 3){
-                    alert('Debe ingresar la UDRA primero, no puede ingresar el formulario.');
-                    bsub.removeAttr('disabled');    
-                }
+                    		$("#pesca_dor :input").attr("disabled", true);              
+                    		$('#pesc_tabs').removeClass('hide');
+                        $("input[name='pescador_id']").val(json.idx);    
+        				        var i = 0;
+                        var flagi = false;
+                        //activar secciones
+        					     $.each( json.secciones, function( key, value ) {
+                						if(value != 0){
+                  								if(key == 10){
+                  									// $('#cinfo').remove();
+                  									// $('#info').remove();		
+                                     $('#cinfo').removeClass('active'); 
+                                     $('#info').removeClass('active');                     				
+                  								}else{	
+                  									// $('#tab'+ key).remove();
+                  									// $('#ctab'+ key).remove();
+                                     $('#tab'+ key).removeClass('active'); 
+                                     $('#ctab'+ key).removeClass('active');                         
+                  								}
+                								
+                						}else{
+                                    //activar tab     
+                                    if(!flagi){                                  
+                                        if(key == 10){
+                                              $('#cinfo').addClass('active');
+                                              $('#info').addClass('active');                                               
+                                        }else{                                 
+                                              $('#ctab'+ key).addClass('active');
+                                              $('#tab'+ key).addClass('active');
+                                        }       
+                                    }
+                                    flagi = true;                 
+                              }
+                            i++;
+
+                            var ahuakey = key; 
+                            //rellenar secciones
+                            // $.each( json.fsecciones[key], function( key, value ) {
+                            $.each( json.infosecciones[key], function( fila, valor ) {
+                                if(fila != 'pescador_id' && fila != 'user_id' && fila != 'last_ip' && fila != 'user_agent' && fila != 'created' && fila != 'modified'){
+                                    switch (ahuakey){
+                                        case '2':
+                                              //COMBOS Residencia Actual
+                                              if(fila == 'S2_9_DD_COD'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#S2_9_DD_COD').trigger('change');
+
+                                               }else if(fila == 'S2_9_PP_COD'){
+                                                    var interval_PP = setInterval(function(){
+                                                        if($('#S2_9_PP_COD').has('option').length > 0){
+                                                            clearInterval(interval_PP);
+                                                            $('#S2_9_PP_COD').val(valor);
+                                                            $('#S2_9_PP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 1000); 
+
+                                              }else if(fila == 'S2_9_DI_COD'){
+                                                    var interval_DI = setInterval(function(){
+                                                        if($('#S2_9_DI_COD').has('option').length > 0){
+                                                            clearInterval(interval_DI);
+                                                            $('#S2_9_DI_COD').val(valor);
+                                                            $('#S2_9_DI_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 2000);        
+
+                                              }else if(fila == 'S2_9_CCPP_COD'){
+                                                    var interval_DI = setInterval(function(){
+                                                        if($('#S2_9_CCPP_COD').has('option').length > 0){
+                                                            clearInterval(interval_DI);
+                                                            $('#S2_9_CCPP_COD').val(valor);
+                                                            // $('#S2_9_CCPP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 3000);                                   
+                                               }             
+                                              //COMBOS Lugar de Nacimiento 
+                                              else if(fila == 'S2_10_PAIS_COD'){
+                                                    $('#S2_10_PAIS_COD').val(valor);
+                                                    $('#S2_10_PAIS_COD').trigger('change');
+
+                                               }     
+                                              else if(fila == 'S2_10_DD_COD'){
+                                                    $('#S2_10_DD_COD').val(valor);
+                                                    $('#S2_10_DD_COD').trigger('change');
+
+                                               }        
+                                              else if(fila == 'S2_10_PP_COD'){
+                                                    var interval_PPN = setInterval(function(){
+                                                        if($('#S2_10_PP_COD').has('option').length > 0){
+                                                            clearInterval(interval_PPN);
+                                                            $('#S2_10_PP_COD').val(valor);
+                                                            $('#S2_10_PP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 1000); 
+
+                                              }    
+                                              else if(fila == 'S2_10_DI_COD'){
+                                                    var interval_DIN = setInterval(function(){
+                                                        if($('#S2_10_DI_COD').has('option').length > 0){
+                                                            clearInterval(interval_DIN);
+                                                            $('#S2_10_DI_COD').val(valor);
+                                                            // $('#S2_9_CCPP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 2000);                                   
+                                               }                
+                                              //COMBO ola q ase en 2007                                                                                                                      
+                                              else if(fila == 'S2_11_PAIS_COD'){
+                                                    $('#S2_11_PAIS_COD').val(valor);
+                                                    $('#S2_11_PAIS_COD').trigger('change');
+
+                                               }        
+                                              else if(fila == 'S2_11_DD_COD'){
+                                                    $('#S2_11_DD_COD').val(valor);
+                                                    $('#S2_11_DD_COD').trigger('change');
+
+                                               }  
+                                              else if(fila == 'S2_11_PP_COD'){
+                                                    var interval_PPDONDE = setInterval(function(){
+                                                        if($('#S2_11_PP_COD').has('option').length > 0){
+                                                            clearInterval(interval_PPDONDE);
+                                                            $('#S2_11_PP_COD').val(valor);
+                                                            $('#S2_11_PP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 1000); 
+
+                                              }    
+                                              else if(fila == 'S2_11_DI_COD'){
+                                                    var interval_DIDONDE = setInterval(function(){
+                                                        if($('#S2_11_DI_COD').has('option').length > 0){
+                                                            clearInterval(interval_DIDONDE);
+                                                            $('#S2_11_DI_COD').val(valor);
+                                                            // $('#S2_9_CCPP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 2000);                                   
+                                               }                                                
+                                              //DNI DD 
+                                              else if(fila == 'S2_4'){
+                                                  $('#S2_4').val(valor);
+                                                  $('#S2_4_DD').val(valor);
+                                              }     
+                                              //RUC
+                                              else if(fila == 'S2_5'){
+                                                  $('#S2_5').val(valor);
+                                                  $('#S2_5_DD').val(valor);
+                                              }          
+
+                                              else if(fila.substring(0,9) == 'S2_23_4_' && valor == 0){
+                                                  $('#' + fila).val(valor);
+                                              }
+                                              //dejar en blanco los campos que ingresaron 0 y no corresponden
+                                              else if((fila.substring(0,5) == 'S2_23' && valor == 0) || fila == 'TIPVIA' || fila == 'KM' || fila == 'S2_15' || fila == 'S2_16' || fila == 'S2_12' || fila == 'S2_12G' || fila == 'S2_13' || fila == 'S2_19' || fila == 'S2_19G' || fila == 'S2_21' || fila == 'S2_22'){
+                                                  $('#' + fila).val();
+                                              }
+                                              else{
+                                                  $('#' + fila).val(valor);
+                                              }
+                                              //combos
+                                              // $('#S2_9_DD_COD').trigger('change');
+                                              // switch (fila){
+                                              //   case 'S2_9_DD_COD':
+                                              //   break;
+                                              // }
+                                              break;
+                                        case '10':
+                                              $('#' + fila).val(valor);
+                                              break;                                              
+                                        default:
+                                          break;
+                                    }
+                                }
+                            });
+
+
+        					     });
+
+
+
+                
+
+        					     if(!flagi){
+        						        alert('Formulario completado');
+        					     }else{
+                            alert('Por favor complete la informacion en las secciones a continuacion');   
+                       }
+
+
+
+
+            }else if(json.flag == 2){
+                alert('El Nro de formulario no coincide con la UDRA');
+                bsub.removeAttr('disabled');    
+            }else if(json.flag == 3){
+                alert('Debe ingresar la UDRA primero, no puede ingresar el formulario.');
+                bsub.removeAttr('disabled');    
+            }
             // bsub.removeAttr('disabled');  	
             }
         });     

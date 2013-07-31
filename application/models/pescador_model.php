@@ -34,7 +34,7 @@ class Pescador_model extends CI_MODEL
  
 
     function seccion_disponible($NFORM,$CCDD,$CCPP,$CCDI,$COD_CCPP,$seccion){
-		$this->db->select('s.pescador_id');
+		$this->db->select('s.*');
 		$this->db->from('pescador p');
         $this->db->join($seccion . ' s','s.pescador_id = p.id','inner');
         $this->db->where('p.NFORM',$NFORM);
@@ -44,7 +44,7 @@ class Pescador_model extends CI_MODEL
         $this->db->where('p.COD_CCPP',$COD_CCPP);
         $this->db->where('p.activo',1);        
         $q = $this->db->get();
-		return $q->num_rows();
+		return $q;
     }   
 
 

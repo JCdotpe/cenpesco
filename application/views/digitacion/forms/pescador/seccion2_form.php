@@ -1428,16 +1428,16 @@ $S2_23_3_10 = array(
 );
 // edad
 $S2_23_4_10A = array(
-	'name'	=> 'S2_23_4_1A0',
-	'id'	=> 'S2_23_4_1A0',
+	'name'	=> 'S2_23_4_10A',
+	'id'	=> 'S2_23_4_10A',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
 
 // edad
 $S2_23_4_10M = array(
-	'name'	=> 'S2_23_4_1A0',
-	'id'	=> 'S2_23_4_1A0',
+	'name'	=> 'S2_23_4_10M',
+	'id'	=> 'S2_23_4_10M',
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
@@ -1962,24 +1962,24 @@ echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 							echo '<div class="control-group">';
 								echo '<div class="offset1 span3">';	
-									echo form_label('País', 'S2_10_DD_PAIS', $label_class);
+									echo form_label('País', 'S2_10_PAIS_COD', $label_class);
 								echo '</div>'; 
 
 								echo '<div class="controls span6 offset1">';
-										echo form_dropdown('S2_10_DD_PAIS', $paisesArray, FALSE,'class="' . $span_class . '" id="S2_10_DD_PAIS"');			
+										echo form_dropdown('S2_10_PAIS_COD', $paisesArray, FALSE,'class="' . $span_class . '" id="S2_10_PAIS_COD"');			
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('S2_10_DD_PAIS') . '</div>';
+									echo '<div class="help-block error">' . form_error('S2_10_PAIS_COD') . '</div>';
 								echo '</div>';	
 							echo '</div>'; 		
 
 							echo '<div class="control-group">';
 								echo '<div class="offset1 span3">';	
-									echo form_label('Departamento', 'S2_10_DD_DEP', $label_class);
+									echo form_label('Departamento', 'S2_10_DD_COD', $label_class);
 								echo '</div>'; 
 								echo '<div class="controls span6 offset1">';
-										echo form_dropdown('S2_10_DD_DEP', $depaxArray, FALSE,'class=" span12" id="S2_10_DD_DEP"'); 
+										echo form_dropdown('S2_10_DD_COD', $depaxArray, FALSE,'class=" span12" id="S2_10_DD_COD"'); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('S2_10_DD_DEP') . '</div>';
+									echo '<div class="help-block error">' . form_error('S2_10_DD_COD') . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 
@@ -2025,24 +2025,24 @@ echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 							echo '<div class="control-group">';
 								echo '<div class="offset1 span3">';	
-									echo form_label('País', 'S2_11_DD_PAIS', $label_class);
+									echo form_label('País', 'S2_11_PAIS_COD', $label_class);
 								echo '</div>'; 
 
 								echo '<div class="controls span6 offset1">';
-										echo form_dropdown('S2_11_DD_PAIS', $paisesArray, FALSE,'class="' . $span_class . '" id="S2_11_DD_PAIS"');			
+										echo form_dropdown('S2_11_PAIS_COD', $paisesArray, FALSE,'class="' . $span_class . '" id="S2_11_PAIS_COD"');			
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('S2_11_DD_PAIS') . '</div>';
+									echo '<div class="help-block error">' . form_error('S2_11_PAIS_COD') . '</div>';
 								echo '</div>';	
 							echo '</div>'; 		
 
 							echo '<div class="control-group">';
 								echo '<div class="offset1 span3">';	
-									echo form_label('Departamento', 'S2_11_DD_DEP', $label_class);
+									echo form_label('Departamento', 'S2_11_DD_COD', $label_class);
 								echo '</div>'; 
 								echo '<div class="controls span6 offset1">';
-										echo form_dropdown('S2_11_DD_DEP', $depaxArray, FALSE,'class=" span12" id="S2_11_DD_DEP"'); 
+										echo form_dropdown('S2_11_DD_COD', $depaxArray, FALSE,'class=" span12" id="S2_11_DD_COD"'); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('S2_11_DD_DEP') . '</div>';
+									echo '<div class="help-block error">' . form_error('S2_11_DD_COD') . '</div>';
 								echo '</div>';	
 							echo '</div>'; 	
 
@@ -3260,13 +3260,13 @@ $("#S2_9_DD_COD, #S2_9_PP_COD, #S2_9_DI_COD, #S2_9_CCPP_COD").change(function(ev
 // CARGA COMBOS UBIGEO RESIDENCIA<-----------------------------
 //-------------------------------------------------------------------------------------------------------------------------------
 // CARGA COMBOS UBIGEO NACIMIENTO ---------------------------------------------------------------------->
-$("#S2_10_DD_DEP, #S2_11_DD_DEP, #departamento3").change(function(event) {
+$("#S2_10_DD_COD, #S2_11_DD_COD, #departamento3").change(function(event) {
         var sel = null;
         switch(event.target.id){
-            case 'S2_10_DD_DEP':
+            case 'S2_10_DD_COD':
                 sel = $("#S2_10_PP_COD");
                 break;
-            case 'S2_11_DD_DEP':
+            case 'S2_11_DD_COD':
                 sel = $("#S2_11_PP_COD");
                 break;
             case 'departamento3':
@@ -3303,11 +3303,11 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
         switch(event.target.id){
             case 'S2_10_PP_COD':
                 sel = $("#S2_10_DI_COD");
-                dep = $("#S2_10_DD_DEP");
+                dep = $("#S2_10_DD_COD");
                 break;
             case 'S2_11_PP_COD':
                 sel = $("#S2_11_DI_COD");
-                dep = $("#S2_11_DD_DEP");
+                dep = $("#S2_11_DD_COD");
                 break;
             case 'provincia3':
                 sel = $("#distrito3");
@@ -3343,8 +3343,8 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
 
 
 
-$('#S2_10_DD_PAIS').change(function() {
-    var ug = $('#S2_10_DD_DEP, #S2_10_PP_COD, #S2_10_DI_COD');
+$('#S2_10_PAIS_COD').change(function() {
+    var ug = $('#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD');
     if($(this).val() == 124){
         ug.removeAttr('disabled');
     }else{
@@ -3353,8 +3353,8 @@ $('#S2_10_DD_PAIS').change(function() {
     }
 });
 
-$('#S2_11_DD_PAIS').change(function() {
-    var ug = $('#S2_11_DD_DEP, #S2_11_PP_COD, #S2_11_DI_COD');
+$('#S2_11_PAIS_COD').change(function() {
+    var ug = $('#S2_11_DD_COD, #S2_11_PP_COD, #S2_11_DI_COD');
     if($(this).val() == 124){
         ug.removeAttr('disabled');
     }else{
@@ -3427,12 +3427,26 @@ $.extend(jQuery.validator.messages, {
 		            range: [1,99999999],
 		            exactlength: 8, 
 		         },  
+		        S2_4_DD:{
+		            required: true,
+		            digits:true,
+		            range: [1,99999999],
+		            exactlength: 8, 
+		            equalTo: "#S2_4",
+		         },  		         
 		        S2_5:{
 		            required: true,
 		            digits:true,
 		            range:[10000000001,99999999999],
 		            exactlength: 11, 
 		         },  	
+		        S2_5_DD:{
+		            required: true,
+		            digits:true,
+		            range:[10000000001,99999999999],
+		            exactlength: 11, 
+		            equalTo: "#S2_5",
+		         },  		         
 		        S2_6:{
 		            digits:true,
 		            range:[900000000,999999998],
@@ -4193,7 +4207,13 @@ $.extend(jQuery.validator.messages, {
 		         }, 
 		        S2_2A: {
 		            required: "Ingresa año",
-		         }, 		         			                   		                      
+		         }, 		
+		        S2_4_DD:{
+		            equalTo: "No coinciden los DNI",
+		         },  	
+		        S2_5_DD:{
+		            equalTo: "No coinciden los RUC",
+		         }, 		         	                  			                   		                      
 			//FIN MESSAGES
 		    },
 		    errorPlacement: function(error, element) {
@@ -4225,42 +4245,44 @@ $.extend(jQuery.validator.messages, {
 			        {name: 'S2_9_PP',value:$('#S2_9_PP_COD :selected').text()},
 			        {name: 'S2_9_DI',value:$('#S2_9_DI_COD :selected').text()},
 			        {name: 'S2_9_CCPP',value:$('#S2_9_CCPP_COD :selected').text()},
+			        {name: 'S2_10_PAIS',value:$('#S2_10_PAIS_COD :selected').text()},	
+			        {name: 'S2_10_DD',value:$('#S2_10_DD_COD :selected').text()},		        
 			        {name: 'S2_10_PP',value:$('#S2_10_PP_COD :selected').text()},
 			        {name: 'S2_10_DI',value:$('#S2_10_DI_COD :selected').text()},
-			        {name: 'S2_10_CCPP',value:$('#S2_10_CCPP_COD :selected').text()},  
+			        {name: 'S2_11_PAIS',value:$('#S2_11_PAIS_COD :selected').text()},	
+			        {name: 'S2_11_DD',value:$('#S2_11_DD_COD :selected').text()},		   
 			        {name: 'S2_11_PP',value:$('#S2_11_PP_COD :selected').text()},
 			        {name: 'S2_11_DI',value:$('#S2_11_DI_COD :selected').text()},
-			        {name: 'S2_11_CCPP',value:$('#S2_11_CCPP_COD :selected').text()},
 			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
 			    );
 
 
-			    if($("#S2_10_DD_PAIS").val() == 124 || $("#S2_10_DD_PAIS").val() == -1){
-			    	seccion2_data.push(
-			        	{name: 'S2_10_DD',value:$('#S2_10_DD_DEP :selected').text()},
-			        	{name: 'S2_10_DD_COD',value:$('#S2_10_DD_DEP').val()}
-			    	);    	
-			    }else{
-			    	seccion2_data.push(
-			        	{name: 'S2_10_DD',value:$('#S2_10_DD_PAIS :selected').text()},
-			        	{name: 'S2_10_DD_COD',value:$('#S2_10_DD_PAIS').val()}
-			    	);     	
-			    }
+			    // if($("#S2_10_DD_PAIS").val() == 124 || $("#S2_10_DD_PAIS").val() == -1){
+			    // 	seccion2_data.push(
+			    //     	{name: 'S2_10_DD',value:$('#S2_10_DD_DEP :selected').text()},
+			    //     	{name: 'S2_10_DD_COD',value:$('#S2_10_DD_DEP').val()}
+			    // 	);    	
+			    // }else{
+			    // 	seccion2_data.push(
+			    //     	{name: 'S2_10_DD',value:$('#S2_10_DD_PAIS :selected').text()},
+			    //     	{name: 'S2_10_DD_COD',value:$('#S2_10_DD_PAIS').val()}
+			    // 	);     	
+			    // }
 
-			    if($("#S2_11_DD_PAIS").val() == 124 || $("#S2_10_DD_PAIS").val() == -1){
-			    	seccion2_data.push(
-			        	{name: 'S2_11_DD',value:$('#S2_11_DD_DEP :selected').text()},
-			        	{name: 'S2_11_DD_COD',value:$('#S2_11_DD_DEP').val()}
-			    	);    	
-			    }else{
-			    	seccion2_data.push(
-			        	{name: 'S2_11_DD',value:$('#S2_11_DD_PAIS :selected').text()},
-			        	{name: 'S2_11_DD_COD',value:$('#S2_11_DD_PAIS').val()}
-			    	);     	
-			    }
+			    // if($("#S2_11_DD_PAIS").val() == 124 || $("#S2_10_DD_PAIS").val() == -1){
+			    // 	seccion2_data.push(
+			    //     	{name: 'S2_11_DD',value:$('#S2_11_DD_DEP :selected').text()},
+			    //     	{name: 'S2_11_DD_COD',value:$('#S2_11_DD_DEP').val()}
+			    // 	);    	
+			    // }else{
+			    // 	seccion2_data.push(
+			    //     	{name: 'S2_11_DD',value:$('#S2_11_DD_PAIS :selected').text()},
+			    //     	{name: 'S2_11_DD_COD',value:$('#S2_11_DD_PAIS').val()}
+			    // 	);     	
+			    // }
 				
 		        var bsub2 = $( "#seccion2 :submit" );
-		        bsub2.attr("disabled", "disabled");
+		        // bsub2.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_seccion2",
 		            type:'POST',

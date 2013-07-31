@@ -112,7 +112,9 @@ class Pescador extends CI_Controller {
 								$regtble = 'pesc_info';
 							}
 							$alter = $this->pescador_model->seccion_disponible($NFORM,$CCDD,$CCPP,$CCDI,$COD_CCPP,$regtble);
-							$mysections[$s] = $alter;
+							$mysections[$s] = $alter->num_rows();
+							$infosections[$s] = $alter->row();
+							// $fsections[$s] = $this->pescador_model->get_fields($regtble);
 						}
 					$datos['idx'] = $varia->row()->id;
 					}
@@ -125,6 +127,8 @@ class Pescador extends CI_Controller {
 			$datos['flag'] = $flag;		
 			// $datos['secciones'] = $udra;	
 			$datos['secciones'] = $mysections;	
+			// $datos['fsecciones'] = $fsections;	
+			$datos['infosecciones'] = $infosections;
 			$data['datos'] = $datos;
 			$this->load->view('backend/json/json_view', $data);		
 
