@@ -47,7 +47,7 @@ class Pesc_seccion2 extends CI_Controller {
 			$id = $this->input->post('pescador_id');
 			foreach ($fields as $a=>$b) {
 				if(!in_array($b, array('id','user_id','last_ip','user_agent','created','modified','S2_10_DD_PAIS','S2_11_DD_DEP'))){
-					$c_data[$b] = $this->input->post($b);
+					$c_data[$b] = ($this->input->post($b) == '') ? NULL : $this->input->post($b);
 				}
 			}	
 			$c_data['user_id'] = $this->tank_auth->get_user_id();

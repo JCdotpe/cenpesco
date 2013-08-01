@@ -663,10 +663,10 @@ $("#pesca_dor").validate({
                                               else if(fila.substring(0,9) == 'S2_23_4_' && valor == 0){
                                                   $('#' + fila).val(valor);
                                               }
-                                              //dejar en blanco los campos que ingresaron 0 y no corresponden
-                                              else if((fila.substring(0,5) == 'S2_23' && valor == 0) || fila == 'TIPVIA' || fila == 'KM' || fila == 'S2_15' || fila == 'S2_16' || fila == 'S2_12' || fila == 'S2_12G' || fila == 'S2_13' || fila == 'S2_19' || fila == 'S2_19G' || fila == 'S2_21' || fila == 'S2_22'){
-                                                  $('#' + fila).val();
-                                              }
+                                              // //dejar en blanco los campos que ingresaron 0 y no corresponden
+                                              // else if((fila.substring(0,5) == 'S2_23' && valor == 0) || fila == 'TIPVIA' || fila == 'KM' || fila == 'S2_15' || fila == 'S2_16' || fila == 'S2_12' || fila == 'S2_12G' || fila == 'S2_13' || fila == 'S2_19' || fila == 'S2_19G' || fila == 'S2_21' || fila == 'S2_22'){
+                                              //     $('#' + fila).val();
+                                              // }
                                               else{
                                                   $('#' + fila).val(valor);
                                               }
