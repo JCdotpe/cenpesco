@@ -56,7 +56,7 @@ class Pescador extends CI_Controller {
 	{
 
 			$data['ecivil'] = array(
-								-1=> '-',
+								9=> '-',
 								1 => 'Conviviente',
 								2 => 'Casado(a)',
 								3 => 'Separado(a)',

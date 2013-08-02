@@ -390,6 +390,50 @@ $.validator.addMethod("peruDate",function(value, element) {
     return arg != value;
 }, "Seleccione un valor");
 
+ $.validator.addMethod("val3", function(value, element,arg){
+    var length = arg.length;
+    var flag = false;
+    for(var i = 0; i < length; i++) {
+        if(arg[i] == value)
+          flag = true;
+    }
+   return flag;
+}, "Seleccione un valor entre {0}, {1} y {2}");
+
+ $.validator.addMethod("valdia", function(value, element){
+    var dias = new Array('01','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','99')
+    var length = dias.length;
+    var flag = false;
+    for(var i = 0; i < length; i++) {
+        if(dias[i] == value)
+          flag = true;
+    }
+   return flag;
+}, "Seleccione un día válido");
+
+
+ $.validator.addMethod("valmes", function(value, element){
+    var dias = new Array('01','02','03','04','05','06','07','08','09','10','11','12','99');
+    var length = dias.length;
+    var flag = false;
+    for(var i = 0; i < length; i++) {
+        if(dias[i] == value)
+          flag = true;
+    }
+   return flag;
+}, "Seleccione un mes válido");
+
+
+
+ $.validator.addMethod("valrango", function(value, element,arg){
+    var flag = false;
+        if(((value >= arg[0] && value<=arg[1]) || value == arg[2]) && value!='')
+          flag = true;
+   return flag;
+}, "Seleccione un valor entre {0}, {1} o {2}");
+
+
+
 //validacion
 $("#pesca_dor").validate({
     rules: {
@@ -663,19 +707,11 @@ $("#pesca_dor").validate({
                                               else if(fila.substring(0,9) == 'S2_23_4_' && valor == 0){
                                                   $('#' + fila).val(valor);
                                               }
-                                              // //dejar en blanco los campos que ingresaron 0 y no corresponden
-                                              // else if((fila.substring(0,5) == 'S2_23' && valor == 0) || fila == 'TIPVIA' || fila == 'KM' || fila == 'S2_15' || fila == 'S2_16' || fila == 'S2_12' || fila == 'S2_12G' || fila == 'S2_13' || fila == 'S2_19' || fila == 'S2_19G' || fila == 'S2_21' || fila == 'S2_22'){
-                                              //     $('#' + fila).val();
-                                              // }
                                               else{
                                                   $('#' + fila).val(valor);
                                               }
-                                              //combos
-                                              // $('#S2_9_DD_COD').trigger('change');
-                                              // switch (fila){
-                                              //   case 'S2_9_DD_COD':
-                                              //   break;
-                                              // }
+                                              //combo conviviente
+                                              $('#S2_18').trigger('change');
                                               break;
                                         case '10':
                                               $('#' + fila).val(valor);

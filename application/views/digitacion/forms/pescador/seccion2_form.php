@@ -616,28 +616,28 @@ $S2_23_1_1 = array(
 	'name'	=> 'S2_23_1_1',
 	'id'	=> 'S2_23_1_1',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // nombre
 $S2_23_2_1 = array(
 	'name'	=> 'S2_23_2_1',
 	'id'	=> 'S2_23_2_1',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // sexo
 $S2_23_3_1 = array(
 	'name'	=> 'S2_23_3_1',
 	'id'	=> 'S2_23_3_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // edad
 $S2_23_4_1A = array(
 	'name'	=> 'S2_23_4_1A',
 	'id'	=> 'S2_23_4_1A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro1 hano',
 );
 
 // edad m
@@ -645,42 +645,42 @@ $S2_23_4_1M = array(
 	'name'	=> 'S2_23_4_1M',
 	'id'	=> 'S2_23_4_1M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // vive con usted
 $S2_23_5_1 = array(
 	'name'	=> 'S2_23_5_1',
 	'id'	=> 'S2_23_5_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // depende economicamente
 $S2_23_6_1 = array(
 	'name'	=> 'S2_23_6_1',
 	'id'	=> 'S2_23_6_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // limitacion
 $S2_23_7_1 = array(
 	'name'	=> 'S2_23_7_1',
 	'id'	=> 'S2_23_7_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // ultimo nivel
 $S2_23_8_1 = array(
 	'name'	=> 'S2_23_8_1',
 	'id'	=> 'S2_23_8_1',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 // ocupacion actual
 $S2_23_9_1 = array(
 	'name'	=> 'S2_23_9_1',
 	'id'	=> 'S2_23_9_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo estudia',
 );
 
 //institucion n o p
@@ -688,15 +688,21 @@ $S2_23_10_1 = array(
 	'name'	=> 'S2_23_10_1',
 	'id'	=> 'S2_23_10_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
-
-// escuela
+//actividad
+$S2_23_11_1 = array(
+	'name'	=> 'S2_23_11_1',
+	'id'	=> 'S2_23_11_1',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro1',
+);
+// especifique
 $S2_23_11_1_O = array(
 	'name'	=> 'S2_23_11_1_O',
 	'id'	=> 'S2_23_11_1_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro1',
 );
 ///////////////////////////fin hijo 1
 ///////////////////////////hijo 2
@@ -705,28 +711,28 @@ $S2_23_1_2 = array(
 	'name'	=> 'S2_23_1_2',
 	'id'	=> 'S2_23_1_2',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // nombre
 $S2_23_2_2 = array(
 	'name'	=> 'S2_23_2_2',
 	'id'	=> 'S2_23_2_2',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // sexo
 $S2_23_3_2 = array(
 	'name'	=> 'S2_23_3_2',
 	'id'	=> 'S2_23_3_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // edad
 $S2_23_4_2A = array(
 	'name'	=> 'S2_23_4_2A',
 	'id'	=> 'S2_23_4_2A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro2 hano',
 );
 
 // edad m
@@ -734,42 +740,42 @@ $S2_23_4_2M = array(
 	'name'	=> 'S2_23_4_2M',
 	'id'	=> 'S2_23_4_2M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // vive con usted
 $S2_23_5_2 = array(
 	'name'	=> 'S2_23_5_2',
 	'id'	=> 'S2_23_5_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // depende economicamente
 $S2_23_6_2 = array(
 	'name'	=> 'S2_23_6_2',
 	'id'	=> 'S2_23_6_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // limitacion
 $S2_23_7_2 = array(
 	'name'	=> 'S2_23_7_2',
 	'id'	=> 'S2_23_7_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // ultimo nivel
 $S2_23_8_2 = array(
 	'name'	=> 'S2_23_8_2',
 	'id'	=> 'S2_23_8_2',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 // ocupacion actual
 $S2_23_9_2 = array(
 	'name'	=> 'S2_23_9_2',
 	'id'	=> 'S2_23_9_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2 estudia',
 );
 
 //institucion n o p
@@ -777,15 +783,21 @@ $S2_23_10_2 = array(
 	'name'	=> 'S2_23_10_2',
 	'id'	=> 'S2_23_10_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
-
+//actividad
+$S2_23_11_2 = array(
+	'name'	=> 'S2_23_11_2',
+	'id'	=> 'S2_23_11_2',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro2',
+);
 // escuela
 $S2_23_11_2_O = array(
 	'name'	=> 'S2_23_11_2_O',
 	'id'	=> 'S2_23_11_2_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro2',
 );
 ///////////////////////////fin hijo 2
 ///////////////////////////hijo 3
@@ -794,28 +806,28 @@ $S2_23_1_3 = array(
 	'name'	=> 'S2_23_1_3',
 	'id'	=> 'S2_23_1_3',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // nombre
 $S2_23_2_3 = array(
 	'name'	=> 'S2_23_2_3',
 	'id'	=> 'S2_23_2_3',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // sexo
 $S2_23_3_3 = array(
 	'name'	=> 'S2_23_3_3',
 	'id'	=> 'S2_23_3_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // edad
 $S2_23_4_3A = array(
 	'name'	=> 'S2_23_4_3A',
 	'id'	=> 'S2_23_4_3A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro3 hano',
 );
 
 // edad m
@@ -823,57 +835,63 @@ $S2_23_4_3M = array(
 	'name'	=> 'S2_23_4_3M',
 	'id'	=> 'S2_23_4_3M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // vive con usted
 $S2_23_5_3 = array(
 	'name'	=> 'S2_23_5_3',
 	'id'	=> 'S2_23_5_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // depende economicamente
 $S2_23_6_3 = array(
 	'name'	=> 'S2_23_6_3',
 	'id'	=> 'S2_23_6_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // limitacion
 $S2_23_7_3 = array(
 	'name'	=> 'S2_23_7_3',
 	'id'	=> 'S2_23_7_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // ultimo nivel
 $S2_23_8_3 = array(
 	'name'	=> 'S2_23_8_3',
 	'id'	=> 'S2_23_8_3',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 // ocupacion actual
 $S2_23_9_3 = array(
 	'name'	=> 'S2_23_9_3',
 	'id'	=> 'S2_23_9_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3 estudia',
 );
 //institucion n o p
 $S2_23_10_3 = array(
 	'name'	=> 'S2_23_10_3',
 	'id'	=> 'S2_23_10_3',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
-
+//actividad
+$S2_23_11_3 = array(
+	'name'	=> 'S2_23_11_3',
+	'id'	=> 'S2_23_11_3',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro3',
+);
 // escuela
 $S2_23_11_3_O = array(
 	'name'	=> 'S2_23_11_3_O',
 	'id'	=> 'S2_23_11_3_O',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro3',
 );
 ///////////////////////////fin hijo 3
 ///////////////////////////hijo 4
@@ -882,85 +900,90 @@ $S2_23_1_4 = array(
 	'name'	=> 'S2_23_1_4',
 	'id'	=> 'S2_23_1_4',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // nombre
 $S2_23_2_4 = array(
 	'name'	=> 'S2_23_2_4',
 	'id'	=> 'S2_23_2_4',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // sexo
 $S2_23_3_4 = array(
 	'name'	=> 'S2_23_3_4',
 	'id'	=> 'S2_23_3_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // edad
 $S2_23_4_4A = array(
 	'name'	=> 'S2_23_4_4A',
 	'id'	=> 'S2_23_4_4A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro4 hano',
 );
 // edad m
 $S2_23_4_4M = array(
 	'name'	=> 'S2_23_4_4M',
 	'id'	=> 'S2_23_4_4M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // vive con usted
 $S2_23_5_4 = array(
 	'name'	=> 'S2_23_5_4',
 	'id'	=> 'S2_23_5_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // depende economicamente
 $S2_23_6_4 = array(
 	'name'	=> 'S2_23_6_4',
 	'id'	=> 'S2_23_6_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // limitacion
 $S2_23_7_4 = array(
 	'name'	=> 'S2_23_7_4',
 	'id'	=> 'S2_23_7_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // ultimo nivel
 $S2_23_8_4 = array(
 	'name'	=> 'S2_23_8_4',
 	'id'	=> 'S2_23_8_4',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 // ocupacion actual
 $S2_23_9_4 = array(
 	'name'	=> 'S2_23_9_4',
 	'id'	=> 'S2_23_9_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4 estudia',
 );
 //institucion n o p
 $S2_23_10_4 = array(
 	'name'	=> 'S2_23_10_4',
 	'id'	=> 'S2_23_10_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
-
+$S2_23_11_4 = array(
+	'name'	=> 'S2_23_11_4',
+	'id'	=> 'S2_23_11_4',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro4',
+);
 // escuela
 $S2_23_11_4_O = array(
 	'name'	=> 'S2_23_11_4_O',
 	'id'	=> 'S2_23_11_4_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro4',
 );
 
 ///////////////////////////fin hijo 4
@@ -970,28 +993,28 @@ $S2_23_1_5 = array(
 	'name'	=> 'S2_23_1_5',
 	'id'	=> 'S2_23_1_5',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // nombre
 $S2_23_2_5 = array(
 	'name'	=> 'S2_23_2_5',
 	'id'	=> 'S2_23_2_5',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // sexo
 $S2_23_3_5 = array(
 	'name'	=> 'S2_23_3_5',
 	'id'	=> 'S2_23_3_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // edad
 $S2_23_4_5A = array(
 	'name'	=> 'S2_23_4_5A',
 	'id'	=> 'S2_23_4_5A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro5 hano',
 );
 
 // edad m
@@ -999,57 +1022,63 @@ $S2_23_4_5M = array(
 	'name'	=> 'S2_23_4_5M',
 	'id'	=> 'S2_23_4_5M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // vive con usted
 $S2_23_5_5 = array(
 	'name'	=> 'S2_23_5_5',
 	'id'	=> 'S2_23_5_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // depende economicamente
 $S2_23_6_5 = array(
 	'name'	=> 'S2_23_6_5',
 	'id'	=> 'S2_23_6_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // limitacion
 $S2_23_7_5 = array(
 	'name'	=> 'S2_23_7_5',
 	'id'	=> 'S2_23_7_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // ultimo nivel
 $S2_23_8_5 = array(
 	'name'	=> 'S2_23_8_5',
 	'id'	=> 'S2_23_8_5',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 // ocupacion actual
 $S2_23_9_5 = array(
 	'name'	=> 'S2_23_9_5',
 	'id'	=> 'S2_23_9_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5 estudia',
 );
 //institucion n o p
 $S2_23_10_5 = array(
 	'name'	=> 'S2_23_10_5',
 	'id'	=> 'S2_23_10_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 
+$S2_23_11_5 = array(
+	'name'	=> 'S2_23_11_5',
+	'id'	=> 'S2_23_11_5',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro5',
+);
 // escuela
 $S2_23_11_5_O = array(
 	'name'	=> 'S2_23_11_5_O',
 	'id'	=> 'S2_23_11_5_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro5',
 );
 ///////////////////////////fin hijo 5
 ///////////////////////////hijo 6
@@ -1058,28 +1087,28 @@ $S2_23_1_6 = array(
 	'name'	=> 'S2_23_1_6',
 	'id'	=> 'S2_23_1_6',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // nombre
 $S2_23_2_6 = array(
 	'name'	=> 'S2_23_2_6',
 	'id'	=> 'S2_23_2_6',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // sexo
 $S2_23_3_6 = array(
 	'name'	=> 'S2_23_3_6',
 	'id'	=> 'S2_23_3_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // edad
 $S2_23_4_6A = array(
 	'name'	=> 'S2_23_4_6A',
 	'id'	=> 'S2_23_4_6A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro6 hano',
 );
 
 // edad m
@@ -1087,57 +1116,62 @@ $S2_23_4_6M = array(
 	'name'	=> 'S2_23_4_6M',
 	'id'	=> 'S2_23_4_6M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // vive con usted
 $S2_23_5_6 = array(
 	'name'	=> 'S2_23_5_6',
 	'id'	=> 'S2_23_5_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // depende economicamente
 $S2_23_6_6 = array(
 	'name'	=> 'S2_23_6_6',
 	'id'	=> 'S2_23_6_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // limitacion
 $S2_23_7_6 = array(
 	'name'	=> 'S2_23_7_6',
 	'id'	=> 'S2_23_7_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // ultimo nivel
 $S2_23_8_6 = array(
 	'name'	=> 'S2_23_8_6',
 	'id'	=> 'S2_23_8_6',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 // ocupacion actual
 $S2_23_9_6 = array(
 	'name'	=> 'S2_23_9_6',
 	'id'	=> 'S2_23_9_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6 estudia',
 );
 //institucion n o p
 $S2_23_10_6 = array(
 	'name'	=> 'S2_23_10_6',
 	'id'	=> 'S2_23_10_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
-
+$S2_23_11_6 = array(
+	'name'	=> 'S2_23_11_6',
+	'id'	=> 'S2_23_11_6',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro6',
+);
 // escuela
 $S2_23_11_6_O = array(
 	'name'	=> 'S2_23_11_6_O',
 	'id'	=> 'S2_23_11_6_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro6',
 );
 ///////////////////////////fin hijo 6
 ///////////////////////////hijo 7
@@ -1146,28 +1180,28 @@ $S2_23_1_7 = array(
 	'name'	=> 'S2_23_1_7',
 	'id'	=> 'S2_23_1_7',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // nombre
 $S2_23_2_7 = array(
 	'name'	=> 'S2_23_2_7',
 	'id'	=> 'S2_23_2_7',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // sexo
 $S2_23_3_7 = array(
 	'name'	=> 'S2_23_3_7',
 	'id'	=> 'S2_23_3_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // edad
 $S2_23_4_7A = array(
 	'name'	=> 'S2_23_4_7A',
 	'id'	=> 'S2_23_4_7A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro7 hano',
 );
 
 // edad m
@@ -1175,57 +1209,62 @@ $S2_23_4_7M = array(
 	'name'	=> 'S2_23_4_7M',
 	'id'	=> 'S2_23_4_7M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // vive con usted
 $S2_23_5_7 = array(
 	'name'	=> 'S2_23_5_7',
 	'id'	=> 'S2_23_5_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // depende economicamente
 $S2_23_6_7 = array(
 	'name'	=> 'S2_23_6_7',
 	'id'	=> 'S2_23_6_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // limitacion
 $S2_23_7_7 = array(
 	'name'	=> 'S2_23_7_7',
 	'id'	=> 'S2_23_7_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // ultimo nivel
 $S2_23_8_7 = array(
 	'name'	=> 'S2_23_8_7',
 	'id'	=> 'S2_23_8_7',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 // ocupacion actual
 $S2_23_9_7 = array(
 	'name'	=> 'S2_23_9_7',
 	'id'	=> 'S2_23_9_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7 estudia',
 );
 //institucion n o p
 $S2_23_10_7 = array(
 	'name'	=> 'S2_23_10_7',
 	'id'	=> 'S2_23_10_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
-
+$S2_23_11_7 = array(
+	'name'	=> 'S2_23_11_7',
+	'id'	=> 'S2_23_11_7',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro7',
+);
 // escuela
 $S2_23_11_7_O = array(
 	'name'	=> 'S2_23_11_7_O',
 	'id'	=> 'S2_23_11_7_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro7',
 );
 ///////////////////////////fin hijo 7
 ///////////////////////////hijo 8
@@ -1234,35 +1273,35 @@ $S2_23_1_8 = array(
 	'name'	=> 'S2_23_1_8',
 	'id'	=> 'S2_23_1_8',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // nombre
 $S2_23_2_8 = array(
 	'name'	=> 'S2_23_2_8',
 	'id'	=> 'S2_23_2_8',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // sexo
 $S2_23_3_8 = array(
 	'name'	=> 'S2_23_3_8',
 	'id'	=> 'S2_23_3_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // edad
 $S2_23_4_8A = array(
 	'name'	=> 'S2_23_4_8A',
 	'id'	=> 'S2_23_4_8A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro8 hano',
 );
 // edad m
 $S2_23_4_8M = array(
 	'name'	=> 'S2_23_4_8M',
 	'id'	=> 'S2_23_4_8M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 
 // vive con usted
@@ -1270,50 +1309,55 @@ $S2_23_5_8 = array(
 	'name'	=> 'S2_23_5_8',
 	'id'	=> 'S2_23_5_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // depende economicamente
 $S2_23_6_8 = array(
 	'name'	=> 'S2_23_6_8',
 	'id'	=> 'S2_23_6_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // limitacion
 $S2_23_7_8 = array(
 	'name'	=> 'S2_23_7_8',
 	'id'	=> 'S2_23_7_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // ultimo nivel
 $S2_23_8_8 = array(
 	'name'	=> 'S2_23_8_8',
 	'id'	=> 'S2_23_8_8',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 // ocupacion actual
 $S2_23_9_8 = array(
 	'name'	=> 'S2_23_9_8',
 	'id'	=> 'S2_23_9_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8 estudia',
 );
 //institucion n o p
 $S2_23_10_8 = array(
 	'name'	=> 'S2_23_10_8',
 	'id'	=> 'S2_23_10_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
-
+$S2_23_11_8 = array(
+	'name'	=> 'S2_23_11_8',
+	'id'	=> 'S2_23_11_8',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro8',
+);
 // escuela
 $S2_23_11_8_O = array(
 	'name'	=> 'S2_23_11_8_O',
 	'id'	=> 'S2_23_11_8_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro8',
 );
 ///////////////////////////fin hijo 8
 ///////////////////////////hijo 9
@@ -1322,35 +1366,35 @@ $S2_23_1_9 = array(
 	'name'	=> 'S2_23_1_9',
 	'id'	=> 'S2_23_1_9',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // nombre
 $S2_23_2_9 = array(
 	'name'	=> 'S2_23_2_9',
 	'id'	=> 'S2_23_2_9',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // sexo
 $S2_23_3_9 = array(
 	'name'	=> 'S2_23_3_9',
 	'id'	=> 'S2_23_3_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // edad
 $S2_23_4_9A = array(
 	'name'	=> 'S2_23_4_9A',
 	'id'	=> 'S2_23_4_9A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro9 hano',
 );
 // edad m
 $S2_23_4_9M = array(
 	'name'	=> 'S2_23_4_9M',
 	'id'	=> 'S2_23_4_9M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 
 // vive con usted
@@ -1358,50 +1402,55 @@ $S2_23_5_9 = array(
 	'name'	=> 'S2_23_5_9',
 	'id'	=> 'S2_23_5_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // depende economicamente
 $S2_23_6_9 = array(
 	'name'	=> 'S2_23_6_9',
 	'id'	=> 'S2_23_6_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // limitacion
 $S2_23_7_9 = array(
 	'name'	=> 'S2_23_7_9',
 	'id'	=> 'S2_23_7_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // ultimo nivel
 $S2_23_8_9 = array(
 	'name'	=> 'S2_23_8_9',
 	'id'	=> 'S2_23_8_9',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 // ocupacion actual
 $S2_23_9_9 = array(
 	'name'	=> 'S2_23_9_9',
 	'id'	=> 'S2_23_9_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9 estudia',
 );
 //institucion n o p
 $S2_23_10_9 = array(
 	'name'	=> 'S2_23_10_9',
 	'id'	=> 'S2_23_10_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
-
+$S2_23_11_9 = array(
+	'name'	=> 'S2_23_11_9',
+	'id'	=> 'S2_23_11_9',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro9',
+);
 // escuela
 $S2_23_11_9_O = array(
 	'name'	=> 'S2_23_11_9_O',
 	'id'	=> 'S2_23_11_9_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro9',
 );
 ///////////////////////////fin hijo 9
 ///////////////////////////hijo 10
@@ -1410,28 +1459,28 @@ $S2_23_1_10 = array(
 	'name'	=> 'S2_23_1_10',
 	'id'	=> 'S2_23_1_10',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // nombre
 $S2_23_2_10 = array(
 	'name'	=> 'S2_23_2_10',
 	'id'	=> 'S2_23_2_10',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // sexo
 $S2_23_3_10 = array(
 	'name'	=> 'S2_23_3_10',
 	'id'	=> 'S2_23_3_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // edad
 $S2_23_4_10A = array(
 	'name'	=> 'S2_23_4_10A',
 	'id'	=> 'S2_23_4_10A',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class . ' hijo hnro10 hano',
 );
 
 // edad
@@ -1439,61 +1488,69 @@ $S2_23_4_10M = array(
 	'name'	=> 'S2_23_4_10M',
 	'id'	=> 'S2_23_4_10M',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // vive con usted
 $S2_23_5_10 = array(
 	'name'	=> 'S2_23_5_10',
 	'id'	=> 'S2_23_5_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // depende economicamente
 $S2_23_6_10 = array(
 	'name'	=> 'S2_23_6_10',
 	'id'	=> 'S2_23_6_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // limitacion
 $S2_23_7_10 = array(
 	'name'	=> 'S2_23_7_10',
 	'id'	=> 'S2_23_7_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // ultimo nivel
 $S2_23_8_10 = array(
 	'name'	=> 'S2_23_8_10',
 	'id'	=> 'S2_23_8_10',
 	'maxlength'	=> 2,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 // ocupacion actual
 $S2_23_9_10 = array(
 	'name'	=> 'S2_23_9_10',
 	'id'	=> 'S2_23_9_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10 estudia',
 );
 //institucion n o p
 $S2_23_10_10 = array(
 	'name'	=> 'S2_23_10_10',
 	'id'	=> 'S2_23_10_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
-
+$S2_23_11_10 = array(
+	'name'	=> 'S2_23_11_10',
+	'id'	=> 'S2_23_11_10',
+	'maxlength'	=> 1,
+	'class' => $span_class. ' hijo hnro10',
+);
 // escuela
 $S2_23_11_10_O = array(
 	'name'	=> 'S2_23_11_10_O',
 	'id'	=> 'S2_23_11_10_O',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class. ' hijo hnro10',
 );
 
 
 
+
+
+/////////////////////////////////
 $S2_10_PP_O = array(
 	'name'	=> 'S2_10_PP_O',
 	'id'	=> 'S2_10_PP_O',
@@ -2983,7 +3040,7 @@ echo '<div class="row-fluid">';
                   echo '<th class="span1">23.8 ¿Cuál es el último nivel de estudios aprobado?</th>';
                   echo '<th class="span1">23.9 ¿Actualmente se encuentra estudiando?</th>';
                   echo '<th class="span1">23.10 ¿La institución educativa a la que asiste es:</th>';
-                  echo '<th class="span2">23.11 Actualmente ¿A qué actividad se dedica?</th>';
+                  echo '<th class="span2" colspan="2">23.11 Actualmente ¿A qué actividad se dedica?</th>';
                 echo '</tr>';
               echo '</thead>';
               echo '<tbody>';
@@ -2999,6 +3056,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_1) . '<div class="help-block error">' . form_error($S2_23_8_1['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_1) . '<div class="help-block error">' . form_error($S2_23_9_1['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_10_1) . '<div class="help-block error">' . form_error($S2_23_10_1['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_1) . '<div class="help-block error">' . form_error($S2_23_11_1['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_1_O) . '<div class="help-block error">' . form_error($S2_23_11_1_O['name']) . '</div></td>';                                    
                 echo '</tr>';
                 echo '<tr>';
@@ -3013,6 +3071,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_2) . '<div class="help-block error">' . form_error($S2_23_8_2['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_2) . '<div class="help-block error">' . form_error($S2_23_9_2['name']) . '</div></td>';  
                   echo '<td>' . form_input($S2_23_10_2) . '<div class="help-block error">' . form_error($S2_23_10_2['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_2) . '<div class="help-block error">' . form_error($S2_23_11_2['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_2_O) . '<div class="help-block error">' . form_error($S2_23_11_2_O['name']) . '</div></td>';                         
                 echo '</tr>';
                 echo '<tr>';
@@ -3027,6 +3086,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_3) . '<div class="help-block error">' . form_error($S2_23_8_3['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_3) . '<div class="help-block error">' . form_error($S2_23_9_3['name']) . '</div></td>';      
                   echo '<td>' . form_input($S2_23_10_3) . '<div class="help-block error">' . form_error($S2_23_10_3['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_3) . '<div class="help-block error">' . form_error($S2_23_11_3['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_3_O) . '<div class="help-block error">' . form_error($S2_23_11_3_O['name']) . '</div></td>';                                                       
                 echo '</tr>';
                 echo '<tr>';
@@ -3041,6 +3101,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_4) . '<div class="help-block error">' . form_error($S2_23_8_4['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_4) . '<div class="help-block error">' . form_error($S2_23_9_4['name']) . '</div></td>';   
                   echo '<td>' . form_input($S2_23_10_4) . '<div class="help-block error">' . form_error($S2_23_10_4['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_4) . '<div class="help-block error">' . form_error($S2_23_11_4['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_4_O) . '<div class="help-block error">' . form_error($S2_23_11_4_O['name']) . '</div></td>';                         
                 echo '</tr>';
                 echo '<tr>';
@@ -3055,6 +3116,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_5) . '<div class="help-block error">' . form_error($S2_23_8_5['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_5) . '<div class="help-block error">' . form_error($S2_23_9_5['name']) . '</div></td>';   
                   echo '<td>' . form_input($S2_23_10_5) . '<div class="help-block error">' . form_error($S2_23_10_5['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_5) . '<div class="help-block error">' . form_error($S2_23_11_5['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_5_O) . '<div class="help-block error">' . form_error($S2_23_11_5_O['name']) . '</div></td>';                                                      
                 echo '</tr>';
                 echo '<tr>';
@@ -3069,6 +3131,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_6) . '<div class="help-block error">' . form_error($S2_23_8_6['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_6) . '<div class="help-block error">' . form_error($S2_23_9_6['name']) . '</div></td>';   
                   echo '<td>' . form_input($S2_23_10_6) . '<div class="help-block error">' . form_error($S2_23_10_6['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_6) . '<div class="help-block error">' . form_error($S2_23_11_6['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_6_O) . '<div class="help-block error">' . form_error($S2_23_11_6_O['name']) . '</div></td>';                         
                 echo '</tr>';
                 echo '<tr>';
@@ -3083,6 +3146,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_7) . '<div class="help-block error">' . form_error($S2_23_8_7['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_7) . '<div class="help-block error">' . form_error($S2_23_9_7['name']) . '</div></td>';      
                   echo '<td>' . form_input($S2_23_10_7) . '<div class="help-block error">' . form_error($S2_23_10_7['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_7) . '<div class="help-block error">' . form_error($S2_23_11_7['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_7_O) . '<div class="help-block error">' . form_error($S2_23_11_7_O['name']) . '</div></td>';                                                      
                 echo '</tr>';
                 echo '<tr>';
@@ -3097,6 +3161,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_8) . '<div class="help-block error">' . form_error($S2_23_8_8['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_8) . '<div class="help-block error">' . form_error($S2_23_9_8['name']) . '</div></td>';   
                   echo '<td>' . form_input($S2_23_10_8) . '<div class="help-block error">' . form_error($S2_23_10_8['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_8) . '<div class="help-block error">' . form_error($S2_23_11_8['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_8_O) . '<div class="help-block error">' . form_error($S2_23_11_8_O['name']) . '</div></td>';                         
                 echo '</tr>';
                 echo '<tr>';
@@ -3111,6 +3176,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_9) . '<div class="help-block error">' . form_error($S2_23_8_9['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_9) . '<div class="help-block error">' . form_error($S2_23_9_9['name']) . '</div></td>';       
                   echo '<td>' . form_input($S2_23_10_9) . '<div class="help-block error">' . form_error($S2_23_10_9['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_9) . '<div class="help-block error">' . form_error($S2_23_11_9['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_9_O) . '<div class="help-block error">' . form_error($S2_23_11_9_O['name']) . '</div></td>';                                                  
                 echo '</tr>';
                 echo '<tr>';
@@ -3125,6 +3191,7 @@ echo '<div class="row-fluid">';
                   echo '<td>' . form_input($S2_23_8_10) . '<div class="help-block error">' . form_error($S2_23_8_10['name']) . '</div></td>';
                   echo '<td>' . form_input($S2_23_9_10) . '<div class="help-block error">' . form_error($S2_23_9_10['name']) . '</div></td>';  
                   echo '<td>' . form_input($S2_23_10_10) . '<div class="help-block error">' . form_error($S2_23_10_10['name']) . '</div></td>';                                    
+                  echo '<td>' . form_input($S2_23_11_10) . '<div class="help-block error">' . form_error($S2_23_11_10['name']) . '</div></td>';                                    
                   echo '<td>' . form_input($S2_23_11_10_O) . '<div class="help-block error">' . form_error($S2_23_11_10_O['name']) . '</div></td>';                         
                 echo '</tr>';                                                
               echo '</tbody>';
@@ -3342,6 +3409,98 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
 
 
 
+//Desactiva los datos de su conyuge
+$('#S2_18').change(function() {
+	var preg19 = $('#S2_19, #S2_19G, #S2_19A');
+	var preg20 = $('#S2_20_1, #S2_20_2, #S2_20_3, #S2_20_3, #S2_20_4, #S2_20_5, #S2_20_6, #S2_20_7, #S2_20_8, #S2_20_9, #S2_20_9_O');
+	var th = $(this).val();
+	if( th == 3 || th == 4 || th == 5 || th == 6 || th == 9){
+		preg19.val('')
+		preg19.attr("disabled", "disabled"); 
+		preg20.val('')
+		preg20.attr("disabled", "disabled"); 
+	}else{
+		preg19.removeAttr('disabled');
+		preg20.removeAttr('disabled');
+	}
+});
+
+
+//No tiene hijos
+$('#S2_21').change(function() {
+	var preg22 = $('#S2_22');
+	var preg23 = $('.hijo');
+	var th = $(this).val();
+	if( th == 2 || th == 9){
+		preg22.val('')
+		preg22.attr("disabled", "disabled"); 
+		preg23.val('')
+		preg23.attr("disabled", "disabled"); 
+	}else{
+		preg22.removeAttr('disabled');
+		preg23.removeAttr('disabled');
+	}
+});
+
+//cuantos hijos
+$('#S2_22').keyup(function() {
+	$('.hijo').removeAttr('disabled');
+	var emp = parseInt($(this).val()) + 1;
+	for(var i = emp; i <= 10; i++){
+		$('.hnro' + i).val('');
+		$('.hnro' + i).attr("disabled", "disabled"); 
+	}
+});
+
+
+//año hijos
+$('.hano').keyup(function() {
+
+	var pre = $(this).attr('id');
+	var npreg = pre.substring(8,9);
+	var at = pre.substring(0,9);
+
+	if($(this).val() == 0){
+		$('#' + at + 'M').removeAttr('disabled');
+	}else{
+		$('#' + at + 'M').val('');
+		$('#' + at + 'M').attr("disabled", "disabled"); 	
+	}
+
+
+	var pregmayores3 = $('#S2_23_8_' + npreg + ', #S2_23_9_'+ npreg + ', #S2_23_10_' + npreg);
+	if($(this).val() >= 3){
+		pregmayores3.removeAttr('disabled');
+	}else{
+		pregmayores3.val('')
+		pregmayores3.attr("disabled", "disabled"); 	
+	}
+
+	var pregmayores14 = $('#S2_23_11_' + npreg + ', #S2_23_11_'+ npreg + '_O');
+	if($(this).val() >= 14){
+		pregmayores14.removeAttr('disabled');
+	}else{
+		pregmayores14.val('')
+		pregmayores14.attr("disabled", "disabled"); 	
+	}
+});
+
+
+//Estudia hijo?
+$('.estudia').keyup(function() {
+	var pre = $(this).attr('id');
+	var npreg = pre.substring(8,9);
+	if($(this).val() == 1){
+		$('#S2_23_10_' + npreg).removeAttr('disabled');
+	}else{
+		$('#S2_23_10_' + npreg).val('');
+		$('#S2_23_10_' + npreg).attr("disabled", "disabled"); 
+	}
+});
+
+
+
+
 
 $('#S2_10_PAIS_COD').change(function() {
     var ug = $('#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD');
@@ -3406,53 +3565,55 @@ $.extend(jQuery.validator.messages, {
 		            required: true,
 		            exactlength: 2,
 		            digits: true, 
+		            valdia:true,
 		         },  	
 		        S2_2M:{
 		            required: true,
 		            exactlength: 2,
 		            digits: true, 
+		            valmes:true,
 		         },  	
 		        S2_2A:{
 		            required: true,
 		            exactlength: 4,
 		            digits: true, 
+		            valrango: [1930,2000,9999],
 		         },  
 		        S2_3:{
+		        	required: true,
 		            range: [1,2],
 		            digits: true, 
 		         },  	
 		        S2_4:{
-		            required: true,
 		            digits:true,
-		            range: [1,99999999],
+		            valrango: [1,99999998,99999999],
 		            exactlength: 8, 
 		         },  
 		        S2_4_DD:{
-		            required: true,
 		            digits:true,
-		            range: [1,99999999],
+		            valrango: [1,99999998,99999999],
 		            exactlength: 8, 
 		            equalTo: "#S2_4",
 		         },  		         
 		        S2_5:{
-		            required: true,
 		            digits:true,
-		            range:[10000000001,99999999999],
+		           valrango: [10000000001,20999999999,99999999999],
 		            exactlength: 11, 
 		         },  	
 		        S2_5_DD:{
-		            required: true,
 		            digits:true,
-		            range:[10000000001,99999999999],
+		            valrango: [10000000001,20999999999,99999999999],
 		            exactlength: 11, 
 		            equalTo: "#S2_5",
 		         },  		         
 		        S2_6:{
+		        	required:true,
 		            digits:true,
 		            range:[900000000,999999998],
 		            exactlength: 9, 
 		         },  		         	         
 		        S2_7:{
+		        	required:true,
 		            digits:true,
 		            range:[200000,8999999],
 		            exactlength: 7, 
@@ -3460,6 +3621,18 @@ $.extend(jQuery.validator.messages, {
 		        S2_8:{
 		            email: true,
 		         }, 	
+		        S2_9_DD_COD:{
+           			valueNotEquals: -1,
+		         }, 		
+		        S2_9_PP_COD:{
+           			valueNotEquals: -1,
+		         }, 			
+		        S2_9_DI_COD:{
+           			valueNotEquals: -1,
+		         }, 	
+		        S2_9_CCPP_COD:{
+           			valueNotEquals: -1,
+		         }, 			                                    
 		        TIPVIA:{
 		            digits:true,
 		            range:[1,8],
@@ -3468,7 +3641,7 @@ $.extend(jQuery.validator.messages, {
 		            maxlength: 50, 
 		         }, 		
 		        PTANUM:{
-		            maxlength: 4, 
+		            maxlength: 4,
 		         },
 		        BLOCK:{
 		            maxlength: 4, 
@@ -3492,177 +3665,172 @@ $.extend(jQuery.validator.messages, {
 		         }, 	
 		        S2_12:{
 		            digits:true,
-		            range:[1,8],
+		            valrango: [1,8,9],
 		         }, 	
 		        S2_12G:{
 		            digits:true,
-		            range:[1,6],
+		            valrango: [1,6,9],
 		         }, 	
 		        S2_12A:{
 		            digits:true,
-		            range:[0,5],
+		            valrango: [0,5,9],
 		         }, 
 		        S2_13:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 
 		        S2_14_1:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		
 		        S2_14_2:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_14_3:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_14_4:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_14_5:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_14_6:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_14_7:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_14_7_O:{
 					maxlength: 100, 
 		         }, 	
 		        S2_14_8:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		
 		        S2_15:{
 		            digits:true,
-		            range:[1,4],
-		         }, 
-		        S2_15:{
-		            digits:true,
-		            range:[1,4],
+		            valrango: [1,4,9],
 		         }, 	
 		        S2_15_O:{
 					maxlength: 100, 
 		         }, 	
 		        S2_16:{
 		            digits:true,
-		            range:[1,4],
+		            valrango: [1,4,9],
 		         }, 	
 		        S2_17_1:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_17_2:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_17_3:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_17_4:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_17_5:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		
 		        S2_17_6:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		
 
 		        S2_17_7:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_17_8:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_17_8_O:{
 					maxlength: 100, 
 		         },
 		        S2_17_9:{
 		            digits:true,
-		            range:[0,1],
+		           valrango: [0,1,9],
 		         }, 	
 		        S2_18:{
-		            digits:true,
-		            range:[1,6],
+		           valrango: [1,6,9],
 		         }, 
 		        S2_19:{
 		            digits:true,
-		            range:[1,8],
+		            valrango: [1,8,9],
 		         }, 	
 		        S2_19G:{
 		            digits:true,
-		            range:[1,6],
+		            valrango: [1,6,9],
 		         }, 
 		        S2_19A:{
 		            digits:true,
-		            range:[0,5],
+		            valrango: [0,5,9],
 		         }, 	
 		        S2_20_1:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_20_2:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_20_3:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_20_4:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		
 		        S2_20_5:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_20_6:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_20_7:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		        S2_20_8:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_20_9:{
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		        S2_20_9_O:{
 					maxlength: 100, 
 		         },		
 		        S2_21:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_22:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },			  
 //hijo1
 		        S2_23_1_1:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_1:{
 		            validName: true,
@@ -3670,44 +3838,44 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_1:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_1A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_1M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_1:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_1:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_1:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_1:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_1:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_1:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_1:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_1_O:{
  					maxlength:100,
 		         },	
@@ -3715,7 +3883,7 @@ $.extend(jQuery.validator.messages, {
 //hijo2
 		        S2_23_1_2:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_2:{
 		            validName: true,
@@ -3723,52 +3891,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_2:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_2A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_2M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_2:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_2:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_2:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_2:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_2:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_2:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_2:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_2_O:{
  					maxlength:100,
 		         },	
-//end hijo2	
+//end hijo2
 //hijo3
 		        S2_23_1_3:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_3:{
 		            validName: true,
@@ -3776,52 +3944,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_3:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_3A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_3M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_3:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_3:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_3:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_3:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_3:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_3:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_3:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_3_O:{
  					maxlength:100,
 		         },	
-//end hijo3	
+//end hijo3
 //hijo4
 		        S2_23_1_4:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_4:{
 		            validName: true,
@@ -3829,52 +3997,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_4:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_4A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_4M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_4:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_4:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_4:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_4:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_4:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_4:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_4:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_4_O:{
  					maxlength:100,
 		         },	
-//end hijo4			   
+//end hijo4	   
 //hijo5
 		        S2_23_1_5:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_5:{
 		            validName: true,
@@ -3882,52 +4050,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_5:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_5A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_5M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_5:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_5:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_5:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_5:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_5:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_5:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_5:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_5_O:{
  					maxlength:100,
 		         },	
-//end hijo5	      
+//end hijo5	 
 //hijo6
 		        S2_23_1_6:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_6:{
 		            validName: true,
@@ -3935,52 +4103,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_6:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_6A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_6M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_6:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_6:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_6:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_6:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_6:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_6:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_6:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_6_O:{
  					maxlength:100,
 		         },	
-//end hijo6	  	
+//end hijo6 
 //hijo7
 		        S2_23_1_7:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_7:{
 		            validName: true,
@@ -3988,52 +4156,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_7:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_7A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_7M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_7:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_7:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_7:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_7:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_7:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_7:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_7:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_7_O:{
  					maxlength:100,
 		         },	
-//end hijo7	 
+//end hijo7 
 //hijo8
 		        S2_23_1_8:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_8:{
 		            validName: true,
@@ -4041,52 +4209,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_8:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_8A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_8M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_8:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_8:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_8:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_8:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_8:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_8:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_8:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_8_O:{
  					maxlength:100,
 		         },	
-//end hijo8		
+//end hijo8 
 //hijo9
 		        S2_23_1_9:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_9:{
 		            validName: true,
@@ -4094,52 +4262,52 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_9:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_9A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_9M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_9:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_9:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_9:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_9:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_9:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_9:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_9:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_9_O:{
  					maxlength:100,
 		         },	
-//end hijo9	
+//end hijo9 
 //hijo10
 		        S2_23_1_10:{
 		            digits:true,
-		            range:[1,10],
+		            valrango: [1,10,99],
 		         },	
 		        S2_23_2_10:{
 		            validName: true,
@@ -4147,48 +4315,48 @@ $.extend(jQuery.validator.messages, {
 		         },	
 		        S2_23_3_10:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_4_10A:{
-		            digits:true,
-		            range:[0,98],
+		            number:true,
+		            valrango: [0,98,99],
 		         },		
 		        S2_23_4_10M:{
 		            digits:true,
-		            range:[1,11],
+		            valrango: [1,11,99],
 		         },		
 		        S2_23_5_10:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_6_10:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_7_10:{
 		            digits:true,
-		            range:[1,2],
+		           valrango: [1,2,9],
 		         },	
 		        S2_23_8_10:{
 		            digits:true,
-		            range:[1,10],
+		           valrango: [1,10,99],
 		         },		
 		        S2_23_9_10:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },		
 		        S2_23_10_10:{
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		        S2_23_11_10:{
 		            digits:true,
-		            range:[1,9],
-		         },	
+		             valrango: [1,8,9],
+		         },			         
 		        S2_23_11_10_O:{
  					maxlength:100,
 		         },	
-//end hijo10	    	         		         		         	         	         		         		         		         	         	         	         
+//end hijo9 	    	         		         		         	         	         		         		         		         	         	         	         
 			//FIN RULES
 		    },
 
