@@ -680,7 +680,7 @@ $S2_23_9_1 = array(
 	'name'	=> 'S2_23_9_1',
 	'id'	=> 'S2_23_9_1',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo estudia',
+	'class' => $span_class. ' hijo hnro1 estudia',
 );
 
 //institucion n o p
@@ -695,14 +695,14 @@ $S2_23_11_1 = array(
 	'name'	=> 'S2_23_11_1',
 	'id'	=> 'S2_23_11_1',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro1',
+	'class' => $span_class. ' hijo hnro1 hacti',
 );
 // especifique
 $S2_23_11_1_O = array(
 	'name'	=> 'S2_23_11_1_O',
 	'id'	=> 'S2_23_11_1_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro1',
+	'class' => $span_class. ' hijo hnro1 hespe',
 );
 ///////////////////////////fin hijo 1
 ///////////////////////////hijo 2
@@ -790,14 +790,14 @@ $S2_23_11_2 = array(
 	'name'	=> 'S2_23_11_2',
 	'id'	=> 'S2_23_11_2',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro2',
+	'class' => $span_class. ' hijo hnro2 hacti',
 );
 // escuela
 $S2_23_11_2_O = array(
 	'name'	=> 'S2_23_11_2_O',
 	'id'	=> 'S2_23_11_2_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro2',
+	'class' => $span_class. ' hijo hnro2 hespe',
 );
 ///////////////////////////fin hijo 2
 ///////////////////////////hijo 3
@@ -884,14 +884,14 @@ $S2_23_11_3 = array(
 	'name'	=> 'S2_23_11_3',
 	'id'	=> 'S2_23_11_3',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro3',
+	'class' => $span_class. ' hijo hnro3 hacti',
 );
 // escuela
 $S2_23_11_3_O = array(
 	'name'	=> 'S2_23_11_3_O',
 	'id'	=> 'S2_23_11_3_O',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro3',
+	'class' => $span_class. ' hijo hnro3 hespe',
 );
 ///////////////////////////fin hijo 3
 ///////////////////////////hijo 4
@@ -976,14 +976,14 @@ $S2_23_11_4 = array(
 	'name'	=> 'S2_23_11_4',
 	'id'	=> 'S2_23_11_4',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro4',
+	'class' => $span_class. ' hijo hnro4 hacti',
 );
 // escuela
 $S2_23_11_4_O = array(
 	'name'	=> 'S2_23_11_4_O',
 	'id'	=> 'S2_23_11_4_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro4',
+	'class' => $span_class. ' hijo hnro4 hespe',
 );
 
 ///////////////////////////fin hijo 4
@@ -1071,14 +1071,14 @@ $S2_23_11_5 = array(
 	'name'	=> 'S2_23_11_5',
 	'id'	=> 'S2_23_11_5',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro5',
+	'class' => $span_class. ' hijo hnro5 hacti',
 );
 // escuela
 $S2_23_11_5_O = array(
 	'name'	=> 'S2_23_11_5_O',
 	'id'	=> 'S2_23_11_5_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro5',
+	'class' => $span_class. ' hijo hnro5 hespe',
 );
 ///////////////////////////fin hijo 5
 ///////////////////////////hijo 6
@@ -1164,14 +1164,14 @@ $S2_23_11_6 = array(
 	'name'	=> 'S2_23_11_6',
 	'id'	=> 'S2_23_11_6',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro6',
+	'class' => $span_class. ' hijo hnro6 hacti',
 );
 // escuela
 $S2_23_11_6_O = array(
 	'name'	=> 'S2_23_11_6_O',
 	'id'	=> 'S2_23_11_6_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro6',
+	'class' => $span_class. ' hijo hnro6 hespe',
 );
 ///////////////////////////fin hijo 6
 ///////////////////////////hijo 7
@@ -1257,14 +1257,14 @@ $S2_23_11_7 = array(
 	'name'	=> 'S2_23_11_7',
 	'id'	=> 'S2_23_11_7',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro7',
+	'class' => $span_class. ' hijo hnro7 hacti',
 );
 // escuela
 $S2_23_11_7_O = array(
 	'name'	=> 'S2_23_11_7_O',
 	'id'	=> 'S2_23_11_7_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro7',
+	'class' => $span_class. ' hijo hnro7 hespe',
 );
 ///////////////////////////fin hijo 7
 ///////////////////////////hijo 8
@@ -1350,14 +1350,14 @@ $S2_23_11_8 = array(
 	'name'	=> 'S2_23_11_8',
 	'id'	=> 'S2_23_11_8',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro8',
+	'class' => $span_class. ' hijo hnro8 hacti',
 );
 // escuela
 $S2_23_11_8_O = array(
 	'name'	=> 'S2_23_11_8_O',
 	'id'	=> 'S2_23_11_8_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro8',
+	'class' => $span_class. ' hijo hnro8 hespe',
 );
 ///////////////////////////fin hijo 8
 ///////////////////////////hijo 9
@@ -1443,14 +1443,14 @@ $S2_23_11_9 = array(
 	'name'	=> 'S2_23_11_9',
 	'id'	=> 'S2_23_11_9',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro9',
+	'class' => $span_class. ' hijo hnro9 hacti',
 );
 // escuela
 $S2_23_11_9_O = array(
 	'name'	=> 'S2_23_11_9_O',
 	'id'	=> 'S2_23_11_9_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro9',
+	'class' => $span_class. ' hijo hnro9 hespe',
 );
 ///////////////////////////fin hijo 9
 ///////////////////////////hijo 10
@@ -1536,14 +1536,14 @@ $S2_23_11_10 = array(
 	'name'	=> 'S2_23_11_10',
 	'id'	=> 'S2_23_11_10',
 	'maxlength'	=> 1,
-	'class' => $span_class. ' hijo hnro10',
+	'class' => $span_class. ' hijo hnro10 hacti',
 );
 // escuela
 $S2_23_11_10_O = array(
 	'name'	=> 'S2_23_11_10_O',
 	'id'	=> 'S2_23_11_10_O',
 	'maxlength'	=> 100,
-	'class' => $span_class. ' hijo hnro10',
+	'class' => $span_class. ' hijo hnro10 hespe',
 );
 
 
@@ -2861,20 +2861,7 @@ echo '<div class="question">';
 
 
 							echo '<div class="control-group offset1 span1">';	
-								echo form_label('Grado', $S2_19A['id'], $label_class);
-							echo '</div>'; 
-
-							echo '<div class="control-group span2">';
-								echo '<div class="controls">';
-										echo form_input($S2_19A); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S2_19A['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
-
-
-							echo '<div class="control-group offset1 span1">';	
-								echo form_label('Año', $S2_19G['id'], $label_class);
+								echo form_label('Grado', $S2_19G['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group span2">';
@@ -2882,6 +2869,19 @@ echo '<div class="question">';
 										echo form_input($S2_19G); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($S2_19G['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+
+
+							echo '<div class="control-group offset1 span1">';	
+								echo form_label('Año', $S2_19A['id'], $label_class);
+							echo '</div>'; 
+
+							echo '<div class="control-group span2">';
+								echo '<div class="controls">';
+										echo form_input($S2_19A); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S2_19A['name']) . '</div>';
 								echo '</div>';	
 							echo '</div>'; 			
 	
@@ -3407,7 +3407,64 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
 // CARGA COMBOS UBIGEO RESIDENCIA<-----------------------------
 //-------------------------------------------------------------------------------------------------------------------------------
 
+//grado 12
+$('#S2_12').change(function() {
+	var s2p12g = $('#S2_12G');
+	var s2p12a = $('#S2_12A');
+	var th = $(this).val();
+	if( th == 3 ){	
+		s2p12g.removeAttr('disabled');
+		s2p12a.removeAttr('disabled');
+	}else if( th == 4 ){
+		s2p12g.val('')
+		s2p12g.attr("disabled", "disabled"); 
+		s2p12a.removeAttr('disabled');
+	}else{
+		s2p12g.val('')
+		s2p12g.attr("disabled", "disabled"); 	
+		s2p12a.val('')
+		s2p12a.attr("disabled", "disabled"); 			
+	}
+});
 
+//especifique 14
+$('#S2_14_7').change(function() {
+	var s2p14o = $('#S2_14_7_O');
+	var th = $(this).val();
+	if( th == 1 ){
+		s2p14o.removeAttr('disabled');
+	}else{
+		s2p14o.val('')
+		s2p14o.attr("disabled", "disabled"); 
+	}	
+});
+
+
+//especifique 17
+$('#S2_17_8').change(function() {
+	var s2p14o = $('#S2_17_8_O');
+	var th = $(this).val();
+	if( th == 1 ){
+		s2p14o.removeAttr('disabled');
+	}else{
+		s2p14o.val('')
+		s2p14o.attr("disabled", "disabled"); 
+	}	
+});
+
+
+
+//especifique por que pescador
+$('#S2_15').change(function() {
+	var s2p15o = $('#S2_15_O');
+	var th = $(this).val();
+	if( th == 4 ){
+		s2p15o.removeAttr('disabled');
+	}else{
+		s2p15o.val('')
+		s2p15o.attr("disabled", "disabled"); 
+	}	
+});
 
 //Desactiva los datos de su conyuge
 $('#S2_18').change(function() {
@@ -3425,6 +3482,25 @@ $('#S2_18').change(function() {
 	}
 });
 
+//grado conyuge
+$('#S2_19').change(function() {
+	var s2p19g = $('#S2_19G');
+	var s2p19a = $('#S2_19A');
+	var th = $(this).val();
+	if( th == 3 ){	
+		s2p19g.removeAttr('disabled');
+		s2p19a.removeAttr('disabled');
+	}else if( th == 4 ){
+		s2p19g.val('')
+		s2p19g.attr("disabled", "disabled"); 
+		s2p19a.removeAttr('disabled');
+	}else{
+		s2p19g.val('')
+		s2p19g.attr("disabled", "disabled"); 	
+		s2p19a.val('')
+		s2p19a.attr("disabled", "disabled"); 			
+	}
+});
 
 //No tiene hijos
 $('#S2_21').change(function() {
@@ -3443,24 +3519,29 @@ $('#S2_21').change(function() {
 });
 
 //cuantos hijos
-$('#S2_22').keyup(function() {
+$('#S2_22').change(function() {
 	$('.hijo').removeAttr('disabled');
 	var emp = parseInt($(this).val()) + 1;
 	for(var i = emp; i <= 10; i++){
 		$('.hnro' + i).val('');
 		$('.hnro' + i).attr("disabled", "disabled"); 
 	}
+	for(var j = 0; j <= $(this).val();j++ ){
+		$('#S2_23_4_' + j + 'A').trigger('change');
+		$('#S2_23_9_' + j).trigger('change');
+	}
+
 });
 
 
 //año hijos
-$('.hano').keyup(function() {
+$('.hano').change(function() {
 
 	var pre = $(this).attr('id');
 	var npreg = pre.substring(8,9);
 	var at = pre.substring(0,9);
 
-	if($(this).val() == 0){
+	if($(this).val() == 0 && $(this).val() !=''){
 		$('#' + at + 'M').removeAttr('disabled');
 	}else{
 		$('#' + at + 'M').val('');
@@ -3487,7 +3568,7 @@ $('.hano').keyup(function() {
 
 
 //Estudia hijo?
-$('.estudia').keyup(function() {
+$('.estudia').change(function() {
 	var pre = $(this).attr('id');
 	var npreg = pre.substring(8,9);
 	if($(this).val() == 1){
@@ -3498,32 +3579,63 @@ $('.estudia').keyup(function() {
 	}
 });
 
-
+//actividad hijo
+$('.hacti').change(function() {
+	var pre = $(this).attr('id');
+	var npreg = pre.substring(9,10);
+	if($(this).val() == 8){
+		$('#S2_23_11_' + npreg + '_O').removeAttr('disabled');
+	}else{
+		$('#S2_23_11_' + npreg + '_O').val('');
+		$('#S2_23_11_' + npreg + '_O').attr("disabled", "disabled"); 		
+	}
+});
 
 
 
 $('#S2_10_PAIS_COD').change(function() {
     var ug = $('#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD');
+    var ugo = $('#S2_10_PP_O, #S2_10_DI_O');
     if($(this).val() == 124){
         ug.removeAttr('disabled');
+        ugo.removeAttr('disabled');
     }else{
         ug.val(-1);
-		ug.attr("disabled", "disabled");        
+		ug.attr("disabled", "disabled");  
+		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 		      
     }
 });
 
 $('#S2_11_PAIS_COD').change(function() {
     var ug = $('#S2_11_DD_COD, #S2_11_PP_COD, #S2_11_DI_COD');
+    var ugo = $('#S2_11_PP_O, #S2_11_DI_O'); 
     if($(this).val() == 124){
         ug.removeAttr('disabled');
+        ugo.removeAttr('disabled');
     }else{
         ug.val(-1);
-		ug.attr("disabled", "disabled");        
+		ug.attr("disabled", "disabled");   
+		ugo.val('');     
+		ugo.attr("disabled", "disabled");  
     }
 });
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+//COMBOS SECCION 2
+ $('#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD, #S2_10_PP_O, #S2_10_DI_O').attr("disabled", "disabled");
+ $('#S2_11_DD_COD, #S2_11_PP_COD, #S2_11_DI_COD, #S2_11_PP_O, #S2_11_DI_O').attr("disabled", "disabled");
 
+$('#S2_14_7_O').attr("disabled", "disabled");
+$('#S2_15_O').attr("disabled", "disabled");
+$('#S2_17_8_O').attr("disabled", "disabled");
+$('.hespe').attr("disabled", "disabled");
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// $("#seccion2").on("submit", false); 
 
@@ -3632,12 +3744,42 @@ $.extend(jQuery.validator.messages, {
 		         }, 	
 		        S2_9_CCPP_COD:{
            			valueNotEquals: -1,
-		         }, 			                                    
+		         }, 	
+
+		        S2_10_PAIS_COD:{
+           			valueNotEquals: -1,
+		         }, 
+		        S2_10_DD_COD:{
+           			valueNotEquals: -1,
+		         }, 
+		        S2_10_PP_COD:{
+           			valueNotEquals: -1,
+		         }, 
+		        S2_10_DI_COD:{
+           			valueNotEquals: -1,
+		         }, 
+
+		        S2_11_PAIS_COD:{
+           			valueNotEquals: -1,
+		         }, 
+		        S2_11_DD_COD:{
+           			valueNotEquals: -1,
+		         }, 
+		        S2_11_PP_COD:{
+           			valueNotEquals: -1,
+		         }, 
+		        S2_11_DI_COD:{
+           			valueNotEquals: -1,
+		         }, 
+
+
 		        TIPVIA:{
+		        	required:true,
 		            digits:true,
 		            range:[1,8],
 		         }, 
 		        NOMVIA:{
+		        	required:true,
 		            maxlength: 50, 
 		         }, 		
 		        PTANUM:{
@@ -3766,7 +3908,8 @@ $.extend(jQuery.validator.messages, {
 		           valrango: [0,1,9],
 		         }, 	
 		        S2_18:{
-		           valrango: [1,6,9],
+		           valueNotEquals:-1,
+		           range: [1,6],
 		         }, 
 		        S2_19:{
 		            digits:true,

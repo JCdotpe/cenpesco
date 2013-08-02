@@ -43,9 +43,11 @@ class Pesc_seccion4 extends CI_Controller {
 		if($is_ajax){
 
 			$fields = $this->pescador_model->get_fields('pesc_seccion4');
+			//id
+			$id = $this->input->post('pescador_id');			
 			foreach ($fields as $a=>$b) {
 				if(!in_array($b, array('id','user_id','last_ip','user_agent','created','modified'))){
-					$c_data[$b] = $this->input->post($b);
+					$c_data[$b] =($this->input->post($b) == '') ? NULL : $this->input->post($b);
 				}
 			}	
 			$c_data['user_id'] = $this->tank_auth->get_user_id();
@@ -57,10 +59,24 @@ class Pesc_seccion4 extends CI_Controller {
 
 			$flag = 0;
 			$msg = 'Error inesperado, por favor intentalo nuevamente';
-			if($this->pescador_model->insert_pesc_seccion('pesc_seccion4',$c_data) > 0){
-				$flag = 1;
-				$msg = 'Se ha registrado satisfactoriamente la Seccion IV';
-			}
+			// if($this->pescador_model->insert_pesc_seccion('pesc_seccion4',$c_data) > 0){
+			// 	$flag = 1;
+			// 	$msg = 'Se ha registrado satisfactoriamente la Seccion IV';
+			// }
+			if ($this->pescador_model->consulta_in_seccion($id,'pesc_seccion4')->num_rows() == 0) {
+				// inserta nuevo registro
+					if($this->pescador_model->insert_pesc_seccion('pesc_seccion4',$c_data) > 0){
+						$flag = 1;
+						$msg = 'Se ha registrado satisfactoriamente la Seccion IV';
+					}
+			} else {
+				// actualiza
+					if($this->pescador_model->update_pesc_seccion('pesc_seccion4',$c_data,$id) > 0){
+						$flag = 1;
+						$msg = 'Se ha modificado satisfactoriamente la Seccion IV';
+					}
+
+			}			
 			$datos['flag'] = $flag;	
 			$datos['msg'] = $msg;	
 			$data['datos'] = $datos;

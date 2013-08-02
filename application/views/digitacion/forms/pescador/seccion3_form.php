@@ -493,7 +493,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="control-group span4">';
 								echo '<div class="controls">';
-										echo form_input($S3_400_O); 
+										echo form_input($S3_500_O); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($S3_500_O['name']) . '</div>';
 								echo '</div>';	
@@ -1109,7 +1109,25 @@ echo form_close();
 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
+
+
+
+
 $(function(){
+
+$('#S3_500').change(function() {
+	var preg6 = $('#S3_600, #S3_600A, #S3_600B, #S3_600C');
+	var th = $(this).val();
+	if( th == 3 || th == 4 || th == 5 || th == 6 || th == 7 || th == 8){	
+		preg6.val('')
+		preg6.attr("disabled", "disabled"); 
+	}else{
+		preg6.removeAttr('disabled');
+	}	
+});
+
+
+
 
 
 	// $("#seccion3").on("submit", function(event) {
@@ -1120,135 +1138,136 @@ $(function(){
 		    rules: {           
 		    	S3_100: {
 		            digits:true,
-		            range:[1,6],
+		            valrango: [1,6,9],
 		         },  
 		        S3_100_O:{
 					maxlength: 100, 
 		         }, 			            
 		    	S3_200: {
 		            digits:true,
-		            range:[1,8],
+		            valrango: [1,8,9],
 		         }, 		
 		        S3_200_O:{
 					maxlength: 100, 
 		         },
 		    	S3_300: {
 		            digits:true,
-		            range:[1,7],
+		            valrango: [1,7,9],
 		         }, 		
 		        S3_300_O:{
 					maxlength: 100, 
 		         }, 
 		    	S3_400: {
 		            digits:true,
-		            range:[1,8],
+		            valrango: [1,8,9],
 		         }, 		
 		        S3_400_O:{
 					maxlength: 100, 
 		         }, 
 		    	S3_500: {
 		            digits:true,
-		            range:[1,8],
+		            valrango: [1,8,9],
 		         }, 		
 		        S3_500_O:{
 					maxlength: 100, 
 		         }, 	
 		    	S3_600: {
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 
 		    	S3_600A: {
 		            digits:true,
-		            range:[0,24],
+		            valrango: [0,24,99],
 		         }, 
 		    	S3_600B: {
 		            digits:true,
-		            range:[1,7],
+		            valrango: [1,7,9],
 		         }, 	
 		    	S3_600C: {
 		            digits:true,
-		            range:[0,24],
+		            valrango: [0,24,99],
 		         }, 
 		    	S3_700: {
 		            digits:true,
-		            range:[1,7],
+		            valrango: [1,7,9],
 		         }, 
 		    	S3_800: {
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 	
 		    	S3_901: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_902: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_903: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_904: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_905: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_906: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_907: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_908: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_909: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_910: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_911: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S3_1001: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S3_1002: {
 		            digits:true,
-		            range:[0,1],
+		           valrango: [0,1,9],
 		         }, 
 		    	S3_1003: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S3_1004: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S3_1005: {
 		            digits:true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },		
 		    	S3_1100: {
 		            digits:true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		    	S3_1100E: {
 					maxlength: 100,
 		         },		
 		    	S3_1100E_COD: {
+		    		exactlength: 4,
 		            digits:true,
 		            range:[1,9998],
 		         },			         	         		                  			         	         		                			         	         	         	         		         	         		         		         	         		         		         	         			         		          		                                                                                      
@@ -1290,7 +1309,7 @@ $(function(){
 			    );
 				
 		        var bsub3 = $( "#seccion3 :submit" );
-		        bsub3.attr("disabled", "disabled");
+		        // bsub3.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_seccion3",
 		            type:'POST',

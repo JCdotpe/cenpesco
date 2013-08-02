@@ -80,7 +80,7 @@ echo form_open($this->uri->uri_string(),$attr);
 $NROFORM = array(
 	'name'	=> 'NFORM',
 	'id'	=> 'NFORM',
-	'maxlength'	=> 6,
+	'maxlength'	=> 5,
 	'class' => 'offset5 span2',
 );
 
@@ -240,12 +240,31 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+
+  $('#NFORM').blur(function (){
+     n = $(this).val().toString();
+     while(n.length < 5) n = "0" + n;
+     return $(this).val(n);
+  });
+
       $(window).keydown(function(event){
         if(event.keyCode == 13) {
           event.preventDefault();
           return false;
         }
       });
+
+
+  $('input,select,textarea').keydown( function(e) {
+    var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    var inputs = $(this).closest('form').find(':input:enabled');
+    if(key == 13) {
+      inputs.eq( inputs.index(this)+1).focus(); 
+    }
+    else if (key == 27) {
+      inputs.eq( inputs.index(this)-1).focus(); 
+    }
+  });    
 // window.clonetabs = $("#insidetabs").clone(true); 
 
 
@@ -593,6 +612,9 @@ $("#pesca_dor").validate({
                             $.each( json.infosecciones[key], function( fila, valor ) {
                                 if(fila != 'pescador_id' && fila != 'user_id' && fila != 'last_ip' && fila != 'user_agent' && fila != 'created' && fila != 'modified'){
                                     switch (ahuakey){
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION II//////////////////////////////////
+                                      ////////////////////////////////////////////////////////////////////////////////////
                                         case '2':
                                               //COMBOS Residencia Actual
                                               if(fila == 'S2_9_DD_COD'){
@@ -605,7 +627,6 @@ $("#pesca_dor").validate({
                                                             clearInterval(interval_PP);
                                                             $('#S2_9_PP_COD').val(valor);
                                                             $('#S2_9_PP_COD').trigger('change');
-                                                            
                                                         }
                                                     }, 1000); 
 
@@ -615,7 +636,6 @@ $("#pesca_dor").validate({
                                                             clearInterval(interval_DI);
                                                             $('#S2_9_DI_COD').val(valor);
                                                             $('#S2_9_DI_COD').trigger('change');
-                                                            
                                                         }
                                                     }, 2000);        
 
@@ -624,8 +644,6 @@ $("#pesca_dor").validate({
                                                         if($('#S2_9_CCPP_COD').has('option').length > 0){
                                                             clearInterval(interval_DI);
                                                             $('#S2_9_CCPP_COD').val(valor);
-                                                            // $('#S2_9_CCPP_COD').trigger('change');
-                                                            
                                                         }
                                                     }, 3000);                                   
                                                }             
@@ -656,8 +674,6 @@ $("#pesca_dor").validate({
                                                         if($('#S2_10_DI_COD').has('option').length > 0){
                                                             clearInterval(interval_DIN);
                                                             $('#S2_10_DI_COD').val(valor);
-                                                            // $('#S2_9_CCPP_COD').trigger('change');
-                                                            
                                                         }
                                                     }, 2000);                                   
                                                }                
@@ -678,7 +694,6 @@ $("#pesca_dor").validate({
                                                             clearInterval(interval_PPDONDE);
                                                             $('#S2_11_PP_COD').val(valor);
                                                             $('#S2_11_PP_COD').trigger('change');
-                                                            
                                                         }
                                                     }, 1000); 
 
@@ -688,8 +703,6 @@ $("#pesca_dor").validate({
                                                         if($('#S2_11_DI_COD').has('option').length > 0){
                                                             clearInterval(interval_DIDONDE);
                                                             $('#S2_11_DI_COD').val(valor);
-                                                            // $('#S2_9_CCPP_COD').trigger('change');
-                                                            
                                                         }
                                                     }, 2000);                                   
                                                }                                                
@@ -703,16 +716,163 @@ $("#pesca_dor").validate({
                                                   $('#S2_5').val(valor);
                                                   $('#S2_5_DD').val(valor);
                                               }          
+                                              else if(fila == 'S2_12'){
+                                                    //combo conviviente
+                                                    $('#S2_12').val(valor);
+                                                    $('#S2_12').trigger('change');
 
-                                              else if(fila.substring(0,9) == 'S2_23_4_' && valor == 0){
-                                                  $('#' + fila).val(valor);
-                                              }
+                                               }   
+                                              else if(fila == 'S2_14_7'){
+                                                    //combo conviviente
+                                                    $('#S2_14_7').val(valor);
+                                                    $('#S2_14_7').trigger('change');
+
+                                               }                                                 
+                                              else if(fila == 'S2_15'){
+                                                    $('#S2_15').val(valor);
+                                                    $('#S2_15').trigger('change');
+
+                                               }                 
+                                              else if(fila == 'S2_17_8'){
+                                                    //combo conviviente
+                                                    $('#S2_17_8').val(valor);
+                                                    $('#S2_17_8').trigger('change');
+
+                                               }                                                                               
+                                              else if(fila == 'S2_18'){
+                                                    $('#S2_18').val(valor);
+                                                    $('#S2_18').trigger('change');
+
+                                               }         
+                                              else if(fila == 'S2_19'){
+                                                    $('#S2_19').val(valor);
+                                                    $('#S2_19').trigger('change');
+
+                                               }                                                   
+                                              else if(fila == 'S2_21'){
+                                                    $('#S2_21').val(valor);
+                                                    $('#S2_21').trigger('change');
+
+                                               }      
+                                              else if(fila == 'S2_22'){
+                                                    $('#S2_22').val(valor);
+                                                    $('#S2_22').trigger('change');
+
+                                               }    
+                                              else if(fila.substring(0,8) == 'S2_23_4_' && fila.substring(9,10) == 'A'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+
+                                               }    
+                                              else if(fila.substring(0,8) == 'S2_23_9_'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+
+                                               }                                                                                                                                                                                                                               
                                               else{
                                                   $('#' + fila).val(valor);
                                               }
-                                              //combo conviviente
-                                              $('#S2_18').trigger('change');
+
+                                              
+                                              
                                               break;
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION III//////////////////////////////////
+                                      //////////////////////////////////////////////////////////////////////////////////// 
+                                        case '3':
+                                              if(fila == 'S3_500'){
+                                                  $('#S3_500').val(valor);
+                                                  $('#S3_500').trigger('change');
+                                              }else{
+                                                  $('#' + fila).val(valor);
+                                              }
+                                              break;            
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION IV//////////////////////////////////
+                                      //////////////////////////////////////////////////////////////////////////////////// 
+                                        case '4':
+                                              $('#' + fila).val(valor);
+                                              if(fila == 'S4_1'){
+                                                $('#S4_1').val(valor);
+                                                $('#S4_1').trigger('change');
+                                              }
+                                              else if(fila == 'S4_4_1'){
+                                                $('#S4_4_1').val(valor);
+                                                $('#S4_4_1').trigger('change');
+                                              }
+                                              else if(fila == 'S4_5_1'){
+                                                $('#S4_5_1').val(valor);
+                                                $('#S4_5_1').trigger('change');
+                                              }else{
+                                                $('#' + fila).val(valor);
+                                              }
+                                              break;  
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION V//////////////////////////////////
+                                      //////////////////////////////////////////////////////////////////////////////////// 
+                                        case '5':
+                                              if(fila == 'S5_2_2'){
+                                                  $('#S5_2_2').val(valor);
+                                                  $('#S5_2_2').trigger('change');
+                                              }
+
+                                              //COMBOS Residencia Actual
+                                              else if(fila == 'S5_2_DD_COD'){
+                                                    $('#S5_2_DD_COD').val(valor);
+                                                    $('#S5_2_DD_COD').trigger('change');
+
+                                               }else if(fila == 'S5_2_PP_COD'){
+                                                    var interval_PP = setInterval(function(){
+                                                        if($('#S5_2_PP_COD').has('option').length > 0){
+                                                            clearInterval(interval_PP);
+                                                            $('#S5_2_PP_COD').val(valor);
+                                                            $('#S5_2_PP_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 1000); 
+
+                                              }else if(fila == 'S5_2_DI_COD'){
+                                                    var interval_DI = setInterval(function(){
+                                                        if($('#S5_2_DI_COD').has('option').length > 0){
+                                                            clearInterval(interval_DI);
+                                                            $('#S5_2_DI_COD').val(valor);
+                                                            $('#S5_2_DI_COD').trigger('change');
+                                                            
+                                                        }
+                                                    }, 2000);        
+
+                                              }else if(fila == 'S5_2_CCPP_COD'){
+                                                    var interval_DI = setInterval(function(){
+                                                        if($('#S5_2_CCPP_COD').has('option').length > 0){
+                                                            clearInterval(interval_DI);
+                                                            $('#S5_2_CCPP_COD').val(valor);
+                                                            
+                                                        }
+                                                    }, 3000);                                   
+                                               }  
+                                              else if(fila == 'S5_3' || fila == 'S5_4' || fila == 'S5_7'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+
+                                               }    
+
+                                              else if(fila.substring(0,5) == 'S5_5_' && (fila.length == 6 || fila.length == 7 )){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+
+                                               }   
+                                              else if(fila.substring(0,5) == 'S5_6_' && (fila.length == 6 || fila.length == 7 )){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+
+                                               }                                                  
+                                              else{
+                                                  $('#' + fila).val(valor);
+                                              }
+
+
+
+                                              break;                                                                                                                                                                        
                                         case '10':
                                               $('#' + fila).val(valor);
                                               break;                                              

@@ -110,7 +110,7 @@ $S4_3_1 = array(
 $S4_3_1_1 = array(
 	'name'	=> 'S4_3_1_1',
 	'id'	=> 'S4_3_1_1',
-	'maxlength'	=> 1,
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 
@@ -126,7 +126,7 @@ $S4_3_2 = array(
 $S4_3_2_1 = array(
 	'name'	=> 'S4_3_2_1',
 	'id'	=> 'S4_3_2_1',
-	'maxlength'	=> 1,
+	'maxlength'	=> 100,
 	'class' => $span_class,
 );
 //no afiliado
@@ -1189,6 +1189,42 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+//conoce algun tipo
+$('#S4_1').change(function() {
+	var preg2 = $('#S4_2_1, #S4_2_1_1, #S4_2_2, #S4_2_2_1, #S4_2_3, #S4_2_3_1, #S4_2_4, #S4_2_4_O, #S4_2_4_1');
+	var th = $(this).val();
+	if( th == 2 || th == 9){	
+		preg2.val('')
+		preg2.attr("disabled", "disabled"); 
+	}else{
+		preg2.removeAttr('disabled');
+		preg2.removeAttr('disabled');
+	}	
+});
+
+$('#S4_4_1').change(function() {
+	var preg4m = $('#S4_4_1_1, #S4_4_1_2, #S4_4_1_3, #S4_4_1_4, #S4_4_1_5, #S4_4_1_6, #S4_4_1_7, #S4_4_1_8, #S4_4_1_9, #S4_4_1_10, #S4_4_1_11, #S4_4_1_12');
+	var th = $(this).val();
+	if( th == 2 || th == 9){	
+		preg4m.val('')
+		preg4m.attr("disabled", "disabled"); 
+	}else{
+		preg4m.removeAttr('disabled');
+		preg4m.removeAttr('disabled');
+	}	
+});
+
+$('#S4_5_1').change(function() {
+	var preg4m = $('#S4_5_1_1, #S4_5_1_2, #S4_5_1_3, #S4_5_1_4, #S4_5_1_5, #S4_5_1_6, #S4_5_1_7, #S4_5_1_8, #S4_5_1_9, #S4_5_1_10, #S4_5_1_11, #S4_5_1_12');
+	var th = $(this).val();
+	if( th == 2 || th == 9){	
+		preg4m.val('')
+		preg4m.attr("disabled", "disabled"); 
+	}else{
+		preg4m.removeAttr('disabled');
+		preg4m.removeAttr('disabled');
+	}	
+});
 
 	// $("#seccion4").on("submit", function(event) {
 	// 	$('#seccion4').trigger('validate');
@@ -1197,188 +1233,188 @@ $(function(){
 		    rules: {           
 		    	S4_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },     
 		    	S4_2_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_2_1_1: {
 		            digits: true,
-		            range:[1,2],
+		             valrango: [1,2,9],
 		         }, 	
 		    	S4_2_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_2_2_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 		
 		    	S4_2_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_2_3_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 
 		    	S4_2_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		
 		    	S4_2_4_O: {
 					maxlength: 100, 
 		         }, 	
 		    	S4_2_4_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 
 		    	S4_3_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_3_1_1: {
 					maxlength: 100,
 		         }, 	
 		    	S4_3_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 		 
 		    	S4_3_2_1: {
 					maxlength: 100,
 		         }, 
 		    	S4_3_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_4_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 	
 		    	S4_4_1_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_6: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_7: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_8: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_9: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_10: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_4_1_11: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_4_1_12: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_5_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         }, 	
 		    	S4_5_1_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_5_1_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_6: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_5_1_7: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_8: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_5_1_9: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_10: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_5_1_11: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_12: {
 		            digits: true,
-		            range:[0,1],
+		           valrango: [0,1,9],
 		         }, 	
 		    	S4_6_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_6_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_6_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_6_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S4_6_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S4_6_6: {
 		            digits: true,
-		            range:[0,1],
+		           valrango: [0,1,9],
 		         }, 		         	         		         		         		         	         		         		         		         	         	         		         	         	         	         	         	         		         		                 	         			         			         	                  		         		         	         	         	         	                                                                             
 			//FIN RULES
 		    },
@@ -1418,7 +1454,7 @@ $(function(){
 			    );
 				
 		        var bsub4 = $( "#seccion4 :submit" );
-		        bsub4.attr("disabled", "disabled");
+		        // bsub4.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_seccion4",
 		            type:'POST',

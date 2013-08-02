@@ -67,7 +67,7 @@ $span_class =  'span12';
           echo '</div>'; 
 
           echo '<div class="row-fluid control-group span9">';
-                echo form_label('RUTA','RUTA',$label1);
+                echo form_label('RUTA - EMPADRONADOR','RUTA',$label1);
                 echo '<div class="controls span">';
                   echo form_dropdown('RUTA', $equipoArray, FALSE,'class="span12" id="RUTA"'); 
                 echo '</div>';  

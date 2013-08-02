@@ -9,7 +9,7 @@
 
             <!-- Main hero unit for a primary marketing message or call to action -->
             <div class="hero-unit">
-                <h1>ICENPESCO 2013</h1>
+                <h2>PRIMER CENSO NACIONAL DE PESCA CONTINENTAL 2013</h2>
                 <p style="margin-top:20px">En la parte superior de la página encontraras los módulos a los que tienes acceso.</p>
             </div>
 

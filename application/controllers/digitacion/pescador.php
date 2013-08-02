@@ -56,7 +56,7 @@ class Pescador extends CI_Controller {
 	{
 
 			$data['ecivil'] = array(
-								9=> '-',
+								-1=> '-',
 								1 => 'Conviviente',
 								2 => 'Casado(a)',
 								3 => 'Separado(a)',
@@ -100,6 +100,7 @@ class Pescador extends CI_Controller {
 			$udra = $this->pescador_model->consulta_udra($CCDD,$CCPP,$CCDI,$COD_CCPP);
 			$flag = 0;
 			$mysections = null;
+			$infosections = null;
 			if($udra->num_rows() > 0){
 				if($NFORM <= $udra->row()->FORMULARIOS && $NFORM > 0){
 					$varia = $this->pescador_model->consulta($NFORM,$CCDD,$CCPP,$CCDI,$COD_CCPP);
