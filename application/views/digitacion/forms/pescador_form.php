@@ -759,16 +759,24 @@ $("#pesca_dor").validate({
                                                     $('#S2_22').trigger('change');
 
                                                }    
+                                               //edad
                                               else if(fila.substring(0,8) == 'S2_23_4_' && fila.substring(9,10) == 'A'){
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
 
                                                }    
+                                               //estudia
                                               else if(fila.substring(0,8) == 'S2_23_9_'){
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
 
-                                               }                                                                                                                                                                                                                               
+                                               }          
+                                               //actividad
+                                              else if(fila.substring(0,9) == 'S2_23_11_'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+
+                                               }                                                                                                                                                                                                                                                                     
                                               else{
                                                   $('#' + fila).val(valor);
                                               }
