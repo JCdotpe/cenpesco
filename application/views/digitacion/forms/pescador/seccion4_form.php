@@ -1191,7 +1191,7 @@ echo form_close();
 $(function(){
 //conoce algun tipo
 $('#S4_1').change(function() {
-	var preg2 = $('#S4_2_1, #S4_2_1_1, #S4_2_2, #S4_2_2_1, #S4_2_3, #S4_2_3_1, #S4_2_4, #S4_2_4_O, #S4_2_4_1');
+	var preg2 = $('#S4_2_1, #S4_2_2, #S4_2_3, #S4_2_4');
 	var th = $(this).val();
 	if( th == 2 || th == 9){	
 		preg2.val('')
@@ -1225,6 +1225,56 @@ $('#S4_5_1').change(function() {
 		preg4m.removeAttr('disabled');
 	}	
 });
+
+$('#S4_2_1, #S4_2_2, #S4_2_3').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+$('#S4_2_4').change(function() {
+	var th = $(this).val();
+	var des = $('#S4_2_4_O, #S4_2_4_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+
+
+$('#S4_3_1, #S4_3_2').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+$('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1').attr("disabled", "disabled");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// $("#seccion4").on("submit", function(event) {
 	// 	$('#seccion4').trigger('validate');
@@ -1264,6 +1314,7 @@ $('#S4_5_1').change(function() {
 		            valrango: [0,1,9],
 		         }, 		
 		    	S4_2_4_O: {
+		    		required:true,
 					maxlength: 100, 
 		         }, 	
 		    	S4_2_4_1: {
@@ -1275,18 +1326,23 @@ $('#S4_5_1').change(function() {
 		            valrango: [0,1,9],
 		         }, 
 		    	S4_3_1_1: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         }, 	
 		    	S4_3_2: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         }, 		 
 		    	S4_3_2_1: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         }, 
 		    	S4_3_3: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valnone: ['S4_3_1', 'S4_3_2'],
 		         }, 
 		    	S4_4_1: {
 		            digits: true,
@@ -1415,6 +1471,7 @@ $('#S4_5_1').change(function() {
 		    	S4_6_6: {
 		            digits: true,
 		           valrango: [0,1,9],
+		           valnone:['S4_6_1', 'S4_6_2', 'S4_6_3', 'S4_6_4', 'S4_6_5']
 		         }, 		         	         		         		         		         	         		         		         		         	         	         		         	         	         	         	         	         		         		                 	         			         			         	                  		         		         	         	         	         	                                                                             
 			//FIN RULES
 		    },

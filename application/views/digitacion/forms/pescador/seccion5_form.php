@@ -3349,7 +3349,7 @@ $("#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD").change(function(ev
 
 
 
- $('#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD').attr("disabled", "disabled");
+
 $('#S5_2_2').change(function() {
 	var s5p2 = $('#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD');
 	var th = $(this).val();
@@ -3365,11 +3365,10 @@ $('#S5_3').change(function() {
 	var s5p3 = $('#S5_3_H, #S5_3_M');
 	var th = $(this).val();
 	if( th == 1 ){	
-		s5p3.val('')
-		s5p3.attr("disabled", "disabled"); 		
+		s5p3.removeAttr('disabled');	
 	}else{
-		s5p3.removeAttr('disabled');
-
+		s5p3.val('')
+		s5p3.attr("disabled", "disabled"); 			
 	}		
 });
 
@@ -3377,11 +3376,10 @@ $('#S5_4').change(function() {
 	var s5p4 = $('#S5_4_H, #S5_4_M');
 	var th = $(this).val();
 	if( th == 1 ){	
-		s5p4.val('')
-		s5p4.attr("disabled", "disabled"); 		
+		s5p4.removeAttr('disabled');	
 	}else{
-		s5p4.removeAttr('disabled');
-
+		s5p4.val('')
+		s5p4.attr("disabled", "disabled"); 			
 	}		
 });
 
@@ -3397,7 +3395,6 @@ $('#S5_7').change(function() {
 
 	}		
 });
-
 
 
 
@@ -3454,6 +3451,61 @@ $('.especie').change(function() {
 	}
 });
 
+$('#S5_1_1, #S5_1_2, #S5_1_3, #S5_1_4, #S5_1_5, #S5_1_6, #S5_1_7').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+$('#S5_1_8').change(function() {
+	var th = $(this).val();
+	var des = $('#S5_1_8_O, #S5_1_8_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+$('#S5_6_41, #S5_6_49, #S5_9_14').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+$('#S5_8_4').change(function() {
+	var th = $(this).val();
+	var des = $('#S5_8_4_O, #S5_8_4_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+ $('#S5_1_1_1, #S5_1_2_1, #S5_1_3_1, #S5_1_4_1, #S5_1_5_1, #S5_1_6_1, #S5_1_7_1, #S5_1_8_O, #S5_1_8_1, #S5_6_41_O, #S5_6_49_O, #S5_8_4_O ,#S5_8_4_1, #S5_9_14_O').attr("disabled", "disabled");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// $("#seccion5").on("submit", function(event) {
 	// 	$('#seccion5').trigger('validate');
@@ -3466,59 +3518,77 @@ $('.especie').change(function() {
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_1_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 
 		    	S5_1_2: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_2_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 
 		    	S5_1_3: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_3_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 	
 		    	S5_1_4: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_4_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 
 		    	S5_1_5: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_5_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 
 		    	S5_1_6: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_6_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 	
 		    	S5_1_7: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_7_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 	
 		    	S5_1_8: {
 		            digits: true,
 		            valrango: [0,1,9],
 		         },     
 		    	S5_1_8_O: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 		         
 		    	S5_1_8_1: {
+		    		required:true,
 					maxlength: 50,
+					validName:true,
 		         }, 
 		    	S5_2_1: {
 		            digits: true,
@@ -3824,6 +3894,7 @@ $('.especie').change(function() {
 		         },	
 		    	S5_5_9_O: {
 					maxlength: 100,
+					validName:true,
 		         },			         
 		    	S5_5_9_C: {
 		            digits: true,
@@ -3905,6 +3976,7 @@ $('.especie').change(function() {
 		         },	
 		    	S5_5_14_O: {
 					maxlength: 100,
+					validName:true,
 		         },			         
 		    	S5_5_14_C: {
 		            digits: true,
@@ -3930,6 +4002,7 @@ $('.especie').change(function() {
 		         },	
 		    	S5_5_17_O: {
 					maxlength: 100,
+					validName:true,
 		         },			         
 //trampa
 //especie
@@ -4339,7 +4412,9 @@ $('.especie').change(function() {
 		             valrango: [0,1,9],
 		         },	
 		    	S5_6_41_O: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },				         
 		    	S5_6_41_C: {
 		            digits: true,
@@ -4422,7 +4497,9 @@ $('.especie').change(function() {
 		            valrango: [0,1,9],
 		         },	
 		    	S5_6_49_O: {
+		    		required:true,
 					maxlength: 100,
+					validName: true,
 		         },			         
 		    	S5_6_49_C: {
 		            digits: true,
@@ -4441,6 +4518,7 @@ $('.especie').change(function() {
 		         },	
 		    	S5_8_1_1: {
 					maxlength: 100,
+					validName:true,
 		         },	
 
 		    	S5_8_2: {
@@ -4449,6 +4527,7 @@ $('.especie').change(function() {
 		         },	
 		    	S5_8_2_1: {
 					maxlength: 100,
+					validName:true,
 		         },	
 
 		    	S5_8_3: {
@@ -4457,6 +4536,7 @@ $('.especie').change(function() {
 		         },	
 		    	S5_8_3_1: {
 					maxlength: 100,
+					validName:true,
 		         },	
 
 		    	S5_8_4: {
@@ -4464,10 +4544,14 @@ $('.especie').change(function() {
 		            valrango: [0,1,9],
 		         },	
 		    	S5_8_4_O: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },			         
 		    	S5_8_4_1: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },		
 
 
@@ -4531,11 +4615,14 @@ $('.especie').change(function() {
 		            valrango: [0,1,9],
 		         },	
 		    	S5_9_14_O: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },			         
 		    	S5_9_15: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valnone:['S5_9_1','S5_9_2','S5_9_3','S5_9_4','S5_9_5','S5_9_6','S5_9_7','S5_9_8','S5_9_9','S5_9_10','S5_9_11','S5_9_12','S5_9_13','S5_9_14'],
 		         },	
 
 

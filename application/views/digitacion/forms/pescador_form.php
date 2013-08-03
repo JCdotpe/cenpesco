@@ -758,7 +758,12 @@ $("#pesca_dor").validate({
                                                     $('#S2_19').val(valor);
                                                     $('#S2_19').trigger('change');
 
-                                               }                                                   
+                                               }       
+                                              else if(fila == 'S2_20_9'){
+                                                    $('#S2_20_9').val(valor);
+                                                    $('#S2_20_9').trigger('change');
+
+                                               }                                                                                               
                                               else if(fila == 'S2_21'){
                                                     $('#S2_21').val(valor);
                                                     $('#S2_21').trigger('change');
@@ -798,7 +803,7 @@ $("#pesca_dor").validate({
                                       ///////////////////////////SECCION III//////////////////////////////////
                                       //////////////////////////////////////////////////////////////////////////////////// 
                                         case '3':
-                                              if(fila == 'S3_100'|| fila == 'S3_200' || fila == 'S3_300' || fila == 'S3_400' || fila == 'S3_500' ){
+                                              if(fila == 'S3_100'|| fila == 'S3_200' || fila == 'S3_300' || fila == 'S3_400' || fila == 'S3_500' || fila == 'S3_600' || fila == 'S3_1100' ){
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
                                               }else{
@@ -814,6 +819,10 @@ $("#pesca_dor").validate({
                                                 $('#S4_1').val(valor);
                                                 $('#S4_1').trigger('change');
                                               }
+                                              else if(fila == 'S4_2_1'|| fila == 'S4_2_2' || fila == 'S4_2_3' || fila == 'S4_2_4' || fila == 'S4_3_1' || fila == 'S4_3_2'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+                                              }                                              
                                               else if(fila == 'S4_4_1'){
                                                 $('#S4_4_1').val(valor);
                                                 $('#S4_4_1').trigger('change');
@@ -833,7 +842,10 @@ $("#pesca_dor").validate({
                                                   $('#S5_2_2').val(valor);
                                                   $('#S5_2_2').trigger('change');
                                               }
-
+                                              else if(fila == 'S5_1_1'|| fila == 'S5_1_2' || fila == 'S5_1_3' || fila == 'S5_1_4' || fila == 'S5_1_5' || fila == 'S5_1_6' || fila == 'S5_1_7' || fila == 'S5_1_8' || fila == 'S5_1_8_O' || fila == 'S5_6_41' || fila == 'S5_8_4' || fila == 'S5_9_14'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+                                              }  
                                               //COMBOS Residencia Actual
                                               else if(fila == 'S5_2_DD_COD'){
                                                     $('#S5_2_DD_COD').val(valor);

@@ -161,7 +161,7 @@ echo '<div class="well modulo">';
 		echo '<div class="question">';
 			echo '<p>2. ¿Cuál es el nombre de la organización a la que pertenece?</p>';	
 				echo '<div class="row-fluid">';
-							echo '<div class="control-group offset4 span4">';
+							echo '<div class="control-group offset2 span8">';
 								echo '<div class="controls">';
 										echo form_input($S6_2); 
 									echo '<span class="help-inline"></span>';
@@ -338,6 +338,54 @@ echo form_close();
 
 $(function(){
 
+
+
+
+$('#S6_1').change(function() {
+	var s6p1 = $('#S6_2, #S6_3_1, #S6_3_2, #S6_3_3, #S6_3_4, #S6_3_5, #S6_3_6');
+	var th = $(this).val();
+	if( th == 2 ){	
+		s6p1.val('')
+		s6p1.attr("disabled", "disabled"); 		
+	}else{
+		s6p1.removeAttr('disabled');
+
+	}		
+});
+
+
+$('#S6_3_5').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+$('#S6_4').change(function() {
+	var s6p1 = $('#S6_5');
+	var th = $(this).val();
+	if( th == 2 ){	
+		s6p1.val('')
+		s6p1.attr("disabled", "disabled"); 		
+	}else{
+		s6p1.removeAttr('disabled');
+
+	}		
+});
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+$('#S6_3_5_O').attr("disabled", "disabled");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 	// $("#seccion6").on("submit", false); 
 
 	// $("#seccion6 :submit").on("click", function(event) {
@@ -348,49 +396,54 @@ $(function(){
 		    rules: {           
 		    	S6_1: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },     
 		    	S6_2: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         }, 
 		    	S6_3_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S6_3_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 	
 		    	S6_3_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 		    	S6_3_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },	
 		    	S6_3_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },		
 		    	S6_3_5_O: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },	
 		    	S6_3_6: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
+		            valnone:['S6_3_1', 'S6_3_2', 'S6_3_3', 'S6_3_4', 'S6_3_5']
 		         },	
 		    	S6_4: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		    	S6_5: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },	
 		    	S6_6: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },				         			         		         		         		                  	         		         	         	          		                                                                             
 			//FIN RULES
 		    },

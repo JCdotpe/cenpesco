@@ -3622,6 +3622,17 @@ $('#S2_11_PAIS_COD').change(function() {
 });
 
 
+$('#S2_20_9').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
@@ -3629,7 +3640,7 @@ $('#S2_11_PAIS_COD').change(function() {
  $('#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD, #S2_10_PP_O, #S2_10_DI_O').attr("disabled", "disabled");
  $('#S2_11_DD_COD, #S2_11_PP_COD, #S2_11_DI_COD, #S2_11_PP_O, #S2_11_DI_O').attr("disabled", "disabled");
 
-$('#S2_14_7_O').attr("disabled", "disabled");
+$('#S2_14_7_O, #S2_20_9_O').attr("disabled", "disabled");
 $('#S2_15_O').attr("disabled", "disabled");
 $('#S2_17_8_O').attr("disabled", "disabled");
 $('.hespe').attr("disabled", "disabled");
@@ -3850,20 +3861,21 @@ $.extend(jQuery.validator.messages, {
 		            valrango: [0,1,9],
 		         }, 	
 		        S2_14_7_O:{
+		        	required:true,
 					maxlength: 100, 
 					validName:true,
 		         }, 	
 		        S2_14_8:{
 		            digits:true,
-		            
 		            valrango: [0,1,9],
-		            valnone:['S2_14_1', 'S2_14_2', 'S2_14_3', 'S2_14_4','S2_14_5', 'S2_14_6', 'S2_14_7']
+		            valnone:['S2_14_1', 'S2_14_2', 'S2_14_3', 'S2_14_4','S2_14_5', 'S2_14_6', 'S2_14_7'],
 		         }, 		
 		        S2_15:{
 		            digits:true,
 		            valrango: [1,4,9],
 		         }, 	
 		        S2_15_O:{
+		        	required:true,
 					maxlength: 100, 
 					validName:true,
 		         }, 	
@@ -3905,13 +3917,14 @@ $.extend(jQuery.validator.messages, {
 		            valrango: [0,1,9],
 		         }, 	
 		        S2_17_8_O:{
+		        	required:true,
 					maxlength: 100, 
 					validName:true,
 		         },
 		        S2_17_9:{
 		            digits:true,
 		           valrango: [0,1,9],
-		           valnone:['S2_17_1', 'S2_17_2', 'S2_17_3', 'S2_17_4', 'S2_17_5', 'S2_17_6', 'S2_17_7', 'S2_17_8']
+		           valnone:['S2_17_1', 'S2_17_2', 'S2_17_3', 'S2_17_4', 'S2_17_5', 'S2_17_6', 'S2_17_7', 'S2_17_8'],
 		         }, 	
 		        S2_18:{
 		           valueNotEquals:-1,
@@ -3966,7 +3979,9 @@ $.extend(jQuery.validator.messages, {
 		            valrango: [0,1,9],
 		         }, 	
 		        S2_20_9_O:{
+		        	required:true,
 					maxlength: 100, 
+					validName:true,
 		         },		
 		        S2_21:{
 		            digits:true,

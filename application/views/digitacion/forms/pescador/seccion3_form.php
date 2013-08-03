@@ -1178,11 +1178,20 @@ $('#S3_600').change(function() {
 	}
 });
 
-
+$('#S3_1100').change(function() {
+	var th = $(this).val();
+	var des = $('#S3_1100E');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
-$('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O').attr("disabled", "disabled");
+$('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O, #S3_1100E').attr("disabled", "disabled");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// $("#seccion3").on("submit", function(event) {
@@ -1196,35 +1205,45 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O').attr("disabled", "disabled");
 		            valrango: [1,6,9],
 		         },  
 		        S3_100_O:{
+		        	required:true,
 					maxlength: 100, 
+					validName:true,
 		         }, 			            
 		    	S3_200: {
 		            digits:true,
 		            valrango: [1,8,9],
 		         }, 		
 		        S3_200_O:{
+		        	required:true,
 					maxlength: 100, 
+					validName:true,
 		         },
 		    	S3_300: {
 		            digits:true,
 		            valrango: [1,7,9],
 		         }, 		
 		        S3_300_O:{
+		        	required:true,
 					maxlength: 100, 
+					validName:true,
 		         }, 
 		    	S3_400: {
 		            digits:true,
 		            valrango: [1,8,9],
 		         }, 		
 		        S3_400_O:{
+		        	required:true,
 					maxlength: 100, 
+					validName:true,
 		         }, 
 		    	S3_500: {
 		            digits:true,
 		            valrango: [1,8,9],
 		         }, 		
 		        S3_500_O:{
+		        	required:true,
 					maxlength: 100, 
+					validName:true,
 		         }, 	
 		    	S3_600: {
 		            digits:true,
@@ -1293,6 +1312,7 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O').attr("disabled", "disabled");
 		    	S3_911: {
 		            digits:true,
 		            valrango: [0,1,9],
+		            valnone:['S3_901', 'S3_902', 'S3_903', 'S3_904','S3_905', 'S3_906', 'S3_907', 'S3_908', 'S3_909', 'S3_910']
 		         }, 
 		    	S3_1001: {
 		            digits:true,
@@ -1313,13 +1333,16 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O').attr("disabled", "disabled");
 		    	S3_1005: {
 		            digits:true,
 		            valrango: [0,1,9],
+		            valnone:['S3_1001', 'S3_1002', 'S3_1003', 'S3_1004']
 		         },		
 		    	S3_1100: {
 		            digits:true,
 		            valrango: [1,2,9],
 		         },	
 		    	S3_1100E: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },		
 		    	S3_1100E_COD: {
 		    		exactlength: 4,
