@@ -443,6 +443,16 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un mes válido");
 
 
+$.validator.addMethod("valnone", function(value, element,arg){
+    flag = true;
+    if(value == 1){
+        for(var i = 0; i<=arg.length; i++){
+            if($('#' + arg[i]).val() == 1)
+              flag = false;
+        }
+    }
+    return flag;
+ }, "No pueden haber otros campos seleccionados");  
 
  $.validator.addMethod("valrango", function(value, element,arg){
     var flag = false;
@@ -788,9 +798,9 @@ $("#pesca_dor").validate({
                                       ///////////////////////////SECCION III//////////////////////////////////
                                       //////////////////////////////////////////////////////////////////////////////////// 
                                         case '3':
-                                              if(fila == 'S3_500'){
-                                                  $('#S3_500').val(valor);
-                                                  $('#S3_500').trigger('change');
+                                              if(fila == 'S3_100'|| fila == 'S3_200' || fila == 'S3_300' || fila == 'S3_400' || fila == 'S3_500' ){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
                                               }else{
                                                   $('#' + fila).val(valor);
                                               }

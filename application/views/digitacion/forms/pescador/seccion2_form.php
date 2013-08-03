@@ -3851,10 +3851,13 @@ $.extend(jQuery.validator.messages, {
 		         }, 	
 		        S2_14_7_O:{
 					maxlength: 100, 
+					validName:true,
 		         }, 	
 		        S2_14_8:{
 		            digits:true,
+		            
 		            valrango: [0,1,9],
+		            valnone:['S2_14_1', 'S2_14_2', 'S2_14_3', 'S2_14_4','S2_14_5', 'S2_14_6', 'S2_14_7']
 		         }, 		
 		        S2_15:{
 		            digits:true,
@@ -3862,6 +3865,7 @@ $.extend(jQuery.validator.messages, {
 		         }, 	
 		        S2_15_O:{
 					maxlength: 100, 
+					validName:true,
 		         }, 	
 		        S2_16:{
 		            digits:true,
@@ -3902,10 +3906,12 @@ $.extend(jQuery.validator.messages, {
 		         }, 	
 		        S2_17_8_O:{
 					maxlength: 100, 
+					validName:true,
 		         },
 		        S2_17_9:{
 		            digits:true,
 		           valrango: [0,1,9],
+		           valnone:['S2_17_1', 'S2_17_2', 'S2_17_3', 'S2_17_4', 'S2_17_5', 'S2_17_6', 'S2_17_7', 'S2_17_8']
 		         }, 	
 		        S2_18:{
 		           valueNotEquals:-1,

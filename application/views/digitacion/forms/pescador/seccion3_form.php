@@ -1118,7 +1118,7 @@ $(function(){
 $('#S3_500').change(function() {
 	var preg6 = $('#S3_600, #S3_600A, #S3_600B, #S3_600C');
 	var th = $(this).val();
-	if( th == 3 || th == 4 || th == 5 || th == 6 || th == 7 || th == 8){	
+	if( th == 4 || th == 5 || th == 6 || th == 7 || th == 8){	
 		preg6.val('')
 		preg6.attr("disabled", "disabled"); 
 	}else{
@@ -1128,8 +1128,63 @@ $('#S3_500').change(function() {
 
 
 
+$('#S3_100').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 6){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+$('#S3_200, #S3_400, #S3_500').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 8){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+$('#S3_300').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 7){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
 
 
+
+$('#S3_600').change(function() {
+	var th = $(this).val();
+	var s3a = $('#S3_600A');
+	var s3b = $('#S3_600B, #S3_600C');
+	if(th == 1){
+		s3a.removeAttr('disabled');
+		s3b.val('')
+		s3b.attr("disabled", "disabled"); 
+	}else{
+		s3b.removeAttr('disabled');
+		s3a.val('')
+		s3a.attr("disabled", "disabled"); 
+	}
+});
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+$('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O').attr("disabled", "disabled");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// $("#seccion3").on("submit", function(event) {
 	// 	$('#seccion3').trigger('validate');
  // 	});
