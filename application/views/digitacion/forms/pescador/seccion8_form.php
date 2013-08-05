@@ -770,6 +770,18 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+ // $('#S7_101A, #S7_102A').attr("disabled", "disabled");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 	// $("#seccion8").on("submit", function(event) {
 	// 	$('#seccion8').trigger('validate');
  // 	}); 
@@ -778,258 +790,265 @@ $(function(){
 		    rules: {           
 		    	S8_1_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },   
 		    	S8_1_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_6: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_7: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_8: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_1_9: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 
 
 		    	S8_2: {
 		            digits: true,
-		            range:[1,2],
+		            valrango: [1,2,9],
 		         },  
 
 		    	S8_3_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_6: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 
 		    	S8_3_7: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_8: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_9: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_10: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_3_10_O: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },  
 
 
 		    	S8_4_1: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_1A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_1L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 
 		    	S8_4_2: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_2A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_2L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 		    	S8_4_3: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_3A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_3L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 		    	S8_4_4: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_4A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_4L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 		    	S8_4_5: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_5A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_5L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 		    	S8_4_6: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_6A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_6L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 
 		    	S8_4_7: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_7A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_7L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 
 
 		    	S8_4_8: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_8A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_8L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 
 		    	S8_4_9: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_9_O: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         },  		         
 		    	S8_4_9A: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         },  
 		    	S8_4_9L: {
 		            digits: true,
-		            range:[0,1],
+		            valrango: [0,1,9],
 		         }, 
 
 
 		    	S8_5_1: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         }, 
 		    	S8_5_2: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         }, 
 		    	S8_5_3: {
+		    		required:true,
 					maxlength: 100,
+					validName:true,
 		         }, 
 
 		    	S8_6_1: {
 		            digits: true,
-		            range:[1,5],
+		            valrango: [1,5,9],
 		         }, 
 		    	S8_6_2: {
 		            digits: true,
-		            range:[1,5],
+		            valrango: [1,5,9],
 		         }, 
 
 		    	S8_6_3: {
 		            digits: true,
-		            range:[1,5],
+		            valrango: [1,5,9],
 		         }, 
 		    	S8_6_4: {
 		            digits: true,
-		            range:[1,5],
+		            valrango: [1,5,9],
 		         }, 
 
 		    	S8_6_5: {
 		            digits: true,
-		            range:[1,5],
+		            valrango: [1,5,9],
 		         }, 
 
 		    	S8_6_6: {
 		            digits: true,
-		            range:[1,5],
+		            valrango: [1,5,9],
 		         }, 
-
-
-
 
 			//FIN RULES
 		    },
