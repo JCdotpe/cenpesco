@@ -324,7 +324,7 @@ echo '<div class="span12">';
 echo form_open($this->uri->uri_string(),$attr); 
 
 echo '<div class="well modulo">';
-	echo '<h4>SECCION III. CARACTERÍSTICAS Y SERVICIOS DE LA VIVIENDA</h4>';
+	echo '<h4>SECCIÓN III. CARACTERÍSTICAS Y SERVICIOS DE LA VIVIENDA</h4>';
 
 	echo '<div class="row-fluid">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -863,7 +863,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span2">';
 
-								echo '<p>No tiene ninguno</p>';
+								echo '<p>Ninguno</p>';
 
 							echo '</div>';	
 
@@ -889,7 +889,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset2 span2">';
 
-								echo '<p>Plancha eléctrica</p>';
+								echo '<p>Plancha eléctrica?</p>';
 
 							echo '</div>';	
 

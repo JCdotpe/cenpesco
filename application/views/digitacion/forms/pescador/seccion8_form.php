@@ -403,7 +403,7 @@ echo form_open($this->uri->uri_string(),$attr);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //COLUMNAS SECCION VIII
 echo '<div class="well modulo">';
-	echo '<h4>SECCION VIII. CAPACITACIÓN</h4>';
+	echo '<h4>SECCIÓN VIII. CAPACITACIÓN</h4>';
 	echo '<div class="row-fluid">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -771,12 +771,65 @@ echo form_close();
 
 $(function(){
 
+$('#S8_3_10').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+		
+	}
+});
+$('#S8_4_9').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_O, #S8_4_9A, #S8_4_9L');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+		
+	}
+});
+
+$('#S8_4_1, #S8_4_2, #S8_4_3, #S8_4_4, #S8_4_5, #S8_4_6, #S8_4_7, #S8_4_8').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + 'A, #' + $(this).attr('id') + 'L');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+		
+	}
+});
+
+$('#S8_2').change(function() {
+	var th = $(this).val();
+	var s8p3 = $('#S8_3_1, #S8_3_2, #S8_3_3, #S8_3_4, #S8_3_5, #S8_3_6, #S8_3_7, #S8_3_8, #S8_3_9, #S8_3_10, #S8_3_10_O');
+	var s8p4 = $('#S8_4_1, #S8_4_1A, #S8_4_1L, #S8_4_2, #S8_4_2A, #S8_4_2L, #S8_4_3, #S8_4_3A, #S8_4_3L, #S8_4_4, #S8_4_4A, #S8_4_4L, #S8_4_5, #S8_4_5A, #S8_4_5L, #S8_4_6, #S8_4_6A, #S8_4_6L, #S8_4_7, #S8_4_7A, #S8_4_7L, #S8_4_8, #S8_4_8A, #S8_4_8L, #S8_4_9, #S8_4_9A, #S8_4_9L');
+	if(th == 1){
+		s8p3.removeAttr('disabled');
+		s8p4.removeAttr('disabled');
+		s8p4.trigger('change');
+
+	}else{
+		s8p3.val('');
+		s8p3.attr("disabled", "disabled"); 
+		s8p4.val('');
+		s8p4.attr("disabled", "disabled"); 	
+		s8p4.trigger('change');
+	}
+	$('#S8_3_10').trigger('change');
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
- // $('#S7_101A, #S7_102A').attr("disabled", "disabled");
+$('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_4_3L, #S8_4_4A, #S8_4_4L, #S8_4_5A, #S8_4_5L, #S8_4_6A, #S8_4_6L, #S8_4_7A, #S8_4_7L, #S8_4_8A, #S8_4_8L, #S8_4_9A, #S8_4_9L').attr("disabled", "disabled");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -823,6 +876,7 @@ $(function(){
 		    	S8_1_9: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valnone:['S8_1_1', 'S8_1_2', 'S8_1_3', 'S8_1_4', 'S8_1_5', 'S8_1_6', 'S8_1_7', 'S8_1_8'],
 		         },  
 
 
@@ -885,11 +939,11 @@ $(function(){
 		         },  
 		    	S8_4_1A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_1L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 
 		    	S8_4_2: {
@@ -898,11 +952,11 @@ $(function(){
 		         },  
 		    	S8_4_2A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_2L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 		    	S8_4_3: {
@@ -911,11 +965,11 @@ $(function(){
 		         },  
 		    	S8_4_3A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_3L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 		    	S8_4_4: {
@@ -924,11 +978,11 @@ $(function(){
 		         },  
 		    	S8_4_4A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_4L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 		    	S8_4_5: {
@@ -937,11 +991,11 @@ $(function(){
 		         },  
 		    	S8_4_5A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_5L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 		    	S8_4_6: {
@@ -950,11 +1004,11 @@ $(function(){
 		         },  
 		    	S8_4_6A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_6L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 
@@ -964,11 +1018,11 @@ $(function(){
 		         },  
 		    	S8_4_7A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_7L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 
@@ -979,11 +1033,11 @@ $(function(){
 		         },  
 		    	S8_4_8A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_8L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 
@@ -998,26 +1052,23 @@ $(function(){
 		         },  		         
 		    	S8_4_9A: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         },  
 		    	S8_4_9L: {
 		            digits: true,
-		            valrango: [0,1,9],
+		            valrango: [1,2,9],
 		         }, 
 
 
 		    	S8_5_1: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
 		    	S8_5_2: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
 		    	S8_5_3: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1088,7 +1139,7 @@ $(function(){
 			    );
 				
 		        var bsub8 = $( "#seccion8 :submit" );
-		        bsub8.attr("disabled", "disabled");
+		        // bsub8.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_seccion8",
 		            type:'POST',

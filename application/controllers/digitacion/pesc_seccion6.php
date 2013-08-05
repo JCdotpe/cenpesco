@@ -63,17 +63,17 @@ class Pesc_seccion6 extends CI_Controller {
 			// 	$flag = 1;
 			// 	$msg = 'Se ha registrado satisfactoriamente la Seccion VI';
 			// }
-			if ($this->pescador_model->consulta_in_seccion($id,'pesc_seccion2')->num_rows() == 0) {
+			if ($this->pescador_model->consulta_in_seccion($id,'pesc_seccion6')->num_rows() == 0) {
 				// inserta nuevo registro
-					if($this->pescador_model->insert_pesc_seccion('pesc_seccion2',$c_data) > 0){
+					if($this->pescador_model->insert_pesc_seccion('pesc_seccion6',$c_data) > 0){
 						$flag = 1;
-						$msg = 'Se ha registrado satisfactoriamente la Seccion II';
+						$msg = 'Se ha registrado satisfactoriamente la Seccion VI';
 					}
 			} else {
 				// actualiza
-					if($this->pescador_model->update_pesc_seccion('pesc_seccion2',$c_data,$id) > 0){
+					if($this->pescador_model->update_pesc_seccion('pesc_seccion6',$c_data,$id) > 0){
 						$flag = 1;
-						$msg = 'Se ha modificado satisfactoriamente la Seccion II';
+						$msg = 'Se ha modificado satisfactoriamente la Seccion VI';
 					}
 
 			}			

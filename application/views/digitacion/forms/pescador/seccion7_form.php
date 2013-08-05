@@ -325,7 +325,8 @@ $S7_4_4_1 = array(
 $S7_4_T = array(
 	'name'	=> 'S7_4_T',
 	'id'	=> 'S7_4_T',
-	'maxlength'	=> 3,
+	'value' => '100',
+	'readonly'=> 'readonly',
 	'class' => $span_class . ' nothing7',
 );
 
@@ -655,7 +656,7 @@ echo form_open($this->uri->uri_string(),$attr);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //COLUMNAS SECCION VII
 echo '<div class="well modulo">';
-	echo '<h4>SECCION VII. ASOCIATIVIDAD Y FORMALIZACIÓN</h4>';
+	echo '<h4>SECCIÓN VII. ASOCIATIVIDAD Y FORMALIZACIÓN</h4>';
 	echo '<div class="row-fluid">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1127,7 +1128,7 @@ echo '<div class="well modulo">';
 					                 echo '<th class="offset1 span1"></th>';
 					                  echo '<th class="span4 ">Especies</th>';
 					                  echo '<th class="span2">Código de especie</th>';
-					                   echo '<th class="span4">%</th>';
+					                   echo '<th class="span4">S/.</th>';
 					                echo '</tr>';
 					              echo '</thead>';
 					              echo '<tbody>';
@@ -1221,14 +1222,10 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 7
 				echo '<div class="question">';
-			echo '<p>7. De la cantidad anual de su pesca, ¿Qué porcentaje destinó a:</p>';	
+			echo '<p>7. En los últimos 12 meses, ¿Dónde vendió el producto de su pesca?</p>';	
 				echo '<div class="row-fluid">';
 						echo '<table class="table table-condensed" id="emb_table">';
 					              echo '<thead>';
-					                echo '<tr>';
-					                  echo '<th class="span7">Destinos</th>';
-					                   echo '<th class="span3">%</th>';
-					                echo '</tr>';
 					              echo '</thead>';
 					              echo '<tbody>';
 					               echo '<tr>';
@@ -1236,11 +1233,11 @@ echo '<div class="well modulo">';
 					                  echo '<td>' . form_input($S7_7_1) . '<div class="help-block error">' . form_error($S7_7_1['name']) . '</div></td>';
 					               echo '</tr>';   	
 					               echo '<tr>';
-					                  echo '<td>En el punto de desembarque</td>';
+					                  echo '<td>En la feria</td>';
 					                  echo '<td>' . form_input($S7_7_2) . '<div class="help-block error">' . form_error($S7_7_2['name']) . '</div></td>';
 					               echo '</tr>';  	
 					               echo '<tr>';
-					                  echo '<td>En el punto de desembarque</td>';
+					                  echo '<td>En el mercado</td>';
 					                  echo '<td>' . form_input($S7_7_3) . '<div class="help-block error">' . form_error($S7_7_3['name']) . '</div></td>';
 					               echo '</tr>'; 					               				               				               				               					                					                						               				               					               					               
 			              echo '</tbody>';
@@ -1490,6 +1487,7 @@ $('#S7_101').change(function() {
 		des.val('')
 		des.attr("disabled", "disabled"); 
 	}
+	 $('#S7_102').trigger('change');	
 });
 
 $('#S7_102').change(function() {
@@ -1498,20 +1496,35 @@ $('#S7_102').change(function() {
 	var contrades = $('#S7_103, #S7_104');
 	var s7p2 = $('#S7_201, #S7_202, #S7_203, #S7_204, #S7_205, #S7_206');
 
-	if(th == 1){
+	if(th == 1 && $('#S7_101').val() == 0){
 		des.removeAttr('disabled');
-		contrades.val('')
+		contrades.val('');
 		contrades.attr("disabled", "disabled"); 
 		s7p2.val('')
 		s7p2.attr("disabled", "disabled"); 	
 		$('#S7_206').trigger('change');			
-	}else{
+
+	}
+	else if(th == 1  && $('#S7_101').val() == 1) {
+		des.removeAttr('disabled');
+		s7p2.removeAttr('disabled');
+		contrades.val('');
+		contrades.attr("disabled", "disabled"); 		
+	}
+
+	else if(th == 0 && $('#S7_101').val() == 1){
+		des.val('')
+		des.attr("disabled", "disabled"); 
+		contrades.val('');
+		contrades.attr("disabled", "disabled"); 
+		$('#S7_206').trigger('change');
+	}
+	else if(th == 0 && $('#S7_101').val() == 0){
 		des.val('')
 		des.attr("disabled", "disabled"); 
 		contrades.removeAttr('disabled');
-		s7p2.removeAttr('disabled');
 		$('#S7_206').trigger('change');
-	}
+	}	
 });
 
 $('#S7_103').change(function() {
@@ -1524,7 +1537,7 @@ $('#S7_103').change(function() {
 		s7p2.val('')
 		s7p2.attr("disabled", "disabled"); 	
 		$('#S7_206').trigger('change');				
-	}else{
+	}else if(th != ''){
 		des.removeAttr('disabled');
 		s7p2.removeAttr('disabled');
 		$('#S7_206').trigger('change');		
@@ -1566,7 +1579,7 @@ $('#S7_4_1').change(function() {
 	
 	}else{
 		des7.removeAttr('disabled');
-			
+		$('#S7_5_1, #S7_5_2, #S7_5_3, #S7_5_4, #S7_5_5, #S7_5_6, #S7_5_7, #S7_5_8, #S7_5_9, #S7_5_10').trigger('change');	
 	}
 });
 
@@ -1581,13 +1594,48 @@ $('#S7_4_4').change(function() {
 	}
 });
 
+$('#S7_3_1, #S7_3_2, #S7_3_3,#S7_3_4, #S7_3_5, #S7_3_6, #S7_3_7, #S7_3_8, #S7_3_9, #S7_3_10, #S7_3_11, #S7_3_12').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_C');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
 
+$('#S7_4_1, #S7_4_2, #S7_4_3, #S7_4_4').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_1');
+	if(th == 1){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
+
+
+$('#S7_5_1, #S7_5_2, #S7_5_3, #S7_5_4, #S7_5_5, #S7_5_6, #S7_5_7, #S7_5_8, #S7_5_9, #S7_5_10').change(function() {
+	var th = $(this).val();
+	var des = $('#' + $(this).attr('id') + '_C, #'+ $(this).attr('id') + '_P');
+	if(th != ''){
+		des.removeAttr('disabled');
+	}else{
+		des.val('')
+		des.attr("disabled", "disabled"); 
+	}
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
- $('#S7_101A, #S7_102A, #S7_206_O, #S7_10_4_O, #S7_4_4_O, #S7_4_4_1').attr("disabled", "disabled");
+ $('#S7_101A, #S7_102A, #S7_206_O, #S7_10_4_O, #S7_4_4_O, #S7_4_4_1, #S7_3_1_C, #S7_3_2_C, #S7_3_3_C ,#S7_3_4_C, #S7_3_5_C, #S7_3_6_C, #S7_3_7_C, #S7_3_8_C, #S7_3_9_C, #S7_3_10_C, #S7_3_11_C, #S7_3_12_C, #S7_4_1_1, #S7_4_2_1, #S7_4_3_1, #S7_4_4_1').attr("disabled", "disabled");
+
+$('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, #S7_5_4_P, #S7_5_5_C, #S7_5_5_P, #S7_5_6_C, #S7_5_6_P, #S7_5_7_C, #S7_5_7_P, #S7_5_8_C, #S7_5_8_P, #S7_5_9_C, #S7_5_9_P, #S7_5_10_C, #S7_5_10_P').attr("disabled", "disabled");
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1807,7 +1855,6 @@ $('#S7_4_4').change(function() {
 
 
 		    	S7_5_1: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1821,7 +1868,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_2: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1835,7 +1881,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_3: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1849,7 +1894,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_4: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1863,7 +1907,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_5: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1877,7 +1920,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_6: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1891,7 +1933,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_7: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1905,7 +1946,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_8: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1919,7 +1959,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_9: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -1933,7 +1972,6 @@ $('#S7_4_4').change(function() {
 		         }, 
 
 		    	S7_5_10: {
-		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -2068,7 +2106,7 @@ $('#S7_4_4').change(function() {
 			    );
 				
 		        var bsub7 = $( "#seccion7 :submit" );
-		        bsub7.attr("disabled", "disabled");
+		        // bsub7.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_seccion7",
 		            type:'POST',

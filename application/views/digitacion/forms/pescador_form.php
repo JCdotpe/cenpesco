@@ -89,7 +89,7 @@ $NROFORM = array(
     echo form_hidden('pescador_id', '');
 	echo '<div class="well modulo">';
 			echo '<div class="control-group">';
-      echo '<h4 style="text-align:center">FORMULARIO CENSAL DEL PESCADOR Y EMBARCACIONES PESQUERAS<h4>';
+      echo '<h4 style="text-align:center">Formulario Censal del Pescador y Embarcaciones Pesqueras<h4>';
 			echo form_label('NRO FORMULARIO','NFORM',$labelnroform);
 				echo '<div class="controls">';	
 					echo form_input($NROFORM); 
@@ -100,8 +100,8 @@ $NROFORM = array(
 ////////////////////////////////SECCION I
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
-			echo '<h4>SECCION I. LOCALIZACIÓN DEL PUNTO DE CONCENTRACIÓN</h4>';
-			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
+			echo '<h4>SECCIÓN I. LOCALIZACIÓN DEL PUNTO DE CONCENTRACIÓN</h4>';
+			echo '<h5>A. UBICACIÓN GEOGRÁFICA</h5>';
 
 			echo '<div class="span12">';	
 					echo '<div class="control-group span6">';
@@ -192,14 +192,14 @@ echo form_close();
 	<div class="span12" id="insidetabs" style="text-align:center">
 		<div class="tabbable"> <!-- Only required for left/right tabs -->
 		  <ul class="nav nav-tabs" style="text-align:center">
-		    <li id="ctab2"><a href="#tab2" data-toggle="tab">Seccion II</a></li>
-		    <li id="ctab3"><a href="#tab3" data-toggle="tab">Seccion III</a></li>
-		    <li id="ctab4"><a href="#tab4" data-toggle="tab">Seccion IV</a></li>
-		    <li id="ctab5"><a href="#tab5" data-toggle="tab">Seccion V</a></li>
-		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Seccion VI</a></li>
-		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Seccion VII</a></li>
-		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Seccion VIII</a></li>
-		    <li id="ctab9"><a href="#tab9" data-toggle="tab">Seccion IX</a></li>
+		    <li id="ctab2"><a href="#tab2" data-toggle="tab">Sección II</a></li>
+		    <li id="ctab3"><a href="#tab3" data-toggle="tab">Sección III</a></li>
+		    <li id="ctab4"><a href="#tab4" data-toggle="tab">Sección IV</a></li>
+		    <li id="ctab5"><a href="#tab5" data-toggle="tab">Sección V</a></li>
+		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Sección VI</a></li>
+		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Sección VII</a></li>
+		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Sección VIII</a></li>
+		    <li id="ctab9"><a href="#tab9" data-toggle="tab">Sección IX</a></li>
 		    <li id="cinfo"><a href="#info" data-toggle="tab">Info</a></li>
 		  </ul>
 		  <div class="tab-content">
@@ -247,19 +247,44 @@ $(function(){
      return $(this).val(n);
   });
 
-      $(window).keydown(function(event){
-        if(event.keyCode == 13) {
+  $(window).keydown(function(event){
+      if(event.keyCode == 13) {
           event.preventDefault();
           return false;
+      }
+  });
+
+    function solo_numeros(e) {
+
+        key = e.keyCode || e.which;
+        tecla = String.fromCharCode(key).toLowerCase();
+        letras = "0123456789";
+        especiales = [8, 9, 37, 39, 46];
+
+        tecla_especial = false
+        for(var i in especiales) {
+            if(key == especiales[i]) {
+                tecla_especial = true;
+                break;
+            }
         }
-      });
+        if(letras.indexOf(tecla) == -1 && !tecla_especial)
+            return false;
+    }
 
 
   $('input,select,textarea').keydown( function(e) {
+      var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+      if(key == 13)
+      $(this).trigger('change');
+   }); 
+
+  $('input,select,textarea').keyup( function(e) {
     var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
     var inputs = $(this).closest('form').find(':input:enabled');
     if(key == 13) {
       inputs.eq( inputs.index(this)+1).focus(); 
+      
     }
     else if (key == 27) {
       inputs.eq( inputs.index(this)-1).focus(); 
@@ -452,7 +477,7 @@ $.validator.addMethod("valnone", function(value, element,arg){
         }
     }
     return flag;
- }, "No pueden haber otros campos seleccionados");  
+ }, "Si ya selecciono una alternativa no debe seleccionar este item");  
 
  $.validator.addMethod("valrango", function(value, element,arg){
     var flag = false;
@@ -461,7 +486,12 @@ $.validator.addMethod("valnone", function(value, element,arg){
    return flag;
 }, "Seleccione un valor entre {0}, {1} o {2}");
 
-
+ $.validator.addMethod("valrucc", function(value, element,arg){
+    var flag = false;
+        if((value >= arg[0] && value<=arg[1]) || value == arg[2] || value == arg[3] || value == arg[4] && value!='')
+          flag = true;
+   return flag;
+}, "Seleccione un valor entre {0}, {1} o {2}, {3}, {4}");
 
 //validacion
 $("#pesca_dor").validate({
@@ -842,7 +872,7 @@ $("#pesca_dor").validate({
                                                   $('#S5_2_2').val(valor);
                                                   $('#S5_2_2').trigger('change');
                                               }
-                                              else if(fila == 'S5_1_1'|| fila == 'S5_1_2' || fila == 'S5_1_3' || fila == 'S5_1_4' || fila == 'S5_1_5' || fila == 'S5_1_6' || fila == 'S5_1_7' || fila == 'S5_1_8' || fila == 'S5_1_8_O' || fila == 'S5_6_41' || fila == 'S5_8_4' || fila == 'S5_9_14'){
+                                              else if(fila == 'S5_1_1'|| fila == 'S5_1_2' || fila == 'S5_1_3' || fila == 'S5_1_4' || fila == 'S5_1_5' || fila == 'S5_1_6' || fila == 'S5_1_7' || fila == 'S5_1_8' || fila == 'S5_1_8_O' || fila == 'S5_6_41' || fila == 'S5_8_4' || fila == 'S5_9_14' || fila == 'S5_5_9' || fila == 'S5_5_14' || fila == 'S5_5_17'){
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
                                               }  
@@ -915,13 +945,24 @@ $("#pesca_dor").validate({
                                       ///////////////////////////SECCION VII//////////////////////////////////
                                       //////////////////////////////////////////////////////////////////////////////////// 
                                         case '7':
-                                              if(fila == 'S6_1'|| fila == 'S6_3_5' || fila == 'S6_4' ){
+                                              if(fila == 'S7_101'|| fila == 'S7_102' || fila == 'S7_103' || fila == 'S7_104' || fila == 'S7_206' || fila == 'S7_10_4' || fila == 'S7_4_1' || fila == 'S7_4_4' || fila == 'S7_3_1' || fila == 'S7_3_2' || fila == 'S7_3_3' || fila == 'S7_3_4' || fila == 'S7_3_5' || fila == 'S7_3_6' || fila == 'S7_3_7' || fila == 'S7_3_8' || fila == 'S7_3_9' || fila == 'S7_3_10' || fila == 'S7_3_11' || fila == 'S7_3_12' || fila == 'S7_4_1' || fila == 'S7_4_2' || fila == 'S7_4_3' || fila == 'S7_4_4'|| fila == 'S7_5_1' || fila == 'S7_5_2' || fila == 'S7_5_3' || fila == 'S7_5_4' || fila == 'S7_5_5' || fila == 'S7_5_6' || fila == 'S7_5_7' || fila == 'S7_5_8' || fila == 'S7_5_9' || fila == 'S7_5_10' ){
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
                                               }else{
                                                   $('#' + fila).val(valor);
                                               }
-                                              break;                                                                                                                                                                                                                                                                   
+                                              break;   
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION VIII//////////////////////////////////
+                                      //////////////////////////////////////////////////////////////////////////////////// 
+                                        case '8':
+                                              if(fila == 'S8_3_10'|| fila == 'S8_4_9' || fila == 'S8_4_1' || fila == 'S8_4_2' || fila == 'S8_4_3' || fila == 'S8_4_4' || fila == 'S8_4_5' || fila == 'S8_4_6' || fila == 'S8_4_7' || fila == 'S8_4_8' || fila == 'S8_2' ){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+                                              }else{
+                                                  $('#' + fila).val(valor);
+                                              }
+                                              break;                                                                                                                                                                                                                                                                                                                       
                                         case '10':
                                               $('#' + fila).val(valor);
                                               break;                                              

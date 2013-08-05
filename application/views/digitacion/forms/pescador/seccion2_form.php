@@ -1593,7 +1593,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
-			echo '<h4>SECCION II. CARACTERISTICAS DE LA POBLACION</h4>';
+			echo '<h4>SECCIÓN II. CARACTERÍSTICAS DE LA POBLACIÓN</h4>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////Fila 1
@@ -1826,7 +1826,7 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '<div class="control-group">';
 					echo form_label('9.1. Departamento', 'S2_9_DD_COD', $label_class);	
 						echo '<div class="controls">';
-							echo form_dropdown('S2_9_DD_COD', $depaxArray, FALSE,'class=" span12" id="S2_9_DD_COD"'); 
+							echo form_dropdown('S2_9_DD_COD', $ubidepaArray, FALSE,'class=" span12" id="S2_9_DD_COD"'); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error('S2_9_DD_COD') . '</div>';
 						echo '</div>';	
@@ -3244,21 +3244,21 @@ $("#S2_9_DD_COD, #S2_9_PP_COD, #S2_9_DI_COD, #S2_9_CCPP_COD").change(function(ev
             case 'S2_9_DD_COD':
                 sel     = $("#S2_9_PP_COD");
                 //$('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
                 op      = 1;
                 break;
 
             case 'S2_9_PP_COD':
                 sel     = $("#S2_9_DI_COD");
                 // $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
             case 'S2_9_DI_COD':
                 sel     = $("#S2_9_CCPP_COD");
                 // $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_ccpp_all/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 
@@ -3291,13 +3291,13 @@ $("#S2_9_DD_COD, #S2_9_PP_COD, #S2_9_DI_COD, #S2_9_CCPP_COD").change(function(ev
                 }                
                 $.each(json_data, function(i, data){
                     if (op==1){
-                        sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
+                        sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');
                     }
                     if (op==2){
-                        sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
+                        sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
                    }
                     if (op==3){
-                        sel.append('<option value="' + data.CCPP + '">' + data.CENTRO_POBLADO + '</option>');}
+                        sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');}
                 });
                
                 if (op==1){
@@ -3428,7 +3428,7 @@ $('#S2_12').change(function() {
 });
 
 //especifique 14
-$('#S2_14_7').change(function() {
+$('#S2_14_7').blur(function() {
 	var s2p14o = $('#S2_14_7_O');
 	var th = $(this).val();
 	if( th == 1 ){
@@ -3720,23 +3720,21 @@ $.extend(jQuery.validator.messages, {
 		         },  		         
 		        S2_5:{
 		            digits:true,
-		           valrango: [10000000001,20999999999,99999999999],
+		           valrucc: [10000000001,20999999999,77777777777, 88888888888, 99999999999],
 		            exactlength: 11, 
 		         },  	
 		        S2_5_DD:{
 		            digits:true,
-		            valrango: [10000000001,20999999999,99999999999],
+		            valrucc: [10000000001,20999999999,77777777777, 88888888888,99999999999],
 		            exactlength: 11, 
 		            equalTo: "#S2_5",
 		         },  		         
 		        S2_6:{
-		        	required:true,
 		            digits:true,
 		            range:[900000000,999999998],
 		            exactlength: 9, 
 		         },  		         	         
 		        S2_7:{
-		        	required:true,
 		            digits:true,
 		            range:[200000,8999999],
 		            exactlength: 7, 
@@ -3763,12 +3761,12 @@ $.extend(jQuery.validator.messages, {
 		        S2_10_DD_COD:{
            			valueNotEquals: -1,
 		         }, 
-		        S2_10_PP_COD:{
-           			valueNotEquals: -1,
-		         }, 
-		        S2_10_DI_COD:{
-           			valueNotEquals: -1,
-		         }, 
+		        // S2_10_PP_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 
+		        // S2_10_DI_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 
 
 		        S2_11_PAIS_COD:{
            			valueNotEquals: -1,
@@ -3776,12 +3774,12 @@ $.extend(jQuery.validator.messages, {
 		        S2_11_DD_COD:{
            			valueNotEquals: -1,
 		         }, 
-		        S2_11_PP_COD:{
-           			valueNotEquals: -1,
-		         }, 
-		        S2_11_DI_COD:{
-           			valueNotEquals: -1,
-		         }, 
+		        // S2_11_PP_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 
+		        // S2_11_DI_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 
 
 
 		        TIPVIA:{
@@ -3803,6 +3801,7 @@ $.extend(jQuery.validator.messages, {
 		            maxlength: 4, 
 		         }, 		
 		        PISO:{
+		        	required:true,
 		            maxlength: 4, 
 		         }, 
 		        MZ:{

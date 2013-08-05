@@ -121,7 +121,7 @@ echo form_open($this->uri->uri_string(),$attr);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //COLUMNAS SECCION VI
 echo '<div class="well modulo">';
-	echo '<h4>SECCION VI. ASOCIATIVIDAD Y FORMALIZACIÓN</h4>';
+	echo '<h4>SECCIÓN VI. ASOCIATIVIDAD Y FORMALIZACIÓN</h4>';
 	echo '<div class="row-fluid">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -342,13 +342,15 @@ $(function(){
 
 
 $('#S6_1').change(function() {
-	var s6p1 = $('#S6_2, #S6_3_1, #S6_3_2, #S6_3_3, #S6_3_4, #S6_3_5, #S6_3_6');
+	var s6p1 = $('#S6_2, #S6_3_1, #S6_3_2, #S6_3_3, #S6_3_4, #S6_3_5, #S6_3_6, #S6_3_5_O');
 	var th = $(this).val();
 	if( th == 2 ){	
 		s6p1.val('')
 		s6p1.attr("disabled", "disabled"); 		
 	}else{
 		s6p1.removeAttr('disabled');
+		$('#S6_3_5_O').val('');
+		$('#S6_3_5_O').attr("disabled", "disabled"); 	
 
 	}		
 });
@@ -483,7 +485,7 @@ $('#S6_3_5_O').attr("disabled", "disabled");
 			    );
 				
 		        var bsub6 = $( "#seccion6 :submit" );
-		        bsub6.attr("disabled", "disabled");
+		        // bsub6.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_seccion6",
 		            type:'POST',
