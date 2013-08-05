@@ -6,7 +6,7 @@ class Segmentacion_model extends CI_MODEL {
 	 public function get_empadronador($sede, $dep, $equi, $ruta)
 	{
 		
-		$q = $this->db->query("select  DISTINCT(SEDE_OPERATIVA),  DEPARTAMENTO_SEDE,  EQUIPO,  RUTA,  NOMBRE_Y_APELLIDOS_DEL_EMPADRONADOR from data_empadronador  
+		$q = $this->db->query("select  DISTINCT(SEDE_OPERATIVA),  DEPARTAMENTO_SEDE,  EQUIPO,  RUTA,  NOMBRE_Y_APELLIDOS_DEL_EMPADRONADOR,  DATE_FORMAT(FECHA_UPDATE ,'%d/%m/%Y %H:%i') as FECHA_UPDATE from data_empadronador  
 		where sede_operativa = (select  distinct(nom_sede) from marco where sede_cod = '". $sede ."') 
 		and departamento_sede = (select  distinct(departamento) from marco where ccdd = '". $dep ."') 
 		and equipo = ". $equi ."
@@ -19,11 +19,11 @@ class Segmentacion_model extends CI_MODEL {
 	{
 		
 		$q = $this->db->query("select 
-			  N,
 			  DEPARTAMENTO,
 			  PROVINCIA,
 			  DISTRITO,
 			  CENTRO_POBLADO,
+			  PUNTO_CONCENTRACION,
 			  POBLACION_ESTIMADA,
 			  TIPO_EMPADRONAMIENTO,
 			  FECHA_INICIO,
@@ -41,7 +41,6 @@ class Segmentacion_model extends CI_MODEL {
 			  GASTOS_OPERATIVO_S,
 			  PASAJE_S,
 			  TOTAL_S,
-			  PUNTO_CONCENTRACION,
 			  CCPP_CV1,
 			  CCPP_CV2,
 			  CCPP_CV3,
@@ -80,7 +79,7 @@ class Segmentacion_model extends CI_MODEL {
 	 public function get_jefe($sede, $dep, $equi)
 	{
 		
-		$q = $this->db->query("select  DISTINCT(SEDE_OPERATIVA),  DEPARTAMENTO_SEDE,  EQUIPO,  NOMBRE_Y_APELLIDOS_DEL_JEFE_DE_EQUIPO from data_jefe_equipo 
+		$q = $this->db->query("select  DISTINCT(SEDE_OPERATIVA),  DEPARTAMENTO_SEDE,  EQUIPO,  NOMBRE_Y_APELLIDOS_DEL_JEFE_DE_EQUIPO,  DATE_FORMAT(FECHA_UPDATE ,'%d/%m/%Y %H:%i') as FECHA_UPDATE from data_jefe_equipo 
 		where sede_operativa = (select  distinct(nom_sede) from marco where sede_cod = '". $sede ."') 
 		and departamento_sede = (select  distinct(departamento) from marco where ccdd = '". $dep ."') 
 		and equipo = ". $equi );
@@ -92,11 +91,11 @@ class Segmentacion_model extends CI_MODEL {
 	{
 		
 		$q = $this->db->query("select 
-			  N,
 			  DEPARTAMENTO,
 			  PROVINCIA,
 			  DISTRITO,
 			  CENTRO_POBLADO,
+			  PUNTO_CONCENTRACION,			  
 			  POBLACION_ESTIMADA,
 			  TIPO_EMPADRONAMIENTO,
 			  FECHA_INICIO,
@@ -114,7 +113,6 @@ class Segmentacion_model extends CI_MODEL {
 			  GASTOS_OPERATIVO_S,
 			  PASAJE_S,
 			  TOTAL_S,
-			  PUNTO_CONCENTRACION,
 			  CCPP_CV1,
 			  CCPP_CV2,
 			  CCPP_CV3,

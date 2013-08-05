@@ -151,6 +151,59 @@ class observacion_campo extends CI_Controller {
 		}
 	}
 
+	 function secciones($form)
+	{
+		if ($form == 1){
+			$datos['secciones'] = range(1,9);
+		}else if ($form == 2) {
+			$datos['secciones'] = range(1,10);
+		}else if ($form == 3) {
+			$datos['secciones'] = range(1,8);
+		}
+		$data['datos'] = $datos;
+		$this->load->view('backend/json/json_view', $data);	
+	}
+
+	 function preguntas()
+	{
+		$d = $this->input->post('seccion');
+		$form = substr($d, 0,1);
+		if (strlen($d) == 2) { $seccion = substr($d,1,2); } else{ $seccion = substr($d,1,3);  };
+
+		if ($form == 1){
+			if ($seccion == 1) { $datos['preguntas'] = range(1,4); } 
+			else if ($seccion == 2) { $datos['preguntas'] = range(1,23); } 
+			else if ($seccion == 3) { $datos['preguntas'] = range(1,11); } 
+			else if ($seccion == 4) { $datos['preguntas'] = range(1,6); } 
+			else if ($seccion == 5) { $datos['preguntas'] = range(1,10); } 
+			else if ($seccion == 6) { $datos['preguntas'] = range(1,6); } 
+			else if ($seccion == 7) { $datos['preguntas'] = range(1,10); } 
+			else if ($seccion == 8) { $datos['preguntas'] = range(1,6); } 
+			else if ($seccion == 9) { $datos['preguntas'] = range(1,23); } 
+		}else if ($form == 2) {
+			if ($seccion == 1) { $datos['preguntas'] = range(1,4); } 
+			else if ($seccion == 2) { $datos['preguntas'] = range(1,24); } 
+			else if ($seccion == 3) { $datos['preguntas'] = range(1,11); } 
+			else if ($seccion == 4) { $datos['preguntas'] = range(1,3); } 
+			else if ($seccion == 5) { $datos['preguntas'] = range(1,17); } 
+			else if ($seccion == 6) { $datos['preguntas'] = range(1,2); } 
+			else if ($seccion == 7) { $datos['preguntas'] = range(1,4); } 
+			else if ($seccion == 8) { $datos['preguntas'] = range(1,15); } 
+			else if ($seccion == 9) { $datos['preguntas'] = range(1,6); } 
+			else if ($seccion == 10) { $datos['preguntas'] = range(1,11); } 
+		}else if ($form == 3) {
+			if ($seccion == 1) { $datos['preguntas'] = range(1,4); } 
+			else if ($seccion == 2) { $datos['preguntas'] = range(1,10); } 
+			else if ($seccion == 3) { $datos['preguntas'] = range(1,22); } 
+			else if ($seccion == 4) { $datos['preguntas'] = range(1,3); } 
+			else if ($seccion == 5) { $datos['preguntas'] = range(1,3); } 
+			else if ($seccion == 6) { $datos['preguntas'] = range(1,4); } 
+			else if ($seccion == 7) { $datos['preguntas'] = range(1,16); } 
+			else if ($seccion == 8) { $datos['preguntas'] = range(1,4); } 
+		}
+		$data['datos'] = $datos;
+		$this->load->view('backend/json/json_view', $data);	
+	}
 
 
 	function get_todo(){

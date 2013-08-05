@@ -45,7 +45,7 @@ class Comunidad_seccion2 extends CI_Controller {
 					$fields = $this->comunidad_model->get_fields('comunidad_seccion2');
 					foreach ($fields as $a=>$b) {
 						if(!in_array($b, array('user_id','last_ip','user_agent','created','modified'))){
-							$c_data[$b] = $this->input->post($b);
+							$c_data[$b] =  ($this->input->post($b) == '' ) ? NULL : $this->input->post($b) ;
 						}
 					}	
 

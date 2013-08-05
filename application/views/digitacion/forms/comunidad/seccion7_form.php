@@ -1473,7 +1473,7 @@ echo '<div class="span12">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-top: 0px !important;">';
 
-	echo '<h4>SECCÍÓN VII. CARACTERÍSTICAS ECONÓMICAS DE LA COMUNIDAD</h4>';
+	echo '<h4>SECCIÓN VII. CARACTERÍSTICAS ECONÓMICAS DE LA COMUNIDAD</h4>';
 
 	echo '<div class="row-fluid">';
 		////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1675,10 +1675,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 2
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 8px !important" id="SEC7_2">';
-						echo form_label('2.	¿En su comunidad existe: (Ingrese uno o más códigos):', $S7_2_1['id'], $label_class);
+						echo form_label('2.	¿La pesca la realizan en: (Ingrese uno o más códigos):', $S7_2_1['id'], $label_class);
 						echo '<div class="row-fluid">';
-							echo '<div class="offset7">';
-								echo form_label('Nombre de la fuente', $S7_2_1_F['id'], $label_class);
+							echo '<div class="offset8">';
+								echo '<p><strong>Nombre de la fuente</strong></p>';
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
@@ -2259,7 +2259,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 5
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 34px !important" id="SEC7_5">';
-						echo form_label('5.	¿Los miembros de la comunidad se dedican a la actividad de: (Ingrese uno o más códigos):', $S7_1_1['id'], $label_class);
+						echo form_label('5.	¿Qué especies se pescan generalmente en la comunidad? (Ingrese uno o más códigos):', $S7_1_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 
 							echo '<div class="span6">';
@@ -2684,11 +2684,11 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 
 								echo '</div>';	
-									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('Pejerrey', $S7_5_29['id'], $label_class);
-									echo '</div>'; 
+ 
 								echo '<div class="row-fluid">';
-
+									echo '<div class="control-group-pp offset1 span7">';		
+										echo form_label('Pejerrey', $S7_5_29['id'], $label_class);
+									echo '</div>';
 									echo '<div class="control-group-pp  span4">';
 										echo '<div class="controls-pp">';
 												echo form_input($S7_5_29); 
@@ -2867,7 +2867,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 								
 								echo '<div class="row-fluid">';
 									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('Otro?', $S7_5_41['id'], $label_class);
+										echo form_label('Otro', $S7_5_41['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span4">';
 										echo '<div class="controls-pp">';
@@ -2898,8 +2898,8 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '</div>';	
 
 						echo '<div class="row-fluid">';
-							echo '<div class="offset1">'; 
-								echo form_label('Peces ornamentales:', '', $label_class);
+							echo '<div class="span12">'; 
+								echo '<p><strong>Peces ornamentales:</strong></p>';
 							echo '</div>';
 						echo '</div>';	
 
@@ -3018,7 +3018,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 								
 								echo '<div class="row-fluid">';
 									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('Otro?', $S7_5_49['id'], $label_class);
+										echo form_label('Otro', $S7_5_49['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span4">';
 										echo '<div class="controls-pp">';
@@ -3092,7 +3092,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('Otro?', $S7_6_3['id'], $label_class);
+										echo form_label('Otro', $S7_6_3['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
@@ -3243,7 +3243,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 								echo '</div>';									
 								echo '<div class="row-fluid">';
 									echo '<div class="control-group-pp  offset1 span7">';	
-										echo form_label('Caracol “Churro”', $S7_7_7['id'], $label_class);
+										echo form_label('Caracol “Churo”', $S7_7_7['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp span4">';
 										echo '<div class="controls-pp">';
@@ -3352,7 +3352,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 								echo '<div class="row-fluid">';
 									echo '<div class="control-group-pp  offset1 span7">';	
-										echo form_label('Otro?', $S7_7_14['id'], $label_class);
+										echo form_label('Otro', $S7_7_14['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp span4">';
 										echo '<div class="controls-pp">';
@@ -3378,7 +3378,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 								echo '<div class="row-fluid">';
 									echo '<div class="control-group-pp  offset1 span7">';	
-										echo form_label('Otro?', $S7_7_15['id'], $label_class);
+										echo form_label('Otro', $S7_7_15['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp span4">';
 										echo '<div class="controls-pp">';
@@ -4061,7 +4061,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span7">';	
-										echo form_label('Otro', $S7_10_9['id'], $label_class);
+										echo form_label('Otro?', $S7_10_9['id'], $label_class);
 									echo '</div>'; 							
 									echo '<div class="control-group-pp span2">';
 										echo '<div class="controls-pp">';
@@ -4149,14 +4149,14 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 8px !important" id="SEC7_12">';
 						echo form_label('12. ¿El punto de desembarque que existe en la comunidad es: (Ingrese uno o más códigos):', $S7_12_1['id'], $label_class);
 						echo '<div class="row-fluid">';
-							echo '<div class="offset7">';
-								echo form_label('Nombre de la fuente', $S7_12_1_N['id'], $label_class);
+							echo '<div class="offset8">';
+								echo '<p><strong>Nombre de la fuente</strong></p>';
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span4">';	
-										echo form_label('Río?', $S7_12_1['id'], $label_class);
+										echo form_label('Puerto?', $S7_12_1['id'], $label_class);
 									echo '</div>'; 	
 															
 									echo '<div class="control-group-pp  span2">';
@@ -4181,7 +4181,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span4">';	
-										echo form_label('Lago?', $S7_12_2['id'], $label_class);
+										echo form_label('Playa?', $S7_12_2['id'], $label_class);
 									echo '</div>'; 							
 									echo '<div class="control-group-pp span2">';
 										echo '<div class="controls-pp">';
@@ -4205,7 +4205,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span4">';	
-										echo form_label('Laguna?', $S7_12_3['id'], $label_class);
+										echo form_label('Desembarcadero pesquero artesanal?', $S7_12_3['id'], $label_class);
 									echo '</div>'; 							
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
@@ -4276,7 +4276,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 13
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 34px !important" id="SEC7_13">';
-						echo form_label('13. ¿Qué estrategias se han implementado para afrontar estos problemas? (Ingrese uno o más códigos):', $S7_13_1['id'], $label_class);
+						echo form_label('13. ¿El punto de desembarque tiene: (Ingrese uno o más códigos):', $S7_13_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span7">';	
@@ -5552,7 +5552,6 @@ $(function(){
 						$('#frm_comunidad').trigger('submit');
 		            }
 		        });  
-
 		        // desactivar  SECCION 8
 			        	var cont = 0; var cont_2 = 0;
 	                    for (y = 3; y <= 9; y++){
@@ -5565,7 +5564,6 @@ $(function(){
 	                            cont_2++;
 	                        }
 	                    }
-
                     if ( cont >=1 && cont_2 ==0) {
                     	$('#seccion8 :input').attr('disabled','disabled');
 				        $.ajax({

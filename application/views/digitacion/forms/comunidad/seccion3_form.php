@@ -1075,7 +1075,7 @@ echo '<div class="span12">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-top: 20px !important;">';
 
-	echo '<h4>SECCION III. CARACTERÍSTICAS Y SERVICIOS DE LA COMUNIDAD</h4>';
+	echo '<h4>SECCIÓN III. CARACTERÍSTICAS Y SERVICIOS DE LA COMUNIDAD</h4>';
 
 	echo '<div class="row-fluid">';
 		////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1093,7 +1093,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				/////////////////////////////////////////////PREGUNTA 1
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 40px !important" id="SEC3_1">';
-						echo form_label('1. ¿Cuál es la lengua predominante de la comunidad:', $S3_1['id'], $label_class);
+						echo form_label('1. ¿Cuál es la lengua predominante de la comunidad?', $S3_1['id'], $label_class);
 						echo '<div class="margenes_row row-fluid ">';
 							echo '<div class="span12">';
 									echo '<div class="control-group offset1 span2">';
@@ -1216,7 +1216,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('Otra (Especifique)', $S3_4_4['id'], $label_class);
+										echo form_label('Otra ', $S3_4_4['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
@@ -1291,7 +1291,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Panel solar ? ', $S3_5_2['id'], $label_class);
+										echo form_label('Panel solar? ', $S3_5_2['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group-pp  span2">';
@@ -1333,7 +1333,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Red pública ?', $S3_6_1['id'], $label_class);
+										echo form_label('Red pública?', $S3_6_1['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1349,7 +1349,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Camión cisterna u otra similar', $S3_6_2['id'], $label_class);
+										echo form_label('Camión cisterna u otra similar?', $S3_6_2['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1364,7 +1364,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Pozo', $S3_6_3['id'], $label_class);
+										echo form_label('Pozo?', $S3_6_3['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1379,7 +1379,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Río, acequia, manantial o similar', $S3_6_4['id'], $label_class);
+										echo form_label('Río, acequia, manantial o similar?', $S3_6_4['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1394,7 +1394,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra', $S3_6_5['id'], $label_class);
+										echo form_label('Otro?', $S3_6_5['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1454,7 +1454,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Interrupciones / cortes', $S3_8_1['id'], $label_class);
+										echo form_label('Interrupciones / cortes de agua', $S3_8_1['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1575,7 +1575,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Red pública de desagüe ?', $S3_9_1['id'], $label_class);
+										echo form_label('Red pública de desagüe?', $S3_9_1['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1590,7 +1590,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Letrina ?', $S3_9_2['id'], $label_class);
+										echo form_label('Letrina?', $S3_9_2['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1605,7 +1605,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Pozo séptico ?', $S3_9_3['id'], $label_class);
+										echo form_label('Pozo séptico?', $S3_9_3['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1621,7 +1621,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Pozo ciego o negro ?', $S3_9_4['id'], $label_class);
+										echo form_label('Pozo ciego o negro?', $S3_9_4['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1637,7 +1637,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Río, acequia o canal ?', $S3_9_5['id'], $label_class);
+										echo form_label('Río, acequia o canal?', $S3_9_5['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1740,7 +1740,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra', $S3_10_5['id'], $label_class);
+										echo form_label('Otro', $S3_10_5['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1781,7 +1781,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Telefonía fija ?', $S3_11_1['id'], $label_class);
+										echo form_label('Telefonía fija?', $S3_11_1['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1797,7 +1797,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Telefonía pública ?', $S3_11_2['id'], $label_class);
+										echo form_label('Telefonía pública?', $S3_11_2['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1812,7 +1812,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Telefonía celular ?', $S3_11_3['id'], $label_class);
+										echo form_label('Telefonía celular?', $S3_11_3['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group-pp  span2">';
@@ -1828,7 +1828,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Internet ?', $S3_11_4['id'], $label_class);
+										echo form_label('Internet?', $S3_11_4['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group-pp  span2">';
@@ -1844,7 +1844,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('TV por cable', $S3_11_5['id'], $label_class);
+										echo form_label('TV por cable?', $S3_11_5['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -1860,7 +1860,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Ninguno', $S3_11_6['id'], $label_class);
+										echo form_label('NINGUNO', $S3_11_6['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2029,7 +2029,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra ', $S3_12_6['id'], $label_class);
+										echo form_label('Otro ', $S3_12_6['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2089,7 +2089,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 14
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 60px !important" id="SEC3_14">';
-						echo form_label('14. ¿Existen empresas que explotan hidrocarburos cerca de la comunidad?', $S3_14['id'], $label_class);
+						echo form_label('14. ¿Existen empresas que explotan hidrocarburos cerca a la comunidad?', $S3_14['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group offset1 span2">';
@@ -2214,7 +2214,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra ', $S3_16_5['id'], $label_class);
+										echo form_label('Otro ', $S3_16_5['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2367,7 +2367,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Lavado de ropa (detergentes)', $S3_17_7['id'], $label_class);
+										echo form_label('Lavado de ropa (Detergentes)', $S3_17_7['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2383,7 +2383,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra ', $S3_17_8['id'], $label_class);
+										echo form_label('Otro ', $S3_17_8['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2414,7 +2414,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra ', $S3_17_9['id'], $label_class);
+										echo form_label('Otro ', $S3_17_9['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2563,7 +2563,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra', $S3_18_7['id'], $label_class);
+										echo form_label('Otro', $S3_18_7['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2595,7 +2595,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra', $S3_18_8['id'], $label_class);
+										echo form_label('Otro', $S3_18_8['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2636,7 +2636,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Violencia doméstica (contra mujeres, niños)', $S3_19_1['id'], $label_class);
+										echo form_label('Violencia doméstica (Contra mujeres, niños, ancianos)', $S3_19_1['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2682,7 +2682,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Otra ', $S3_19_4['id'], $label_class);
+										echo form_label('Otro ', $S3_19_4['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls">';
@@ -2713,7 +2713,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="span7 offset1">';	
-										echo form_label('Ninguno', $S3_19_5['id'], $label_class);
+										echo form_label('NINGUNA', $S3_19_5['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group-pp  span2">';
@@ -3022,7 +3022,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 					echo '<div class="preguntas_sub2 span6">';
 						echo '<div class="offset2 span6">';	
-							echo form_label('Bote, Lancha, etc. (Acuático con motor)', $S3_20_6['id'], $label_class);
+							echo form_label('Bote, lancha, etc. (Acuático con motor)', $S3_20_6['id'], $label_class);
 						echo '</div>'; 
 						echo '<div class="control-group-pp offset1 span2">';
 							echo '<div class="controls">';

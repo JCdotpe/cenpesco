@@ -96,7 +96,7 @@ class Registro_pescadores extends CI_Controller {
 
 			$opcion = $this->input->post('send');
 
-			if ($opcion==='Registrar'){
+			if ($opcion==='Guardar'){
 
 				if ($this->tank_auth->get_ubigeo()<99) {
 				
@@ -306,6 +306,14 @@ class Registro_pescadores extends CI_Controller {
  		
 		if (($opcion==='Ingresar') && ($num_filas<$num_filas_t)){
 
+			$contt = 0; // cuenta los campos vacion de tipo de via
+			for ($i=8; $i <= 14 ; $i++) { 
+			 	$ppp = $this->input->post('P'.$i);
+			 	if(empty($ppp)){
+			 		$contt++;
+			 	}
+			}
+
 			$this->form_validation->set_rules('P2','NOMBRE Y APELLIDOS','required|validName');
 			$this->form_validation->set_rules('P3','SEXO','numeric');
 			$this->form_validation->set_rules('P4','DNI','required|numeric');
@@ -315,7 +323,9 @@ class Registro_pescadores extends CI_Controller {
 			$this->form_validation->set_rules('P8','PUERTA','');
 			$this->form_validation->set_rules('P9','BLOCK','');
 			$this->form_validation->set_rules('P10','INTERIOR','');
-			$this->form_validation->set_rules('P11','PISO','required');
+			if ($contt == 7){
+				$this->form_validation->set_rules('P11','N° Puerta, Block, Interior, Piso N°, Manz. N°, Lote o KM','required');
+			}
 			$this->form_validation->set_rules('P12','MANZANA','');
 			$this->form_validation->set_rules('P13','LOTE','numeric');
 			$this->form_validation->set_rules('P14','KM','numeric');
@@ -334,7 +344,7 @@ class Registro_pescadores extends CI_Controller {
 				'P8'	=> $this->input->post('P8'),
 				'P9'	=> $this->input->post('P9'),
 				'P10'	=> $this->input->post('P10'),
-				'P11'	=> $this->input->post('P11'),
+				'P11'	=> ($this->input->post('P11') == '') ? NULL : $this->input->post('P11') ,
 				'P12'	=> strtoupper($this->input->post('P12')),
 				'P13'	=> $this->input->post('P13'),
 				'P14'	=> $this->input->post('P14'),

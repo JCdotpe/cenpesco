@@ -80,7 +80,7 @@ $span_class =  'span12';
 			'name'	=> 'F_PES',
 			'id'	=> 'F_PES',
 			//'value'	=> $F_PES,
-			'maxlength'	=> 4,
+			'maxlength'	=> 5,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);
@@ -88,7 +88,7 @@ $span_class =  'span12';
 			'name'	=> 'F_ACU',
 			'id'	=> 'F_ACU',
 			//'value'	=> $F_ACU,
-			'maxlength'	=> 4,
+			'maxlength'	=> 5,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);
@@ -96,7 +96,7 @@ $span_class =  'span12';
 			'name'	=> 'F_COM',
 			'id'	=> 'F_COM',
 			//'value'	=> $F_COM,
-			'maxlength'	=> 4,
+			'maxlength'	=> 5,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);		
@@ -181,6 +181,7 @@ $span_class =  'span12';
 			$ubidepaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);
 		}
 
+	$iniciar = array(-1 => '-'); 
 	$provArray = array(-1 => '-'); 
 	$distArray = array(-1 => '-'); 
 	$ccppArray = array(-1 => '-'); 
@@ -256,7 +257,7 @@ echo form_open($this->uri->uri_string(),$attr);
 			echo '<div class="row-fluid">';	
 
 				// FECHA
-					echo '<div class="span2 titulos">';
+					echo '<div class="span3 titulos">';
 
 						echo '<div class="span12 titulos">';
 							echo '<h5> FECHA</h5>';
@@ -292,7 +293,7 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FECHA
 
 				// FUNCIONARIO	
-					echo '<div class="span6 titulos">';
+					echo '<div class="span9 titulos">';
 
 						echo '<div class="span12 titulos">';
 							echo '<h5> DATOS DEL FUNCIONARIO</h5>';
@@ -329,10 +330,17 @@ echo form_open($this->uri->uri_string(),$attr);
 					echo '</div>';
 				// FUNCIONARIO
 
-				// TIPO FORMULARIO	
-					echo '<div class="span4 titulos">';
 
-						echo '<div class="offset1 span11 titulos">';
+
+			echo '</div>'; 
+
+			echo '<div class="row-fluid">';	
+
+
+				// TIPO FORMULARIO	
+					echo '<div class="span6 titulos">';
+
+						echo '<div class=" span11 titulos">';
 							echo '<h5>N° DE FORMULARIO</h5>';
 						echo '</div>';
 
@@ -349,10 +357,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							// echo '</div>'; 
 
-							echo '<div class="control-group grupos  span4">';
+							echo '<div class="control-group grupos  span2">';
 
 								echo form_label('Pescador','F_PES',$label1);
-								echo '<div class="controls offset1 span8">';
+								echo '<div class="controls  span12">';
 									echo form_input($F_PES); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_PES['name']) . '</div>';
@@ -360,10 +368,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span4">';
+							echo '<div class="control-group grupos  span2">';
 
 								echo form_label('Acuicultor','F_ACU',$label1);
-								echo '<div class="controls offset1 span8">';
+								echo '<div class="controls  span12">';
 									echo form_input($F_ACU); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_ACU['name']) . '</div>';
@@ -371,10 +379,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span4">';
+							echo '<div class="control-group grupos  span2">';
 
 								echo form_label('Comunidades','F_COM',$label1);
-								echo '<div class="controls offset1 span8">';
+								echo '<div class="controls  span12">';
 									echo form_input($F_COM); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_COM['name']) . '</div>';
@@ -382,44 +390,46 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
+							echo '<div class="control-group grupos offset1 span2">';
+
+								echo form_label('Seccion','SEC',$label1);
+								// echo '<div class="controls span12">';
+								// 	echo form_input($SEC); 
+								// 	echo '<span class="help-inline"></span>';
+								// 	echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
+								// echo '</div>';	
+								echo '<div class="controls">';
+									echo form_dropdown('Seccion', $iniciar, FALSE,'class="span12" id="SEC"'); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error('SEC') . '</div>';
+								echo '</div>';	
 
 
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span2">';
+
+								echo form_label('Pregunta','PREG_N',$label1);
+								// echo '<div class="controls  span12">';
+								// 	echo form_input($PREG_N); 
+								// 	echo '<span class="help-inline"></span>';
+								// 	echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
+								// echo '</div>';	
+								echo '<div class="controls">';
+									echo form_dropdown('Pregunta', $iniciar, FALSE,'class="span12" id="PREG_N"'); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error('PREG_N') . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
 						
 						echo '</div>';
 
 					echo '</div>';
 				// TIPO FORMULARIO	
 
-			echo '</div>'; 
 
-			echo '<div class="row-fluid">';	
-
-				echo '<div class="span2 titulos" style="padding-top: 41px !important">';
-					echo '<div class="control-group grupos span6">';
-
-						echo form_label('Seccion','SEC',$label1);
-						echo '<div class="controls span12">';
-							echo form_input($SEC); 
-							echo '<span class="help-inline"></span>';
-							echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
-						echo '</div>';	
-
-					echo '</div>'; 
-
-					echo '<div class="control-group grupos  span6">';
-
-						echo form_label('Pregunta','PREG_N',$label1);
-						echo '<div class="controls  span12">';
-							echo form_input($PREG_N); 
-							echo '<span class="help-inline"></span>';
-							echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
-						echo '</div>';	
-
-					echo '</div>'; 
-				echo '</div>';
-
-				// OBSERVACIONES	
-					echo '<div class="span10 titulos">';
+				// TIPO DE ERROR	
+					echo '<div class="span6 titulos">';
 
 						echo '<div class="span12 titulos">';
 							echo '<h5> TIPO DE ERROR</h5>';
@@ -427,7 +437,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="span8">';
+							echo '<div class="span12">';
 
 								echo '<div class="control-group grupos span2">';
 
@@ -440,10 +450,10 @@ echo form_open($this->uri->uri_string(),$attr);
 
 								echo '</div>'; 
 
-								echo '<div class="control-group grupos  span2">';
+								echo '<div class="control-group grupos  span3">';
 
 									echo form_label('Diligenciamiento','E_DILIG',$label1);
-									echo '<div class="controls offset1 span9">';
+									echo '<div class="controls offset1 span6">';
 										echo form_input($E_DILIG); 
 										echo '<span class="help-inline"></span>';
 										echo '<div class="help-block error">' . form_error($E_DILIG['name']) . '</div>';
@@ -486,22 +496,27 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span4">';
-								echo '<div class="span3">';
-									echo form_label('Descripccion del error:','DES_E',$label1);
-								echo '</div>'; 	
-								echo '<div class="controls span9">';
-									echo form_textarea($DES_E); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($DES_E['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 													
+												
 						echo '</div>';
 
 					echo '</div>';
 
-				// OBSERVACIONES
+				// TIPO DE ERROR
 			
+			echo '</div>'; 
+
+			echo '<div class="row-fluid">';	
+				echo '<div class="control-group grupos  span12">';
+					echo '<div class="span2">';
+						echo form_label('Descripccion del error:','DES_E',$label1);
+					echo '</div>'; 	
+					echo '<div class="controls span10">';
+						echo form_textarea($DES_E); 
+						echo '<span class="help-inline"></span>';
+						echo '<div class="help-block error">' . form_error($DES_E['name']) . '</div>';
+					echo '</div>';	
+				echo '</div>'; 	
+
 			echo '</div>'; 
 
 		echo '</div>'; 			
@@ -575,50 +590,15 @@ var opcion = 0;
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
 
-
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-///////////////////////////////  N I N G U N O  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  	function ningunos(inp){
-        var acu = 0;
-        var sc = ($(inp).attr('id')).substring(1,2);
-        var preg = ($(inp).attr('id')).substring(3,4);
-        //alert("seccion: " + sc + " preg: " +preg);
-        $("#SEC"+sc+"_"+preg).find(':input').each(function() {
-            var elemento = this;
-            if ($(elemento).val() == 1){
-                acu++;
-            }		
-		});
-        if (acu>=2 && $(inp).val() == 1 ){
-        	return false;    	
-        }else{
-        	return true;
-        }
-            
-  	}
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  N I N G U N O  ///////////////////////////////
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
-
-
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
-    $('input,select').keydown( function(e) {
+    $('input,select, textarea').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-            var array_otros = ['S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //SECCCION 3
-                                'S5_2_7','S5_3_17', // SECCION 5
-                                'S6_3_6','S6_4_15']; // SECCION 6
-            var array_libres = ['S6_2_2_A','S6_2_3_A'];
-            var array_especiales = ['S3_1','S7_15'];
-	  	 	var array_ninguno = ['S3_8_6','S3_8_10','S3_18_5','S6_3_7','S7_2_10','S7_6_4','S7_8_20','S7_16_5']; // NINGUNOS
 
             if(key == 13) {
                 e.preventDefault();
                 var inputs = $(this).closest('form').find(':input:enabled:visible');
                 $(this).blur();  
-                if ( inArray($(this).attr('id'), array_libres )) {// CAMPOS LIBRES: no requieren ingreso obligatorio
-                    inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                    return;
-                }
                 if ($(this).val()==""){// NO VACIOS
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
@@ -638,20 +618,24 @@ var opcion = 0;
                             inputs.eq( inputs.index(this)+1).val(0);  
                             inputs.eq( inputs.index(this)+2).val(0);  
                             inputs.eq( inputs.index(this)+3).focus();  
+    						cargar(true,1); //llama funcion para cargar secciones
                         } else{
+                      		cargar(false,1); // borrar contenido combos
                             inputs.eq( inputs.index(this)+ 1 ).focus();                             
                             inputs.eq( inputs.index(this)+ 1 ).select();                             
                         }
                     }else if ( $(this).attr('id') == "F_ACU" ) {// CAMPO ESPECIAL: 
                         if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) ) {
-                        	alert('Sólo puede ingresar en un solo formulario');
+                        	alert('Ingrese en un solo formulario');
                             inputs.eq( inputs.index(this)-1).focus();  
                             inputs.eq( inputs.index(this)-1).select();  
                         } else if ($(this).val() > 0) {
                             inputs.eq( inputs.index(this)+ 1 ).val(0);                             
                             inputs.eq( inputs.index(this)+ 2 ).focus(); 
-                            inputs.eq( inputs.index(this)+ 2 ).select();                             
+                            inputs.eq( inputs.index(this)+ 2 ).select();     
+			                cargar(true,2); //llama funcion para cargar secciones   2                                   
                         }else{
+                        	cargar(false,2);// borrar contenido combos
                             inputs.eq( inputs.index(this)+ 1 ).focus(); 
                             inputs.eq( inputs.index(this)+ 1 ).select();                             
                         }
@@ -661,19 +645,20 @@ var opcion = 0;
                             inputs.eq( inputs.index(this)-2).focus();  
                             inputs.eq( inputs.index(this)-2).select();  
                         } else if (($(this).val()  == 0 ) && (inputs.eq( inputs.index(this)-1).val() == 0 ) && (inputs.eq( inputs.index(this)-2).val() == 0 )) {
-                        	alert('Debe ingresar en información en un formulario');
+                        	alert('Debe ingresar en un formulario');
                             inputs.eq( inputs.index(this)- 2 ).focus(); 
                             inputs.eq( inputs.index(this)- 2 ).select();                             
                         }else{
                             inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                            inputs.eq( inputs.index(this)+ 1 ).select();                             
+                            inputs.eq( inputs.index(this)+ 1 ).select(); 
+		                  	cargar(true,3); //llama funcion para cargar secciones  3                                        
                         }
                     }else{
                         inputs.eq( inputs.index(this)+ 1 ).focus(); 
                         inputs.eq( inputs.index(this)+ 1 ).select(); 
                    }                         
                 }
-            }else if (key == 37) {
+            }else if (key == 27) {
                 var inputs = $(this).closest('form').find(':input:enabled');
                 if ($(this).val()==""){// NO VACIOS
                     alert("Campo requerido");
@@ -688,8 +673,62 @@ var opcion = 0;
                 return false;
             }
         });
+
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
 ///////////////////////////////////////////////////////////////////////////////
+
+$("#SEC").focus(function() {
+	if ( ($("#F_PES").val() > 0 &&  $("#F_ACU").val() > 0 && $("#F_COM").val() > 0 ) || ($("#F_PES").val() +  $("#F_ACU").val() +  $("#F_COM").val() == 0 ) ||
+		 ($("#F_PES").val() > 0 &&  $("#F_ACU").val() > 0) ||( $("#F_ACU").val() > 0 && $("#F_COM").val() > 0 )  || ($("#F_PES").val() > 0 &&  $("#F_COM").val() > 0 )){
+		cargar(false,0); alert('Sólo puede ingresar en un solo formulario');
+	}else if ( $("#F_PES").val() >=1 && ( $("#F_ACU").val() + $("#F_COM").val() == 0) ){
+		cargar(true,1);
+	}else if ($("#F_ACU").val() >=1 && ( $("#F_COM").val() + $("#F_PES").val() == 0)){
+		cargar(true,2);
+	}else if ($("#F_COM").val() >=1 && ( $("#F_PES").val() + $("#F_ACU").val() == 0)){
+		cargar(true,3);
+	}
+})
+
+function cargar(bol, sec) {
+	if (bol) {
+        $.ajax({
+            url: CI.base_url + "monitoreo/observacion_campo/secciones/" + sec,
+            type:'POST',
+            data:{csrf_token_c: CI.cct,},
+            dataType:'json',
+            success:function(json){
+            		$("#SEC").empty();
+	                $.each(json.secciones, function(i, data){
+	                        $("#SEC").append('<option value="1' + data + '">' + data + '</option>');
+	                });		
+	                $("#SEC").trigger('change');				            	
+            }
+        }); 
+	}else{
+        	$("#SEC").empty();
+        	$("#SEC").append('<option value=" -"> - </option>');
+        	$("#PREG_N").empty();
+        	$("#PREG_N").append('<option value=" -"> - </option>');  
+	}
+}
+
+$("#SEC").change(function (){
+    $.ajax({
+        url: CI.base_url + "monitoreo/observacion_campo/preguntas/",
+        type:'POST',
+        data:{csrf_token_c: CI.cct,seccion:$("#SEC").val()},
+        dataType:'json',
+        success:function(json){
+        		$("#PREG_N").empty();
+                $.each(json.preguntas, function(i, data){
+                        $("#PREG_N").append('<option value="1' + data + '">' + data + '</option>');
+                });						            	
+        }
+    });  
+});
+
+
 
 
 ///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1373,6 +1412,8 @@ $("#frm_observacion_campo").validate({
 			   			$('textarea').val("");
 			   			$('select').val(-1);
 			   			$('#NOM_DD').trigger('change');
+			   			$("#SEC").append('<option value=" -"> - </option>');  
+			   			$("#PREG_N").append('<option value=" -"> - </option>');  
 
             	}else if(json.operacion == 7){
 		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		

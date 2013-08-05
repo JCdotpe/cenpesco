@@ -707,40 +707,12 @@ var opcion = 0;
 
 
 
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-///////////////////////////////  N I N G U N O  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  	function ningunos(inp){
-        var acu = 0;
-        var sc = ($(inp).attr('id')).substring(1,2);
-        var preg = ($(inp).attr('id')).substring(3,4);
-        //alert("C_RECHcion: " + sc + " preg: " +preg);
-        $("#C_RECH"+sc+"_"+preg).find(':input').each(function() {
-            var elemento = this;
-            if ($(elemento).val() == 1){
-                acu++;
-            }		
-		});
-        if (acu>=2 && $(inp).val() == 1 ){
-        	return false;    	
-        }else{
-        	return true;
-        }
-            
-  	}
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  N I N G U N O  ///////////////////////////////
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
-
-
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
     $('input').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
-            var array_otros = ['S3_4_4','S3_5_5','S3_7_4','S3_9_5','S3_11_10','S3_15_5','S3_16_8','S3_16_9','S3_17_5','S3_17_6','S3_18_4', //C_RECHCCION 3
-                                'S5_2_7','S5_3_17', // C_RECHCION 5
-                                'S6_3_6','S6_4_15']; // C_RECHCION 6
-            var array_libres = ['S6_2_2_A','S6_2_3_A'];
+
             var array_especiales = ['P_RECH','A_RECH','C_RECH'];
-	  	 	var array_ninguno = ['S3_8_6','S3_8_10','S3_18_5','S6_3_7','S7_2_10','S7_6_4','S7_8_20','S7_16_5']; // NINGUNOS
 
             if(key == 13) {
                 e.preventDefault();
@@ -785,108 +757,6 @@ var opcion = 0;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//////////////////////  P A S E     P R E G U N T A S   \\\\\\\\\\\\\\\\\\\\\\\
-    // PARAMETROS 
-    //s = C_RECHcion // pi =pregunta actual//pf =pregunta a pasar// //vc = boolean de pregunta de un solo codigo
-    //si =sub pregunta inicial// sf =sub pregunta final // e = boolean para especificar //ts = boolean si termina la C_RECHcion
-    function pase_preguntas(s,pi,pf,vc,si,sf,e,ts){
-       // var obj = input;
-        //var e = even;
-        var sc = s;
-        var p_actual = pi;
-        var p_pase = pf;
-        var sub_ini = si;
-        var sub_fin = sf;
-        var esp = e;
-        var code = vc;
-        var cont =0;
-        var p_focus =0;
-        var termina_s = ts;
-
-
-                if (code){ //valida si son de varios codigos
-
-                    for (y = sub_ini; y <= sub_fin; y++){
-                        if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){
-                            cont++;
-                        }
-                    }
-                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#C_RECH"+sc+"_"+x+' :input').attr('disabled','disabled');
-                        }
-                        if (termina_s) {// verifica si termina la C_RECHcion
-                            alert("Finalice esta sección");
-                            document.blur();
-                            $(":submit").focus();
-                            return;
-                        }                
-                        if (!esp){//verifica si el input es seguido de ESPECIFIQUE
-                            $("#S"+sc+"_"+p_pase+"_1").focus();
-                            $("#S"+sc+"_"+p_pase).focus();      
-                        }
-                    }else if(cont <= 0){
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#C_RECH"+sc+"_"+x+' :input').removeAttr('disabled');
-                        }
-
-                        if (!esp) {
-                            p_focus = p_actual+1;
-                            $("#S"+sc+"_"+p_focus).focus();
-                            $("#S"+sc+"_"+p_focus+"_1").focus();
-                        }
-                    }
-                } else{
-                    for (y = sub_ini; y <= sub_fin; y++){
-                        if ($("#S"+sc+"_"+p_actual).val() == y){
-                            cont++;
-                        }
-                    }
-
-                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#C_RECH"+sc+"_"+x+' :input').attr('disabled',true);
-                        }
-                        if (termina_s) {// verifica si termina la C_RECHcion
-                            //document.getElementById('C_RECHcion3').blur();
-                            alert("Finalice esta sección");
-                            $(":submit").focus();
-                            return;
-                        }
-                        if(!esp){//verifica si el input es seguido de ESPECIFIQUE
-                            $("#S"+sc+"_"+p_pase+"_1").focus();
-                            $("#S"+sc+"_"+p_pase).focus();                     
-                        };
-                    }else if(cont <= 0){
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#C_RECH"+sc+"_"+x+' :input').removeAttr('disabled');
-                        }   
-                        if (!esp) {
-                            p_focus = p_actual+1;
-                            $("#S"+sc+"_"+p_focus).focus();
-                            $("#S"+sc+"_"+p_focus+"_1").focus();                 
-                        } 
-                    }
-                }
-    }
-//\\\\\\\\\\\\\\\\\\\\  P A S E     P R E G U N T A S   ///////////////////////      
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
-
-
-
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//////////////////////// E S P E C I F I C A R   O T R O  \\\\\\\\\\\\\\\\\\\\\ 
-    function especifique(uno,dos,otro){
-        var x = uno;
-        var y = dos;
-        if ((y.value ==otro) && (x.value =="")){
-            alert('seleccionó OTRO, especifique');          
-            $(dos).focus();
-        }
-    }
-//\\\\\\\\\\\\\\\\\\\\\\ E S P E C I F I C A R   O T R O  /////////////////////  
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
 
 
@@ -1092,12 +962,6 @@ $(function(){
           return false;
         }
       });
-
-
-
-
-
-
 
 
 // CARGA COMBOS UBIGEO ---------------------------------------------------------------------->
@@ -1479,6 +1343,14 @@ $("#frm_avance_campo").validate({
         };
         var bsub = $( "#frm_avance_campo :submit" );
         //bsub.attr("disabled", "disabled");
+         if (parseInt($("#C_TOTAL").val()) !== (parseInt($("#C_COMP").val()) + parseInt($("#C_INC").val()) + parseInt($("#C_RECH").val()) ) ){
+        	alert('El total no debe ser diferente a la suma'); $("#C_TOTAL").focus(); $("#C_TOTAL").select(); return;
+        }else if (parseInt($("#P_TOTAL").val()) !== (parseInt($("#P_COMP").val()) + parseInt($("#P_INC").val()) + parseInt($("#P_RECH").val()) ) ){
+        	alert('El total no debe ser diferente a la suma'); $("#P_TOTAL").focus(); $("#P_TOTAL").select(); return;
+        }else if (parseInt($("#A_TOTAL").val()) !== (parseInt($("#A_COMP").val()) + parseInt($("#A_INC").val()) + parseInt($("#A_RECH").val()) ) ){
+        	alert('El total no debe ser diferente a la suma'); $("#A_TOTAL").focus(); $("#A_TOTAL").select(); return;
+        }
+
         $.ajax({
             url: CI.base_url + "monitoreo/avance/grabar",
             type:'POST',
@@ -1505,69 +1377,7 @@ $("#frm_avance_campo").validate({
         		$('.extra').empty();
         		$('.extra').hide().append(mensaje);              	
         		$('.extra').show('slow');              	
-            	/*if(json.flag == 0){//cuando no fue registrado
-				        $.ajax({
-				            url: CI.base_url + "digitacion/comunidad/insertar",
-				            type:'POST',
-				            data:form_data,
-				            dataType:'json',
-				            success:function(json){
-				            	//alert(json.msg);
-				            	$("#frm_avance_campo :input").attr("disabled", true);
-				            	//insercion correcta
-				            	if(json.flag == 1){
-				            		$('#frm_avance_campo').trigger('submit');
-				            	}else{
-				            	//error en la insercion	
-				            	}
-				            }
-				        });    
-				              		
-            	}else if(json.flag == 1){ //registro encontrado, ver C_RECHciones que faltan 
-            		$("#frm_avance_campo :input").attr("disabled", true);              
-            		$('#comunidades_tabs').removeClass('hide');
-                    $("input[name='comunidad_id']").val(json.idx);   // guarda el ID de COMUNIDAD.
-				    var i = 0;
-                    var flagi = false;
-					$.each( json.C_RECHciones, function( key, value ) { //key = C_RECHcciones, value = 1 || 2
-                        //alert(value);
-						if(value != 0){// oculta las C_RECHciones que ya tienen el registro.
-								if(key == 9){
-									$('#cinfo').remove();
-									$('#info').remove();						
-								}else{	
-									$('#tab'+ key).remove();
-									$('#ctab'+ key).remove();
-								}
-								
-						}else { //muestra C_RECHciones 
-                            //activar tab     
-                            if(!flagi){                                  
-                                if(key == 9){
-                                    $('#cinfo').addClass('active');
-                                    $('#info').addClass('active');                                               
-                                }else{                                 
-                                    $('#ctab'+ key).addClass('active');
-                                    $('#tab'+ key).addClass('active');
-                                }       
-                            }
-                            flagi = true;                 
-                        }
-                        i++;
-					});
-					if(!flagi){
-						alert('Formulario completado');
-					}else{
-                        alert('Por favor complete la informacion en las C_RECHciones a continuacion');   
-                    }
-            	}else if(json.flag == 2){
-                    alert('El Nro de formulario no coincide con  UDRA');
-                    bsub.removeAttr('disabled');    
-                }else if(json.flag == 3){ 
-                    alert('Debe ingresar la UDRA primero, no puede ingresar el formulario.');
-                    bsub.removeAttr('disabled');    
-                }*/
-            // bsub.removeAttr('disabled');  
+
 
             }
         });     

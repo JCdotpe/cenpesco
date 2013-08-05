@@ -82,11 +82,12 @@ $NROFORM = array(
 	'id'	=> 'NFORM',
 	'maxlength'	=> 6,
 	'class' => 'offset5 span2',
+	'onkeypress'=>"return solo_numeros(event)",
 );
 
     echo form_hidden('comunidad_id', '');
 	echo '<div class="well modulo">';
-            echo '<h3 style="text-align:center">Formulario de Comunidad</h3>';
+            echo '<h3 style="text-align:center">Formulario Censal de la Comunidad</h3>';
 			echo '<div class="control-group">';
 			echo form_label('NRO FORMULARIO','NFORM',$labelnroform);
 				echo '<div class="controls">';	
@@ -98,8 +99,8 @@ $NROFORM = array(
 ////////////////////////////////SECCION I
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
-			echo '<h4>SECCION I. LOCALIZACIÓN DEL PUNTO DE CONCENTRACIÓN</h4>';
-			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
+			echo '<h4>SECCIÓN I. LOCALIZACIÓN DEL PUNTO DE CONCENTRACIÓN</h4>';
+			echo '<h5>A. UBICACIÓN GEOGRÁFICA</h5>';
 
 			echo '<div class="span12">';	
 					echo '<div class="control-group span6">';
@@ -170,17 +171,19 @@ echo form_close();
 		echo '</div>'; 			
 	echo '</div>'; 		
 ?>
+
+
 <div class="row-fluid hide" id="comunidades_tabs" style="margin-top:10px">
 	<div class="span12" id="insidetabs" style="text-align:center">
 		<div class="tabbable"> <!-- Only required for left/right tabs -->
 		  <ul class="nav nav-tabs" style="text-align:center">
-		    <li id="ctab2"><a href="#tab2" data-toggle="tab">Seccion II</a></li>
-		    <li id="ctab3"><a href="#tab3" data-toggle="tab">Seccion III</a></li>
-		    <li id="ctab4"><a href="#tab4" data-toggle="tab">Seccion IV</a></li>
-		    <li id="ctab5"><a href="#tab5" data-toggle="tab">Seccion V</a></li>
-		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Seccion VI</a></li>
-		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Seccion VII</a></li>
-		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Seccion VIII</a></li>
+		    <li id="ctab2"><a href="#tab2" data-toggle="tab">Sección II</a></li>
+		    <li id="ctab3"><a href="#tab3" data-toggle="tab">Sección III</a></li>
+		    <li id="ctab4"><a href="#tab4" data-toggle="tab">Sección IV</a></li>
+		    <li id="ctab5"><a href="#tab5" data-toggle="tab">Sección V</a></li>
+		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Sección VI</a></li>
+		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Sección VII</a></li>
+		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Sección VIII</a></li>
 		    <!-- <li id="ctab9"><a href="#tab9" data-toggle="tab">Seccion IX</a></li> -->
 		    <li id="cinfo"><a href="#info" data-toggle="tab">Info</a></li>
 		  </ul>
@@ -213,6 +216,7 @@ echo form_close();
 		</div>
 	</div>
 </div>
+
 
 <!-- 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -292,11 +296,11 @@ echo form_close();
     	var pr = ($(inp).attr('id')).substring(3,4);
         if ( $.isNumeric( ($(inp).attr('id')).substring(4,5) ) ) {
         	var pr = ($(inp).attr('id')).substring(3,5)  };  	                        	
-    	
         	$("#SEC"+sc+"_"+pr+' :input').each(function(){
-        		  if ($.isNumeric($(inp).val())) { acu = acu + parseInt( $(inp).val() ) };
+        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
         	})
 	        if (acu === 0 ) {
+				alert('Tiene que seleccionar en al menos una alternativa');	        	
 				return true;     	
 	        }else{
 	        	return false;
@@ -540,9 +544,8 @@ echo form_close();
                             inputs.eq( inputs.index(this)+ 1 ).select();  
                         } else{
                         	inputs.eq( inputs.index(this)+ 1 ).val(''); // limpia el campo de especifique
-                        	if( ($(this).attr('id') == 'S3_4_4') ){
+                        	if( ($(this).attr('id') == 'S7_10_9') || ($(this).attr('id') == 'S3_4_4') ){// campos especiales, que no permiten validar campos vacios
                         		if (vacios_otros(this)) {
-					        	alert('Tiene que seleccionar en al menos una alternativa ');
 				                inputs.eq( inputs.index(this)).focus();                             
 				                inputs.eq( inputs.index(this) ).select(); return;	
                         		}         
@@ -552,8 +555,7 @@ echo form_close();
 	                        		//
                         	}else if ($(this).attr('id') == 'S7_5_41') {
 									//
-                        	}else if ( vacios_otros(this) ) {
-					        	alert('Tiene que seleccionar en al menos una alternativa ');
+                        	}else if ( vacios_otros(this) ) {// valida con funcion de campos vacios
 				                inputs.eq( inputs.index(this)).focus();                             
 				                inputs.eq( inputs.index(this) ).select(); return;	
                         	}                        		
@@ -692,7 +694,16 @@ echo form_close();
 		                        	inputs.eq( inputs.index(this) + 1 ).select();
 					            }
                     }else{// permite el pase a los inputs ya con datos
-                    	if(  !( $(this).attr('id') == 'S4_1_C')  ){
+                    	if(  ( $(this).attr('id') == 'S7_1_9_O')  ){// campo especial, que sigue a terminar seccion
+		                			var cont =0,  cont_2 =0; 
+					                    for (y = 3; y <= 9; y++){
+					                        if ($("#S7_1_"+y).val() == 1){ cont++; }
+					                    }
+					                    for (z = 1; z < 3; z++){
+					                        if ($("#S7_1_"+z).val() == 1){ cont_2++;}
+					                    }	
+					                    if(cont>=1 && cont_2 ==0){alert('Finalice esta sección'); };
+		                }else if(  ( $(this).attr('id') != 'S4_1_C')  ){
 		                	for (key in array_pases){ // si el INPUT fue seguido de 
 		                		if (inputs.eq( inputs.index(this)-1).attr('id') == key){
 		                			if(  (array_pases[key][7] == 1) &&   (inputs.eq( inputs.index(this) - 1 ).val() == array_pases[key][5] )  ){	alert('Finalice esta sección');}
@@ -703,12 +714,14 @@ echo form_close();
                         inputs.eq( inputs.index(this) + 1 ).select(); 
                    }                         
                 }
-            //}else if (key == 37) {
-            }else if (key == 27) {
+            }else if (key == 27) {// RETROCESO (scape)
                 var inputs = $(this).closest('form').find(':input:enabled');
-                if ($(this).val()==""){// NO VACIOS
-                    alert("Campo requerido");
-                    inputs.eq( inputs.index(this)).focus(); 
+                if ($(this).val()=="" ){// NO VACIOS
+               		if ( inArray( inputs.eq( inputs.index(this)- 1).attr('id') ,  array_otros_v) && ( parseInt(inputs.eq( inputs.index(this)- 1).val()) == 0  || inputs.eq( inputs.index(this)- 1).val() == "" ) ){
+	                    inputs.eq( inputs.index(this)- 1).focus();  
+	                    inputs.eq( inputs.index(this)- 1).select(); return;  
+               		}
+	                    alert("Campo requerido");                  			
                 }else{
                     inputs.eq( inputs.index(this)- 1).focus();  
                     inputs.eq( inputs.index(this)- 1).select();                  	
@@ -720,6 +733,424 @@ echo form_close();
         });
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
 ///////////////////////////////////////////////////////////////////////////////
+
+
+// CAMPOS SIN PASE
+    var array_otros_v = [ 'S3_4_4','S3_8_4','S3_10_5','S3_12_6','S3_16_5','S3_17_8','S3_17_9','S3_18_7','S3_18_8','S3_19_4', //SECCCION 3
+                        'S5_2_7','S5_3_17', // SECCION 5
+                        'S6_3_6','S6_4_15', // SECCION 6
+                        'S7_1_9','S7_5_41','S7_5_49','S7_6_3','S7_7_14','S7_7_15','S7_8_18','S7_9_13','S7_10_9','S7_13_12',// SECCION 7
+                        'S7_2_1','S7_2_2','S7_2_3','S7_2_4','S7_2_5','S7_2_6','S7_2_7','S7_12_1','S7_12_2','S7_12_3',
+                        'S8_3_10','S8_2_1','S8_2_2','S8_2_3','S8_2_4','S8_2_5','S8_2_6','S8_2_7','S8_2_8','S8_2_9','S8_2_10','S8_2_11']; // SECCION 8
+                       
+    var array_otros_u = [];
+    	array_otros_u['S3_1'] 	= 4;
+    	array_otros_u['S7_15'] 	= 6;	
+
+    var array_otros_esp = ['S7_2_8','S7_12_4','S8_2_12']; // OTROS especiales
+
+    var array_especiales_tras = ['S3_20_1','S3_20_2','S3_20_3','S3_20_4','S3_20_5'];// TIPO TRANSPORTE SECCION 3	  	 
+    var array_especiales_tras2 = ['S3_20_6','S3_20_7','S3_20_8','S3_20_9'];	// TIPO TRANSPORTE SECCION 3	 
+    var array_especiales_min = ['S3_21_2_1_M','S3_21_2_2_M','S3_21_2_3_M','S3_21_2_4_M','S3_21_2_5_M','S3_21_2_6_M','S3_21_2_7_M','S3_21_2_8_M','S3_21_2_9_M'];	// minutos SECCION 3	 
+
+ 	var array_ninguno = ['S3_5_3','S3_11_6','S3_19_5','S6_3_7','S7_6_4','S7_7_16','S7_8_20','S7_16_5']; // NINGUNOS  
+
+ 	var array_demas_no_vacios = ['S7_3_12','S7_4_12']; // otros campos no empty  
+	 	                              
+    var array_libres = ['S6_2_2_A','S6_2_3_A','S2_7','S2_8','S2_9','OBS'];
+
+ 	var array_pases_1 = ['S3_6_1','S3_6_2','S3_6_3','S3_6_4','S3_6_5_O'];
+ 	var array_pases_2 = ['S3_9_1','S3_9_2','S3_9_3','S3_9_4','S3_9_5'];
+ 	var array_pases_3 = ['S7_1_1','S7_1_2','S7_1_3','S7_1_4','S7_1_5','S7_1_6','S7_1_7','S7_1_8','S7_1_9_O'];
+ 	var array_pases_4 = ['S7_2_1','S7_2_1_F','S7_2_2','S7_2_2_F','S7_2_3','S7_2_3_F','S7_2_4','S7_2_4_F','S7_2_5','S7_2_5_F','S7_2_6','S7_2_6_F','S7_2_7','S7_2_7_F','S7_2_8','S7_2_8_O','S7_2_8_F'];
+ 	var array_pases_5 = ['S7_8_1','S7_8_2','S7_8_3','S7_8_4','S7_8_5','S7_8_6','S7_8_7','S7_8_8','S7_8_9','S7_8_10','S7_8_11','S7_8_12','S7_8_13','S7_8_14','S7_8_15','S7_8_16','S7_8_17','S7_8_18','S7_8_18_O'];
+
+
+//  CAMPOS CON PASE
+ 	var array_pases =  []; //[varios_codigo, preg_pase, opcion_inicial, opcion_final, especifica, especifica_valor, ninguno, termina]
+ 		array_pases['S3_2'] = [0,5,2,2,0,0,0,0];
+ 		array_pases['S3_3'] = [0,5,4,5,0,0,0,0];
+ 		array_pases['S3_7'] = [0,9,4,5,0,0,0,0];
+ 		array_pases['S3_6_5'] = [1,9,2,5,1,0,0,0];
+ 		array_pases['S3_9_6'] = [1,11,2,6,0,0,1,0];
+ 		array_pases['S3_15'] = [0,19,2,2,0,0,0,0];
+ 		array_pases['S4_1'] = [0,4,2,2,1,1,0,1];
+ 		array_pases['S5_1'] = [0,3,2,2,0,0,0,0];
+ 		array_pases['S6_1'] = [0,3,2,2,0,0,0,0];
+ 		array_pases['S7_1_9'] = [1,17,3,9,1,1,0,1];
+ 		array_pases['S7_2_9'] = [1,7,9,9,0,0,1,0];
+ 		array_pases['S7_8_19'] = [1,10,19,19,0,0,1,0];
+ 		array_pases['S7_11'] = [0,17,2,2,0,0,0,1];
+ 		array_pases['S7_14'] = [0,17,2,2,0,0,0,1];
+ 		array_pases['S8_1'] = [0,4,2,2,0,0,0,0];
+
+$('input').blur( function() {
+	if (inArray($(this).attr('id'), array_pases_1)){	    $('#S3_6_5').trigger('blur'); return false;}
+	else if (inArray($(this).attr('id'), array_pases_2)){	$('#S3_9_6').trigger('blur'); return false;}
+	else if (inArray($(this).attr('id'), array_pases_3)){	$('#S7_1_9').trigger('blur'); return false;}
+	else if (inArray($(this).attr('id'), array_pases_4)){	$('#S7_2_9').trigger('blur'); return false;}
+	else if (inArray($(this).attr('id'), array_pases_5)){	$('#S7_8_19').trigger('blur'); return false;}
+	else if ( array_pases[$(this).attr('id')] ){
+
+		for (key in array_pases){
+			if ($(this).attr('id') == key) {
+
+		        var sc 			= key.substring(1,2);
+		        var code		= array_pases[key][0];
+		        var p_actual 	= parseInt(key.substring(3,4)); 
+		        if ( $.isNumeric( key.substring(4,5) ) ) {
+		        	var p_actual = parseInt(key.substring(3,5));   };
+		        var p_pase 		= array_pases[key][1];
+		        var sub_ini 	= array_pases[key][2];
+		        var sub_fin 	= array_pases[key][3];
+		        var cont = 0	;
+				var cont_2 = 0	;
+		    
+		
+	        if (code == 1){
+		        for (y = sub_ini; y <= sub_fin; y++){
+		            if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){//1 si fue seleccionado
+		                cont++;
+		            }
+		        }
+		        for (z = 1; z < sub_ini; z++){
+		            if ($("#S"+sc+"_"+p_actual+"_"+z).val() == 1){//1 si fue seleccionado
+		                cont_2++;
+		            }
+		        }	
+
+		        if (cont >= 1 && cont_2 == 0){
+			        for (x = p_actual+1;x<p_pase;x++){
+			            $("#SEC"+sc+"_"+x+' :input').attr('disabled','disabled');
+			        }        	
+		        }else{
+		            for (x = p_actual+1;x<p_pase;x++){
+		                $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
+		            }          	
+		        }
+			}else{;
+	            for (y = sub_ini; y <= sub_fin; y++){
+	                if ($("#S"+sc+"_"+p_actual).val() == y){ //si fue ingresado dentro del rango
+	                    cont++;
+	                }
+	            }
+
+				if (cont >=1) {					                
+					for (x = p_actual+1;x<p_pase;x++){
+		                $("#SEC"+sc+"_"+x+' :input').attr('disabled','disabled');
+		            }
+				}else{
+					for (x = p_actual+1;x<p_pase;x++){
+		                $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
+		            }
+				}
+
+			}
+			}
+		}
+	return false;
+	}
+});
+
+
+///////////////////////////////////////////////////////////////////////////////
+// <<=================== E N T E R   L I K E  T A B  ======================>>//
+    $('input,textarea,select').keydown( function(e) {
+            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+
+
+	  	 		
+            if(key == 13) {
+                e.preventDefault();
+                var inputs = $(this).closest('form').find(':input:enabled');
+                $(this).blur();  
+                if ( inArray($(this).attr('id'), array_libres )) {// CAMPOS LIBRES: no requieren ingreso obligatorio
+                    inputs.eq( inputs.index(this)+ 1 ).focus(); 
+                    return;
+                }
+                if ($(this).val()==""){// NO VACIOS
+                    alert("Campo requerido");
+                    inputs.eq( inputs.index(this)).focus(); 
+                }else{
+                
+                	for (key in array_pases){
+
+                		if ($(this).attr('id') == key) {
+							        var sc 			= key.substring(1,2);
+							        var code		= array_pases[key][0];
+							        if ( $.isNumeric( key.substring(4,5) ) ) {
+							        	var p_actual = parseInt(key.substring(3,5));   };
+							        var esp 		= array_pases[key][4];
+							        var esp_val		= array_pases[key][5];
+							        var ning		= array_pases[key][6];
+							        var termina_s 	= array_pases[key][7];
+							        inputs = $(this).closest('form').find(':input:enabled');
+					               if (code == 1){ //valida si son de varios codigos
+					               		var acu =0;
+			                        	var pr = ($(this).attr('id')).substring(3,4);  if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {	var pr = ($(this).attr('id')).substring(3,5)  };  					               	
+			                        	
+				                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+				                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+				                        	})
+									        if (acu == 0 ) {
+									        	alert('Tiene que seleccionar en al menos una alternativa ');
+					                            inputs.eq( inputs.index(this)).focus();                             
+					                            inputs.eq( inputs.index(this) ).select(); 						        	
+									        }else if (esp == 1){// es seguido de ESPECIFIQUE
+					                            if($(this).val() == 1)  { // valor 1, debe especificar
+					                            	inputs.eq( inputs.index(this) + 1 ).focus();
+					                            	inputs.eq( inputs.index(this) + 1 ).select();
+					                            }else{
+					                            	if (termina_s == 1) {alert("Finalice esta sección");};
+					                            	inputs.eq( inputs.index(this) + 1 ).val('');
+													inputs.eq( inputs.index(this) + 2).focus();
+													inputs.eq( inputs.index(this) + 2).select();
+					                            }
+					                        }else if (ning == 1) { // VALIDA CAMPOS NINGUNO
+					                        	if (!ningunos(this)) {
+						                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+						                        	inputs.eq( inputs.index(this) ).focus();  
+						                        	inputs.eq( inputs.index(this) ).select();  
+					                        	}else{
+					                        		if (termina_s == 1) {alert("Finalice esta sección");};
+					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
+					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
+					                        	};
+                       						}else{
+					                        	inputs.eq( inputs.index(this) + 1 ).focus();
+					                        	inputs.eq( inputs.index(this) + 1 ).select();
+					                        }
+					                  
+					                    return; // end ************************
+					                }else{ // de sun solo codigo
+					                        if(esp == 1){// es seguido de ESPECIFIQUE
+					                            if($(this).val() == esp_val)  { // valor 1, debe especificar
+					                            	inputs.eq( inputs.index(this) + 1 ).focus();
+					                            	inputs.eq( inputs.index(this) + 1 ).select();
+					                            }else{
+					                            	if (termina_s == 1) {alert("Finalice esta sección");};
+					                            	inputs.eq( inputs.index(this) + 1 ).val('');
+													inputs.eq( inputs.index(this) + 2).focus();
+													inputs.eq( inputs.index(this) + 2).select();
+					                            }
+					                        }else if (ning == 1) {// VALIDA CAMPOS NINGUNO
+					                        	if (!ningunos(this)) {
+						                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+						                        	inputs.eq( inputs.index(this) ).focus();  
+						                        	inputs.eq( inputs.index(this) ).select();  
+					                        	} else{
+					                        		if (termina_s == 1) {alert("Finalice esta sección");};
+					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
+					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
+					                        	};
+                       						}else{
+                       							if (termina_s == 1) {alert("Finalice esta sección");};
+					                        	inputs.eq( inputs.index(this) + 1 ).focus();
+					                        	inputs.eq( inputs.index(this) + 1 ).select();
+					                        }
+
+					                    return; //end  ***************************
+					                }
+                		} 
+                	}
+                	// LOS CAMPOS DE PREGUNTAS SIN PASE/////////////////////////////////////////////////////////////////
+                    if ( inArray($(this).attr('id'), array_otros_v )) {// CAMPOS OTROS de VARIOS ingresos
+                        if ($(this).val() == 1 ) {
+                            inputs.eq( inputs.index(this)+ 1 ).focus();  
+                            inputs.eq( inputs.index(this)+ 1 ).select();  
+                        } else{
+                        	inputs.eq( inputs.index(this)+ 1 ).val(''); // limpia el campo de especifique
+                        	if( ($(this).attr('id') == 'S7_10_9') || ($(this).attr('id') == 'S3_4_4') ){// campos especiales, que no permiten validar campos vacios
+                        		if (vacios_otros(this)) {
+				                inputs.eq( inputs.index(this)).focus();                             
+				                inputs.eq( inputs.index(this) ).select(); return;	
+                        		}         
+                        	}else if ( ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_ninguno ) ) || ( inArray(inputs.eq( inputs.index(this)+ 4 ).attr('id'), array_ninguno ) ) 
+                        				|| ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_v ))  
+                        				|| ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_esp )) || ( array_pases[inputs.eq( inputs.index(this)+ 3 ).attr('id')] ) || ( array_pases[inputs.eq( inputs.index(this)+ 2 ).attr('id')] ) ){
+	                        		//
+                        	}else if ($(this).attr('id') == 'S7_5_41') {
+									//
+                        	}else if ( vacios_otros(this) ) {// valida con funcion de campos vacios
+				                inputs.eq( inputs.index(this)).focus();                             
+				                inputs.eq( inputs.index(this) ).select(); return;	
+                        	}                        		
+                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 2 ).select(); 
+                        }
+                    }else if( array_otros_u[$(this).attr('id')] >= 1 ){//  CAMPOS OTRO, de UN solo ingreso
+                        if ($(this).val() == array_otros_u[$(this).attr('id')] ) {
+                            inputs.eq( inputs.index(this)+ 1 ).focus();                              
+                            inputs.eq( inputs.index(this)+ 1 ).select();                              
+                        } else{
+                        	inputs.eq( inputs.index(this)+ 1 ).val('');
+                            inputs.eq( inputs.index(this)+ 2 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 2 ).select();                             
+                        }
+                    }else  if ( inArray($(this).attr('id'), array_otros_esp )) {// CAMPOS OTROS de VARIOS ingresos especiales
+                        if ($(this).val() == 1 ) {
+                            inputs.eq( inputs.index(this)+ 1 ).focus();  
+                            inputs.eq( inputs.index(this)+ 1 ).select();  
+                        } else{
+                        	if ( ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_ninguno ) ) || ( inArray(inputs.eq( inputs.index(this)+ 4 ).attr('id'), array_ninguno )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_v )) || ( inArray(inputs.eq( inputs.index(this)+ 2 ).attr('id'), array_otros_esp )) ||  ( array_pases[inputs.eq( inputs.index(this)+ 3 ).attr('id')] ) ){
+                        		//
+                        	} else {                        	
+                        		var acu = 0;
+	                        	var sc = ($(this).attr('id')).substring(1,2); 
+	                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };  	                        	
+		                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+		                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+		                        	})
+							        if (acu === 0 ) {
+							        	alert('Tiene que seleccionar en al menos una alternativa ');
+			                            inputs.eq( inputs.index(this)).focus();                             
+			                            inputs.eq( inputs.index(this) ).select(); return;						        	
+							        } 
+							}
+                        	inputs.eq( inputs.index(this)+ 1 ).val('');
+                        	inputs.eq( inputs.index(this)+ 2 ).val('');
+                            inputs.eq( inputs.index(this)+ 3 ).focus();                             
+                            inputs.eq( inputs.index(this)+ 3 ).select();                             
+                        }
+                    }else if ( inArray($(this).attr('id'), array_ninguno )) {// VALIDA CAMPOS NINGUNO
+                        if (!ningunos(this)) {
+                        	alert("Ingresó en  NINGUNO, y en otro elemento, confírmelo");
+                        	inputs.eq( inputs.index(this) ).focus();  
+                        	inputs.eq( inputs.index(this) ).select();  
+                        } else{
+                        	var sc = ($(this).attr('id')).substring(1,2);
+                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };                        	
+                        	var acu =0;
+	                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+	                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+	                        	})
+						        if (acu == 0 ) {
+						        	alert('Tiene que seleccionar en al menos una alternativa ');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
+                        };
+                    } else if ( inArray($(this).attr('id'), array_especiales_tras )) {// VALIDA CAMPOS traslado
+                        if ($(this).val() == 1) {
+                        	inputs.eq( inputs.index(this) + 1).focus();  
+                        	inputs.eq( inputs.index(this) + 1).select();  
+                        } else{
+                        	inputs.eq( inputs.index(this) + 1 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 2 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 3 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 4 ).focus(); 
+                        	inputs.eq( inputs.index(this) + 4 ).select(); 
+                        };
+                    }else if ( inArray($(this).attr('id'), array_especiales_tras2 )) {// VALIDA CAMPOS traslado 2
+                        if ($(this).val() == 1) {
+                        	inputs.eq( inputs.index(this) + 1).focus();  
+                        	inputs.eq( inputs.index(this) + 1).select();  
+                        } else{
+                        	if ($(this).attr('id') == 'S3_20_9') { // valida al deja el foco, si los inputs son todos ceros
+                        		var acum = 0;
+                        		for (var i = 1; i <= 9; i++) {
+                        			acum = acum + parseInt($("#S3_20_"+i).val());
+                        		};
+                        		if (acum == 0) {alert('Tiene que seleccionar en al menos una alternativa '); inputs.eq( inputs.index(this)).focus();  inputs.eq( inputs.index(this) ).select(); return;};
+                        	} 
+                        	inputs.eq( inputs.index(this) + 1 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 2 ).val('')  ;  
+                        	inputs.eq( inputs.index(this) + 3 ).focus(); 
+                        	inputs.eq( inputs.index(this) + 3 ).select(); 
+                        };
+                    }else if ( inArray($(this).attr('id'),array_especiales_min ) ) {// VALIDA MINUTOS Y HORAS seccion III
+                    	//alert(inputs.eq( inputs.index(this)-2).val()  + '-'+ inputs.eq( inputs.index(this)-1 ==0).val() + '-'+ inputs.eq( inputs.index(this) ==0).val()) ;
+						        if ( inputs.eq( inputs.index(this)-2).val() == 1 && inputs.eq( inputs.index(this)-1 ).val()==0 && inputs.eq( inputs.index(this) ).val()==0 ) {
+						        	alert('Error en horas o minutos debe de haber un dato diferente de cero');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
+                    }else if ( inArray($(this).attr('id'), array_demas_no_vacios )) {// VALIDA CAMPOS no vacios
+                        	var sc = ($(this).attr('id')).substring(1,2);
+                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };                        	
+                        	var acu =0;
+	                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+	                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+	                        	})
+						        if (acu == 0 ) {
+						        	alert('Tiene que seleccionar en al menos una alternativa ');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
+                    }else if ( $(this).attr('id') == 'S4_2_5') {// VALIDA CAMPOS de educacion NO TODO debe ser 2
+                        	var sc = ($(this).attr('id')).substring(1,2);
+                        	var pr = ($(this).attr('id')).substring(3,4);
+						        if ( $.isNumeric( ($(this).attr('id')).substring(4,5) ) ) {
+						        	var pr = ($(this).attr('id')).substring(3,5)  };                        	
+                        	var acu =0;
+	                        	$("#SEC"+sc+"_"+pr+' :input').each(function(){
+	                        		  if ($.isNumeric($(this).val())) { acu = acu + parseInt( $(this).val() ) };
+	                        	})
+						        if (acu == 10 ) {
+						        	alert('Tiene que seleccionar en al menos una afirmativa ');
+		                            inputs.eq( inputs.index(this)).focus();                             
+		                            inputs.eq( inputs.index(this) ).select(); 						        	
+						        } else{
+		                        	inputs.eq( inputs.index(this) + 1 ).focus(); 
+		                        	inputs.eq( inputs.index(this) + 1 ).select();
+					            }
+                    }else{// permite el pase a los inputs ya con datos
+                    	if(  ( $(this).attr('id') == 'S7_1_9_O')  ){// campo especial, que sigue a terminar seccion
+		                			var cont =0,  cont_2 =0; 
+					                    for (y = 3; y <= 9; y++){
+					                        if ($("#S7_1_"+y).val() == 1){ cont++; }
+					                    }
+					                    for (z = 1; z < 3; z++){
+					                        if ($("#S7_1_"+z).val() == 1){ cont_2++;}
+					                    }	
+					                    if(cont>=1 && cont_2 ==0){alert('Finalice esta sección'); };
+		                }else if(  ( $(this).attr('id') != 'S4_1_C')  ){
+		                	for (key in array_pases){ // si el INPUT fue seguido de 
+		                		if (inputs.eq( inputs.index(this)-1).attr('id') == key){
+		                			if(  (array_pases[key][7] == 1) &&   (inputs.eq( inputs.index(this) - 1 ).val() == array_pases[key][5] )  ){	alert('Finalice esta sección');}
+		                		}
+		                	}
+		                }
+                        inputs.eq( inputs.index(this) + 1 ).focus(); 
+                        inputs.eq( inputs.index(this) + 1 ).select(); 
+                   }                         
+                }
+            }else if (key == 27) {// RETROCESO (scape)
+                var inputs = $(this).closest('form').find(':input:enabled');
+                if ($(this).val()=="" ){// NO VACIOS
+               		if ( inArray( inputs.eq( inputs.index(this)- 1).attr('id') ,  array_otros_v) && ( parseInt(inputs.eq( inputs.index(this)- 1).val()) == 0  || inputs.eq( inputs.index(this)- 1).val() == "" ) ){
+	                    inputs.eq( inputs.index(this)- 1).focus();  
+	                    inputs.eq( inputs.index(this)- 1).select(); return;  
+               		}
+	                    alert("Campo requerido");                  			
+                }else{
+                    inputs.eq( inputs.index(this)- 1).focus();  
+                    inputs.eq( inputs.index(this)- 1).select();                  	
+                }
+            }
+            else if(key == 9){
+                return false;
+            }
+        });
+// <<=================== E N T E R   L I K E  T A B  ======================>>//
+///////////////////////////////////////////////////////////////////////////////
+
+
 
 
 ///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -887,7 +1318,7 @@ echo form_close();
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
         letras = "0123456789";
-        especiales = [8, 9, 37, 39, 46];
+        especiales = [8, 9, 37, 39];
 
         tecla_especial = false
         for(var i in especiales) {
@@ -967,7 +1398,7 @@ echo form_close();
     function solo_1_to_4(e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = "012349";
+        letras = "12349";
         especiales = [8, 9, 37, 39, 46];
 
         tecla_especial = false
@@ -986,7 +1417,7 @@ echo form_close();
     function solo_1_to_5(e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = "0123459";
+        letras = "123459";
         especiales = [8, 9, 37, 39];
 
         tecla_especial = false
@@ -1285,6 +1716,9 @@ $("#frm_comunidad").validate({
             dataType:'json',
             success:function(json){
             	
+
+
+
             	if(json.flag == 0){//cuando no fue registrado
 				        $.ajax({
 				            url: CI.base_url + "digitacion/comunidad/insertar",
@@ -1329,7 +1763,7 @@ $("#frm_comunidad").validate({
                             if(!flagi){                                  
                                 if(key == 9){
                                     $('#cinfo').addClass('active');
-                                    $('#info').addClass('active');                                               
+                                    $('#info').addClass('active');                                                                                  
                                 }else{                                 
                                     $('#ctab'+ key).addClass('active');
                                     $('#tab'+ key).addClass('active');
@@ -1339,8 +1773,51 @@ $("#frm_comunidad").validate({
                         }
                         i++;
 					});
+					if (!$.isEmptyObject(json.secciones_llenas)){
+						$.each(json.secciones_llenas, function(p, va){
+                    		$.each(va , function(k, v){
+                    			$.each(v, function(key, value){
+									if(key == 'S2_10_DD_COD'){
+										$("#"+key).val(value);
+										$('#S2_10_DD_COD').trigger('change');
+									}else if(key == 'S2_10_PP_COD'){
+                                        var interval_PP = setInterval(function(){
+                                            if($('#S2_10_PP_COD').has('option').length > 0){
+                                                clearInterval(interval_PP);
+                                                $('#S2_10_PP_COD').val(value);
+                                                $('#S2_10_PP_COD').trigger('change');
+                                            }
+                                        }, 1000); 
+									}else if(key == 'S2_10_DI_COD'){
+                                        var interval_PP = setInterval(function(){
+                                            if($('#S2_10_DI_COD').has('option').length > 0){
+                                                clearInterval(interval_PP);
+                                                $('#S2_10_DI_COD').val(value);
+                                                $('#S2_10_DI_COD').trigger('change');
+                                            }
+                                        }, 2000); 
+									}else if(key == 'S2_10_CCPP_COD'){
+                                        var interval_PP = setInterval(function(){
+                                            if($('#S2_10_CCPP_COD').has('option').length > 0){
+                                                clearInterval(interval_PP);
+                                                $('#S2_10_CCPP_COD').val(value);
+                                                $('#S2_10_CCPP_COD').trigger('change');
+                                            }
+                                        }, 3000); 
+									}else{
+										$("#"+key).val(value);
+										if(key == 'S2_5'){	$("#S2_5_DD").val(value);}
+										if(key == 'S2_6'){	$("#S2_6_DD").val(value);}
+										if ( (key == 'salto_seccion') && ( value == 1)){$('#seccion8 :input').attr('disabled','disabled'); };
+									}
+                    			});
+							}); 
+						});
+					}	
 					if(!flagi){
 						alert('Formulario completado');
+						$('#ctab2').addClass('active');
+						$('#tab2').addClass('active');
 					}else{
                         alert('Por favor complete la informacion en las secciones a continuacion');   
                     }

@@ -41,6 +41,21 @@ $span_class =  'span12';
 
 <?php
 
+$F_INICIAL = array(
+  'name'  => 'F_INICIAL',
+  'id'  => 'F_INICIAL',
+  'class' => $span_class,
+  'readonly' => 'readonly',
+);
+
+$F_FINAL = array(
+  'name'  => 'F_FINAL',
+  'id'  => 'F_FINAL',
+  'class' => $span_class,
+  'readonly' => 'readonly',
+);
+
+
       echo '<div id="map_seg" style="width: 100%; height: 100%"></div>';
     echo '</div>';
     echo '<div class="filtro_map preguntas_sub2 span2">';
@@ -60,18 +75,33 @@ $span_class =  'span12';
           echo '</div>';   
 
           echo '<div class="row-fluid control-group span9">';
-                echo form_label('EQUIPO - JEFE DE BRIGADA','EQUIPO',$label1);
+                echo form_label('EQUIPO-JEFE DE BRIGADA','EQUIPO',$label1);
                 echo '<div class="controls span">';
                   echo form_dropdown('EQUIPO', $equipoArray, FALSE,'class="span12" id="EQUIPO"'); 
                 echo '</div>';  
           echo '</div>'; 
 
           echo '<div class="row-fluid control-group span9">';
+              echo '<div class=" control-group span6">';
+                echo form_label('F. INICIAL','F_INICIAL',$label1);
+                echo '<div class="controls span11">';
+                  echo form_input($F_INICIAL); 
+                echo '</div>';  
+              echo '</div>'; 
+
+              echo '<div class=" control-group span6">';
+                echo form_label('F. FINAL','F_FINAL',$label1);
+                echo '<div class="controls span11">';
+                  echo form_input($F_FINAL); 
+                echo '</div>';  
+              echo '</div>'; 
+          echo '</div>';
+
+          echo '<div class="row-fluid control-group span9">';
                 echo '<div class="controls span">';
                 echo '<a id="export" class="btn btn-inverse span12" href="#">Exportar a excel</a>';
                 echo '</div>';  
           echo '</div>'; 
-
 
           // echo '<div class="row-fluid control-group span9">';
           //       echo form_label('RUTA','RUTA',$label1);
@@ -280,6 +310,22 @@ $("#EQUIPO").change(function() {
                 });
             }
         });   
+
+        $.ajax({   
+            url: CI.rest_url + "segmentacion/fecha_jefe/sede/" + sede.val() +  "/equipo/" + $(this).val(),
+            type:'GET',
+            // data:form_data,
+            dataType:'json',
+            success:function(json_data){
+                $.each(json_data, function(i, data){
+                    $("#F_INICIAL").val(data.fecha_inicial);
+                    $("#F_FINAL").val(data.fecha_final);
+                });
+            }
+        }); 
+
+
+
 });
 
 

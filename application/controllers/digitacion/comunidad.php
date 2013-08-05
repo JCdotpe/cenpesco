@@ -84,6 +84,7 @@ class Comunidad extends CI_Controller {
 			$udra = $this->comunidad_model->consulta_udra($CCDD,$CCPP,$CCDI,$COD_CCPP);
 			$flag = 0;
 			$mysections = null;
+			$secciones_llenas = null;
 			if($udra->num_rows() > 0){//valida si CCPP fue ingresado en UDRA
 				if($NFORM <= $udra->row()->FORMULARIOS && $NFORM > 0){//valida el N° Form a ingresar esta dentro del rango de FORMS segun UDRA
 					$varia = $this->comunidad_model->consulta($NFORM,$CCDD,$CCPP,$CCDI,$COD_CCPP); //
@@ -97,8 +98,17 @@ class Comunidad extends CI_Controller {
 							}
 							$alter = $this->comunidad_model->seccion_disponible($NFORM,$CCDD,$CCPP,$CCDI,$COD_CCPP,$regtble);
 							$mysections[$s] = $alter; //envia la secciones disponibles (0)
+							if ($alter >=1){//si hay un registro en seccion, envia los campos
+								$cod = ($CCDD.$CCPP.$CCDI.$COD_CCPP.$NFORM);
+								if ($this->comunidad_model->consulta_in_seccion($cod,$regtble)->num_rows() >0 ){
+									$secciones_llenas[] = $this->comunidad_model->consulta_in_seccion($cod,$regtble)->result() ;//envia los registros de cada seccion por JSON
+								}
+							}
 						}
+
+					$datos['secciones_llenas'] = $secciones_llenas;//envia el ID del registro por JSON
 					$datos['idx'] = $varia->row()->id;//envia el ID del registro por JSON
+
 					}
 				}else{
 					$flag = 2;	//no existe en udra

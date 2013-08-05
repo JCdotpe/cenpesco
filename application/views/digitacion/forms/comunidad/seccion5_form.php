@@ -239,7 +239,7 @@ echo '<div class="span12">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-top: 20px !important;">';
 
-	echo '<h4>SECCION V. SALUD</h4>';
+	echo '<h4>SECCIÓN V. SALUD</h4>';
 
 	echo '<div class="row-fluid">';
 		////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -640,7 +640,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('	Enfermedades de Transmisión sexual?', $S5_3_14['id'], $label_class);
+										echo form_label('	Enfermedades de transmisión sexual?', $S5_3_14['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';
@@ -655,7 +655,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp offset1 span7">';	
-										echo form_label('	Mordeduras de Serpientes,  picaduras?', $S5_3_15['id'], $label_class);
+										echo form_label('	Mordeduras de serpientes,  picaduras?', $S5_3_15['id'], $label_class);
 									echo '</div>'; 
 									echo '<div class="control-group-pp  span2">';
 										echo '<div class="controls-pp">';

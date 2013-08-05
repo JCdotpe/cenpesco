@@ -162,7 +162,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
-			echo '<h4>SECCION II. DATOS DEL REPRESENTANTE DE LA COMUNIDAD</h4>';
+			echo '<h4>SECCIÓN II. DATOS DEL REPRESENTANTE DE LA COMUNIDAD</h4>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////Fila 1
@@ -422,7 +422,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="span3">';
 					echo '<div class="control-group">';
-					echo form_label('10.4. Centro Poblado', 'S2_10_CCPP_COD', $label_class);
+					echo form_label('10.4. Centro Poblado / Comunidad', 'S2_10_CCPP_COD', $label_class);
 						echo '<div class="controls">';
 								echo form_dropdown('S2_10_CCPP_COD', $ccppArray, FALSE,'class="span12" id="S2_10_CCPP_COD"'); 
 							echo '<span class="help-inline"></span>';
@@ -484,9 +484,6 @@ $(function(){
 //     }
 // });
 
-
-
-
  // });
 /*$('input').live("keypress", function(e) {
 
@@ -508,7 +505,6 @@ $(function(){
 
 
         //});
-
 
 
 // ENTER como TAB <<<<<-----------------------------------
@@ -818,7 +814,7 @@ $("#seccion2").validate({
 		            }
 		        });     
 		          	
-		    }       
+		    }      
 		});
 
 

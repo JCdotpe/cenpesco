@@ -192,7 +192,7 @@ echo '<div class="span12">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-top: 20px !important;">';
 
-	echo '<h4>SECCION IV. EDUCACION</h4>';
+	echo '<h4>SECCIÓN IV. EDUCACIÓN</h4>';
 
 	echo '<div class="row-fluid">';
 		////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -210,7 +210,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				/////////////////////////////////////////////PREGUNTA 1
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 140px !important" id="SEC4_1">';
-						echo form_label('1.	En la comunidad, ¿Existen centros educativos?', $S4_1['id'], $label_class);
+						echo form_label('1.	En la comunidad, ¿Existen instituciones educativas?', $S4_1['id'], $label_class);
 						echo '<div class="margenes_row row-fluid ">';
 							echo '<div class="span12" >';
 									echo '<div class="control-group offset1 span2">';
@@ -221,7 +221,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 									echo '</div>'; 	
 
 									echo '<div class="control-group offset1 span2">';	
-										echo form_label('¿Cuántos?', $S4_1_C['id'], $label_class);
+										echo form_label('¿Cuántas?', $S4_1_C['id'], $label_class);
 									echo '</div>'; 
 
 									echo '<div class="control-group span2">';
@@ -241,7 +241,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 2
 				echo '<div class="preguntas preguntas_sub2" style="padding-bottom: 187px !important" id="SEC4_2">';
-						echo form_label('2.	¿Los niveles que brindan estos centros educativos son: (Ingrese uno o más códigos):', $S4_2_1['id'], $label_class);
+						echo form_label('2.	¿Los niveles que brindan estas instituciones educativas son: (Ingrese uno o más códigos):', $S4_2_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp offset1 span7">';	
@@ -346,9 +346,11 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 				////////////////////////////////////////////////////////////////////////////////////////////////////////
 				///////////////////////////////////////////// PREGUNTA 3
 				echo '<div class="preguntas preguntas_sub2" id="SEC4_3">';
-						echo form_label('3.	En la comunidad ¿Algún centro educativo dispone de: (Ingrese uno o más códigos):', $S4_3_1['id'], $label_class);
-						echo '<div class="row-fluid offset1 span11">';
-							echo form_label('Abastecimiento de agua', $S4_3_1['id'], $label_class);
+						echo form_label('3.	En la comunidad, ¿Alguna institución educativa dispone de: (Ingrese uno o más códigos):', $S4_3_1['id'], $label_class);
+						echo '<div class="row-fluid">';
+							echo '<div class="control-group-pp offset1 span7">';
+								echo '<p><strong>Abastecimiento de agua</strong></p>';
+							echo '</div>'; 
 						echo '</div>';	
 						echo '<div class="row-fluid">';
 	
@@ -382,8 +384,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 
 							echo '</div>';	
 						echo '</div>';	
-						echo '<div class="row-fluid offset1 span11">';
-							echo form_label('Alumbrado', $S4_3_3['id'], $label_class);
+						echo '<div class="row-fluid  ">';
+							echo '<div class="control-group-pp offset1 span7">';
+								echo '<p><strong>Alumbrado</strong></p>';
+							echo '</div>'; 						
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
@@ -397,8 +401,6 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 											echo '<div class="help-block error">' . form_error($S4_3_3['name']) . '</div>';
 										echo '</div>';	
 									echo '</div>'; 	
-
-
 							echo '</div>';	
 						echo '</div>';	
 						echo '<div class="row-fluid">';
@@ -433,8 +435,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '</div>';	
 
 
-						echo '<div class="row-fluid offset1 span11">';
-							echo form_label('Servicios higiénicos', $S4_3_6['id'], $label_class);
+						echo '<div class="row-fluid ">';
+							echo '<div class="control-group-pp offset1 span7">';
+								echo '<p><strong>Servicios higiénicos</strong></p>';
+							echo '</div>'; 						
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
@@ -497,9 +501,12 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 							echo '</div>';	
 						echo '</div>';	
 
+						echo '<div class="row-fluid ">';
 
-						echo '<div class="row-fluid offset1 span11">';
-							echo form_label('Equipos y materiales', $S4_3_10['id'], $label_class);
+							echo '<div class="control-group-pp offset1 span7">';
+								echo '<p><strong>Equipos y materiales</strong></p>';
+							echo '</div>'; 						
+							
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';

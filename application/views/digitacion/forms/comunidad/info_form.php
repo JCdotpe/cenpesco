@@ -150,7 +150,7 @@ echo '<div class="well modulo ">';
 
 		
 				echo '<div class="span6 preguntas_n2" style="padding-top: 20px !important">';
-					echo '<h5>FECHA DE EMPADRONAMIENTO</h5>';
+					echo '<h5>FECHA DEL EMPADRONAMIENTO</h5>';
 					//echo form_label('FECHA DE EMPADRONAMIENTO', $F_D['id'], $label_class);	
 				echo '</div>';
 
@@ -246,10 +246,7 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
-	// $("#comunidad_info").on("submit", function(event) {
-	// 	$('#comunidad_info').trigger('validate');
- // 	}); 
-		//validacion
+
 		$("#comunidad_info").validate({
 		    rules: {           
 		    	F_D: {
@@ -377,7 +374,6 @@ $(function(){
 		            dataType:'json',
 		            success:function(json){
 						alert(json.msg);
-						// $('#pesc_tabs').empty();
 						// $('#pesc_tabs').append(window.clonetabs);
 						// $('#pesc_tabs').removeClass('hide');
 						$('#frm_comunidad').trigger('submit');

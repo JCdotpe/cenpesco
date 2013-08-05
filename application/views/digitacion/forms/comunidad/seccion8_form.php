@@ -393,10 +393,10 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo form_label('2. ¿Cuáles fueron los cursos o temas de capacitación recibidos? (Ingrese uno o más códigos):', $S8_2_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span7 offset1">';
-								echo form_label('TEMA', $S8_2_1['id'], $label_class);
+								echo '<p><strong>CURSOS O TEMAS</strong></p>';
 							echo '</div>';							
 							echo '<div class="offset1 span3">';
-								echo form_label('PAGADO/GRATUITO', $S8_2_1_1['id'], $label_class);
+								echo '<p><strong>PAGADO/GRATUITO</strong></p>';
 							echo '</div>';	
 						echo '</div>';	
 
@@ -746,7 +746,7 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span7">';	
-										echo form_label('Ministerio de Producción (PRODUCE)', $S8_3_1['id'], $label_class);
+										echo form_label('Ministerio de la Producción (PRODUCE)', $S8_3_1['id'], $label_class);
 									echo '</div>'; 							
 									echo '<div class="control-group-pp span2">';
 										echo '<div class="controls-pp">';
@@ -910,16 +910,16 @@ echo '<div class="well modulo" style="padding-bottom: 20px !important; padding-t
 						echo form_label('4. ¿Cómo calificaría el apoyo al sector pesquero del: (Un sólo código):', $S8_4_1['id'], $label_class);
 						echo '<div class="row-fluid">';
 							echo '<div class="span7 offset1">';
-								echo form_label('INSTITUCIÓN','' , $label_class);
+								echo '<p><strong>INSTITUCIÓN</strong></p>';
 							echo '</div>';							
 							echo '<div class=" span3">';
-								echo form_label('CALIFICACIÓN','' , $label_class);
+								echo '<p><strong>CALIFICACIÓN</strong></p>';
 							echo '</div>';	
 						echo '</div>';							
 						echo '<div class="row-fluid">';
 							echo '<div class="span12">';
 									echo '<div class="control-group-pp  offset1 span7">';	
-										echo form_label('Ministerio de Producción (PRODUCE)', $S8_4_1['id'], $label_class);
+										echo form_label('Ministerio de la Producción (PRODUCE)', $S8_4_1['id'], $label_class);
 									echo '</div>'; 							
 									echo '<div class="control-group-pp span2">';
 										echo '<div class="controls-pp">';
@@ -1042,7 +1042,7 @@ echo '</div>';
     function calificacion(e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = "123456";
+        letras = "1234569";
         especiales = [8, 9, 37, 39];
 
         tecla_especial = false

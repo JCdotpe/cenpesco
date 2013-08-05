@@ -50,8 +50,9 @@ $COD_CCPP = array(
 $formularios = array(
 	'name'	=> 'formularios',
 	'id'	=> 'formularios',
-	'value'	=> set_value('formularios'),
-	'maxlength'	=> 5,
+	'value'	=> 1,
+	'readonly'=> 'readonly',
+	'maxlength'	=> 1,
 	'class' => $span_class,
 );
 
