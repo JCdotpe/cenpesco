@@ -3763,7 +3763,7 @@ $.extend(jQuery.validator.messages, {
 		         },  
 		        S2_3:{
 		        	required: true,
-		            range: [1,2],
+		            valrango: [1,2,9],
 		            digits: true, 
 		         },  	
 		        S2_4:{
