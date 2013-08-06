@@ -238,6 +238,23 @@ echo form_close();
 <script type="text/javascript">
 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
+    // function solo_numeros(e) {
+
+    //     key = e.keyCode || e.which;
+    //     tecla = String.fromCharCode(key).toLowerCase();
+    //     letras = "0123456789";
+    //     especiales = [8, 9, 37, 39, 46];
+
+    //     tecla_especial = false
+    //     for(var i in especiales) {
+    //         if(key == especiales[i]) {
+    //             tecla_especial = true;
+    //             break;
+    //         }
+    //     }
+    //     if(letras.indexOf(tecla) == -1 && !tecla_especial)
+    //         return false;
+    // }
 
 $(function(){
 
@@ -254,23 +271,7 @@ $(function(){
       }
   });
 
-    function solo_numeros(e) {
 
-        key = e.keyCode || e.which;
-        tecla = String.fromCharCode(key).toLowerCase();
-        letras = "0123456789";
-        especiales = [8, 9, 37, 39, 46];
-
-        tecla_especial = false
-        for(var i in especiales) {
-            if(key == especiales[i]) {
-                tecla_especial = true;
-                break;
-            }
-        }
-        if(letras.indexOf(tecla) == -1 && !tecla_especial)
-            return false;
-    }
 
 
   $('input,select,textarea').keydown( function(e) {
@@ -663,7 +664,7 @@ $("#pesca_dor").validate({
 
                                                }else if(fila == 'S2_9_PP_COD'){
                                                     var interval_PP = setInterval(function(){
-                                                        if($('#S2_9_PP_COD').has('option').length > 0){
+                                                       if($('#S2_9_PP_COD option:nth-child(2)').length){
                                                             clearInterval(interval_PP);
                                                             $('#S2_9_PP_COD').val(valor);
                                                             $('#S2_9_PP_COD').trigger('change');
@@ -672,20 +673,20 @@ $("#pesca_dor").validate({
 
                                               }else if(fila == 'S2_9_DI_COD'){
                                                     var interval_DI = setInterval(function(){
-                                                        if($('#S2_9_DI_COD').has('option').length > 0){
+                                                        if($('#S2_9_DI_COD option:nth-child(2)').length){
                                                             clearInterval(interval_DI);
                                                             $('#S2_9_DI_COD').val(valor);
                                                             $('#S2_9_DI_COD').trigger('change');
                                                         }
-                                                    }, 2000);        
+                                                    }, 1000);        
 
                                               }else if(fila == 'S2_9_CCPP_COD'){
-                                                    var interval_DI = setInterval(function(){
-                                                        if($('#S2_9_CCPP_COD').has('option').length > 0){
-                                                            clearInterval(interval_DI);
+                                                    var interval_CCPP = setInterval(function(){
+                                                        if($('#S2_9_CCPP_COD option:nth-child(2)').length){
+                                                            clearInterval(interval_CCPP);
                                                             $('#S2_9_CCPP_COD').val(valor);
                                                         }
-                                                    }, 3000);                                   
+                                                    }, 1000);                                   
                                                }             
                                               //COMBOS Lugar de Nacimiento 
                                               else if(fila == 'S2_10_PAIS_COD'){
@@ -700,7 +701,7 @@ $("#pesca_dor").validate({
                                                }        
                                               else if(fila == 'S2_10_PP_COD'){
                                                     var interval_PPN = setInterval(function(){
-                                                        if($('#S2_10_PP_COD').has('option').length > 0){
+                                                        if($('#S2_10_PP_COD option:nth-child(2)').length){
                                                             clearInterval(interval_PPN);
                                                             $('#S2_10_PP_COD').val(valor);
                                                             $('#S2_10_PP_COD').trigger('change');
@@ -711,11 +712,11 @@ $("#pesca_dor").validate({
                                               }    
                                               else if(fila == 'S2_10_DI_COD'){
                                                     var interval_DIN = setInterval(function(){
-                                                        if($('#S2_10_DI_COD').has('option').length > 0){
+                                                        if($('#S2_10_DI_COD option:nth-child(2)').length){
                                                             clearInterval(interval_DIN);
                                                             $('#S2_10_DI_COD').val(valor);
                                                         }
-                                                    }, 2000);                                   
+                                                    }, 1000);                                   
                                                }                
                                               //COMBO ola q ase en 2007                                                                                                                      
                                               else if(fila == 'S2_11_PAIS_COD'){
@@ -730,7 +731,7 @@ $("#pesca_dor").validate({
                                                }  
                                               else if(fila == 'S2_11_PP_COD'){
                                                     var interval_PPDONDE = setInterval(function(){
-                                                        if($('#S2_11_PP_COD').has('option').length > 0){
+                                                         if($('#S2_11_PP_COD option:nth-child(2)').length){
                                                             clearInterval(interval_PPDONDE);
                                                             $('#S2_11_PP_COD').val(valor);
                                                             $('#S2_11_PP_COD').trigger('change');
@@ -740,11 +741,11 @@ $("#pesca_dor").validate({
                                               }    
                                               else if(fila == 'S2_11_DI_COD'){
                                                     var interval_DIDONDE = setInterval(function(){
-                                                        if($('#S2_11_DI_COD').has('option').length > 0){
+                                                        if($('#S2_11_DI_COD option:nth-child(2)').length){
                                                             clearInterval(interval_DIDONDE);
                                                             $('#S2_11_DI_COD').val(valor);
                                                         }
-                                                    }, 2000);                                   
+                                                    }, 1000);                                                                                       
                                                }                                                
                                               //DNI DD 
                                               else if(fila == 'S2_4'){
@@ -883,7 +884,7 @@ $("#pesca_dor").validate({
 
                                                }else if(fila == 'S5_2_PP_COD'){
                                                     var interval_PP = setInterval(function(){
-                                                        if($('#S5_2_PP_COD').has('option').length > 0){
+                                                        if($('#S2_9_PP_COD option:nth-child(2)').length){
                                                             clearInterval(interval_PP);
                                                             $('#S5_2_PP_COD').val(valor);
                                                             $('#S5_2_PP_COD').trigger('change');
@@ -893,22 +894,22 @@ $("#pesca_dor").validate({
 
                                               }else if(fila == 'S5_2_DI_COD'){
                                                     var interval_DI = setInterval(function(){
-                                                        if($('#S5_2_DI_COD').has('option').length > 0){
+                                                       if($('#S5_2_DI_COD option:nth-child(2)').length){
                                                             clearInterval(interval_DI);
                                                             $('#S5_2_DI_COD').val(valor);
                                                             $('#S5_2_DI_COD').trigger('change');
                                                             
                                                         }
-                                                    }, 2000);        
+                                                    }, 1000);        
 
                                               }else if(fila == 'S5_2_CCPP_COD'){
-                                                    var interval_DI = setInterval(function(){
-                                                        if($('#S5_2_CCPP_COD').has('option').length > 0){
-                                                            clearInterval(interval_DI);
+                                                    var interval_CCPPP = setInterval(function(){
+                                                        if($('#S5_2_CCPP_COD option:nth-child(2)').length){
+                                                            clearInterval(interval_CCPPP);
                                                             $('#S5_2_CCPP_COD').val(valor);
                                                             
                                                         }
-                                                    }, 3000);                                   
+                                                    }, 1000);                                   
                                                }  
                                               else if(fila == 'S5_3' || fila == 'S5_4' || fila == 'S5_7'){
                                                     $('#' + fila).val(valor);
@@ -962,7 +963,18 @@ $("#pesca_dor").validate({
                                               }else{
                                                   $('#' + fila).val(valor);
                                               }
-                                              break;                                                                                                                                                                                                                                                                                                                       
+                                              break;       
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION IX//////////////////////////////////
+                                      //////////////////////////////////////////////////////////////////////////////////// 
+                                        case '9':
+                                              if(fila == 'S9_1'|| fila == 'S9_2' ||  fila == 'S9_4_1' || fila == 'S9_4_2' || fila == 'S9_4_3' || fila == 'S9_4_4' || fila == 'S9_4_5' || fila == 'S9_4_6' || fila == 'S9_5_1' || fila == 'S9_5_2' || fila == 'S9_5_3' || fila == 'S9_5_4' || fila == 'S9_5_5' || fila == 'S9_5_6' || fila == 'S9_13_1' || fila == 'S9_13_2' || fila == 'S9_13_3' || fila == 'S9_13_4' || fila == 'S9_13_5' || fila == 'S9_13_6' || fila == 'S9_15_1' || fila == 'S9_15_2' || fila == 'S9_15_3' || fila == 'S9_15_4' || fila == 'S9_15_5' || fila == 'S9_15_6' || fila == 'S9_20_1_T' || fila == 'S9_20_2_T' || fila == 'S9_20_3_T' || fila == 'S9_20_4_T' || fila == 'S9_20_5_T' || fila == 'S9_20_6_T'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
+                                              }else{
+                                                  $('#' + fila).val(valor);
+                                              }
+                                              break;                                                                                                                                                                                                                                                                                                                                                                    
                                         case '10':
                                               $('#' + fila).val(valor);
                                               break;                                              

@@ -292,12 +292,16 @@ $(function(){
 		            maxlength: 1000,
 		         },    		            
 		    	F_D: {
+		            required: true,
 		            exactlength: 2,
 		            digits: true, 
+		            valdia:true,
 		         },     
 		    	F_M: {
+		            required: true,
 		            exactlength: 2,
 		            digits: true, 
+		            valmes:true,
 		         },   	
 		    	F_A: {
 		            exactlength: 4,
@@ -305,14 +309,15 @@ $(function(){
 		         },   	
 		    	RES: {
 		    		digits: true, 	
-		            range:[1,3],
+		            valrango:[1,3,9],
 		         },  
 		    	EMP: {	
+		    		required:true,
 		            validName: true,
 		         },  
 		    	EMP_DNI: {	
 		            digits:true,
-		            range: [1,99999999],
+		            valrango: [1,99999998,99999999],
 		            exactlength: 8, 
 		         },  		         		         		         	         	                                                                             
 			//FIN RULES
@@ -321,7 +326,10 @@ $(function(){
 		    messages: {   
 		        F_D: {
 		            required: "Dia",
-		         },                 
+		         },    
+		        F_M: {
+		            required: "Mes",
+		         }, 		                      
 			//FIN MESSAGES
 		    },
 		    errorPlacement: function(error, element) {

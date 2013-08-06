@@ -287,52 +287,164 @@ echo form_close();
  
 <script type="text/javascript">
 $(function(){
+
+  $(document).on('keyup', 'input,select,textarea',function(e) {
+    var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    var inputs = $(this).closest('form').find(':input:enabled');
+    if(key == 13) {
+      inputs.eq( inputs.index(this)+1).focus(); 
+      
+    }
+    else if (key == 27) {
+      inputs.eq( inputs.index(this)-1).focus(); 
+    }
+   }); 
+
+  $(document).on('keydown', 'input,select,textarea', function(e) {
+      var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+      if(key == 13)
+      $(this).trigger('change');
+   }); 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
-$('#S9_2').keyup(function(event) {
+$('#S9_2').change(function(event) {
 
   $('#embarcacionex tr').remove('.embarc');
   $('#embarcacionex2 tr').remove('.embarc2');
-  for(var i=1; i<=$(this).val();i++){
+  var ahua = $(this).val();
+  if(ahua > 0 && ahua<=6){
+  for(var i=1; i<=ahua;i++){
     var asd = '<tr class="embarc">';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_3' + '_' + i + '" id="S9_3' + '_' + i + '" readonly value="' + i + '" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_4' + '_' + i + '" id="S9_4' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_5' + '_' + i + '" id="S9_5' + '_' + i + '" value="" ><div class="help-block error"></div><input type="text" class="span12" maxlength="100" name="S9_5' + '_' + i + '_O" id="S9_5' + '_' + i + '_O" value="" >Especifique</td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_6' + '_' + i + '" id="S9_6' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_7' + '_' + i + '" id="S9_7' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="4" name="S9_8' + '_' + i + '" id="S9_8' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_A" id="S9_9' + '_' + i + '_A" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_9' + '_' + i + '_M" id="S9_9' + '_' + i + '_M" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="2" name="S9_10' + '_' + i + '_MED" id="S9_10' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_2" id="S9_10' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_10' + '_' + i + '_3" id="S9_10' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_5' + '_' + i + '" id="S9_5' + '_' + i + '" value="" ><div class="help-block error"></div><input type="text" class="span12 embc' + i + '" maxlength="100" name="S9_5' + '_' + i + '_O" id="S9_5' + '_' + i + '_O" value="" >Especifique</td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_6' + '_' + i + '" id="S9_6' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_7' + '_' + i + '" id="S9_7' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="4" name="S9_8' + '_' + i + '" id="S9_8' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_9' + '_' + i + '_A" id="S9_9' + '_' + i + '_A" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_9' + '_' + i + '_M" id="S9_9' + '_' + i + '_M" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_10' + '_' + i + '_MED" id="S9_10' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_10' + '_' + i + '_2" id="S9_10' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_10' + '_' + i + '_3" id="S9_10' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd += '</tr>';
     $('#embarcacionex > tbody').append(asd);
     // $('#emb_table > tbody:last').append('<tr class="embx"><td><input type="text" class="span12" maxlength="80" name="S9_3_1' + '_' + i + '" id="S9_3_1' + '_' + i + '" value="' + i + '" ></td></tr>');
     var asd2 = '<tr class="embarc2">';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_33' + '_' + i + '" id="S9_33' + '_' + i + '" readonly value="' + i + '" ></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_15' + '_' + i + '" id="S9_15' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_16' + '_' + i + '" id="S9_16' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_2" id="S9_22' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12" maxlength="1" name="S9_23' + '_' + i + '" id="S9_23' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12" maxlength="1" class="embc' + i + '" name="S9_33' + '_' + i + '" id="S9_33' + '_' + i + '" readonly value="' + i + '" ></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_15' + '_' + i + '" id="S9_15' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_16' + '_' + i + '" id="S9_16' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_22' + '_' + i + '_2" id="S9_22' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_23' + '_' + i + '" id="S9_23' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 += '</tr>'; 
     $('#embarcacionex2 > tbody').append(asd2);
+
+  }
+
+  $('.embc1, .embc2, .embc3, .embc4, .embc5, .embc6').attr('disabled','disabled');
+
+}else if(ahua==''){
+}else{
+  alert('6 Embarcaciones máximo');
+}
+});
+
+
+
+$('#S9_1').change(function() {
+  var th = $(this).val();
+  var des = $('#S9_2');
+  if(th == 1){
+    des.removeAttr('disabled');
+  }else{
+    des.val('')
+    des.attr("disabled", "disabled"); 
+    des.trigger('change');
   }
 });
 
+$(document).on("change",'#S9_4_1, #S9_4_2, #S9_4_3, #S9_4_4, #S9_4_5, #S9_4_6',function() {
+  var pre = $(this).attr('id');
+  var npreg = pre.substring(5,6);
+  var th = $(this).val();
+  if(th != 1 && th != ''){
+    $('.embc' + npreg).removeAttr('disabled');
+  }else{
+     $('.embc' + npreg).val('');
+     $('.embc' + npreg).attr("disabled", "disabled"); 
+  }
+});
+
+$(document).on("change",'#S9_5_1, #S9_5_2, #S9_5_3, #S9_5_4, #S9_5_5, #S9_5_6',function() {
+  var th = $(this).val();
+  var des = $('#' + $(this).attr('id') + '_O');
+  if(th == 7){
+    des.removeAttr('disabled');
+  }else{
+    des.val('');
+    des.attr("disabled", "disabled"); 
+  }
+});
+
+$(document).on("change",'#S9_13_1, #S9_13_2, #S9_13_3, #S9_13_4, #S9_13_5, #S9_13_6',function() {
+  var pre = $(this).attr('id');
+  var npreg = pre.substring(6,7);
+  var th = $(this).val();
+  var des = $('#S9_14_' + npreg);
+  if(th == 2){
+    des.removeAttr('disabled');
+  }else{
+    des.val('');
+    des.attr("disabled", "disabled"); 
+  }
+});
+
+$(document).on("change",'#S9_15_1, #S9_15_2, #S9_15_3, #S9_15_4, #S9_15_5, #S9_15_6',function() {
+  var pre = $(this).attr('id');
+  var npreg = pre.substring(6,7);
+  var th = $(this).val();
+  var des = $('#S9_16_' + npreg + ', #S9_17_' + npreg + ', #S9_18_' + npreg + ', #S9_19_' + npreg );
+  if(th == 1 || th == 2 || th == ''){
+    des.val('');
+    des.attr("disabled", "disabled");     
+  }else{
+    des.removeAttr('disabled');
+  }
+});
+
+$(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_5_T, #S9_20_6_T',function() {
+  var pre = $(this).attr('id');
+  var npreg = pre.substring(6,7);
+  var th = $(this).val();
+  var des = $('#S9_21_' + npreg + ', #S9_22_' + npreg + '_MED, #S9_22_' + npreg + '_1 , #S9_22_' + npreg + '_2 , #S9_22_' + npreg + '_3');
+  if(th == 1 || th == ''){
+    des.val('');
+    des.attr("disabled", "disabled");     
+  }else{
+    des.removeAttr('disabled');
+  }
+});
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Campos deshabilitados
+//COMBOS SECCION 2
+ $('#S9_2').attr("disabled", "disabled");
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
   // $("#seccion9").on("submit", function(event) {
   //   $('#seccion9').trigger('validate');
   // }); 
@@ -341,730 +453,748 @@ $('#S9_2').keyup(function(event) {
           rules: {        
             S9_1: {
                 digits: true,
-                range:[1,2],
+                valrango: [1,2,9],
                },  
             S9_2: {
                 digits: true,
-                range:[1,6],
+                valrango: [1,6,9],
                },                 
 //embarcacion 1
             S9_3_1: {
                 digits: true,
-                range:[1,6],
+                valrango: [1,6,9],
                },     
             S9_4_1: {
                 digits: true,
-                range:[1,5],
+                valrango: [1,5,9],
                },   
             S9_5_1: {
                 digits: true,
-                range:[1,7],
+                valrango: [1,7,9],
                }, 
             S9_5_1_O: {
+                required:true,
                 maxlength: 100,
+                validName:true,
                },                    
             S9_6_1: {
                 digits: true,
-                range:[1,7],
+                valrango: [1,7,9],
                },   
             S9_7_1: {
                 digits: true,
-                range:[1,4],
+                valrango: [1,4,9],
                },   
             S9_8_1: {
                 digits: true,
-                range:[1950,2013],
+                valrango:[1950,2013,9999],
                },  
             S9_9_1_A: {
                 digits: true,
-                range:[0,20],
+                valrango: [0,20,99],
                },  
             S9_9_1_M: {
                 digits: true,
-                range:[0,11],
+                valrango: [0,11,99],
                },  
             S9_10_1_MED: {
                 digits: true,
-                range:[1,2],
+                valrango: [1,2,9],
                },  
             S9_10_1_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },  
             S9_10_1_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },  
             S9_10_1_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },  
             S9_11_1: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_12_1: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_13_1: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_14_1: {
+                required:true,
                 maxlength: 100,
                }, 
             S9_15_1: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                }, 
             S9_16_1: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_17_1: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_18_1: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_19_1: {
                 digits: true,
-                range:[10,98],
+                valrango:[10,98,99],
                }, 
             S9_20_1_T: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_20_1_C: {
                 digits: true,
-                range:[1,20000],
+                valrango:[1,20000,99999],
                }, 
             S9_21_1: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_1_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_1_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },   
             S9_22_1_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },        
             S9_22_1_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },    
             S9_23_1: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                },    
 //embarcacion 1  
 //embarcacion 2
             S9_3_2: {
                 digits: true,
-                range:[1,6],
+                valrango:[1,6,9],
                },     
             S9_4_2: {
                 digits: true,
-                range:[1,5],
+                valrango:[1,5,9],
                },   
             S9_5_2: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                }, 
             S9_5_2_O: {
+                required:true,
                 maxlength: 100,
+                validName:true,
                },                    
             S9_6_2: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                },   
             S9_7_2: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                },   
             S9_8_2: {
                 digits: true,
-                range:[1950,2013],
+                valrango:[1950,2013,9999],
                },  
             S9_9_2_A: {
                 digits: true,
-                range:[0,20],
+                valrango:[0,20,99],
                },  
             S9_9_2_M: {
                 digits: true,
-                range:[0,11],
+                valrango:[0,11,99],
                },  
             S9_10_2_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                },  
             S9_10_2_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },  
             S9_10_2_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },  
             S9_10_2_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },  
             S9_11_2: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_12_2: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_13_2: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_14_2: {
+                required:true,
                 maxlength: 100,
                }, 
             S9_15_2: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                }, 
             S9_16_2: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_17_2: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_18_2: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_19_2: {
                 digits: true,
-                range:[10,98],
+                valrango:[10,98,99],
                }, 
             S9_20_2_T: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_20_2_C: {
                 digits: true,
-                range:[1,20000],
+                valrango:[1,20000,99999],
                }, 
             S9_21_2: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_2_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_2_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },   
             S9_22_2_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },        
             S9_22_2_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },    
             S9_23_2: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                },    
 //embarcacion 2                   
 //embarcacion 3
             S9_3_3: {
                 digits: true,
-                range:[1,6],
+                valrango:[1,6,9],
                },     
             S9_4_3: {
                 digits: true,
-                range:[1,5],
+                valrango:[1,5,9],
                },   
             S9_5_3: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                }, 
             S9_5_3_O: {
+              required:true,
                 maxlength: 100,
+                validName:true,
                },                    
             S9_6_3: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                },   
             S9_7_3: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                },   
             S9_8_3: {
                 digits: true,
-                range:[1950,2013],
+                valrango:[1950,2013,9999],
                },  
             S9_9_3_A: {
                 digits: true,
-                range:[0,20],
+                valrango:[0,20,99],
                },  
             S9_9_3_M: {
                 digits: true,
-                range:[0,11],
+                valrango:[0,11,99],
                },  
             S9_10_3_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                },  
             S9_10_3_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },  
             S9_10_3_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },  
             S9_10_3_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },  
             S9_11_3: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_12_3: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_13_3: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_14_3: {
+                required:true,
                 maxlength: 100,
                }, 
             S9_15_3: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                }, 
             S9_16_3: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_17_3: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_18_3: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_19_3: {
                 digits: true,
-                range:[10,98],
+                valrango:[10,98,99],
                }, 
             S9_20_3_T: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_20_3_C: {
                 digits: true,
-                range:[1,20000],
+                valrango:[1,20000,99999],
                }, 
             S9_21_3: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_3_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_3_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },   
             S9_22_3_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },        
             S9_22_3_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },    
             S9_23_3: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                },    
 //embarcacion 3    
 //embarcacion 4
             S9_3_4: {
                 digits: true,
-                range:[1,6],
+                valrango:[1,6,9],
                },     
             S9_4_4: {
                 digits: true,
-                range:[1,5],
+                valrango:[1,5,9],
                },   
             S9_5_4: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                }, 
             S9_5_4_O: {
+              required:true,
                 maxlength: 100,
+                validName:true,
                },                    
             S9_6_4: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                },   
             S9_7_4: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                },   
             S9_8_4: {
                 digits: true,
-                range:[1950,2013],
+                valrango:[1950,2013,9999],
                },  
             S9_9_4_A: {
                 digits: true,
-                range:[0,20],
+                valrango:[0,20,99],
                },  
             S9_9_4_M: {
                 digits: true,
-                range:[0,11],
+                valrango:[0,11,99],
                },  
             S9_10_4_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                },  
             S9_10_4_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },  
             S9_10_4_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },  
             S9_10_4_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },  
             S9_11_4: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_12_4: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_13_4: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_14_4: {
+              required:true,
                 maxlength: 100,
                }, 
             S9_15_4: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                }, 
             S9_16_4: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_17_4: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_18_4: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_19_4: {
                 digits: true,
-                range:[10,98],
+                valrango:[10,98,99],
                }, 
             S9_20_4_T: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_20_4_C: {
                 digits: true,
-                range:[1,20000],
+                valrango:[1,20000,99999],
                }, 
             S9_21_4: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_4_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_4_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },   
             S9_22_4_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },        
             S9_22_4_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },    
             S9_23_4: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                },    
 //embarcacion 4      
 //embarcacion 5
             S9_3_5: {
                 digits: true,
-                range:[1,6],
+                valrango:[1,6,9],
                },     
             S9_4_5: {
                 digits: true,
-                range:[1,5],
+                valrango:[1,5,9],
                },   
             S9_5_5: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                }, 
             S9_5_5_O: {
+              required:true,
                 maxlength: 100,
+                validName:true,
                },                    
             S9_6_5: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                },   
             S9_7_5: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                },   
             S9_8_5: {
                 digits: true,
-                range:[1950,2013],
+                valrango:[1950,2013,9999],
                },  
             S9_9_5_A: {
                 digits: true,
-                range:[0,20],
+                valrango:[0,20,99],
                },  
             S9_9_5_M: {
                 digits: true,
-                range:[0,11],
+                valrango:[0,11,99],
                },  
             S9_10_5_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                },  
             S9_10_5_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },  
             S9_10_5_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },  
             S9_10_5_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },  
             S9_11_5: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_12_5: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_13_5: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_14_5: {
+              required:true,
                 maxlength: 100,
                }, 
             S9_15_5: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                }, 
             S9_16_5: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_17_5: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_18_5: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_19_5: {
                 digits: true,
-                range:[10,98],
+                valrango:[10,98,99],
                }, 
             S9_20_5_T: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_20_5_C: {
                 digits: true,
-                range:[1,20000],
+                valrango:[1,20000,99999],
                }, 
             S9_21_5: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_5_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_5_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },   
             S9_22_5_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },        
             S9_22_5_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },    
             S9_23_5: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                },    
 //embarcacion 5         
 //embarcacion 6
             S9_3_6: {
                 digits: true,
-                range:[1,6],
+                valrango:[1,6,9],
                },     
             S9_4_6: {
                 digits: true,
-                range:[1,5],
+                valrango:[1,5,9],
                },   
             S9_5_6: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                }, 
             S9_5_6_O: {
+                required:true,
                 maxlength: 100,
+                validName:true,
                },                    
             S9_6_6: {
                 digits: true,
-                range:[1,7],
+                valrango:[1,7,9],
                },   
             S9_7_6: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                },   
             S9_8_6: {
                 digits: true,
-                range:[1950,2013],
+                valrango:[1950,2013,9999],
                },  
             S9_9_6_A: {
                 digits: true,
-                range:[0,20],
+                valrango:[0,20,99],
                },  
             S9_9_6_M: {
                 digits: true,
-                range:[0,11],
+                valrango:[0,11,99],
                },  
             S9_10_6_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                },  
             S9_10_6_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },  
             S9_10_6_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },  
             S9_10_6_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },  
             S9_11_6: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_12_6: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_13_6: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_14_6: {
+              required:true,
                 maxlength: 100,
                }, 
             S9_15_6: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                }, 
             S9_16_6: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_17_6: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_18_6: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_19_6: {
                 digits: true,
-                range:[10,98],
+                valrango:[10,98,99],
                }, 
             S9_20_6_T: {
                 digits: true,
-                range:[1,4],
+                valrango:[1,4,9],
                }, 
             S9_20_6_C: {
                 digits: true,
-                range:[1,20000],
+                valrango:[1,20000,99999],
                }, 
             S9_21_6: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_6_MED: {
                 digits: true,
-                range:[1,2],
+                valrango:[1,2,9],
                }, 
             S9_22_6_1: {
                 number: true,
-                range:[0.1,40],
+                valrango:[0.1,40.00,99.99],
                },   
             S9_22_6_2: {
                 number: true,
-                range:[0.1,15],
+                valrango:[0.1,15.00,99.99],
                },        
             S9_22_6_3: {
                 number: true,
-                range:[0.1,10],
+                valrango:[0.1,10.00,99.99],
                },    
             S9_23_6: {
                 digits: true,
-                range:[1,3],
+                valrango:[1,3,9],
                },    
 //embarcacion 6                                    
         //FIN RULES

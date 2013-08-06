@@ -490,7 +490,13 @@ $S2_17_9 = array(
 );
 
 
-
+//nivel conyugue
+$S2_18 = array(
+	'name'	=> 'S2_18',
+	'id'	=> 'S2_18',
+	'maxlength'	=> 1,
+	'class' => $span_class,
+);
 
 //nivel conyugue
 $S2_19 = array(
@@ -2799,18 +2805,18 @@ echo '<div class="question">';
 		echo '</div>';					
 
 
-		// echo '<div class="question">';
-		// 	echo '<p>17. En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
-		// 		echo '<div class="row-fluid">';
-		// 					echo '<div class="control-group offset4 span4">';
-		// 						echo '<div class="controls">';
-		// 								echo form_input($S2_17); 
-		// 							echo '<span class="help-inline"></span>';
-		// 							echo '<div class="help-block error">' . form_error($S2_17['name']) . '</div>';
-		// 						echo '</div>';	
-		// 					echo '</div>'; 	
-		// 		echo '</div>';	
-		// echo '</div>';
+		echo '<div class="question">';
+			echo '<p>18. En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
+				echo '<div class="row-fluid">';
+							echo '<div class="control-group offset4 span4">';
+								echo '<div class="controls">';
+										echo form_input($S2_18); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S2_18['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 	
+				echo '</div>';	
+		echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 17
@@ -2819,22 +2825,22 @@ echo '<div class="question">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 18
 
-		echo '<div class="question">';
-			echo '<p>18. ¿En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
-				echo '<div class="row-fluid">';
-					echo '<div class="span12">';
+		// echo '<div class="question">';
+		// 	echo '<p>18. ¿En la actualidad, ¿Cuál es su estado civil o conyugal?</p>';	
+		// 		echo '<div class="row-fluid">';
+		// 			echo '<div class="span12">';
 
-							echo '<div class="control-group">';
-								echo '<div class="controls offset3 span6 ">';
-										echo form_dropdown('S2_18', $ecivil, FALSE,'class="span12" id="S2_18"'); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('S2_18') . '</div>';
-								echo '</div>';	
-							echo '</div>'; 	
+		// 					echo '<div class="control-group">';
+		// 						echo '<div class="controls offset3 span6 ">';
+		// 								echo form_dropdown('S2_18', $ecivil, FALSE,'class="span12" id="S2_18"'); 
+		// 							echo '<span class="help-inline"></span>';
+		// 							echo '<div class="help-block error">' . form_error('S2_18') . '</div>';
+		// 						echo '</div>';	
+		// 					echo '</div>'; 	
 
-					echo '</div>';	
-				echo '</div>';	
-		echo '</div>';
+		// 			echo '</div>';	
+		// 		echo '</div>';	
+		// echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////FIN PREGUNTA 18
@@ -3230,92 +3236,92 @@ echo form_close();
 $(function(){
 
 // CARGA COMBOS UBIGEO RESIDENCIA ---------------------------------------------------------------------->
-$("#S2_9_DD_COD, #S2_9_PP_COD, #S2_9_DI_COD, #S2_9_CCPP_COD").change(function(event) {
-        var sel = null;
-        var dep = $('#S2_9_DD_COD');
-        var prov = $('#S2_9_PP_COD');
-        var dist = $('#S2_9_DI_COD');
-        var url = null;
-        var cod = null;
-        var op =null;
+// $("#S2_9_DD_COD, #S2_9_PP_COD, #S2_9_DI_COD, #S2_9_CCPP_COD").change(function(event) {
+//         var sel = null;
+//         var dep = $('#S2_9_DD_COD');
+//         var prov = $('#S2_9_PP_COD');
+//         var dist = $('#S2_9_DI_COD');
+//         var url = null;
+//         var cod = null;
+//         var op =null;
 
-        var mivalue = ($(this).val() == -1) ? '-' : $(this).val();
-        switch(event.target.id){
-            case 'S2_9_DD_COD':
-                sel     = $("#S2_9_PP_COD");
-                //$('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
-                op      = 1;
-                break;
+//         var mivalue = ($(this).val() == -1) ? '-' : $(this).val();
+//         switch(event.target.id){
+//             case 'S2_9_DD_COD':
+//                 sel     = $("#S2_9_PP_COD");
+//                 //$('#CCDD').val(mivalue); 
+//                 url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+//                 op      = 1;
+//                 break;
 
-            case 'S2_9_PP_COD':
-                sel     = $("#S2_9_DI_COD");
-                // $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
-                op      = 2;
-                break;
+//             case 'S2_9_PP_COD':
+//                 sel     = $("#S2_9_DI_COD");
+//                 // $('#CCPP').val(mivalue);                 
+//                 url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+//                 op      = 2;
+//                 break;
 
-            case 'S2_9_DI_COD':
-                sel     = $("#S2_9_CCPP_COD");
-                // $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
-                op      = 3;
-                break;  
+//             case 'S2_9_DI_COD':
+//                 sel     = $("#S2_9_CCPP_COD");
+//                 // $("#CCDI").val(mivalue);          
+//                 url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+//                 op      = 3;
+//                 break;  
 
-            case 'S2_9_CCPP_COD':
-                // $("#COD_CCPP").val(mivalue);           
-                break;  
-        }     
+//             case 'S2_9_CCPP_COD':
+//                 // $("#COD_CCPP").val(mivalue);           
+//                 break;  
+//         }     
         
-        var form_data = {
-            code: $(this).val(),
-            csrf_token_c: CI.cct,
-            dep: dep.val(),
-            prov:prov.val(),
-            dist:dist.val(),
-            ajax:1
-        };
+//         var form_data = {
+//             code: $(this).val(),
+//             csrf_token_c: CI.cct,
+//             dep: dep.val(),
+//             prov:prov.val(),
+//             dist:dist.val(),
+//             ajax:1
+//         };
 
-        if(event.target.id != 'S2_9_CCPP_COD')
-        {
+//         if(event.target.id != 'S2_9_CCPP_COD')
+//         {
 
-        $.ajax({
-            url: url,
-            type:'POST',
-            data:form_data,
-            dataType:'json',
-            success:function(json_data){
-                sel.empty();
-                if (op==3){
-                    sel.append('<option value="-1"> - </option>');
-                }                
-                $.each(json_data, function(i, data){
-                    if (op==1){
-                        sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');
-                    }
-                    if (op==2){
-                        sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
-                   }
-                    if (op==3){
-                        sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');}
-                });
+//         $.ajax({
+//             url: url,
+//             type:'POST',
+//             data:form_data,
+//             dataType:'json',
+//             success:function(json_data){
+//                 sel.empty();
+//                 if (op==3){
+//                     sel.append('<option value="-1"> - </option>');
+//                 }                
+//                 $.each(json_data, function(i, data){
+//                     if (op==1){
+//                         sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');
+//                     }
+//                     if (op==2){
+//                         sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
+//                    }
+//                     if (op==3){
+//                         sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');}
+//                 });
                
-                if (op==1){
-                    $("#S2_9_PP_COD").trigger('change');
-                    }  
-                if (op==2){
-                    $("#S2_9_DI_COD").trigger('change');
-                }
-                if (op==3){
-                    $("#S2_9_CCPP_COD").trigger('change');
-                }
+//                 if (op==1){
+//                     $("#S2_9_PP_COD").trigger('change');
+//                     }  
+//                 if (op==2){
+//                     $("#S2_9_DI_COD").trigger('change');
+//                 }
+//                 if (op==3){
+//                     $("#S2_9_CCPP_COD").trigger('change');
+//                 }
 
 
-            }
-        });   
-     }
+//             }
+//         });   
+//      }
   
-}); 
+// }); 
 
 //departamento
 
@@ -3327,17 +3333,21 @@ $("#S2_9_DD_COD, #S2_9_PP_COD, #S2_9_DI_COD, #S2_9_CCPP_COD").change(function(ev
 // CARGA COMBOS UBIGEO RESIDENCIA<-----------------------------
 //-------------------------------------------------------------------------------------------------------------------------------
 // CARGA COMBOS UBIGEO NACIMIENTO ---------------------------------------------------------------------->
-$("#S2_10_DD_COD, #S2_11_DD_COD, #departamento3").change(function(event) {
+$("#S2_10_DD_COD, #S2_11_DD_COD, #S2_9_DD_COD").change(function(event) {
         var sel = null;
+        var urlx = null;
         switch(event.target.id){
             case 'S2_10_DD_COD':
                 sel = $("#S2_10_PP_COD");
+                urlx = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
                 break;
             case 'S2_11_DD_COD':
                 sel = $("#S2_11_PP_COD");
+                urlx = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
                 break;
-            case 'departamento3':
-                sel = $("#provincia3");
+            case 'S2_9_DD_COD':
+                sel = $("#S2_9_PP_COD");
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
                 break;                
         }
 
@@ -3348,7 +3358,7 @@ $("#S2_10_DD_COD, #S2_11_DD_COD, #departamento3").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val(),
+            url: urlx,
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -3356,7 +3366,10 @@ $("#S2_10_DD_COD, #S2_11_DD_COD, #departamento3").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1">-</option>');
                 $.each(json_data, function(i, data){
-                    sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
+                	if(event.target.id == 'S2_9_DD_COD')
+                		sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');	
+                	else
+                    	sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
                 });
                 sel.change();
             }
@@ -3364,21 +3377,25 @@ $("#S2_10_DD_COD, #S2_11_DD_COD, #departamento3").change(function(event) {
 });
 
 
-$("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
+$("#S2_10_PP_COD, #S2_11_PP_COD, #S2_9_PP_COD").change(function(event) {
         var sel = null;
         var dep = null;
+        var urlx = null;
         switch(event.target.id){
             case 'S2_10_PP_COD':
                 sel = $("#S2_10_DI_COD");
                 dep = $("#S2_10_DD_COD");
+                urlx = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
                 break;
             case 'S2_11_PP_COD':
                 sel = $("#S2_11_DI_COD");
                 dep = $("#S2_11_DD_COD");
+                urlx = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
                 break;
-            case 'provincia3':
-                sel = $("#distrito3");
-                dep = $("#departamento3");
+            case 'S2_9_PP_COD':
+                sel = $("#S2_9_DI_COD");
+                dep = $("#S2_9_DD_COD");
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
                 break;                
         }     
            
@@ -3390,7 +3407,7 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val(),
+            url: urlx,
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -3398,11 +3415,53 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #provincia3").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1">-</option>');
                 $.each(json_data, function(i, data){
-                    sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
+                	if(event.target.id == 'S2_9_PP_COD')
+                		sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
+                	else
+                    	sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
+                });
+                if(event.target.id == 'S2_9_PP_COD')
+                	sel.change();
+            }
+        });           
+});
+
+$("#S2_9_DI_COD").change(function(event) {
+        var sel = null;
+        var dep = null;
+        var prov = null;
+        var urlx = null;
+        switch(event.target.id){
+            case 'S2_9_DI_COD':
+                sel = $("#S2_9_CCPP_COD");
+                dep = $("#S2_9_DD_COD");
+                prov = $("#S2_9_PP_COD");
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                break;                
+        }     
+           
+        var form_data = {
+            code: $(this).val(),
+            csrf_token_c: CI.cct,
+            dep: dep.val(),
+            ajax:1
+        };
+
+        $.ajax({
+            url: urlx,
+            type:'POST',
+            data:form_data,
+            dataType:'json',
+            success:function(json_data){
+                sel.empty();
+                sel.append('<option value="-1">-</option>');
+                $.each(json_data, function(i, data){
+                	sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
                 });
             }
         });           
 });
+
 
 // CARGA COMBOS UBIGEO RESIDENCIA<-----------------------------
 //-------------------------------------------------------------------------------------------------------------------------------
@@ -3471,7 +3530,7 @@ $('#S2_18').change(function() {
 	var preg19 = $('#S2_19, #S2_19G, #S2_19A');
 	var preg20 = $('#S2_20_1, #S2_20_2, #S2_20_3, #S2_20_3, #S2_20_4, #S2_20_5, #S2_20_6, #S2_20_7, #S2_20_8, #S2_20_9, #S2_20_9_O');
 	var th = $(this).val();
-	if( th == 3 || th == 4 || th == 5 || th == 6 || th == 9){
+	if( th == 3 || th == 4 || th == 5 || th == 6){
 		preg19.val('')
 		preg19.attr("disabled", "disabled"); 
 		preg20.val('')
@@ -3644,7 +3703,7 @@ $('#S2_14_7_O, #S2_20_9_O').attr("disabled", "disabled");
 $('#S2_15_O').attr("disabled", "disabled");
 $('#S2_17_8_O').attr("disabled", "disabled");
 $('.hespe').attr("disabled", "disabled");
-
+$('#S2_9_DD_COD').trigger("change");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3926,8 +3985,8 @@ $.extend(jQuery.validator.messages, {
 		           valnone:['S2_17_1', 'S2_17_2', 'S2_17_3', 'S2_17_4', 'S2_17_5', 'S2_17_6', 'S2_17_7', 'S2_17_8'],
 		         }, 	
 		        S2_18:{
-		           valueNotEquals:-1,
-		           range: [1,6],
+		           digits:true,
+		           valrango: [1,6,9],
 		         }, 
 		        S2_19:{
 		            digits:true,

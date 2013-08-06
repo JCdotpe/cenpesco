@@ -17,6 +17,11 @@ $span_class =  'span12';
 		{
 			$depaxArray[$filas->COD_DEPARTAMENTO]=strtoupper($filas->DES_DISTRITO);
 		}
+		$ubidepaArray = array(-1 => ' -');
+		foreach($departamento->result() as $filas)
+		{
+			$ubidepaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);
+		}		
 $provArray = array(-1 => ' -'); 
 $distArray = array(-1 => ' -'); 
 $ccppArray = array(-1 => ' -');
@@ -2440,7 +2445,7 @@ echo '<div class="well modulo">';
 					echo '<div class="control-group">';
 					echo form_label('Departamento', 'S5_2_DD_COD', $label_class);	
 						echo '<div class="controls">';
-							echo form_dropdown('S5_2_DD_COD', $depaxArray, FALSE,'class=" span12" id="S5_2_DD_COD"'); 
+							echo form_dropdown('S5_2_DD_COD', $ubidepaArray, FALSE,'class=" span12" id="S5_2_DD_COD"'); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error('S5_2_DD_COD') . '</div>';
 						echo '</div>';	
@@ -3259,96 +3264,198 @@ echo form_close();
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
-$("#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD").change(function(event) {
-        var sel = null;
-        var dep = $('#S5_2_DD_COD');
-        var prov = $('#S5_2_PP_COD');
-        var dist = $('#S5_2_DI_COD');
-        var url = null;
-        var cod = null;
-        var op =null;
+// $("#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD").change(function(event) {
+//         var sel = null;
+//         var dep = $('#S5_2_DD_COD');
+//         var prov = $('#S5_2_PP_COD');
+//         var dist = $('#S5_2_DI_COD');
+//         var url = null;
+//         var cod = null;
+//         var op =null;
 
-        var mivalue = ($(this).val() == -1) ? '-' : $(this).val();
+//         var mivalue = ($(this).val() == -1) ? '-' : $(this).val();
+//         switch(event.target.id){
+//             case 'S5_2_DD_COD':
+//                 sel     = $("#S5_2_PP_COD");
+//                 //$('#CCDD').val(mivalue); 
+//                 url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
+//                 op      = 1;
+//                 break;
+
+//             case 'S5_2_PP_COD':
+//                 sel     = $("#S5_2_DI_COD");
+//                 // $('#CCPP').val(mivalue);                 
+//                 url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+//                 op      = 2;
+//                 break;
+
+//             case 'S5_2_DI_COD':
+//                 sel     = $("#S5_2_CCPP_COD");
+//                 // $("#CCDI").val(mivalue);          
+//                 url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_ccpp_all/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+//                 op      = 3;
+//                 break;  
+
+//             case 'S5_2_CCPP_COD':
+//                 // $("#COD_CCPP").val(mivalue);           
+//                 break;  
+//         }     
+        
+//         var form_data = {
+//             code: $(this).val(),
+//             csrf_token_c: CI.cct,
+//             dep: dep.val(),
+//             prov:prov.val(),
+//             dist:dist.val(),
+//             ajax:1
+//         };
+
+//         if(event.target.id != 'S5_2_CCPP_COD')
+//         {
+
+//         $.ajax({
+//             url: url,
+//             type:'POST',
+//             data:form_data,
+//             dataType:'json',
+//             success:function(json_data){
+//                 sel.empty();
+//                 sel.append('<option value="-1"> - </option>');
+//                 // if (op==3){
+//                 //     sel.append('<option value="-1"> - </option>');
+//                 // }                
+//                 $.each(json_data, function(i, data){
+//                     if (op==1){
+//                         sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
+//                     }
+//                     if (op==2){
+//                         sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
+//                    }
+//                     if (op==3){
+//                         sel.append('<option value="' + data.CCPP + '">' + data.CENTRO_POBLADO + '</option>');}
+//                 });
+               
+//                 if (op==1){
+//                     $("#S5_2_PP_COD").trigger('change');
+//                     }  
+//                 if (op==2){
+//                     $("#S5_2_DI_COD").trigger('change');
+//                 }
+//                 if (op==3){
+//                     $("#S5_2_CCPP_COD").trigger('change');
+//                 }
+
+
+//             }
+//         });   
+//      }
+  
+// }); 
+
+
+$("#S5_2_DD_COD").change(function(event) {
+        var sel = null;
+        var urlx = null;
         switch(event.target.id){
             case 'S5_2_DD_COD':
-                sel     = $("#S5_2_PP_COD");
-                //$('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
-                op      = 1;
-                break;
+                sel = $("#S5_2_PP_COD");
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                break;                
+        }
 
-            case 'S5_2_PP_COD':
-                sel     = $("#S5_2_DI_COD");
-                // $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
-                op      = 2;
-                break;
-
-            case 'S5_2_DI_COD':
-                sel     = $("#S5_2_CCPP_COD");
-                // $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/ubigeo_ajax/get_ajax_ccpp_all/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
-                op      = 3;
-                break;  
-
-            case 'S5_2_CCPP_COD':
-                // $("#COD_CCPP").val(mivalue);           
-                break;  
-        }     
-        
         var form_data = {
-            code: $(this).val(),
             csrf_token_c: CI.cct,
-            dep: dep.val(),
-            prov:prov.val(),
-            dist:dist.val(),
+            code: $(this).val(),
             ajax:1
         };
 
-        if(event.target.id != 'S5_2_CCPP_COD')
-        {
-
         $.ajax({
-            url: url,
+            url: urlx,
             type:'POST',
             data:form_data,
             dataType:'json',
             success:function(json_data){
                 sel.empty();
-                sel.append('<option value="-1"> - </option>');
-                // if (op==3){
-                //     sel.append('<option value="-1"> - </option>');
-                // }                
+                sel.append('<option value="-1">-</option>');
                 $.each(json_data, function(i, data){
-                    if (op==1){
-                        sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');
-                    }
-                    if (op==2){
-                        sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
-                   }
-                    if (op==3){
-                        sel.append('<option value="' + data.CCPP + '">' + data.CENTRO_POBLADO + '</option>');}
+                	sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');	
                 });
-               
-                if (op==1){
-                    $("#S5_2_PP_COD").trigger('change');
-                    }  
-                if (op==2){
-                    $("#S5_2_DI_COD").trigger('change');
-                }
-                if (op==3){
-                    $("#S5_2_CCPP_COD").trigger('change');
-                }
-
-
+                sel.change();
             }
-        });   
-     }
-  
-}); 
+        });           
+});
 
+$("#S5_2_PP_COD").change(function(event) {
+        var sel = null;
+        var dep = null;
+        var urlx = null;
+        switch(event.target.id){
+            case 'S5_2_PP_COD':
+                sel = $("#S5_2_DI_COD");
+                dep = $("#S5_2_DD_COD");
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
+                break;                
+        }     
+           
+        var form_data = {
+            code: $(this).val(),
+            csrf_token_c: CI.cct,
+            dep: dep.val(),
+            ajax:1
+        };
 
+        $.ajax({
+            url: urlx,
+            type:'POST',
+            data:form_data,
+            dataType:'json',
+            success:function(json_data){
+                sel.empty();
+                sel.append('<option value="-1">-</option>');
+                $.each(json_data, function(i, data){
+                	sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
+                });
+                if(event.target.id == 'S5_2_PP_COD')
+                	sel.change();
+            }
+        });           
+});
 
+$("#S5_2_DI_COD").change(function(event) {
+        var sel = null;
+        var dep = null;
+        var prov = null;
+        var urlx = null;
+        switch(event.target.id){
+            case 'S5_2_DI_COD':
+                sel = $("#S5_2_CCPP_COD");
+                dep = $("#S5_2_DD_COD");
+                prov = $("#S5_2_PP_COD");
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                break;                
+        }     
+           
+        var form_data = {
+            code: $(this).val(),
+            csrf_token_c: CI.cct,
+            dep: dep.val(),
+            ajax:1
+        };
+
+        $.ajax({
+            url: urlx,
+            type:'POST',
+            data:form_data,
+            dataType:'json',
+            success:function(json_data){
+                sel.empty();
+                sel.append('<option value="-1">-</option>');
+                $.each(json_data, function(i, data){
+                	sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
+                });
+            }
+        });           
+});
 
 $('#S5_2_2').change(function() {
 	var s5p2 = $('#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD');
@@ -3505,6 +3612,7 @@ $('#S5_8_4').change(function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
  $('#S5_1_1_1, #S5_1_2_1, #S5_1_3_1, #S5_1_4_1, #S5_1_5_1, #S5_1_6_1, #S5_1_7_1, #S5_1_8_O, #S5_1_8_1, #S5_6_41_O, #S5_6_49_O, #S5_8_4_O ,#S5_8_4_1, #S5_9_14_O, #S5_5_9_O, #S5_8_1_1, #S5_8_2_1, #S5_8_3_1').attr("disabled", "disabled");
+$('#S5_2_DD_COD').trigger("change");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
