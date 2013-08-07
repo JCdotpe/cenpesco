@@ -487,6 +487,15 @@ $.validator.addMethod("valnone", function(value, element,arg){
    return flag;
 }, "Seleccione un valor entre {0}, {1} o {2}");
 
+
+ $.validator.addMethod("valjango", function(value, element,arg){
+    var flag = false;
+        if((value >= arg[0] && value<=arg[1]) || value == arg[2])
+          flag = true;
+   return flag;
+}, "Seleccione un valor entre {0}, {1} o {2}");
+
+
  $.validator.addMethod("valrucc", function(value, element,arg){
     var flag = false;
         if((value >= arg[0] && value<=arg[1]) || value == arg[2] || value == arg[3] || value == arg[4] && value!='')

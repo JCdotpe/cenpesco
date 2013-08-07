@@ -32,42 +32,42 @@ $S6_3_1 = array(
 	'name'	=> 'S6_3_1',
 	'id'	=> 'S6_3_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s6preg3',
 );
 //02
 $S6_3_2 = array(
 	'name'	=> 'S6_3_2',
 	'id'	=> 'S6_3_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s6preg3',
 );
 //03
 $S6_3_3 = array(
 	'name'	=> 'S6_3_3',
 	'id'	=> 'S6_3_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s6preg3',
 );
 //4
 $S6_3_4 = array(
 	'name'	=> 'S6_3_4',
 	'id'	=> 'S6_3_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s6preg3',
 );
 //5
 $S6_3_5 = array(
 	'name'	=> 'S6_3_5',
 	'id'	=> 'S6_3_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s6preg3',
 );
 //6
 $S6_3_6 = array(
 	'name'	=> 'S6_3_6',
 	'id'	=> 'S6_3_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s6preg3',
 );
 //5
 $S6_3_5_O = array(
@@ -476,30 +476,38 @@ $('#S6_3_5_O').attr("disabled", "disabled");
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
+				var s6p3_sum = 0;
+				$('.s6preg3').each(function(){
+				    s6p3_sum += parseInt(this.value);
+				});	
 
-		    	//seccion 2 serial
-		    	var seccion6_data = $("#seccion6").serializeArray();
-			    seccion6_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-			    );
-				
-		        var bsub6 = $( "#seccion6 :submit" );
-		        // bsub6.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion6",
-		            type:'POST',
-		            data:seccion6_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						// $('#pesc_tabs').empty();
-						// $('#pesc_tabs').append(window.clonetabs);
-						// $('#pesc_tabs').removeClass('hide');
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
-		          	
+				if(s6p3_sum != 0){	
+				    	//seccion 2 serial
+				    	var seccion6_data = $("#seccion6").serializeArray();
+					    seccion6_data.push(
+					        {name: 'ajax',value:1},
+					        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+					    );
+						
+				        var bsub6 = $( "#seccion6 :submit" );
+				        // bsub6.attr("disabled", "disabled");
+				        $.ajax({
+				            url: CI.base_url + "digitacion/pesc_seccion6",
+				            type:'POST',
+				            data:seccion6_data,
+				            dataType:'json',
+				            success:function(json){
+								alert(json.msg);
+								// $('#pesc_tabs').empty();
+								// $('#pesc_tabs').append(window.clonetabs);
+								// $('#pesc_tabs').removeClass('hide');
+								$('#pesca_dor').trigger('submit');
+				            }
+				        });     
+			   	}else{
+			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+			    	$('input.s6preg3:first').focus();
+			    } 			          	
 		    }       
 		}); 		
 

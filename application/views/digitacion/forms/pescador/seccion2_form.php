@@ -286,49 +286,49 @@ $S2_14_1 = array(
 	'name'	=> 'S2_14_1',
 	'id'	=> 'S2_14_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //pecuaria
 $S2_14_2 = array(
 	'name'	=> 'S2_14_2',
 	'id'	=> 'S2_14_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //acuicola
 $S2_14_3 = array(
 	'name'	=> 'S2_14_3',
 	'id'	=> 'S2_14_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //caza
 $S2_14_4 = array(
 	'name'	=> 'S2_14_4',
 	'id'	=> 'S2_14_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //construcion
 $S2_14_5 = array(
 	'name'	=> 'S2_14_5',
 	'id'	=> 'S2_14_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //comercio
 $S2_14_6 = array(
 	'name'	=> 'S2_14_6',
 	'id'	=> 'S2_14_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //Otra
 $S2_14_7 = array(
 	'name'	=> 'S2_14_7',
 	'id'	=> 'S2_14_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 //especifique
 $S2_14_7_O = array(
@@ -342,7 +342,7 @@ $S2_14_8 = array(
 	'name'	=> 'S2_14_8',
 	'id'	=> 'S2_14_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg14',
 );
 
 
@@ -416,7 +416,7 @@ $S2_17_1 = array(
 	'name'	=> 'S2_17_1',
 	'id'	=> 'S2_17_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 // comedor popular
@@ -424,7 +424,7 @@ $S2_17_2 = array(
 	'name'	=> 'S2_17_2',
 	'id'	=> 'S2_17_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 //desayuno o alimentacion
@@ -432,7 +432,7 @@ $S2_17_3 = array(
 	'name'	=> 'S2_17_3',
 	'id'	=> 'S2_17_3',
 	'maxlength'	=> 100,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 //seguro integral de salud
@@ -440,7 +440,7 @@ $S2_17_4 = array(
 	'name'	=> 'S2_17_4',
 	'id'	=> 'S2_17_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 // programa juntos
@@ -448,7 +448,7 @@ $S2_17_5 = array(
 	'name'	=> 'S2_17_5',
 	'id'	=> 'S2_17_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 // programa bono de gratitud
@@ -456,14 +456,14 @@ $S2_17_6 = array(
 	'name'	=> 'S2_17_6',
 	'id'	=> 'S2_17_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 //programa cuna mas
 $S2_17_7 = array(
 	'name'	=> 'S2_17_7',
 	'id'	=> 'S2_17_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 // otro
@@ -471,7 +471,7 @@ $S2_17_8 = array(
 	'name'	=> 'S2_17_8',
 	'id'	=> 'S2_17_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 //otro-especifique
@@ -486,7 +486,7 @@ $S2_17_9 = array(
 	'name'	=> 'S2_17_9',
 	'id'	=> 'S2_17_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg17',
 );
 
 
@@ -527,7 +527,7 @@ $S2_20_1 = array(
 	'name'	=> 'S2_20_1',
 	'id'	=> 'S2_20_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 
 // Comerciante
@@ -535,7 +535,7 @@ $S2_20_2 = array(
 	'name'	=> 'S2_20_2',
 	'id'	=> 'S2_20_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 
 // Pescador
@@ -543,7 +543,7 @@ $S2_20_3 = array(
 	'name'	=> 'S2_20_3',
 	'id'	=> 'S2_20_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 
 // Recolector
@@ -551,7 +551,7 @@ $S2_20_4 = array(
 	'name'	=> 'S2_20_4',
 	'id'	=> 'S2_20_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 
 // Otro
@@ -559,7 +559,7 @@ $S2_20_5 = array(
 	'name'	=> 'S2_20_5',
 	'id'	=> 'S2_20_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 
 // Otro especifique
@@ -567,28 +567,28 @@ $S2_20_6 = array(
 	'name'	=> 'S2_20_6',
 	'id'	=> 'S2_20_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 // Otro especifique
 $S2_20_7 = array(
 	'name'	=> 'S2_20_7',
 	'id'	=> 'S2_20_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 // Otro especifique
 $S2_20_8 = array(
 	'name'	=> 'S2_20_8',
 	'id'	=> 'S2_20_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 // Otro especifique
 $S2_20_9 = array(
 	'name'	=> 'S2_20_9',
 	'id'	=> 'S2_20_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s2preg20',
 );
 
 // Otro especifique
@@ -3421,7 +3421,7 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #S2_9_PP_COD").change(function(event) {
                     	sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
                 });
                 if(event.target.id == 'S2_9_PP_COD')
-                	sel.change();
+                	sel.trigger('change');
             }
         });           
 });
@@ -3444,6 +3444,7 @@ $("#S2_9_DI_COD").change(function(event) {
             code: $(this).val(),
             csrf_token_c: CI.cct,
             dep: dep.val(),
+            prov: prov.val(),
             ajax:1
         };
 
@@ -4627,62 +4628,66 @@ $.extend(jQuery.validator.messages, {
 		    },
 		    submitHandler: function(form) {
 
-		    	//seccion 2 serial
-		    	var seccion2_data = $("#seccion2").serializeArray();
-			    seccion2_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'S2_9_DD',value:$('#S2_9_DD_COD :selected').text()},
-			        {name: 'S2_9_PP',value:$('#S2_9_PP_COD :selected').text()},
-			        {name: 'S2_9_DI',value:$('#S2_9_DI_COD :selected').text()},
-			        {name: 'S2_9_CCPP',value:$('#S2_9_CCPP_COD :selected').text()},
-			        {name: 'S2_10_PAIS',value:$('#S2_10_PAIS_COD :selected').text()},	
-			        {name: 'S2_10_DD',value:$('#S2_10_DD_COD :selected').text()},		        
-			        {name: 'S2_10_PP',value:$('#S2_10_PP_COD :selected').text()},
-			        {name: 'S2_10_DI',value:$('#S2_10_DI_COD :selected').text()},
-			        {name: 'S2_11_PAIS',value:$('#S2_11_PAIS_COD :selected').text()},	
-			        {name: 'S2_11_DD',value:$('#S2_11_DD_COD :selected').text()},		   
-			        {name: 'S2_11_PP',value:$('#S2_11_PP_COD :selected').text()},
-			        {name: 'S2_11_DI',value:$('#S2_11_DI_COD :selected').text()},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-			    );
+				var s2p14_sum = 0;
+				$('.s2preg14').each(function(){
+				    s2p14_sum += parseInt(this.value);
+				});			
+				var s2p17_sum = 0;
+				$('.s2preg17').each(function(){
+				    s2p17_sum += parseInt(this.value);
+				});		
 
-
-			    // if($("#S2_10_DD_PAIS").val() == 124 || $("#S2_10_DD_PAIS").val() == -1){
-			    // 	seccion2_data.push(
-			    //     	{name: 'S2_10_DD',value:$('#S2_10_DD_DEP :selected').text()},
-			    //     	{name: 'S2_10_DD_COD',value:$('#S2_10_DD_DEP').val()}
-			    // 	);    	
-			    // }else{
-			    // 	seccion2_data.push(
-			    //     	{name: 'S2_10_DD',value:$('#S2_10_DD_PAIS :selected').text()},
-			    //     	{name: 'S2_10_DD_COD',value:$('#S2_10_DD_PAIS').val()}
-			    // 	);     	
-			    // }
-
-			    // if($("#S2_11_DD_PAIS").val() == 124 || $("#S2_10_DD_PAIS").val() == -1){
-			    // 	seccion2_data.push(
-			    //     	{name: 'S2_11_DD',value:$('#S2_11_DD_DEP :selected').text()},
-			    //     	{name: 'S2_11_DD_COD',value:$('#S2_11_DD_DEP').val()}
-			    // 	);    	
-			    // }else{
-			    // 	seccion2_data.push(
-			    //     	{name: 'S2_11_DD',value:$('#S2_11_DD_PAIS :selected').text()},
-			    //     	{name: 'S2_11_DD_COD',value:$('#S2_11_DD_PAIS').val()}
-			    // 	);     	
-			    // }
-				
-		        var bsub2 = $( "#seccion2 :submit" );
-		        // bsub2.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion2",
-		            type:'POST',
-		            data:seccion2_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
+				var s2p20_sum = 0;
+				$('.s2preg20').each(function(){
+				    s2p20_sum += parseInt(this.value);
+				});					
+				//pregunta 14
+				if(s2p14_sum != 0){
+					if(s2p17_sum != 0){
+						if(s2p20_sum != 0){
+							    	//seccion 2 serial
+							    	var seccion2_data = $("#seccion2").serializeArray();
+								    seccion2_data.push(
+								        {name: 'ajax',value:1},
+								        {name: 'S2_9_DD',value:$('#S2_9_DD_COD :selected').text()},
+								        {name: 'S2_9_PP',value:$('#S2_9_PP_COD :selected').text()},
+								        {name: 'S2_9_DI',value:$('#S2_9_DI_COD :selected').text()},
+								        {name: 'S2_9_CCPP',value:$('#S2_9_CCPP_COD :selected').text()},
+								        {name: 'S2_10_PAIS',value:$('#S2_10_PAIS_COD :selected').text()},	
+								        {name: 'S2_10_DD',value:$('#S2_10_DD_COD :selected').text()},		        
+								        {name: 'S2_10_PP',value:$('#S2_10_PP_COD :selected').text()},
+								        {name: 'S2_10_DI',value:$('#S2_10_DI_COD :selected').text()},
+								        {name: 'S2_11_PAIS',value:$('#S2_11_PAIS_COD :selected').text()},	
+								        {name: 'S2_11_DD',value:$('#S2_11_DD_COD :selected').text()},		   
+								        {name: 'S2_11_PP',value:$('#S2_11_PP_COD :selected').text()},
+								        {name: 'S2_11_DI',value:$('#S2_11_DI_COD :selected').text()},
+								        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+								    );
+									
+							        var bsub2 = $( "#seccion2 :submit" );
+							        // bsub2.attr("disabled", "disabled");
+							        $.ajax({
+							            url: CI.base_url + "digitacion/pesc_seccion2",
+							            type:'POST',
+							            data:seccion2_data,
+							            dataType:'json',
+							            success:function(json){
+											alert(json.msg);
+											$('#pesca_dor').trigger('submit');
+							            }
+							        }); 
+					    }else{
+					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+					    	$('input.s2preg20:first').focus();
+					    } 						        
+				    }else{
+				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				    	$('input.s2preg17:first').focus();
+				    }   						        
+			    }else{
+			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+			    	$('input.s2preg14:first').focus();
+			    }    
 		          	
 		    }       
 		});

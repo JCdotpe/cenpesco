@@ -71,7 +71,7 @@ $S7_201 = array(
 	'name'	=> 'S7_201',
 	'id'	=> 'S7_201',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg2',
 );
 
 // Comerciante o intermediario
@@ -79,7 +79,7 @@ $S7_202 = array(
 	'name'	=> 'S7_202',
 	'id'	=> 'S7_202',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg2',
 );
 
 //  Caja municipal o rural
@@ -87,14 +87,14 @@ $S7_203 = array(
 	'name'	=> 'S7_203',
 	'id'	=> 'S7_203',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg2',
 );
 //  banco
 $S7_204 = array(
 	'name'	=> 'S7_204',
 	'id'	=> 'S7_204',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg2',
 );
 
 //  financiera
@@ -102,14 +102,14 @@ $S7_205 = array(
 	'name'	=> 'S7_205',
 	'id'	=> 'S7_205',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg2',
 );
 // Otro
 $S7_206 = array(
 	'name'	=> 'S7_206',
 	'id'	=> 'S7_206',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg2',
 );
 
 //Otro Especifique
@@ -126,7 +126,7 @@ $S7_3_1 = array(
 	'name'	=> 'S7_3_1',
 	'id'	=> 'S7_3_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_1_C = array(
 	'name'	=> 'S7_3_1_C',
@@ -138,7 +138,7 @@ $S7_3_2 = array(
 	'name'	=> 'S7_3_2',
 	'id'	=> 'S7_3_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_2_C = array(
 	'name'	=> 'S7_3_2_C',
@@ -150,7 +150,7 @@ $S7_3_3 = array(
 	'name'	=> 'S7_3_3',
 	'id'	=> 'S7_3_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_3_C = array(
 	'name'	=> 'S7_3_3_C',
@@ -162,7 +162,7 @@ $S7_3_4 = array(
 	'name'	=> 'S7_3_4',
 	'id'	=> 'S7_3_4',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_4_C = array(
 	'name'	=> 'S7_3_4_C',
@@ -174,7 +174,7 @@ $S7_3_5 = array(
 	'name'	=> 'S7_3_5',
 	'id'	=> 'S7_3_5',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_5_C = array(
 	'name'	=> 'S7_3_5_C',
@@ -186,7 +186,7 @@ $S7_3_6 = array(
 	'name'	=> 'S7_3_6',
 	'id'	=> 'S7_3_6',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_6_C = array(
 	'name'	=> 'S7_3_6_C',
@@ -198,7 +198,7 @@ $S7_3_7 = array(
 	'name'	=> 'S7_3_7',
 	'id'	=> 'S7_3_7',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_7_C = array(
 	'name'	=> 'S7_3_7_C',
@@ -210,7 +210,7 @@ $S7_3_8 = array(
 	'name'	=> 'S7_3_8',
 	'id'	=> 'S7_3_8',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_8_C = array(
 	'name'	=> 'S7_3_8_C',
@@ -222,7 +222,7 @@ $S7_3_9 = array(
 	'name'	=> 'S7_3_9',
 	'id'	=> 'S7_3_9',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_9_C = array(
 	'name'	=> 'S7_3_9_C',
@@ -234,7 +234,7 @@ $S7_3_10 = array(
 	'name'	=> 'S7_3_10',
 	'id'	=> 'S7_3_10',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_10_C = array(
 	'name'	=> 'S7_3_10_C',
@@ -246,7 +246,7 @@ $S7_3_11 = array(
 	'name'	=> 'S7_3_11',
 	'id'	=> 'S7_3_11',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_11_C = array(
 	'name'	=> 'S7_3_11_C',
@@ -258,7 +258,7 @@ $S7_3_12 = array(
 	'name'	=> 'S7_3_12',
 	'id'	=> 'S7_3_12',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg3',
 );
 $S7_3_12_C = array(
 	'name'	=> 'S7_3_12_C',
@@ -523,19 +523,19 @@ $S7_7_1 = array(
 	'name'	=> 'S7_7_1',
 	'id'	=> 'S7_7_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg7',
 );
 $S7_7_2 = array(
 	'name'	=> 'S7_7_2',
 	'id'	=> 'S7_7_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg7',
 );
 $S7_7_3 = array(
 	'name'	=> 'S7_7_3',
 	'id'	=> 'S7_7_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg7',
 );
 
 ////////////////////////////
@@ -543,87 +543,87 @@ $S7_8_1 = array(
 	'name'	=> 'S7_8_1',
 	'id'	=> 'S7_8_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg8',
 );
 $S7_8_2 = array(
 	'name'	=> 'S7_8_2',
 	'id'	=> 'S7_8_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg8',
 );
 $S7_8_3 = array(
 	'name'	=> 'S7_8_3',
 	'id'	=> 'S7_8_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg8',
 );
 $S7_8_4 = array(
 	'name'	=> 'S7_8_4',
 	'id'	=> 'S7_8_4',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg8',
 );
 $S7_8_5 = array(
 	'name'	=> 'S7_8_5',
 	'id'	=> 'S7_8_5',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg8',
 );
 $S7_8_6 = array(
 	'name'	=> 'S7_8_6',
 	'id'	=> 'S7_8_6',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg8',
 );
 //////////////////////////////////
 $S7_9_1 = array(
 	'name'	=> 'S7_9_1',
 	'id'	=> 'S7_9_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg9',
 );
 $S7_9_2 = array(
 	'name'	=> 'S7_9_2',
 	'id'	=> 'S7_9_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg9',
 );
 $S7_9_3 = array(
 	'name'	=> 'S7_9_3',
 	'id'	=> 'S7_9_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg9',
 );
 $S7_9_4 = array(
 	'name'	=> 'S7_9_4',
 	'id'	=> 'S7_9_4',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg9',
 );
 ////////////////////////////////////
 $S7_10_1 = array(
 	'name'	=> 'S7_10_1',
 	'id'	=> 'S7_10_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg10',
 );
 $S7_10_2 = array(
 	'name'	=> 'S7_10_2',
 	'id'	=> 'S7_10_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg10',
 );
 $S7_10_3 = array(
 	'name'	=> 'S7_10_3',
 	'id'	=> 'S7_10_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg10',
 );
 $S7_10_4 = array(
 	'name'	=> 'S7_10_4',
 	'id'	=> 'S7_10_4',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7 wothing7',
+	'class' => $span_class . ' nothing7 wothing7 s7preg10',
 );
 $S7_10_4_O = array(
 	'name'	=> 'S7_10_4_O',
@@ -2097,30 +2097,89 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
+				var s7p2_sum = 0;
+				$('.s7preg2').each(function(){
+				    s7p2_sum += parseInt(this.value);
+				});	
 
-		    	//seccion 2 serial
-		    	var seccion7_data = $("#seccion7").serializeArray();
-			    seccion7_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-			    );
-				
-		        var bsub7 = $( "#seccion7 :submit" );
-		        // bsub7.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion7",
-		            type:'POST',
-		            data:seccion7_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						// $('#pesc_tabs').empty();
-						// $('#pesc_tabs').append(window.clonetabs);
-						// $('#pesc_tabs').removeClass('hide');
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
-		          	
+				var s7p3_sum = 0;
+				$('.s7preg3').each(function(){
+				    s7p3_sum += parseInt(this.value);
+				});	
+
+				var s7p7_sum = 0;
+				$('.s7preg7').each(function(){
+				    s7p7_sum += parseInt(this.value);
+				});	
+
+				var s7p8_sum = 0;
+				$('.s7preg8').each(function(){
+				    s7p8_sum += parseInt(this.value);
+				});	
+
+				var s7p9_sum = 0;
+				$('.s7preg9').each(function(){
+				    s7p9_sum += parseInt(this.value);
+				});	
+
+				var s7p10_sum = 0;
+				$('.s7preg10').each(function(){
+				    s7p10_sum += parseInt(this.value);
+				});	
+
+
+				if(s7p2_sum != 0){
+					if(s7p3_sum != 0){
+						if(s7p7_sum != 0){
+							if(s7p8_sum != 0){
+								if(s7p9_sum != 0){
+									if(s7p10_sum != 0){
+									    	//seccion 2 serial
+									    	var seccion7_data = $("#seccion7").serializeArray();
+										    seccion7_data.push(
+										        {name: 'ajax',value:1},
+										        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+										    );
+											
+									        var bsub7 = $( "#seccion7 :submit" );
+									        // bsub7.attr("disabled", "disabled");
+									        $.ajax({
+									            url: CI.base_url + "digitacion/pesc_seccion7",
+									            type:'POST',
+									            data:seccion7_data,
+									            dataType:'json',
+									            success:function(json){
+													alert(json.msg);
+													// $('#pesc_tabs').empty();
+													// $('#pesc_tabs').append(window.clonetabs);
+													// $('#pesc_tabs').removeClass('hide');
+													$('#pesca_dor').trigger('submit');
+									            }
+									        });  
+									}else{
+									    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+									    	$('input.s7preg10:first').focus();
+									} 							        
+								}else{
+								    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+								    	$('input.s7preg9:first').focus();
+								} 						        
+							}else{
+							    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+							    	$('input.s7preg8:first').focus();
+							}   	
+						}else{
+							    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+							    $('input.s7preg7:first').focus();
+						}  										          
+					}else{
+					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+					    	$('input.s7preg3:first').focus();
+					}   				         
+				}else{
+					    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+					    $('input.s7preg2:first').focus();
+				}  		          	
 		    }       
 		});
  }); 

@@ -33,7 +33,7 @@ $S5_1_1 = array(
 	'name'	=> 'S5_1_1',
 	'id'	=> 'S5_1_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //q rio
 $S5_1_1_1 = array(
@@ -47,7 +47,7 @@ $S5_1_2 = array(
 	'name'	=> 'S5_1_2',
 	'id'	=> 'S5_1_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //q lago
 $S5_1_2_1 = array(
@@ -62,7 +62,7 @@ $S5_1_3 = array(
 	'name'	=> 'S5_1_3',
 	'id'	=> 'S5_1_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //qlaguna
 $S5_1_3_1 = array(
@@ -92,7 +92,7 @@ $S5_1_4 = array(
 	'name'	=> 'S5_1_4',
 	'id'	=> 'S5_1_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //qmarisma
 $S5_1_4_1 = array(
@@ -107,7 +107,7 @@ $S5_1_5 = array(
 	'name'	=> 'S5_1_5',
 	'id'	=> 'S5_1_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //qquebrada
 $S5_1_5_1 = array(
@@ -137,7 +137,7 @@ $S5_1_6 = array(
 	'name'	=> 'S5_1_6',
 	'id'	=> 'S5_1_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //qcocha
 $S5_1_6_1 = array(
@@ -152,7 +152,7 @@ $S5_1_7 = array(
 	'name'	=> 'S5_1_7',
 	'id'	=> 'S5_1_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 //reserv
 $S5_1_7_1 = array(
@@ -167,7 +167,7 @@ $S5_1_8 = array(
 	'name'	=> 'S5_1_8',
 	'id'	=> 'S5_1_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg1',
 );
 
 //otro especifique
@@ -1018,7 +1018,7 @@ $S5_6_1 = array(
 	'name'	=> 'S5_6_1',
 	'id'	=> 'S5_6_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_1_C = array(
 	'name'	=> 'S5_6_1_C',
@@ -1032,7 +1032,7 @@ $S5_6_2 = array(
 	'name'	=> 'S5_6_2',
 	'id'	=> 'S5_6_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_2_C = array(
 	'name'	=> 'S5_6_2_C',
@@ -1046,7 +1046,7 @@ $S5_6_3 = array(
 	'name'	=> 'S5_6_3',
 	'id'	=> 'S5_6_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_3_C = array(
 	'name'	=> 'S5_6_3_C',
@@ -1060,7 +1060,7 @@ $S5_6_4 = array(
 	'name'	=> 'S5_6_4',
 	'id'	=> 'S5_6_4',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_4_C = array(
 	'name'	=> 'S5_6_4_C',
@@ -1074,7 +1074,7 @@ $S5_6_5 = array(
 	'name'	=> 'S5_6_5',
 	'id'	=> 'S5_6_5',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_5_C = array(
 	'name'	=> 'S5_6_5_C',
@@ -1088,7 +1088,7 @@ $S5_6_6 = array(
 	'name'	=> 'S5_6_6',
 	'id'	=> 'S5_6_6',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_6_C = array(
 	'name'	=> 'S5_6_6_C',
@@ -1102,7 +1102,7 @@ $S5_6_7 = array(
 	'name'	=> 'S5_6_7',
 	'id'	=> 'S5_6_7',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_7_C = array(
 	'name'	=> 'S5_6_7_C',
@@ -1117,7 +1117,7 @@ $S5_6_8 = array(
 	'name'	=> 'S5_6_8',
 	'id'	=> 'S5_6_8',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_8_C = array(
 	'name'	=> 'S5_6_8_C',
@@ -1132,7 +1132,7 @@ $S5_6_9 = array(
 	'name'	=> 'S5_6_9',
 	'id'	=> 'S5_6_9',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_9_C = array(
 	'name'	=> 'S5_6_9_C',
@@ -1147,7 +1147,7 @@ $S5_6_10 = array(
 	'name'	=> 'S5_6_10',
 	'id'	=> 'S5_6_10',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_10_C = array(
 	'name'	=> 'S5_6_10_C',
@@ -1162,7 +1162,7 @@ $S5_6_11 = array(
 	'name'	=> 'S5_6_11',
 	'id'	=> 'S5_6_11',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_11_C = array(
 	'name'	=> 'S5_6_11_C',
@@ -1177,7 +1177,7 @@ $S5_6_12 = array(
 	'name'	=> 'S5_6_12',
 	'id'	=> 'S5_6_12',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_12_C = array(
 	'name'	=> 'S5_6_12_C',
@@ -1192,7 +1192,7 @@ $S5_6_13 = array(
 	'name'	=> 'S5_6_13',
 	'id'	=> 'S5_6_13',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_13_C = array(
 	'name'	=> 'S5_6_13_C',
@@ -1207,7 +1207,7 @@ $S5_6_14 = array(
 	'name'	=> 'S5_6_14',
 	'id'	=> 'S5_6_14',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_14_C = array(
 	'name'	=> 'S5_6_14_C',
@@ -1222,7 +1222,7 @@ $S5_6_15 = array(
 	'name'	=> 'S5_6_15',
 	'id'	=> 'S5_6_15',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_15_C = array(
 	'name'	=> 'S5_6_15_C',
@@ -1237,7 +1237,7 @@ $S5_6_16 = array(
 	'name'	=> 'S5_6_16',
 	'id'	=> 'S5_6_16',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_16_C = array(
 	'name'	=> 'S5_6_16_C',
@@ -1252,7 +1252,7 @@ $S5_6_17 = array(
 	'name'	=> 'S5_6_17',
 	'id'	=> 'S5_6_17',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_17_C = array(
 	'name'	=> 'S5_6_17_C',
@@ -1266,7 +1266,7 @@ $S5_6_18 = array(
 	'name'	=> 'S5_6_18',
 	'id'	=> 'S5_6_18',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_18_C = array(
 	'name'	=> 'S5_6_18_C',
@@ -1280,7 +1280,7 @@ $S5_6_19 = array(
 	'name'	=> 'S5_6_19',
 	'id'	=> 'S5_6_19',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_19_C = array(
 	'name'	=> 'S5_6_19_C',
@@ -1294,7 +1294,7 @@ $S5_6_20 = array(
 	'name'	=> 'S5_6_20',
 	'id'	=> 'S5_6_20',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_20_C = array(
 	'name'	=> 'S5_6_20_C',
@@ -1308,7 +1308,7 @@ $S5_6_21 = array(
 	'name'	=> 'S5_6_21',
 	'id'	=> 'S5_6_21',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_21_C = array(
 	'name'	=> 'S5_6_21_C',
@@ -1322,7 +1322,7 @@ $S5_6_22 = array(
 	'name'	=> 'S5_6_22',
 	'id'	=> 'S5_6_22',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_22_C = array(
 	'name'	=> 'S5_6_22_C',
@@ -1336,7 +1336,7 @@ $S5_6_23 = array(
 	'name'	=> 'S5_6_23',
 	'id'	=> 'S5_6_23',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_23_C = array(
 	'name'	=> 'S5_6_23_C',
@@ -1350,7 +1350,7 @@ $S5_6_24 = array(
 	'name'	=> 'S5_6_24',
 	'id'	=> 'S5_6_24',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_24_C = array(
 	'name'	=> 'S5_6_24_C',
@@ -1364,7 +1364,7 @@ $S5_6_25 = array(
 	'name'	=> 'S5_6_25',
 	'id'	=> 'S5_6_25',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_25_C = array(
 	'name'	=> 'S5_6_25_C',
@@ -1378,7 +1378,7 @@ $S5_6_26 = array(
 	'name'	=> 'S5_6_26',
 	'id'	=> 'S5_6_26',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_26_C = array(
 	'name'	=> 'S5_6_26_C',
@@ -1392,7 +1392,7 @@ $S5_6_27 = array(
 	'name'	=> 'S5_6_27',
 	'id'	=> 'S5_6_27',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_27_C = array(
 	'name'	=> 'S5_6_27_C',
@@ -1406,7 +1406,7 @@ $S5_6_28 = array(
 	'name'	=> 'S5_6_28',
 	'id'	=> 'S5_6_28',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_28_C = array(
 	'name'	=> 'S5_6_28_C',
@@ -1420,7 +1420,7 @@ $S5_6_29 = array(
 	'name'	=> 'S5_6_29',
 	'id'	=> 'S5_6_29',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_29_C = array(
 	'name'	=> 'S5_6_29_C',
@@ -1434,7 +1434,7 @@ $S5_6_30 = array(
 	'name'	=> 'S5_6_30',
 	'id'	=> 'S5_6_30',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_30_C = array(
 	'name'	=> 'S5_6_30_C',
@@ -1448,7 +1448,7 @@ $S5_6_31 = array(
 	'name'	=> 'S5_6_31',
 	'id'	=> 'S5_6_31',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_31_C = array(
 	'name'	=> 'S5_6_31_C',
@@ -1462,7 +1462,7 @@ $S5_6_32 = array(
 	'name'	=> 'S5_6_32',
 	'id'	=> 'S5_6_32',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_32_C = array(
 	'name'	=> 'S5_6_32_C',
@@ -1476,7 +1476,7 @@ $S5_6_33 = array(
 	'name'	=> 'S5_6_33',
 	'id'	=> 'S5_6_33',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_33_C = array(
 	'name'	=> 'S5_6_33_C',
@@ -1490,7 +1490,7 @@ $S5_6_34 = array(
 	'name'	=> 'S5_6_34',
 	'id'	=> 'S5_6_34',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_34_C = array(
 	'name'	=> 'S5_6_34_C',
@@ -1504,7 +1504,7 @@ $S5_6_35 = array(
 	'name'	=> 'S5_6_35',
 	'id'	=> 'S5_6_35',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_35_C = array(
 	'name'	=> 'S5_6_35_C',
@@ -1518,7 +1518,7 @@ $S5_6_36 = array(
 	'name'	=> 'S5_6_36',
 	'id'	=> 'S5_6_36',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_36_C = array(
 	'name'	=> 'S5_6_36_C',
@@ -1532,7 +1532,7 @@ $S5_6_37 = array(
 	'name'	=> 'S5_6_37',
 	'id'	=> 'S5_6_37',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_37_C = array(
 	'name'	=> 'S5_6_37_C',
@@ -1546,7 +1546,7 @@ $S5_6_38 = array(
 	'name'	=> 'S5_6_38',
 	'id'	=> 'S5_6_38',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_38_C = array(
 	'name'	=> 'S5_6_38_C',
@@ -1560,7 +1560,7 @@ $S5_6_39 = array(
 	'name'	=> 'S5_6_39',
 	'id'	=> 'S5_6_39',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_39_C = array(
 	'name'	=> 'S5_6_39_C',
@@ -1574,7 +1574,7 @@ $S5_6_40 = array(
 	'name'	=> 'S5_6_40',
 	'id'	=> 'S5_6_40',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_40_C = array(
 	'name'	=> 'S5_6_40_C',
@@ -1589,7 +1589,7 @@ $S5_6_41 = array(
 	'name'	=> 'S5_6_41',
 	'id'	=> 'S5_6_41',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6e',
 );
 $S5_6_41_O = array(
 	'name'	=> 'S5_6_41_O',
@@ -1609,7 +1609,7 @@ $S5_6_42 = array(
 	'name'	=> 'S5_6_42',
 	'id'	=> 'S5_6_42',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_42_C = array(
 	'name'	=> 'S5_6_42_C',
@@ -1623,7 +1623,7 @@ $S5_6_43 = array(
 	'name'	=> 'S5_6_43',
 	'id'	=> 'S5_6_43',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_43_C = array(
 	'name'	=> 'S5_6_43_C',
@@ -1637,7 +1637,7 @@ $S5_6_44 = array(
 	'name'	=> 'S5_6_44',
 	'id'	=> 'S5_6_44',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_44_C = array(
 	'name'	=> 'S5_6_44_C',
@@ -1651,7 +1651,7 @@ $S5_6_45 = array(
 	'name'	=> 'S5_6_45',
 	'id'	=> 'S5_6_45',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_45_C = array(
 	'name'	=> 'S5_6_45_C',
@@ -1665,7 +1665,7 @@ $S5_6_46 = array(
 	'name'	=> 'S5_6_46',
 	'id'	=> 'S5_6_46',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_46_C = array(
 	'name'	=> 'S5_6_46_C',
@@ -1679,7 +1679,7 @@ $S5_6_47 = array(
 	'name'	=> 'S5_6_47',
 	'id'	=> 'S5_6_47',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_47_C = array(
 	'name'	=> 'S5_6_47_C',
@@ -1693,7 +1693,7 @@ $S5_6_48 = array(
 	'name'	=> 'S5_6_48',
 	'id'	=> 'S5_6_48',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_48_C = array(
 	'name'	=> 'S5_6_48_C',
@@ -1707,7 +1707,7 @@ $S5_6_49 = array(
 	'name'	=> 'S5_6_49',
 	'id'	=> 'S5_6_49',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' especie',
+	'class' => $span_class . ' especie s5preg6p',
 );
 $S5_6_49_O = array(
 	'name'	=> 'S5_6_49_O',
@@ -1803,94 +1803,94 @@ $S5_9_1 = array(
 	'name'	=> 'S5_9_1',
 	'id'	=> 'S5_9_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_2 = array(
 	'name'	=> 'S5_9_2',
 	'id'	=> 'S5_9_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_3 = array(
 	'name'	=> 'S5_9_3',
 	'id'	=> 'S5_9_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_4 = array(
 	'name'	=> 'S5_9_4',
 	'id'	=> 'S5_9_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 $S5_9_5 = array(
 	'name'	=> 'S5_9_5',
 	'id'	=> 'S5_9_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_6 = array(
 	'name'	=> 'S5_9_6',
 	'id'	=> 'S5_9_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_7 = array(
 	'name'	=> 'S5_9_7',
 	'id'	=> 'S5_9_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 $S5_9_8 = array(
 	'name'	=> 'S5_9_8',
 	'id'	=> 'S5_9_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_9 = array(
 	'name'	=> 'S5_9_9',
 	'id'	=> 'S5_9_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_10 = array(
 	'name'	=> 'S5_9_10',
 	'id'	=> 'S5_9_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 $S5_9_11 = array(
 	'name'	=> 'S5_9_11',
 	'id'	=> 'S5_9_11',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 $S5_9_12 = array(
 	'name'	=> 'S5_9_12',
 	'id'	=> 'S5_9_12',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_13 = array(
 	'name'	=> 'S5_9_13',
 	'id'	=> 'S5_9_13',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 $S5_9_14 = array(
 	'name'	=> 'S5_9_14',
 	'id'	=> 'S5_9_14',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 $S5_9_14_O = array(
 	'name'	=> 'S5_9_14_O',
@@ -1902,7 +1902,7 @@ $S5_9_15 = array(
 	'name'	=> 'S5_9_15',
 	'id'	=> 'S5_9_15',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s5preg9',
 );
 
 ///////////////////////////////////////////////
@@ -3439,6 +3439,7 @@ $("#S5_2_DI_COD").change(function(event) {
             code: $(this).val(),
             csrf_token_c: CI.cct,
             dep: dep.val(),
+            prov: prov.val(),
             ajax:1
         };
 
@@ -3758,23 +3759,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_1_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_1_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_1_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_1_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_1_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	
 //red1
@@ -3789,23 +3790,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_2_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_2_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_2_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_2_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_2_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	
 //red1
@@ -3820,23 +3821,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_3_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_3_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_3_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_3_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_3_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1		
 //red1
@@ -3851,23 +3852,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_4_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_4_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_4_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_4_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_4_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	        
 //red1
@@ -3882,24 +3883,24 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_5_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_5_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_5_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_5_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 
 		    	S5_5_5_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	  	      
 //red1
@@ -3914,23 +3915,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_6_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_6_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_6_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_6_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_6_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	  
 //red1
@@ -3945,23 +3946,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_7_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_7_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_7_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_7_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_7_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	 	
 //red1
@@ -3976,23 +3977,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_8_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_8_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_8_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_8_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_8_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	 	
 //red1
@@ -4011,23 +4012,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_9_1: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_9_2: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_9_3: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },	
 		    	S5_5_9_4: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 		    	S5_5_9_5: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valjango: [1,20,''],
 		         },		
 //end red1	 	    
 
@@ -4778,33 +4779,71 @@ $('#S5_2_DD_COD').trigger("change");
 		    },
 		    submitHandler: function(form) {
 
-		    	//seccion 2 serial
-		    	var seccion5_data = $("#seccion5").serializeArray();
-			    seccion5_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}, 
-			        {name: 'S5_2_DD',value:$('#S5_2_DD_COD :selected').text()},
-					{name: 'S5_2_PP',value:$('#S5_2_PP_COD :selected').text()},    
-					{name: 'S5_2_DI',value:$('#S5_2_DI_COD :selected').text()},    
-					{name: 'S5_2_CCPP',value:$('#S5_2_CCPP_COD :selected').text()}			           
-			    );
-				
-		        var bsub5 = $( "#seccion5 :submit" );
-		        // bsub5.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion5",
-		            type:'POST',
-		            data:seccion5_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						// $('#pesc_tabs').empty();
-						// $('#pesc_tabs').append(window.clonetabs);
-						// $('#pesc_tabs').removeClass('hide');
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
-		          	
+				var s5p1_sum = 0;
+				$('.s5preg1').each(function(){
+				    s5p1_sum += parseInt(this.value);
+				});	
+
+				var s5p9_sum = 0;
+				$('.s5preg9').each(function(){
+				    s5p9_sum += parseInt(this.value);
+				});	
+
+				var s5p6e_sum = 0;
+				$('.s5preg6e').each(function(){
+				    s5p6e_sum += parseInt(this.value);
+				});			
+
+				var s5p6p_sum = 0;
+				$('.s5preg6p').each(function(){
+				    s5p6p_sum += parseInt(this.value);
+				});								
+				if(s5p1_sum != 0){	
+					if(s5p6e_sum != 0){	
+						  if(s5p6p_sum != 0){	
+								if(s5p9_sum != 0){				
+							    	//seccion 2 serial
+							    	var seccion5_data = $("#seccion5").serializeArray();
+								    seccion5_data.push(
+								        {name: 'ajax',value:1},
+								        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}, 
+								        {name: 'S5_2_DD',value:$('#S5_2_DD_COD :selected').text()},
+										{name: 'S5_2_PP',value:$('#S5_2_PP_COD :selected').text()},    
+										{name: 'S5_2_DI',value:$('#S5_2_DI_COD :selected').text()},    
+										{name: 'S5_2_CCPP',value:$('#S5_2_CCPP_COD :selected').text()}			           
+								    );
+									
+							        var bsub5 = $( "#seccion5 :submit" );
+							        // bsub5.attr("disabled", "disabled");
+							        $.ajax({
+							            url: CI.base_url + "digitacion/pesc_seccion5",
+							            type:'POST',
+							            data:seccion5_data,
+							            dataType:'json',
+							            success:function(json){
+											alert(json.msg);
+											// $('#pesc_tabs').empty();
+											// $('#pesc_tabs').append(window.clonetabs);
+											// $('#pesc_tabs').removeClass('hide');
+											$('#pesca_dor').trigger('submit');
+							            }
+							        });     
+						   		 }else{
+						    		alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+						    		$('input.s5preg9:first').focus();
+						    	} 
+						   }else{
+						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+						    	$('input.s5preg6p:first').focus();
+						   } 						    	
+					}else{
+						 alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+						 $('input.s5preg6e:first').focus();
+					} 						    	
+			   	}else{
+			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+			    	$('input.s5preg1:first').focus();
+			    } 		          	
 		    }       
 		});
  }); 

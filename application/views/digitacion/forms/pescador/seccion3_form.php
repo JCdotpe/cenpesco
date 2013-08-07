@@ -149,7 +149,7 @@ $S3_901 = array(
 	'name'	=> 'S3_901',
 	'id'	=> 'S3_901',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //Televisor a color
@@ -157,7 +157,7 @@ $S3_902 = array(
 	'name'	=> 'S3_902',
 	'id'	=> 'S3_902',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //DVD
@@ -165,7 +165,7 @@ $S3_903 = array(
 	'name'	=> 'S3_903',
 	'id'	=> 'S3_903',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //licuadora
@@ -173,7 +173,7 @@ $S3_904 = array(
 	'name'	=> 'S3_904',
 	'id'	=> 'S3_904',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //refrigeradora
@@ -181,7 +181,7 @@ $S3_905 = array(
 	'name'	=> 'S3_905',
 	'id'	=> 'S3_905',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //plancha
@@ -189,7 +189,7 @@ $S3_906 = array(
 	'name'	=> 'S3_906',
 	'id'	=> 'S3_906',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //cocina
@@ -197,7 +197,7 @@ $S3_907 = array(
 	'name'	=> 'S3_907',
 	'id'	=> 'S3_907',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //computadora
@@ -205,7 +205,7 @@ $S3_908 = array(
 	'name'	=> 'S3_908',
 	'id'	=> 'S3_908',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //Lavadora
@@ -213,7 +213,7 @@ $S3_909 = array(
 	'name'	=> 'S3_909',
 	'id'	=> 'S3_909',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //Horno
@@ -221,7 +221,7 @@ $S3_910 = array(
 	'name'	=> 'S3_910',
 	'id'	=> 'S3_910',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //ninguno
@@ -229,7 +229,7 @@ $S3_911 = array(
 	'name'	=> 'S3_911',
 	'id'	=> 'S3_911',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg9',
 );
 
 //tel fijo
@@ -237,7 +237,7 @@ $S3_1001 = array(
 	'name'	=> 'S3_1001',
 	'id'	=> 'S3_1001',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg10',
 );
 
 //cel
@@ -245,7 +245,7 @@ $S3_1002 = array(
 	'name'	=> 'S3_1002',
 	'id'	=> 'S3_1002',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg10',
 );
 
 //internet
@@ -253,7 +253,7 @@ $S3_1003 = array(
 	'name'	=> 'S3_1003',
 	'id'	=> 'S3_1003',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg10',
 );
 
 //cable
@@ -261,7 +261,7 @@ $S3_1004 = array(
 	'name'	=> 'S3_1004',
 	'id'	=> 'S3_1004',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg10',
 );
 
 //ninguno
@@ -269,7 +269,7 @@ $S3_1005 = array(
 	'name'	=> 'S3_1005',
 	'id'	=> 'S3_1005',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s3preg10',
 );
 
 //espacio de la vivienda para realizar alguna actividad 
@@ -1379,29 +1379,49 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O, #S3_500_O, #S3_1100E').attr("disa
 		    },
 		    submitHandler: function(form) {
 
-		    	//seccion 2 serial
-		    	var seccion3_data = $("#seccion3").serializeArray();
-			    seccion3_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-			    );
-				
-		        var bsub3 = $( "#seccion3 :submit" );
-		        // bsub3.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion3",
-		            type:'POST',
-		            data:seccion3_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						// $('#pesc_tabs').empty();
-						// $('#pesc_tabs').append(window.clonetabs);
-						// $('#pesc_tabs').removeClass('hide');
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
-		          	
+				var s3p9_sum = 0;
+				$('.s3preg9').each(function(){
+				    s3p9_sum += parseInt(this.value);
+				});	
+
+				var s3p10_sum = 0;
+				$('.s3preg10').each(function(){
+				    s3p10_sum += parseInt(this.value);
+				});	
+
+				if(s3p9_sum != 0){
+					if(s3p10_sum != 0){	
+				    	//seccion 2 serial
+				    	var seccion3_data = $("#seccion3").serializeArray();
+					    seccion3_data.push(
+					        {name: 'ajax',value:1},
+					        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+					    );
+						
+				        var bsub3 = $( "#seccion3 :submit" );
+				        // bsub3.attr("disabled", "disabled");
+				        $.ajax({
+				            url: CI.base_url + "digitacion/pesc_seccion3",
+				            type:'POST',
+				            data:seccion3_data,
+				            dataType:'json',
+				            success:function(json){
+								alert(json.msg);
+								// $('#pesc_tabs').empty();
+								// $('#pesc_tabs').append(window.clonetabs);
+								// $('#pesc_tabs').removeClass('hide');
+								$('#pesca_dor').trigger('submit');
+				            }
+				        });   
+				    }else{
+				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				    	$('input.s3preg10:first').focus();
+				    }   				         
+				}else{
+				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				    	$('input.s3preg9:first').focus();
+				}   
+
 		    }       
 		});
  }); 

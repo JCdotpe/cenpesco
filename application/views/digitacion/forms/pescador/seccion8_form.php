@@ -16,61 +16,61 @@ $S8_1_1 = array(
 	'name'	=> 'S8_1_1',
 	'id'	=> 'S8_1_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 $S8_1_2 = array(
 	'name'	=> 'S8_1_2',
 	'id'	=> 'S8_1_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 $S8_1_3 = array(
 	'name'	=> 'S8_1_3',
 	'id'	=> 'S8_1_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 $S8_1_4 = array(
 	'name'	=> 'S8_1_4',
 	'id'	=> 'S8_1_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 $S8_1_5 = array(
 	'name'	=> 'S8_1_5',
 	'id'	=> 'S8_1_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 $S8_1_6 = array(
 	'name'	=> 'S8_1_6',
 	'id'	=> 'S8_1_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 $S8_1_7 = array(
 	'name'	=> 'S8_1_7',
 	'id'	=> 'S8_1_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 $S8_1_8 = array(
 	'name'	=> 'S8_1_8',
 	'id'	=> 'S8_1_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 $S8_1_9 = array(
 	'name'	=> 'S8_1_9',
 	'id'	=> 'S8_1_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg1',
 );
 
 
@@ -88,61 +88,61 @@ $S8_3_1 = array(
 	'name'	=> 'S8_3_1',
 	'id'	=> 'S8_3_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_2 = array(
 	'name'	=> 'S8_3_2',
 	'id'	=> 'S8_3_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_3 = array(
 	'name'	=> 'S8_3_3',
 	'id'	=> 'S8_3_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_4 = array(
 	'name'	=> 'S8_3_4',
 	'id'	=> 'S8_3_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_5 = array(
 	'name'	=> 'S8_3_5',
 	'id'	=> 'S8_3_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_6 = array(
 	'name'	=> 'S8_3_6',
 	'id'	=> 'S8_3_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_7 = array(
 	'name'	=> 'S8_3_7',
 	'id'	=> 'S8_3_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_8 = array(
 	'name'	=> 'S8_3_8',
 	'id'	=> 'S8_3_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_9 = array(
 	'name'	=> 'S8_3_9',
 	'id'	=> 'S8_3_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_10 = array(
 	'name'	=> 'S8_3_10',
 	'id'	=> 'S8_3_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg3',
 );
 $S8_3_10_O = array(
 	'name'	=> 'S8_3_10_O',
@@ -156,7 +156,7 @@ $S8_4_1 = array(
 	'name'	=> 'S8_4_1',
 	'id'	=> 'S8_4_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_1A = array(
 	'name'	=> 'S8_4_1A',
@@ -174,7 +174,7 @@ $S8_4_2 = array(
 	'name'	=> 'S8_4_2',
 	'id'	=> 'S8_4_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_2A = array(
 	'name'	=> 'S8_4_2A',
@@ -192,7 +192,7 @@ $S8_4_3 = array(
 	'name'	=> 'S8_4_3',
 	'id'	=> 'S8_4_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_3A = array(
 	'name'	=> 'S8_4_3A',
@@ -210,7 +210,7 @@ $S8_4_4 = array(
 	'name'	=> 'S8_4_4',
 	'id'	=> 'S8_4_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_4A = array(
 	'name'	=> 'S8_4_4A',
@@ -228,7 +228,7 @@ $S8_4_5 = array(
 	'name'	=> 'S8_4_5',
 	'id'	=> 'S8_4_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_5A = array(
 	'name'	=> 'S8_4_5A',
@@ -246,7 +246,7 @@ $S8_4_6 = array(
 	'name'	=> 'S8_4_6',
 	'id'	=> 'S8_4_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_6A = array(
 	'name'	=> 'S8_4_6A',
@@ -264,7 +264,7 @@ $S8_4_7 = array(
 	'name'	=> 'S8_4_7',
 	'id'	=> 'S8_4_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_7A = array(
 	'name'	=> 'S8_4_7A',
@@ -282,7 +282,7 @@ $S8_4_8 = array(
 	'name'	=> 'S8_4_8',
 	'id'	=> 'S8_4_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_8A = array(
 	'name'	=> 'S8_4_8A',
@@ -300,7 +300,7 @@ $S8_4_9 = array(
 	'name'	=> 'S8_4_9',
 	'id'	=> 'S8_4_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s8preg4',
 );
 $S8_4_9_O = array(
 	'name'	=> 'S8_4_9_O',
@@ -1130,30 +1130,58 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
+				var s8p1_sum = 0;
+				$('.s8preg1').each(function(){
+				    s8p1_sum += parseInt(this.value);
+				});	
 
-		    	//seccion 2 serial
-		    	var seccion8_data = $("#seccion8").serializeArray();
-			    seccion8_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-			    );
-				
-		        var bsub8 = $( "#seccion8 :submit" );
-		        // bsub8.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion8",
-		            type:'POST',
-		            data:seccion8_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						// $('#pesc_tabs').empty();
-						// $('#pesc_tabs').append(window.clonetabs);
-						// $('#pesc_tabs').removeClass('hide');
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
-		          	
+				var s8p3_sum = 0;
+				$('.s8preg3').each(function(){
+				    s8p3_sum += parseInt(this.value);
+				});	
+
+				var s8p4_sum = 0;
+				$('.s8preg4').each(function(){
+				    s8p4_sum += parseInt(this.value);
+				});	
+
+				if(s8p1_sum != 0){
+					if(s8p3_sum != 0){
+						if(s8p4_sum != 0){						
+							    	//seccion 2 serial
+							    	var seccion8_data = $("#seccion8").serializeArray();
+								    seccion8_data.push(
+								        {name: 'ajax',value:1},
+								        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+								    );
+									
+							        var bsub8 = $( "#seccion8 :submit" );
+							        // bsub8.attr("disabled", "disabled");
+							        $.ajax({
+							            url: CI.base_url + "digitacion/pesc_seccion8",
+							            type:'POST',
+							            data:seccion8_data,
+							            dataType:'json',
+							            success:function(json){
+											alert(json.msg);
+											// $('#pesc_tabs').empty();
+											// $('#pesc_tabs').append(window.clonetabs);
+											// $('#pesc_tabs').removeClass('hide');
+											$('#pesca_dor').trigger('submit');
+							            }
+							        });  
+						}else{
+						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+						    	$('input.s8preg4:first').focus();
+						} 								        
+					}else{
+					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+					    	$('input.s8preg3:first').focus();
+					} 							           
+				}else{
+				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				    	$('input.s8preg1:first').focus();
+				}   		          	
 		    }       
 		});
  }); 

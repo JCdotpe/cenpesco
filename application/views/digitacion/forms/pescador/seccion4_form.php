@@ -355,7 +355,7 @@ $S4_6_1 = array(
 	'name'	=> 'S4_6_1',
 	'id'	=> 'S4_6_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg6',
 );
 
 //audifonos
@@ -363,7 +363,7 @@ $S4_6_2 = array(
 	'name'	=> 'S4_6_2',
 	'id'	=> 'S4_6_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg6',
 );
 
 //entonar
@@ -371,7 +371,7 @@ $S4_6_3 = array(
 	'name'	=> 'S4_6_3',
 	'id'	=> 'S4_6_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg6',
 );
 
 //brazos piernas
@@ -379,7 +379,7 @@ $S4_6_4 = array(
 	'name'	=> 'S4_6_4',
 	'id'	=> 'S4_6_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg6',
 );
 
 //otra
@@ -387,7 +387,7 @@ $S4_6_5 = array(
 	'name'	=> 'S4_6_5',
 	'id'	=> 'S4_6_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg6',
 );
 
 //ninguna
@@ -395,7 +395,7 @@ $S4_6_6 = array(
 	'name'	=> 'S4_6_6',
 	'id'	=> 'S4_6_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg6',
 );
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
@@ -1502,29 +1502,37 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
-
-		    	//seccion 2 serial
-		    	var seccion4_data = $("#seccion4").serializeArray();
-			    seccion4_data.push(
-			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-			    );
-				
-		        var bsub4 = $( "#seccion4 :submit" );
-		        // bsub4.attr("disabled", "disabled");
-		        $.ajax({
-		            url: CI.base_url + "digitacion/pesc_seccion4",
-		            type:'POST',
-		            data:seccion4_data,
-		            dataType:'json',
-		            success:function(json){
-						alert(json.msg);
-						// $('#pesc_tabs').empty();
-						// $('#pesc_tabs').append(window.clonetabs);
-						// $('#pesc_tabs').removeClass('hide');
-						$('#pesca_dor').trigger('submit');
-		            }
-		        });     
+				var s4p6_sum = 0;
+				$('.s4preg6').each(function(){
+				    s4p6_sum += parseInt(this.value);
+				});		
+				if(s4p6_sum != 0){	
+				    	//seccion 2 serial
+				    	var seccion4_data = $("#seccion4").serializeArray();
+					    seccion4_data.push(
+					        {name: 'ajax',value:1},
+					        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+					    );
+						
+				        var bsub4 = $( "#seccion4 :submit" );
+				        // bsub4.attr("disabled", "disabled");
+				        $.ajax({
+				            url: CI.base_url + "digitacion/pesc_seccion4",
+				            type:'POST',
+				            data:seccion4_data,
+				            dataType:'json',
+				            success:function(json){
+								alert(json.msg);
+								// $('#pesc_tabs').empty();
+								// $('#pesc_tabs').append(window.clonetabs);
+								// $('#pesc_tabs').removeClass('hide');
+								$('#pesca_dor').trigger('submit');
+				            }
+				        });    
+			    }else{
+			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+			    	$('input.s4preg6:first').focus();
+			    } 				         
 		          	
 		    }       
 		});
