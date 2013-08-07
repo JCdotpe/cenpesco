@@ -55,9 +55,11 @@ class Avance extends CI_Controller {
 				$odei[] = $key->ODEI_COD;
 			}
 			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
+			$data['jefe_brigada'] = $this->avance_campo_model->get_jefe_by_odei($odei); 
 			
 			//regular
 			//$data['tables'] = $this->avance_campo_model->get_todo($odei);
+			$data['reporte'] = $this->tank_auth->get_ubigeo();
 			$data['main_content'] = 'monitoreo/avance_view';
 			$data['option'] = 1;
 	        $this->load->view('backend/includes/template', $data);

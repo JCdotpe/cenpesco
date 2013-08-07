@@ -277,23 +277,30 @@ class Users extends CI_Model
 		return $this->db->affected_rows() > 0;
 	}
 
-	function change_password_cenpesco($user_id, $new_pass,$tipo)
+	function change_password_cenpesco($user_id, $new_pass)
 	{
 		$this->db->set('password', $new_pass);
-		$this->db->set('tipo', $tipo);
+		//$this->db->set('tipo', $tipo);
 		$this->db->where('id', $user_id);
 
 		$this->db->update($this->table_name);
 		return $this->db->affected_rows() > 0;
 	}
 
-		function users_cenpesco($tipo)
+		function users_cenpesco_by_tipo($tipo)
 	{
 		$this->db->select('id, username');
 		$this->db->where('tipo', $tipo);
 		$q = $this->db->get($this->table_name);
 		return $q;
 	}
+		function users_cenpesco_by_name($username)
+	{
+		$this->db->select('id');
+		$this->db->where('username', $username);
+		$q = $this->db->get($this->table_name);
+		return $q;
+	}	
 	/**
 	 * Set new email for user (may be activated or not).
 	 * The new email cannot be used for login or notification before it is activated.

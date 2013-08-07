@@ -61,6 +61,7 @@ class observacion_campo extends CI_Controller {
 										 2 => 'SUPERVISOR NACIONAL',
 										 3 => 'JEFE DE BRIGADA' );
 			$data['option'] = 2;
+			$data['reporte'] = $this->tank_auth->get_ubigeo();
 			$data['tables'] = $this->observacion_campo_model->get_todo($odei);
 			$data['main_content'] = 'monitoreo/observacion_campo_view';
 	        $this->load->view('backend/includes/template', $data);
@@ -72,7 +73,7 @@ class observacion_campo extends CI_Controller {
 		$is_ajax = $this->input->post('ajax');
 		if($is_ajax){
 
-			$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
+				$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
 			
 				$ODEI_COD = $od->row('ODEI_COD');
 				$NOM_ODEI = $od->row('NOM_ODEI');
@@ -123,16 +124,16 @@ class observacion_campo extends CI_Controller {
 
 				if ($od->num_rows() == 1){
 					
-					if($revision >= 1){
-						$datos['operacion'] = 0; // ya existe el centro poblado
-					}else{
+					//if($revision >= 1){
+						//$datos['operacion'] = 0; // ya existe el centro poblado
+					//}else{
 						$filas = $this->observacion_campo_model->insertar($registro);
 						if ($filas ==1) {
 							$datos['operacion'] = 1;	// guardado exitosamente				
 						}else {
 							$datos['operacion'] = 8; // no se guardo		
 						}
-					}
+					//}
 				}else {
 					$datos['operacion'] = 7; // ODEI en doble ubigeo
 				}
@@ -170,19 +171,31 @@ class observacion_campo extends CI_Controller {
 		$form = substr($d, 0,1);
 		if (strlen($d) == 2) { $seccion = substr($d,1,2); } else{ $seccion = substr($d,1,3);  };
 
-		if ($form == 1){
+		if ($form == 1){// pescador
 			if ($seccion == 1) { $datos['preguntas'] = range(1,4); } 
-			else if ($seccion == 2) { $datos['preguntas'] = range(1,23); } 
+			else if ($seccion == 2) { $datos['preguntas'] = range(1,8); 
+									  array_push($datos['preguntas'], 9.1, 9.2, 9.3, 9.4, 9.5);
+									  array_push($datos['preguntas'], 10,11,12,13,14,15,16,17,18,19,20,21,22);
+									  array_push($datos['preguntas'],23.1, 23.2, 23.3, 23.4, 23.5, 23.6, 23.7, 23.8, 23.9, '23.10');
+			} 
 			else if ($seccion == 3) { $datos['preguntas'] = range(1,11); } 
 			else if ($seccion == 4) { $datos['preguntas'] = range(1,6); } 
 			else if ($seccion == 5) { $datos['preguntas'] = range(1,10); } 
 			else if ($seccion == 6) { $datos['preguntas'] = range(1,6); } 
 			else if ($seccion == 7) { $datos['preguntas'] = range(1,10); } 
 			else if ($seccion == 8) { $datos['preguntas'] = range(1,6); } 
-			else if ($seccion == 9) { $datos['preguntas'] = range(1,23); } 
-		}else if ($form == 2) {
+			else if ($seccion == 9) { $datos['preguntas'] = range(1,9) ;
+									  array_push($datos['preguntas'], 10.1, 10.2, 10.3 );
+									  array_push($datos['preguntas'], 11,12,13,14,15,16,17,18,19,20,21);
+									  array_push($datos['preguntas'], 22.1, 22.2, 22.3,23);
+			} 
+		}else if ($form == 2) {//acuicultor
 			if ($seccion == 1) { $datos['preguntas'] = range(1,4); } 
-			else if ($seccion == 2) { $datos['preguntas'] = range(1,24); } 
+			else if ($seccion == 2) { $datos['preguntas'] = range(1,9); 
+									  array_push($datos['preguntas'], 10.1, 10.2, 10.3, 10.4, 10.5 );
+									  array_push($datos['preguntas'], 11,12,13,14,15,16,17,18,19,20,21,22,23);
+									  array_push($datos['preguntas'], 24.1, 24.2, 24.3, 24.4, 24.5, 24.6, 24.7, 24.8, 24.9, 24.10, 24.11);
+			} 
 			else if ($seccion == 3) { $datos['preguntas'] = range(1,11); } 
 			else if ($seccion == 4) { $datos['preguntas'] = range(1,3); } 
 			else if ($seccion == 5) { $datos['preguntas'] = range(1,17); } 
@@ -191,7 +204,7 @@ class observacion_campo extends CI_Controller {
 			else if ($seccion == 8) { $datos['preguntas'] = range(1,15); } 
 			else if ($seccion == 9) { $datos['preguntas'] = range(1,6); } 
 			else if ($seccion == 10) { $datos['preguntas'] = range(1,11); } 
-		}else if ($form == 3) {
+		}else if ($form == 3) {//comunidad
 			if ($seccion == 1) { $datos['preguntas'] = range(1,4); } 
 			else if ($seccion == 2) { $datos['preguntas'] = range(1,10); } 
 			else if ($seccion == 3) { $datos['preguntas'] = range(1,22); } 

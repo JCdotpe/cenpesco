@@ -700,7 +700,7 @@ function cargar(bol, sec) {
             success:function(json){
             		$("#SEC").empty();
 	                $.each(json.secciones, function(i, data){
-	                        $("#SEC").append('<option value="1' + data + '">' + data + '</option>');
+	                        $("#SEC").append('<option value="'+sec + data + '">' + data + '</option>');
 	                });		
 	                $("#SEC").trigger('change');				            	
             }
@@ -722,7 +722,7 @@ $("#SEC").change(function (){
         success:function(json){
         		$("#PREG_N").empty();
                 $.each(json.preguntas, function(i, data){
-                        $("#PREG_N").append('<option value="1' + data + '">' + data + '</option>');
+                        $("#PREG_N").append('<option value="' + data + '">' + data + '</option>');
                 });						            	
         }
     });  

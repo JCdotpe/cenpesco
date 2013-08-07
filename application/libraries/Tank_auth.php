@@ -419,7 +419,7 @@ class Tank_auth
 		}
 		return FALSE;
 	}
-	function change_password_cenpesco($user,$new_pass, $tipo)
+	function change_password_cenpesco($user_id,$new_pass)
 	{
 			// Check if old password correct
 			$hasher = new PasswordHash(
@@ -429,7 +429,7 @@ class Tank_auth
 				// Hash new password using phpass
 				$hashed_password = $hasher->HashPassword($new_pass);
 				// Replace old password with new one
-				 if ($this->ci->users->change_password_cenpesco($user, $hashed_password, $tipo) >= 1){
+				 if ($this->ci->users->change_password_cenpesco($user_id, $hashed_password) >= 1){
 				 	return true;
 				 }else{
 				 	return false;

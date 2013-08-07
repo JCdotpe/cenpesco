@@ -43,7 +43,8 @@ class Udra extends CI_Controller {
 			$data['username']	= $this->tank_auth->get_username();
 			$data['main_content'] = 'udra/index_view';
 			$data['option'] = 0;
-	        $this->load->view('backend/includes/template', $data);
+	        //$this->load->view('backend/includes/template', $data);
+	        redirect('udra/registro');
 	}
 }
 

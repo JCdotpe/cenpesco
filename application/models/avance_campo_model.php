@@ -26,11 +26,14 @@ class Avance_campo_model extends CI_MODEL
 
 
 
-                    
-
-
-
-
+    function get_jefe_by_odei ($odei){
+        $this->db->distinct('CODIGO');
+        $this->db->select('CODIGO, APELLIDOS_NOMBRES');
+        $this->db->where_in('ODEI_COD',$odei);
+        $this->db->order_by('APELLIDOS_NOMBRES','asc');
+        $q = $this->db->get('jefe_brigada');
+        return $q;
+    }          
 
 
     function insertar($data){
@@ -38,7 +41,18 @@ class Avance_campo_model extends CI_MODEL
 		return $this->db->affected_rows();
     }   
 
- 
+/// para reporte de avance
+     function get_reporte_avance()
+    {   
+        $sql = "select  CCDD, nom_dd, sum(A_TOTAL)  + sum(P_TOTAL)  as   PEA_CAMPO from avance_campo group by ccdd";
+        $q = $this->db->query($sql);
+        return $q;
+    }
+     function get_pea_marco()
+    {   
+        $q = $this->db->get('pea_marco');
+        return $q;
+    }
   
 
 }

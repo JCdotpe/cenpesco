@@ -57,6 +57,7 @@ class Revision extends CI_Controller {
 										 3 => 'JEFE DE BRIGADA' );			
 			//regular
 			$data['option'] = 3;
+			$data['reporte'] = $this->tank_auth->get_ubigeo();
 			$data['tables'] = $this->revision_model->get_todo($odei);
 			$data['main_content'] = 'monitoreo/revision_view';
 	        $this->load->view('backend/includes/template', $data);
@@ -116,16 +117,16 @@ class Revision extends CI_Controller {
 
 				if ($od->num_rows() == 1){
 					
-					if($revision >= 1){
-						$datos['operacion'] = 0; // ya existe el centro poblado
-					}else{
+					//if($revision >= 1){
+						//$datos['operacion'] = 0; // ya existe el centro poblado
+					//}else{
 						$filas = $this->revision_model->insertar($registro);
 						if ($filas ==1) {
 							$datos['operacion'] = 1;	// guardado exitosamente				
 						}else {
 							$datos['operacion'] = 8; // no se guardo		
 						}
-					}
+					//}
 				}else {
 					$datos['operacion'] = 7; //ODEI en doble ubigeo
 				}

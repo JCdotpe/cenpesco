@@ -20,7 +20,7 @@ class Marco_model extends CI_Model{
     }
     function get_sede_by_cod($cod){
         $this->db->select('SEDE_COD,NOM_SEDE');
-        $this->db->where('SEDE_COD',$cod);
+        $this->db->where_in('SEDE_COD',$cod);
         $this->db->distinct('SEDE_COD');
         $this->db->order_by('NOM_SEDE');
         $q = $this->db->get('marco');
