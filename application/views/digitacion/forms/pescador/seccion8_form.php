@@ -701,11 +701,11 @@ echo '<div class="well modulo">';
 					              echo '</thead>';
 					              echo '<tbody>';
 					               echo '<tr>';
-					                  echo '<td>Ministerio de Producción (PRODUCE)</td>';
+					                  echo '<td>Ministerio de la Producción (PRODUCE) ?</td>';
 					                  echo '<td>' . form_input($S8_6_1) . '<div class="help-block error">' . form_error($S8_6_1['name']) . '</div></td>';
 					               echo '</tr>';   
 					               echo '<tr>';
-					                  echo '<td>Fondo Nacional de Desarrollo Pesquero (FONDEPES)</td>';
+					                  echo '<td>Fondo Nacional de Desarrollo Pesquero (FONDEPES) ?</td>';
 					                  echo '<td>' . form_input($S8_6_2) . '<div class="help-block error">' . form_error($S8_6_2['name']) . '</div></td>';
 					               echo '</tr>'; 	
 					               echo '<tr>';
@@ -1061,6 +1061,7 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 
 
 		    	S8_5_1: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 

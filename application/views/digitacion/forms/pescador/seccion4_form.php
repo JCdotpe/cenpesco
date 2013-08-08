@@ -27,7 +27,7 @@ $S4_2_1 = array(
 	'name'	=> 'S4_2_1',
 	'id'	=> 'S4_2_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg2',
 );
 
 //essalud afiliado
@@ -43,7 +43,7 @@ $S4_2_2 = array(
 	'name'	=> 'S4_2_2',
 	'id'	=> 'S4_2_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg2',
 );
 
 //sistema int de salud afiliado
@@ -59,7 +59,7 @@ $S4_2_3 = array(
 	'name'	=> 'S4_2_3',
 	'id'	=> 'S4_2_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg2',
 );
 
 //entidad prest salud afiliado
@@ -76,7 +76,7 @@ $S4_2_4 = array(
 	'name'	=> 'S4_2_4',
 	'id'	=> 'S4_2_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg2',
 );
 
 //especifique
@@ -103,7 +103,7 @@ $S4_3_1 = array(
 	'name'	=> 'S4_3_1',
 	'id'	=> 'S4_3_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg3',
 );
 
 //nombre vida
@@ -119,7 +119,7 @@ $S4_3_2 = array(
 	'name'	=> 'S4_3_2',
 	'id'	=> 'S4_3_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg3',
 );
 
 //nom pensiones
@@ -134,7 +134,7 @@ $S4_3_3 = array(
 	'name'	=> 'S4_3_3',
 	'id'	=> 'S4_3_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg3',
 );
 
 //meses////////////////////////////
@@ -151,7 +151,7 @@ $S4_4_1_1 = array(
 	'name'	=> 'S4_4_1_1',
 	'id'	=> 'S4_4_1_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //feb
@@ -159,7 +159,7 @@ $S4_4_1_2 = array(
 	'name'	=> 'S4_4_1_2',
 	'id'	=> 'S4_4_1_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //marzo
@@ -167,7 +167,7 @@ $S4_4_1_3 = array(
 	'name'	=> 'S4_4_1_3',
 	'id'	=> 'S4_4_1_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //abril
@@ -175,7 +175,7 @@ $S4_4_1_4 = array(
 	'name'	=> 'S4_4_1_4',
 	'id'	=> 'S4_4_1_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //mayo
@@ -183,7 +183,7 @@ $S4_4_1_5 = array(
 	'name'	=> 'S4_4_1_5',
 	'id'	=> 'S4_4_1_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //junio
@@ -191,7 +191,7 @@ $S4_4_1_6 = array(
 	'name'	=> 'S4_4_1_6',
 	'id'	=> 'S4_4_1_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //julio
@@ -199,7 +199,7 @@ $S4_4_1_7 = array(
 	'name'	=> 'S4_4_1_7',
 	'id'	=> 'S4_4_1_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //agosto
@@ -207,7 +207,7 @@ $S4_4_1_8 = array(
 	'name'	=> 'S4_4_1_8',
 	'id'	=> 'S4_4_1_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //setiembre
@@ -215,7 +215,7 @@ $S4_4_1_9 = array(
 	'name'	=> 'S4_4_1_9',
 	'id'	=> 'S4_4_1_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //oct
@@ -223,7 +223,7 @@ $S4_4_1_10 = array(
 	'name'	=> 'S4_4_1_10',
 	'id'	=> 'S4_4_1_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //nov
@@ -231,7 +231,7 @@ $S4_4_1_11 = array(
 	'name'	=> 'S4_4_1_11',
 	'id'	=> 'S4_4_1_11',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 
 //dic
@@ -239,7 +239,7 @@ $S4_4_1_12 = array(
 	'name'	=> 'S4_4_1_12',
 	'id'	=> 'S4_4_1_12',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg4',
 );
 //meses////////////////////////////
 
@@ -257,7 +257,7 @@ $S4_5_1_1 = array(
 	'name'	=> 'S4_5_1_1',
 	'id'	=> 'S4_5_1_1',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //feb
@@ -265,7 +265,7 @@ $S4_5_1_2 = array(
 	'name'	=> 'S4_5_1_2',
 	'id'	=> 'S4_5_1_2',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //marzo
@@ -273,7 +273,7 @@ $S4_5_1_3 = array(
 	'name'	=> 'S4_5_1_3',
 	'id'	=> 'S4_5_1_3',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //abril
@@ -281,7 +281,7 @@ $S4_5_1_4 = array(
 	'name'	=> 'S4_5_1_4',
 	'id'	=> 'S4_5_1_4',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //mayo
@@ -289,7 +289,7 @@ $S4_5_1_5 = array(
 	'name'	=> 'S4_5_1_5',
 	'id'	=> 'S4_5_1_5',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //junio
@@ -297,7 +297,7 @@ $S4_5_1_6 = array(
 	'name'	=> 'S4_5_1_6',
 	'id'	=> 'S4_5_1_6',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //julio
@@ -305,7 +305,7 @@ $S4_5_1_7 = array(
 	'name'	=> 'S4_5_1_7',
 	'id'	=> 'S4_5_1_7',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //agosto
@@ -313,7 +313,7 @@ $S4_5_1_8 = array(
 	'name'	=> 'S4_5_1_8',
 	'id'	=> 'S4_5_1_8',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //setiembre
@@ -321,7 +321,7 @@ $S4_5_1_9 = array(
 	'name'	=> 'S4_5_1_9',
 	'id'	=> 'S4_5_1_9',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //oct
@@ -329,7 +329,7 @@ $S4_5_1_10 = array(
 	'name'	=> 'S4_5_1_10',
 	'id'	=> 'S4_5_1_10',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //nov
@@ -337,7 +337,7 @@ $S4_5_1_11 = array(
 	'name'	=> 'S4_5_1_11',
 	'id'	=> 'S4_5_1_11',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 
 //dic
@@ -345,7 +345,7 @@ $S4_5_1_12 = array(
 	'name'	=> 'S4_5_1_12',
 	'id'	=> 'S4_5_1_12',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s4preg5',
 );
 //meses////////////////////////////
 
@@ -685,7 +685,7 @@ echo '<div class="well modulo">';
 						echo '<div class="row-fluid">';
 
 							echo '<div class="offset1 span2">';
-								echo '<p>No está afiliado</p>';
+								echo '<p>NO ESTÁ AFILIADO</p>';
 							echo '</div>';	
 
 							echo '<div class="span2">';
@@ -1010,7 +1010,7 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////PREGUNTA 6
 
 		echo '<div class="question">';
-			echo '<p>6. Sr(a).¿Tiene usted alguna dificultad:</p>';	
+			echo '<p>6. Sr(a).¿Tiene usted alguna dificultad o limitación permanente:</p>';	
 
 						echo '<div class="row-fluid">';
 
@@ -1082,7 +1082,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Para usar brazos y manos/piernas y pies</p>';
+								echo '<p>Para usar brazos y manos/piernas y pies ?</p>';
 
 							echo '</div>';	
 
@@ -1104,7 +1104,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Alguna otra dificultad o limitación</p>';
+								echo '<p>Alguna otra dificultad o limitación ?</p>';
 
 							echo '</div>';	
 
@@ -1126,7 +1126,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Ninguna</p>';
+								echo '<p>NINGUNA</p>';
 
 							echo '</div>';	
 
@@ -1316,6 +1316,7 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		    	S4_2_4_O: {
 		    		required:true,
 					maxlength: 100, 
+					validName:true,
 		         }, 	
 		    	S4_2_4_1: {
 		            digits: true,
@@ -1502,36 +1503,79 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
+				var s4p2_sum = 0;
+				$('.s4preg2').each(function(){
+				    s4p2_sum += parseInt(this.value);
+				});		
+
+				var s4p3_sum = 0;
+				$('.s4preg3').each(function(){
+				    s4p3_sum += parseInt(this.value);
+				});	
+
+				var s4p4_sum = 0;
+				$('.s4preg4').each(function(){
+				    s4p4_sum += parseInt(this.value);
+				});	
+
+				var s4p5_sum = 0;
+				$('.s4preg5').each(function(){
+				    s4p5_sum += parseInt(this.value);
+				});	
+
 				var s4p6_sum = 0;
 				$('.s4preg6').each(function(){
 				    s4p6_sum += parseInt(this.value);
 				});		
-				if(s4p6_sum != 0){	
-				    	//seccion 2 serial
-				    	var seccion4_data = $("#seccion4").serializeArray();
-					    seccion4_data.push(
-					        {name: 'ajax',value:1},
-					        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-					    );
-						
-				        var bsub4 = $( "#seccion4 :submit" );
-				        // bsub4.attr("disabled", "disabled");
-				        $.ajax({
-				            url: CI.base_url + "digitacion/pesc_seccion4",
-				            type:'POST',
-				            data:seccion4_data,
-				            dataType:'json',
-				            success:function(json){
-								alert(json.msg);
-								// $('#pesc_tabs').empty();
-								// $('#pesc_tabs').append(window.clonetabs);
-								// $('#pesc_tabs').removeClass('hide');
-								$('#pesca_dor').trigger('submit');
-				            }
-				        });    
+
+
+
+				if(s4p2_sum != 0){	
+					if(s4p3_sum != 0){	
+						if(s4p4_sum != 0){		
+							if(s4p5_sum != 0){		
+									if(s4p6_sum != 0){	
+										    	//seccion 2 serial
+										    	var seccion4_data = $("#seccion4").serializeArray();
+											    seccion4_data.push(
+											        {name: 'ajax',value:1},
+											        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+											    );
+												
+										        var bsub4 = $( "#seccion4 :submit" );
+										        // bsub4.attr("disabled", "disabled");
+										        $.ajax({
+										            url: CI.base_url + "digitacion/pesc_seccion4",
+										            type:'POST',
+										            data:seccion4_data,
+										            dataType:'json',
+										            success:function(json){
+														alert(json.msg);
+														// $('#pesc_tabs').empty();
+														// $('#pesc_tabs').append(window.clonetabs);
+														// $('#pesc_tabs').removeClass('hide');
+														$('#pesca_dor').trigger('submit');
+										            }
+										        });    
+								    }else{
+								    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+								    	$('input.s4preg6:first').focus();
+								    } 	
+						    }else{
+						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+						    	$('input.s4preg5:first').focus();
+						    } 										    
+					    }else{
+					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+					    	$('input.s4preg4:first').focus();
+					    } 	
+				    }else{
+				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+				    	$('input.s4preg3:first').focus();
+				    } 									    					        
 			    }else{
 			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-			    	$('input.s4preg6:first').focus();
+			    	$('input.s4preg2:first').focus();
 			    } 				         
 		          	
 		    }       

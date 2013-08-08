@@ -2199,7 +2199,7 @@ echo '<div class="row-fluid">';
 /////////////////////////////////////////////PREGUNTA 13
 
 		echo '<div class="question">';
-			echo '<p>13. ¿Usted considera la pesca como su ocupación:</p>';	
+			echo '<p>13. ¿Usted considera la pesca como su actividad:</p>';	
 				echo '<div class="row-fluid">';
 							echo '<div class="control-group offset4 span4">';
 								echo '<div class="controls">';
@@ -2385,9 +2385,12 @@ echo '<div class="question">';
 
 							echo '</div>';							
 
-						echo '</div>'; 						
-				echo '</div>'; 			
-			echo '</div>'; 	
+						echo '</div>'; 	
+
+
+
+
+
 						echo '<div class="row-fluid">';
 
 							echo '<div class="span2">';
@@ -2396,7 +2399,7 @@ echo '<div class="question">';
 
 							echo '</div>';	
 
-							echo '<div class="span2">';
+							echo '<div class="offset2 span4">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -2408,14 +2411,17 @@ echo '<div class="question">';
 
 							echo '</div>';							
 
+						echo '</div>'; 	
+
+						echo '<div class="row-fluid">';
 
 							echo '<div class="span2">';
 
-								echo '<p><b>Especifique</b></p>';
+								echo '<p>Especifique</p>';
 
 							echo '</div>';	
 
-							echo '<div class="span4">';
+							echo '<div class="offset2 span4">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -2425,20 +2431,20 @@ echo '<div class="question">';
 									echo '</div>';	
 								echo '</div>'; 
 
-							echo '</div>';		
-
+							echo '</div>';							
 
 						echo '</div>'; 	
+
 
 						echo '<div class="row-fluid">';
 
 							echo '<div class="span2">';
 
-								echo '<p>No tiene otra actividad</p>';
+								echo '<p>NO TIENE OTRA ACTIVIDAD</p>';
 
 							echo '</div>';	
 
-							echo '<div class="span2">';
+							echo '<div class="offset2 span4">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -2451,6 +2457,11 @@ echo '<div class="question">';
 							echo '</div>';							
 
 						echo '</div>'; 	
+
+
+				echo '</div>'; 			
+			echo '</div>'; 	
+
 
 		echo '</div>';					
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2582,7 +2593,7 @@ echo '<div class="question">';
 
 							echo '<div class="span6">';
 
-								echo '<p>Vaso de leche</p>';
+								echo '<p>Vaso de leche?</p>';
 
 							echo '</div>';	
 
@@ -2735,18 +2746,16 @@ echo '<div class="question">';
 
 						echo '</div>'; 	
 
-				echo '</div>'; 	
-			echo '</div>'; 	
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="span3">';
+							echo '<div class="span4">';
 
 								echo '<p>Otro</p>';
 
 							echo '</div>';	
 
-							echo '<div class="span2">';
+							echo '<div class="offset1 span4">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -2758,14 +2767,17 @@ echo '<div class="question">';
 
 							echo '</div>';							
 
+						echo '</div>'; 	
 
-							echo '<div class="span2">';
+						echo '<div class="row-fluid">';
 
-								echo '<p><b>Especifique</b></p>';
+							echo '<div class="span4">';
+
+								echo '<p>Especifique</p>';
 
 							echo '</div>';	
 
-							echo '<div class="span4">';
+							echo '<div class="offset1 span4">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -2775,20 +2787,19 @@ echo '<div class="question">';
 									echo '</div>';	
 								echo '</div>'; 
 
-							echo '</div>';		
-
+							echo '</div>';							
 
 						echo '</div>'; 	
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="span3">';
+							echo '<div class="span4">';
 
-								echo '<p>Ninguno</p>';
+								echo '<p>NINGUNO</p>';
 
 							echo '</div>';	
 
-							echo '<div class="span2">';
+							echo '<div class="offset1 span4">';
 
 								echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -2801,6 +2812,11 @@ echo '<div class="question">';
 							echo '</div>';							
 
 						echo '</div>'; 	
+
+
+				echo '</div>'; 	
+			echo '</div>'; 	
+
 
 		echo '</div>';					
 
@@ -2944,9 +2960,13 @@ echo '<div class="question">';
 					                  echo '<td>' . form_input($S2_20_8) . '<div class="help-block error">' . form_error($S2_20_8['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
-					               echo '<td>' . form_input($S2_20_9_O) . '<div class="help-block error">' . form_error($S2_20_9_O['name']) . '</div></td>';
+					               echo '<td>Otro</div></td>';
 					                  echo '<td>' . form_input($S2_20_9) . '<div class="help-block error">' . form_error($S2_20_9['name']) . '</div></td>';
-					               echo '</tr>'; 							               				               					               					               				               					               				               						               			               
+					               echo '</tr>'; 			
+					               echo '<tr>';
+					               echo '<td>Especifíque</div></td>';
+					                  echo '<td>' . form_input($S2_20_9_O) . '<div class="help-block error">' . form_error($S2_20_9['name']) . '</div></td>';
+					               echo '</tr>'; 						               				               				               					               					               				               					               				               						               			               
 			              echo '</tbody>';
 			            echo '</table>';	
 				echo '</div>';	
@@ -4100,7 +4120,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_1_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo1	
 //hijo2
@@ -4153,7 +4175,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_2_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo2
 //hijo3
@@ -4206,7 +4230,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_3_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo3
 //hijo4
@@ -4259,7 +4285,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_4_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo4	   
 //hijo5
@@ -4312,7 +4340,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_5_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo5	 
 //hijo6
@@ -4365,7 +4395,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_6_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo6 
 //hijo7
@@ -4418,7 +4450,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_7_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo7 
 //hijo8
@@ -4471,7 +4505,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_8_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo8 
 //hijo9
@@ -4524,7 +4560,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_9_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo9 
 //hijo10
@@ -4577,7 +4615,9 @@ $.extend(jQuery.validator.messages, {
 		             valrango: [1,8,9],
 		         },			         
 		        S2_23_11_10_O:{
+		        	required:true,
  					maxlength:100,
+ 					validName:true,
 		         },	
 //end hijo9 	    	         		         		         	         	         		         		         		         	         	         	         
 			//FIN RULES

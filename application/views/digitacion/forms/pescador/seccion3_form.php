@@ -863,7 +863,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span2">';
 
-								echo '<p>Ninguno</p>';
+								echo '<p>NINGUNO</p>';
 
 							echo '</div>';	
 
@@ -915,13 +915,13 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 10
 		echo '<div class="question">';
-			echo '<p>10. ¿Su vivienda cuenta con:</p>';	
+			echo '<p>10. ¿Los servicios de comunicación con que cuenta su vivienda son:</p>';	
 
 						echo '<div class="row-fluid">';
 
 							echo '<div class="offset1 span3">';
 
-								echo '<p>teléfono fijo ?</p>';
+								echo '<p>Teléfono fijo ?</p>';
 
 							echo '</div>';	
 
@@ -940,7 +940,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span3">';
 
-								echo '<p>teléfono celular ?</p>';
+								echo '<p>Teléfono celular ?</p>';
 
 							echo '</div>';	
 
@@ -1031,7 +1031,7 @@ echo '<div class="well modulo">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////PREGUNTA 11
 		echo '<div class="question">';
-			echo '<p>11. ¿Utiliza algún espacio de la vivienda para realizar alguna actividad</p>';	
+			echo '<p>11. ¿Utiliza algún espacio de la vivienda para realizar alguna actividad que proporcione otros ingresos al hogar?</p>';	
 				echo '<div class="row-fluid">';
 					echo '<div class="span12">';
 							echo '<div class="control-group offset1 span2">';

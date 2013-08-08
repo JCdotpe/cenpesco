@@ -396,7 +396,7 @@ $.extend(jQuery.validator.messages, {
     // url: "Please enter a valid URL.",
      date: "Ingrese una fecha válida",
     // dateISO: "Please enter a valid date (ISO).",
-    //number: "Solo se permiten números",
+     number: "Solo se permiten números",
      digits: "Solo se permiten números",
     // creditcard: "Please enter a valid credit card number.",
     // equalTo: "Please enter the same value again.",

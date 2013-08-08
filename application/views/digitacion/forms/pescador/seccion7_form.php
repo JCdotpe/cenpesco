@@ -21,7 +21,7 @@ $S7_101 = array(
 	'name'	=> 'S7_101',
 	'id'	=> 'S7_101',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s7preg1',
 );
 // Dinero de terceros S/.
 $S7_101A = array(
@@ -36,7 +36,7 @@ $S7_102 = array(
 	'name'	=> 'S7_102',
 	'id'	=> 'S7_102',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s7preg1',
 );
 
 // Dinero propio S/. DD
@@ -52,14 +52,14 @@ $S7_103 = array(
 	'name'	=> 'S7_103',
 	'id'	=> 'S7_103',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s7preg1',
 );
 //No trabajo los últimos 12 meses
 $S7_104 = array(
 	'name'	=> 'S7_104',
 	'id'	=> 'S7_104',
 	'maxlength'	=> 1,
-	'class' => $span_class,
+	'class' => $span_class . ' s7preg1',
 );
 
 ///////////////////////////////////////////////////
@@ -272,7 +272,7 @@ $S7_4_1 = array(
 	'name'	=> 'S7_4_1',
 	'id'	=> 'S7_4_1',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg4',
 );
 $S7_4_1_1 = array(
 	'name'	=> 'S7_4_1_1',
@@ -284,7 +284,7 @@ $S7_4_2 = array(
 	'name'	=> 'S7_4_2',
 	'id'	=> 'S7_4_2',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg4',
 );
 $S7_4_2_1 = array(
 	'name'	=> 'S7_4_2_1',
@@ -296,7 +296,7 @@ $S7_4_3 = array(
 	'name'	=> 'S7_4_3',
 	'id'	=> 'S7_4_3',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg4',
 );
 $S7_4_3_1 = array(
 	'name'	=> 'S7_4_3_1',
@@ -308,7 +308,7 @@ $S7_4_4 = array(
 	'name'	=> 'S7_4_4',
 	'id'	=> 'S7_4_4',
 	'maxlength'	=> 1,
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class . ' nothing7 s7preg4',
 );
 $S7_4_4_O = array(
 	'name'	=> 'S7_4_4_O',
@@ -675,7 +675,7 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////PREGUNTA 1
 
 		echo '<div class="question">';
-			echo '<p>1.	En los últimos 12 meses, ¿Cómo financió  usted el inicio de sus faenas?</p>';	
+			echo '<p>1.	En los últimos 12 meses, ¿Cómo financió su actividad de pesca?</p>';	
 
 				echo '<div class="row-fluid">';
 
@@ -794,7 +794,7 @@ echo '<div class="well modulo">';
 						echo '</div>'; 
 
 						echo '<div class="span7 preguntas_sub2">';
-							echo '<p>No trabajó los últimos 12 meses</p>';
+							echo '<p>No trabajo en los últimos 12 meses</p>';
 						echo '</div>'; 
 
 					echo '</div>'; 
@@ -1488,6 +1488,7 @@ $('#S7_101').change(function() {
 		des.attr("disabled", "disabled"); 
 	}
 	 $('#S7_102').trigger('change');	
+	 $('#S7_5_1, #S7_5_2, #S7_5_3, #S7_5_4, #S7_5_5, #S7_5_6, #S7_5_7, #S7_5_8, #S7_5_9, #S7_5_10').trigger('change');
 });
 
 $('#S7_102').change(function() {
@@ -1515,6 +1516,7 @@ $('#S7_102').change(function() {
 	else if(th == 0 && $('#S7_101').val() == 1){
 		des.val('')
 		des.attr("disabled", "disabled"); 
+		s7p2.removeAttr('disabled');
 		contrades.val('');
 		contrades.attr("disabled", "disabled"); 
 		$('#S7_206').trigger('change');
@@ -1522,6 +1524,8 @@ $('#S7_102').change(function() {
 	else if(th == 0 && $('#S7_101').val() == 0){
 		des.val('')
 		des.attr("disabled", "disabled"); 
+		s7p2.val('')
+		s7p2.attr("disabled", "disabled"); 	
 		contrades.removeAttr('disabled');
 		$('#S7_206').trigger('change');
 	}	
@@ -1536,11 +1540,13 @@ $('#S7_103').change(function() {
 		des.attr("disabled", "disabled"); 		
 		s7p2.val('')
 		s7p2.attr("disabled", "disabled"); 	
-		$('#S7_206').trigger('change');				
+		$('#S7_206').trigger('change');	
+		$('#S7_102').trigger('change');					
 	}else if(th != ''){
 		des.removeAttr('disabled');
 		s7p2.removeAttr('disabled');
-		$('#S7_206').trigger('change');		
+		$('#S7_102').trigger('change');		
+		$('#S7_206').trigger('change');	
 	}
 });
 
@@ -1550,10 +1556,14 @@ $('#S7_104').change(function() {
 	var des7 = $('input.nothing7');
 	if(th == 1){
 		des7.val('')
-		des7.attr("disabled", true);			
+		des7.attr("disabled","disabled");			
 	}else{
+		des7.val('');
 		des7.removeAttr('disabled');
+		$('#S7_102').trigger('change');	
 		$('#S7_206_O, #S7_10_4_O, #S7_4_4_1, #S7_4_4_O').attr("disabled", "disabled"); 	
+		$('#S7_3_1, #S7_3_2, #S7_3_3,#S7_3_4, #S7_3_5, #S7_3_6, #S7_3_7, #S7_3_8, #S7_3_9, #S7_3_10, #S7_3_11, #S7_3_12').trigger('change');
+		$('#S7_5_1, #S7_5_2, #S7_5_3, #S7_5_4, #S7_5_5, #S7_5_6, #S7_5_7, #S7_5_8, #S7_5_9, #S7_5_10').trigger('change');	
 	}
 });
 
@@ -2097,6 +2107,12 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
+
+				var s7p1_sum = 0;
+				$('.s7preg1').each(function(){
+				    s7p1_sum += parseInt(this.value);
+				});	
+
 				var s7p2_sum = 0;
 				$('.s7preg2').each(function(){
 				    s7p2_sum += parseInt(this.value);
@@ -2105,6 +2121,11 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 				var s7p3_sum = 0;
 				$('.s7preg3').each(function(){
 				    s7p3_sum += parseInt(this.value);
+				});	
+
+				var s7p4_sum = 0;
+				$('.s7preg4').each(function(){
+				    s7p4_sum += parseInt(this.value);
 				});	
 
 				var s7p7_sum = 0;
@@ -2127,59 +2148,68 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 				    s7p10_sum += parseInt(this.value);
 				});	
 
-
-				if(s7p2_sum != 0){
-					if(s7p3_sum != 0){
-						if(s7p7_sum != 0){
-							if(s7p8_sum != 0){
-								if(s7p9_sum != 0){
-									if(s7p10_sum != 0){
-									    	//seccion 2 serial
-									    	var seccion7_data = $("#seccion7").serializeArray();
-										    seccion7_data.push(
-										        {name: 'ajax',value:1},
-										        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
-										    );
-											
-									        var bsub7 = $( "#seccion7 :submit" );
-									        // bsub7.attr("disabled", "disabled");
-									        $.ajax({
-									            url: CI.base_url + "digitacion/pesc_seccion7",
-									            type:'POST',
-									            data:seccion7_data,
-									            dataType:'json',
-									            success:function(json){
-													alert(json.msg);
-													// $('#pesc_tabs').empty();
-													// $('#pesc_tabs').append(window.clonetabs);
-													// $('#pesc_tabs').removeClass('hide');
-													$('#pesca_dor').trigger('submit');
-									            }
-									        });  
+				if(s7p1_sum != 0){
+					if(s7p2_sum != 0){
+						if(s7p3_sum != 0){
+							if(s7p4_sum != 0){
+								if(s7p7_sum != 0){
+									if(s7p8_sum != 0){
+										if(s7p9_sum != 0){
+											if(s7p10_sum != 0){
+											    	//seccion 2 serial
+											    	var seccion7_data = $("#seccion7").serializeArray();
+												    seccion7_data.push(
+												        {name: 'ajax',value:1},
+												        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+												    );
+													
+											        var bsub7 = $( "#seccion7 :submit" );
+											        // bsub7.attr("disabled", "disabled");
+											        $.ajax({
+											            url: CI.base_url + "digitacion/pesc_seccion7",
+											            type:'POST',
+											            data:seccion7_data,
+											            dataType:'json',
+											            success:function(json){
+															alert(json.msg);
+															// $('#pesc_tabs').empty();
+															// $('#pesc_tabs').append(window.clonetabs);
+															// $('#pesc_tabs').removeClass('hide');
+															$('#pesca_dor').trigger('submit');
+											            }
+											        });  
+											}else{
+											    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+											    	$('input.s7preg10:first').focus();
+											} 							        
+										}else{
+										    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+										    	$('input.s7preg9:first').focus();
+										} 						        
 									}else{
 									    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-									    	$('input.s7preg10:first').focus();
-									} 							        
+									    	$('input.s7preg8:first').focus();
+									}   	
 								}else{
-								    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-								    	$('input.s7preg9:first').focus();
-								} 						        
+									    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+									    $('input.s7preg7:first').focus();
+								}  										          
 							}else{
 							    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-							    	$('input.s7preg8:first').focus();
-							}   	
+							    	$('input.s7preg4:first').focus();
+							}  
 						}else{
-							    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-							    $('input.s7preg7:first').focus();
-						}  										          
+						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+						    	$('input.s7preg3:first').focus();
+						}   				         
 					}else{
-					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-					    	$('input.s7preg3:first').focus();
-					}   				         
+						    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+						    $('input.s7preg2:first').focus();
+					}  		          	
 				}else{
-					    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-					    $('input.s7preg2:first').focus();
-				}  		          	
+						alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+						$('input.s7preg1:first').focus();
+				}  						
 		    }       
 		});
  }); 
