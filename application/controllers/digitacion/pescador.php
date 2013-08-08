@@ -49,6 +49,7 @@ class Pescador extends CI_Controller {
 		$this->load->model('pescador_model');	
 		$this->load->model('ccpp_model');	
 		$this->load->model('marco_model');	
+		$this->load->model('empadronador_model');	
 	}
 
 
@@ -75,6 +76,10 @@ class Pescador extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
 				$odei[] = $key->ODEI_COD;
 			}			
+
+			//get empadronadores by odei
+			$data['emps'] = $this->empadronador_model->get_emp_by_odei($odei);
+
 			$data['departamento'] =  $this->marco_model->get_dpto_by_odei($odei); 
 			
 			$data['nav'] = TRUE;
@@ -130,6 +135,13 @@ class Pescador extends CI_Controller {
 			$datos['secciones'] = $mysections;	
 			// $datos['fsecciones'] = $fsections;	
 			$datos['infosecciones'] = $infosections;
+
+			//get odeis by sede
+			// foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
+			// 	$odei[] = $key->ODEI_COD;
+			// }	
+
+
 			$data['datos'] = $datos;
 			$this->load->view('backend/json/json_view', $data);		
 

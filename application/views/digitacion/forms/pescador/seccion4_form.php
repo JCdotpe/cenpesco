@@ -1312,6 +1312,7 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		    	S4_2_4: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S4_2_1','S4_2_2','S4_2_3'],
 		         }, 		
 		    	S4_2_4_O: {
 		    		required:true,
@@ -1343,6 +1344,7 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		    	S4_3_3: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S4_3_1', 'S4_3_2'],
 		            valnone: ['S4_3_1', 'S4_3_2'],
 		         }, 
 		    	S4_4_1: {
@@ -1396,6 +1398,7 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		    	S4_4_1_12: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S4_4_1_1','S4_4_1_2','S4_4_1_3','S4_4_1_4','S4_4_1_5','S4_4_1_6','S4_4_1_7','S4_4_1_8','S4_4_1_9','S4_4_1_10','S4_4_1_11'],
 		         }, 	
 		    	S4_5_1: {
 		            digits: true,
@@ -1446,8 +1449,9 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		            valrango: [0,1,9],
 		         }, 
 		    	S4_5_1_12: {
-		            digits: true,
+		           digits: true,
 		           valrango: [0,1,9],
+		           valzero: ['S4_5_1_1','S4_5_1_2','S4_5_1_3','S4_5_1_4','S4_5_1_5','S4_5_1_6','S4_5_1_7','S4_5_1_8','S4_5_1_9','S4_5_1_10','S4_5_1_11'],
 		         }, 	
 		    	S4_6_1: {
 		            digits: true,
@@ -1472,7 +1476,8 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		    	S4_6_6: {
 		            digits: true,
 		           valrango: [0,1,9],
-		           valnone:['S4_6_1', 'S4_6_2', 'S4_6_3', 'S4_6_4', 'S4_6_5']
+		           valzero:['S4_6_1', 'S4_6_2', 'S4_6_3', 'S4_6_4', 'S4_6_5'],
+		           valnone:['S4_6_1', 'S4_6_2', 'S4_6_3', 'S4_6_4', 'S4_6_5'],
 		         }, 		         	         		         		         		         	         		         		         		         	         	         		         	         	         	         	         	         		         		                 	         			         			         	                  		         		         	         	         	         	                                                                             
 			//FIN RULES
 		    },
@@ -1503,38 +1508,37 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
-				var s4p2_sum = 0;
-				$('.s4preg2').each(function(){
-				    s4p2_sum += parseInt(this.value);
-				});		
 
-				var s4p3_sum = 0;
-				$('.s4preg3').each(function(){
-				    s4p3_sum += parseInt(this.value);
-				});	
+				// var s4p2_sum = 0;
+				// $('.s4preg2').each(function(){
+				//     s4p2_sum += parseInt(this.value);
+				// });		
 
-				var s4p4_sum = 0;
-				$('.s4preg4').each(function(){
-				    s4p4_sum += parseInt(this.value);
-				});	
+				// var s4p3_sum = 0;
+				// $('.s4preg3').each(function(){
+				//     s4p3_sum += parseInt(this.value);
+				// });	
 
-				var s4p5_sum = 0;
-				$('.s4preg5').each(function(){
-				    s4p5_sum += parseInt(this.value);
-				});	
+				// var s4p4_sum = 0;
+				// $('.s4preg4').each(function(){
+				//     s4p4_sum += parseInt(this.value);
+				// });	
 
-				var s4p6_sum = 0;
-				$('.s4preg6').each(function(){
-				    s4p6_sum += parseInt(this.value);
-				});		
+				// var s4p5_sum = 0;
+				// $('.s4preg5').each(function(){
+				//     s4p5_sum += parseInt(this.value);
+				// });	
 
+				// var s4p6_sum = 0;
+				// $('.s4preg6').each(function(){
+				//     s4p6_sum += parseInt(this.value);
+				// });		
 
-
-				if(s4p2_sum != 0){	
-					if(s4p3_sum != 0){	
-						if(s4p4_sum != 0){		
-							if(s4p5_sum != 0){		
-									if(s4p6_sum != 0){	
+				// if(s4p2_sum != 0){	
+				// 	if(s4p3_sum != 0){	
+				// 		if(s4p4_sum != 0){		
+				// 			if(s4p5_sum != 0){		
+				// 					if(s4p6_sum != 0){	
 										    	//seccion 2 serial
 										    	var seccion4_data = $("#seccion4").serializeArray();
 											    seccion4_data.push(
@@ -1557,26 +1561,26 @@ $('#S4_2_1_1, #S4_2_2_1, #S4_2_3_1, #S4_2_4_O, #S4_2_4_1, #S4_3_1_1, #S4_3_2_1')
 														$('#pesca_dor').trigger('submit');
 										            }
 										        });    
-								    }else{
-								    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-								    	$('input.s4preg6:first').focus();
-								    } 	
-						    }else{
-						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-						    	$('input.s4preg5:first').focus();
-						    } 										    
-					    }else{
-					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-					    	$('input.s4preg4:first').focus();
-					    } 	
-				    }else{
-				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-				    	$('input.s4preg3:first').focus();
-				    } 									    					        
-			    }else{
-			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-			    	$('input.s4preg2:first').focus();
-			    } 				         
+							// 	    }else{
+							// 	    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+							// 	    	$('input.s4preg6:first').focus();
+							// 	    } 	
+						 //    }else{
+						 //    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+						 //    	$('input.s4preg5:first').focus();
+						 //    } 										    
+					  //   }else{
+					  //   	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+					  //   	$('input.s4preg4:first').focus();
+					  //   } 	
+				   //  }else{
+				   //  	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+				   //  	$('input.s4preg3:first').focus();
+				   //  } 									    					        
+			    // }else{
+			    // 	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
+			    // 	$('input.s4preg2:first').focus();
+			    // } 				         
 		          	
 		    }       
 		});

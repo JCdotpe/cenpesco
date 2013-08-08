@@ -398,6 +398,7 @@ $.extend(jQuery.validator.messages, {
     // dateISO: "Please enter a valid date (ISO).",
      number: "Solo se permiten números",
      digits: "Solo se permiten números",
+    range: jQuery.validator.format("Por favor ingrese un valor  entre {0} y {1}."),
     // creditcard: "Please enter a valid credit card number.",
     // equalTo: "Please enter the same value again.",
     // accept: "Please enter a value with a valid extension.",
@@ -469,8 +470,8 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un mes válido");
 
 
-$.validator.addMethod("valnone", function(value, element,arg){
-    flag = true;
+$.validator.addMethod("valnone", function(value, element, arg){
+    var flag = true;
     if(value == 1){
         for(var i = 0; i<=arg.length; i++){
             if($('#' + arg[i]).val() == 1)
@@ -479,6 +480,21 @@ $.validator.addMethod("valnone", function(value, element,arg){
     }
     return flag;
  }, "Si ya selecciono una alternativa no debe seleccionar este item");  
+
+
+$.validator.addMethod("valzero", function(value, element, arg){
+    flag = false;
+    if(value == 0){
+        for(var i = 0; i<=arg.length; i++){
+               if($('#' + arg[i]).val() == 1)
+               flag = true;
+        }
+    }else{
+      flag = true;
+    }
+    return flag;
+ }, "Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.");  
+
 
  $.validator.addMethod("valrango", function(value, element,arg){
     var flag = false;
@@ -724,6 +740,7 @@ $("#pesca_dor").validate({
                                                         if($('#S2_10_DI_COD option:nth-child(2)').length){
                                                             clearInterval(interval_DIN);
                                                             $('#S2_10_DI_COD').val(valor);
+                                                            $('#S2_10_DI_COD').trigger('change');
                                                         }
                                                     }, 1000);                                   
                                                }                
@@ -753,6 +770,7 @@ $("#pesca_dor").validate({
                                                         if($('#S2_11_DI_COD option:nth-child(2)').length){
                                                             clearInterval(interval_DIDONDE);
                                                             $('#S2_11_DI_COD').val(valor);
+                                                            $('#S2_11_DI_COD').trigger('change');
                                                         }
                                                     }, 1000);                                                                                       
                                                }                                                
@@ -984,9 +1002,17 @@ $("#pesca_dor").validate({
                                                   $('#' + fila).val(valor);
                                               }
                                               break;                                                                                                                                                                                                                                                                                                                                                                    
+                                      ////////////////////////////////////////////////////////////////////////////////////
+                                      ///////////////////////////SECCION X//////////////////////////////////
+                                      ////////////////////////////////////////////////////////////////////////////////////                                 
                                         case '10':
-                                              $('#' + fila).val(valor);
-                                              break;                                              
+                                              if(fila == 'EMP_DNI'){
+                                                    $('#EMPX').val(valor);
+                                                     $('#EMPX').trigger('change');
+                                              }else{
+                                                  $('#' + fila).val(valor);
+                                              }     
+                                              break                                      
                                         default:
                                           break;
                                     }

@@ -327,7 +327,7 @@ $S7_4_T = array(
 	'id'	=> 'S7_4_T',
 	'value' => '100',
 	'readonly'=> 'readonly',
-	'class' => $span_class . ' nothing7',
+	'class' => $span_class,
 );
 
 //////////////////////////////////////////////
@@ -693,6 +693,10 @@ echo '<div class="well modulo">';
 
 					echo '<div class="offset1 span11">';
 
+						echo '<div class="span5 preguntas_sub2">';
+							echo '<p>Con dinero de terceros</p>';
+						echo '</div>'; 
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -702,9 +706,7 @@ echo '<div class="well modulo">';
 							echo '</div>'; 
 						echo '</div>';
 
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Con dinero de terceros</p>';
-						echo '</div>'; 
+
 
 
 						echo '<div class="span2">';
@@ -726,6 +728,10 @@ echo '<div class="well modulo">';
 					
 					echo '<div class="offset1 span11">';
 
+						echo '<div class="span5 preguntas_sub2">';
+							echo '<p>Con dinero propio</p>';
+						echo '</div>'; 
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -736,9 +742,7 @@ echo '<div class="well modulo">';
 							echo '</div>'; 
 						echo '</div>';
 
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>Con dinero propio</p>';
-						echo '</div>'; 
+
 
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
@@ -759,6 +763,10 @@ echo '<div class="well modulo">';
 					
 					echo '<div class="offset1 span11">';
 
+						echo '<div class="span5 preguntas_sub2">';
+							echo '<p>No financia</p>';
+						echo '</div>'; 
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -768,10 +776,6 @@ echo '<div class="well modulo">';
 									echo '</div>';	
 							echo '</div>'; 
 						echo '</div>';
-
-						echo '<div class="span6 preguntas_sub2">';
-							echo '<p>No financia</p>';
-						echo '</div>'; 
 
 
 					echo '</div>'; 
@@ -783,6 +787,10 @@ echo '<div class="well modulo">';
 					
 					echo '<div class="offset1 span11">';
 
+						echo '<div class="span5 preguntas_sub2">';
+							echo '<p>No trabajo en los últimos 12 meses</p>';
+						echo '</div>'; 
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 									echo '<div class="controls">';
@@ -791,10 +799,6 @@ echo '<div class="well modulo">';
 										echo '<div class="help-block error">' . form_error($S7_104['name']) . '</div>';
 									echo '</div>';	
 							echo '</div>'; 
-						echo '</div>'; 
-
-						echo '<div class="span7 preguntas_sub2">';
-							echo '<p>No trabajo en los últimos 12 meses</p>';
 						echo '</div>'; 
 
 					echo '</div>'; 
@@ -814,6 +818,13 @@ echo '<div class="well modulo">';
 
 					echo '<div class="offset1 span11">';
 
+					
+						echo '<div class="span2 preguntas_sub2">';
+
+							echo '<p>Pariente / amigo</p>';
+
+						echo '</div>';	
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
@@ -825,9 +836,9 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
+						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Pariente / amigo</p>';
+							echo '<p>Banco</p>';
 
 						echo '</div>';	
 
@@ -842,11 +853,7 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
 
-							echo '<p>Banco</p>';
-
-						echo '</div>';	
 
 
 					echo '</div>';
@@ -860,6 +867,12 @@ echo '<div class="well modulo">';
 
 					echo '<div class="offset1 span11">';
 
+						echo '<div class="span2 preguntas_sub2">';
+
+							echo '<p>Comerciante o intermediario?</p>';
+
+						echo '</div>';						
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
@@ -871,9 +884,9 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
+						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Comerciante o intermediario?</p>';
+							echo '<p>Financiera?</p>';
 
 						echo '</div>';	
 
@@ -888,11 +901,7 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
 
-							echo '<p>Financiera?</p>';
-
-						echo '</div>';	
 
 
 					echo '</div>';
@@ -909,6 +918,13 @@ echo '<div class="well modulo">';
 
 					echo '<div class="offset1 span11">';
 
+
+						echo '<div class="span2 preguntas_sub2">';
+
+							echo '<p>Caja municipal o rural?</p>';
+
+						echo '</div>';	
+
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
 								echo '<div class="controls ">';
@@ -920,9 +936,9 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
+						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Caja municipal o rural?</p>';
+							echo '<p>Otro</p>';
 
 						echo '</div>';	
 
@@ -937,11 +953,7 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span1 preguntas_sub2">';
 
-							echo '<p>Otro</p>';
-
-						echo '</div>';	
 
 						echo '<div class="span4">';
 							echo '<div class="control-group">';
@@ -1076,10 +1088,15 @@ echo '<div class="well modulo">';
 					                  echo '<td>' . form_input($S7_4_3_1) . '<div class="help-block error">' . form_error($S7_4_3_1['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
-					                  echo '<td>' . form_input($S7_4_4_O) . '<div class="help-block error">' . form_error($S7_4_4_O['name']) . '</div></td>';
+					                  echo '<td>Otro</td>';
 					                  echo '<td>' . form_input($S7_4_4) . '<div class="help-block error">' . form_error($S7_4_4['name']) . '</div></td>';
-					                  echo '<td>' . form_input($S7_4_4_1) . '<div class="help-block error">' . form_error($S7_4_4_1['name']) . '</div></td>';
+					                  echo '<td></td>';
 					               echo '</tr>'; 		
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S7_4_4_O) . '<div class="help-block error">' . form_error($S7_4_4_O['name']) . '</div>Especifique</td>';
+					                  echo '<td></td>';
+					                  echo '<td>' . form_input($S7_4_4_1) . '<div class="help-block error">' . form_error($S7_4_4_1['name']) . '</div></td>';
+					               echo '</tr>'; 	
 					               echo '<tr>';
 					                  echo '<td>Total</td>';
 					                  echo '<td></td>';
@@ -1335,7 +1352,13 @@ echo '<div class="well modulo">';
 					
 				echo '<div class="row-fluid">';		
 
-					echo '<div class="offset1 span11">';
+					echo '<div class="span12">';
+
+						echo '<div class="span2 preguntas_sub2">';
+
+							echo '<p>Fresco?</p>';
+
+						echo '</div>';	
 
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
@@ -1348,9 +1371,9 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
+						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Fresco?</p>';
+							echo '<p>Seco salado?</p>';
 
 						echo '</div>';	
 
@@ -1365,11 +1388,7 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
 
-							echo '<p>Seco salado?</p>';
-
-						echo '</div>';	
 
 
 					echo '</div>';
@@ -1384,7 +1403,13 @@ echo '<div class="well modulo">';
 
 				echo '<div class="row-fluid">';		
 
-					echo '<div class="offset1 span11">';
+					echo '<div class="span12">';
+
+						echo '<div class="span2 preguntas_sub2">';
+
+							echo '<p>Salpreso?</p>';
+
+						echo '</div>';	
 
 						echo '<div class="span2">';
 							echo '<div class="control-group">';
@@ -1397,9 +1422,9 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span3 preguntas_sub2">';
+						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Salpreso?</p>';
+							echo '<p>Otro?</p>';
 
 						echo '</div>';	
 
@@ -1414,11 +1439,7 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-						echo '<div class="span1 preguntas_sub2">';
 
-							echo '<p>Otro?</p>';
-
-						echo '</div>';	
 
 						echo '<div class="span4">';
 							echo '<div class="control-group">';
@@ -1489,6 +1510,8 @@ $('#S7_101').change(function() {
 	}
 	 $('#S7_102').trigger('change');	
 	 $('#S7_5_1, #S7_5_2, #S7_5_3, #S7_5_4, #S7_5_5, #S7_5_6, #S7_5_7, #S7_5_8, #S7_5_9, #S7_5_10').trigger('change');
+	 $('#S7_103').trigger('change');	
+	 $('#S7_104').trigger('change');	
 });
 
 $('#S7_102').change(function() {
@@ -1678,6 +1701,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_104: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero:['S7_101', 'S7_102', 'S7_103'],
 		         }, 
 
 		    	S7_201: {
@@ -1703,6 +1727,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_206: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero:['S7_201', 'S7_202', 'S7_203', 'S7_204', 'S7_205'],
 		         }, 
 		    	S7_206_O: {
 		    		required:true,
@@ -1816,6 +1841,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_3_12: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero:['S7_3_1', 'S7_3_2', 'S7_3_3', 'S7_3_4', 'S7_3_5', 'S7_3_6', 'S7_3_7', 'S7_3_8', 'S7_3_9', 'S7_3_10', 'S7_3_11'],
 		         }, 
 		    	S7_3_12_C: {
 		            digits: true,
@@ -1865,6 +1891,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 
 
 		    	S7_5_1: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         }, 
@@ -2010,6 +2037,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_7_3: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S7_7_1','S7_7_2'],
 		         }, 
 
 		    	S7_8_1: {
@@ -2035,6 +2063,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_8_6: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S7_8_1','S7_8_2','S7_8_3','S7_8_4','S7_8_5'],
 		         }, 
 
 		    	S7_9_1: {
@@ -2053,6 +2082,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_9_4: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S7_9_1','S7_9_2','S7_9_3'],
 		         }, 
 
 		    	S7_10_1: {
@@ -2070,6 +2100,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_10_4: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S7_10_1','S7_10_2','S7_10_3'],
 		         }, 
 		    	S7_10_4_O: {
 		    		required:true, 
@@ -2108,54 +2139,54 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    },
 		    submitHandler: function(form) {
 
-				var s7p1_sum = 0;
-				$('.s7preg1').each(function(){
-				    s7p1_sum += parseInt(this.value);
-				});	
+				// var s7p1_sum = 0;
+				// $('.s7preg1').each(function(){
+				//     s7p1_sum += parseInt(this.value);
+				// });	
 
-				var s7p2_sum = 0;
-				$('.s7preg2').each(function(){
-				    s7p2_sum += parseInt(this.value);
-				});	
+				// var s7p2_sum = 0;
+				// $('.s7preg2').each(function(){
+				//     s7p2_sum += parseInt(this.value);
+				// });	
 
-				var s7p3_sum = 0;
-				$('.s7preg3').each(function(){
-				    s7p3_sum += parseInt(this.value);
-				});	
+				// var s7p3_sum = 0;
+				// $('.s7preg3').each(function(){
+				//     s7p3_sum += parseInt(this.value);
+				// });	
 
-				var s7p4_sum = 0;
-				$('.s7preg4').each(function(){
-				    s7p4_sum += parseInt(this.value);
-				});	
+				// var s7p4_sum = 0;
+				// $('.s7preg4').each(function(){
+				//     s7p4_sum += parseInt(this.value);
+				// });	
 
-				var s7p7_sum = 0;
-				$('.s7preg7').each(function(){
-				    s7p7_sum += parseInt(this.value);
-				});	
+				// var s7p7_sum = 0;
+				// $('.s7preg7').each(function(){
+				//     s7p7_sum += parseInt(this.value);
+				// });	
 
-				var s7p8_sum = 0;
-				$('.s7preg8').each(function(){
-				    s7p8_sum += parseInt(this.value);
-				});	
+				// var s7p8_sum = 0;
+				// $('.s7preg8').each(function(){
+				//     s7p8_sum += parseInt(this.value);
+				// });	
 
-				var s7p9_sum = 0;
-				$('.s7preg9').each(function(){
-				    s7p9_sum += parseInt(this.value);
-				});	
+				// var s7p9_sum = 0;
+				// $('.s7preg9').each(function(){
+				//     s7p9_sum += parseInt(this.value);
+				// });	
 
-				var s7p10_sum = 0;
-				$('.s7preg10').each(function(){
-				    s7p10_sum += parseInt(this.value);
-				});	
+				// var s7p10_sum = 0;
+				// $('.s7preg10').each(function(){
+				//     s7p10_sum += parseInt(this.value);
+				// });	
 
-				if(s7p1_sum != 0){
-					if(s7p2_sum != 0){
-						if(s7p3_sum != 0){
-							if(s7p4_sum != 0){
-								if(s7p7_sum != 0){
-									if(s7p8_sum != 0){
-										if(s7p9_sum != 0){
-											if(s7p10_sum != 0){
+				// if(s7p1_sum != 0){
+				// 	if(s7p2_sum != 0){
+				// 		if(s7p3_sum != 0){
+				// 			if(s7p4_sum != 0){
+				// 				if(s7p7_sum != 0){
+				// 					if(s7p8_sum != 0){
+				// 						if(s7p9_sum != 0){
+				// 							if(s7p10_sum != 0){
 											    	//seccion 2 serial
 											    	var seccion7_data = $("#seccion7").serializeArray();
 												    seccion7_data.push(
@@ -2178,38 +2209,38 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 															$('#pesca_dor').trigger('submit');
 											            }
 											        });  
-											}else{
-											    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-											    	$('input.s7preg10:first').focus();
-											} 							        
-										}else{
-										    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-										    	$('input.s7preg9:first').focus();
-										} 						        
-									}else{
-									    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-									    	$('input.s7preg8:first').focus();
-									}   	
-								}else{
-									    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-									    $('input.s7preg7:first').focus();
-								}  										          
-							}else{
-							    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-							    	$('input.s7preg4:first').focus();
-							}  
-						}else{
-						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-						    	$('input.s7preg3:first').focus();
-						}   				         
-					}else{
-						    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-						    $('input.s7preg2:first').focus();
-					}  		          	
-				}else{
-						alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-						$('input.s7preg1:first').focus();
-				}  						
+				// 							}else{
+				// 							    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 							    	$('input.s7preg10:first').focus();
+				// 							} 							        
+				// 						}else{
+				// 						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 						    	$('input.s7preg9:first').focus();
+				// 						} 						        
+				// 					}else{
+				// 					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 					    	$('input.s7preg8:first').focus();
+				// 					}   	
+				// 				}else{
+				// 					    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 					    $('input.s7preg7:first').focus();
+				// 				}  										          
+				// 			}else{
+				// 			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 			    	$('input.s7preg4:first').focus();
+				// 			}  
+				// 		}else{
+				// 		    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 		    	$('input.s7preg3:first').focus();
+				// 		}   				         
+				// 	}else{
+				// 		    alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 		    $('input.s7preg2:first').focus();
+				// 	}  		          	
+				// }else{
+				// 		alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 		$('input.s7preg1:first').focus();
+				// }  						
 		    }       
 		});
  }); 

@@ -3442,6 +3442,10 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #S2_9_PP_COD").change(function(event) {
                 });
                 if(event.target.id == 'S2_9_PP_COD')
                 	sel.trigger('change');
+                if(event.target.id == 'S2_10_PP_COD')
+                	$('#S2_10_DI_COD').trigger('change');
+                if(event.target.id == 'S2_11_PP_COD')
+                	$('#S2_11_DI_COD').trigger('change');             	                
             }
         });           
 });
@@ -3702,6 +3706,49 @@ $('#S2_11_PAIS_COD').change(function() {
 });
 
 
+$('#S2_10_PP_COD').change(function() {
+    var ugo = $('#S2_10_PP_O');
+    if($(this).val() == -1 && $('#S2_10_PAIS_COD').val() == 124){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 
+    }
+   
+});
+
+$('#S2_10_DI_COD').change(function() {
+    var ugo = $('#S2_10_DI_O');
+    if($(this).val() == -1 && $('#S2_10_PAIS_COD').val() == 124){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 	  		
+    }
+});
+
+
+$('#S2_11_PP_COD').change(function() {
+    var ugo = $('#S2_11_PP_O');
+    if($(this).val() == -1 && $('#S2_11_PAIS_COD').val() == 124){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 	  	  		
+    }
+});
+
+$('#S2_11_DI_COD').change(function() {
+    var ugo = $('#S2_11_DI_O');
+    if($(this).val() == -1 && $('#S2_11_PAIS_COD').val() == 124){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 	  		
+    }
+});
+
+
 $('#S2_20_9').change(function() {
 	var th = $(this).val();
 	var des = $('#' + $(this).attr('id') + '_O');
@@ -3947,6 +3994,7 @@ $.extend(jQuery.validator.messages, {
 		        S2_14_8:{
 		            digits:true,
 		            valrango: [0,1,9],
+		            valzero:['S2_14_1', 'S2_14_2', 'S2_14_3', 'S2_14_4','S2_14_5', 'S2_14_6', 'S2_14_7'],
 		            valnone:['S2_14_1', 'S2_14_2', 'S2_14_3', 'S2_14_4','S2_14_5', 'S2_14_6', 'S2_14_7'],
 		         }, 		
 		        S2_15:{
@@ -4003,6 +4051,7 @@ $.extend(jQuery.validator.messages, {
 		        S2_17_9:{
 		            digits:true,
 		           valrango: [0,1,9],
+		           valzero:['S2_17_1', 'S2_17_2', 'S2_17_3', 'S2_17_4', 'S2_17_5', 'S2_17_6', 'S2_17_7', 'S2_17_8'],
 		           valnone:['S2_17_1', 'S2_17_2', 'S2_17_3', 'S2_17_4', 'S2_17_5', 'S2_17_6', 'S2_17_7', 'S2_17_8'],
 		         }, 	
 		        S2_18:{
@@ -4056,6 +4105,8 @@ $.extend(jQuery.validator.messages, {
 		        S2_20_9:{
 		            digits:true,
 		            valrango: [0,1,9],
+		            valzero:['S2_20_1', 'S2_20_2', 'S2_20_3', 'S2_20_4', 'S2_20_5', 'S2_20_6', 'S2_20_7', 'S2_20_8'],	            
+		            // valnone:['S2_20_1', 'S2_20_2', 'S2_20_3', 'S2_20_4', 'S2_20_5', 'S2_20_6', 'S2_20_7', 'S2_20_8'],
 		         }, 	
 		        S2_20_9_O:{
 		        	required:true,
@@ -4668,23 +4719,23 @@ $.extend(jQuery.validator.messages, {
 		    },
 		    submitHandler: function(form) {
 
-				var s2p14_sum = 0;
-				$('.s2preg14').each(function(){
-				    s2p14_sum += parseInt(this.value);
-				});			
-				var s2p17_sum = 0;
-				$('.s2preg17').each(function(){
-				    s2p17_sum += parseInt(this.value);
-				});		
+				// var s2p14_sum = 0;
+				// $('.s2preg14').each(function(){
+				//     s2p14_sum += parseInt(this.value);
+				// });			
+				// var s2p17_sum = 0;
+				// $('.s2preg17').each(function(){
+				//     s2p17_sum += parseInt(this.value);
+				// });		
 
-				var s2p20_sum = 0;
-				$('.s2preg20').each(function(){
-				    s2p20_sum += parseInt(this.value);
-				});					
-				//pregunta 14
-				if(s2p14_sum != 0){
-					if(s2p17_sum != 0){
-						if(s2p20_sum != 0){
+				// var s2p20_sum = 0;
+				// $('.s2preg20').each(function(){
+				//     s2p20_sum += parseInt(this.value);
+				// });					
+
+				// if(s2p14_sum != 0){
+				// 	if(s2p17_sum != 0){
+				// 		if(s2p20_sum != 0){
 							    	//seccion 2 serial
 							    	var seccion2_data = $("#seccion2").serializeArray();
 								    seccion2_data.push(
@@ -4716,18 +4767,18 @@ $.extend(jQuery.validator.messages, {
 											$('#pesca_dor').trigger('submit');
 							            }
 							        }); 
-					    }else{
-					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-					    	$('input.s2preg20:first').focus();
-					    } 						        
-				    }else{
-				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-				    	$('input.s2preg17:first').focus();
-				    }   						        
-			    }else{
-			    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones..');
-			    	$('input.s2preg14:first').focus();
-			    }    
+					  //   }else{
+					  //   	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+					  //   	$('input.s2preg20:first').focus();
+					  //   } 						        
+				   //  }else{
+				   //  	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				   //  	$('input.s2preg17:first').focus();
+				   //  }   						        
+			    // }else{
+			    // 	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+			    // 	$('input.s2preg14:first').focus();
+			    // }    
 		          	
 		    }       
 		});

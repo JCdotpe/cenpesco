@@ -1312,7 +1312,8 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O, #S3_500_O, #S3_1100E').attr("disa
 		    	S3_911: {
 		            digits:true,
 		            valrango: [0,1,9],
-		            valnone:['S3_901', 'S3_902', 'S3_903', 'S3_904','S3_905', 'S3_906', 'S3_907', 'S3_908', 'S3_909', 'S3_910']
+		            valzero:['S3_901', 'S3_902', 'S3_903', 'S3_904','S3_905', 'S3_906', 'S3_907', 'S3_908', 'S3_909', 'S3_910'],
+		            valnone:['S3_901', 'S3_902', 'S3_903', 'S3_904','S3_905', 'S3_906', 'S3_907', 'S3_908', 'S3_909', 'S3_910'],
 		         }, 
 		    	S3_1001: {
 		            digits:true,
@@ -1333,7 +1334,8 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O, #S3_500_O, #S3_1100E').attr("disa
 		    	S3_1005: {
 		            digits:true,
 		            valrango: [0,1,9],
-		            valnone:['S3_1001', 'S3_1002', 'S3_1003', 'S3_1004']
+		            valzero:['S3_1001', 'S3_1002', 'S3_1003', 'S3_1004'],
+		            valnone:['S3_1001', 'S3_1002', 'S3_1003', 'S3_1004'],
 		         },		
 		    	S3_1100: {
 		            digits:true,
@@ -1379,18 +1381,18 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O, #S3_500_O, #S3_1100E').attr("disa
 		    },
 		    submitHandler: function(form) {
 
-				var s3p9_sum = 0;
-				$('.s3preg9').each(function(){
-				    s3p9_sum += parseInt(this.value);
-				});	
+				// var s3p9_sum = 0;
+				// $('.s3preg9').each(function(){
+				//     s3p9_sum += parseInt(this.value);
+				// });	
 
-				var s3p10_sum = 0;
-				$('.s3preg10').each(function(){
-				    s3p10_sum += parseInt(this.value);
-				});	
+				// var s3p10_sum = 0;
+				// $('.s3preg10').each(function(){
+				//     s3p10_sum += parseInt(this.value);
+				// });	
 
-				if(s3p9_sum != 0){
-					if(s3p10_sum != 0){	
+				// if(s3p9_sum != 0){
+				// 	if(s3p10_sum != 0){	
 				    	//seccion 2 serial
 				    	var seccion3_data = $("#seccion3").serializeArray();
 					    seccion3_data.push(
@@ -1413,14 +1415,14 @@ $('#S3_100_O, #S3_200_O, #S3_300_O, #S3_400_O, #S3_500_O, #S3_1100E').attr("disa
 								$('#pesca_dor').trigger('submit');
 				            }
 				        });   
-				    }else{
-				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-				    	$('input.s3preg10:first').focus();
-				    }   				         
-				}else{
-				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-				    	$('input.s3preg9:first').focus();
-				}   
+				//     }else{
+				//     	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				//     	$('input.s3preg10:first').focus();
+				//     }   				         
+				// }else{
+				//     	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				//     	$('input.s3preg9:first').focus();
+				// }   
 
 		    }       
 		});

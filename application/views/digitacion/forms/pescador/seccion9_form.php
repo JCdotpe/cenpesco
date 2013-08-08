@@ -379,7 +379,7 @@ $(document).on("change",'#S9_4_1, #S9_4_2, #S9_4_3, #S9_4_4, #S9_4_5, #S9_4_6',f
   var pre = $(this).attr('id');
   var npreg = pre.substring(5,6);
   var th = $(this).val();
-  if(th != 1 && th != ''){
+  if((th != 1 && th != 2) && th != ''){
     $('.embc' + npreg).removeAttr('disabled');
   }else{
      $('.embc' + npreg).val('');

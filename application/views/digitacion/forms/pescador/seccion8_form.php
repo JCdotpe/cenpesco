@@ -544,9 +544,13 @@ echo '<div class="well modulo">';
 					                  echo '<td>' . form_input($S8_3_9) . '<div class="help-block error">' . form_error($S8_3_9['name']) . '</div></td>';
 					               echo '</tr>'; 
 					               echo '<tr>';
-					                  echo '<td>' . form_input($S8_3_10_O) . '<div class="help-block error">' . form_error($S8_3_10_O['name']) . '</div></td>';
+					                  echo '<td>Otro</td>';
 					                  echo '<td>' . form_input($S8_3_10) . '<div class="help-block error">' . form_error($S8_3_10['name']) . '</div></td>';
-					               echo '</tr>'; 					               					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
+					               echo '</tr>'; 	
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S8_3_10_O) . '<div class="help-block error">' . form_error($S8_3_10_O['name']) . '</div>Especifique</td>';
+					                  echo '<td></td>';
+					               echo '</tr>'; 						               				               					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
 			              echo '</tbody>';
 			            echo '</table>';	
 				echo '</div>';	
@@ -640,11 +644,17 @@ echo '<div class="well modulo">';
 					                  echo '<td>' . form_input($S8_4_8L) . '<div class="help-block error">' . form_error($S8_4_8L['name']) . '</div></td>';
 					               echo '</tr>';  					               	
 					               echo '<tr>';
-					                  echo '<td>' . form_input($S8_4_9_O) . '<div class="help-block error">' . form_error($S8_4_9_O['name']) . '</div></td>';
+					                  echo '<td>Otro</td>';
 					                  echo '<td>' . form_input($S8_4_9) . '<div class="help-block error">' . form_error($S8_4_9['name']) . '</div></td>';
+					                  echo '<td></td>';
+					                  echo '<td></td>';
+					               echo '</tr>';  				
+					               echo '<tr>';
+					                  echo '<td>' . form_input($S8_4_9_O) . '<div class="help-block error">' . form_error($S8_4_9_O['name']) . '</div>Especifique</td>';
+					                  echo '<td></td>';
 					                  echo '<td>' . form_input($S8_4_9A) . '<div class="help-block error">' . form_error($S8_4_9A['name']) . '</div></td>';
 					                  echo '<td>' . form_input($S8_4_9L) . '<div class="help-block error">' . form_error($S8_4_9L['name']) . '</div></td>';
-					               echo '</tr>';  						               					               					               						               				                					               	               					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
+					               echo '</tr>';  						               		               					               					               						               				                					               	               					               					               			               			               					               				               				               				               				               				               					                					                						               				               					               					               
 			              echo '</tbody>';
 			            echo '</table>';	
 				echo '</div>';	
@@ -876,6 +886,7 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 		    	S8_1_9: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero:['S8_1_1', 'S8_1_2', 'S8_1_3', 'S8_1_4', 'S8_1_5', 'S8_1_6', 'S8_1_7', 'S8_1_8'],
 		            valnone:['S8_1_1', 'S8_1_2', 'S8_1_3', 'S8_1_4', 'S8_1_5', 'S8_1_6', 'S8_1_7', 'S8_1_8'],
 		         },  
 
@@ -925,6 +936,7 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 		    	S8_3_10: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero:['S8_3_1', 'S8_3_2', 'S8_3_3', 'S8_3_4', 'S8_3_5', 'S8_3_6', 'S8_3_7', 'S8_3_8', 'S8_3_9'],
 		         },  
 		    	S8_3_10_O: {
 		    		required:true,
@@ -1044,6 +1056,7 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 		    	S8_4_9: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero:['S8_4_1', 'S8_4_2', 'S8_4_3', 'S8_4_4', 'S8_4_5', 'S8_4_6', 'S8_4_7', 'S8_4_8'],
 		         },  
 		    	S8_4_9_O: {
 		    		required:true,
@@ -1131,24 +1144,24 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 		      validator.focusInvalid();
 		    },
 		    submitHandler: function(form) {
-				var s8p1_sum = 0;
-				$('.s8preg1').each(function(){
-				    s8p1_sum += parseInt(this.value);
-				});	
+				// var s8p1_sum = 0;
+				// $('.s8preg1').each(function(){
+				//     s8p1_sum += parseInt(this.value);
+				// });	
 
-				var s8p3_sum = 0;
-				$('.s8preg3').each(function(){
-				    s8p3_sum += parseInt(this.value);
-				});	
+				// var s8p3_sum = 0;
+				// $('.s8preg3').each(function(){
+				//     s8p3_sum += parseInt(this.value);
+				// });	
 
-				var s8p4_sum = 0;
-				$('.s8preg4').each(function(){
-				    s8p4_sum += parseInt(this.value);
-				});	
+				// var s8p4_sum = 0;
+				// $('.s8preg4').each(function(){
+				//     s8p4_sum += parseInt(this.value);
+				// });	
 
-				if(s8p1_sum != 0){
-					if(s8p3_sum != 0){
-						if(s8p4_sum != 0){						
+				// if(s8p1_sum != 0){
+				// 	if(s8p3_sum != 0){
+				// 		if(s8p4_sum != 0){						
 							    	//seccion 2 serial
 							    	var seccion8_data = $("#seccion8").serializeArray();
 								    seccion8_data.push(
@@ -1171,18 +1184,18 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 											$('#pesca_dor').trigger('submit');
 							            }
 							        });  
-						}else{
-						    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-						    	$('input.s8preg4:first').focus();
-						} 								        
-					}else{
-					    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-					    	$('input.s8preg3:first').focus();
-					} 							           
-				}else{
-				    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
-				    	$('input.s8preg1:first').focus();
-				}   		          	
+				// 		}else{
+				// 		    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 		    	$('input.s8preg4:first').focus();
+				// 		} 								        
+				// 	}else{
+				// 	    	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				// 	    	$('input.s8preg3:first').focus();
+				// 	} 							           
+				// }else{
+				//     	alert('Debe ingresar al menos una opción, no pueden ser 0 todas las opciones.');
+				//     	$('input.s8preg1:first').focus();
+				// }   		          	
 		    }       
 		});
  }); 

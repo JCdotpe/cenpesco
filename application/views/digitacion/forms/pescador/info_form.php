@@ -1,4 +1,13 @@
 <?php 
+
+
+
+		$empad = array(-1 => '-'); 
+		foreach($emps->result() as $e)
+		{
+			$empad[$e->DNI]=strtoupper($e->NOMBRE);
+		}
+
 $labelnroform=  array('class' => 'preguntas_sub2 nroformpesc');
 $label1=  array('class' => 'preguntas_sub2');
 $label_class =  array('class' => 'control-label pesc_f');
@@ -51,16 +60,17 @@ $RES = array(
 	'class' => $span_class,
 );
 //Empadronador
-$EMP = array(
-	'name'	=> 'EMP',
-	'id'	=> 'EMP',
-	'maxlength'	=> 100,
-	'class' => $span_class,
-);
+// $EMP = array(
+// 	'name'	=> 'EMP',
+// 	'id'	=> 'EMP',
+// 	'maxlength'	=> 100,
+// 	'class' => $span_class,
+// );
 //Empadronador_DNI
 $EMP_DNI = array(
 	'name'	=> 'EMP_DNI',
 	'id'	=> 'EMP_DNI',
+	'readonly' => 'readonly',
 	'maxlength'	=> 8,
 	'class' => $span_class,
 );
@@ -243,9 +253,10 @@ echo '<div class="well modulo">';
 				echo '<div class="span6">';
 					echo '<div class="control-group">';
 						echo '<div class="controls">'; 
-							echo form_input($EMP); 
+							// echo form_input($EMP); 
+						    echo form_dropdown('EMPX', $empad, FALSE,'class="span12" id="EMPX"');
 							echo '<span class="help-inline"></span>';
-							echo '<div class="help-block error">' . form_error($EMP['name']) . '</div>';
+							echo '<div class="help-block error">' . form_error('EMPX') . '</div>';
 						echo '</div>'; 	
 					echo '</div>';
 				echo '</div>';
@@ -280,6 +291,9 @@ echo form_close();
 <script type="text/javascript">
 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
+$('#EMPX').change(function() {
+	$('#EMP_DNI').val($(this).val());
+});
 
 $(function(){
 	// $("#pesc_info").on("submit", function(event) {
@@ -311,9 +325,9 @@ $(function(){
 		    		digits: true, 	
 		            valrango:[1,3,9],
 		         },  
-		    	EMP: {	
-		    		required:true,
-		            validName: true,
+		    	EMPX: {	
+		            required: true,
+		            valueNotEquals: -1,
 		         },  
 		    	EMP_DNI: {	
 		            digits:true,
@@ -357,7 +371,8 @@ $(function(){
 		    	var seccion_info_data = $("#pesc_info").serializeArray();
 			    seccion_info_data.push(
 			        {name: 'ajax',value:1},
-			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()}      
+			        {name: 'pescador_id',value:$("input[name='pescador_id']").val()},
+			        {name: 'EMP',value:$('#EMPX :selected').text()}
 			    );
 				
 		        var bsubinfo = $( "#pesc_info :submit" );
