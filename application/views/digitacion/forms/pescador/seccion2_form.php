@@ -3811,6 +3811,11 @@ $('#S2_9_DD_COD').trigger("change");
 		            validName:true,
 		            maxlength: 80, 
 		         },  	
+		        S2_1_NOM:{
+		            required: true,
+		            validName:true,
+		            maxlength: 80, 
+		         }, 		         
 		        S2_2D:{
 		            required: true,
 		            exactlength: 2,
