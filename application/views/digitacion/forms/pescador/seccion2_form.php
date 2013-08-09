@@ -2751,7 +2751,7 @@ echo '<div class="question">';
 
 							echo '<div class="span4">';
 
-								echo '<p>Otro</p>';
+								echo '<p>Otro?</p>';
 
 							echo '</div>';	
 
