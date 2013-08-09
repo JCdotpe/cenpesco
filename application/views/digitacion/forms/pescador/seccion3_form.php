@@ -353,8 +353,8 @@ echo '<div class="well modulo">';
 							echo '</div>'; 	
 
 
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S3_100_O['id'], $label_class);
+							echo '<div class="control-group offset1 span2">';	
+								echo form_label('Especifique', $S3_100_O['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group span4">';
@@ -386,8 +386,8 @@ echo '<div class="well modulo">';
 							echo '</div>'; 	
 
 
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S3_200_O['id'], $label_class);
+							echo '<div class="control-group offset1 span2">';	
+								echo form_label('Especifique', $S3_200_O['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group span4">';
@@ -420,8 +420,8 @@ echo '<div class="well modulo">';
 							echo '</div>'; 	
 
 
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S3_300_O['id'], $label_class);
+							echo '<div class="control-group offset1 span2">';	
+								echo form_label('Especifique', $S3_300_O['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group span4">';
@@ -453,8 +453,8 @@ echo '<div class="well modulo">';
 							echo '</div>'; 	
 
 
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S3_400_O['id'], $label_class);
+							echo '<div class="control-group offset1 span2">';	
+								echo form_label('Especifique', $S3_400_O['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group span4">';
@@ -487,8 +487,8 @@ echo '<div class="well modulo">';
 							echo '</div>'; 	
 
 
-							echo '<div class="control-group offset2 span1">';	
-								echo form_label('Otra', $S3_500_O['id'], $label_class);
+							echo '<div class="control-group offset1 span2">';	
+								echo form_label('Especifique', $S3_500_O['id'], $label_class);
 							echo '</div>'; 
 
 							echo '<div class="control-group span4">';
@@ -659,253 +659,253 @@ echo '<div class="well modulo">';
 		echo '<div class="question">';
 			echo '<p>9. ¿Su vivienda cuenta con:</p>';	
 
-						echo '<div class="row-fluid">';
+					echo '<div class="row-fluid">';
 
-							echo '<div class="offset2 span2">';
+						echo '<div class="span6">';
 
-								echo '<p>Equipo de Sonido?</p>';
+							echo '<div class="row-fluid">';
+								echo '<div class="span7">';
 
-							echo '</div>';	
+									echo '<p>Equipo de Sonido?</p>';
 
-							echo '<div class="span2">';
+								echo '</div>';	
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_901); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_901['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+								echo '<div class="span5">';
 
-							echo '</div>';	
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_901); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_901['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
 
-
-							echo '<div class="offset1 span2">';
-
-								echo '<p>Cocina a gas?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_907); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_907['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-						echo '</div>'; 
-
-
-
-
-///
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset2 span2">';
-
-								echo '<p>Televisor a color?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_902); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_902['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
+								echo '</div>';	
 							echo '</div>';	
 
 
-							echo '<div class="offset1 span2">';
-								echo '<p>Computadora?</p>';
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span7">';
+
+									echo '<p>Televisor a color?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_902); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_902['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+							echo '</div>';	
+
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span7">';
+
+									echo '<p>DVD?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_903); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_903['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+							echo '</div>';	
+
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span7">';
+
+									echo '<p>Licuadora?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_904); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_904['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+							echo '</div>';	
+
+
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span7">';
+
+									echo '<p>Refrigeradora /congeladora?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_905); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_905['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+							echo '</div>';	
+
+
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span7">';
+
+									echo '<p>Plancha eléctrica?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_906); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_906['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
 
 							echo '</div>';	
 
-							echo '<div class="span2">';
+						echo '</div>';
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_908); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_908['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
 
+						echo '<div class="span6">';
+
+							echo '<div class="row-fluid">';
+								echo '<div class="span7">';
+
+									echo '<p>Cocina a gas?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_907); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_907['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
 							echo '</div>';	
 
 
-						echo '</div>'; 		
+							echo '<div class="row-fluid">';
+								echo '<div class="span7">';
+									echo '<p>Computadora?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_908); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_908['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+
+							echo '</div>'; 		
 
 
+							echo '<div class="row-fluid">';
+								echo '<div class="span7">';
 
-///
+									echo '<p>Lavadora?</p>';
 
+								echo '</div>';	
 
+								echo '<div class="span5">';
 
-						echo '<div class="row-fluid">';
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_909); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_909['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
 
-							echo '<div class="offset2 span2">';
+								echo '</div>';	
 
-								echo '<p>DVD?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_903); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_903['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
+							echo '</div>'; 	
 
 
-							echo '<div class="offset1 span2">';
+							echo '<div class="row-fluid">';
+								echo '<div class="span7">';
 
-								echo '<p>Lavadora?</p>';
+									echo '<p>Horno microondas?</p>';
 
-							echo '</div>';	
+								echo '</div>';	
 
-							echo '<div class="span2">';
+								echo '<div class="span5">';
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_909); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_909['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_910); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_910['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
 
-							echo '</div>';	
+								echo '</div>';	
+
+							echo '</div>'; 	
 
 
+							echo '<div class="row-fluid">';
+								echo '<div class="span7">';
+
+									echo '<p>NINGUNO</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span5">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_911); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_911['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+
+							echo '</div>'; 	
 						echo '</div>'; 	
-
-
-
-///
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset2 span2">';
-
-								echo '<p>Licuadora?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_904); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_904['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-
-							echo '<div class="offset1 span2">';
-
-								echo '<p>Horno microondas?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_910); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_910['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-
-						echo '</div>'; 	
-
-
-///
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset2 span2">';
-
-								echo '<p>Refrigeradora /congeladora?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_905); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_905['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-
-							echo '<div class="offset1 span2">';
-
-								echo '<p>NINGUNO</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_911); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_911['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-
-						echo '</div>'; 	
-
-
-///
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset2 span2">';
-
-								echo '<p>Plancha eléctrica?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_906); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_906['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-						echo '</div>';										
+					echo '</div>'; 	
+									
 		echo '</div>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -917,111 +917,123 @@ echo '<div class="well modulo">';
 		echo '<div class="question">';
 			echo '<p>10. ¿Los servicios de comunicación con que cuenta su vivienda son:</p>';	
 
-						echo '<div class="row-fluid">';
+					echo '<div class="row-fluid">';
 
-							echo '<div class="offset1 span3">';
+						echo '<div class="span6">';
 
-								echo '<p>Teléfono fijo ?</p>';
+							echo '<div class="row-fluid">';
 
-							echo '</div>';	
+								echo '<div class="span8">';
 
-							echo '<div class="span2">';
+									echo '<p>Teléfono fijo?</p>';
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_1001); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_1001['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+								echo '</div>';	
 
-							echo '</div>';	
+								echo '<div class="span4">';
 
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_1001); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_1001['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
 
-							echo '<div class="offset1 span3">';
-
-								echo '<p>Teléfono celular ?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_1002); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_1002['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-						echo '</div>'; 
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span3">';
-
-								echo '<p>Conexión a internet ?</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_1003); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_1003['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
+								echo '</div>';	
 							echo '</div>';	
 
 
-							echo '<div class="offset1 span3">';
+							echo '<div class="row-fluid">';
+								echo '<div class="span8">';
 
-								echo '<p>Television TV por cable ?</p>';
+									echo '<p>Teléfono celular?</p>';
 
+								echo '</div>';	
+
+								echo '<div class="span4">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_1002); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_1002['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+
+							echo '</div>'; 
+
+
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span8">';
+
+									echo '<p>Conexión a internet?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span4">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_1003); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_1003['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
 							echo '</div>';	
 
-							echo '<div class="span2">';
+						echo '</div>';		
 
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_1004); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_1004['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
+						echo '<div class="span6">';
+							echo '<div class="row-fluid">';
+								echo '<div class="span8">';
+
+									echo '<p>Conexión a TV por cable?</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span4">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_1004); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_1004['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
+
+							echo '</div>'; 		
+
+
+							echo '<div class="row-fluid">';
+
+								echo '<div class="span8">';
+
+									echo '<p>NINGUNO</p>';
+
+								echo '</div>';	
+
+								echo '<div class="span4">';
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($S3_1005); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error($S3_1005['name']) . '</div>';
+										echo '</div>';	
+									echo '</div>'; 
+
+								echo '</div>';	
 
 							echo '</div>';	
-
-
-						echo '</div>'; 		
-
-
-						echo '<div class="row-fluid">';
-
-							echo '<div class="offset1 span3">';
-
-								echo '<p>NINGUNO</p>';
-
-							echo '</div>';	
-
-							echo '<div class="span2">';
-
-								echo '<div class="control-group">';
-									echo '<div class="controls">';
-										echo form_input($S3_1005); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($S3_1005['name']) . '</div>';
-									echo '</div>';	
-								echo '</div>'; 
-
-							echo '</div>';	
-
-						echo '</div>';											
+						echo '</div>'; 	
+					echo '</div>'; 																							
 
 		echo '</div>';	
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

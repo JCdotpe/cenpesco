@@ -1864,7 +1864,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="span3">';
 					echo '<div class="control-group">';
-					echo form_label('9.4. Centro Poblado', 'S2_9_CCPP_COD', $label_class);
+					echo form_label('9.4. Centro Poblado / Comunidad', 'S2_9_CCPP_COD', $label_class);
 						echo '<div class="controls">';
 								echo form_dropdown('S2_9_CCPP_COD', $ccppArray, FALSE,'class="span12" id="S2_9_CCPP_COD"'); 
 							echo '<span class="help-inline"></span>';
@@ -2584,7 +2584,7 @@ echo '<div class="question">';
 
 
 echo '<div class="question">';
-			echo '<p>17. En los últimos 12 meses, ¿Usted o algún miembro de su hogar ha sido beneficiado de algún programa social, como: (Lea cada alternativa y circule uno o más códigos)</p>';	
+			echo '<p>17. En los últimos 12 meses, ¿Usted o algún miembro de su hogar ha sido beneficiado de algún programa social, como:</p>';	
 
 				echo '<div class="row-fluid">';
 					echo '<div class="span6">';
@@ -3780,25 +3780,25 @@ $('#S2_9_DD_COD').trigger("change");
 	// $("#seccion2 :submit").on("click", function(event) {
 	// 	$('#seccion6').trigger('validate');
  // 	}); 
-$.extend(jQuery.validator.messages, {
-     required: "Campo obligatorio",
+// $.extend(jQuery.validator.messages, {
+     // required: "Campo obligatorio",
     // remote: "Please fix this field.",
     // email: "Please enter a valid email address.",
     // url: "Please enter a valid URL.",
-     date: "Ingrese una fecha válida",
+     // date: "Ingrese una fecha válida",
     // dateISO: "Please enter a valid date (ISO).",
     //number: "Solo se permiten números",
-     digits: "Solo se permiten números",
+     // digits: "Solo se permiten números",
     // creditcard: "Please enter a valid credit card number.",
     // equalTo: "Please enter the same value again.",
     // accept: "Please enter a value with a valid extension.",
     // maxlength: jQuery.validator.format("Please enter no more than {0} characters."),
     // minlength: jQuery.validator.format("Please enter at least {0} characters."),
     // rangelength: jQuery.validator.format("Please enter a value between {0} and {1} characters long."),
-     range: jQuery.validator.format("Por favor ingrese un valor  entre {0} y {1}."),
+     // range: jQuery.validator.format("Por favor ingrese un valor  entre {0} y {1}."),
     // max: jQuery.validator.format("Please enter a value less than or equal to {0}."),
     // min: jQuery.validator.format("Please enter a value greater than or equal to {0}.")
-});
+// });
 	 $("#seccion2").validate({
 		    rules: {   
 
@@ -3888,6 +3888,15 @@ $.extend(jQuery.validator.messages, {
 		        S2_10_DD_COD:{
            			valueNotEquals: -1,
 		         }, 
+
+		        S2_10_PP_O:{
+           			required: true,
+           			validName:true,
+		         }, 
+		        S2_10_DI_O:{
+           			required: true,
+           			validName:true,
+		         }, 		         
 		        // S2_10_PP_COD:{
           //  			valueNotEquals: -1,
 		        //  }, 
@@ -3901,6 +3910,14 @@ $.extend(jQuery.validator.messages, {
 		        S2_11_DD_COD:{
            			valueNotEquals: -1,
 		         }, 
+		        S2_11_PP_O:{
+           			required: true,
+           			validName:true,
+		         }, 
+		        S2_11_DI_O:{
+           			required: true,
+           			validName:true,
+		         }, 		         
 		        // S2_11_PP_COD:{
           //  			valueNotEquals: -1,
 		        //  }, 

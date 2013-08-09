@@ -508,7 +508,7 @@ echo '<div class="well modulo">';
 					              echo '</thead>';
 					              echo '<tbody>';
 					               echo '<tr>';
-					                  echo '<td>Ministerio de Producción (PRODUCE)</td>';
+					                  echo '<td>Ministerio de la Producción (PRODUCE)</td>';
 					                  echo '<td>' . form_input($S8_3_1) . '<div class="help-block error">' . form_error($S8_3_1['name']) . '</div></td>';
 					               echo '</tr>';   
 					               echo '<tr>';
@@ -1089,30 +1089,30 @@ $('#S8_3_10_O, #S8_4_9_O, #S8_4_1A, #S8_4_1L, #S8_4_2A, #S8_4_2L, #S8_4_3A, #S8_
 
 		    	S8_6_1: {
 		            digits: true,
-		            valrango: [1,5,9],
+		            valrango: [1,6,9],
 		         }, 
 		    	S8_6_2: {
 		            digits: true,
-		            valrango: [1,5,9],
+		            valrango: [1,6,9],
 		         }, 
 
 		    	S8_6_3: {
 		            digits: true,
-		            valrango: [1,5,9],
+		            valrango: [1,6,9],
 		         }, 
 		    	S8_6_4: {
 		            digits: true,
-		            valrango: [1,5,9],
+		            valrango: [1,6,9],
 		         }, 
 
 		    	S8_6_5: {
 		            digits: true,
-		            valrango: [1,5,9],
+		            valrango: [1,6,9],
 		         }, 
 
 		    	S8_6_6: {
 		            digits: true,
-		            valrango: [1,5,9],
+		            valrango: [1,6,9],
 		         }, 
 
 			//FIN RULES

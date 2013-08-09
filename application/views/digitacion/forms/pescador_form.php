@@ -392,7 +392,7 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
 $.extend(jQuery.validator.messages, {
      required: "Campo obligatorio",
     // remote: "Please fix this field.",
-    // email: "Please enter a valid email address.",
+     email: "Ingrese un email válido",
     // url: "Please enter a valid URL.",
      date: "Ingrese una fecha válida",
     // dateISO: "Please enter a valid date (ISO).",
@@ -938,7 +938,7 @@ $("#pesca_dor").validate({
                                                         }
                                                     }, 1000);                                   
                                                }  
-                                              else if(fila == 'S5_3' || fila == 'S5_4' || fila == 'S5_7'){
+                                              else if(fila == 'S5_3' || fila == 'S5_4' || fila == 'S5_7' || fila == 'S5_8_1' || fila == 'S5_8_2' || fila == 'S5_8_3' || fila == 'S5_8_4'){
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
 

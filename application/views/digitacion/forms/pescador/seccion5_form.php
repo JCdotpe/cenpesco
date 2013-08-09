@@ -2425,7 +2425,7 @@ echo '<div class="well modulo">';
 							echo '<div class="span6">';
 
 									echo '<div class="control-group span5">';	
-										echo form_label('Otra Comunidad', $S5_2_2['id'], $label_class);
+										echo form_label('Otra comunidad', $S5_2_2['id'], $label_class);
 									echo '</div>'; 	
 											
 									echo '<div class="control-group span5">';
@@ -2609,11 +2609,11 @@ echo '</div>';
                	 echo '<td><b>REDES<b/></td>';
                   echo '<td></td>';
                   echo '<td>¿Cuántas?</td>';
-                  echo '<td>1</td>';
-                  echo '<td>2</td>';
-                  echo '<td>3</td>';
-                  echo '<td>4</td>';       
-                  echo '<td>5</td>';
+                  echo '<td style="text-align:center">1</td>';
+                  echo '<td style="text-align:center">2</td>';
+                  echo '<td style="text-align:center">3</td>';
+                  echo '<td style="text-align:center">4</td>';       
+                  echo '<td style="text-align:center">5</td>';
                echo '</tr>';              
                echo '<tr>';
                   echo '<td>Agallera</td>';
@@ -2646,7 +2646,7 @@ echo '</div>';
                   echo '<td>' . form_input($S5_5_3_5) . '<div class="help-block error">' . form_error($S5_5_3_5['name']) . '</div></td>';                                                 
                 echo '</tr>';         
                 echo '<tr>';
-                  echo '<td>Tarrafa</td>';
+                  echo '<td>Tarrafa/Atarraya</td>';
                   echo '<td>' . form_input($S5_5_4) . '<div class="help-block error">' . form_error($S5_5_4['name']) . '</div></td>';
                   echo '<td>' . form_input($S5_5_4_C) . '<div class="help-block error">' . form_error($S5_5_4_C['name']) . '</div></td>';
                   echo '<td>' . form_input($S5_5_4_1) . '<div class="help-block error">' . form_error($S5_5_4_1['name']) . '</div></td>';
@@ -2666,7 +2666,7 @@ echo '</div>';
                   echo '<td>' . form_input($S5_5_5_5) . '<div class="help-block error">' . form_error($S5_5_5_5['name']) . '</div></td>';                                                 
                 echo '</tr>';   
                 echo '<tr>';
-                  echo '<td>Capiccuhuana</td>';
+                  echo '<td>Capiccahuana</td>';
                   echo '<td>' . form_input($S5_5_6) . '<div class="help-block error">' . form_error($S5_5_6['name']) . '</div></td>';
                   echo '<td>' . form_input($S5_5_6_C) . '<div class="help-block error">' . form_error($S5_5_6_C['name']) . '</div></td>';
                   echo '<td>' . form_input($S5_5_6_1) . '<div class="help-block error">' . form_error($S5_5_6_1['name']) . '</div></td>';
@@ -2732,7 +2732,7 @@ echo '</div>';
                   echo '<td>' . form_input($S5_5_10_C) . '<div class="help-block error">' . form_error($S5_5_10_C['name']) . '</div></td>';                                              
                 echo '</tr>';   
                 echo '<tr>';
-                  echo '<td>Arpon</td>';
+                  echo '<td>Arpón</td>';
                   echo '<td>' . form_input($S5_5_11) . '<div class="help-block error">' . form_error($S5_5_11['name']) . '</div></td>';
                   echo '<td>' . form_input($S5_5_11_C) . '<div class="help-block error">' . form_error($S5_5_11_C['name']) . '</div></td>';                                              
                 echo '</tr>';   
@@ -3824,6 +3824,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_2_2: {
 		            digits: true,
 		            valrango: [0,1,9],
+		            valzero: ['S5_2_1'],
 		         }, 	
 
 		        S5_2_DD_COD:{
@@ -3841,7 +3842,7 @@ $('#S5_2_DD_COD').trigger("change");
 
 		    	S5_3: {
 		            digits: true,
-		            valrango: [1,3,9],
+		            valrango: [1,4,9],
 		         }, 
 		    	S5_3_H: {
 		            digits: true,
@@ -3853,7 +3854,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         }, 	
 		    	S5_4: {
 		            digits: true,
-		            valrango: [1,3,9],
+		            valrango: [1,4,9],
 		         }, 
 		    	S5_4_H: {
 		            digits: true,
@@ -4120,6 +4121,7 @@ $('#S5_2_DD_COD').trigger("change");
 		            range:[0,1],
 		         },	
 		    	S5_5_9_O: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         },			         
@@ -4202,6 +4204,7 @@ $('#S5_2_DD_COD').trigger("change");
 		            range:[0,1],
 		         },	
 		    	S5_5_14_O: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         },			         
@@ -4228,6 +4231,7 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,1,9],
 		         },	
 		    	S5_5_17_O: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         },			         
@@ -4746,6 +4750,7 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,1,9],
 		         },	
 		    	S5_8_1_1: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         },	
@@ -4755,6 +4760,7 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,1,9],
 		         },	
 		    	S5_8_2_1: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         },	
@@ -4764,6 +4770,7 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,1,9],
 		         },	
 		    	S5_8_3_1: {
+		    		required:true,
 					maxlength: 100,
 					validName:true,
 		         },	

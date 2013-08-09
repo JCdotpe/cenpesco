@@ -1016,7 +1016,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Para ver, aun usando lentes ?</p>';
+								echo '<p>Para ver, aun usando lentes?</p>';
 
 							echo '</div>';	
 
@@ -1038,7 +1038,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Para oir, aún usando audífonos para sordera ?</p>';
+								echo '<p>Para oir, aún usando audífonos para sordera?</p>';
 
 							echo '</div>';	
 
@@ -1060,7 +1060,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Para hablar (entonar / vocalizar) ?</p>';
+								echo '<p>Para hablar (entonar / vocalizar)?</p>';
 
 							echo '</div>';	
 
@@ -1082,7 +1082,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Para usar brazos y manos/piernas y pies ?</p>';
+								echo '<p>Para usar brazos y manos/piernas y pies?</p>';
 
 							echo '</div>';	
 
@@ -1104,7 +1104,7 @@ echo '<div class="well modulo">';
 
 							echo '<div class="offset1 span7">';
 
-								echo '<p>Alguna otra dificultad o limitación ?</p>';
+								echo '<p>Alguna otra dificultad o limitación?</p>';
 
 							echo '</div>';	
 

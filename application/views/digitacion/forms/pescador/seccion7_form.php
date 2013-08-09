@@ -656,7 +656,7 @@ echo form_open($this->uri->uri_string(),$attr);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 //COLUMNAS SECCION VII
 echo '<div class="well modulo">';
-	echo '<h4>SECCIÓN VII. ASOCIATIVIDAD Y FORMALIZACIÓN</h4>';
+	echo '<h4>SECCIÓN VII. FINANCIAMIENTO, PRODUCCIÓN Y COMERCIALIZACIÓN</h4>';
 	echo '<div class="row-fluid">';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -814,18 +814,19 @@ echo '<div class="well modulo">';
 		echo '<div class="question">';
 			echo '<p>2.	¿El financiamiento le fue otorgado por:</p>';			
 					
-				echo '<div class="row-fluid">';		
 
-					echo '<div class="offset1 span11">';
+			echo '<div class="row-fluid">';		
+				echo '<div class="span6">';		
 
-					
-						echo '<div class="span2 preguntas_sub2">';
+					echo '<div class="row-fluid">';		
 
-							echo '<p>Pariente / amigo</p>';
+						echo '<div class="span5 preguntas_sub2">';
+
+							echo '<p>Pariente / amigo?</p>';
 
 						echo '</div>';	
 
-						echo '<div class="span2">';
+						echo '<div class="span4">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
 									echo form_input($S7_201); 
@@ -835,14 +836,66 @@ echo '<div class="well modulo">';
 							echo '</div>'; 
 
 						echo '</div>';
+					echo '</div>';
 
-						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Banco</p>';
+
+					echo '<div class="row-fluid">';		
+
+						echo '<div class="span5 preguntas_sub2">';
+
+							echo '<p>Comerciante o intermediario?</p>';
+
+						echo '</div>';						
+
+						echo '<div class="span4">';
+							echo '<div class="control-group">';
+								echo '<div class="controls">';
+									echo form_input($S7_202); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S7_202['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
+
+						echo '</div>';
+					echo '</div>';
+
+					echo '<div class="row-fluid">';		
+
+
+						echo '<div class="span5 preguntas_sub2">';
+
+							echo '<p>Caja municipal o rural?</p>';
 
 						echo '</div>';	
 
-						echo '<div class="span2">';
+						echo '<div class="span4">';
+							echo '<div class="control-group">';
+								echo '<div class="controls ">';
+									echo form_input($S7_203); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($S7_203['name']) . '</div>';
+								echo '</div>';	
+							echo '</div>'; 
+
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
+
+
+				echo '<div class="span6">';		
+
+
+
+					echo '<div class="row-fluid">';		
+
+						echo '<div class="span5 preguntas_sub2">';
+
+							echo '<p>Banco?</p>';
+
+						echo '</div>';	
+
+						echo '<div class="span4">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
 									echo form_input($S7_204); 
@@ -854,43 +907,22 @@ echo '<div class="well modulo">';
 						echo '</div>';
 
 
-
-
 					echo '</div>';
-
-				echo '</div>';
 	
 
 
 
-				echo '<div class="row-fluid">';		
 
-					echo '<div class="offset1 span11">';
 
-						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Comerciante o intermediario?</p>';
-
-						echo '</div>';						
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S7_202); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_202['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
-						echo '</div>';
-
-						echo '<div class="span2 preguntas_sub2">';
+					echo '<div class="row-fluid">';		
+						echo '<div class="span5 preguntas_sub2">';
 
 							echo '<p>Financiera?</p>';
 
 						echo '</div>';	
 
-						echo '<div class="span2">';
+						echo '<div class="span4">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
 									echo form_input($S7_205); 
@@ -901,12 +933,8 @@ echo '<div class="well modulo">';
 
 						echo '</div>';
 
-
-
-
 					echo '</div>';
 
-				echo '</div>';
 
 
 
@@ -914,35 +942,16 @@ echo '<div class="well modulo">';
 
 
 
-				echo '<div class="row-fluid">';		
-
-					echo '<div class="offset1 span11">';
 
 
-						echo '<div class="span2 preguntas_sub2">';
+					echo '<div class="row-fluid">';		
+						echo '<div class="span5 preguntas_sub2">';
 
-							echo '<p>Caja municipal o rural?</p>';
+							echo '<p>Otro?</p>';
 
 						echo '</div>';	
 
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls ">';
-									echo form_input($S7_203); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_203['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
-						echo '</div>';
-
-						echo '<div class="span2 preguntas_sub2">';
-
-							echo '<p>Otro</p>';
-
-						echo '</div>';	
-
-						echo '<div class="span2">';
+						echo '<div class="span4">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
 									echo form_input($S7_206); 
@@ -952,10 +961,16 @@ echo '<div class="well modulo">';
 							echo '</div>'; 
 
 						echo '</div>';
+					echo '</div>';
 
 
+					echo '<div class="row-fluid">';	
+						echo '<div class="span5 preguntas_sub2">';
 
-						echo '<div class="span4">';
+							echo '<p>Especifique</p>';
+
+						echo '</div>';							
+						echo '<div class="span6">';
 							echo '<div class="control-group">';
 								echo '<div class="controls">';
 									echo form_input($S7_206_O); 
@@ -966,11 +981,14 @@ echo '<div class="well modulo">';
 
 						echo '</div>';	
 
-					echo '</div>';
+					echo '</div>';		
 
-				echo '</div>';						
 
-			echo '</div>'; // S 8 - 2	
+
+				echo '</div>';		
+			echo '</div>';						
+
+		echo '</div>'; // S 8 - 2	
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1351,108 +1369,112 @@ echo '<div class="well modulo">';
 			echo '<p>10. ¿El tipo de presentación de sus productos es:</p>';			
 					
 				echo '<div class="row-fluid">';		
+					echo '<div class="span6">';		
+						echo '<div class="row-fluid">';	
+							echo '<div class="span5 preguntas_sub2">';
 
-					echo '<div class="span12">';
+								echo '<p>Fresco?</p>';
 
-						echo '<div class="span2 preguntas_sub2">';
+							echo '</div>';	
 
-							echo '<p>Fresco?</p>';
+							echo '<div class="span4">';
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S7_10_1); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S7_10_1['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
 
-						echo '</div>';	
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S7_10_1); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_10_1['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
-						echo '</div>';
-
-						echo '<div class="span2 preguntas_sub2">';
-
-							echo '<p>Seco salado?</p>';
-
-						echo '</div>';	
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S7_10_3); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_10_3['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
+							echo '</div>';
 						echo '</div>';
 
 
+						echo '<div class="row-fluid">';	
 
+							echo '<div class="span5 preguntas_sub2">';
 
+								echo '<p>Salpreso?</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span4">';
+								echo '<div class="control-group">';
+									echo '<div class="controls ">';
+										echo form_input($S7_10_2); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S7_10_2['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';
+						echo '</div>';
 					echo '</div>';
 
-				echo '</div>';
-	
 
+					echo '<div class="span6">';		
+						echo '<div class="row-fluid">';	
 
+							echo '<div class="span5 preguntas_sub2">';
 
+								echo '<p>Seco salado?</p>';
 
+							echo '</div>';	
 
+							echo '<div class="span4">';
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S7_10_3); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S7_10_3['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
 
-				echo '<div class="row-fluid">';		
-
-					echo '<div class="span12">';
-
-						echo '<div class="span2 preguntas_sub2">';
-
-							echo '<p>Salpreso?</p>';
-
-						echo '</div>';	
-
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls ">';
-									echo form_input($S7_10_2); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_10_2['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
-
+							echo '</div>';
 						echo '</div>';
+		
 
-						echo '<div class="span2 preguntas_sub2">';
 
-							echo '<p>Otro?</p>';
+						echo '<div class="row-fluid">';	
+							echo '<div class="span5 preguntas_sub2">';
 
-						echo '</div>';	
+								echo '<p>Otro?</p>';
 
-						echo '<div class="span2">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S7_10_4); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_10_4['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
+							echo '</div>';	
 
+							echo '<div class="span4">';
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S7_10_4); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S7_10_4['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';
 						echo '</div>';
 
 
+						echo '<div class="row-fluid">';	
 
-						echo '<div class="span4">';
-							echo '<div class="control-group">';
-								echo '<div class="controls">';
-									echo form_input($S7_10_4_O); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($S7_10_4_O['name']) . '</div>';
-								echo '</div>';	
-							echo '</div>'; 
+							echo '<div class="span5 preguntas_sub2">';
 
+								echo '<p>Especifique</p>';
+
+							echo '</div>';	
+
+							echo '<div class="span6">';
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($S7_10_4_O); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error($S7_10_4_O['name']) . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';	
 						echo '</div>';	
-
-					echo '</div>';
+					echo '</div>';	
 
 				echo '</div>';						
 

@@ -230,8 +230,8 @@ echo '<div class="row-fluid">';
                   echo '<th class="span1">14. ¿Cuál es el número de matrícula?</th>';
                   echo '<th class="span1">15. ¿Su embarcación se desplaza a:</th>';
                   echo '<th class="span1">16. ¿Cuál es el tipo de motor?</th>';
-                  echo '<th class="span1">17. ¿Su embarcación se encuentra:</th>';
-                  echo '<th class="span1">18. ¿Cuál es la ubicación del motor?</th>';
+                  echo '<th class="span1">17. ¿Cuál es la ubicación del motor?</th>';
+                  echo '<th class="span1">18. ¿Qué tipo de combustible utiliza?</th>';
                   echo '<th class="span1">19. ¿Cuál es la potencia del motor (HP)?</th>';
                   echo '<th class="span1" colspan="2">20. ¿El tipo de bodega es:</th>';
                   echo '<th class="span1">21. Su bodega es insulada?</th>';
@@ -326,9 +326,9 @@ $('#S9_2').change(function(event) {
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_10' + '_' + i + '_1" id="S9_10' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_10' + '_' + i + '_2" id="S9_10' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_10' + '_' + i + '_3" id="S9_10' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embe' + i + '" maxlength="5" name="S9_11' + '_' + i + '" id="S9_11' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embe' + i + '" maxlength="1" name="S9_12' + '_' + i + '" id="S9_12' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embe' + i + '" maxlength="5" name="S9_13' + '_' + i + '" id="S9_13' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd += '</tr>';
     $('#embarcacionex > tbody').append(asd);
     // $('#emb_table > tbody:last').append('<tr class="embx"><td><input type="text" class="span12" maxlength="80" name="S9_3_1' + '_' + i + '" id="S9_3_1' + '_' + i + '" value="' + i + '" ></td></tr>');
@@ -340,13 +340,13 @@ $('#S9_2').change(function(event) {
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_22' + '_' + i + '_2" id="S9_22' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="1" name="S9_22' + '_' + i + '_MED" id="S9_22' + '_' + i + '_MED" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="5" name="S9_22' + '_' + i + '_1" id="S9_22' + '_' + i + '_1" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="5" name="S9_22' + '_' + i + '_2" id="S9_22' + '_' + i + '_2" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="5" name="S9_22' + '_' + i + '_3" id="S9_22' + '_' + i + '_3" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_23' + '_' + i + '" id="S9_23' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 += '</tr>'; 
     $('#embarcacionex2 > tbody').append(asd2);
@@ -354,7 +354,8 @@ $('#S9_2').change(function(event) {
   }
 
   $('.embc1, .embc2, .embc3, .embc4, .embc5, .embc6').attr('disabled','disabled');
-
+  $('.embe1, .embe2, .embe3, .embe4, .embe5, .embe6').attr('disabled','disabled');
+  $('.embd1, .embd2, .embd3, .embd4, .embd5, .embd6').attr('disabled','disabled');
 }else if(ahua==''){
 }else{
   alert('6 Embarcaciones máximo');
@@ -388,13 +389,30 @@ $(document).on("change",'#S9_4_1, #S9_4_2, #S9_4_3, #S9_4_4, #S9_4_5, #S9_4_6',f
 });
 
 $(document).on("change",'#S9_5_1, #S9_5_2, #S9_5_3, #S9_5_4, #S9_5_5, #S9_5_6',function() {
+  var deso = $('#' + $(this).attr('id') + '_O');
+  var pre = $(this).attr('id');
+  var npreg = pre.substring(5,6);
   var th = $(this).val();
-  var des = $('#' + $(this).attr('id') + '_O');
-  if(th == 7){
+  var des = $('.embe' + npreg); 
+  var dese = $('.embd' + npreg); 
+  if(th == 1 || th == 2){
+    dese.removeAttr('disabled');
     des.removeAttr('disabled');
-  }else{
+    deso.val('');
+    deso.attr("disabled", "disabled");     
+  }else if(th == 7){
+    deso.removeAttr('disabled');
     des.val('');
-    des.attr("disabled", "disabled"); 
+    des.attr("disabled", "disabled");    
+    dese.val('');
+    dese.attr("disabled", "disabled");          
+  }else{
+    deso.val('');
+    deso.attr("disabled", "disabled"); 
+    des.val('');
+    des.attr("disabled", "disabled");   
+    dese.val('');
+    dese.attr("disabled", "disabled");        
   }
 });
 
@@ -403,7 +421,7 @@ $(document).on("change",'#S9_13_1, #S9_13_2, #S9_13_3, #S9_13_4, #S9_13_5, #S9_1
   var npreg = pre.substring(6,7);
   var th = $(this).val();
   var des = $('#S9_14_' + npreg);
-  if(th == 2){
+  if(th == 1){
     des.removeAttr('disabled');
   }else{
     des.val('');
