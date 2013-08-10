@@ -11,7 +11,7 @@
               <li ><a href="<?php echo site_url('digitacion/pescador'); ?>">Pescador y Embarcaciones</a></li>
 <!--               <li ><a href="<?php echo site_url('digitacion/tiempos_acuicultor'); ?>">Tiempos</a></li>           
  -->              
-              <li ><a href="<?php echo base_url('acuicultura/index.php'); ?>">Acuicultor</a></li> 
+              <li ><a href="<?php echo site_url('digitacion/acuicultor'); ?>">Acuicultor</a></li> 
               <li ><a href="<?php echo site_url('digitacion/comunidad'); ?>">Comunidad</a></li>
 <!--               <li ><a href="<?php echo site_url('digitacion/revision'); ?>">Revision en Gavinete</a></li>
               <li ><a href="<?php echo site_url('digitacion/avance'); ?>">Avance de campo</a></li>
