@@ -11,6 +11,28 @@ class Marco_model extends CI_Model{
   //   	$q = $this->db->get('marco');
 		// return $q;
   //   }   
+
+    function get_cod_odei_by_sede_dep($sede, $dep){// obtiene ODEI_COD mediante SEDE_COD y CCDD
+        if ($sede == 99){$sede_s = range(1,26);}else{$sede_s = $sede;}
+        $this->db->distinct('ODEI_COD');
+        $this->db->where_in('SEDE_COD',$sede_s);
+        $this->db->where('CCDD',$dep);
+        $q = $this->db->get('marco');
+        return $q;
+    }
+
+    function get_odei_by_sede_dep ($sede,$dep)//saca el ODEI, segun DEP y SEDE
+    {   
+        $this->db->distinct('ODEI_COD');
+        $this->db->select('ODEI_COD,NOM_ODEI,NOM_SEDE');    
+        $this->db->where('SEDE_COD',$sede);
+        $this->db->where('CCDD',$dep);
+        $q = $this->db->get('marco');
+        return $q;
+    }
+
+
+
     function get_sede(){
     	$this->db->select('SEDE_COD,NOM_SEDE');
     	$this->db->distinct('SEDE_COD');
@@ -92,14 +114,40 @@ class Marco_model extends CI_Model{
 		return $q;
 	}	
 	
-	function get_odei_by_sede_dep ($sede,$dep)//saca el ODEI, segun DEP y SEDE
-	{	
-		$this->db->distinct('ODEI_COD');
-		$this->db->select('ODEI_COD,NOM_ODEI,NOM_SEDE');	
-		$this->db->where('SEDE_COD',$sede);
-		$this->db->where('CCDD',$dep);
-    	$q = $this->db->get('marco');
-    	return $q;
-	}
+//*********************************************************************************************
+//*********************************************************************************************
+    function get_prov_by_sede ($sede,$dep){
+        $this->db->distinct('CCPP');
+        $this->db->select('CCPP, PROVINCIA');
+        $this->db->where('SEDE_COD',$sede);  
+        $this->db->where('CCDD',$dep);
+        $this->db->order_by('PROVINCIA','asc');
+        $q = $this->db->get('marco');
+        return $q;
+    }
+
+    function get_dist_by_sede($sede,$dep,$prov)
+    {
+        $this->db->distinct('CCDI');
+        $this->db->select ('CCDI,DISTRITO');
+        $this->db->where('SEDE_COD',$sede);
+        $this->db->where('CCDD',$dep);
+        $this->db->where('CCPP',$prov);
+        $this->db->order_by('DISTRITO','asc');
+        $q = $this->db->get('marco');
+        return $q;
+    }
+    function get_ccpp_by_sede ($sede,$dep,$prov,$dist)
+    {   
+        $this->db->distinct('CODCCPP');
+        $this->db->select('CODCCPP,CENTRO_POBLADO');
+        $this->db->where('SEDE_COD',$sede);
+        $this->db->where('CCDD',$dep);
+        $this->db->where('CCPP',$prov);
+        $this->db->where('CCDI',$dist);
+        $q = $this->db->get('marco');
+        return $q;
+    }   
+
 
  }

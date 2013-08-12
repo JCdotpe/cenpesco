@@ -164,14 +164,14 @@ $T_EMB =array(
 	'onkeypress'=>"return soloNumeros(event)",
 
 );
-$NOM_EMP =array(
-	'name'	=> 'NOM_EMP',
-	'id'	=> 'NOM_EMP',
-	'value'	=> $NOM_EMP,
-	'maxlength'	=> 80,
-	'class' => $span_class,
-	'onkeypress'=>"return soloLetras(event)",	
-);
+// $NOM_EMP =array(
+// 	'name'	=> 'NOM_EMP',
+// 	'id'	=> 'NOM_EMP',
+// 	'value'	=> $NOM_EMP,
+// 	'maxlength'	=> 80,
+// 	'class' => $span_class,
+// 	'onkeypress'=>"return soloLetras(event)",	
+// );
 $DNI_EMP =array(
 	'name'	=> 'DNI_EMP',
 	'id'	=> 'DNI_EMP',
@@ -179,6 +179,7 @@ $DNI_EMP =array(
 	'maxlength'	=> 8,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
+	'readonly' => 'readonly',
 );
 //DETALLE --------------------------------------------------------------
 
@@ -349,7 +350,7 @@ $OBS =array(
 	'cols'	=> 10,
 	'onkeypress'=>"return alfa_numericos(event)",	
 );
-
+	$iniciar = array(-1 => '-'); 
 
 // CARGAR COMBOS
 
@@ -446,6 +447,7 @@ echo form_open($this->uri->uri_string(),$attr);
 		    echo '</div>';
 	    echo '</div>';
 	}
+	//else{ echo '<script>alert("jodeerr")</script>';}
 
 	echo '<div class="row-fluid ">';
 		echo '<div class="span12 preguntas_n">';
@@ -715,11 +717,14 @@ echo form_open($this->uri->uri_string(),$attr);
 									echo '<div class="row-fluid">';
 
 										echo '<div class="control-group grupos span8">';
-											echo form_label('APELLIDOS Y NOMBRES',$NOM_EMP['id'],$label1);
+											//cho form_label('APELLIDOS Y NOMBRES',$NOM_EMP['id'],$label1);
+											echo form_label('APELLIDOS Y NOMBRES',"NOM_EMP_combo",$label1);
 											echo '<div class="controls">';
-												echo form_input($NOM_EMP); 
+												//echo form_input($NOM_EMP); 
+												echo form_dropdown('NOM_EMP_combo', $iniciar , false,'class="span12" id="NOM_EMP_combo"');
 												echo '<span class="help-inline"></span>';
-												echo '<div class="help-block error">' . form_error($NOM_EMP['name']) . '</div>';
+												echo '<div class="help-block error">' . form_error("NOM_EMP_combo") . '</div>';
+												echo '<input type="hidden" name="NOM_EMP" id="NOM_EMP" />';	
 											echo '</div>';	
 										echo '</div>'; 
 
@@ -2031,6 +2036,28 @@ $.validator.addMethod("peruDate",function(value, element) {
 // window.clo
 
 
+$("#NOM_DD_f").change(function() {
+        $.ajax({
+            url: CI.base_url + "digitacion/registro_pescadores/get_emp_jefe/"+ $(this).val(),
+            type:'POST',
+            data:{dep: $(this).val(), csrf_token_c: CI.cct},
+            dataType:'json',
+            success:function(json_data){
+                $("#NOM_EMP_combo").empty();
+                $("#NOM_EMP_combo").append('<option value="-"> - </option>');
+                $.each(json_data.emps_jefes, function(i, data){
+                    $("#NOM_EMP_combo").append('<option value="' + data.DNI + '">' + data.NOMBRE + '</option>');
+                });
+            }
+        }); 
+});
+
+// $("#NOM_EMP_combo").change(function(){
+// 	$("#DNI_EMP").val($(this).val());
+// 	$("#NOM_EMP").val($("#NOM_EMP_combo option:selected").text());
+// 	alert($("#NOM_EMP").val());
+
+// });
 // R E G I S T R O    D E P E S C A D O R E S ------------------------------------------------------------------>
 $("#frm_reg_pesc").validate({
     rules: {
@@ -2139,10 +2166,9 @@ $("#frm_reg_pesc").validate({
             maxlength: 4,     
             range: [0,9998],         
          },   
-        NOM_EMP:{
+        NOM_EMP_combo:{
             required: true,
-            validName: true,
-            maxlength: 80,            
+            valueNotEquals: -1,           
          },   
         DNI_EMP:{
             required: true,
@@ -2249,7 +2275,8 @@ $("#frm_reg_pesc").validate({
             range: "Ingrese numeros entre 0  y 9998",
          },
         NOM_EMP:{
-            required: 'Ingrese NOMBRE EMPADRONADOR',
+            required: 'Seleccione NOMBRE EMPADRONADOR',
+            valueNotEquals: "Seleccione NOMBRE EMPADRONADOR",
          },               
         DNI_EMP:{
             required: 'Ingrese DNI',

@@ -50,9 +50,10 @@ $COD_CCPP = array(
 $formularios = array(
 	'name'	=> 'formularios',
 	'id'	=> 'formularios',
-	'value'	=> set_value('formularios'),
-	'maxlength'	=> 5,
+	'value'	=> 1,
+	'maxlength'	=> 1,
 	'class' => $span_class,
+	'readonly' => 'readonly',
 );
 
 // CARGAR COMBOS
@@ -521,8 +522,8 @@ $("#form_udra_pes").validate({
         formularios:{
             required: true,
             number: true,
-            maxlength:5,
-            range: [0,99999]
+            maxlength:1,
+            range: [0,1]
         },                           
                                                             
     //FIN RULES
@@ -565,7 +566,7 @@ $("#form_udra_pes").validate({
         formularios:{
             required: 'Ingrese cantidad',
             number: 'Solo números',
-            maxlength:"Longitud maxima (5)",
+            maxlength:"Longitud maxima (1)",
         },          
                                                      
     //FIN MESSAGES
