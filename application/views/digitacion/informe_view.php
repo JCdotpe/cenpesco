@@ -1,0 +1,1 @@
+    <?php $this->load->view('digitacion/forms/informe_form'); ?>

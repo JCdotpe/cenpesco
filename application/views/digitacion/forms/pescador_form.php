@@ -470,6 +470,17 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un mes válido");
 
 
+ $.validator.addMethod("valmescen", function(value, element){
+    var dias = new Array('08','09');
+    var length = dias.length;
+    var flag = false;
+    for(var i = 0; i < length; i++) {
+        if(dias[i] == value)
+          flag = true;
+    }
+   return flag;
+}, "Seleccione un mes válido(08,09)");
+
 $.validator.addMethod("valnone", function(value, element, arg){
     var flag = true;
     if(value == 1){

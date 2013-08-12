@@ -315,7 +315,7 @@ $(function(){
 		            required: true,
 		            exactlength: 2,
 		            digits: true, 
-		            valmes:true,
+		            valmescen:true,
 		         },   	
 		    	F_A: {
 		            exactlength: 4,
