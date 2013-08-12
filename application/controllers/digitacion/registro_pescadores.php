@@ -18,6 +18,7 @@ class Registro_pescadores extends CI_Controller {
 		$this->load->library('table');
 		$this->load->library('datatables');
 		$this->load->model('ubigeo_piloto_model');
+		$this->load->model('empadronador_jefe_model');
 		$this->load->helper('date');
 		date_default_timezone_set('America/Lima');	
 
@@ -206,7 +207,6 @@ class Registro_pescadores extends CI_Controller {
 
 					}
 			        else{
-							
 			 			$data['datos'] = $this->form_validation->error_array();
 			 			//$this->load->view('backend/json/json_view', $data);
 		        		$this->load->view('backend/includes/template', $data);				
@@ -215,7 +215,7 @@ class Registro_pescadores extends CI_Controller {
 	    			$this->session->set_flashdata('msgbox','no_piloto');
         			redirect('/digitacion/registro_pescadores');	
 			    }
-
+			    echo '<script> alert("entra al controller");</script>';
 		    }elseif ($opcion==='Filtrar'){
 
 				$this->form_validation->set_rules('NOM_DD_2','DEPARTAMENTO','required|numeric');
@@ -436,7 +436,23 @@ class Registro_pescadores extends CI_Controller {
     		$this->load->view('backend/includes/template', $data);	
 
         }
-
 	}
+
+	public function get_emp_jefe($dep){
+
+		$deps = $this->input->post('dep');
+		$od = $this->marco_model->get_cod_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$deps)->result(); //obetener odei_cod segun  SEDE_COD y CCDD
+		foreach ( $od as  $value) {
+			$odei[] = $value->ODEI_COD;
+		}
+		//$odei = $this->marco_model->get_cod_odei_by_sede_dep('05','04'); //obetener odei_cod segun  SEDE_COD y CCDD
+		$emps_jefes = $this->empadronador_jefe_model->get_nombres_by_odei($odei)->result();// obtiene los nombres segun odei
+
+		$datos['emps_jefes'] = $emps_jefes;
+		$data['datos'] = $datos;
+		$this->load->view('backend/json/json_view', $data);	
+	}
+
+
 
 }

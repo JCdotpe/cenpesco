@@ -344,8 +344,6 @@ class Reporte_avance extends CI_Controller {
 			$cambio = FALSE; // para intercarlar colores registros
 			$pea = null;
 
-	
-
 			//  foreach($pea_marco->result() as $filas){
 			//     $row ++;
 			// 	foreach($filas as  $cols){ // llena cada celda
