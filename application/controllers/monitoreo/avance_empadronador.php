@@ -103,7 +103,7 @@ class Avance_empadronador extends CI_Controller {
 			$lista =  $this->avance_campo_subrutas_model->get_fields();
 
 			foreach ($lista as $campo ) {
-				if (!in_array($campo, array('user_id','last_ip','user_agent','created','modified','user_id_m','COD_REG','activo','id'))) {
+				if (!in_array($campo, array('user_id','last_ip','user_agent','created','modified','user_id_m','COD','COD_REG','activo','id'))) {
 					$data_reg[$campo] = ($this->input->post($campo) == '') ? NULL : $this->input->post($campo);
 					$cont++;
 				}
@@ -115,6 +115,7 @@ class Avance_empadronador extends CI_Controller {
 
 				// if ($this->tank_auth->get_ubigeo()==99) {
 
+					$data_reg['COD'] = ($sede.$dep.$equipo.$ruta.$sub_ruta);
 					$data_reg['COD_REG'] = ($sede.$dep.$prov.$dist.$cc_ccpp.$equipo.$ruta.$sub_ruta);
 					$data_reg['user_id'] = $this->tank_auth->get_user_id();
 					$data_reg['created'] = date('Y-m-d H:i:s');
@@ -158,12 +159,7 @@ class Avance_empadronador extends CI_Controller {
 		}
 	}
 
-
 	public function editar(){
-
-
-
-
 
 	}
 
@@ -251,42 +247,81 @@ class Avance_empadronador extends CI_Controller {
 
     public function export(){
 
-		foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
-			$odei[] = $key->ODEI_COD;
-		}
-		
-		$registros = $this->avance_campo_subrutas_model->get_todo($odei);  
+    	//colores
+    		//$color_celda_cabeceras = '27408B';
 
+			$color_celda_cabeceras =   array(
+				        'fill' => array(
+				            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+				            'color' => array('rgb' => '27408B')
+				        )
+				    );    		
+    	//colores
+		// 	$data['pea_marco'] = ; // obtiene la PEA MARCO
+		// 	$data['avance_campo'] = $this->avance_campo_model->get_reporte_avance(); // avance de PEA CAMPO
+		// $filtros = $this->segmentacion_model->get_empadronador($sede, $dep, $equi, $ruta);   
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   1 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// pestaña
-		$sheet = $this->phpexcel->getActiveSheet(0);
+		$sheet = $this->phpexcel->createSheet(0);			
+		//$sheet = $this->phpexcel->setActiveSheetIndex(0);
+		//$sheet = $this->phpexcel->getActiveSheet(0);
+		//$objWorksheet = $objPHPExcel->setActiveSheetIndex(1);
+
+
+
+		$deps 			= $this->avance_campo_subrutas_model->get_all_dep();
+		$total_ccpp 	= $this->avance_campo_subrutas_model->get_num_ccpp();    //TOTAL CCPP  nacional
+		$total_reg  	= $this->avance_campo_subrutas_model->get_num_reg(); 	 //TOTAL CCPP con REG  nacional
+
+		$total_ccpp_by_dep  = $this->avance_campo_subrutas_model->get_num_ccpp_by_dep(); //TOTAL CCPP by DEp	
+		$total_reg_by_dep   = $this->avance_campo_subrutas_model->get_num_reg_by_dep(); //TOTAL CCPP con REG by DEp	
+
+
 		
+		// formato de la hoja
+			//Set Orientation, size and scaling
+			//$objPHPExcel->setActiveSheetIndex(0);
+			//$sheet->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);// horizontal
+			$sheet->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); // vertical
+			$sheet->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+			$sheet->getPageSetup()->setFitToPage(false); // ajustar pagina
+			$sheet->getPageSetup()->setFitToWidth(1);
+			$sheet->getPageSetup()->setFitToHeight(0);		
+			$sheet->setShowGridlines(false);// oculta lineas de cuadricula		
+		// formato de la hoja
 
 		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
-			$sheet->getColumnDimension('B')->setWidth(25);
-			$sheet->getColumnDimension('D')->setWidth(25);
-			$sheet->getColumnDimension('F')->setWidth(25);
-			$sheet->getColumnDimension('H')->setWidth(25);
-			$sheet->getColumnDimension('J')->setWidth(25);
-			$sheet->getColumnDimension('K')->setWidth(15);
-			$sheet->getColumnDimension('L')->setWidth(25);
-			$sheet->getColumnDimension('O')->setWidth(35);
-			$sheet->getColumnDimension('X')->setWidth(18);
-			$sheet->getColumnDimension('AC')->setWidth(18);
-			$sheet->getRowDimension(5)->setRowHeight(20);
-			$sheet->getRowDimension(6)->setRowHeight(20);
+			$sheet->getColumnDimension('A')->setWidth(8);
+			$sheet->getColumnDimension('B')->setWidth(40);
+			$sheet->getColumnDimension('C')->setWidth(20);
+			$sheet->getColumnDimension('D')->setWidth(20);
+			$sheet->getColumnDimension('E')->setWidth(20);
+			$sheet->getColumnDimension('F')->setWidth(20);
+
+
+			$sheet->getRowDimension(4)->setRowHeight(2);
+			$sheet->getRowDimension(6)->setRowHeight(2);
+			$sheet->getRowDimension(16)->setRowHeight(100);
 		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
 
 		// TITULOS
-			$sheet->setCellValue('A2','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
-			$sheet->mergeCells('A2:AC2');
-			$sheet->setCellValue('A3','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
-			$sheet->mergeCells('A3:AC3');
-			$sheet->setCellValue('A4','REPORTE DE AVANCE DE CAMPO ' );
-			$sheet->mergeCells('A4:AC4');
-			$sheet->getStyle('A2:AC4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
-			$sheet->getStyle('A2:AC4')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
-			$sheet->getStyle('A2:AC2')->getFont()->setname('Arial black')->setSize(16);	
-			$sheet->getStyle('A3:AC4')->getFont()->setname('Arial')->setSize(16);	
+			$sheet->setCellValue('A3','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet->mergeCells('A3:E3');
+			$sheet->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet->mergeCells('A5:E5');
+			$sheet->setCellValue('A9','REPORTE DE REGISTRO' );
+			$sheet->mergeCells('A9:E9');	
+					
+			$sheet->getStyle('A3:E9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet->getStyle('A3:E9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet->getStyle('A3:E9')->getFont()->setname('Arial black')->setSize(19);	
+			$sheet->getStyle('A5:E9')->getFont()->setname('Arial ')->setSize(19);	
+			$sheet->getStyle('A9')->getFont()->setname('Arial black')->setSize(16);	
+
+
 
 			// LOGO
 	          $objDrawing = new PHPExcel_Worksheet_Drawing();
@@ -294,151 +329,979 @@ class Avance_empadronador extends CI_Controller {
 	          $objDrawing->setName("inei");
 	          $objDrawing->setDescription("Inei");
 	          $objDrawing->setPath("img/inei.jpeg");
-	          $objDrawing->setCoordinates('B1');
-	          $objDrawing->setHeight(80);
+	          $objDrawing->setCoordinates('A7');
+	          $objDrawing->setHeight(60);
 	          $objDrawing->setOffsetX(1);
 	          $objDrawing->setOffsetY(5);
 
 	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
 	          $objDrawing2->setWorksheet($sheet);
-	          $objDrawing2->setName("produce");
-	          $objDrawing2->setDescription("Produce");
-	          $objDrawing2->setPath("img/produce.jpg");
-	          $objDrawing2->setCoordinates('Y1');
-	          $objDrawing2->setHeight(73);
+	          $objDrawing2->setName("CENPESCO");
+	          $objDrawing2->setDescription("CENPESCO");
+	          $objDrawing2->setPath("img/cenpesco.jpg");
+	          $objDrawing2->setCoordinates('E7');
+	          $objDrawing2->setHeight(60);
+	          $objDrawing2->setWidth(100);
 	          $objDrawing2->setOffsetX(1);
-	          $objDrawing2->setOffsetY(5);
+	          $objDrawing2->setOffsetY(10);
 		// TITULOS
 
-		// CABECERA ESPECIAL
-			$sheet->setCellValue('P5','COMUNIDADES');
-			$sheet->mergeCells('P5:S5');
-			$sheet->setCellValue('T5','PESCADOR ' );
-			$sheet->mergeCells('T5:X5');
-			$sheet->setCellValue('Y5','ACUICULTOR ' );
-			$sheet->mergeCells('Y5:AC5');
-			$sheet->getStyle('A5:AC5')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
-			$sheet->getStyle('A5:AC5')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
-			$sheet->getStyle('A5:AC5')->getFont()->setname('Arial')->setSize(13);	
-			$sheet->getStyle("P5:AC5")->applyFromArray(array(
-			'borders' => array(
-						'allborders' => array(
-										'style' => PHPExcel_Style_Border::BORDER_THIN)
-					)
-			));
-		// CABECERA ESPECIAL
 
 		// CABECERA
 			// INICIO DE LA  cabecera
-			$cab = 6;	
+			$cab = 16;	
 				
 			// NOMBRE CABECERAS
-					$sheet->setCellValue('A'.$cab,'COD');
-					$sheet->setCellValue('B'.$cab,'SEDE');
-					$sheet->setCellValue('C'.$cab,'COD' );
-					$sheet->setCellValue('D'.$cab,'ODEI' );
-					$sheet->setCellValue('E'.$cab,'CCDD' );
-					$sheet->setCellValue('F'.$cab,'DEPARTAMENTO' );
-					$sheet->setCellValue('G'.$cab,'CCPP' );
-					$sheet->setCellValue('H'.$cab,'PROVINCIA' );
-					$sheet->setCellValue('I'.$cab,'CCDI' );
-					$sheet->setCellValue('J'.$cab,'DISTRITO' );
-					$sheet->setCellValue('K'.$cab,'COD_CCPP' );
-					$sheet->setCellValue('L'.$cab,'CENTRO POBLADO' );
-					$sheet->setCellValue('M'.$cab,'DIA ' );
-					$sheet->setCellValue('N'.$cab, 'MES' );
-					$sheet->setCellValue('O'.$cab, 'JEFE DE BRIGADA' );
-					$sheet->setCellValue('P'.$cab, 'TOTAL' );
-					$sheet->setCellValue('Q'.$cab, 'COMP.' );
-					$sheet->setCellValue('R'.$cab, 'INCO.' );
-					$sheet->setCellValue('S'.$cab, 'RECHZ.' );
-					$sheet->setCellValue('T'.$cab, 'TOTAL' );
-					$sheet->setCellValue('U'.$cab, 'COMP.' );
-					$sheet->setCellValue('V'.$cab, 'INCO.' );
-					$sheet->setCellValue('W'.$cab, 'RECHZ.' );
-					$sheet->setCellValue('X'.$cab,'EMBARCACION');
-					$sheet->setCellValue('Y'.$cab,' TOTAL');
-					$sheet->setCellValue('Z'.$cab,' COMP.');
-					$sheet->setCellValue('AA'.$cab,' INCO.');
-					$sheet->setCellValue('AB'.$cab,' RECHZ.');
-					$sheet->setCellValue('AC'.$cab,' EMBARCACION');
+
+					$sheet->setCellValue('A'.$cab,'CCDD');
+					//$sheet->mergeCells('B'.$cab.':B'.($cab+2));
+					$sheet->setCellValue('B'.$cab,'DEPARTAMENTO' );
+					//$sheet->mergeCells('C'.$cab.':C'.($cab+2));
+
+					$sheet->setCellValue('C'.$cab,'TOTAL CENTROS POBLADOS' );
+					//$sheet->mergeCells('D'.$cab.':D'.($cab+2));
+					$sheet->setCellValue('D'.$cab,'TOTAL CENTROS POBLADOS CON REGISTRO' );
+					//$sheet->mergeCells('E'.$cab.':E'.($cab+2));
+					$sheet->setCellValue('E'.$cab,'TASA DE COBERTURA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+
+																																			
 			// NOMBRE CABECERAS
 
 			// ESTILOS  CABECERAS
-				$sheet->getStyle("A".$cab.":AC".$cab)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
-				$sheet->getStyle("A".$cab.":AC".$cab)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
-				$sheet->getStyle("A".$cab.":AC".$cab)->getFont()->setname('Arial')->setSize(11);
-		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":AC".$cab);
-		        $headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+				$sheet->getStyle("A".$cab.":E".($cab))->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+				$sheet->getStyle("A".$cab.":E".($cab))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);						
+				$sheet->getStyle("A".$cab.":E".($cab))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);						
+				$sheet->getStyle("A".$cab.":E".($cab))->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+				$sheet->getStyle("A".$cab.":E".($cab))->getFont()->setname('Arial')->setSize(12);
 
-				$sheet->getStyle("A".$cab.":AC".$cab)->applyFromArray(array(
+
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":E".($cab));
+		        //$headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+				$headStyle->applyFromArray($color_celda_cabeceras);
+
+				$sheet->getStyle("A".$cab.":E".($cab) )->applyFromArray(array(
 				'borders' => array(
 							'allborders' => array(
 											'style' => PHPExcel_Style_Border::BORDER_THIN)
 						)
 				));
+
+				//$sheet->getStyle('J16')->getFont()->setname('Arial Narrow')->setSize(9); // tamaño especial para esta celda
 			// ESTILOS  CABECERAS
 		// CABECERA
 
 	    // CUERPO
-			$total = $registros->num_rows()+ $cab;
-			$numberStyle1 = $this->phpexcel->getActiveSheet(0)->getStyle('A3:A'.$total);
-			$numberStyle1->getNumberFormat()->setFormatCode('00');
+			$total = $deps->num_rows() + ($cab+1); // total del cuerpo
 
-			$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('C3:C'.$total);
-			$numberStyle2->getNumberFormat()->setFormatCode('00');
-
-			$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('E3:E'.$total);
-			$numberStyle2->getNumberFormat()->setFormatCode('00');
-
-			$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('G3:G'.$total);
-			$numberStyle3->getNumberFormat()->setFormatCode('00');		
-
-			$numberStyle4 = $this->phpexcel->getActiveSheet(0)->getStyle('I3:I'.$total);
-			$numberStyle4->getNumberFormat()->setFormatCode('00');
-
-			$numberStyle2 = $this->phpexcel->getActiveSheet(0)->getStyle('K3:K'.$total);
-			$numberStyle2->getNumberFormat()->setFormatCode('0000');
-
-			$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('M3:M'.$total);
-			$numberStyle3->getNumberFormat()->setFormatCode('00');	
-
-			$numberStyle3 = $this->phpexcel->getActiveSheet(0)->getStyle('N3:N'.$total);
-			$numberStyle3->getNumberFormat()->setFormatCode('00');	
+			$sheet->getStyle("A".($cab+2).":E".$total)->getFont()->setname('Arial ')->setSize(11);
 
 			//bordes cuerpo
-			$sheet->getStyle("A".($cab+1).":AC".$total)->applyFromArray(array(
+			$sheet->getStyle("A".($cab+1).":E".($total) )->applyFromArray(array(
 			'borders' => array(
 						'allborders' => array(
 										'style' => PHPExcel_Style_Border::BORDER_THIN)
 					)
 			));
-
+			$sheet->getStyle('A'.($cab+2).':A'.$total)->getNumberFormat()->setFormatCode('00');
 			// EXPORTACION A EXCEL
-	 			
-			$row = $cab;
-			$col = 0;
-			 foreach($registros->result() as $filas){
-			    $row ++;
-				 foreach($filas as $cols){
-			  		$sheet->getCellByColumnAndRow($col++, $row)->setValue($cols);
-				 }
-				 $col =0;
+			$sheet->setCellValue('A'.($cab+1),'NACIONAL');
+			$sheet->mergeCells('A'.($cab+1).':B'.($cab+1),'NACIONAL');
+			$sheet->getStyle('A'.($cab+1) )->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet->getStyle('A17:E17')->getFont()->setname('Arial black')->setSize(11);	
+			$sheet->setCellValue('C'.($cab+1), $total_ccpp->num_rows() );
+			$sheet->setCellValue('D'.($cab+1), $total_reg->num_rows() );
+			$sheet->setCellValue('E'.($cab+1), number_format( ( ( $total_reg->num_rows()*100)/$total_ccpp->num_rows() ),2,'.',' ' ) );
+
+
+
+			// **************************************************************************
+			$row = $cab+1;// inicio de la fila del cuerpo
+			$col = 1; // inicio del column
+			$num = 0; // para numerar
+			$cambio = FALSE; // para intercarlar colores registros
+			$reg = null;
+			$tot_ccpp = null;
+
+
+			foreach($deps->result() as $celda){
+				$row++;
+				$sheet->setCellValue('A'.$row, $celda->CCDD);
+				$sheet->setCellValue('B'.$row, $celda->DEPARTAMENTO);
+				//$sheet->setCellValue('C'.$row, $celda->TOTAL);
+
+				foreach ($total_ccpp_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_ccpp = $value->TOTAL  ; break;
+					}
+				}
+
+				foreach ($total_reg_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$reg = $value->TOTAL  ; break;
+					}
+				}
+
+				if (is_numeric($tot_ccpp)){ 
+					$sheet->setCellValue('C'.$row, $tot_ccpp);
+					//$sheet->setCellValue('E'.$row, number_format(((($reg)*100)/($celda->TOTAL )) ,2,'.',' '));
+					//$sheet->getStyle("E".$row.":E".$row)->getFont()->setname('Arial black')->setSize(9);
+				}else{
+					$sheet->setCellValue('C'.$row, 0 );
+					//$sheet->setCellValue('E'.$row, 0);
+				}	
+
+				if (is_numeric($reg)){ 
+					$sheet->setCellValue('D'.$row, $reg);
+					//$sheet->setCellValue('E'.$row, number_format(((($reg)*100)/($tot_ccpp )) ,2,'.',' '));
+					//$sheet->getStyle("E".$row.":E".$row)->getFont()->setname('Arial black')->setSize(9);
+				}else{
+					$sheet->setCellValue('D'.$row, 0 );
+					//$sheet->setCellValue('E'.$row, 0);
+				}
+				if($tot_ccpp >0 ){
+					$sheet->setCellValue('E'.$row, number_format( (($reg*100)/$tot_ccpp) ,2,'.',' '));
+					//$sheet->setCellValue('E'.$row,  ());
+					//$sheet->setCellValue('E'.$row,  '=(D'. $row .'*100)/C'. $row );
+					//$sheet->setCellValue('E'.$row,  'fdfddf');
+				}else{
+					$sheet->setCellValue('E'.$row, '0.0');
+				}
+
+
+			
+				$reg = null;
+				$tot_ccpp = null;
 			}
+			$sheet->getStyle("E".($cab+2).":E".$total)->getFont()->setname('Arial black')->setSize(11);
+			$sheet->getStyle('A3:E9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	//opcional
+
+
  		// CUERPO
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   1 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   2 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		$deps 			= $this->avance_campo_subrutas_model->get_all_dep();		//DEPARTAMENTOS
+		$total_pes	 	= $this->avance_campo_subrutas_model->get_pescadores();     //TOTAL PESCADORES  nacional
+		$total_pes_tot 	= $this->avance_campo_subrutas_model->get_pescadores_totales(); 	 //TOTALES PESCADOR a  nacional
+
+		$total_pes_by_dep 		= $this->avance_campo_subrutas_model->get_pescadores_by_dep();     		//TOTAL PESCADORES  nacional
+		$total_pes_tot_by_dep 	= $this->avance_campo_subrutas_model->get_pescadores_totales_by_dep(); 	//TOTALES PESCADOR a  nacional
+
+		// pestaña
+		$sheet2 = $this->phpexcel->createSheet(1);	
+		//$sheet2 = $this->phpexcel->setActiveSheetIndex(1);
+		//$sheet = $this->phpexcel->getActiveSheet(1);
+		
+		// formato de la hoja
+			// Set Orientation, size and scaling
+			//$objPHPExcel->setActiveSheetIndex(0);
+			//$sheet->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);// horizontal
+			$sheet2->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); // vertical
+			$sheet2->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+			$sheet2->getPageSetup()->setFitToPage(false); // ajustar pagina
+			$sheet2->getPageSetup()->setFitToWidth(1);
+			$sheet2->getPageSetup()->setFitToHeight(0);		
+			$sheet2->setShowGridlines(false);// oculta lineas de cuadricula		
+		// formato de la hoja
+
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet2->getColumnDimension('A')->setWidth(8);
+			$sheet2->getColumnDimension('B')->setWidth(40);
+			$sheet2->getColumnDimension('C')->setWidth(20);
+			$sheet2->getColumnDimension('D')->setWidth(20);
+			$sheet2->getColumnDimension('E')->setWidth(12);
+			$sheet2->getColumnDimension('F')->setWidth(12);
+			$sheet2->getColumnDimension('G')->setWidth(12);
+			$sheet2->getColumnDimension('H')->setWidth(12);
+			$sheet2->getColumnDimension('I')->setWidth(15);
+			$sheet2->getColumnDimension('J')->setWidth(15);
+
+
+			$sheet2->getRowDimension(4)->setRowHeight(2);
+			$sheet2->getRowDimension(6)->setRowHeight(2);
+			$sheet2->getRowDimension(16)->setRowHeight(100);
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+
+		// TITULOS
+			$sheet2->setCellValue('A3','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet2->mergeCells('A3:J3');
+			$sheet2->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet2->mergeCells('A5:J5');
+			$sheet2->setCellValue('A9','REPORTE DE PESCADOR' );
+			$sheet2->mergeCells('A9:J9');	
+					
+			$sheet2->getStyle('A3:J9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet2->getStyle('A3:J9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet2->getStyle('A3:J9')->getFont()->setname('Arial black')->setSize(25);	
+			$sheet2->getStyle('A5:J9')->getFont()->setname('Arial ')->setSize(22);	
+			$sheet2->getStyle('A9')->getFont()->setname('Arial black')->setSize(18);	
+
+
+
+			// LOGO
+	          $objDrawing = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing->setWorksheet($sheet2);
+	          $objDrawing->setName("inei");
+	          $objDrawing->setDescription("Inei");
+	          $objDrawing->setPath("img/inei.jpeg");
+	          $objDrawing->setCoordinates('A7');
+	          $objDrawing->setHeight(60);
+	          $objDrawing->setOffsetX(1);
+	          $objDrawing->setOffsetY(5);
+
+	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing2->setWorksheet($sheet2);
+	          $objDrawing2->setName("CENPESCO");
+	          $objDrawing2->setDescription("CENPESCO");
+	          $objDrawing2->setPath("img/cenpesco.jpg");
+	          $objDrawing2->setCoordinates('J7');
+	          $objDrawing2->setHeight(60);
+	          $objDrawing2->setWidth(100);
+	          $objDrawing2->setOffsetX(1);
+	          $objDrawing2->setOffsetY(10);
+		// TITULOS
+
+
+		// CABECERA
+			// INICIO DE LA  cabecera
+			$cab = 16;	
+				
+			// NOMBRE CABECERAS
+
+					$sheet2->setCellValue('A'.$cab,'CCDD');
+					//$sheet->mergeCells('B'.$cab.':B'.($cab+2));
+					$sheet2->setCellValue('B'.$cab,'DEPARTAMENTO' );
+					//$sheet->mergeCells('C'.$cab.':C'.($cab+2));
+					$sheet2->setCellValue('C'.$cab,'TOTAL PESCADORES EN REGISTRO' );
+					//$sheet->mergeCells('D'.$cab.':D'.($cab+2));
+					$sheet2->setCellValue('D'.$cab,'TOTAL PESCADORES EMPADRONADOS' );
+					//$sheet->mergeCells('E'.$cab.':E'.($cab+2));
+					$sheet2->setCellValue('E'.$cab,'COMPLETO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+					$sheet2->setCellValue('F'.$cab,'IMCOMPLETO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+					$sheet2->setCellValue('G'.$cab,'RECHAZO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));					
+					$sheet2->setCellValue('H'.$cab,'OTRO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+					$sheet2->setCellValue('I'.$cab,'TASA DE COBERTURA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+					$sheet2->setCellValue('J'.$cab,'TASA NO RESPUESTA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+
+
+			// NOMBRE CABECERAS
+
+			// ESTILOS  CABECERAS
+				$sheet2->getStyle("A".$cab.":J".($cab))->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+				$sheet2->getStyle("A".$cab.":J".($cab))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);						
+				$sheet2->getStyle("A".$cab.":J".($cab))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);						
+				$sheet2->getStyle("A".$cab.":J".($cab))->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+				$sheet2->getStyle("A".$cab.":J".($cab))->getFont()->setname('Arial')->setSize(15);
+
+
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":J".($cab));
+		        //$headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+				$headStyle->applyFromArray($color_celda_cabeceras);
+
+				$sheet2->getStyle("A".$cab.":J".($cab) )->applyFromArray(array(
+				'borders' => array(
+							'allborders' => array(
+											'style' => PHPExcel_Style_Border::BORDER_THIN)
+						)
+				));
+
+				//$sheet->getStyle('J16')->getFont()->setname('Arial Narrow')->setSize(9); // tamaño especial para esta celda
+			// ESTILOS  CABECERAS
+		// CABECERA
+
+	    // CUERPO
+			$total = $deps->num_rows() + ($cab+1); // total del cuerpo
+
+			$sheet2->getStyle("A".($cab+2).":J".$total)->getFont()->setname('Arial ')->setSize(14);
+
+			//bordes cuerpo
+			$sheet2->getStyle("A".($cab+1).":J".($total) )->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));
+			$sheet2->getStyle('A'.($cab+2).':A'.$total)->getNumberFormat()->setFormatCode('00');
+			// EXPORTACION A EXCEL
+			$sheet2->setCellValue('A'.($cab+1),'NACIONAL');
+			$sheet2->mergeCells('A'.($cab+1).':B'.($cab+1),'NACIONAL');
+			$sheet2->getStyle('A'.($cab+1) )->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet2->getStyle('A17:J17')->getFont()->setname('Arial black')->setSize(14);	
+			$sheet2->setCellValue('C'.($cab+1), $total_pes->row('TOTAL') );
+			$sheet2->setCellValue('D'.($cab+1), $total_pes_tot->row('TOT_FORM') );
+			$sheet2->setCellValue('E'.($cab+1), $total_pes_tot->row('COMPLETAS') );
+			$sheet2->setCellValue('F'.($cab+1), $total_pes_tot->row('INCOMPLETAS') );
+			$sheet2->setCellValue('G'.($cab+1), $total_pes_tot->row('RECHAZO') );
+			$sheet2->setCellValue('H'.($cab+1), $total_pes_tot->row('OTRO') );
+			$sheet2->setCellValue('I'.($cab+1), number_format( ( ( $total_pes_tot->row('TOT_FORM')*100)/$total_pes->row('TOTAL') ),2,'.',' ' ) );
+			$sheet2->setCellValue('J'.($cab+1), number_format( ( ( ( $total_pes_tot->row('RECHAZO') +  $total_pes_tot->row('OTRO') )*100)/$total_pes_tot->row('TOT_FORM') ),2,'.',' ' ) );
+
+
+
+			// **************************************************************************
+			$row = $cab+1;// inicio de la fila del cuerpo
+			$col = 1; // inicio del column
+			$num = 0; // para numerar
+			$cambio = FALSE; // para intercarlar colores registros
+			$tot_reg = null;
+			$tot_form = null;
+			$tot_inc = null;
+			$tot_com = null;
+			$tot_rech = null;
+			$tot_otro = null;
+
+
+			foreach($deps->result() as $celda){
+				$row++;
+				$sheet2->setCellValue('A'.$row, $celda->CCDD);
+				$sheet2->setCellValue('B'.$row, $celda->DEPARTAMENTO);
+
+				foreach ($total_pes_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_reg = $value->TOTAL  ; break;
+					}
+				}
+				foreach ($total_pes_tot_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_form = $value->TOT_FORM ; 
+						$tot_com = $value->COMPLETAS ; 
+						$tot_inc = $value->INCOMPLETAS ; 
+						$tot_rech = $value->RECHAZO ; 
+						$tot_otro = $value->OTRO ; break;
+					}
+				}
+
+				if (is_numeric($tot_reg)){ 
+					$sheet2->setCellValue('C'.$row, $tot_reg);
+				}else{
+					$sheet2->setCellValue('C'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_form)){ 
+					$sheet2->setCellValue('D'.$row, $tot_form);
+				}else{
+					$sheet2->setCellValue('D'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_com)){ 
+					$sheet2->setCellValue('E'.$row, $tot_com);
+				}else{
+					$sheet2->setCellValue('E'.$row, 0 );
+				}
+
+				if (is_numeric($tot_inc)){ 
+					$sheet2->setCellValue('F'.$row, $tot_inc);
+				}else{
+					$sheet2->setCellValue('F'.$row, 0 );
+				}
+
+				if (is_numeric($tot_rech)){ 
+					$sheet2->setCellValue('G'.$row, $tot_rech);
+				}else{
+					$sheet2->setCellValue('G'.$row, 0 );
+				}
+
+				if (is_numeric($tot_otro)){ 
+					$sheet2->setCellValue('H'.$row, $tot_otro);
+				}else{
+					$sheet2->setCellValue('H'.$row, 0 );
+				}
+
+				if($tot_reg >0 ){
+					$sheet2->setCellValue('I'.$row, number_format( (($tot_form*100)/$tot_reg) ,2,'.',' '));
+				}else{
+					$sheet2->setCellValue('I'.$row, '0.0');
+				}
+
+				if( $tot_form > 0 ){
+					$sheet2->setCellValue('J'.$row, number_format( (( ($tot_rech + $tot_otro)*100)/$tot_form) ,2,'.',' '));
+				}else{
+					$sheet2->setCellValue('J'.$row, '0.0');
+				}
+
+				$tot_reg = null;
+				$tot_form = null;
+				$tot_inc = null;
+				$tot_com = null;
+				$tot_rech = null;
+				$tot_otro = null;
+			}
+			$sheet2->getStyle("I".($cab+2).":J".$total)->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
+			$sheet2->getStyle('A3:J5')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	//opcional 
+
+ 		// CUERPO
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   2 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   3 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		$deps 			= $this->avance_campo_subrutas_model->get_all_dep();		//DEPARTAMENTOS
+		$total_acui	 	= $this->avance_campo_subrutas_model->get_acuicultores();     //TOTAL PESCADORES  nacional
+		$total_acui_tot = $this->avance_campo_subrutas_model->get_acuicultores_totales(); 	 //TOTALES PESCADOR a  nacional
+
+		$total_acui_by_dep 		= $this->avance_campo_subrutas_model->get_acuicultores_by_dep();     		//TOTAL PESCADORES  nacional
+		$total_acui_tot_by_dep 	= $this->avance_campo_subrutas_model->get_acuicultores_totales_by_dep(); 	//TOTALES PESCADOR a  nacional
+
+		// pestaña
+		$sheet3 = $this->phpexcel->createSheet(2);	
+		//$sheet2 = $this->phpexcel->setActiveSheetIndex(1);
+		//$sheet = $this->phpexcel->getActiveSheet(1);
+		
+		// formato de la hoja
+			// Set Orientation, size and scaling
+			//$objPHPExcel->setActiveSheetIndex(0);
+			//$sheet->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);// horizontal
+			$sheet3->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); // vertical
+			$sheet3->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+			$sheet3->getPageSetup()->setFitToPage(false); // ajustar pagina
+			$sheet3->getPageSetup()->setFitToWidth(1);
+			$sheet3->getPageSetup()->setFitToHeight(0);		
+			$sheet3->setShowGridlines(false);// oculta lineas de cuadricula		
+		// formato de la hoja
+
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet3->getColumnDimension('A')->setWidth(8);
+			$sheet3->getColumnDimension('B')->setWidth(40);
+			$sheet3->getColumnDimension('C')->setWidth(20);
+			$sheet3->getColumnDimension('D')->setWidth(20);
+			$sheet3->getColumnDimension('E')->setWidth(12);
+			$sheet3->getColumnDimension('F')->setWidth(12);
+			$sheet3->getColumnDimension('G')->setWidth(12);
+			$sheet3->getColumnDimension('H')->setWidth(12);
+			$sheet3->getColumnDimension('I')->setWidth(15);
+			$sheet3->getColumnDimension('J')->setWidth(15);
+
+
+			$sheet3->getRowDimension(4)->setRowHeight(2);
+			$sheet3->getRowDimension(6)->setRowHeight(2);
+			$sheet3->getRowDimension(16)->setRowHeight(90);
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+
+		// TITULOS
+			$sheet3->setCellValue('A3','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet3->mergeCells('A3:J3');
+			$sheet3->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet3->mergeCells('A5:J5');
+			$sheet3->setCellValue('A9','REPORTE DE ACUICULTOR' );
+			$sheet3->mergeCells('A9:J9');	
+					
+			$sheet3->getStyle('A3:J9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet3->getStyle('A3:J9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet3->getStyle('A3:J9')->getFont()->setname('Arial black')->setSize(25);	
+			$sheet3->getStyle('A5:J9')->getFont()->setname('Arial ')->setSize(22);	
+			$sheet3->getStyle('A9')->getFont()->setname('Arial black')->setSize(18);	
+
+
+
+			// LOGO
+	          $objDrawing = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing->setWorksheet($sheet3);
+	          $objDrawing->setName("inei");
+	          $objDrawing->setDescription("Inei");
+	          $objDrawing->setPath("img/inei.jpeg");
+	          $objDrawing->setCoordinates('A7');
+	          $objDrawing->setHeight(60);
+	          $objDrawing->setOffsetX(1);
+	          $objDrawing->setOffsetY(5);
+
+	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing2->setWorksheet($sheet3);
+	          $objDrawing2->setName("CENPESCO");
+	          $objDrawing2->setDescription("CENPESCO");
+	          $objDrawing2->setPath("img/cenpesco.jpg");
+	          $objDrawing2->setCoordinates('J7');
+	          $objDrawing2->setHeight(60);
+	          $objDrawing2->setWidth(100);
+	          $objDrawing2->setOffsetX(1);
+	          $objDrawing2->setOffsetY(10);
+		// TITULOS
+
+
+		// CABECERA
+			// INICIO DE LA  cabecera
+			$cab = 16;	
+				
+			// NOMBRE CABECERAS
+
+					$sheet3->setCellValue('A'.$cab,'CCDD');
+					//$sheet->mergeCells('B'.$cab.':B'.($cab+2));
+					$sheet3->setCellValue('B'.$cab,'DEPARTAMENTO' );
+					//$sheet->mergeCells('C'.$cab.':C'.($cab+2));
+					$sheet3->setCellValue('C'.$cab,'TOTAL ACUICULTORES EN REGISTRO' );
+					//$sheet->mergeCells('D'.$cab.':D'.($cab+2));
+					$sheet3->setCellValue('D'.$cab,'TOTAL ACUICULTORES EMPADRONADOS' );
+					//$sheet->mergeCells('E'.$cab.':E'.($cab+2));
+					$sheet3->setCellValue('E'.$cab,'COMPLETO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+					$sheet3->setCellValue('F'.$cab,'IMCOMPLETO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+					$sheet3->setCellValue('G'.$cab,'RECHAZO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));					
+					$sheet3->setCellValue('H'.$cab,'OTRO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+					$sheet3->setCellValue('I'.$cab,'TASA DE COBERTURA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+					$sheet3->setCellValue('J'.$cab,'TASA NO RESPUESTA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+
+
+			// NOMBRE CABECERAS
+
+			// ESTILOS  CABECERAS
+				$sheet3->getStyle("A".$cab.":J".($cab))->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+				$sheet3->getStyle("A".$cab.":J".($cab))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);						
+				$sheet3->getStyle("A".$cab.":J".($cab))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);						
+				$sheet3->getStyle("A".$cab.":J".($cab))->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+				$sheet3->getStyle("A".$cab.":J".($cab))->getFont()->setname('Arial')->setSize(15);
+
+
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":J".($cab));
+		        //$headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+				$headStyle->applyFromArray($color_celda_cabeceras);
+
+				$sheet3->getStyle("A".$cab.":J".($cab) )->applyFromArray(array(
+				'borders' => array(
+							'allborders' => array(
+											'style' => PHPExcel_Style_Border::BORDER_THIN)
+						)
+				));
+
+			// ESTILOS  CABECERAS
+		// CABECERA
+
+	    // CUERPO
+			$total = $deps->num_rows() + ($cab+1); // total del cuerpo
+
+			$sheet3->getStyle("A".($cab+2).":J".$total)->getFont()->setname('Arial ')->setSize(12);
+
+			//bordes cuerpo
+			$sheet3->getStyle("A".($cab+1).":J".($total) )->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));
+			$sheet3->getStyle('A'.($cab+2).':A'.$total)->getNumberFormat()->setFormatCode('00');
+			// EXPORTACION A EXCEL
+			$sheet3->setCellValue('A'.($cab+1),'NACIONAL');
+			$sheet3->mergeCells('A'.($cab+1).':B'.($cab+1),'NACIONAL');
+			$sheet3->getStyle('A'.($cab+1) )->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet3->getStyle('A17:J17')->getFont()->setname('Arial black')->setSize(14);	
+
+			$sheet3->setCellValue('C'.($cab+1), $total_acui->row('TOTAL') );
+			$sheet3->setCellValue('D'.($cab+1), $total_acui_tot->row('TOT_FORM') );
+			$sheet3->setCellValue('E'.($cab+1), $total_acui_tot->row('COMPLETAS') );
+			$sheet3->setCellValue('F'.($cab+1), $total_acui_tot->row('INCOMPLETAS') );
+			$sheet3->setCellValue('G'.($cab+1), $total_acui_tot->row('RECHAZO') );
+			$sheet3->setCellValue('H'.($cab+1), $total_acui_tot->row('OTRO') );
+			$sheet3->setCellValue('I'.($cab+1), number_format( ( ( $total_acui_tot->row('TOT_FORM')*100)/$total_acui->row('TOTAL') ),2,'.',' ' ) );
+			$sheet3->setCellValue('J'.($cab+1), number_format( ( ( ( $total_acui_tot->row('RECHAZO') +  $total_acui_tot->row('OTRO') )*100)/$total_acui_tot->row('TOT_FORM') ),2,'.',' ' ) );
+
+
+			// **************************************************************************
+			$row = $cab+1;// inicio de la fila del cuerpo
+			$col = 1; // inicio del column
+			$num = 0; // para numerar
+			$cambio = FALSE; // para intercarlar colores registros
+			$tot_reg = null;
+			$tot_form = null;
+			$tot_inc = null;
+			$tot_com = null;
+			$tot_rech = null;
+			$tot_otro = null;
+
+
+			foreach($deps->result() as $celda){
+				$row++;
+				$sheet3->setCellValue('A'.$row, $celda->CCDD);
+				$sheet3->setCellValue('B'.$row, $celda->DEPARTAMENTO);
+
+				foreach ($total_acui_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_reg = $value->TOTAL  ; break;
+					}
+				}
+				foreach ($total_acui_tot_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_form = $value->TOT_FORM ; 
+						$tot_com = $value->COMPLETAS ; 
+						$tot_inc = $value->INCOMPLETAS ; 
+						$tot_rech = $value->RECHAZO ; 
+						$tot_otro = $value->OTRO ; break;
+					}
+				}
+
+				if (is_numeric($tot_reg)){ 
+					$sheet3->setCellValue('C'.$row, $tot_reg);
+				}else{
+					$sheet3->setCellValue('C'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_form)){ 
+					$sheet3->setCellValue('D'.$row, $tot_form);
+				}else{
+					$sheet3->setCellValue('D'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_com)){ 
+					$sheet3->setCellValue('E'.$row, $tot_com);
+				}else{
+					$sheet3->setCellValue('E'.$row, 0 );
+				}
+
+				if (is_numeric($tot_inc)){ 
+					$sheet3->setCellValue('F'.$row, $tot_inc);
+				}else{
+					$sheet3->setCellValue('F'.$row, 0 );
+				}
+
+				if (is_numeric($tot_rech)){ 
+					$sheet3->setCellValue('G'.$row, $tot_rech);
+				}else{
+					$sheet3->setCellValue('G'.$row, 0 );
+				}
+
+				if (is_numeric($tot_otro)){ 
+					$sheet3->setCellValue('H'.$row, $tot_otro);
+				}else{
+					$sheet3->setCellValue('H'.$row, 0 );
+				}
+
+				if($tot_reg >0 ){
+					$sheet3->setCellValue('I'.$row, number_format( (($tot_form*100)/$tot_reg) ,2,'.',' '));
+				}else{
+					$sheet3->setCellValue('I'.$row, '0.0');
+				}
+
+				if( $tot_form > 0 ){
+					$sheet3->setCellValue('J'.$row, number_format( (( ($tot_rech + $tot_otro)*100)/$tot_form) ,2,'.',' '));
+				}else{
+					$sheet3->setCellValue('J'.$row, '0.0');
+				}
+
+				$tot_reg = null;
+				$tot_form = null;
+				$tot_inc = null;
+				$tot_com = null;
+				$tot_rech = null;
+				$tot_otro = null;
+			}
+			$sheet3->getStyle("I".($cab+2).":J".$total)->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
+			$sheet3->getStyle('A3:J5')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	//opcional 
+
+ 		// CUERPO
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   3 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   4 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		$deps 			= $this->avance_campo_subrutas_model->get_all_dep();				//DEPARTAMENTOS
+		$total_com	 	= $this->avance_campo_subrutas_model->get_comunidades();     		//TOTAL COMUNIDADES  nacional
+		$total_com_tot 	= $this->avance_campo_subrutas_model->get_comunidades_totales(); 	//TOTALES COMUNIDADES a  nacional
+
+		$total_com_by_dep 		= $this->avance_campo_subrutas_model->get_comunidades_by_dep();     		//TOTAL COMUNIDADES  nacional
+		$total_com_tot_by_dep 	= $this->avance_campo_subrutas_model->get_comunidades_totales_by_dep(); 	//TOTALES COMUNIDADES a  nacional
+
+		// pestaña
+		$sheet4 = $this->phpexcel->createSheet(3);	
+		//$sheet2 = $this->phpexcel->setActiveSheetIndex(1);
+		//$sheet = $this->phpexcel->getActiveSheet(1);
+		
+		// formato de la hoja
+			// Set Orientation, size and scaling
+			//$objPHPExcel->setActiveSheetIndex(0);
+			//$sheet->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);// horizontal
+			$sheet4->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); // vertical
+			$sheet4->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+			$sheet4->getPageSetup()->setFitToPage(false); // ajustar pagina
+			$sheet4->getPageSetup()->setFitToWidth(1);
+			$sheet4->getPageSetup()->setFitToHeight(0);		
+			$sheet4->setShowGridlines(false);// oculta lineas de cuadricula		
+		// formato de la hoja
+
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet4->getColumnDimension('A')->setWidth(8);
+			$sheet4->getColumnDimension('B')->setWidth(40);
+			$sheet4->getColumnDimension('C')->setWidth(20);
+			$sheet4->getColumnDimension('D')->setWidth(20);
+			$sheet4->getColumnDimension('E')->setWidth(12);
+			$sheet4->getColumnDimension('F')->setWidth(12);
+			$sheet4->getColumnDimension('G')->setWidth(12);
+			$sheet4->getColumnDimension('H')->setWidth(12);
+			$sheet4->getColumnDimension('I')->setWidth(15);
+			$sheet4->getColumnDimension('J')->setWidth(15);
+
+
+			$sheet4->getRowDimension(4)->setRowHeight(2);
+			$sheet4->getRowDimension(6)->setRowHeight(2);
+			$sheet4->getRowDimension(16)->setRowHeight(90);
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+
+		// TITULOS
+			$sheet4->setCellValue('A3','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet4->mergeCells('A3:J3');
+			$sheet4->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet4->mergeCells('A5:J5');
+			$sheet4->setCellValue('A9','REPORTE DE COMUNIDADES' );
+			$sheet4->mergeCells('A9:J9');	
+					
+			$sheet4->getStyle('A3:J9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet4->getStyle('A3:J9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet4->getStyle('A3:J9')->getFont()->setname('Arial black')->setSize(25);	
+			$sheet4->getStyle('A5:J9')->getFont()->setname('Arial ')->setSize(22);	
+			$sheet4->getStyle('A9')->getFont()->setname('Arial black')->setSize(18);	
+
+
+
+			// LOGO
+	          $objDrawing = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing->setWorksheet($sheet4);
+	          $objDrawing->setName("inei");
+	          $objDrawing->setDescription("Inei");
+	          $objDrawing->setPath("img/inei.jpeg");
+	          $objDrawing->setCoordinates('A7');
+	          $objDrawing->setHeight(60);
+	          $objDrawing->setOffsetX(1);
+	          $objDrawing->setOffsetY(5);
+
+	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing2->setWorksheet($sheet4);
+	          $objDrawing2->setName("CENPESCO");
+	          $objDrawing2->setDescription("CENPESCO");
+	          $objDrawing2->setPath("img/cenpesco.jpg");
+	          $objDrawing2->setCoordinates('J7');
+	          $objDrawing2->setHeight(60);
+	          $objDrawing2->setWidth(100);
+	          $objDrawing2->setOffsetX(1);
+	          $objDrawing2->setOffsetY(10);
+		// TITULOS
+
+
+		// CABECERA
+			// INICIO DE LA  cabecera
+			$cab = 16;	
+				
+			// NOMBRE CABECERAS
+
+					$sheet4->setCellValue('A'.$cab,'CCDD');
+					//$sheet->mergeCells('B'.$cab.':B'.($cab+2));
+					$sheet4->setCellValue('B'.$cab,'DEPARTAMENTO' );
+					//$sheet->mergeCells('C'.$cab.':C'.($cab+2));
+					$sheet4->setCellValue('C'.$cab,'TOTAL COMUNIDADES EN REGISTRO' );
+					//$sheet->mergeCells('D'.$cab.':D'.($cab+2));
+					$sheet4->setCellValue('D'.$cab,'TOTAL COMUNIDADES EMPADRONADOS' );
+					//$sheet->mergeCells('E'.$cab.':E'.($cab+2));
+					$sheet4->setCellValue('E'.$cab,'COMPLETO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+					$sheet4->setCellValue('F'.$cab,'IMCOMPLETO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));
+					$sheet4->setCellValue('G'.$cab,'RECHAZO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));					
+					$sheet4->setCellValue('H'.$cab,'OTRO' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+					$sheet4->setCellValue('I'.$cab,'TASA DE COBERTURA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+					$sheet4->setCellValue('J'.$cab,'TASA NO RESPUESTA' );
+					//$sheet->mergeCells('F'.$cab.':F'.($cab+2));	
+
+
+			// NOMBRE CABECERAS
+
+			// ESTILOS  CABECERAS
+				$sheet4->getStyle("A".$cab.":J".($cab))->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+				$sheet4->getStyle("A".$cab.":J".($cab))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);						
+				$sheet4->getStyle("A".$cab.":J".($cab))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);						
+				$sheet4->getStyle("A".$cab.":J".($cab))->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+				$sheet4->getStyle("A".$cab.":J".($cab))->getFont()->setname('Arial')->setSize(15);
+
+
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":J".($cab));
+		        //$headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+				$headStyle->applyFromArray($color_celda_cabeceras);
+
+				$sheet3->getStyle("A".$cab.":J".($cab) )->applyFromArray(array(
+				'borders' => array(
+							'allborders' => array(
+											'style' => PHPExcel_Style_Border::BORDER_THIN)
+						)
+				));
+
+				//$sheet->getStyle('J16')->getFont()->setname('Arial Narrow')->setSize(9); // tamaño especial para esta celda
+			// ESTILOS  CABECERAS
+		// CABECERA
+
+	    // CUERPO
+			$total = $deps->num_rows() + ($cab+1); // total del cuerpo
+
+			$sheet4->getStyle("A".($cab+2).":J".$total)->getFont()->setname('Arial ')->setSize(14);
+
+			//bordes cuerpo
+			$sheet4->getStyle("A".($cab).":J".($total) )->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));
+			$sheet4->getStyle('A'.($cab+2).':A'.$total)->getNumberFormat()->setFormatCode('00');
+			// EXPORTACION A EXCEL
+			$sheet4->setCellValue('A'.($cab+1),'NACIONAL');
+			$sheet4->mergeCells('A'.($cab+1).':B'.($cab+1),'NACIONAL');
+			$sheet4->getStyle('A'.($cab+1) )->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet4->getStyle('A17:J17')->getFont()->setname('Arial black')->setSize(14);	
+
+			$sheet4->setCellValue('C'.($cab+1), $total_com->row('TOTAL') );
+			$sheet4->setCellValue('D'.($cab+1), $total_com_tot->row('TOT_FORM') );
+			$sheet4->setCellValue('E'.($cab+1), $total_com_tot->row('COMPLETAS') );
+			$sheet4->setCellValue('F'.($cab+1), $total_com_tot->row('INCOMPLETAS') );
+			$sheet4->setCellValue('G'.($cab+1), $total_com_tot->row('RECHAZO') );
+			$sheet4->setCellValue('H'.($cab+1), $total_com_tot->row('OTRO') );
+			$sheet4->setCellValue('I'.($cab+1), number_format( ( ( $total_com_tot->row('TOT_FORM')*100)/$total_acui->row('TOTAL') ),2,'.',' ' ) );
+			$sheet4->setCellValue('J'.($cab+1), number_format( ( ( ( $total_com_tot->row('RECHAZO') +  $total_com_tot->row('OTRO') )*100)/$total_com_tot->row('TOT_FORM') ),2,'.',' ' ) );
+
+
+
+			// **************************************************************************
+			$row = $cab+1;// inicio de la fila del cuerpo
+			$col = 1; // inicio del column
+			$num = 0; // para numerar
+			$cambio = FALSE; // para intercarlar colores registros
+			$tot_reg = null;
+			$tot_form = null;
+			$tot_inc = null;
+			$tot_com = null;
+			$tot_rech = null;
+			$tot_otro = null;
+
+
+			foreach($deps->result() as $celda){
+				$row++;
+				$sheet4->setCellValue('A'.$row, $celda->CCDD);
+				$sheet4->setCellValue('B'.$row, $celda->DEPARTAMENTO);
+
+				//Total de REG de Comunidades por DEP
+				foreach ($total_com_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_reg = $value->TOTAL  ; break;
+					}
+				}
+				// totales de resultado
+				foreach ($total_com_tot_by_dep->result() as  $value) {
+					if ($celda->CCDD == $value->CCDD){
+						$tot_form = $value->TOT_FORM ; 
+						$tot_com = $value->COMPLETAS ; 
+						$tot_inc = $value->INCOMPLETAS ; 
+						$tot_rech = $value->RECHAZO ; 
+						$tot_otro = $value->OTRO ; break;
+					}
+				}
+
+				if (is_numeric($tot_reg)){ 
+					$sheet4->setCellValue('C'.$row, $tot_reg);
+				}else{
+					$sheet4->setCellValue('C'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_form)){ 
+					$sheet4->setCellValue('D'.$row, $tot_form);
+				}else{
+					$sheet4->setCellValue('D'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_com)){ 
+					$sheet4->setCellValue('E'.$row, $tot_com);
+				}else{
+					$sheet4->setCellValue('E'.$row, 0 );
+				}
+
+				if (is_numeric($tot_inc)){ 
+					$sheet4->setCellValue('F'.$row, $tot_inc);
+				}else{
+					$sheet4->setCellValue('F'.$row, 0 );
+				}
+
+				if (is_numeric($tot_rech)){ 
+					$sheet4->setCellValue('G'.$row, $tot_rech);
+				}else{
+					$sheet4->setCellValue('G'.$row, 0 );
+				}
+
+				if (is_numeric($tot_otro)){ 
+					$sheet4->setCellValue('H'.$row, $tot_otro);
+				}else{
+					$sheet4->setCellValue('H'.$row, 0 );
+				}
+
+				if($tot_reg >0 ){
+					$sheet4->setCellValue('I'.$row, number_format( (($tot_form*100)/$tot_reg) ,2,'.',' '));
+				}else{
+					$sheet4->setCellValue('I'.$row, '0.0');
+				}
+
+				if( $tot_form > 0 ){
+					$sheet4->setCellValue('J'.$row, number_format( (( ($tot_rech + $tot_otro)*100)/$tot_form) ,2,'.',' '));
+				}else{
+					$sheet4->setCellValue('J'.$row, '0.0');
+				}
+
+				$tot_reg = null;
+				$tot_form = null;
+				$tot_inc = null;
+				$tot_com = null;
+				$tot_rech = null;
+				$tot_otro = null;
+			}
+			$sheet4->getStyle("I".($cab+2).":J".$total)->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
+			$sheet4->getStyle('A3:J5')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	//opcional 
+
+ 		// CUERPO
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   4 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 
 		// SALIDA EXCEL
 			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
-
 			// Propiedades del archivo excel
-				$sheet->setTitle("Avance de campo");
+				$sheet->setTitle("Reporte-Registro");
+				$sheet2->setTitle("Reporte-Pescador");
+				$sheet3->setTitle("Reporte-Acuicultor");
+				$sheet4->setTitle("Reporte-Comunidades");
 				$this->phpexcel->getProperties()
-				->setTitle("Avance de campo")
-				->setDescription("Avance");
+				->setTitle("Reporte de Avance de campo")
+				->setDescription("Reporte de Avance de campo");
 
 			header("Content-Type: application/vnd.ms-excel");
-			$nombreArchivo = 'AvanceCampo_'.date('YmdHis');
-			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\"");
+			$nombreArchivo = 'ReporteAvanceCampo_'.date('YmdHis');
+			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\""); //EXCEL
 			header("Cache-Control: max-age=0");
 			
 			// Genera Excel
@@ -448,6 +1311,7 @@ class Avance_empadronador extends CI_Controller {
 			$writer->save('php://output');
 			exit;
 		// SALIDA EXCEL
+
  	}
 
 }

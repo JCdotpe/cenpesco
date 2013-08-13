@@ -43,7 +43,7 @@ class Monitoreo extends CI_Controller {
 			$data['username']	= $this->tank_auth->get_username();
 			$data['main_content'] = 'monitoreo/index_view';
 			$data['reporte'] = $this->tank_auth->get_ubigeo();
-			redirect('/monitoreo/avance_empadronador');
+			redirect('/monitoreo/observacion_campo');
 	        //$this->load->view('backend/includes/template', $data);
 	}
 }
