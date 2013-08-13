@@ -31,34 +31,40 @@ class Informe extends CI_Controller {
 			die();
 		}
 
-
 		$this->load->model('pais_model');	
 		$this->load->model('pesca_piloto_model');	
 		$this->load->model('ubigeo_model');	
 		$this->load->model('marco_model');	
 		$this->load->model('ubigeo_piloto_model');	
 		$this->load->model('empadronador_model');	
+		$this->load->model('supervisor_model');	
+		$this->load->model('inform_model');	
 	}
 
 
 	public function index()
-	{
+	{	
+			$data['combo3'] = $this->config->item('c_sino');
 
-			$data['ecivil'] = array(
+			$data['combo2'] = array(
 								-1=> '-',
-								1 => 'Conviviente',
-								2 => 'Casado(a)',
-								3 => 'Separado(a)',
-								4 => 'Viudo(a)',
-								5 => 'Divorciado(a)',
-								6 => 'Soltero(a)',
+								1 => 'EXCELENTE',
+								2 => 'BUENO',
+								3 => 'REGULAR',
+								4 => 'MALO',
+								5 => 'MUY MALO'
 				);		
-			$data['tac'] = array(
+			$data['combo4'] = array(
 								-1 => '-',
-								1 => 'Pesca',
-								2 => 'Acuicola',
-								3 => 'Ambas',
-				);					
+								1 => 'PESCADOR',
+								2 => 'ACUICULTOR',
+								3 => 'COMUNIDADES',
+				);	
+
+			$data['formus'] = $this->inform_model->get_a();
+
+
+			$data['sups'] = $this->supervisor_model->get_sup();
 			//cabecera
 			// $data['departamentox'] = $this->ubigeo_model->get_dptos();
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
@@ -74,7 +80,7 @@ class Informe extends CI_Controller {
 			//regular
 			$data['departamentos'] = $this->ubigeo_model->get_dptos();
 			$data['pais']=$this->pais_model->select_pais();
-			$data['title'] = 'Formulario Pescador';
+			$data['title'] = 'Informe de Supervisión';
 			$data['main_content'] = 'digitacion/informe_view';
 	        $this->load->view('backend/includes/template', $data);
 

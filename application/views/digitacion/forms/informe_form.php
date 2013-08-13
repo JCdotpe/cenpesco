@@ -60,10 +60,40 @@ $COD_CCPP = array(
 	'readonly' => 'readonly',
 );
 
-		$empad = array(-1 => '-'); 
-		foreach($emps->result() as $e)
+//Observaciones
+$OBS = array(
+	'name'	=> 'OBS',
+	'id'	=> 'OBS',
+	'rows' => 2,
+	'maxlength'	=> 1000,
+	'class' => $span_class,
+);
+
+//Observaciones
+$OBSX = array(
+	'name'	=> 'OBSX',
+	'id'	=> 'OBSX',
+	'rows' => 1,
+	'maxlength'	=> 1000,
+	'class' => $span_class,
+);
+
+		$cmba = array(-1 => '-'); 
+		$cmbb = array(-1 => '-'); 
+		$cmbc = array(-1 => '-'); 
+		foreach($formus->result() as $e)
 		{
-			$empad[$e->DNI]=strtoupper($e->NOMBRE);
+			$cmba[$e->val]=strtoupper($e->nombre);
+		}
+
+
+
+
+
+		$empad = array(-1 => '-'); 
+		foreach($sups->result() as $e)
+		{
+			$empad[$e->dni]=strtoupper($e->nombre);
 		}
 
 	$paisesArray= array(-1 => '-'); 
@@ -109,11 +139,11 @@ $INF_N = array(
     echo form_hidden('pescador_id', '');
 	echo '<div class="well modulo">';
 			echo '<div class="control-group">';
-      echo '<h4 style="text-align:center">Informe de Supervisión Nacional<h4>';
-			echo form_label('INFORME NRO','INF_N',$labelnroform);
-				echo '<div class="controls">';	
-					echo form_input($INF_N); 
-				echo '</div>';
+      			echo '<h4 style="text-align:center">Informe de Supervisión Nacional<h4>';
+						echo form_label('INFORME NRO','INF_N',$labelnroform);
+						echo '<div class="controls">';	
+							echo form_input($INF_N); 
+						echo '</div>';
 			echo '</div>';
 
 
@@ -121,8 +151,8 @@ $INF_N = array(
 
 			echo '<div class="span12">';
 
-				echo '<div class="span3 preguntas_sub2">';
-						echo '<p>Empadronador</p>';
+				echo '<div class="offset1 span2 preguntas_sub2">';
+						echo '<p>Supervisor Nacional</p>';
 				echo '</div>';
 
 				echo '<div class="span6">';
@@ -140,7 +170,7 @@ $INF_N = array(
 
 echo '<div class="row-fluid center">';
 		
-		echo '<div class="offset3 span6 preguntas">';
+		echo '<div class="offset3 span6 ">';
 
 		
 				echo '<div class="span4 preguntas_n2">';
@@ -193,174 +223,513 @@ echo '<div class="row-fluid center">';
 
 
 
-		echo '</div>';
-
-
-
-	echo '</div>';  
+echo '</div>';
 
 
 
 
 
-////////////////////////////////SECCION I
-	echo '<div class="well modulo">';
+
 		echo '<div class="row-fluid">';
-			echo '<h4>SECCIÓN I. LOCALIZACIÓN DEL PUNTO DE CONCENTRACIÓN</h4>';
-			echo '<h5>A. UBICACIÓN GEOGRÁFICA</h5>';
 
-			echo '<div class="span12">';	
-					echo '<div class="control-group span6">';
-							echo '<div class="controls span3">';
-								echo form_label('DEPARTAMENTO','NOM_DD',$label1);
+			echo '<div class="span4">';	
+					echo '<div class="control-group">';
+							echo '<div class="controls span4">';
+								echo form_label('ODEI','NOM_DD',$label1);
 							echo '</div>';								
-							echo '<div class="controls span1">';
-								echo form_input($CCDD); 
-							echo '</div>';	
-							echo '<div class="controls span6">';
+							echo '<div class="controls span8">';
 								echo form_dropdown('NOM_DD', $ubidepaArray, FALSE,'class="span12" id="NOM_DD"'); 
 							echo '</div>';
 					echo '</div>';  
-
-
-					echo '<div class="control-group span6">';
-									echo '<div class="controls span3">';
-										echo form_label('DISTRITO','NOM_DI',$label1);
-									echo '</div>';	
-									echo '<div class="controls span1">';
-										echo form_input($CCDI); 
-									echo '</div>';	
-
-									echo '<div class="controls span6">';
-										echo form_dropdown('NOM_DI', $distArray, FALSE,'class="span12" id="NOM_DI"'); 
-									echo '</div>';	
-					echo '</div>'; 					
+				
 			echo '</div>'; 
-			
+	
 
-			echo '<div class="span12">';
-
-					echo '<div class="control-group span6">';
-								echo '<div class="controls span3">';
-									echo form_label('PROVINCIA','NOM_PP',$label1);
+			echo '<div class="span4">';	
+					echo '<div class="control-group">';
+								echo '<div class="controls span4">';
+									echo form_label('DEPARTAMENTO','NOM_PP',$label1);
 								echo '</div>';		
-								echo '<div class="controls span1">';
-									echo form_input($CCPP); 
-								echo '</div>';	
-
-								echo '<div class="controls span6">';
+								echo '<div class="controls span8">';
 									echo form_dropdown('NOM_PP', $provArray, FALSE,'class="span12" id="NOM_PP"'); 
 								echo '</div>';	
 
 					echo '</div>'; 
+			echo '</div>'; 
 
-					echo '<div class="control-group span6">';
-								echo '<div class="controls span3">';
-									echo form_label('CENTRO POBLADO','NOM_CCPP',$label1);
-								echo '</div>';	
-								echo '<div class="controls span2">';
-									echo form_input($COD_CCPP); 
-								echo '</div>';	
-								echo '<div class="controls span6">';
-									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
-								echo '</div>';	
-
-					echo '</div>'; 			
-
+			echo '<div class="span4">';
+					echo '<div class="control-group">';
+									echo '<div class="controls span4">';
+										echo form_label('PROVINCIA','NOM_DI',$label1);
+									echo '</div>';	
+									echo '<div class="controls span8">';
+										echo form_dropdown('NOM_DI', $distArray, FALSE,'class="span12" id="NOM_DI"'); 
+									echo '</div>';	
+					echo '</div>'; 	
 			echo '</div>'; 	
 
-
-            echo '<div class="12">';    
-                    echo '<div class="control-group ">';
-                            echo '<div class="controls offset3 span2">';
-                                echo form_label('TIPO DE ACTIVIDAD','TAC',$label1);
-                            echo '</div>';                              
-                            echo '<div class="controls span3">';
-                                echo form_dropdown('TAC', $tac, FALSE,'class="span12" id="TAC"'); 
-                            echo '</div>';
-                    echo '</div>';             
-            echo '</div>'; 
 
 		echo '</div>'; 	
 
 
 
 
-	echo '</div>'; 				
+
+
+
+
+
+		echo '<div class="row-fluid" style="margin-top:15px">';
+
+			echo '<div class="offset1 span5">';
+					echo '<div class="control-group">';
+								echo '<div class="controls span4">';
+									echo form_label('DISTRITO','NOM_CCPP',$label1);
+								echo '</div>';	
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+
+					echo '</div>'; 	
+			echo '</div>'; 	
+
+			echo '<div class="span5">';
+					echo '<div class="control-group">';
+								echo '<div class="controls span4">';
+									echo form_label('CENTRO POBLADO CONCENTRACION','NOM_CCPP',$label1);
+								echo '</div>';	
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+
+					echo '</div>'; 	
+			echo '</div>'; 	
+
+			// echo '<div class="span4">';
+			// 		echo '<div class="control-group">';
+			// 					echo '<div class="controls span4">';
+			// 						echo form_label('CENTRO POBLADO','NOM_CCPP',$label1);
+			// 					echo '</div>';	
+			// 					echo '<div class="controls span8">';
+			// 						echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
+			// 					echo '</div>';	
+
+			// 		echo '</div>'; 	
+			// echo '</div>'; 	
+
+		echo '</div>'; 
+
+
 
 echo form_submit('consulta', 'Consulta','class="btn btn-primary pull-right"');
 echo anchor(site_url('digitacion/pescador'), 'Nuevo Formato','class="btn btn-success pull-left"');
 echo form_close(); 
 		echo '</div>'; 			
-	echo '</div>'; 		
+	echo '</div>'; 	
+
+
+
+
+
+
+echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
+		echo '<div class="row-fluid">';
+			echo '<div class="offset1 span5">';
+					echo '<h5>1. COORDINACIÓN CON AUTORIDADES</h5>';		
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo form_label('A .CONTACTO CON AUTORIDADES','NOM_CCPP',$label1);
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $combo2, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+							echo '</div>';	
+						echo '</div>'; 		
+
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo form_label('B. INFORMACIÓN DE FORMULARIO DE COMUNIDAD','NOM_CCPP',$label1);
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $combo3, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+							echo '</div>';	
+						echo '</div>'; 	
+
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo form_label('C. COORDINACIÓN  DE LA CONVOCATORIA','NOM_CCPP',$label1);
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $combo3, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+							echo '</div>';	
+						echo '</div>'; 									
+			echo '</div>'; 	
+
+			echo '<div class="offset1 span5">';
+					echo '<h5>2. EMPADRONAMIENTO</h5>';		
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo form_label('A. CONSECUCIÓN DE LOCAL','NOM_CCPP',$label1);
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $combo2, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+							echo '</div>';	
+						echo '</div>'; 		
+
+						echo '<div class="row-fluid">';
+							echo '<div class="span12">';
+									echo form_label('B. CONVOCATORIA','NOM_CCPP',$label1);
+								echo '<div class="controls span8">';
+									echo form_dropdown('NOM_CCPP', $combo2, FALSE,'class="span12" id="NOM_CCPP"'); 
+								echo '</div>';	
+							echo '</div>';	
+						echo '</div>'; 	
+									
+			echo '</div>'; 				
+		echo '</div>'; 			
+
+		
+
+
+		echo '<h5 style="text-align:center;">3. COBERTURA</h5>';		
+
+		echo '<div class="row-fluid" style="margin-top:15px">';
+
+			echo '<div class="span4">';		
+					echo '<p style="text-align:center; margin-top:15px">A. PEA COBERTURADA</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+
+
+			echo '<div class="span4">';
+					echo '<p style="text-align:center; margin-top:15px">B. PEA MARCO</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+
+			echo '<div class="span4">';		
+					echo '<p style="text-align:center; margin-top:15px">C. PORCENTAJE DE AVANCE</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+				
+		echo '</div>'; 
+
+
+
+//ruta
+		echo '<p style="text-align:center; margin-top:15px">D. RUTA</p>';		
+
+		echo '<div class="row-fluid" style="margin-top:15px">';
+
+			echo '<div class="span2">';		
+					echo '<p style="text-align:center; margin-top:15px">NÚMERO DE EQUIPO</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+
+			echo '<div class="span2">';		
+					echo '<p style="text-align:center; margin-top:15px">NÚMERO DE RUTA</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+
+			echo '<div class="span3">';
+					echo '<p style="text-align:center; margin-top:15px">CENTRO POBLADO DE CONCENTRACIÓN</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+
+			echo '<div class="span2">';		
+					echo '<p style="text-align:center; margin-top:15px">ERROR DE SUB RUTA</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_dropdown('NOM_CCPP', $combo3, FALSE,'class="span12" id="NOM_CCPP"'); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+
+
+			echo '<div class="span3">';
+					echo '<p style="text-align:center; margin-top:15px">NUEVO PUNTO DE CONCENTRACIÓN</p>';		
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="offset2 span8">';
+
+								echo '<div class="control-group">';
+									echo '<div class="controls">';
+										echo form_input($F_DIA); 
+										echo '<span class="help-inline"></span>';
+										echo '<div class="help-block error">' . form_error('name') . '</div>';
+									echo '</div>';	
+								echo '</div>'; 
+
+							echo '</div>';							
+
+						echo '</div>'; 							
+			echo '</div>'; 
+				
+		echo '</div>'; 		
+
+
+//obs
+		echo '<div class="row-fluid">';
+			echo '<div class="span12">';		
+				echo '<div class="control-group">';
+					echo '<h5 style="text-align:center; margin-top:15px"> 4. OBSERVACIONES</h5>';
+						echo '<div class="controls">'; 
+							echo form_textarea($OBS); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($OBS['name']) . '</div>';
+						echo '</div>'; 	
+				echo '</div>';
+			echo '</div>'; 
+				
+		echo '</div>'; 		
+
+
+
+
+//bucle
+		echo '<h5 style="text-align:center; margin-top:15px">5. DILIGENCIAMIENTO EN CAMPO</h5>';	
+		echo '<div class="row-fluid" style="text-align:center;">';
+			echo '<div class="span12" style="text-align:center; margin-top:20px">';		
+
+				echo '<div class="span2">';		
+						echo '<p style="text-align:center; margin-top:30px">TIPO DE FORMULARIO</p>';		
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_dropdown('P14', $cmba, FALSE,'class="span12" id="P14"'); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error('P14') . '</div>';
+										echo '</div>';	
+									echo '</div>'; 		
+				echo '</div>'; 
+
+				echo '<div class="span1">';		
+						echo '<p style="text-align:center; margin-top:30px">NRO FORM</p>';		
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_input($F_DIA); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error('name') . '</div>';
+										echo '</div>';	
+									echo '</div>'; 		
+				echo '</div>'; 
+
+				echo '<div class="span2">';		
+						echo '<p style="text-align:center; margin-top:30px">SECCIÓN</p>';		
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_dropdown('NOM_CCPP', $cmbb, FALSE,'class="span12" id="NOM_CCPP"'); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error('name') . '</div>';
+										echo '</div>';	
+									echo '</div>'; 		
+				echo '</div>'; 
+
+				echo '<div class="span2">';		
+						echo '<p style="text-align:center; margin-top:30px">PREGUNTA</p>';		
+
+									echo '<div class="control-group">';
+										echo '<div class="controls">';
+											echo form_dropdown('NOM_CCPP', $cmbb, FALSE,'class="span12" id="NOM_CCPP"'); 
+											echo '<span class="help-inline"></span>';
+											echo '<div class="help-block error">' . form_error('name') . '</div>';
+										echo '</div>';	
+									echo '</div>'; 		
+				echo '</div>'; 
+
+				echo '<p style="text-align:center; margin-top:15px;">TIPO DE ERROR</p>';		
+
+				echo '<div class="span5">';		
+								echo '<div class="row-fluid">';
+
+									echo '<div class="span2">';		
+										echo '<div class="control-group">';
+											echo 'CONCEPTO';
+											echo '<div class="controls">';
+												echo form_input($F_DIA); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error('name') . '</div>';
+											echo '</div>';	
+										echo '</div>'; 		
+									echo '</div>'; 	
+
+									echo '<div class="span3">';		
+										echo '<div class="control-group">';
+											echo 'DILIGENCIAMIENTO';
+											echo '<div class="controls">';
+												echo form_input($F_DIA); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error('name') . '</div>';
+											echo '</div>';	
+										echo '</div>'; 		
+									echo '</div>'; 	
+
+									echo '<div class="span3">';		
+										echo '<div class="control-group">';
+											echo 'FORMULACIÓN';
+											echo '<div class="controls">';
+												echo form_input($F_DIA); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error('name') . '</div>';
+											echo '</div>';	
+										echo '</div>'; 		
+									echo '</div>'; 
+
+									echo '<div class="span2">';		
+										echo '<div class="control-group">';
+											echo 'SONDEO';										
+											echo '<div class="controls">';
+												echo form_input($F_DIA); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error('name') . '</div>';
+											echo '</div>';	
+										echo '</div>'; 		
+									echo '</div>'; 
+
+									echo '<div class="span2">';		
+										echo '<div class="control-group">';
+											echo 'OMISIÓN';										
+											echo '<div class="controls">';
+												echo form_input($F_DIA); 
+												echo '<span class="help-inline"></span>';
+												echo '<div class="help-block error">' . form_error('name') . '</div>';
+											echo '</div>';	
+										echo '</div>'; 		
+									echo '</div>'; 	
+
+								echo '</div>'; 		
+				echo '</div>'; 
+
+
+			echo '</div>'; 
+				
+		echo '</div>'; 	
+
+		echo '<div class="row-fluid">';
+			echo '<div class="span12">';		
+				echo '<div class="control-group">';
+					echo '<p style="text-align:center">OBSERVACIONES</p>';
+						echo '<div class="controls">'; 
+							echo form_textarea($OBSX); 
+							echo '<span class="help-inline"></span>';
+							echo '<div class="help-block error">' . form_error($OBSX['name']) . '</div>';
+						echo '</div>'; 	
+				echo '</div>';
+			echo '</div>'; 
+				
+		echo '</div>'; 
+
+
+//modulo fin
+echo '</div>'; 	
+
 ?>
-<div class="row-fluid hide" id="pesc_tabs" style="margin-top:10px">
-	<div class="span12" id="insidetabs" style="text-align:center">
-		<div class="tabbable"> <!-- Only required for left/right tabs -->
-		  <ul class="nav nav-tabs" style="text-align:center">
-		    <li id="ctab2"><a href="#tab2" data-toggle="tab">Sección II</a></li>
-		    <li id="ctab3"><a href="#tab3" data-toggle="tab">Sección III</a></li>
-		    <li id="ctab4"><a href="#tab4" data-toggle="tab">Sección IV</a></li>
-		    <li id="ctab5"><a href="#tab5" data-toggle="tab">Sección V</a></li>
-		    <li id="ctab6"><a href="#tab6" data-toggle="tab">Sección VI</a></li>
-		    <li id="ctab7"><a href="#tab7" data-toggle="tab">Sección VII</a></li>
-		    <li id="ctab8"><a href="#tab8" data-toggle="tab">Sección VIII</a></li>
-		    <li id="ctab9"><a href="#tab9" data-toggle="tab">Sección IX</a></li>
-		    <li id="cinfo"><a href="#info" data-toggle="tab">Info</a></li>
-		  </ul>
-		  <div class="tab-content">
-		    <div class="tab-pane" id="tab2">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion2_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab3">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion3_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab4">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion4_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab5">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion5_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab6">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion6_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab7">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion7_form'); ?></p>
-		    </div>
-		    <div class="tab-pane" id="tab8">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion8_form'); ?></p>
-		    </div>    
-		    <div class="tab-pane" id="tab9">
-		      <p><?php $this->load->view('digitacion/forms/pescador/seccion9_form'); ?></p>
-		    </div>          
-		    <div class="tab-pane" id="info">
-		      <p><?php $this->load->view('digitacion/forms/pescador/info_form'); ?></p>
-		    </div>                             
-		  </div>
-		</div>
-	</div>
-</div>
 
 <script type="text/javascript">
 
-//FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
-    // function solo_numeros(e) {
-
-    //     key = e.keyCode || e.which;
-    //     tecla = String.fromCharCode(key).toLowerCase();
-    //     letras = "0123456789";
-    //     especiales = [8, 9, 37, 39, 46];
-
-    //     tecla_especial = false
-    //     for(var i in especiales) {
-    //         if(key == especiales[i]) {
-    //             tecla_especial = true;
-    //             break;
-    //         }
-    //     }
-    //     if(letras.indexOf(tecla) == -1 && !tecla_especial)
-    //         return false;
-    // }
+//FORM INFORME -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
 
