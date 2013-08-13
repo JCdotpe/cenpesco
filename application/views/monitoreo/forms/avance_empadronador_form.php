@@ -112,6 +112,7 @@ $span_class =  'span12';
 			'maxlength'	=> 2,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
+			'onchange'=> "return complete_zero(this,2)",
 		);		
 		$P2_P = array(
 			'name'	=> 'P2_P',
@@ -119,13 +120,14 @@ $span_class =  'span12';
 			'maxlength'	=> 2,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_8_to_9(event)",
+			'onchange'=> "return complete_zero(this,2)",
 		);		
 		$P3_P = array(
 			'name'	=> 'P3_P',
 			'id'	=> 'P3_P',
 			'maxlength'	=> 4,
 			'class' => $span_class,
-			'readonly' => 'readonly',
+			//'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P4_P = array(
@@ -163,7 +165,7 @@ $span_class =  'span12';
 		$P8_P = array(
 			'name'	=> 'P8_P',
 			'id'	=> 'P8_P',
-			'maxlength'	=> 3,
+			'maxlength'	=> 6,
 			'class' => $span_class,
 			'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
@@ -171,7 +173,7 @@ $span_class =  'span12';
 		$P9_P = array(
 			'name'	=> 'P9_P',
 			'id'	=> 'P9_P',
-			'maxlength'	=> 3,
+			'maxlength'	=> 6,
 			'class' => $span_class,
 			'readonly' => 'readonly',
 		);		
@@ -190,6 +192,7 @@ $span_class =  'span12';
 			'maxlength'	=> 2,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
+			'onchange'=> "return complete_zero(this,2)",
 		);		
 		$P2_A = array(
 			'name'	=> 'P2_A',
@@ -197,13 +200,14 @@ $span_class =  'span12';
 			'maxlength'	=> 2,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_8_to_9(event)",
+			'onchange'=> "return complete_zero(this,2)",
 		);		
 		$P3_A = array(
 			'name'	=> 'P3_A',
 			'id'	=> 'P3_A',
 			'maxlength'	=> 4,
 			'class' => $span_class,
-			'readonly' => 'readonly',
+			//'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P4_A = array(
@@ -241,14 +245,14 @@ $span_class =  'span12';
 		$P8_A = array(
 			'name'	=> 'P8_A',
 			'id'	=> 'P8_A',
-			'maxlength'	=> 3,
+			'maxlength'	=> 6,
 			'class' => $span_class,
 			'readonly' => 'readonly',
 		);		
 		$P9_A = array(
 			'name'	=> 'P9_A',
 			'id'	=> 'P9_A',
-			'maxlength'	=> 3,
+			'maxlength'	=> 6,
 			'class' => $span_class,
 			'readonly' => 'readonly',
 		);		
@@ -267,6 +271,7 @@ $span_class =  'span12';
 			'maxlength'	=> 2,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
+			'onchange'=> "return complete_zero(this,2)",
 		);		
 		$P2_C = array(
 			'name'	=> 'P2_C',
@@ -274,51 +279,52 @@ $span_class =  'span12';
 			'maxlength'	=> 2,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_8_to_9(event)",
+			'onchange'=> "return complete_zero(this,2)",
 		);		
 		$P3_C = array(
 			'name'	=> 'P3_C',
 			'id'	=> 'P3_C',
 			'maxlength'	=> 4,
 			'class' => $span_class,
-			'readonly' => 'readonly',
+			//'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P4_C = array(
 			'name'	=> 'P4_C',
 			'id'	=> 'P4_C',
-			'maxlength'	=> 1,
+			'maxlength'	=> 3,
 			'class' => $span_class,
 			'onchange' => 'actualizar_input(this);',
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P5_C = array(
 			'name'	=> 'P5_C',
 			'id'	=> 'P5_C',
-			'maxlength'	=> 1,
+			'maxlength'	=> 3,
 			'class' => $span_class,
 			'onchange' => 'actualizar_input(this);',
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P6_C = array(
 			'name'	=> 'P6_C',
 			'id'	=> 'P6_C',
-			'maxlength'	=> 1,
+			'maxlength'	=> 3,
 			'class' => $span_class,
 			'onchange' => 'actualizar_input(this);',
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P7_C = array(
 			'name'	=> 'P7_C',
 			'id'	=> 'P7_C',
-			'maxlength'	=> 1,
+			'maxlength'	=> 3,
 			'class' => $span_class,
 			'onchange' => 'actualizar_input(this);',
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P8_C = array(
 			'name'	=> 'P8_C',
 			'id'	=> 'P8_C',
-			'maxlength'	=> 3,
+			'maxlength'	=> 6,
 			'class' => $span_class,
 			'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
@@ -326,7 +332,7 @@ $span_class =  'span12';
 		$P9_C = array(
 			'name'	=> 'P9_C',
 			'id'	=> 'P9_C',
-			'maxlength'	=> 3,
+			'maxlength'	=> 6,
 			'class' => $span_class,
 			'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
@@ -1013,10 +1019,12 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="row-fluid">';
 
-		// echo '<div class="span6">';
+		echo '<div class="span6">';
 		// 	//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
 		// 	echo '<a href="'. site_url('monitoreo/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
-	 //   	echo '</div>';
+				echo anchor(site_url('monitoreo/avance_empadronador/export'), 'Exportar Excel','class="btn btn-success pull-left hide" id="export_excel"');		
+				//echo '<input type="button" id="export_excel" name="export_excel" value="Exportar Excel" class="btn btn-success pull-left hide " />';
+	 	echo '</div>';
 
 		echo '<div class="extra span5">';
 	    echo '</div>';
@@ -1060,16 +1068,17 @@ echo '</div>';
 
 <script type="text/javascript">
 
-var opcion = 0;
+	var opcion = 0;
+
 $("#agregar").click(function () {
 		var add = 0;
 		add = parseInt($("#cant_reg").val()) + 1;
 		//CREA LOS INPTUS
         for (var i = add; i <= add; i++) {
     		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
-    		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12"  onkeypress="return solo_numeros(event)" maxlength=4 onblur="return mayusculas(this);" /></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12"  onkeypress="return solo_letras(event)" /></div>');
+    		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12"  onkeypress="return solo_numeros(event)" maxlength=4 onblur="return mayusculas(this);" /></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12"  onkeypress="return solo_letras(event)" onblur="return mayusculas(this);" /></div>');
     		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12"  onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);"/></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
-    		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 ></div>   <div class="help-block error"></div> 	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)"></div>'	);
+    		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>   <div class="help-block error"></div> 	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" onchange="return complete_zero(this,2)" ></div>'	);
     		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A"  class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 >	</div>'		);
     		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" onkeypress="return alfa_numericos(event)" maxlength=1000 onblur="return mayusculas(this);" ></div>');
 
@@ -1085,6 +1094,9 @@ $("#agregar").click(function () {
 
 });
 
+$("#export_excel").click(function(){ 
+	//alert('SISTEMAS: Reporte en mantenimiento');
+});
 
 $("#buscar").click(function(){
 	//var centro = ('<p>probanbdio</p>');
@@ -1159,9 +1171,9 @@ $("#buscar").click(function(){
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
-				            success:function(json){
+				            success:function(json2){
 				   
-				    	     		var cant =  json.length;
+				    	     		var cant =  json2.length;
 				    	     		$("#cant_reg").val(cant);
 				    	     		$("#TOTAL_CCPP").val($("#cant_reg").val());// dar valor al TOTAL CCPP
 									$("#provincia").removeClass('hide');
@@ -1175,16 +1187,10 @@ $("#buscar").click(function(){
 						        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
 						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" maxlength=4/></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" onblur="return mayusculas(this);" /></div>');
 						        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" onkeypress="return solo_a_b(event)" maxlength=1 /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
-						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2></div>'	);
+						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
 						        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)"  maxlength=1 >	</div>'		);
 						        		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" maxlength=1000 onblur="return mayusculas(this);" ></div>');
 
-						        		// inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP_'+i+'" name="CC_CCPP_'+i+'" class="span12" readonly="readonly" /></div><div class="controls span9"><input type="text" id="NOM_CCPP_'+i+'" name="NOM_CCPP_'+i+'" class="span12" readonly="readonly" /></div>');
-						        		// inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN_'+i+'" name="TIPO_IN_'+i+'" class="span12" readonly="readonly" /></div><div class="controls span6"><input type="text" id="TIPO_FIN_'+i+'" name="TIPO_FIN_'+i+'" class="span12" /></div>');
-						        		// inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG_'+i+'" name="REG_'+i+'" class="span12" ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA_'+i+'" name="REG_DIA_'+i+'" class="span12"></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES_'+i+'" name="REG_MES_'+i+'" class="span12" ></div>'	);
-						        		// inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P_'+i+'" name="NUM_P_'+i+'" class="span12">	</div><div class="controls span4">	<input type="text" id="NUM_A_'+i+'" name="NUM_A_'+i+'" class="span12">	</div>      <div class="controls span4">	<input type="text" id="NUM_C_'+i+'" name="NUM_C_'+i+'" class="span12">	</div>'		);
-						        		// inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP_'+i+'" name="NUEV_CCPP_'+i+'" class="span12"></div><div class="controls span10"><input type="text" id="OBS_'+i+'" name="OBS_'+i+'" class="span12"></div>');		        		
-						        		
 						        		centro.append(inputs1);
 						        		centro.append(inputs2);
 						        		centro.append(inputs3);
@@ -1193,7 +1199,7 @@ $("#buscar").click(function(){
 										$("#contenedor").append(centro);			        	
 							        };
 
-					        		$.each(json , function(i, data) {
+					        		$.each(json2 , function(i, data) {
 					        			var k = i+1;
 					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP']").val(data.COD_CCPP);
 					        			$("#ccpp_div_"+k+" :input[name='NOM_CCPP']").val(data.NOM_CCPP);
@@ -1203,12 +1209,14 @@ $("#buscar").click(function(){
 					        		})		
 					        		$("#agregar_boton").removeClass('hide');// habilita boton agregar ccpp;
 					        		$("input[name='Enviar']").removeClass('hide');//muestra boton enviar
+					        		//$("#export_excel").removeClass('hide');//muestra boton enviar
 									//$("#buscar").removeAttr('disabled');//activar boton despues de json exitoso
 									
 									actualizar_input('REG'); //actualiza los totales
 									actualizar_input('NUM_P');
 									actualizar_input('NUM_A');
 									actualizar_input('NUM_C');
+
 
 				            }
 				        }); 
@@ -1250,7 +1258,7 @@ $("#buscar").click(function(){
 						        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
 						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" /></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" /></div>');
 						        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)"  maxlength=1 onblur="return mayusculas(this);" /></div>');
-						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 required" onkeypress="return solo_numeros(event)" maxlength=2 ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12"  onkeypress="return solo_8_to_9(event)" maxlength=2></div>'	);
+						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA_'+i+'" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12"  onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
 						        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3>	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3>	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 >	</div>'		);
 						        		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" onblur="return mayusculas(this);" ></div>');
 
@@ -1325,14 +1333,16 @@ $("#buscar").click(function(){
 					        			$("#P10_C").val(data.P10_C);
 
 				            		})
+
 									$("#agregar_boton").removeClass('hide');// habilita boton agregar ccpp;
 									$("input[name='Enviar']").removeClass('hide');//muestra boton enviar
-									//$("#buscar").removeAttr('disabled');//activar boton despues de json exitoso
+									$("#export_excel").removeClass('hide');//muestra boton EXPORTAR
 									//$("#buscar").removeAttr('disabled');//activar boton despues de json exitoso
 									actualizar_input('REG'); //actualiza los totales
 									actualizar_input('NUM_P');
 									actualizar_input('NUM_A');
 									actualizar_input('NUM_C');
+
 
 				            }
 				        });            			
@@ -1348,88 +1358,104 @@ $("#buscar").click(function(){
 
 });
 
-function mayusculas(obj) {
-	var cambiar = ($(obj).val().toUpperCase());
-	$(obj).val(cambiar);
-}
+	function mayusculas(obj) {
+		var cambiar = ($(obj).val().toUpperCase());
+		$(obj).val(cambiar);
+	}
 
-function actualizar_input(obj){
-	if($(obj).attr('id') == "REG"){
-		var sum = 0;
-		for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
-			if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='REG']").val()) ) {
-				sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='REG']").val()) ;				
-			};
-		}
-		$("#TOTAL_REG").val(sum);	
+	function actualizar_input(obj){
+		if($(obj).attr('id') == "REG"){
+			var sum = 0;
+			for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
+				if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='REG']").val()) ) {
+					sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='REG']").val()) ;				
+				};
+			}
+			$("#TOTAL_REG").val(sum);	
 
-	}else if($(obj).attr('id') == "NUM_P"){
-		var sum = 0;
-		for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
-			if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='NUM_P']").val()) ) {
-				sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='NUM_P']").val()) ;				
-			};
-		}
-		$("#TOTAL_P").val(sum);		
-		if( $.isNumeric($('#P3_P').val()) ){	
-			$('#P9_P').val( parseInt( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ) );
-		}
+		}else if($(obj).attr('id') == "NUM_P"){
+			var sum = 0;
+			for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
+				if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='NUM_P']").val()) ) {
+					sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='NUM_P']").val()) ;				
+				};
+			}
+			$("#TOTAL_P").val(sum);		
+			if( $.isNumeric($('#P3_P').val()) ){	
+				$('#P9_P').val( parseInt( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ) );
+			}
 
-	}else if($(obj).attr('id') == "NUM_A"){
-		var sum = 0;
-		for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
-			if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='NUM_A']").val()) ) {
-				sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='NUM_A']").val()) ;				
-			};
-		}
-		$("#TOTAL_A").val(sum);		
-		if( $.isNumeric($('#P3_A').val()) ){
-			$('#P9_A').val( parseInt(  ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ) );
-		}
+		}else if($(obj).attr('id') == "NUM_A"){
+			var sum = 0;
+			for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
+				if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='NUM_A']").val()) ) {
+					sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='NUM_A']").val()) ;				
+				};
+			}
+			$("#TOTAL_A").val(sum);		
+			if( $.isNumeric($('#P3_A').val()) ){
+				$('#P9_A').val( parseInt(  ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ) );
+			}
 
-	}else if($(obj).attr('id') == "NUM_C"){
-		var sum = 0;
-		for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
-			if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='NUM_C']").val()) ) {
-				sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='NUM_C']").val()) ;				
-			};
-		}
-		$("#TOTAL_C").val(sum);
-		if( $.isNumeric($('#P3_C').val()) ){	
-			$('#P9_C').val( parseInt(  ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ) );
-		}
+		}else if($(obj).attr('id') == "NUM_C"){
+			var sum = 0;
+			for (var i = 1; i <= parseInt($("#cant_reg").val()) ; i++) {
+				if ( $.isNumeric( $("#ccpp_div_"+i+" :input[name='NUM_C']").val()) ) {
+					sum = sum + parseInt($("#ccpp_div_"+i+" :input[name='NUM_C']").val()) ;				
+				};
+			}
+			$("#TOTAL_C").val(sum);
+			if( $.isNumeric($('#P3_C').val()) ){	
+				$('#P9_C').val( parseInt(  ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ) );
+			}
 
-	}else if( ($(obj).attr('id') == 'P4_P' ) || ($(obj).attr('id') == 'P5_P' ) || ($(obj).attr('id') == 'P6_P' ) || ($(obj).attr('id') == 'P7_P' ) ){
-		if( $.isNumeric($('#P4_P').val())  &&  $.isNumeric($('#P5_P').val()) &&  $.isNumeric($('#P6_P').val()) &&  $.isNumeric($('#P7_P').val()) ){
-			$('#P3_P').val(  parseInt($("#P4_P").val() ) +  parseInt($("#P5_P").val() ) +  parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) );		
-		}
-		if( $.isNumeric($('#P3_P').val()) ){
-			$('#P8_P').val( parseInt( ( ( parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) ) * 100  ) / parseInt($('#P3_P').val()) ) );
-			$('#P9_P').val( parseInt( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ) );				
-		}
+		}else if( ($(obj).attr('id') == 'P4_P' ) || ($(obj).attr('id') == 'P5_P' ) || ($(obj).attr('id') == 'P6_P' ) || ($(obj).attr('id') == 'P7_P' ) ){
+			// if( $.isNumeric($('#P4_P').val())  &&  $.isNumeric($('#P5_P').val()) &&  $.isNumeric($('#P6_P').val()) &&  $.isNumeric($('#P7_P').val()) ){
+			// 	$('#P3_P').val(  parseInt($("#P4_P").val() ) +  parseInt($("#P5_P").val() ) +  parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) );		
+			// }
+			if( $.isNumeric($('#P3_P').val()) ){
+				$('#P8_P').val( ( ( ( parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) ) * 100  ) / parseInt($('#P3_P').val()) ).toFixed(2) );
+				$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );				
+			}
 
 
-	}else if( ($(obj).attr('id') == 'P4_A' ) || ($(obj).attr('id') == 'P5_A' ) || ($(obj).attr('id') == 'P6_A' ) || ($(obj).attr('id') == 'P7_A' ) ){
-		if( $.isNumeric( $('#P4_A').val())  &&  $.isNumeric($('#P5_A').val()) &&  $.isNumeric($('#P6_A').val()) &&  $.isNumeric($('#P7_A').val()) ){
-			$('#P3_A').val(  parseInt($("#P4_A").val() ) +  parseInt($("#P5_A").val() ) +  parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) );		
-		}		
-		if( $.isNumeric( $('#P3_A').val()) ){
-			$('#P8_A').val( parseInt((  ( parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) ) * 100  ) / parseInt($('#P3_A').val()) ) );
-			$('#P9_A').val( parseInt(  ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ) );				
-		}
+		}else if( ($(obj).attr('id') == 'P4_A' ) || ($(obj).attr('id') == 'P5_A' ) || ($(obj).attr('id') == 'P6_A' ) || ($(obj).attr('id') == 'P7_A' ) ){
+			// if( $.isNumeric( $('#P4_A').val())  &&  $.isNumeric($('#P5_A').val()) &&  $.isNumeric($('#P6_A').val()) &&  $.isNumeric($('#P7_A').val()) ){
+			// 	$('#P3_A').val(  parseInt($("#P4_A").val() ) +  parseInt($("#P5_A").val() ) +  parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) );		
+			// }		
+			if( $.isNumeric( $('#P3_A').val()) ){
+				$('#P8_A').val( ( (  ( parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) ) * 100  ) / parseInt($('#P3_A').val()) ).toFixed(2) );
+				$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );				
+			}
 
-	}else if( ($(obj).attr('id') == 'P4_C' ) || ($(obj).attr('id') == 'P5_C' ) || ($(obj).attr('id') == 'P6_C' ) || ($(obj).attr('id') == 'P7_C' ) ){
-		if( $.isNumeric($('#P4_C').val())  &&  $.isNumeric($('#P5_C').val()) &&  $.isNumeric($('#P6_C').val()) &&  $.isNumeric($('#P7_C').val()) ){
-			$('#P3_C').val(  parseInt($("#P4_C").val() ) +  parseInt($("#P5_C").val() ) +  parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) );		
-		}		
-		if( $.isNumeric($('#P3_C').val()) ){
-			$('#P8_C').val( parseInt( (  ( parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) ) * 100  ) / parseInt($('#P3_C').val()) ) );
-			$('#P9_C').val( parseInt(  ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ) );	
-		}
-	}			
+		}else if( ($(obj).attr('id') == 'P4_C' ) || ($(obj).attr('id') == 'P5_C' ) || ($(obj).attr('id') == 'P6_C' ) || ($(obj).attr('id') == 'P7_C' ) ){
+			// if( $.isNumeric($('#P4_C').val())  &&  $.isNumeric($('#P5_C').val()) &&  $.isNumeric($('#P6_C').val()) &&  $.isNumeric($('#P7_C').val()) ){
+			// 	$('#P3_C').val(  parseInt($("#P4_C").val() ) +  parseInt($("#P5_C").val() ) +  parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) );		
+			// }		
+			if( $.isNumeric($('#P3_C').val()) ){
+				$('#P8_C').val( ( (  ( parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) ) * 100  ) / parseInt($('#P3_C').val()) ).toFixed(2) );
+				$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );	
+			}
+		}			
 
-}
+	}
+	$("#P3_P").change(function(){
+		$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );			
+	});
+	$("#P3_A").change(function(){
+		$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );			
+	});	
+	$("#P3_C").change(function(){
+		$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );	
+	});		
 
+	//completar con cerros
+	function complete_zero(obj, num){
+	   n = $(obj).val().toString();
+	   while(n.length < num) n = "0" + n;
+	   return $(obj).val(n);
+
+	}
 
 
 ///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -1454,50 +1480,50 @@ function actualizar_input(obj){
 
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
-    $('input').keydown( function(e) {
-            var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    // $('input').keydown( function(e) {
+    //         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
 
-            var array_especiales = ['P_RECH','A_RECH','C_RECH'];
+    //         var array_especiales = ['OBS','A_RECH','C_RECH'];
 
-            if(key == 13) {
-                e.preventDefault();
-                var inputs = $(this).closest('form').find(':input:enabled:visible');
-                $(this).blur();  
+    //         if(key == 13) {
+    //             e.preventDefault();
+    //             var inputs = $(this).closest('form').find(':input[text]');
+    //             $(this).blur();  
 
-                if ($(this).val()==""){// NO VACIOS
-                    alert("Campo requerido");
-                    inputs.eq( inputs.index(this)).focus(); 
-                }else{
-                    if ( inArray($(this).attr('id'), array_especiales )) {//  VALIDAR TOTALES
+    //             if ($(this).val()==""){// NO VACIOS
+    //                 alert("Campo requerido");
+    //                 inputs.eq( inputs.index(this)).focus(); 
+    //             }else{
+    //                 if ( inArray($(this).attr('id'), array_especiales )) {//  VALIDAR TOTALES
 
-                    		 obj = ($(this).attr('id')).substring(0,1);
-							if ( parseInt($("#"+obj+"_TOTAL").val()) !== ( parseInt($("#"+obj+"_COMP").val()) + parseInt($("#"+obj+"_INC").val()) + parseInt($("#"+obj+"_RECH").val()) ) ) {
-								alert("El total no debe ser diferente a la suma");
-								inputs.eq( inputs.index(this) - 3).focus();  
-								inputs.eq( inputs.index(this) - 3).select();  
-							} else{
-								inputs.eq( inputs.index(this) + 1).focus();
-							}								
-                    }else{
-                        inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                   }                         
-                }
-            }else if (key == 37) {
-                var inputs = $(this).closest('form').find(':input:enabled');
-                if ($(this).val()==""){// NO VACIOS
-                    alert("Campo requerido");
-                    inputs.eq( inputs.index(this)).focus(); 
-                    inputs.eq( inputs.index(this)).select();
-                }else{
-                    inputs.eq( inputs.index(this)- 1).focus();  
-                    inputs.eq( inputs.index(this)- 1).select();                  	
-                }
+    //                 		 obj = ($(this).attr('id')).substring(0,1);
+				// 			if ( parseInt($("#"+obj+"_TOTAL").val()) !== ( parseInt($("#"+obj+"_COMP").val()) + parseInt($("#"+obj+"_INC").val()) + parseInt($("#"+obj+"_RECH").val()) ) ) {
+				// 				alert("El total no debe ser diferente a la suma");
+				// 				inputs.eq( inputs.index(this) - 3).focus();  
+				// 				inputs.eq( inputs.index(this) - 3).select();  
+				// 			} else{
+				// 				inputs.eq( inputs.index(this) + 1).focus();
+				// 			}								
+    //                 }else{
+    //                     inputs.eq( inputs.index(this)+ 1 ).focus(); 
+    //                }                         
+    //             }
+    //         }else if (key == 37) {
+    //             var inputs = $(this).closest('form').find(':input:enabled');
+    //             if ($(this).val()==""){// NO VACIOS
+    //                 alert("Campo requerido");
+    //                 inputs.eq( inputs.index(this)).focus(); 
+    //                 inputs.eq( inputs.index(this)).select();
+    //             }else{
+    //                 inputs.eq( inputs.index(this)- 1).focus();  
+    //                 inputs.eq( inputs.index(this)- 1).select();                  	
+    //             }
 
-            }
-            else if(key == 9){
-                return false;
-            }
-        });
+    //         }
+    //         else if(key == 9){
+    //             return false;
+    //         }
+    //     });
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1710,7 +1736,7 @@ function actualizar_input(obj){
     function solo_8_to_9(e) {
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
-        letras = "089";
+        letras = "89";
         especiales = [8, 9, 37, 39, 46];
 
         tecla_especial = false
@@ -1741,9 +1767,17 @@ function actualizar_input(obj){
 // =======>> S O L O   N U M E R O S  1 - 5 <<===========//   
 
 
+
+
+
+
+
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+
+	//INICIA los inputs para usar TAB como ENTER
+
 
       $(window).keydown(function(event){
         if(event.keyCode == 13) {
@@ -1930,7 +1964,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 
 
-	//$.each($('div[name^="ccpp_div_"]'), function() {
+
 
 //$("#frm_avance_campo").validate({});
 
@@ -1945,21 +1979,41 @@ $.validator.addMethod("peruDate",function(value, element) {
 // });
 
 
+				//$("#frm_avance_campo").validate({});
+				//$.each($('div[name^="ccpp_div_"]'), function(){
+
+								
+
+									//});
 
 
-// $.validator.addClassRules("REG_DIA", {
-// 		           required: true,
-// 		           number: true,
-// 		           range: [1,31],
-// 		           maxlength: 2,
-// 		           exactlength:2,
-//         messages: {
-// 		           range: 'Día inválido',
-// 		           maxlength: 'Día inválido',
-// 		           exactlength:'Día inválido', 
-//         }		           
+						// $(".REG_DIA").rules("add", { 
+						// 		           required: true,
+						// 		           number: true,
+						// 		           range: [1,31],
+						// 		           maxlength: 2,
+						// 		           exactlength:2,
+						// });
 
-// });
+				// for (var k = 1; k <= 30; k++) {
+
+				// 	$.validator.addClassRules("REG_DIA_"+k, {
+				// 			           required: true,
+				// 			           number: true,
+				// 			           range: [1,31],
+				// 			           maxlength: 2,
+				// 			           exactlength:2,
+				// 	        // messages: {
+				// 			      //      range: 'Día inválido',
+				// 			      //      maxlength: 'Día inválido',
+				// 			      //      exactlength:'Día inválido', 
+				// 	        // }		           
+
+				// 	});	
+				
+		  //   	}
+
+
 
 
 
@@ -1968,7 +2022,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 
 		    rules: {
-		    	
+
 		        CCSE: {
 		            required: true,
 		            valueNotEquals: -1,
@@ -2006,13 +2060,47 @@ $.validator.addMethod("peruDate",function(value, element) {
 		           required: true,
 		           validName: true,
 		         }, 
-		       // REG_DIA: {
-		       //     required: true,
-		       //     number: true,
-		       //     range: [1,31],
-		       //     maxlength: 2,
-		       //     exactlength:2,           
-		       //   },           
+		       REG_DIA: {
+		           required: true,
+		           number: true,
+		           range: [1,31],
+		           maxlength: 2,
+		           exactlength:2,           
+		         }, 
+		       REG_MES: {
+		           required: true,
+		           number: true,
+		           range: [8,9],
+		           maxlength: 2,
+		           exactlength:2,           
+		         },	
+		       NUM_P: {
+		           required: true,
+		           number: true,
+		           range: [0,500],
+		           maxlength: 3,
+		         },
+		       NUM_A: {
+		           required: true,
+		           number: true,
+		           range: [0,500],
+		           maxlength: 3,
+		         },		
+		       NUM_C: {
+		           required: true,
+		           number: true,
+		           range: [0,1],
+		           maxlength: 1,
+		         },	
+		       NUEV_CCPP: {
+		           required: true,
+		           number: true,
+		           range: [0,1],
+		           maxlength: 1,
+		         },	
+		       OBS: {
+		           maxlength: 1000,
+		         },			         		         		         	         				         	                   
 		       TOTAL_CCPP: {
 		           required: true,
 		           number: true,
@@ -2090,14 +2178,14 @@ $.validator.addMethod("peruDate",function(value, element) {
 		       P8_P: {
 		           required: true,
 		           number: true,
-		           range: [0,100],
-		           maxlength: 3,
+		           range: [0,300],
+		           maxlength: 6,
 		         },   
 		       P9_P: {
 		           required: true,
 		           number: true,
-		           range: [0,100],
-		           maxlength: 3,
+		           range: [0,300],
+		           maxlength: 6,
 		         }, 
 		       P10_P: {
 		           maxlength: 1000,
@@ -2149,14 +2237,14 @@ $.validator.addMethod("peruDate",function(value, element) {
 		       P8_A: {
 		           required: true,
 		           number: true,
-		           range: [0,100],
-		           maxlength: 3,
+		           range: [0,300],
+		           maxlength: 6,
 		         },   
 		       P9_A: {
 		           required: true,
 		           number: true,
-		           range: [0,100],
-		           maxlength: 3,
+		           range: [0,300],
+		           maxlength: 6,
 		         }, 
 		       P10_A: {
 		           maxlength: 1000,
@@ -2184,46 +2272,42 @@ $.validator.addMethod("peruDate",function(value, element) {
 		       P4_C: {
 		           required: true,
 		           number: true,
-		           range: [0,1],
-		           maxlength: 1,
+		           range: [0,100],
+		           maxlength: 3,
 		         },     
 		       P5_C: {
 		           required: true,
 		           number: true,
-		           range: [0,1],
-		           maxlength: 1,
+		           range: [0,100],
+		           maxlength: 3,
 		         },      
 		       P6_C: {
 		           required: true,
 		           number: true,
-		           range: [0,1],
-		           maxlength: 1,
+		           range: [0,100],
+		           maxlength: 3,
 		         },        
 		       P7_C: {
 		           required: true,
 		           number: true,
-		           range: [0,1],
-		           maxlength: 1,
+		           range: [0,100],
+		           maxlength: 3,
 		         },       
 		       P8_C: {
 		           required: true,
 		           number: true,
 		           range: [0,100],
-		           maxlength: 3,
+		           maxlength: 6,
 		         },   
 		       P9_C: {
 		           required: true,
 		           number: true,
-		           range: [0,100],
-		           maxlength: 3,
+		           range: [0,300],
+		           maxlength: 6,
 		         }, 
 		       P10_C: {
 		           maxlength: 1000,
 		         }, 
-
-
-
-
 
 			//FIN RULES
 		    },
@@ -2233,11 +2317,40 @@ $.validator.addMethod("peruDate",function(value, element) {
 		       EMP_FIN: {
 		           validName: 'Ingrese nombre válido',
 		         },  
-		       // REG_DIA: {
-		       //     range: 'Día inválido',
-		       //     maxlength: 'Día inválido',
-		       //     exactlength:'Día inválido',           
-		       //   },                                                          
+		       REG_DIA: {
+		           range: 'Día inválido',
+		           maxlength: 'Día inválido',
+		           exactlength:'Día inválido',           
+		         },     
+		       REG_MES: {
+		           range: 'Mes inválido',
+		           maxlength: 'Mes inválido',
+		           exactlength:'Mes inválido',           
+		         },  
+		       NUM_P: {
+		       	   number: 'N° PESCADORES: sólo números ',
+		           required: 'N° PESCADORES: requerido ',
+		           range: 'N° PESCADORES: valores entre 0 y 500',
+		           maxlength: 'N° PESCADORES: longitud Máxima [3]',
+		         },
+		       NUM_A: {
+		       	   number: 'N° ACUICULTORES: sólo números ',
+		           required: 'N° ACUICULTORES: requerido ',
+		           range: 'N° ACUICULTORES: valores entre 0 y 500',
+		           maxlength: 'N° ACUICULTORES: longitud Máxima [3]',
+		         },		
+		       NUM_C: {
+		       	   number: 'N° COMUNIDADES: sólo números ',
+		           required: 'N° COMUNIDADES: requerido ',
+		           range: 'N° COMUNIDADES: valores entre 0 y 1',
+		           maxlength: 'N° COMUNIDADES: longitud Máxima [1]',
+		         },	
+		       NUEV_CCPP: {
+		       	   number: 'NUEVO CCPP: sólo números ',
+		           required: 'NUEVO CCPP: requerido ',
+		           range: 'NUEVO CCPP: valores entre 0 y 1',
+		           maxlength: 'NUEVO CCPP: longitud Máxima [1]',
+		         },			         
 		       P1_P: {
 		           range: 'Día inválido',
 		           maxlength: 'Día inválido',
@@ -2339,56 +2452,24 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 		    submitHandler: function(form) {
 
-
-		    	// $("div[name^='ccpp_div_'] :input").each(function (){
-
-		    	// 	if ( $(this).attr('id') == "REG"  ) {
-		    	// 		if ( !( $(this).val()== 0 ) || !( $(this).val()== 1 ) ) { alert('Valores no permitidos'); $("#frm_avance_campo").submit.stop(); return;};
-		    	// 	} else{
-
-		    	// 	};
-
-		    	// })
-
-				       //  var validator
-				       //      = new jQueryValidatorWrapper("FormToValidate",
-				       //          rules, messages);
-				 
-				       //  // 3. Set the click event to do the validation
-				       // // $("#btnValidate").click(function () {
-				       //      if (!validator.validate()){
-				       //      	return;
-				       //      }
-				                
-				 
-				// $(".REG_DIA").each(function(){
-				// 	$(this).rules("add", {
-				// 	           required: true,
-				// 	           number: true,
-				// 	           range: [8,9],
-				// 	           maxlength: 2,
-				// 	           exactlength:2,
-				// 		messages: {
-				// 	           range: 'Mes inválido',
-				// 	           maxlength: 'Mes inválido',
-				// 	           exactlength:'Mes inválido',
-				// 		}
-				// 	} );			
-				// });
-
-
-			// jQuery.validator.addClassRules("REG_DIA", {
-			// 		           required: true,
-			// 		           number: true,
-			// 		           range: [1,31],
-			// 		           maxlength: 2,
-			// 		           exactlength:2, 
-			// });
-
-
-
-
-
+				if ( !( parseInt($("#P3_P").val()) ==  parseInt($("#P4_P").val() ) +  parseInt($("#P5_P").val() ) +  parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) ) ){
+					alert('TOTAL FORM debe ser igual a la suma de RESULTADO');
+					$("#P3_P").focus();
+					$("#P3_P").select();
+					return;
+				};
+				if ( !( parseInt($("#P3_A").val()) ==  parseInt($("#P4_A").val() ) +  parseInt($("#P5_A").val() ) +  parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) ) ){
+					alert('TOTAL FORM debe ser igual a la suma de RESULTADO');
+					$("#P3_A").focus();
+					$("#P3_A").select();
+					return;
+				};
+				if ( !( parseInt($("#P3_C").val()) ==  parseInt($("#P4_C").val() ) +  parseInt($("#P5_C").val() ) +  parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) ) ){
+					alert('TOTAL FORM debe ser igual a la suma de RESULTADO');
+					$("#P3_C").focus();
+					$("#P3_C").select();
+					return;
+				};
 		        var bsub = $( "#frm_avance_campo :submit" );
 		        bsub.attr("disabled", "disabled");
 		        //  if (parseInt($("#C_TOTAL").val()) !== (parseInt($("#C_COMP").val()) + parseInt($("#C_INC").val()) + parseInt($("#C_RECH").val()) ) ){
@@ -2399,27 +2480,27 @@ $.validator.addMethod("peruDate",function(value, element) {
 		        // 	alert('El total no debe ser diferente a la suma'); $("#A_TOTAL").focus(); $("#A_TOTAL").select(); return;
 		        // }
 		        //var form_data = $("#ubi_geo :select").serializeArray();
-		        var form_data = $("#ubi_geo").find("input").serializeArray();
-		        form_data.push(
-		        	{name: 'csrf_token_c', 	value: CI.cct},
-		        	{name: 'EQP', 	value: $("#EQP").val()},
-		        	{name: 'RUTA', 	value: $("#RUTA").val()},
-		        	{name: 'SUB_R', 	value: $("#SUB_R").val()},
-		        	{name: 'NOM_SEDE', 	value: $("#NOM_SEDE :selected").text()},
-		        	{name: 'NOM_DD', 	value: $("#NOM_DD :selected").text()},
-		        	{name: 'ajax', 	value: true });
-		        var form_ccpp_total = $("#ccpp_total").find("input").serializeArray();
-		        	$.merge(form_data,form_ccpp_total);
-		        var form_totales = $("#totales").find("input, textarea").serializeArray();
-		        	$.merge(form_data, form_totales);
 
 		    	var guar = 0;
 		    	var modi = 0; 
 		    	var contador = 0;       	
 		        for ( c = 1 ; c <= $("#cant_reg").val() ; c++){
 
-			        var form_div = $("#ccpp_div_"+c+" :input").serializeArray();
-			        $.merge(form_data,form_div);
+			        var form_data = $("#ubi_geo").find("input").serializeArray();
+			        form_data.push(
+			        	{name: 'csrf_token_c', 	value: CI.cct},
+			        	{name: 'EQP', 	value: $("#EQP").val()},
+			        	{name: 'RUTA', 	value: $("#RUTA").val()},
+			        	{name: 'SUB_R', 	value: $("#SUB_R").val()},
+			        	{name: 'NOM_SEDE', 	value: $("#NOM_SEDE :selected").text()},
+			        	{name: 'NOM_DD', 	value: $("#NOM_DD :selected").text()},
+			        	{name: 'ajax', 	value: true });
+			        var form_ccpp_total = $("#ccpp_total").find("input").serializeArray();
+			        	$.merge(form_data,form_ccpp_total);
+			        var form_totales = $("#totales").find("input, textarea").serializeArray();
+			        	$.merge(form_data, form_totales);
+				        var form_div = $("#ccpp_div_"+c+" :input").serializeArray();
+				        $.merge(form_data,form_div);
 
 
 				        $.ajax({
