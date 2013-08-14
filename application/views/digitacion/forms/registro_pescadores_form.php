@@ -350,32 +350,35 @@ $OBS =array(
 	'cols'	=> 10,
 	'onkeypress'=>"return alfa_numericos(event)",	
 );
-	$iniciar = array(-1 => '-'); 
+	
 
 // CARGAR COMBOS
 
 	$depaArray = NULL; 
 	if (!$detalle){
 		foreach($departamento->result() as $filas) {
-	        $depaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);		}
+	        $depaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);	
+	       	$emp_jefe = array( -1 => '-');  	
+	    }
 	}else {
 		foreach($departamento->result() as $filas) {
-	        $depaArray[$filas->CCDD]=strtoupper($filas->NOM_DD);				
+	        $depaArray[$filas->CCDD]=strtoupper($filas->NOM_DD);	
+		}
+	$emp_jefe = array($NOM_EMP => $NOM_EMP); 
 	}
-}
 
 	$selected_NOM_DD = (set_value('NOM_DD_f')) ?  set_value('NOM_DD_f') : '';
 
-	$provArray = array(-1 => $NOM_PP_c); 
+	$provArray = array($NOM_PP_c => $NOM_PP_c); 
 	$selected_NOM_PP = (set_value('NOM_PP_f')) ?  set_value('NOM_PP_f') : '';
 
-	$distArray = array(-1 => $NOM_DI_c); 
+	$distArray = array($NOM_DI_c => $NOM_DI_c); 
 	$selected_NOM_DI = (set_value('NOM_DI_f')) ?  set_value('NOM_DI_f') : '';
 
-	$ccppArray = array(-1 =>$NOM_CCPP_c);
+	$ccppArray = array($NOM_CCPP_c =>$NOM_CCPP_c);
 	$selected_NOM_CCPP = (set_value('NOM_CCPP_f')) ?  set_value('NOM_CCPP_f') : '';
 
-	$ccppArray_proc = array(-1 =>$CCPP_PROC_c);
+	$ccppArray_proc = array($CCPP_PROC_c =>$CCPP_PROC_c);
 	$selected_NOM_CCPP_proc = (set_value('CCPP_PROC_f')) ?  set_value('CCPP_PROC_f') : '';	
 
 // FORM 1 --------------------------------------------------------------------------------------------->
@@ -717,11 +720,9 @@ echo form_open($this->uri->uri_string(),$attr);
 									echo '<div class="row-fluid">';
 
 										echo '<div class="control-group grupos span8">';
-											//cho form_label('APELLIDOS Y NOMBRES',$NOM_EMP['id'],$label1);
 											echo form_label('APELLIDOS Y NOMBRES',"NOM_EMP_combo",$label1);
 											echo '<div class="controls">';
-												//echo form_input($NOM_EMP); 
-												echo form_dropdown('NOM_EMP_combo', $iniciar , false,'class="span12" id="NOM_EMP_combo"');
+												echo form_dropdown('NOM_EMP_combo', $emp_jefe , false,'class="span12" id="NOM_EMP_combo"');
 												echo '<span class="help-inline"></span>';
 												echo '<div class="help-block error">' . form_error("NOM_EMP_combo") . '</div>';
 												echo '<input type="hidden" name="NOM_EMP" id="NOM_EMP" />';	
@@ -833,7 +834,7 @@ echo form_open($this->uri->uri_string(),$attr);
 	//HABILITA BOTONES
 	if ($num_filas === 0 && $num_filas_t===0){
 		echo '<a href="#form_busca" role="button" class="btn btn-primary" data-toggle="modal">Buscar</a>';
-		echo form_submit('send', 'Registrar','class="btn btn-primary pull-right"');  
+		echo form_submit('send', 'Guardar','class="btn btn-primary pull-right"');  
 	}else{
 		echo '<a href="#form_reg_pes_mod" role="button" class="btn btn-primary pull-right" data-toggle="modal">Modificar</a>';
 	}
@@ -1977,6 +1978,7 @@ function soloNumeros(e) {
 
 $(function(){
 
+
 $.extend(jQuery.validator.messages, {
      required: "Campo obligatorio",
     // remote: "Please fix this field.",
@@ -2052,16 +2054,13 @@ $("#NOM_DD_f").change(function() {
         }); 
 });
 
-// $("#NOM_EMP_combo").change(function(){
-// 	$("#DNI_EMP").val($(this).val());
-// 	$("#NOM_EMP").val($("#NOM_EMP_combo option:selected").text());
-// 	alert($("#NOM_EMP").val());
-
-// });
+$("#NOM_EMP_combo").change(function(){
+	$("#DNI_EMP").val($(this).val());
+	$("#NOM_EMP").val($("#NOM_EMP_combo :selected").text());
+});
 // R E G I S T R O    D E P E S C A D O R E S ------------------------------------------------------------------>
 $("#frm_reg_pesc").validate({
     rules: {
-
         NOM_DD_f:{
             valueNotEquals: -1,
         },
@@ -2274,7 +2273,7 @@ $("#frm_reg_pesc").validate({
             number: "Solo números",
             range: "Ingrese numeros entre 0  y 9998",
          },
-        NOM_EMP:{
+        NOM_EMP_combo:{
             required: 'Seleccione NOMBRE EMPADRONADOR',
             valueNotEquals: "Seleccione NOMBRE EMPADRONADOR",
          },               

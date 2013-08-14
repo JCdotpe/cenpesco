@@ -584,7 +584,7 @@ $("#seccion2").validate({
 		    	S2_3_M: {
 		            required: true,
 		            number: true,
-		            range:[1,11],
+		            range:[0,11],
 		            maxlength:2,
 		            minlength:1,
 		         }, 		            

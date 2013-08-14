@@ -1022,7 +1022,7 @@ echo form_open($this->uri->uri_string(),$attr);
 		echo '<div class="span6">';
 		// 	//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
 		// 	echo '<a href="'. site_url('monitoreo/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
-				echo anchor(site_url('monitoreo/avance_empadronador/export'), 'Exportar Excel','class="btn btn-success pull-left hide" id="export_excel"');		
+				echo anchor(site_url('monitoreo/avance_empadronador/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');		
 				//echo '<input type="button" id="export_excel" name="export_excel" value="Exportar Excel" class="btn btn-success pull-left hide " />';
 	 	echo '</div>';
 
@@ -1076,7 +1076,7 @@ $("#agregar").click(function () {
 		//CREA LOS INPTUS
         for (var i = add; i <= add; i++) {
     		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
-    		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12"  onkeypress="return solo_numeros(event)" maxlength=4 onblur="return mayusculas(this);" /></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12"  onkeypress="return solo_letras(event)" onblur="return mayusculas(this);" /></div>');
+    		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12"  onkeypress="return solo_numeros(event)" maxlength=4 onblur="return mayusculas(this);" /> <input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"> </div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12"  onkeypress="return solo_letras(event)" onblur="return mayusculas(this);" /></div>');
     		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12"  onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);"/></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
     		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>   <div class="help-block error"></div> 	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" onchange="return complete_zero(this,2)" ></div>'	);
     		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A"  class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 >	</div>'		);
@@ -1149,7 +1149,6 @@ $("#buscar").click(function(){
 				        			$("#ccpp_total :input").val('');
 				        			$("#totales :input").val('');
 
-
 				            		$.each(json , function(i, data) {
 				            			$("#CCPP").val(data.CCPP);
 				            			$("#NOM_PP").val(data.PROVINCIA);
@@ -1162,9 +1161,12 @@ $("#buscar").click(function(){
 				            				tipo_emp = 'B';
 				            			}
 				            		})
+
+
 								            	
 				            }
 				        }); 
+						alert('Ingrese en la subruta de acontinuación');
 				        //llena inputs detalle
 				        $.ajax({
 				            url: CI.base_url + "monitoreo/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" ,
@@ -1185,7 +1187,7 @@ $("#buscar").click(function(){
 									
 							        for (var i = 1; i <= cant; i++) {
 						        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
-						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" maxlength=4/></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" onblur="return mayusculas(this);" /></div>');
+						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" maxlength=4/><input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" onblur="return mayusculas(this);" /></div>');
 						        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" onkeypress="return solo_a_b(event)" maxlength=1 /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
 						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
 						        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)"  maxlength=1 >	</div>'		);
@@ -1202,6 +1204,7 @@ $("#buscar").click(function(){
 					        		$.each(json2 , function(i, data) {
 					        			var k = i+1;
 					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP']").val(data.COD_CCPP);
+					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP_NUM']").val(data.NUM_CENTRO_POBLADO);
 					        			$("#ccpp_div_"+k+" :input[name='NOM_CCPP']").val(data.NOM_CCPP);
 					        			$("#ccpp_div_"+k+" :input[name='TIPO_IN']").val(tipo_emp);
 					        			// $("#NOM_CCPP").val(data.NOM_CCPP);
@@ -1256,7 +1259,7 @@ $("#buscar").click(function(){
 									//CREA LOS INPTUS
 							        for (var i = 1; i <= cant; i++) {
 						        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
-						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" /></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" /></div>');
+						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" /><input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" /></div>');
 						        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)"  maxlength=1 onblur="return mayusculas(this);" /></div>');
 						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA_'+i+'" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12"  onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
 						        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3>	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3>	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 >	</div>'		);
@@ -1283,6 +1286,7 @@ $("#buscar").click(function(){
 				            			// DETALLE
 					        			var k = i+1;
 					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP']").val(data.CC_CCPP);
+					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP_NUM']").val(data.CC_CCPP_NUM);
 					        			$("#ccpp_div_"+k+" :input[name='NOM_CCPP']").val(data.NOM_CCPP);
 					        			$("#ccpp_div_"+k+" :input[name='TIPO_IN']").val(data.TIPO_IN);
 					        			$("#ccpp_div_"+k+" :input[name='TIPO_FIN']").val(data.TIPO_FIN);

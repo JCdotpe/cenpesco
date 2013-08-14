@@ -92,13 +92,11 @@ class Avance_empadronador extends CI_Controller {
 
 			$sede 	= $this->input->post('CCSE');
 			$dep 	= $this->input->post('CCDD');
-			$prov 	= $this->input->post('CCPP');
-			$dist 	= $this->input->post('CCDI');
-			$cc_ccpp = $this->input->post('CC_CCPP');		
 			$equipo = $this->input->post('EQP');
 			$ruta 	= $this->input->post('RUTA');
-			$sub_ruta = $this->input->post('SUB_R');
-	
+			$sub_ruta = $this->input->post('SUB_R');			
+			$cc_ccpp = $this->input->post('CC_CCPP');	
+			$cc_ccpp_num = $this->input->post('CC_CCPP_NUM');	
 
 			$lista =  $this->avance_campo_subrutas_model->get_fields();
 
@@ -109,14 +107,15 @@ class Avance_empadronador extends CI_Controller {
 				}
 			}
 
-			$consulta = $this->avance_campo_subrutas_model->consulta($sede,$dep,$prov,$dist,$cc_ccpp,$equipo,$ruta,$sub_ruta);
+			//$consulta = $this->avance_campo_subrutas_model->consulta($sede,$dep,$prov,$dist,$cc_ccpp,$equipo,$ruta,$sub_ruta);
+			$consulta = $this->avance_campo_subrutas_model->consulta($sede,$dep,$equipo,$ruta,$sub_ruta,$cc_ccpp,$cc_ccpp_num);
 
 			if ($consulta->num_rows() == 0 ){ // inserta en la tabla
 
 				// if ($this->tank_auth->get_ubigeo()==99) {
 
 					$data_reg['COD'] = ($sede.$dep.$equipo.$ruta.$sub_ruta);
-					$data_reg['COD_REG'] = ($sede.$dep.$prov.$dist.$cc_ccpp.$equipo.$ruta.$sub_ruta);
+					$data_reg['COD_REG'] = ($sede.$dep.$equipo.$ruta.$sub_ruta.$cc_ccpp.$cc_ccpp_num);
 					$data_reg['user_id'] = $this->tank_auth->get_user_id();
 					$data_reg['created'] = date('Y-m-d H:i:s');
 					$data_reg['last_ip'] =  $this->input->ip_address();
@@ -140,7 +139,7 @@ class Avance_empadronador extends CI_Controller {
 					$data_reg['last_ip'] =  $this->input->ip_address();
 					$data_reg['user_agent'] = $this->agent->agent_string();		
 
-					$guardado = $this->avance_campo_subrutas_model->update_sub_ruta($sede,$dep,$prov,$dist,$cc_ccpp,$equipo,$ruta,$sub_ruta,$data_reg);
+					$guardado = $this->avance_campo_subrutas_model->update_sub_ruta($sede,$dep,$equipo,$ruta,$sub_ruta,$cc_ccpp,$cc_ccpp_num,$data_reg);
 
 					if ($guardado == 1){
 						$datos = 'modificado';
@@ -166,6 +165,7 @@ class Avance_empadronador extends CI_Controller {
 
 	function get_ajax_equipo()
 	{
+		$this->output->cache(30);		
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 
@@ -177,7 +177,8 @@ class Avance_empadronador extends CI_Controller {
 	}
 
 	function get_ajax_ruta()
-	{
+	{	
+		$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo =  $this->input->post('equipo');
@@ -188,7 +189,8 @@ class Avance_empadronador extends CI_Controller {
 	}
 
 	function get_ajax_sub_ruta()
-	{
+	{	
+		$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo =  $this->input->post('equipo');
@@ -201,6 +203,7 @@ class Avance_empadronador extends CI_Controller {
 
 
 	function get_ajax_all($opcion){
+		$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo = $this->input->post('equipo');
@@ -217,6 +220,7 @@ class Avance_empadronador extends CI_Controller {
 	}
 
 	function get_ajax_ccpp_by_sub_ruta(){
+		$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo = $this->input->post('equipo');

@@ -98,7 +98,7 @@ class Registro_pescadores extends CI_Controller {
 			$opcion = $this->input->post('send');
 
 			if ($opcion==='Guardar'){
-
+				//echo '<script> alert("entra al controller");</script>';
 				if ($this->tank_auth->get_ubigeo()<99) {
 				
 					//VALIDA si el CCPP ya fue registrado				
@@ -144,7 +144,7 @@ class Registro_pescadores extends CI_Controller {
 					$this->form_validation->set_rules('T_EMB','TOTAL EMBARCACIONES','required|numeric');
 
 					$this->form_validation->set_rules('NOM_EMP','NOMBRE EMPADRONADOR','required');
-					$this->form_validation->set_rules('DNI_EMP','NOMBRE EMPADRONADOR','required|numeric|xss_clean');
+					$this->form_validation->set_rules('DNI_EMP','DNI EMPADRONADOR','required|numeric|xss_clean');
 
 					$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
 					if ($od->num_rows() == 1){
@@ -215,7 +215,7 @@ class Registro_pescadores extends CI_Controller {
 	    			$this->session->set_flashdata('msgbox','no_piloto');
         			redirect('/digitacion/registro_pescadores');	
 			    }
-			    echo '<script> alert("entra al controller");</script>';
+			    
 		    }elseif ($opcion==='Filtrar'){
 
 				$this->form_validation->set_rules('NOM_DD_2','DEPARTAMENTO','required|numeric');
