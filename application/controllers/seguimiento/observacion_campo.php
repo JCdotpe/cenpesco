@@ -22,7 +22,7 @@ class observacion_campo extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 8 && $role->rolename == 'Monitoreo de campo'){
+			if($role->role_id == 8 && $role->rolename == 'Seguimiento'){
 				$flag = TRUE;
 				break;
 			}
@@ -63,7 +63,7 @@ class observacion_campo extends CI_Controller {
 			$data['option'] = 2;
 			$data['reporte'] = $this->tank_auth->get_ubigeo();
 			$data['tables'] = $this->observacion_campo_model->get_todo($odei);
-			$data['main_content'] = 'monitoreo/observacion_campo_view';
+			$data['main_content'] = 'seguimiento/observacion_campo_view';
 	        $this->load->view('backend/includes/template', $data);
 
 	}
@@ -228,7 +228,7 @@ class observacion_campo extends CI_Controller {
 		
 		//regular
 		$data['tables'] = $this->observacion_campo_model->get_todo($odei);
-		$data['main_content'] = 'monitoreo/observacion_campo_tabla_view';
+		$data['main_content'] = 'seguimiento/observacion_campo_tabla_view';
         $this->load->view('backend/includes/template', $data);
 
 	}

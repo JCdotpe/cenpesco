@@ -3,7 +3,7 @@
 </div>
 
 <div class="row-fluid" style="padding-bottom: 20px !important">
-	<div class="btn btn-success pull-left"><?php echo anchor('monitoreo/observacion_campo/export','Exportar Excel'); ?></div>
+	<div class="btn btn-success pull-left"><?php echo anchor('seguimiento/observacion_campo/export','Exportar Excel'); ?></div>
 </div>
 
 

@@ -8,7 +8,7 @@
 </div>
 
 <div class="row-fluid" style="padding-bottom: 20px !important">
-	<div class="btn btn-success pull-left"><?php echo anchor('monitoreo/revision/export','Exportar Excel'); ?></div>
+	<div class="btn btn-success pull-left"><?php echo anchor('seguimiento/revision/export','Exportar Excel'); ?></div>
 </div>
 
 

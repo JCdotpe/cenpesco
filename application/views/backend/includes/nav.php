@@ -64,7 +64,7 @@
             <?php }?>
                 <ul class="nav"> 
                   <!--  <li><a href="<?php //echo site_url('convocatoria/registro'); ?>">Inscripción</a></li>  -->
-                   <li><a href="http://cenpesco.dontemplates.com/bpr">BPR</a></li>  
+                   <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li>  
                    <!-- <li><a href="<?php //echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>    -->
                 </ul>  
 

@@ -510,7 +510,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="row-fluid hide"  id="agregar_boton" style="padding-bottom:10px;">';
 			echo '<input type="button" id="agregar" name="agregar" value="Agregar CCPP" class="btn btn-primary " />';
-			echo anchor(site_url('monitoreo/avance_empadronador'), 'Otra consulta','class="btn btn-success pull-right" id="otra_consulta"');	
+			echo anchor(site_url('seguimiento/avance_empadronador'), 'Otra consulta','class="btn btn-success pull-right" id="otra_consulta"');	
 	echo '</div>'; 
 
 	echo '<div class="well modulo hide"  style="overflow:auto;" id="detalle">';
@@ -1021,8 +1021,8 @@ echo form_open($this->uri->uri_string(),$attr);
 
 		echo '<div class="span6">';
 		// 	//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
-		// 	echo '<a href="'. site_url('monitoreo/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
-				echo anchor(site_url('monitoreo/avance_empadronador/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');		
+		// 	echo '<a href="'. site_url('seguimiento/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
+				echo anchor(site_url('seguimiento/avance_empadronador/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');		
 				//echo '<input type="button" id="export_excel" name="export_excel" value="Exportar Excel" class="btn btn-success pull-left hide " />';
 	 	echo '</div>';
 
@@ -1124,7 +1124,7 @@ $("#buscar").click(function(){
 		};
 
         $.ajax({
-            url: CI.base_url + "monitoreo/avance_empadronador/consulta/" ,
+            url: CI.base_url + "seguimiento/avance_empadronador/consulta/" ,
             type:'POST',
             data:datas,
             dataType:'json',
@@ -1132,7 +1132,7 @@ $("#buscar").click(function(){
             	if (json === 0) {// si no existe registros en tabla
 						//llenar provincia, distrito, empadronador
 				        $.ajax({
-				            url: CI.base_url + "monitoreo/avance_empadronador/get_ajax_all/" + 1, //consulta de la tabla MONITOREO ESPECIAL
+				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + 1, //consulta de la tabla seguimiento ESPECIAL
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
@@ -1169,7 +1169,7 @@ $("#buscar").click(function(){
 						alert('Ingrese en la subruta de acontinuación');
 				        //llena inputs detalle
 				        $.ajax({
-				            url: CI.base_url + "monitoreo/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" ,
+				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" ,
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
@@ -1227,7 +1227,7 @@ $("#buscar").click(function(){
             	}else{////////////////////////////////////////////// editar la consulta
             			alert('Subruta en Base de Datos, actualizalo  ');
 				        $.ajax({
-				            url: CI.base_url + "monitoreo/avance_empadronador/get_ajax_all/" + 2, //consulta de la tabla AVANCE CAMPO SUBRUTAS
+				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + 2, //consulta de la tabla AVANCE CAMPO SUBRUTAS
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
@@ -1831,21 +1831,21 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
             case 'NOM_DD':
                 sel     = $("#EQP");
                 $('#CCDD').val(mivalue); 
-                url     = CI.base_url + "monitoreo/avance_empadronador/get_ajax_equipo/" + sede.val() +  "/"+ $(this).val();
+                url     = CI.base_url + "seguimiento/avance_empadronador/get_ajax_equipo/" + sede.val() +  "/"+ $(this).val();
                 op      = 1;
                 break;
 
             case 'EQP':
                 sel     = $("#RUTA");
                 //$('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "monitoreo/avance_empadronador/get_ajax_ruta/" + sede.val() +  "/" + dep.val() + "/" +  $(this).val();
+                url     = CI.base_url + "seguimiento/avance_empadronador/get_ajax_ruta/" + sede.val() +  "/" + dep.val() + "/" +  $(this).val();
                 op      = 2;
                 break;
 
             case 'RUTA':
                 sel     = $("#SUB_R");
                 //$("#CCDI").val(mivalue);          
-                url     = CI.base_url + "monitoreo/avance_empadronador/get_ajax_sub_ruta/" + sede.val() +  "/" + dep.val() + "/" + equipo.val() + "/" + $(this).val();
+                url     = CI.base_url + "seguimiento/avance_empadronador/get_ajax_sub_ruta/" + sede.val() +  "/" + dep.val() + "/" + equipo.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 
@@ -2508,7 +2508,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 
 				        $.ajax({
-				            url: CI.base_url + "monitoreo/avance_empadronador/grabar",
+				            url: CI.base_url + "seguimiento/avance_empadronador/grabar",
 				            type:'POST',
 				            data:form_data,
 				            dataType:'json',

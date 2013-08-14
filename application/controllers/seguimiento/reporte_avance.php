@@ -24,7 +24,7 @@ class Reporte_avance extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 8 && $role->rolename == 'Monitoreo de campo'){
+			if($role->role_id == 8 && $role->rolename == 'Seguimiento'){
 				$flag = TRUE;
 				break;
 			}
@@ -61,12 +61,12 @@ class Reporte_avance extends CI_Controller {
 			
 			//regular
 			//$data['tables'] = $this->avance_campo_model->get_todo($odei);
-			$data['main_content'] = 'monitoreo/reporte_avance_view';
+			$data['main_content'] = 'seguimiento/reporte_avance_view';
 			$data['option'] = 4;
 			$data['reporte'] = $this->tank_auth->get_ubigeo();
 	        $this->load->view('backend/includes/template', $data);
 	    }else{
-	    	redirect('monitoreo/monitoreo');
+	    	redirect('seguimiento/seguimiento');
 	    }
 	}
 
@@ -173,7 +173,7 @@ class Reporte_avance extends CI_Controller {
 		
 		//regular
 		$data['tables'] = $this->avance_campo_model->get_todo($odei);
-		$data['main_content'] = 'monitoreo/avance_tabla_view';
+		$data['main_content'] = 'seguimiento/avance_tabla_view';
         $this->load->view('backend/includes/template', $data);
 
 	}

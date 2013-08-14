@@ -49,6 +49,7 @@ class Comunidad extends CI_Controller {
 		$this->load->model('marco_model');	
 		$this->load->model('comunidad_model');	
 		$this->load->model('ccpp_model');	
+		$this->load->model('empadronador_model');	
 	}
 
 
@@ -60,7 +61,9 @@ class Comunidad extends CI_Controller {
 				$odei[] = $key->ODEI_COD;
 			}
 			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
-			
+
+			//get empadronadores by odei
+			$data['emps'] = $this->empadronador_model->get_emp_by_odei($odei);			
 			$data['nav'] = TRUE;
 			//regular
 			$data['departamentos'] = $this->ubigeo_piloto_model->get_dptos();

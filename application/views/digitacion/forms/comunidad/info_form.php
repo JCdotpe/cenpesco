@@ -9,6 +9,9 @@ $span_class8 =  'span8';
 $span_class =  'span12';
 
 
+
+
+
 //Observaciones
 	$OBS = array(
 		'name'	=> 'OBS',
@@ -55,13 +58,13 @@ $span_class =  'span12';
 		'onkeypress'=>"return solo_1_to_3(event)",
 	);
 //Empadronador
-	$EMP = array(
-		'name'	=> 'EMP',
-		'id'	=> 'EMP',
-		'maxlength'	=> 100,
-		'class' => $span_class,
-		'onkeypress'=>"return solo_letras(event)",
-	);
+	// $EMP = array(
+	// 	'name'	=> 'EMP',
+	// 	'id'	=> 'EMP',
+	// 	'maxlength'	=> 100,
+	// 	'class' => $span_class,
+	// 	'onkeypress'=>"return solo_letras(event)",
+	// );
 //Empadronador_DNI
 	$EMP_DNI = array(
 		'name'	=> 'EMP_DNI',
@@ -69,7 +72,16 @@ $span_class =  'span12';
 		'maxlength'	=> 8,
 		'class' => $span_class,
 		'onkeypress'=>"return solo_numeros(event)",
+		'readonly'=>'readonly',
 	);
+
+
+		$emp_jefe = array(-1 => '-'); 
+		foreach($emps->result() as $value)
+		{
+			$emp_jefe[$value->DNI]=strtoupper($value->NOMBRE);
+		}
+
 
 /////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////
@@ -118,12 +130,13 @@ echo '<div class="well modulo ">';
 
 			echo '<div class="span7 preguntas"  id="SEC9_2">';
 				echo '<div class="control-group">';
-					echo form_label('NOMBRES Y APELLIDOS DEL EMPADRONADOR', $EMP['id'], $label_class);
+					echo form_label('NOMBRES Y APELLIDOS DEL EMPADRONADOR', "EMP_combo", $label_class);
 
 					echo '<div class="controls offset1  span10">'; 
-						echo form_input($EMP); 
+						echo form_dropdown('EMP_combo', $emp_jefe, FALSE,'class="span12" id="EMP_combo"');
+						//echo form_input($EMP); 
 						echo '<span class="help-inline"></span>';
-						echo '<div class="help-block error">' . form_error($EMP['name']) . '</div>';
+						echo '<div class="help-block error">' . form_error("EMP_combo") . '</div>';
 					echo '</div>'; 	
 				echo '</div>';
 			echo '</div>';
@@ -242,6 +255,10 @@ echo form_close();
 
 
 <script type="text/javascript">
+
+$('#EMP_combo').change(function() {
+	$('#EMP_DNI').val($(this).val());
+});
 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
@@ -362,7 +379,8 @@ $(function(){
 		    	var seccion_info_data = $("#comunidad_info").serializeArray();
 			    seccion_info_data.push(
 			        {name: 'ajax',value:1},
-			        {name: 'comunidad_id',value:$("input[name='comunidad_id']").val()}      
+			        {name: 'comunidad_id',value:$("input[name='comunidad_id']").val()},  
+			        {name: 'EMP',value:$('#EMP_combo :selected').text()}    
 			    );
 				
 		        var bsubinfo = $( "#comunidad_info :submit" );

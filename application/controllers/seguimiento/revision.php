@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Avance extends CI_Controller {
+class Revision extends CI_Controller {
 
 	function __construct()
 	{
@@ -9,11 +9,8 @@ class Avance extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->load->library('security');
 		$this->load->library('tank_auth');
-		$this->load->library('PHPExcel');
-		////$this->load->library('PHPExcel/iofactory.php');
-		//$this->load->library('/phpexcel/writer/excel2007');
-	
-		$this->lang->load('tank_auth');		
+		$this->lang->load('tank_auth');	
+		$this->load->library('PHPExcel');				
 
 		//User is logged in
 		if (!$this->tank_auth->is_logged_in()) {
@@ -24,24 +21,22 @@ class Avance extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 8 && $role->rolename == 'Monitoreo de campo'){
+			if($role->role_id == 8 && $role->rolename == 'Seguimiento'){
 				$flag = TRUE;
 				break;
 			}
 		}
-
 		//If not author is the maintenance guy!
 		if (!$flag) {
 			show_404();
 			die();
 		}
-
+		$this->load->model('pesca_piloto_model');	
+		$this->load->model('ubigeo_model');	
 		$this->load->model('marco_model');	
-		$this->load->model('avance_campo_model');	
+		$this->load->model('revision_model');	
 		$this->load->model('ccpp_model');	
-
 	}
-
 
 	public function index()
 	{
@@ -55,15 +50,17 @@ class Avance extends CI_Controller {
 				$odei[] = $key->ODEI_COD;
 			}
 			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
-			$data['jefe_brigada'] = $this->avance_campo_model->get_jefe_by_odei($odei); 
-			
-			//regular
-			//$data['tables'] = $this->avance_campo_model->get_todo($odei);
-			$data['reporte'] = $this->tank_auth->get_ubigeo();
-			$data['main_content'] = 'monitoreo/avance_view';
-			$data['option'] = 1;
-	        $this->load->view('backend/includes/template', $data);
 
+			$data['cargos'] =  array(	-1 => '-',
+										 1 => 'COORDINADOR DEPARTAMENTAL',
+										 2 => 'SUPERVISOR NACIONAL',
+										 3 => 'JEFE DE BRIGADA' );			
+			//regular
+			$data['option'] = 3;
+			$data['reporte'] = $this->tank_auth->get_ubigeo();
+			$data['tables'] = $this->revision_model->get_todo($odei);
+			$data['main_content'] = 'seguimiento/revision_view';
+	        $this->load->view('backend/includes/template', $data);
 	}
 
 	public function grabar()
@@ -73,7 +70,7 @@ class Avance extends CI_Controller {
 
 			$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
 			
-				$ODEI_COD = $od->row('ODEI_COD');// para sacar nombre de la SEDE y ODEI
+				$ODEI_COD = $od->row('ODEI_COD');
 				$NOM_ODEI = $od->row('NOM_ODEI');
 				$NOM_SEDE= $od->row('NOM_SEDE');
 
@@ -97,48 +94,39 @@ class Avance extends CI_Controller {
 					'NOM_CCPP'=> $this->input->post('NOM_CCPP'),
 		            'F_D' => $this->input->post('F_D'),
 					'F_M' => $this->input->post('F_M'),
-					'NOM_BRI' => $this->input->post('NOM_BRI'),
-
-					'C_TOTAL' => $this->input->post('C_TOTAL'),
-					'C_COMP' => $this->input->post('C_COMP'),
-					'C_INC' => $this->input->post('C_INC'),
-					'C_RECH' => $this->input->post('C_RECH'),
-
-					'P_TOTAL' => $this->input->post('P_TOTAL'),
-					'P_COMP' => $this->input->post('P_COMP'),
-					'P_INC' => $this->input->post('P_INC'),
-					'P_RECH' => $this->input->post('P_RECH'),
-					'E_TOTAL_P' => $this->input->post('E_TOTAL_P'),
-
-					'A_TOTAL' => $this->input->post('A_TOTAL'),
-					'A_COMP' => $this->input->post('A_COMP'),
-					'A_INC' => $this->input->post('A_INC'),
-					'A_RECH' => $this->input->post('A_RECH'),
-					'E_TOTAL_A' => $this->input->post('E_TOTAL_A'),
-
+					'NOM' => $this->input->post('NOM'),
+					'CARGO' => $this->input->post('CARGO'),
+					'F_PES' => $this->input->post('F_PES'),
+					'F_ACU' => $this->input->post('F_ACU'),
+					'F_COM' => $this->input->post('F_COM'),
+					'SEC' => $this->input->post('SECC'),
+					'PREG_N' => $this->input->post('PREG_N'),
+					'E_CONC' => $this->input->post('E_CONC'),
+					'E_DILIG' => $this->input->post('E_DILIG'),
+					'E_OMI' => $this->input->post('E_OMI'),
+					'DES_E' => $this->input->post('DES_E'),
 					'activo'=>1,
 					'user_id'=>$this->tank_auth->get_user_id(),
 					'created'=> date('Y-m-d H:i:s'),
 					'last_ip' => $this->input->ip_address(),
 					'user_agent' => $this->agent->agent_string(),
 					);
-				
+				$revision = $this->revision_model->consulta_ccpp($CCDD,$CCPP,$CCDI,$COD_CCPP);
 
 			if ($this->tank_auth->get_ubigeo()<99) {
 
-				if ($od->num_rows() == 1){//filtra si existe odei
-
-					$revision = $this->avance_campo_model->consulta_ccpp($CCDD,$CCPP,$CCDI,$COD_CCPP);
-					if($revision >= 1){// consulta si existe el centro poblado en la tabla
-						$datos['operacion'] = 0; // ya existe el centro poblado
-					}else{
-						$filas = $this->avance_campo_model->insertar($registro);
+				if ($od->num_rows() == 1){
+					
+					//if($revision >= 1){
+						//$datos['operacion'] = 0; // ya existe el centro poblado
+					//}else{
+						$filas = $this->revision_model->insertar($registro);
 						if ($filas ==1) {
 							$datos['operacion'] = 1;	// guardado exitosamente				
 						}else {
 							$datos['operacion'] = 8; // no se guardo		
 						}
-					}
+					//}
 				}else {
 					$datos['operacion'] = 7; //ODEI en doble ubigeo
 				}
@@ -146,6 +134,9 @@ class Avance extends CI_Controller {
 			}else{
 					$datos['operacion'] = 99; // no usuario piloto
 			}	
+
+
+
 
 
 			// $datos['secciones'] = $udra;	
@@ -168,8 +159,8 @@ class Avance extends CI_Controller {
 		}
 		
 		//regular
-		$data['tables'] = $this->avance_campo_model->get_todo($odei);
-		$data['main_content'] = 'monitoreo/avance_tabla_view';
+		$data['tables'] = $this->revision_model->get_todo($odei);
+		$data['main_content'] = 'seguimiento/revision_tabla_view';
         $this->load->view('backend/includes/template', $data);
 
 	}
@@ -180,39 +171,43 @@ class Avance extends CI_Controller {
 		foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
 			$odei[] = $key->ODEI_COD;
 		}
-		
-		$registros = $this->avance_campo_model->get_todo($odei);  
+		$registros = $this->revision_model->get_todo($odei);    	
 
 		// pestaña
 		$sheet = $this->phpexcel->getActiveSheet(0);
 		
 
 		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet->getColumnDimension('A')->setWidth(10);
 			$sheet->getColumnDimension('B')->setWidth(25);
 			$sheet->getColumnDimension('D')->setWidth(25);
 			$sheet->getColumnDimension('F')->setWidth(25);
 			$sheet->getColumnDimension('H')->setWidth(25);
 			$sheet->getColumnDimension('J')->setWidth(25);
 			$sheet->getColumnDimension('K')->setWidth(15);
-			$sheet->getColumnDimension('L')->setWidth(25);
+			$sheet->getColumnDimension('L')->setWidth(35);
 			$sheet->getColumnDimension('O')->setWidth(35);
-			$sheet->getColumnDimension('X')->setWidth(18);
-			$sheet->getColumnDimension('AC')->setWidth(18);
-			$sheet->getRowDimension(5)->setRowHeight(20);
+			$sheet->getColumnDimension('Q')->setWidth(15);
+			$sheet->getColumnDimension('R')->setWidth(15);
+			$sheet->getColumnDimension('S')->setWidth(15);
+			$sheet->getColumnDimension('V')->setWidth(12);
+			$sheet->getColumnDimension('W')->setWidth(12);
+			$sheet->getColumnDimension('X')->setWidth(12);
+			$sheet->getColumnDimension('y')->setWidth(50);
 			$sheet->getRowDimension(6)->setRowHeight(20);
 		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
 
 		// TITULOS
 			$sheet->setCellValue('A2','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
-			$sheet->mergeCells('A2:AC2');
+			$sheet->mergeCells('A2:Y2');
 			$sheet->setCellValue('A3','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
-			$sheet->mergeCells('A3:AC3');
-			$sheet->setCellValue('A4','REPORTE DE AVANCE DE CAMPO ' );
-			$sheet->mergeCells('A4:AC4');
-			$sheet->getStyle('A2:AC4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
-			$sheet->getStyle('A2:AC4')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
-			$sheet->getStyle('A2:AC2')->getFont()->setname('Arial black')->setSize(16);	
-			$sheet->getStyle('A3:AC4')->getFont()->setname('Arial')->setSize(16);	
+			$sheet->mergeCells('A3:Y3');
+			$sheet->setCellValue('A4','REPORTE DE REVISIÓN EN GAVINETE ' );
+			$sheet->mergeCells('A4:Y4');
+			$sheet->getStyle('A2:Y4')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet->getStyle('A2:AY4')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet->getStyle('A2:Y2')->getFont()->setname('Arial black')->setSize(16);	
+			$sheet->getStyle('A3:Y4')->getFont()->setname('Arial')->setSize(16);	
 
 			// LOGO
 	          $objDrawing = new PHPExcel_Worksheet_Drawing();
@@ -230,14 +225,14 @@ class Avance extends CI_Controller {
 	          $objDrawing2->setName("produce");
 	          $objDrawing2->setDescription("Produce");
 	          $objDrawing2->setPath("img/produce.jpg");
-	          $objDrawing2->setCoordinates('Y1');
+	          $objDrawing2->setCoordinates('W1');
 	          $objDrawing2->setHeight(73);
 	          $objDrawing2->setOffsetX(1);
 	          $objDrawing2->setOffsetY(5);
 		// TITULOS
 
 		// CABECERA ESPECIAL
-			$sheet->setCellValue('P5','COMUNIDADES');
+			/*$sheet->setCellValue('P5','COMUNIDADES');
 			$sheet->mergeCells('P5:S5');
 			$sheet->setCellValue('T5','PESCADOR ' );
 			$sheet->mergeCells('T5:X5');
@@ -251,7 +246,7 @@ class Avance extends CI_Controller {
 						'allborders' => array(
 										'style' => PHPExcel_Style_Border::BORDER_THIN)
 					)
-			));
+			));*/
 		// CABECERA ESPECIAL
 
 		// CABECERA
@@ -273,31 +268,27 @@ class Avance extends CI_Controller {
 					$sheet->setCellValue('L'.$cab,'CENTRO POBLADO' );
 					$sheet->setCellValue('M'.$cab,'DIA ' );
 					$sheet->setCellValue('N'.$cab, 'MES' );
-					$sheet->setCellValue('O'.$cab, 'JEFE DE BRIGADA' );
-					$sheet->setCellValue('P'.$cab, 'TOTAL' );
-					$sheet->setCellValue('Q'.$cab, 'COMP.' );
-					$sheet->setCellValue('R'.$cab, 'INCO.' );
-					$sheet->setCellValue('S'.$cab, 'RECHZ.' );
-					$sheet->setCellValue('T'.$cab, 'TOTAL' );
-					$sheet->setCellValue('U'.$cab, 'COMP.' );
-					$sheet->setCellValue('V'.$cab, 'INCO.' );
-					$sheet->setCellValue('W'.$cab, 'RECHZ.' );
-					$sheet->setCellValue('X'.$cab,'EMBARCACION');
-					$sheet->setCellValue('Y'.$cab,' TOTAL');
-					$sheet->setCellValue('Z'.$cab,' COMP.');
-					$sheet->setCellValue('AA'.$cab,' INCO.');
-					$sheet->setCellValue('AB'.$cab,' RECHZ.');
-					$sheet->setCellValue('AC'.$cab,' EMBARCACION');
+					$sheet->setCellValue('O'.$cab, 'NOMBRES Y APELLIDOS' );
+					$sheet->setCellValue('P'.$cab, 'CARGO' );
+					$sheet->setCellValue('Q'.$cab, 'N. F. PESC.' );
+					$sheet->setCellValue('R'.$cab, 'N. F. ACUI.' );
+					$sheet->setCellValue('S'.$cab, 'N. F. COMU.' );
+					$sheet->setCellValue('T'.$cab, 'SECC.' );
+					$sheet->setCellValue('U'.$cab, 'PREG.' );
+					$sheet->setCellValue('V'.$cab, 'E_CONC.' );
+					$sheet->setCellValue('W'.$cab, 'E_DILIG.' );
+					$sheet->setCellValue('X'.$cab, 'E_OMI');
+					$sheet->setCellValue('Y'.$cab, 'DESCRIPCIÓN DEL ERROR');
 			// NOMBRE CABECERAS
 
 			// ESTILOS  CABECERAS
-				$sheet->getStyle("A".$cab.":AC".$cab)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
-				$sheet->getStyle("A".$cab.":AC".$cab)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
-				$sheet->getStyle("A".$cab.":AC".$cab)->getFont()->setname('Arial')->setSize(11);
-		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":AC".$cab);
+				$sheet->getStyle("A".$cab.":Y".$cab)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+				$sheet->getStyle("A".$cab.":Y".$cab)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+				$sheet->getStyle("A".$cab.":Y".$cab)->getFont()->setname('Arial')->setSize(11);
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":Y".$cab);
 		        $headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
 
-				$sheet->getStyle("A".$cab.":AC".$cab)->applyFromArray(array(
+				$sheet->getStyle("A".$cab.":Y".$cab)->applyFromArray(array(
 				'borders' => array(
 							'allborders' => array(
 											'style' => PHPExcel_Style_Border::BORDER_THIN)
@@ -333,7 +324,7 @@ class Avance extends CI_Controller {
 			$numberStyle3->getNumberFormat()->setFormatCode('00');	
 
 			//bordes cuerpo
-			$sheet->getStyle("A".($cab+1).":AC".$total)->applyFromArray(array(
+			$sheet->getStyle("A".($cab+1).":Y".$total)->applyFromArray(array(
 			'borders' => array(
 						'allborders' => array(
 										'style' => PHPExcel_Style_Border::BORDER_THIN)
@@ -357,13 +348,13 @@ class Avance extends CI_Controller {
 			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
 
 			// Propiedades del archivo excel
-				$sheet->setTitle("Avance de campo");
+				$sheet->setTitle("Revisión en gavinete");
 				$this->phpexcel->getProperties()
-				->setTitle("Avance de campo")
-				->setDescription("Avance");
+				->setTitle("Revisión en gavinete")
+				->setDescription("Revisión en gavinete");
 
 			header("Content-Type: application/vnd.ms-excel");
-			$nombreArchivo = 'AvanceCampo_'.date('YmdHis');
+			$nombreArchivo = 'RevisionGavinete_'.date('YmdHis');
 			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\"");
 			header("Cache-Control: max-age=0");
 			
@@ -374,6 +365,8 @@ class Avance extends CI_Controller {
 			$writer->save('php://output');
 			exit;
 		// SALIDA EXCEL
+
+
  	}
 
 }

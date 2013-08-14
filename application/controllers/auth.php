@@ -115,36 +115,41 @@ class Auth extends CI_Controller
 		$this->_show_message($this->lang->line('auth_message_logged_out'));
 
 	}
-	function change_password_cenpesco($tipo = null){
-		$usuarios = $this->users->users_cenpesco_by_tipo($tipo);// obtiene usuarios del mismo tipo
-		$cont = 0;
-		foreach ($usuarios->result() as $key ) {
-			if ($this->tank_auth->change_password_cenpesco($key->id,$key->username)) {
-				$cont++;
-			}
+
+	//*****************************************************************************
+	// cambio de contraseñas CENPESCO
+
+	// function change_password_cenpesco($tipo = null){
+	// 	$usuarios = $this->users->users_cenpesco_by_tipo($tipo);// obtiene usuarios del mismo tipo
+	// 	$cont = 0;
+	// 	foreach ($usuarios->result() as $key ) {
+	// 		if ($this->tank_auth->change_password_cenpesco($key->id,$key->username)) {
+	// 			$cont++;
+	// 		}
 			
-		}
+	// 	}
 
-			$data['msg'] = $cont .' actualizados';
-			$data['main_content'] = 'backend/login/passwd_change_view';
-    		$this->load->view('backend/includes/template', $data);		
+	// 		$data['msg'] = $cont .' actualizados';
+	// 		$data['main_content'] = 'backend/login/passwd_change_view';
+ //    		$this->load->view('backend/includes/template', $data);		
 
-	}
+	// }
 
 
-	function change_password_by($user_name, $new_pass){
-		$user_id = $this->users->users_cenpesco_by_name($user_name)->row('id');
-		$data['msg'] = 'ERROR, No se pudo cambiar la constraseña  del Usuario "'.$user_name .'" ';
+	// function change_password_by($user_name, $new_pass){
+	// 	$user_id = $this->users->users_cenpesco_by_name($user_name)->row('id');
+	// 	$data['msg'] = 'ERROR, No se pudo cambiar la constraseña  del Usuario "'.$user_name .'" ';
 
-			if ($this->tank_auth->change_password_cenpesco($user_id,$new_pass) >= 1) {
-				$data['msg'] = 'La contraseña del Usuario "'.$user_name .'" fue  actualizada';
-			}
+	// 		if ($this->tank_auth->change_password_cenpesco($user_id,$new_pass) >= 1) {
+	// 			$data['msg'] = 'La contraseña del Usuario "'.$user_name .'" fue  actualizada';
+	// 		}
 			
-			$data['main_content'] = 'backend/login/passwd_change_view';
-    		$this->load->view('backend/includes/template', $data);		
+	// 		$data['main_content'] = 'backend/login/passwd_change_view';
+ //    		$this->load->view('backend/includes/template', $data);		
 
-	}
+	// }
 
+//*****************************************************************************
 	/**
 	 * Register user on the site
 	 *

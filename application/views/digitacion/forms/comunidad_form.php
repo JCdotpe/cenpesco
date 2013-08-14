@@ -785,11 +785,11 @@ echo form_close();
  		array_pases['S8_1'] = [0,4,2,2,0,0,0,0];
 
 $('input').blur( function() {
-	if (inArray($(this).attr('id'), array_pases_1)){	    $('#S3_6_5').trigger('blur'); return false;}
-	else if (inArray($(this).attr('id'), array_pases_2)){	$('#S3_9_6').trigger('blur'); return false;}
-	else if (inArray($(this).attr('id'), array_pases_3)){	$('#S7_1_9').trigger('blur'); return false;}
-	else if (inArray($(this).attr('id'), array_pases_4)){	$('#S7_2_9').trigger('blur'); return false;}
-	else if (inArray($(this).attr('id'), array_pases_5)){	$('#S7_8_19').trigger('blur'); return false;}
+	if (inArray($(this).attr('id'), array_pases_1)){	    $('#S3_6_5').trigger('blur'); return false; }
+	else if (inArray($(this).attr('id'), array_pases_2)){	$('#S3_9_6').trigger('blur'); return false; }
+	else if (inArray($(this).attr('id'), array_pases_3)){	$('#S7_1_9').trigger('blur'); return false; }
+	else if (inArray($(this).attr('id'), array_pases_4)){	$('#S7_2_9').trigger('blur'); return false; }
+	else if (inArray($(this).attr('id'), array_pases_5)){	$('#S7_8_19').trigger('blur'); return false; }
 	else if ( array_pases[$(this).attr('id')] ){
 
 		for (key in array_pases){
@@ -1804,6 +1804,17 @@ $("#frm_comunidad").validate({
                                                 $('#S2_10_CCPP_COD').trigger('change');
                                             }
                                         }, 3000); 
+									}else if(key == 'EMP_DNI'){
+											$("#EMP_combo").val(value);
+											$("#EMP_DNI").val(value);
+
+                                        // var interval_PP = setInterval(function(){
+                                        //     if($('#EMP').has('option').length > 0){
+                                        //         clearInterval(interval_PP);
+                                        //         $('#S2_10_CCPP_COD').val(value);
+                                        //         $('#S2_10_CCPP_COD').trigger('change');
+                                        //     }
+                                        // }, 3000); 
 									}else{
 										$("#"+key).val(value);
 										if(key == 'S2_5'){	$("#S2_5_DD").val(value);}

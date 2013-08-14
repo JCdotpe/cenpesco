@@ -24,7 +24,7 @@ class Avance_empadronador extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 8 && $role->rolename == 'Monitoreo de campo'){
+			if($role->role_id == 8 && $role->rolename == 'Seguimiento'){
 				$flag = TRUE;
 				break;
 			}
@@ -63,8 +63,8 @@ class Avance_empadronador extends CI_Controller {
 			//regular
 			//$data['tables'] = $this->avance_campo_subrutas_model->get_todo($odei);
 			//$data['reporte'] = $this->tank_auth->get_ubigeo();
-			//$data['main_content'] = 'monitoreo/avance_empadronador_view';
-			$data['main_content'] = 'monitoreo/forms/avance_empadronador_form';
+			//$data['main_content'] = 'seguimiento/avance_empadronador_view';
+			$data['main_content'] = 'seguimiento/forms/avance_empadronador_form';
 			$data['option'] = 5;
 	        $this->load->view('backend/includes/template', $data);
 
@@ -114,6 +114,7 @@ class Avance_empadronador extends CI_Controller {
 
 				// if ($this->tank_auth->get_ubigeo()==99) {
 
+					$data_reg['CC_CCPP_NUM'] = ($this->input->post('CC_CCPP_NUM') == '') ? substr( $this->input->post('NOM_CCPP'),0,1 ) : $this->input->post('CC_CCPP_NUM');
 					$data_reg['COD'] = ($sede.$dep.$equipo.$ruta.$sub_ruta);
 					$data_reg['COD_REG'] = ($sede.$dep.$equipo.$ruta.$sub_ruta.$cc_ccpp.$cc_ccpp_num);
 					$data_reg['user_id'] = $this->tank_auth->get_user_id();
@@ -133,7 +134,6 @@ class Avance_empadronador extends CI_Controller {
 			}else{ //actualiza
 
 				// if ($this->tank_auth->get_ubigeo()==99) {
-
 					$data_reg['user_id_m'] = $this->tank_auth->get_user_id();
 					$data_reg['modified'] = date('Y-m-d H:i:s');
 					$data_reg['last_ip'] =  $this->input->ip_address();
@@ -165,7 +165,7 @@ class Avance_empadronador extends CI_Controller {
 
 	function get_ajax_equipo()
 	{
-		$this->output->cache(30);		
+		//$this->output->cache(30);		
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 
@@ -178,7 +178,7 @@ class Avance_empadronador extends CI_Controller {
 
 	function get_ajax_ruta()
 	{	
-		$this->output->cache(30);
+		//$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo =  $this->input->post('equipo');
@@ -190,7 +190,7 @@ class Avance_empadronador extends CI_Controller {
 
 	function get_ajax_sub_ruta()
 	{	
-		$this->output->cache(30);
+		//$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo =  $this->input->post('equipo');
@@ -203,7 +203,7 @@ class Avance_empadronador extends CI_Controller {
 
 
 	function get_ajax_all($opcion){
-		$this->output->cache(30);
+		//$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo = $this->input->post('equipo');
@@ -220,7 +220,7 @@ class Avance_empadronador extends CI_Controller {
 	}
 
 	function get_ajax_ccpp_by_sub_ruta(){
-		$this->output->cache(30);
+		//$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo = $this->input->post('equipo');
@@ -241,7 +241,7 @@ class Avance_empadronador extends CI_Controller {
 		
 		//regular
 		$data['tables'] = $this->avance_campo_subrutas_model->get_todo($odei);
-		$data['main_content'] = 'monitoreo/avance_tabla_view';
+		$data['main_content'] = 'seguimiento/avance_tabla_view';
         $this->load->view('backend/includes/template', $data);
 
 	}

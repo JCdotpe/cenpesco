@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Monitoreo extends CI_Controller {
+class Seguimiento extends CI_Controller {
 
 	function __construct()
 	{
@@ -21,7 +21,7 @@ class Monitoreo extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 8 && $role->rolename == 'Monitoreo de campo'){
+			if($role->role_id == 8 && $role->rolename == 'Seguimiento'){
 				$flag = TRUE;
 				break;
 			}
@@ -38,12 +38,12 @@ class Monitoreo extends CI_Controller {
 	public function index()
 	{
 			$data['nav'] = TRUE;
-			$data['title'] = 'Monitoreo de campo';
+			$data['title'] = 'Seguimiento';
 			$data['user_id']	= $this->tank_auth->get_user_id();
 			$data['username']	= $this->tank_auth->get_username();
-			$data['main_content'] = 'monitoreo/index_view';
+			$data['main_content'] = 'seguimiento/index_view';
 			$data['reporte'] = $this->tank_auth->get_ubigeo();
-			redirect('/monitoreo/observacion_campo');
+			redirect('/seguimiento/observacion_campo');
 	        //$this->load->view('backend/includes/template', $data);
 	}
 }

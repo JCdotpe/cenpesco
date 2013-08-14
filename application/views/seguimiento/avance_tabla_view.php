@@ -5,7 +5,7 @@
 </div>
 
 <div class="row-fluid" style="padding-bottom: 20px !important">
-	<div class="btn btn-success pull-left"><?php echo anchor('monitoreo/avance/export','Exportar Excel'); ?></div>
+	<div class="btn btn-success pull-left"><?php echo anchor('seguimiento/avance/export','Exportar Excel'); ?></div>
 </div>
 
 <div class="row-fluid" style="width: 1800px !important">

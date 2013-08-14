@@ -526,7 +526,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="span6">';
 				//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
-				echo '<a href="'. site_url('monitoreo/observacion_campo/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
+				echo '<a href="'. site_url('seguimiento/observacion_campo/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
 		   	echo '</div>';
 
 			echo '<div class="extra span5">';
@@ -693,7 +693,7 @@ $("#SEC").focus(function() {
 function cargar(bol, sec) {
 	if (bol) {
         $.ajax({
-            url: CI.base_url + "monitoreo/observacion_campo/secciones/" + sec,
+            url: CI.base_url + "seguimiento/observacion_campo/secciones/" + sec,
             type:'POST',
             data:{csrf_token_c: CI.cct,},
             dataType:'json',
@@ -715,7 +715,7 @@ function cargar(bol, sec) {
 
 $("#SEC").change(function (){
     $.ajax({
-        url: CI.base_url + "monitoreo/observacion_campo/preguntas/",
+        url: CI.base_url + "seguimiento/observacion_campo/preguntas/",
         type:'POST',
         data:{csrf_token_c: CI.cct,seccion:$("#SEC").val()},
         dataType:'json',
@@ -1398,7 +1398,7 @@ $("#frm_observacion_campo").validate({
         var bsub = $( "#frm_observacion_campo :submit" );
         //bsub.attr("disabled", "disabled");
         $.ajax({
-            url: CI.base_url + "monitoreo/observacion_campo/grabar",
+            url: CI.base_url + "seguimiento/observacion_campo/grabar",
             type:'POST',
             data:form_data,
             dataType:'json',

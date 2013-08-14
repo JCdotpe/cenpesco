@@ -57,107 +57,158 @@ $span_class =  'span12';
 			'onkeypress'=>"return solo_numeros(event)",
 		);
 	// C. FUNCIONARIO
-		$NOM =array(
-			'name'	=> 'NOM',
-			'id'	=> 'NOM',
-			//'value'	=> $NOM,
+		$NOM_BRI =array(
+			'name'	=> 'NOM_BRI',
+			'id'	=> 'NOM_BRI',
+			//'value'	=> $NOM_BRI,
 			'maxlength'	=> 80,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_letras(event)",
 
 		);
-		$CARGO =array(
-			'name'	=> 'CARGO',
-			'id'	=> 'CARGO',
-			//'value'	=> $CARGO,
-			'maxlength'	=> 1,
-			'class' => $span_class,
-			'onkeypress'=>"return solo_1_to_3(event)",
-		);
-	// D. secciones
-
-		$F_PES =array(
-			'name'	=> 'F_PES',
-			'id'	=> 'F_PES',
-			//'value'	=> $F_PES,
+		// $CARGO =array(
+		// 	'name'	=> 'CARGO',
+		// 	'id'	=> 'CARGO',
+		// 	//'value'	=> $CARGO,
+		// 	'maxlength'	=> 1,
+		// 	'class' => $span_class,
+		// 	'onkeypress'=>"return solo_1_to_3(event)",
+		// );
+	// COMUNIDADES
+		$C_TOTAL =array(
+			'name'	=> 'C_TOTAL',
+			'id'	=> 'C_TOTAL',
+			//'value'	=> $C_TOTAL,
 			'maxlength'	=> 4,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);
-		$F_ACU =array(
-			'name'	=> 'F_ACU',
-			'id'	=> 'F_ACU',
-			//'value'	=> $F_ACU,
+		$C_COMP =array(
+			'name'	=> 'C_COMP',
+			'id'	=> 'C_COMP',
+			//'value'	=> $C_COMP,
 			'maxlength'	=> 4,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);
-		$F_COM =array(
-			'name'	=> 'F_COM',
-			'id'	=> 'F_COM',
-			//'value'	=> $F_COM,
+		$C_INC =array(
+			'name'	=> 'C_INC',
+			'id'	=> 'C_INC',
+			//'value'	=> $C_INC,
 			'maxlength'	=> 4,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
-		);		
-
-		$SEC =array(
-			'name'	=> 'SEC',
-			'id'	=> 'SEC',
-			//'value'	=> $SEC,
-			'maxlength'	=> 2,
+		);
+		$C_RECH =array(
+			'name'	=> 'C_RECH',
+			'id'	=> 'C_RECH',
+			//'value'	=> $C_RECH,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+			//'onblur' => 'return formulario_total(1);',
+		);
+		// $PREG_N =array(
+		// 	'name'	=> 'PREG_N',
+		// 	'id'	=> 'PREG_N',
+		// 	//'value'	=> $PREG_N,
+		// 	'maxlength'	=> 2,
+		// 	'class' => $span_class,
+		// 	'onkeypress'=>"return solo_numeros(event)",
+		// );
+	// PESACADOR
+		$P_TOTAL =array(
+			'name'	=> 'P_TOTAL',
+			'id'	=> 'P_TOTAL',
+			//'value'	=> $P_TOTAL,
+			'maxlength'	=> 4,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);
-		$PREG_N =array(
-			'name'	=> 'PREG_N',
-			'id'	=> 'PREG_N',
-			//'value'	=> $PREG_N,
-			'maxlength'	=> 2,
+		$P_COMP =array(
+			'name'	=> 'P_COMP',
+			'id'	=> 'P_COMP',
+			//'value'	=> $P_COMP,
+			'maxlength'	=> 4,
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 		);
-	// E. ERRORES - OBSERVACIONES
-		$E_CONC =array(
-			'name'	=> 'E_CONC',
-			'id'	=> 'E_CONC',
-			//'value'	=> $E_CONC,
-			'maxlength'	=> 1,
+		$P_INC =array(
+			'name'	=> 'P_INC',
+			'id'	=> 'P_INC',
+			//'value'	=> $P_INC,
+			'maxlength'	=> 4,
 			'class' => $span_class,
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);
-		$E_DILIG =array(
-			'name'	=> 'E_DILIG',
-			'id'	=> 'E_DILIG',
-			//'value'	=> $E_DILIG,
-			'maxlength'	=> 1,
+		$P_RECH =array(
+			'name'	=> 'P_RECH',
+			'id'	=> 'P_RECH',
+			//'value'	=> $P_RECH,
+			'maxlength'	=> 4,
 			'class' => $span_class,
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);
-		$E_OMI =array(
-			'name'	=> 'E_OMI',
-			'id'	=> 'E_OMI',
-			//'value'	=> $E_OMI,
-			'maxlength'	=> 1,
+	// EMBARCACIONES
+		$E_TOTAL_P =array(
+			'name'	=> 'E_TOTAL_P',
+			'id'	=> 'E_TOTAL_P',
+			//'value'	=> $E_TOTAL_P,
+			'maxlength'	=> 4,
 			'class' => $span_class,
-			'onkeypress'=>"return solo_0_to_1(event)",
+			'onkeypress'=>"return solo_numeros(event)",
 		);
-		$DES_E =array(
-			'name'	=> 'DES_E',
-			'id'	=> 'DES_E',
-			//'value'	=> $DES_E,
-			'maxlength'	=> 100,
+
+	// ACUICULTOR
+		$A_TOTAL =array(
+			'name'	=> 'A_TOTAL',
+			'id'	=> 'A_TOTAL',
+			//'value'	=> $A_TOTAL,
+			'maxlength'	=> 4,
 			'class' => $span_class,
-			'onkeypress'=>"return alfa_numericos(event)",
-			'rows' => 3,
+			'onkeypress'=>"return solo_numeros(event)",
+		);
+		$A_COMP =array(
+			'name'	=> 'A_COMP',
+			'id'	=> 'A_COMP',
+			//'value'	=> $A_COMP,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+		);
+		$A_INC =array(
+			'name'	=> 'A_INC',
+			'id'	=> 'A_INC',
+			//'value'	=> $A_INC,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+		);
+		$A_RECH =array(
+			'name'	=> 'A_RECH',
+			'id'	=> 'A_RECH',
+			//'value'	=> $A_RECH,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
+		);
+	// EMBARCACIONES
+		$E_TOTAL_A =array(
+			'name'	=> 'E_TOTAL_A',
+			'id'	=> 'E_TOTAL_A',
+			//'value'	=> $E_TOTAL_A,
+			'maxlength'	=> 4,
+			'class' => $span_class,
+			'onkeypress'=>"return solo_numeros(event)",
 		);
 
 
-		$depaArray = NULL;
-		foreach($departamento->result() as $filas)
-		{
-			$depaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);
-		}
+
+		// $depaArray = NULL;
+		// foreach($departamento->result() as $filas)
+		// {
+		// 	$depaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);
+		// }
 
 		$ubidepaArray = NULL;
 		foreach($departamento->result() as $filas)
@@ -170,7 +221,7 @@ $span_class =  'span12';
 	$ccppArray = array(-1 => '-'); 
 
 
-$attr = array('class' => 'form-vertical form-auth','id' => 'frm_revision');
+$attr = array('class' => 'form-vertical form-auth','id' => 'frm_avance_campo');
 echo '<div class="row-fluid">';
 echo '<div class="span12">';
 echo form_open($this->uri->uri_string(),$attr); 
@@ -180,11 +231,11 @@ echo form_open($this->uri->uri_string(),$attr);
 
  
 
-////////////////////////////////SECCION I
+////////////////////////////////C_RECHCION I
 	echo '<div class="well modulo">';
 		echo '<div class="row-fluid">';
 
-			echo '<h4>REVISION</h4>';
+			echo '<h4>AVANCE DE CAMPO</h4>';
 
 			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
 
@@ -230,7 +281,7 @@ echo form_open($this->uri->uri_string(),$attr);
 								echo '</div>';	
 								echo '<div class="controls span7">';
 									echo form_dropdown('NOM_CCPP', $ccppArray, FALSE,'class="span12" id="NOM_CCPP"'); 
-									echo '<div class="help-block error">' . form_error('NOM_CCPP') . '</div>';									
+									echo '<div class="help-block error">' . form_error('NOM_CCPP') . '</div>';	
 								echo '</div>';	
 
 					echo '</div>'; 		
@@ -248,10 +299,11 @@ echo form_open($this->uri->uri_string(),$attr);
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group span3">';
+							echo '<div class="control-group grupos span3">';
 
 								echo form_label('DIA','F_D',$label1);
-								echo '<div class="controls span12">';
+
+								echo '<div class="controls">';
 									echo form_input($F_D); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_D['name']) . '</div>';
@@ -259,10 +311,11 @@ echo form_open($this->uri->uri_string(),$attr);
 
 							echo '</div>'; 
 
-							echo '<div class="control-group  offset2 span3">';
+							echo '<div class="control-group grupos offset1 span3">';
 
 								echo form_label('MES','F_M',$label1);
-								echo '<div class="controls span12">';
+
+								echo '<div class="controls">';
 									echo form_input($F_M); 
 									echo '<span class="help-inline"></span>';
 									echo '<div class="help-block error">' . form_error($F_M['name']) . '</div>';
@@ -276,37 +329,37 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FECHA
 
 				// FUNCIONARIO	
-					echo '<div class="span6 titulos">';
+					echo '<div class="span4 titulos">';
 
 						echo '<div class="span12 titulos">';
-							echo '<h5> DATOS DEL FUNCIONARIO</h5>';
+							echo '<h5> DATOS DEL JEFE DE BRIGADA</h5>';
 						echo '</div>';
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="control-group grupos span7">';
+							echo '<div class="control-group grupos span10">';
 
-								echo form_label('Nombre  y apellidos','NOM',$label1);
+								echo form_label('Nombre  y apellidos','NOM_BRI',$label1);
 
 								echo '<div class="controls">';
-									echo form_input($NOM); 
+									echo form_input($NOM_BRI); 
 									echo '<span class="help-inline"></span>';
-									//echo '<div class="help-block error">' . form_error($NOM['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($NOM_BRI['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span5">';
+							// echo '<div class="control-group grupos  span2">';
 
-								echo form_label('Cargo','CARGO',$label1);
+							// 	echo form_label('Cargo','CARGO',$label1);
 
-								echo '<div class="controls">';
-									echo form_dropdown('CARGO', $cargos, FALSE,'class="span12" id="CARGO"'); 
-									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error('CARGO') . '</div>';
-								echo '</div>';	
+							// 	echo '<div class="controls">';
+							// 		echo form_input($CARGO); 
+							// 		echo '<span class="help-inline"></span>';
+							// 		echo '<div class="help-block error">' . form_error($CARGO['name']) . '</div>';
+							// 	echo '</div>';	
 
-							echo '</div>'; 
+							// echo '</div>'; 
 						
 						echo '</div>';
 
@@ -314,182 +367,218 @@ echo form_open($this->uri->uri_string(),$attr);
 				// FUNCIONARIO
 
 				// TIPO FORMULARIO	
-					echo '<div class="span4 titulos">';
+					echo '<div class="span5 titulos">';
 
-						echo '<div class="offset1 span11 titulos">';
-							echo '<h5>N° DE FORMULARIO</h5>';
+						echo '<div class=" span11 titulos">';
+							echo '<h5>FORMULARIO DE COMUNIDADES</h5>';
 						echo '</div>';
 
 						echo '<div class="row-fluid">';
 
-							// echo '<div class="control-group offset1 grupos span10">';
+							echo '<div class="control-group  grupos span3">';
 
-							// 	echo form_label('Formulario','T_FORM',$label1);
-							// 	echo '<div class="controls  span12">';
-							// 		echo form_dropdown('T_FORM', $formularios, FALSE,'class="span12" id="T_FORM"'); 
-							// 		echo '<span class="help-inline"></span>';
-							// 		echo '<div class="help-block error">' . form_error('T_FORM') . '</div>';
-							// 	echo '</div>';	
-
-							// echo '</div>'; 
-
-							echo '<div class="control-group grupos  span4">';
-
-								echo form_label('Pescador','F_PES',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($F_PES); 
+								echo form_label('TOTAL','C_TOTAL',$label1);
+								echo '<div class="controls span8">';
+									echo form_input($C_TOTAL); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($F_PES['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($C_TOTAL['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span4">';
+							echo '<div class="control-group grupos  span3">';
 
-								echo form_label('Acuicultor','F_ACU',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($F_ACU); 
+								echo form_label('COMPLETO','C_COMP',$label1);
+								echo '<div class="controls span8">';
+									echo form_input($C_COMP); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($F_ACU['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($C_COMP['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span4">';
+							echo '<div class="control-group grupos  span3">';
 
-								echo form_label('Comunidades','F_COM',$label1);
-								echo '<div class="controls offset1 span8">';
-									echo form_input($F_COM); 
+								echo form_label('INCOMPLETO','C_INC',$label1);
+								echo '<div class="controls span8">';
+									echo form_input($C_INC); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($F_COM['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($C_INC['name']) . '</div>';
 								echo '</div>';	
 
 							echo '</div>'; 
 
-							// echo '<div class="control-group grupos span2">';
+							echo '<div class="control-group grupos span3">';
 
-							// 	echo form_label('Seccion','SEC',$label1);
-							// 	echo '<div class="controls offset1 span8">';
-							// 		echo form_input($SEC); 
-							// 		echo '<span class="help-inline"></span>';
-							// 		echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
-							// 	echo '</div>';	
+								echo form_label('RECHAZO','C_RECH',$label1);
+								echo '<div class="controls span8">';
+									echo form_input($C_RECH); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($C_RECH['name']) . '</div>';
+								echo '</div>';	
 
-							// echo '</div>'; 
-
-							// echo '<div class="control-group grupos  span2">';
-
-							// 	echo form_label('Pregunta','PREG_N',$label1);
-							// 	echo '<div class="controls offset1 span8">';
-							// 		echo form_input($PREG_N); 
-							// 		echo '<span class="help-inline"></span>';
-							// 		echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
-							// 	echo '</div>';	
-
-							// echo '</div>'; 
-
+							echo '</div>'; 
 						
 						echo '</div>';
 
 					echo '</div>';
 				// TIPO FORMULARIO	
 
-
 			echo '</div>'; 
 
 			echo '<div class="row-fluid">';	
 
-				// OBSERVACIONES	
-					echo '<div class="span12 titulos">';
+				// PESCADOR	
+					echo '<div class="span5 titulos">';
 
 						echo '<div class="span12 titulos">';
-
-							echo '<div class="span7 ">';
-								echo '<div class="offset4"><h5> TIPO DE ERROR</h5></div>';
-							echo '</div>';
-							
+							echo '<h5> FORMULARIO PESCADOR</h5>';
 						echo '</div>';
 
 						echo '<div class="row-fluid">';
 
-							echo '<div class="span7">';
+							echo '<div class="control-group grupos span3">';
 
+								echo form_label('TOTAL','P_TOTAL',$label1);
 
-								echo '<div class="control-group grupos span2">';
-
-									echo form_label('Seccion','SEC',$label1);
-									echo '<div class="controls offset1 span8">';
-										echo form_input($SEC); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($SEC['name']) . '</div>';
-									echo '</div>';	
-
-								echo '</div>'; 
-
-								echo '<div class="control-group grupos  span2">';
-
-									echo form_label('Pregunta','PREG_N',$label1);
-									echo '<div class="controls offset1 span8">';
-										echo form_input($PREG_N); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($PREG_N['name']) . '</div>';
-									echo '</div>';	
-
-								echo '</div>'; 	
-
-								echo '<div class="control-group grupos span2">';
-
-									echo form_label('Concepto','E_CONC',$label1);
-									echo '<div class="controls offset1 span9">';
-										echo form_input($E_CONC); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($E_CONC['name']) . '</div>';
-									echo '</div>';	
-
-								echo '</div>'; 
-
-								echo '<div class="control-group grupos  span2">';
-
-									echo form_label('Diligenciamiento','E_DILIG',$label1);
-									echo '<div class="controls offset1 span9">';
-										echo form_input($E_DILIG); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($E_DILIG['name']) . '</div>';
-									echo '</div>';	
-
-								echo '</div>'; 
-
-								echo '<div class="control-group grupos  span2">';
-
-									echo form_label('Omision','E_OMI',$label1);
-									echo '<div class="controls offset1 span9">';
-										echo form_input($E_OMI); 
-										echo '<span class="help-inline"></span>';
-										echo '<div class="help-block error">' . form_error($E_OMI['name']) . '</div>';
-									echo '</div>';	
-
-								echo '</div>'; 
+								echo '<div class="controls span8">';
+									echo form_input($P_TOTAL); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($P_TOTAL['name']) . '</div>';
+								echo '</div>';	
 
 							echo '</div>'; 
 
-							echo '<div class="control-group grupos  span5">';
-								echo '<div class="span3">';
-									echo form_label('Descripccion del error:','DES_E',$label1);
-								echo '</div>'; 	
-								echo '<div class="controls span9">';
-									echo form_textarea($DES_E); 
+							echo '<div class="control-group grupos  span3">';
+
+								echo form_label('COMPLETO','P_COMP',$label1);
+
+								echo '<div class="controls span8">';
+									echo form_input($P_COMP); 
 									echo '<span class="help-inline"></span>';
-									echo '<div class="help-block error">' . form_error($DES_E['name']) . '</div>';
+									echo '<div class="help-block error">' . form_error($P_COMP['name']) . '</div>';
 								echo '</div>';	
+
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span3">';
+
+								echo form_label('INCOMPLETO','P_INC',$label1);
+
+								echo '<div class="controls span8">';
+									echo form_input($P_INC); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($P_INC['name']) . '</div>';
+								echo '</div>';	
+
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span3">';
+									echo form_label('RECHAZO','P_RECH',$label1);
+								echo '<div class="controls span8 ">';
+									echo form_input($P_RECH); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($P_RECH['name']) . '</div>';
+								echo '</div>';	
+
 							echo '</div>'; 													
 						echo '</div>';
 
 					echo '</div>';
+				// PESCADOR
 
-				// OBSERVACIONES
-			
+				// EMBARCACIONES	
+					echo '<div class="span1 titulos" style="padding-top: 41px !important">';
+
+						echo '<div class="control-group grupos span12">';
+
+							echo form_label('Embarcación','E_TOTAL_P',$label1);
+							echo '<div class="controls span12">';
+								echo form_input($E_TOTAL_P); 
+								echo '<span class="help-inline"></span>';
+								echo '<div class="help-block error">' . form_error($E_TOTAL_P['name']) . '</div>';
+							echo '</div>';	
+
+						echo '</div>'; 
+																		
+					echo '</div>';
+				// EMBARCACIONES
+
+				// ACUICULTOR	
+					echo '<div class="span5 titulos">';
+
+						echo '<div class="span12 titulos">';
+							echo '<h5> FORMULARIO ACUICULTOR</h5>';
+						echo '</div>';
+
+						echo '<div class="row-fluid">';
+
+							echo '<div class="control-group grupos span3">';
+								echo form_label('TOTAL','A_TOTAL',$label1);
+								echo '<div class="controls span8">';
+									echo form_input($A_TOTAL); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($A_TOTAL['name']) . '</div>';
+								echo '</div>';	
+
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span3">';
+
+								echo form_label('COMPLETO','A_COMP',$label1);
+
+								echo '<div class="controls span8">';
+									echo form_input($A_COMP); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($A_COMP['name']) . '</div>';
+								echo '</div>';	
+
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span3">';
+
+								echo form_label('INCOMPLETO','A_INC',$label1);
+
+								echo '<div class="controls span8">';
+									echo form_input($A_INC); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($A_INC['name']) . '</div>';
+								echo '</div>';	
+
+							echo '</div>'; 
+
+							echo '<div class="control-group grupos  span3">';
+									echo form_label('RECHAZO','A_RECH',$label1);
+								echo '<div class="controls span8 ">';
+									echo form_input($A_RECH); 
+									echo '<span class="help-inline"></span>';
+									echo '<div class="help-block error">' . form_error($A_RECH['name']) . '</div>';
+								echo '</div>';	
+
+							echo '</div>'; 													
+						echo '</div>';
+
+					echo '</div>';
+				// ACUICULTOR
+								
+				// EMBARCACIONES	
+					echo '<div class="span1 titulos" style="padding-top: 41px !important">';
+
+						echo '<div class="control-group grupos span12">';
+
+							echo form_label('Embarcación','E_TOTAL_A',$label1);
+							echo '<div class="controls span12">';
+								echo form_input($E_TOTAL_A); 
+								echo '<span class="help-inline"></span>';
+								echo '<div class="help-block error">' . form_error($E_TOTAL_A['name']) . '</div>';
+							echo '</div>';	
+
+						echo '</div>'; 
+																		
+					echo '</div>';
+				// EMBARCACIONES
+
 			echo '</div>'; 
-
 		echo '</div>'; 			
 	echo '</div>'; 		
 
@@ -497,7 +586,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<div class="span6">';
 				//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
-				echo '<a href="'. site_url('monitoreo/revision/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
+				echo '<a href="'. site_url('seguimiento/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
 		   	echo '</div>';
 
 			echo '<div class="extra span5">';
@@ -510,6 +599,64 @@ echo form_open($this->uri->uri_string(),$attr);
 	echo form_close(); 
 	echo '</div>'; 			
 echo '</div>'; 	
+
+		/*echo '<div class="row-fluid" style="width: 1800px !important">';
+
+			echo '<div class="span12">';
+
+				// echo '<table border="1" class="table table-hover table-condensed">';
+				// 	echo '<thead>';
+				// 		echo '<tr>';
+				// 		echo '<th style="width: 10px !important">N°</th>';
+				// 		echo '<th style="width: 160px !important">Departamento</th>';
+				// 		echo '<th style="width: 160px !important">Provincia</th>';
+				// 		echo '<th style="width: 160px !important">Distrito</th>';
+				// 		echo '<th style="width: 180px !important">Centro Poblado</th>';
+				// 		echo '<th style="width: 20px !important">Día</th>';
+				// 		echo '<th style="width: 20px !important">Mes</th>';
+				// 		echo '<th style="width: 190px !important">Funcionario</th>';
+				// 		echo '<th style="width: 10px !important">Cargo </th>';
+				// 		echo '<th style="width: 200px !important">Formulario Pescador</th>';
+				// 		echo '<th style="width: 200px !important">Formulario Acuicultor</th>';
+				// 		echo '<th style="width: 200px !important">Formulario Comunidades</th>';
+				// 		echo '<th style="width: 10px !important">C_RECHcion</th>';
+				// 		echo '<th style="width: 10px !important">Pregunta</th>';
+				// 		echo '<th style="width: 250px !important">Error de concepto</th>';
+				// 		echo '<th style="width: 250px !important">Error de diligenciamiento</th>';
+				// 		echo '<th style="width: 250px !important">Error de omision</th>';
+				// 		echo '<th style="width: 1000px !important">Descripccion del error</th>';
+				// 		echo '</tr>';
+				// 	echo '</thead>';
+				// 	echo '<tbody>';
+				// 	$num = 1;
+				// 	foreach($tables as $row){
+				// 		echo "<tr>";
+				// 			echo "<td>". $num++ ."</td>";
+				// 			echo "<td>". $row->NOM_DD ."</td>";
+				// 			echo "<td>". $row->NOM_PP ."</td>";
+				// 			echo "<td>". $row->NOM_DI ."</td>";
+				// 			echo "<td>". $row->NOM_CCPP ."</td>";
+				// 			echo "<td>". $row->F_D ."</td>";
+				// 			echo "<td>". $row->F_M ."</td>";
+				// 			echo "<td>". $row->NOM ."</td>";
+				// 			echo "<td>". $row->CARGO ."</td>";
+				// 			echo "<td>". $row->C_TOTAL."</td>";
+				// 			echo "<td>". $row->C_COMP."</td>";
+				// 			echo "<td>". $row->C_INC."</td>";
+				// 			echo "<td>". $row->C_RECH."</td>";
+				// 			echo "<td>". $row->PREG_N."</td>";
+				// 			echo "<td>". $row->P_TOTAL."</td>";
+				// 			echo "<td>". $row->P_COMP."</td>";
+				// 			echo "<td>". $row->C_INC."</td>";
+				// 			echo "<td>". $row->C_RECH."</td>";						
+				// 		echo "</tr>";  }
+				// 	echo '</tbody>';
+				// echo '</table>';
+
+			echo '</div>'; 	
+
+		echo '</div>'; */
+
 
 ?>
 
@@ -545,11 +692,11 @@ var opcion = 0;
     $(document).ready(function(){
         for ( s = 2; s < 14; s++) {
             for (p = 1; p < 25; p++) {
-              $("#SEC"+s+"_"+p).focusin(function(){
+              $("#C_RECH"+s+"_"+p).focusin(function(){
                 //$(this).css("background-color","#A9D0F5");
                 $(this).css("border","3px solid #ff9900");
               });
-              $("#SEC"+s+"_"+p).focusout(function(){
+              $("#C_RECH"+s+"_"+p).focusout(function(){
                 $(this).css("border","1px solid #989898");
               });
             };
@@ -560,110 +707,47 @@ var opcion = 0;
 
 
 
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-///////////////////////////////  N I N G U N O  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-  	function ningunos(inp){
-        var acu = 0;
-        var sc = ($(inp).attr('id')).substring(1,2);
-        var preg = ($(inp).attr('id')).substring(3,4);
-        //alert("seccion: " + sc + " preg: " +preg);
-        $("#SEC"+sc+"_"+preg).find(':input').each(function() {
-            var elemento = this;
-            if ($(elemento).val() == 1){
-                acu++;
-            }		
-		});
-        if (acu>=2 && $(inp).val() == 1 ){
-        	return false;    	
-        }else{
-        	return true;
-        }
-            
-  	}
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\  N I N G U N O  ///////////////////////////////
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
-
-
 ///////////////////////////////////////////////////////////////////////////////
 // <<=================== E N T E R   L I K E  T A B  ======================>>//
-    $('input,select').keydown( function(e) {
+    $('input').keydown( function(e) {
             var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
 
-            var array_libres = ['S6_2_2_A','S6_2_3_A'];
-            var array_especiales = ['S3_1','S7_15'];
-	  	 	var array_ninguno = ['S3_8_6','S3_8_10','S3_18_5','S6_3_7','S7_2_10','S7_6_4','S7_8_20','S7_16_5']; // NINGUNOS
+            var array_especiales = ['P_RECH','A_RECH','C_RECH'];
 
             if(key == 13) {
                 e.preventDefault();
                 var inputs = $(this).closest('form').find(':input:enabled:visible');
                 $(this).blur();  
-                if ( inArray($(this).attr('id'), array_libres )) {// CAMPOS LIBRES: no requieren ingreso obligatorio
-                    inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                    return;
-                }
+
                 if ($(this).val()==""){// NO VACIOS
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
                 }else{
-                    if ( $(this).attr('id') == "E_OMI" ) {// CAMPO ESPECIAL
-                    	var sum = parseInt(inputs.eq( inputs.index(this)-1).val()) + parseInt(inputs.eq( inputs.index(this)-2).val())+ parseInt($(this).val()) ;  
-                        if (sum == 0 ) {
-                        	alert("Debe seleccionar al menos un error");
-                            inputs.eq( inputs.index(this)-2).focus();  
-                            inputs.eq( inputs.index(this)-2).select();  
-                        } else{
-                            inputs.eq( inputs.index(this)+ 1 ).focus();                             
-                            inputs.eq( inputs.index(this)+ 1 ).select();                             
-                        }
-                    }else if ( $(this).attr('id') == "F_PES" ) {// CAMPO ESPECIAL: 
-                        if ($(this).val() > 0 ) {
-                            inputs.eq( inputs.index(this)+1).val(0);  
-                            inputs.eq( inputs.index(this)+2).val(0);  
-                            inputs.eq( inputs.index(this)+3).focus();  
-                        } else{
-                            inputs.eq( inputs.index(this)+ 1 ).focus();                             
-                            inputs.eq( inputs.index(this)+ 1 ).select();                             
-                        }
-                    }else if ( $(this).attr('id') == "F_ACU" ) {// CAMPO ESPECIAL: 
-                        if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) ) {
-                        	alert('Sólo puede ingresar en un solo formulario');
-                            inputs.eq( inputs.index(this)-1).focus();  
-                            inputs.eq( inputs.index(this)-1).select();  
-                        } else if ($(this).val() > 0) {
-                            inputs.eq( inputs.index(this)+ 1 ).val(0);                             
-                            inputs.eq( inputs.index(this)+ 2 ).focus(); 
-                            inputs.eq( inputs.index(this)+ 2 ).select();                             
-                        }else{
-                            inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                            inputs.eq( inputs.index(this)+ 1 ).select();                             
-                        }
-                    }else if ( $(this).attr('id') == "F_COM" ) {// CAMPO ESPECIAL: 
-                        if ( ($(this).val()  > 0 ) && (inputs.eq( inputs.index(this)-1).val() > 0 ) && (inputs.eq( inputs.index(this)-2).val() > 0 ) ) {
-                        	alert('Sólo puede ingresar en un solo formulario');
-                            inputs.eq( inputs.index(this)-2).focus();  
-                            inputs.eq( inputs.index(this)-2).select();  
-                        } else if (($(this).val()  == 0 ) && (inputs.eq( inputs.index(this)-1).val() == 0 ) && (inputs.eq( inputs.index(this)-2).val() == 0 )) {
-                        	alert('Debe ingresar en información solo un formulario');
-                            inputs.eq( inputs.index(this)- 2 ).focus(); 
-                            inputs.eq( inputs.index(this)- 2 ).select();                             
-                        }else{
-                            inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                            inputs.eq( inputs.index(this)+ 1 ).select();                             
-                        }
+                    if ( inArray($(this).attr('id'), array_especiales )) {//  VALIDAR TOTALES
+
+                    		 obj = ($(this).attr('id')).substring(0,1);
+							if ( parseInt($("#"+obj+"_TOTAL").val()) !== ( parseInt($("#"+obj+"_COMP").val()) + parseInt($("#"+obj+"_INC").val()) + parseInt($("#"+obj+"_RECH").val()) ) ) {
+								alert("El total no debe ser diferente a la suma");
+								inputs.eq( inputs.index(this) - 3).focus();  
+								inputs.eq( inputs.index(this) - 3).select();  
+							} else{
+								inputs.eq( inputs.index(this) + 1).focus();
+							}								
                     }else{
                         inputs.eq( inputs.index(this)+ 1 ).focus(); 
-                        inputs.eq( inputs.index(this)+ 1 ).select(); 
                    }                         
                 }
             }else if (key == 37) {
-                var inputs = $(this).closest('form').find(':input:enabled:visible');
+                var inputs = $(this).closest('form').find(':input:enabled');
                 if ($(this).val()==""){// NO VACIOS
                     alert("Campo requerido");
                     inputs.eq( inputs.index(this)).focus(); 
+                    inputs.eq( inputs.index(this)).select();
                 }else{
-                    inputs.eq( inputs.index(this) - 1).focus();  
-                    inputs.eq( inputs.index(this) - 1).select();                  	
+                    inputs.eq( inputs.index(this)- 1).focus();  
+                    inputs.eq( inputs.index(this)- 1).select();                  	
                 }
+
             }
             else if(key == 9){
                 return false;
@@ -673,108 +757,6 @@ var opcion = 0;
 ///////////////////////////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//////////////////////  P A S E     P R E G U N T A S   \\\\\\\\\\\\\\\\\\\\\\\
-    // PARAMETROS 
-    //s = seccion // pi =pregunta actual//pf =pregunta a pasar// //vc = boolean de pregunta de un solo codigo
-    //si =sub pregunta inicial// sf =sub pregunta final // e = boolean para especificar //ts = boolean si termina la seccion
-    function pase_preguntas(s,pi,pf,vc,si,sf,e,ts){
-       // var obj = input;
-        //var e = even;
-        var sc = s;
-        var p_actual = pi;
-        var p_pase = pf;
-        var sub_ini = si;
-        var sub_fin = sf;
-        var esp = e;
-        var code = vc;
-        var cont =0;
-        var p_focus =0;
-        var termina_s = ts;
-
-
-                if (code){ //valida si son de varios codigos
-
-                    for (y = sub_ini; y <= sub_fin; y++){
-                        if ($("#S"+sc+"_"+p_actual+"_"+y).val() == 1){
-                            cont++;
-                        }
-                    }
-                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#SEC"+sc+"_"+x+' :input').attr('disabled','disabled');
-                        }
-                        if (termina_s) {// verifica si termina la seccion
-                            alert("Finalice esta sección");
-                            document.blur();
-                            $(":submit").focus();
-                            return;
-                        }                
-                        if (!esp){//verifica si el input es seguido de ESPECIFIQUE
-                            $("#S"+sc+"_"+p_pase+"_1").focus();
-                            $("#S"+sc+"_"+p_pase).focus();      
-                        }
-                    }else if(cont <= 0){
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
-                        }
-
-                        if (!esp) {
-                            p_focus = p_actual+1;
-                            $("#S"+sc+"_"+p_focus).focus();
-                            $("#S"+sc+"_"+p_focus+"_1").focus();
-                        }
-                    }
-                } else{
-                    for (y = sub_ini; y <= sub_fin; y++){
-                        if ($("#S"+sc+"_"+p_actual).val() == y){
-                            cont++;
-                        }
-                    }
-
-                    if(cont >= 1){// valida si se encontro al menos un codigo en el rango
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#SEC"+sc+"_"+x+' :input').attr('disabled',true);
-                        }
-                        if (termina_s) {// verifica si termina la seccion
-                            //document.getElementById('seccion3').blur();
-                            alert("Finalice esta sección");
-                            $(":submit").focus();
-                            return;
-                        }
-                        if(!esp){//verifica si el input es seguido de ESPECIFIQUE
-                            $("#S"+sc+"_"+p_pase+"_1").focus();
-                            $("#S"+sc+"_"+p_pase).focus();                     
-                        };
-                    }else if(cont <= 0){
-                        for (x = p_actual+1;x<p_pase;x++){
-                            $("#SEC"+sc+"_"+x+' :input').removeAttr('disabled');
-                        }   
-                        if (!esp) {
-                            p_focus = p_actual+1;
-                            $("#S"+sc+"_"+p_focus).focus();
-                            $("#S"+sc+"_"+p_focus+"_1").focus();                 
-                        } 
-                    }
-                }
-    }
-//\\\\\\\\\\\\\\\\\\\\  P A S E     P R E G U N T A S   ///////////////////////      
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
-
-
-
-///////////////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//////////////////////// E S P E C I F I C A R   O T R O  \\\\\\\\\\\\\\\\\\\\\ 
-    function especifique(uno,dos,otro){
-        var x = uno;
-        var y = dos;
-        if ((y.value ==otro) && (x.value =="")){
-            alert('seleccionó OTRO, especifique');          
-            $(dos).focus();
-        }
-    }
-//\\\\\\\\\\\\\\\\\\\\\\ E S P E C I F I C A R   O T R O  /////////////////////  
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\///////////////////////////////////////
 
 
 
@@ -840,7 +822,7 @@ var opcion = 0;
         key = e.keyCode || e.which;
         tecla = String.fromCharCode(key).toLowerCase();
         letras = "0123456789";
-        especiales = [8, 9, 37, 39];
+        especiales = [8, 9, 37, 39, 46];
 
         tecla_especial = false
         for(var i in especiales) {
@@ -955,11 +937,19 @@ var opcion = 0;
     }
 // =======>> S O L O   N U M E R O S  1 - 5 <<===========//   
 
+// <<=============  =================>>//   
+    function formulario_total(ob) {
+    	if (ob ==1){
+    		obj = "C";
+    	}
+		if ( parseInt($("#"+obj+"_TOTAL").val()) !== ( parseInt($("#"+obj+"_COMP").val()) + parseInt($("#"+obj+"_INC").val()) + parseInt($("#"+obj+"_RECH").val()) ) ) {
+			alert("El total no debe ser diferente a la suma");
+			$("#"+obj+"_TOTAL").focus();
+			return false;
+		} 
 
-	
-
-
-
+    }
+// =======>> S O L O   N U M E R O S  1 - 5 <<===========//   
 
 
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
@@ -972,7 +962,7 @@ $(function(){
           return false;
         }
       });
-// window.clonetabs = $("#insidetabs").clone(true); 
+
 
 // CARGA COMBOS UBIGEO ---------------------------------------------------------------------->
 
@@ -1069,7 +1059,7 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
 
 
 $.extend(jQuery.validator.messages, {
-     required: "Requerido",
+     required: "Campo obligatorio",
     // remote: "Please fix this field.",
     // email: "Please enter a valid email address.",
     // url: "Please enter a valid URL.",
@@ -1115,7 +1105,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 }, "Seleccione un valor");
 
 //validacion
-$("#frm_revision").validate({
+$("#frm_avance_campo").validate({
     rules: {
 
         NOM_DD: {
@@ -1144,62 +1134,88 @@ $("#frm_revision").validate({
        F_M: {
            required: true,
            number: true,
-           range: [5,8],
+           range: [8,9],
            maxlength: 2,
            exactlength:2,
          },  
-		NOM :{
+		NOM_BRI :{
            validName:true,
            required: true,
 		},
-		CARGO :{
-           required: true,
-           valueNotEquals: -1,         
-		},
-		F_PES :{
-           required: true,
-           number: true,
-           range: [0,9999],    
-		},
-		F_ACU :{
-           required: true,
-           number: true,
-           range: [0,9999],    
-		},
-		F_COM :{
-           required: true,
-           number: true,
-           range: [0,9999],    
-		},	
-		SEC :{
-           required: true,
-           number: true,
-           range: [1,10],     
-		},
-		PREG_N :{
-           required: true,
-           number: true,
-           range: [1,30],     
-		},
-		E_CONC :{
-           required: true,
-           number: true,
-           range: [0,1],     
-		},
-		E_DILIG :{
-           required: true,
-           number: true,
-           range: [0,1],     
-		},
-		E_OMI :{
-           required: true,
-           number: true,
-           range: [0,1],     
-		},
-		DES_E :{
-           required: true,
-           maxlength:100,
-		},
+		C_TOTAL :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		C_COMP :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		C_INC :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		C_RECH :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+
+		P_TOTAL :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		P_COMP :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		P_INC :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		P_RECH :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+
+		E_TOTAL_P :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		A_TOTAL :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		A_COMP :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		A_INC :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		A_RECH :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+		E_TOTAL_A :{
+		           required: true,
+		           number: true,
+		           range: [0,1000],     
+				},
+
+
 
 //FIN RULES
     },
@@ -1295,82 +1311,77 @@ $("#frm_revision").validate({
 
 
     submitHandler: function(form) {
+    	//Consulta de form pescador
+        var form_data = {
+            csrf_token_c: CI.cct,
+            CCDD: $('#NOM_DD').val(),
+            NOM_DD: $('#NOM_DD :selected').text(),
+            CCPP: $('#NOM_PP').val(),
+            NOM_PP : $('#NOM_PP :selected').text(),
+            CCDI: $('#NOM_DI').val(),
+            NOM_DI : $('#NOM_DI :selected').text(),
+            COD_CCPP : $('#NOM_CCPP').val(),
+            NOM_CCPP : $('#NOM_CCPP :selected').text(),
+            F_D :$("#F_D").val(),
+			F_M :$("#F_M").val(),
+			NOM_BRI :$("#NOM_BRI").val(),
+			C_TOTAL  :$("#C_TOTAL").val(),
+			C_COMP :$("#C_COMP").val(),
+			C_INC :$("#C_INC").val(),
+			C_RECH :$("#C_RECH").val(),
+			E_TOTAL_P :$("#E_TOTAL_P").val(),			
+			P_TOTAL :$("#P_TOTAL").val(),
+			P_COMP :$("#P_COMP").val(),
+			P_INC :$("#P_INC").val(),
+			P_RECH :$("#P_RECH").val(),
+			A_TOTAL :$("#A_TOTAL").val(),
+			A_COMP :$("#A_COMP").val(),
+			A_INC :$("#A_INC").val(),
+			A_RECH :$("#A_RECH").val(),
+			E_TOTAL_A :$("#E_TOTAL_A").val(),
+            ajax:1
+        };
+        var bsub = $( "#frm_avance_campo :submit" );
+        //bsub.attr("disabled", "disabled");
+         if (parseInt($("#C_TOTAL").val()) !== (parseInt($("#C_COMP").val()) + parseInt($("#C_INC").val()) + parseInt($("#C_RECH").val()) ) ){
+        	alert('El total no debe ser diferente a la suma'); $("#C_TOTAL").focus(); $("#C_TOTAL").select(); return;
+        }else if (parseInt($("#P_TOTAL").val()) !== (parseInt($("#P_COMP").val()) + parseInt($("#P_INC").val()) + parseInt($("#P_RECH").val()) ) ){
+        	alert('El total no debe ser diferente a la suma'); $("#P_TOTAL").focus(); $("#P_TOTAL").select(); return;
+        }else if (parseInt($("#A_TOTAL").val()) !== (parseInt($("#A_COMP").val()) + parseInt($("#A_INC").val()) + parseInt($("#A_RECH").val()) ) ){
+        	alert('El total no debe ser diferente a la suma'); $("#A_TOTAL").focus(); $("#A_TOTAL").select(); return;
+        }
+
+        $.ajax({
+            url: CI.base_url + "seguimiento/avance/grabar",
+            type:'POST',
+            data:form_data,
+            dataType:'json',
+            success:function(json){
+            	var mensaje;
+            	if(json.operacion == 0){
+		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>El centro poblado ya está registrado</div>')
+            	}else if(json.operacion == 1){    
+		    		mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
+			   			$('input:text').val("");
+			   			$('textarea').val("");
+			   			$('select').val(-1);
+			   			$('#NOM_DD').trigger('change');            		
+            	}else if(json.operacion == 7){
+		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
+            	}else if(json.operacion == 8){
+		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, no se pudo registrar</div>')         		
+            	}else if(json.operacion == 99){
+		     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>Usuario PILOTO no esta permitido guardar</div>')
+            	}
+
+        		$('.extra').empty();
+        		$('.extra').hide().append(mensaje);              	
+        		$('.extra').show('slow');              	
 
 
-		if (($("#F_PES").val()  == 0 ) && ($("#F_ACU").val() == 0 ) && ($("#F_COM").val() == 0 )) {
-			alert("Tiene que ingresar en un formulario");
-			$("#F_PES").focus();
-		}else if (( ($("#F_ACU").val() > 0 ) && ($("#F_COM").val() > 0 )) || ( ($("#F_PES").val()  > 0 ) && ($("#F_ACU").val() > 0 ) ) || ( ($("#F_PES").val()  > 0 ) && ($("#F_COM").val() > 0 ) ) )  {
-			alert("Sólo puede ingresar en un formulario");
-			$("#F_PES").focus();
-		}else{
-
-	    	//Consulta de form pescador
-	        var form_data = {
-	            csrf_token_c: CI.cct,
-	            CCDD: $('#NOM_DD').val(),
-	            NOM_DD: $('#NOM_DD :selected').text(),
-	            CCPP: $('#NOM_PP').val(),
-	            NOM_PP : $('#NOM_PP :selected').text(),
-	            CCDI: $('#NOM_DI').val(),
-	            NOM_DI : $('#NOM_DI :selected').text(),
-	            COD_CCPP : $('#NOM_CCPP').val(),
-	            NOM_CCPP : $('#NOM_CCPP :selected').text(),
-	            F_D :$("#F_D").val(),
-				F_M :$("#F_M").val(),
-				NOM :$("#NOM").val(),
-				CARGO :$("#CARGO").val(),
-				F_PES :$("#F_PES").val(),
-				F_ACU :$("#F_ACU").val(),
-				F_COM :$("#F_COM").val(),
-				SECC :$("#SEC").val(),
-				PREG_N :$("#PREG_N").val(),
-				E_CONC :$("#E_CONC").val(),
-				E_DILIG :$("#E_DILIG").val(),
-				E_OMI :$("#E_OMI").val(),
-				DES_E :$("#DES_E").val(),
-	            ajax:1
-	        };
-	        var bsub = $( "#frm_revision :submit" );
-	        //bsub.attr("disabled", "disabled");
-	        $.ajax({
-	            url: CI.base_url + "monitoreo/revision/grabar",
-	            type:'POST',
-	            data:form_data,
-	            dataType:'json',
-	            success:function(json){
-	            	var mensaje;
-	            	if(json.operacion == 0){
-			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>El centro poblado ya está registrado</div>')
-	            	}else if(json.operacion == 1){    
-			    		mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
-				   			$('input:text').val("");
-				   			$('textarea').val("");
-				   			$('select').val(-1);
-				   			$('#NOM_DD').trigger('change');            		
-	            	}else if(json.operacion == 7){
-			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
-	            	}else if(json.operacion == 8){
-			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, no se pudo registrar</div>')         		
-	            	}else if(json.operacion == 99){
-			     			mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>Usuario PILOTO no esta permitido guardar</div>')
-	            	}
-
-	        		$('.extra').empty();
-	        		$('.extra').hide().append(mensaje);   
-	        		$('.extra').show('slow');             	
-	 
-
-	            }
-	        });     
-	       
-
-		};
-
-
-
-
-
+            }
+        });     
+          	
     }       
 });
 
