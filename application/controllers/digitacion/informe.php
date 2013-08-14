@@ -60,7 +60,7 @@ class Informe extends CI_Controller {
 								2 => 'ACUICULTOR',
 								3 => 'COMUNIDADES',
 				);	
-
+			$data['comboe'] = json_encode($this->inform_model->get_a()->result_array());
 
 			$data['sups'] = $this->supervisor_model->get_sup();
 			$data['odeis'] = $this->inform_model->get_odei();
@@ -112,7 +112,7 @@ class Informe extends CI_Controller {
 					'CCPPCOD'	=> $CCPPCOD,
 					'F_DIA'	=> $F_DIA,
 					'F_MES'	=> $F_MES,
-					'activo'=>1,
+					'active'=>1,
 					'user_id'=>$this->tank_auth->get_user_id(),
 					'created'=> date('Y-m-d H:i:s'),
 					'last_ip' => $this->input->ip_address(),
@@ -120,19 +120,29 @@ class Informe extends CI_Controller {
 			);
 
 			$flag = 0;
+			$datos['errors'] = null;
+			$msg = 'Ha ocurrido un error, intente nuevamente.';
+			$datos['isup'] = null;
 			$varia = $this->inform_model->consulta($INF_N,$DNI_SUP,$ODEI_COD,$DEP_COD,$PROV_COD,$DIST_COD,$CCPPCOD);
 				if($varia->num_rows() > 0){
-					//actualizar
 						$flag = 1;
-						//get secciones
-						$datos['errors'] = $this->inform_model->consulta($varia->row()->id);
+						$datos['errors'] = $this->inform_model->get_errors($varia->row()->id)->result();
+						$datos['numerrors'] = $this->inform_model->get_errors($varia->row()->id)->num_rows();
+						$datos['isup'] = $this->inform_model->get_isup($ODEI_COD,$DEP_COD,$PROV_COD,$DIST_COD,$CCPPCOD)->row();
+						$datos['supform'] = $varia->row();		
+						$msg = 'Por favor complete los campos a continuación.';
 				}else{
-						$flag = $this->inform_model->inserta($varia->row()->id);
-					//insert
+						$fla = $this->inform_model->inserta($c_data);
+						//error?
+						if(!$fla){
+							$flag = 3;
+						}
 						$flag = 2;
+						$msg = 'Informe registrado satisfactoriamente.';
+
 				}
 			$datos['flag'] = $flag;		
-
+			$datos['msg'] = $msg;		
 			$data['datos'] = $datos;
 			$this->load->view('backend/json/json_view', $data);		
 
@@ -141,6 +151,75 @@ class Informe extends CI_Controller {
 		}
 
 	}	
+
+
+
+
+
+	public function actualiza()
+	{
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){		
+			$id = $this->input->post('informid');
+			$fields = $this->inform_model->get_fields();
+			foreach ($fields as $a=>$b) {
+				if(!in_array($b, array('id','INF_N','DNI_SUP','N_SUP','ODEI','ODEI_COD','DEP','DEP_COD','PROV','PROV_COD','DIST','DIST_COD','CCPP','CCPPCOD','F_DIA','F_MES','active' ,'user_id','last_ip','user_agent','created','modified'))){
+					$c_data[$b] = ($this->input->post($b) == '') ? NULL : $this->input->post($b);
+				}
+			}	
+			//insert errors
+			$e_data['supervision_form_id'] = $id;
+			$e_data['active'] = 1;
+			for($i = 1; $i<=$this->input->post('nerror'); $i++) {
+					$e_data['P14'] = ($this->input->post('P14_' . $i) == '') ? NULL : $this->input->post('P14_' . $i);
+					$e_data['P15'] = ($this->input->post('P15_' . $i) == '') ? NULL : $this->input->post('P15_' . $i);
+					$e_data['P16'] = ($this->input->post('P16_' . $i) == '') ? NULL : $this->input->post('P16_' . $i);
+					$e_data['P17'] = ($this->input->post('P17_' . $i) == '') ? NULL : $this->input->post('P17_' . $i);
+					$e_data['P18'] = ($this->input->post('P18_' . $i) == '') ? NULL : $this->input->post('P18_' . $i);
+					$e_data['P19'] = ($this->input->post('P19_' . $i) == '') ? NULL : $this->input->post('P19_' . $i);
+					$e_data['P20'] = ($this->input->post('P20_' . $i) == '') ? NULL : $this->input->post('P20_' . $i);
+					$e_data['P21'] = ($this->input->post('P21_' . $i) == '') ? NULL : $this->input->post('P21_' . $i);
+					$e_data['P22'] = ($this->input->post('P22_' . $i) == '') ? NULL : $this->input->post('P22_' . $i);
+					$e_data['OBS_2'] = ($this->input->post('OBS_2_' . $i) == '') ? NULL : $this->input->post('OBS_2_' . $i);
+					$letsee = $this->input->post('error_' . $i);
+					if($letsee != ''){	
+						$this->inform_model->actualiza_error($letsee, $e_data);
+					}else{
+						$this->inform_model->inserta_error($e_data);						
+					}
+			}		
+
+			$c_data['user_id'] = $this->tank_auth->get_user_id();
+			$c_data['created'] = date('Y-m-d H:i:s');
+			$c_data['last_ip'] =  $this->input->ip_address();
+			$c_data['user_agent'] = $this->agent->agent_string();
+
+			$flag = 0;
+			$msg = 'Error inesperado, por favor intentalo nuevamente';
+			if($this->inform_model->actualiza($id,$c_data) > 0){
+				$flag = 1;
+				$msg = 'Se ha guardado satisfactoriamente.';
+			}else{
+				$flag = 2;	
+				$msg = 'Ocurrio un error, intentelo nuevamente. ';
+			}
+			$datos['flag'] = $flag;	
+			$datos['msg'] = $msg;	
+
+			$data['datos'] = $datos;
+			$this->load->view('backend/json/json_view', $data);		
+		}else{
+			show_404();;
+		}			
+	}
+
+
+
+
+
+
+
+
 
 
 

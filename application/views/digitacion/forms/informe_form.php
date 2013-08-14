@@ -29,7 +29,7 @@ $F_MES = array(
 $P6 = array(
 	'name'	=> 'P6',
 	'id'	=> 'P6',
-	'maxlength'	=> 2,
+	'maxlength'	=> 4,
 	'class' => $span_class,
 );
 
@@ -38,6 +38,7 @@ $P7 = array(
 	'id'	=> 'P7',
 	'maxlength'	=> 4,
 	'class' => $span_class,
+	'readonly' => 'readonly',
 );
 
 $P8 = array(
@@ -45,6 +46,7 @@ $P8 = array(
 	'id'	=> 'P8',
 	'maxlength'	=> 3,
 	'class' => $span_class,
+	'readonly' => 'readonly',
 );
 
 $P9 = array(
@@ -52,6 +54,7 @@ $P9 = array(
 	'id'	=> 'P9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
+	'readonly' => 'readonly',
 );
 
 $P10 = array(
@@ -59,14 +62,16 @@ $P10 = array(
 	'id'	=> 'P10',
 	'maxlength'	=> 1,
 	'class' => $span_class,
+	'readonly' => 'readonly',
 );
 
 
 $P11 = array(
 	'name'	=> 'P11',
 	'id'	=> 'P11',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class,
+	'readonly' => 'readonly',
 );
 
 
@@ -361,7 +366,8 @@ echo form_close();
 
 
 
-
+$attr = array('class' => 'form-vertical form-auth hide','id' => 'serrors');
+echo form_open($this->uri->uri_string(),$attr); 
 echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
 		echo form_hidden('informid', '');
 		echo '<div class="row-fluid">';
@@ -372,6 +378,7 @@ echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
 									echo form_label('A .CONTACTO CON AUTORIDADES','P1',$label1);
 								echo '<div class="controls span8">';
 									echo form_dropdown('P1', $combo2, FALSE,'class="span12" id="P1"'); 
+									echo '<div class="help-block error"></div>';
 								echo '</div>';	
 							echo '</div>';	
 						echo '</div>'; 		
@@ -381,6 +388,7 @@ echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
 									echo form_label('B. INFORMACIÓN DE FORMULARIO DE COMUNIDAD','P2',$label1);
 								echo '<div class="controls span8">';
 									echo form_dropdown('P2', $combo3, FALSE,'class="span12" id="P2"'); 
+									echo '<div class="help-block error"></div>';
 								echo '</div>';	
 							echo '</div>';	
 						echo '</div>'; 	
@@ -390,6 +398,7 @@ echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
 									echo form_label('C. COORDINACIÓN  DE LA CONVOCATORIA','P3',$label1);
 								echo '<div class="controls span8">';
 									echo form_dropdown('P3', $combo3, FALSE,'class="span12" id="P3"'); 
+									echo '<div class="help-block error"></div>';
 								echo '</div>';	
 							echo '</div>';	
 						echo '</div>'; 									
@@ -402,6 +411,7 @@ echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
 									echo form_label('A. CONSECUCIÓN DE LOCAL','P4',$label1);
 								echo '<div class="controls span8">';
 									echo form_dropdown('P4', $combo2, FALSE,'class="span12" id="P4"'); 
+									echo '<div class="help-block error"></div>';									
 								echo '</div>';	
 							echo '</div>';	
 						echo '</div>'; 		
@@ -411,6 +421,7 @@ echo '<div class="well modulo" style="margin-top:15px; margin-bottom:20px">';
 									echo form_label('B. CONVOCATORIA','P5',$label1);
 								echo '<div class="controls span8">';
 									echo form_dropdown('P5', $combo2, FALSE,'class="span12" id="P5"'); 
+									echo '<div class="help-block error"></div>';									
 								echo '</div>';	
 							echo '</div>';	
 						echo '</div>'; 	
@@ -629,14 +640,15 @@ echo '</div>';
 
 //modulo fin
 echo '</div>'; 	
-
+echo form_submit('guardar', 'Guardar','class="btn btn-primary pull-right"');
+echo form_close(); 
 
 ?>
 
 <script type="text/javascript">
 
 //FORM INFORME -------------------------------------------------------------------------------------------------------------------------------
-
+var helper = {};
 $(function(){
 
   $('#INF_N').blur(function (){
@@ -645,12 +657,44 @@ $(function(){
      return $(this).val(n);
   });
 
+
+$(document).on("blur",'.nf',function() {
+     n = $(this).val().toString();
+     while(n.length < 5) n = "0" + n;
+     return $(this).val(n);
+});
+
+
+
+
   $(window).keydown(function(event){
       if(event.keyCode == 13) {
           event.preventDefault();
           return false;
       }
   });
+
+
+  $('input,select,textarea').keydown( function(e) {
+      var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+      if(key == 13)
+      $(this).trigger('change');
+   }); 
+
+
+  $('input,select,textarea').keyup( function(e) {
+    var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
+    var inputs = $(this).closest('form').find(':input:enabled');
+    if(key == 13) {
+      inputs.eq( inputs.index(this)+1).focus(); 
+      
+    }
+    else if (key == 27) {
+      inputs.eq( inputs.index(this)-1).focus(); 
+    }
+
+  });
+
 
   $('#addil').click(function (){
   	dil(0);
@@ -803,31 +847,28 @@ $("#DIST_COD").change(function(event) {
 
 }); 
 
+//  $(document).on("dblclick",'.comba',function() {
+// 		var sel = $(this);
+//         var form_data = {
+//             code: $(this).val(),
+//             csrf_token_c: CI.cct,
+//             ajax:1
+//         };
 
-
- $(document).on("dblclick",'.comba',function() {
-		var sel = $(this);
-        var form_data = {
-            code: $(this).val(),
-            csrf_token_c: CI.cct,
-            ajax:1
-        };
-
-        $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_a/",
-            type:'POST',
-            data:form_data,
-            dataType:'json',
-            success:function(json_data){
-                sel.empty();
-                sel.append('<option value="-1"> - </option>');             
-                $.each(json_data, function(i, data){
-                    sel.append('<option value="' + data.val + '">' + data.nombre + '</option>');
-                });
-            }
-        });   
-
-}); 
+//         $.ajax({
+//             url: CI.base_url + "ajax/inform_ajax/get_ajax_a/",
+//             type:'POST',
+//             data:form_data,
+//             dataType:'json',
+//             success:function(json_data){
+//                 sel.empty();
+//                 sel.append('<option value="-1"> - </option>');             
+//                 $.each(json_data, function(i, data){
+//                     sel.append('<option value="' + data.val + '">' + data.nombre + '</option>');
+//                 });
+//             }
+//         });   
+// }); 
 
 $(document).on("change",'.comba',function() {
 // $(".comba").change(function(event) {
@@ -846,6 +887,7 @@ $(document).on("change",'.comba',function() {
             url: CI.base_url + "ajax/inform_ajax/get_ajax_b/" + $(this).val(),
             type:'POST',
             data:form_data,
+            async:false,
             dataType:'json',
             success:function(json_data){
                 sel.empty();
@@ -879,6 +921,7 @@ $(document).on("change",'.combb',function() {
             url: CI.base_url + "ajax/inform_ajax/get_ajax_c/" + $(this).val(),
             type:'POST',
             data:form_data,
+            async:false,
             dataType:'json',
             success:function(json_data){
                 sel.empty();
@@ -894,8 +937,6 @@ $(document).on("change",'.combb',function() {
 
 
 
-dil(1);
-
 function dil(nume){
   			var cont = nume;
   			var inic = 1;
@@ -908,7 +949,7 @@ function dil(nume){
 				for(var i = inic; i<=cont; i++){
             		var strq;
 					strq = '<div id="test' + '_' + i + '" style="border:1px solid #EA0000; padding:5px;margin-top:2px;">';	
-
+						strq +=  '<input type="hidden" value="" name="error_' + i + '" id="error_' + i + '">';
 							strq +=  '<div class="row-fluid" style="text-align:center;">';
 								strq +=  '<div class="span12" style="text-align:center">';		
 									// strq +=  '<a class="btn btn-danger pull-right" id="remil">x</a>';
@@ -929,7 +970,7 @@ function dil(nume){
 
 														strq +=  '<div class="control-group">';
 															strq +=  '<div class="controls">';
-																strq +=  '<input type="text" class="span12" maxlength="5" id="P15' + '_' + i + '" value="" name="P15' + '_' + i + '">';
+																strq +=  '<input type="text" class="span12 nf" maxlength="5" id="P15' + '_' + i + '" value="" name="P15' + '_' + i + '">';
 																strq +=  '<span class="help-inline"></span>';
 																strq +=  '<div class="help-block error"></div>';
 															strq +=  '</div>';	
@@ -1043,15 +1084,41 @@ function dil(nume){
 							strq +=  '</div>'; 
 					strq +=  '</div>'; 
 					$('#quest').append(strq);
-					$('#P14' + '_' + i).trigger('dblclick');	
+					// $('#P14' + '_' + i).trigger('dblclick');	
+					var sel = $('#P14' + '_' + i);
+					$.each(<?php echo $comboe; ?>, function(j, data){
+                    	sel.append('<option value="' + data.val + '">' + data.nombre + '</option>');
+                	});
 				}		
 
 }
 
 
 
+//especifique por que pescador
+$('#P6').change(function() {
+	valor = $(this).val();
+	peam = $('#P7').val();
+	$('#P8').val(Math.round(valor * 100 / peam));
+});
 
+$('#P12').change(function() {
+	if($(this).val() == 1){
+		$('#P13').val('');
+		$('#P13').removeAttr('disabled');
+	}else{
+		$('#P13').attr('disabled', 'disabled');
+	}
+});
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//CAMPOS DESHABILIADOS
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+$('#P13').attr('disabled', 'disabled');
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 $.extend(jQuery.validator.messages, {
@@ -1195,7 +1262,7 @@ $.validator.addMethod("valzero", function(value, element, arg){
    return flag;
 }, "Seleccione un valor entre {0}, {1} o {2}, {3}, {4}");
 
-//validacion
+//validacion inform
 $("#inform").validate({
     rules: {
         INF_N:{
@@ -1266,7 +1333,6 @@ $("#inform").validate({
     },
     submitHandler: function(form) {
     	//Consulta de form pescador
-    		alert(1);
 			var inform_data = $("#inform").serializeArray();
 				inform_data.push(
 					{name: 'ajax',value:1},							        
@@ -1275,22 +1341,200 @@ $("#inform").validate({
 					{name: 'DEP',value:$('#DEP_COD :selected').text()},    
 					{name: 'PROV',value:$('#PROV_COD :selected').text()},    
 					{name: 'DIST',value:$('#DIST_COD :selected').text()},    
-					{name: 'CCPP',value:$('#CCPP_COD :selected').text()}    
+					{name: 'CCPP',value:$('#CCPPCOD :selected').text()}    
 				);
 									
-			var bsub2 = $( "#inform :submit" );
+				var bsub2 = $( "#inform :submit" );
 				$.ajax({
 						url: CI.base_url + "digitacion/informe/consulta",
 						type:'POST',
 						data:inform_data,
 						dataType:'json',
 						success:function(json){
-							alert(json.msg);
-				}
+							if(json.flag == 1){
+								$("#inform :input").attr("disabled", true);  
+								$('#serrors').removeClass('hide');	
+								$("input[name='informid']").val(json.supform.id);	
+								$('#P7').val(json.isup.MARCO);															
+								$('#P9').val(json.isup.EQUIPO);																
+								$('#P10').val(json.isup.RUTA);																
+								$('#P11').val(json.isup.CCPPCONCOD);																
+								$.each(json.supform, function( fila, valor ) {
+	                                if(fila == 'P12' || fila == 'P6'){
+	                                     $('#' + fila).val(valor);
+	                                     $('#' + fila).trigger('change');
+	                                }else if( fila != 'P7' && fila != 'P9' && fila != 'P10' && fila != 'P11'){
+	                                     $('#' + fila).val(valor);
+	                                }  				
+                                });						
+								//errors
+
+								if(json.numerrors > 0){
+									dil(json.numerrors);
+									var intervalos = null;
+									var intervalosx = null;
+									
+									for(var j = 0; j < json.numerrors; j++){
+										$.each(json.errors[j], function( fila, valor ) {
+											k = j+1;
+			                                if(fila == 'P14' || fila == 'P16'){
+                                                $('#' + fila + '_' + k).val(valor);
+                                                $('#' + fila + '_' + k).trigger('change');
+                                    //mierda intento de evitar async false
+			                                 // }else if(fila == 'P16' ){
+                                    //                    window['intervalo' + k] = setInterval(function(){
+                                    //                 	alert(1);
+                                    //                    if($('#P16_'+ k + ' option:nth-child(2)').length){
+                                    //                         clearInterval(window['intervalo' + k]);
+                                    //                         $('#P16_' + k).val(valor);
+                                    //                         $('#P16_' + k).trigger('change');
+                                    //                     }
+                                    //                 }, 1000); 
+			                                // }else if(fila == 'P17' ){
+                                   //                     intervalosx[(j+1)] = setInterval(function(){
+                                   //                  	alert(1);
+                                   //                     if($('#P17_'+ (j+1) + ' option:nth-child(2)').length){
+                                   //                          clearInterval(this);
+                                   //                          $('#P17_' +  (j+1)).val(valor);
+                                   //                          $('#P17_' +  (j+1)).trigger('change');
+                                   //                      }
+                                   //                  }, 1000); 
+			                                }else if(fila == 'id'){
+			                                   $('#error_' + k).val(valor);
+			                                }else{
+			                                    $('#' + fila + '_' + k).val(valor);
+			                                }  		
+			                                
+
+		                                });	
+									}
+								}else{
+									dil(1);
+								}
+								alert(json.msg);
+							}else if(json.flag == 2){	
+								alert(json.msg);						
+								$('#inform').trigger('submit');													
+							}else if(json.flag == 3){
+								alert(json.msg);
+							}	
+
+
+						}
 			});   
           	
     }       
 });
+
+
+
+
+
+
+
+
+
+//validacion inform
+$("#serrors").validate({
+    rules: {
+        P1:{
+            required: true,
+            valueNotEquals: -1,
+         }, 
+        P2: {
+            required: true,
+            valueNotEquals: -1,
+         }, 
+       P3: {
+            required: true,
+            valueNotEquals: -1,
+         }, 
+       P4: {
+            required: true,
+            valueNotEquals: -1,
+         }, 
+       P5: {
+           required: true,
+           valueNotEquals: -1,
+         },  
+        P6: {
+           required: true,
+           range: [0,1000],
+         },   
+       P12: {
+           required: true,
+           valueNotEquals: -1,
+         },  
+        P13: {
+        	required:true,
+           maxlength: 80,
+           validName: true,
+         },  
+        OBS_1: {
+           maxlength: 1000,
+         },                                                                                                                 
+//FIN RULES
+    },
+
+    messages: {
+    	INF_N:{
+    		required: 'Ingrese Nro Formulario',
+    	},                                   
+//FIN MESSAGES
+    },
+    errorPlacement: function(error, element) {
+        $(element).next().after(error);
+    },
+    invalidHandler: function(form, validator) {
+      var errors = validator.numberOfInvalids();
+      if (errors) {
+        var message = errors == 1
+          ? 'Por favor corrige estos errores:\n'
+          : 'Por favor corrige los ' + errors + ' errores.\n';
+        var errors = "";
+        if (validator.errorList.length > 0) {
+            for (x=0;x<validator.errorList.length;x++) {
+                errors += "\n\u25CF " + validator.errorList[x].message;
+            }
+        }
+        alert(message + errors);
+      }
+      validator.focusInvalid();
+    },
+    submitHandler: function(form) {
+
+			var nexta = $("#quest").children().last().attr('id');
+  			var npreg = parseInt(nexta.substring(5,6));	
+			var inform_data = $("#serrors").serializeArray();
+				inform_data.push(
+					{name: 'ajax',value:1},
+					{name: 'nerror',value:npreg}
+				);			
+			$.ajax({
+					url: CI.base_url + "digitacion/informe/actualiza",
+					type:'POST',
+					data:inform_data,
+					dataType:'json',
+					success:function(json){
+						if(json.flag == 1){															
+							alert(json.msg);																	
+						}else if(json.flag == 2){							
+							alert(json.msg);														
+						}	
+
+					}
+			});   
+          	
+    }       
+});
+
+
+
+
+
+
+
+
 
 
 

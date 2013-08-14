@@ -6,19 +6,72 @@ class Inform_model extends CI_MODEL
 {
 
 
-	function consulta()
+	function consulta($a,$b,$c,$d,$e,$f,$g)
 	{
 		$this->db->where('INF_N',$a);
 		$this->db->where('DNI_SUP',$b);
 		$this->db->where('ODEI_COD',$c);
 		$this->db->where('DEP_COD',$d);
-		$this->db->where('PROV_COD',$d);
-		$this->db->where('DIST_COD',$d);
-		$this->db->where('CCPPCOD',$d);
+		$this->db->where('PROV_COD',$e);
+		$this->db->where('DIST_COD',$f);
+		$this->db->where('CCPPCOD',$g);
+		$this->db->where('active',1);
 		$q = $this->db->get('supervision_form');
 		return $q;
 	}
 
+	function inserta($d)
+	{
+    	$q = $this->db->insert('supervision_form', $d);
+		return $this->db->affected_rows() > 0;
+	}
+
+	function actualiza($i,$d)
+	{
+        $this->db->where('id',$i);
+        $this->db->update('supervision_form', $d);
+		return $this->db->affected_rows();
+	}
+
+	function inserta_error($d)
+	{
+    	$q = $this->db->insert('supervision_error', $d);
+		return $this->db->affected_rows() > 0;
+	}
+
+	function actualiza_error($i,$d)
+	{
+        $this->db->where('id',$i);
+        $this->db->update('supervision_error', $d);
+		return $this->db->affected_rows();
+	}
+
+    function get_fields(){
+        $q = $this->db->list_fields('supervision_form');
+        return $q;
+    }   
+
+
+
+	function get_errors($i)
+	{
+		$this->db->where('supervision_form_id',$i);
+		$this->db->where('active',1);
+		$q = $this->db->get('supervision_error');
+		return $q;
+	}
+
+
+	function get_isup($a,$b,$c,$d,$e)
+	{
+		$this->db->where('ODEI_COD',$a);
+		$this->db->where('DEP_COD',$b);
+		$this->db->where('PROV_COD',$c);
+		$this->db->where('DI_COD',$d);
+		$this->db->where('CCPPCOD',$e);		
+		$q = $this->db->get('isupervision');
+		return $q;
+	}
 
 
 	function get_odei()
