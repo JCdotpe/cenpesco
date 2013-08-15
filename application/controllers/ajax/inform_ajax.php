@@ -21,7 +21,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_dep($c)
 	{
-		// $this->output->cache(30);
+		$this->output->cache(9999999999);
 		$s = $this->input->post('code');
 		$is_ajax = $this->input->post('ajax');
 		if ($is_ajax) {
@@ -34,7 +34,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_prov($c)
 	{
-		// $this->output->cache(30);
+		$this->output->cache(9999999999);
 		$s = $this->input->post('odei');
 		$t = $this->input->post('dep');
 		$is_ajax = $this->input->post('ajax');
@@ -48,6 +48,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_dist($c)
 	{
+		$this->output->cache(9999999999);
 		// $this->output->cache(30);
 		$s = $this->input->post('odei');
 		$t = $this->input->post('dep');
@@ -63,6 +64,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_ccpp($c)
 	{
+		$this->output->cache(9999999999);
 		// $this->output->cache(30);
 		$s = $this->input->post('odei');
 		$t = $this->input->post('dep');
@@ -79,6 +81,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_a()
 	{
+		$this->output->cache(9999999999);
 		// $this->output->cache(30);
 		$is_ajax = $this->input->post('ajax');
 		if ($is_ajax) {
@@ -92,6 +95,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_b($c)
 	{
+		$this->output->cache(9999999999);
 		// $this->output->cache(30);
 		$s = $this->input->post('cl');
 		$is_ajax = $this->input->post('ajax');
@@ -106,6 +110,7 @@ class Inform_ajax extends CI_Controller {
 
 	public function get_ajax_c($c)
 	{
+		$this->output->cache(9999999999);
 		// $this->output->cache(30);
 		$cl = $this->input->post('cl');
 		$ft = $this->input->post('ft');
