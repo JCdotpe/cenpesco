@@ -3511,6 +3511,34 @@ $('#S2_12').change(function() {
 	}
 });
 
+//grado 12
+$('#S2_12G').change(function() {
+	var s2p12a = $('#S2_12A');
+	var th = $('#S2_12').val();
+	if( th == 3 ){	
+		if($(this).val() != ''){
+			s2p12a.val('');
+			s2p12a.attr("disabled", "disabled"); 
+		}else{
+			s2p12a.removeAttr('disabled');
+		}
+	}else{		
+	}
+});
+$('#S2_12A').change(function() {
+	var s2p12g = $('#S2_12G');
+	var th = $('#S2_12').val();
+	if( th == 3 ){	
+		if($(this).val() != ''){
+			s2p12g.val('');
+			s2p12g.attr("disabled", "disabled"); 
+		}else{
+			s2p12g.removeAttr('disabled');
+		}
+	}else{		
+	}
+});
+
 //especifique 14
 $('#S2_14_7').blur(function() {
 	var s2p14o = $('#S2_14_7_O');

@@ -795,10 +795,10 @@ $("#pesca_dor").validate({
                                                   $('#S2_5').val(valor);
                                                   $('#S2_5_DD').val(valor);
                                               }          
-                                              else if(fila == 'S2_12'){
+                                              else if(fila == 'S2_12' || fila == 'S2_12G' || fila == 'S2_12A'){
                                                     //combo conviviente
-                                                    $('#S2_12').val(valor);
-                                                    $('#S2_12').trigger('change');
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
 
                                                }   
                                               else if(fila == 'S2_14_7'){

@@ -184,7 +184,7 @@ class Pescador extends CI_Controller {
 					'COD_CCPP'=> $this->input->post('COD_CCPP'),
 					'NOM_CCPP'=> $this->input->post('NOM_CCPP'),
 					'TAC'=> $this->input->post('TAC'),
-					'activo'=>1,
+					'activo'=>1, 
 					'user_id'=>$this->tank_auth->get_user_id(),
 					'created'=> date('Y-m-d H:i:s'),
 					'last_ip' => $this->input->ip_address(),
