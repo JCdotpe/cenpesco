@@ -227,6 +227,7 @@ class Avance_campo_subrutas_model extends CI_MODEL
     // para reporte especial avance_trabajo_campo ******************************************************************************
     function get_all_avance_trabajo_campo()//datos fijos de AVANCE_TRABAJO_cAMPO 
     {
+        $this->db->order_by('ODEI_COD');
         $q = $this->db->get('avance_trabajo_campo');
         return $q;
     }    
