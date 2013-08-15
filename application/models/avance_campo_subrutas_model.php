@@ -71,7 +71,9 @@ class Avance_campo_subrutas_model extends CI_MODEL
     }
 
 
-    // para reporte EXCEL
+    // para reporte EXCEL*******************************************
+
+        //todos lo departamentos
     function get_all_dep()
     {
         $sql = "select distinct(CCDD), DEPARTAMENTO from marco order by departamento";
@@ -86,7 +88,7 @@ class Avance_campo_subrutas_model extends CI_MODEL
         return $q;
     }
 
-    function get_num_reg(){
+    function get_num_reg(){ //TOTAL DE CCCPP registrados (REG = 1)
         $this->db->distinct('COD_REG as TOTAL');
         $this->db->where('REG',1);
         $this->db->where('activo',1);
@@ -122,14 +124,14 @@ class Avance_campo_subrutas_model extends CI_MODEL
     }
 
         // para pescador
-    function get_pescadores()
+    function get_pescadores() // total de pescadores NACIONAL
     {
         $sql = "select sum(NUM_P) TOTAL from avance_campo_subrutas where activo = 1 ";
         $q = $this->db->query($sql);
         return $q;
     }    
 
-    function get_pescadores_totales()
+    function get_pescadores_totales() //total de formularios
     {
         $sql =  "select  sum(P3_P) TOT_FORM,  sum(P4_P) COMPLETAS, sum(P5_P) INCOMPLETAS, sum(P6_P) RECHAZO, sum(P7_P) OTRO
                  from (select DISTINCT(COD), CCDD, NOM_DD, P3_P, P4_P, P5_P, P6_P, P7_P from avance_campo_subrutas where    activo=1 group by CCDD, COD) 
@@ -139,7 +141,7 @@ class Avance_campo_subrutas_model extends CI_MODEL
         return $q;
     }
 
-    function get_pescadores_by_dep()
+    function get_pescadores_by_dep() //total de formularios by CCDD
     {
         $sql = "select sum(NUM_P) TOTAL, CCDD, NOM_DD from avance_campo_subrutas where activo = 1 group by CCDD ";
         $q = $this->db->query($sql);
@@ -156,14 +158,14 @@ class Avance_campo_subrutas_model extends CI_MODEL
     }
 
         // para acuicultor
-    function get_acuicultores()
+    function get_acuicultores() // total acuicultores NACIONAL
     {
         $sql = "select sum(NUM_A) TOTAL from avance_campo_subrutas where activo = 1 ";
         $q = $this->db->query($sql);
         return $q;
     }    
 
-    function get_acuicultores_totales()
+    function get_acuicultores_totales() //total de formularios
     {
         $sql =  "select  sum(P3_A) TOT_FORM,  sum(P4_A) COMPLETAS, sum(P5_A) INCOMPLETAS, sum(P6_A) RECHAZO, sum(P7_A) OTRO
                  from (select DISTINCT(COD), CCDD, NOM_DD, P3_A, P4_A, P5_A, P6_A, P7_A from avance_campo_subrutas where    activo=1 group by CCDD, COD) 
@@ -189,7 +191,7 @@ class Avance_campo_subrutas_model extends CI_MODEL
         return $q;
     }
 
-        // para comunidades
+    // para comunidades ***************************************************************************************************
     function get_comunidades()
     {
         $sql = "select sum(NUM_C) TOTAL from avance_campo_subrutas where activo = 1 ";
@@ -197,7 +199,7 @@ class Avance_campo_subrutas_model extends CI_MODEL
         return $q;
     }    
 
-    function get_comunidades_totales()
+    function get_comunidades_totales() //total de formularios
     {
         $sql =  "select  sum(P3_C) TOT_FORM,  sum(P4_C) COMPLETAS, sum(P5_C) INCOMPLETAS, sum(P6_C) RECHAZO, sum(P7_C) OTRO
                  from (select DISTINCT(COD), CCDD, NOM_DD, P3_C, P4_C, P5_C, P6_C, P7_C from avance_campo_subrutas where    activo=1 group by CCDD, COD) 
@@ -221,6 +223,66 @@ class Avance_campo_subrutas_model extends CI_MODEL
         $q = $this->db->query($sql);
         return $q;
     }
+
+    // para reporte especial avance_trabajo_campo ******************************************************************************
+    function get_all_avance_trabajo_campo()//datos fijos de AVANCE_TRABAJO_cAMPO 
+    {
+        $q = $this->db->get('avance_trabajo_campo');
+        return $q;
+    }    
+
+    function total_trab_by_odei() //total CCCPP trabajado por ODEI
+    {
+        $sql = "select count(distinct(cod_reg)) as TOTAL, CCSE ,COD_ODEI from avance_campo_subrutas where reg=1  and  activo=1 group by COD_ODEI";
+        $q = $this->db->query($sql);
+        return $q;
+    }
+
+    function total_trab_pes_by_odei() // total pescadores por ODEI
+    {
+        $sql = "select sum(NUM_P) TOTAL, COD_ODEI, CCDD, NOM_DD from avance_campo_subrutas where activo = 1 group by COD_ODEI ";
+        $q = $this->db->query($sql);
+        return $q;
+    }
+
+
+    function total_trab_acui_by_odei() //total acuicultores por ODEI
+    {
+        $sql = "select sum(NUM_A) TOTAL, COD_ODEI, CCDD, NOM_DD from avance_campo_subrutas where activo = 1 group by COD_ODEI ";
+        $q = $this->db->query($sql);
+        return $q;
+    }
+
+    function total_trab_pes_totales_by_odei() // total formulario pescador por ODEI
+    {
+        $sql =  "select  sum(P3_P) TOT_FORM, COD_ODEI, sum(P4_P) COMPLETAS, sum(P5_P) INCOMPLETAS, sum(P6_P) RECHAZO, sum(P7_P) OTRO
+                 from (select DISTINCT(COD), COD_ODEI, CCDD, NOM_DD, P3_P, P4_P, P5_P, P6_P, P7_P from avance_campo_subrutas where    activo=1 group by COD_ODEI, COD) 
+                 as sub group by COD_ODEI";
+
+        $q = $this->db->query($sql);
+        return $q;
+    }
+
+    function total_trab_acui_totales_by_odei() // total formulario ACUICULTOR por ODEI
+    {
+        $sql =  "select  sum(P3_A) TOT_FORM, COD_ODEI,  sum(P4_A) COMPLETAS, sum(P5_A) INCOMPLETAS, sum(P6_A) RECHAZO, sum(P7_A) OTRO
+                 from (select DISTINCT(COD), COD_ODEI, CCDD, NOM_DD, P3_A, P4_A, P5_A, P6_A, P7_A from avance_campo_subrutas where    activo=1 group by COD_ODEI, COD) 
+                 as sub group by COD_ODEI ";
+
+        $q = $this->db->query($sql);
+        return $q;
+    }
+
+
+    function total_trab_com_totales_by_odei() //total formulario COMUNIDADES por ODEI
+    {
+        $sql =  "select  sum(P3_C) TOT_FORM,COD_ODEI,  CCDD, NOM_DD, sum(P4_C) COMPLETAS, sum(P5_C) INCOMPLETAS, sum(P6_C) RECHAZO, sum(P7_C) OTRO
+                from (select DISTINCT(COD), COD_ODEI, CCDD, NOM_DD, P3_C, P4_C, P5_C, P6_C, P7_C from avance_campo_subrutas where    activo=1 group by COD_ODEI, COD) 
+                as sub group by COD_ODEI";
+        $q = $this->db->query($sql);
+        return $q;
+    }
+
 
 }
 

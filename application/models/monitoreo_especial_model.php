@@ -31,7 +31,7 @@ class Monitoreo_especial_model extends CI_MODEL
     
     function get_all($sede,$dep,$equipo,$ruta,$sub_ruta)
     {
-        $sql = "select N, NOM_SEDE, DEPARTAMENTO, EQUIPO, RUTA, SUB_RUTA, EMPADRONADOR_INICIAL,TIPO_INI ,
+        $sql = "select N, NOM_SEDE, COD_ODEI, DEPARTAMENTO, EQUIPO, RUTA, SUB_RUTA, EMPADRONADOR_INICIAL,TIPO_INI ,
             (select distinct(COD_PP) from ccpp p  where   p.departamento = e.departamento and p.provincia = e.provincia   and e.distrito = p.distrito) as CCPP, e.PROVINCIA,
             (select distinct(COD_DI) from ccpp p  where   p.departamento = e.departamento and p.provincia = e.provincia   and e.distrito = p.distrito) as CCDI, e. DISTRITO
             from monitoreo_especial  e where nom_sede = (select distinct(nom_sede) from marco where sede_cod ='". $sede ."')

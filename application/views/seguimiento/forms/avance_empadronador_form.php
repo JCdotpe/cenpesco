@@ -376,6 +376,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 			echo '<h4>AVANCE DE CAMPO DEL EMPADRONADOR</h4>';
 			echo '<input type="hidden" id="cant_reg" name="cant_reg">';
+			echo '<input type="hidden" id="COD_ODEI" name="COD_ODEI">';
 			echo '<h5>A. UBICACION GEOGRAFICA</h5>';
 
 			echo '<div class="row-fluid"  >';	
@@ -1076,7 +1077,7 @@ $("#agregar").click(function () {
 		//CREA LOS INPTUS
         for (var i = add; i <= add; i++) {
     		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
-    		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12"  onkeypress="return solo_numeros(event)" maxlength=4 onblur="return mayusculas(this);" /> <input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"> </div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12"  onkeypress="return solo_letras(event)" onblur="return mayusculas(this);" /></div>');
+    		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12"  onkeypress="return solo_numeros(event)" maxlength=4 onblur="return pase_cod(this);" /> <input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"> </div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12"  onkeypress="return solo_letras(event)" onblur="return mayusculas(this);" /></div>');
     		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12"  onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);"/></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
     		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>   <div class="help-block error"></div> 	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" onchange="return complete_zero(this,2)" ></div>'	);
     		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A"  class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1 >	</div>'		);
@@ -1150,6 +1151,7 @@ $("#buscar").click(function(){
 				        			$("#totales :input").val('');
 
 				            		$.each(json , function(i, data) {
+				            			$("#COD_ODEI").val(data.COD_ODEI);
 				            			$("#CCPP").val(data.CCPP);
 				            			$("#NOM_PP").val(data.PROVINCIA);
 				            			$("#CCDI").val(data.CCDI);
@@ -1282,6 +1284,7 @@ $("#buscar").click(function(){
 				            			$("#NOM_DI").val(data.NOM_DI);
 				            			$("#EMP_IN").val(data.EMP_IN);
 				            			$("#EMP_FIN").val(data.EMP_FIN);
+				            			$("#COD_ODEI").val(data.COD_ODEI);
 
 				            			// DETALLE
 					        			var k = i+1;
@@ -1386,7 +1389,7 @@ $("#buscar").click(function(){
 			}
 			$("#TOTAL_P").val(sum);		
 			if( $.isNumeric($('#P3_P').val()) ){	
-				$('#P9_P').val( parseInt( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ) );
+				$("#P3_P").trigger('change');
 			}
 
 		}else if($(obj).attr('id') == "NUM_A"){
@@ -1398,7 +1401,7 @@ $("#buscar").click(function(){
 			}
 			$("#TOTAL_A").val(sum);		
 			if( $.isNumeric($('#P3_A').val()) ){
-				$('#P9_A').val( parseInt(  ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ) );
+				$("#P3_A").trigger('change');
 			}
 
 		}else if($(obj).attr('id') == "NUM_C"){
@@ -1410,7 +1413,7 @@ $("#buscar").click(function(){
 			}
 			$("#TOTAL_C").val(sum);
 			if( $.isNumeric($('#P3_C').val()) ){	
-				$('#P9_C').val( parseInt(  ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ) );
+				$("#P3_C").trigger('change');
 			}
 
 		}else if( ($(obj).attr('id') == 'P4_P' ) || ($(obj).attr('id') == 'P5_P' ) || ($(obj).attr('id') == 'P6_P' ) || ($(obj).attr('id') == 'P7_P' ) ){
@@ -1418,39 +1421,80 @@ $("#buscar").click(function(){
 			// 	$('#P3_P').val(  parseInt($("#P4_P").val() ) +  parseInt($("#P5_P").val() ) +  parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) );		
 			// }
 			if( $.isNumeric($('#P3_P').val()) ){
-				$('#P8_P').val( ( ( ( parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) ) * 100  ) / parseInt($('#P3_P').val()) ).toFixed(2) );
-				$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );				
+				if ( parseInt($('#P3_P').val()) > 0 ) {
+					$('#P8_P').val( ( ( ( parseInt($("#P6_P").val() ) +  parseInt($("#P7_P").val() ) ) * 100  ) / parseInt($('#P3_P').val()) ).toFixed(2) );
+				} else{
+					$('#P8_P').val(0);
+				};
+				// if ( parseInt($('#TOTAL_P').val()) > 0 ) {
+				// 	$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );	
+				// } else{
+				// 	$('#P9_P').val(0);
+				// };
+				$("#P3_P").trigger('change');
 			}
 
 
 		}else if( ($(obj).attr('id') == 'P4_A' ) || ($(obj).attr('id') == 'P5_A' ) || ($(obj).attr('id') == 'P6_A' ) || ($(obj).attr('id') == 'P7_A' ) ){
-			// if( $.isNumeric( $('#P4_A').val())  &&  $.isNumeric($('#P5_A').val()) &&  $.isNumeric($('#P6_A').val()) &&  $.isNumeric($('#P7_A').val()) ){
-			// 	$('#P3_A').val(  parseInt($("#P4_A").val() ) +  parseInt($("#P5_A").val() ) +  parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) );		
-			// }		
+	
 			if( $.isNumeric( $('#P3_A').val()) ){
-				$('#P8_A').val( ( (  ( parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) ) * 100  ) / parseInt($('#P3_A').val()) ).toFixed(2) );
-				$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );				
+				if ( parseInt($('#P3_A').val()) > 0 ) {
+					$('#P8_A').val( ( (  ( parseInt($("#P6_A").val() ) +  parseInt($("#P7_A").val() ) ) * 100  ) / parseInt($('#P3_A').val()) ).toFixed(2) );
+				} else{
+					$('#P8_A').val(0);
+				};
+				// if ( parseInt($('#TOTAL_A').val()) >0 ) {
+				// 	$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );				
+				// } else{
+				// 	$('#P9_A').val(0);
+				// };
+				$("#P3_A").trigger('change');
 			}
 
 		}else if( ($(obj).attr('id') == 'P4_C' ) || ($(obj).attr('id') == 'P5_C' ) || ($(obj).attr('id') == 'P6_C' ) || ($(obj).attr('id') == 'P7_C' ) ){
-			// if( $.isNumeric($('#P4_C').val())  &&  $.isNumeric($('#P5_C').val()) &&  $.isNumeric($('#P6_C').val()) &&  $.isNumeric($('#P7_C').val()) ){
-			// 	$('#P3_C').val(  parseInt($("#P4_C").val() ) +  parseInt($("#P5_C").val() ) +  parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) );		
-			// }		
+	
 			if( $.isNumeric($('#P3_C').val()) ){
-				$('#P8_C').val( ( (  ( parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) ) * 100  ) / parseInt($('#P3_C').val()) ).toFixed(2) );
-				$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );	
+				if ( $('#P3_C').val() > 0) {
+					$('#P8_C').val( ( (  ( parseInt($("#P6_C").val() ) +  parseInt($("#P7_C").val() ) ) * 100  ) / parseInt($('#P3_C').val()) ).toFixed(2) );
+				} else{
+					$('#P8_C').val(0);
+				};
+				// if ( $('#TOTAL_C').val() > 0){
+				// 	$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );	
+				// }else{
+				// 	$('#P9_C').val(0);
+				// }
+				$("#P3_C").trigger('change');
 			}
 		}			
 
 	}
 	$("#P3_P").change(function(){
-		$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );			
+		//$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );
+		if ( parseInt($('#TOTAL_P').val()) > 0 ) {
+			$('#P9_P').val( ( ( parseInt($("#P3_P").val() ) *  100   ) / parseInt($('#TOTAL_P').val()) ).toFixed(2) );	
+		} else{
+			$('#P9_P').val(0);
+		};	
+		$("#P3_C").trigger('change');				
 	});
 	$("#P3_A").change(function(){
-		$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );			
+		//$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );		
+		if ( parseInt($('#TOTAL_A').val()) >0 ) {
+			$('#P9_A').val( ( ( parseInt($("#P3_A").val() ) *  100   ) / parseInt($('#TOTAL_A').val()) ).toFixed(2) );				
+		} else{
+			$('#P9_A').val(0);
+		};
+
 	});	
 	$("#P3_C").change(function(){
-		$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );	
+		//$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );
+		if ( $('#TOTAL_C').val() > 0){
+			$('#P9_C').val( ( ( parseInt($("#P3_C").val() ) *  100   ) / parseInt($('#TOTAL_C').val()) ).toFixed(2) );	
+		}else{
+			$('#P9_C').val(0);
+		}
+
 	});		
 
 	//completar con cerros
@@ -1458,6 +1502,21 @@ $("#buscar").click(function(){
 	   n = $(obj).val().toString();
 	   while(n.length < num) n = "0" + n;
 	   return $(obj).val(n);
+
+	}
+
+	//pasar codigo del CC_CCPP al hidden CC_CCPP_cod
+	function pase_cod(obj) {
+		//$('#thisid').parents('li').eq(0);
+		var k = $(obj).parents('div [name^="ccpp_div_"]').eq(0);
+		var i = null;
+		if ( $.isNumeric( (k.attr('id')).substring(10,11) ) ){
+			i = (k.attr('id')).substring(9,11)
+		}else{
+			i = (k.attr('id')).substring(9,10)
+		}
+		//alert( (k.attr('id')).substring(9,11) );
+		$("#ccpp_div_"+i+" :input[name='CC_CCPP_NUM']").val( $(obj).val() );
 
 	}
 
