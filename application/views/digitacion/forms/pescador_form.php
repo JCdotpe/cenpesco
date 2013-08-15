@@ -799,7 +799,6 @@ $("#pesca_dor").validate({
                                                     //combo conviviente
                                                     $('#' + fila).val(valor);
                                                     $('#' + fila).trigger('change');
-
                                                }   
                                               else if(fila == 'S2_14_7'){
                                                     //combo conviviente
@@ -823,10 +822,9 @@ $("#pesca_dor").validate({
                                                     $('#S2_18').trigger('change');
 
                                                }         
-                                              else if(fila == 'S2_19'){
-                                                    $('#S2_19').val(valor);
-                                                    $('#S2_19').trigger('change');
-
+                                              else if(fila == 'S2_19' || fila == 'S2_19G' || fila == 'S2_19A'){
+                                                    $('#' + fila).val(valor);
+                                                    $('#' + fila).trigger('change');
                                                }       
                                               else if(fila == 'S2_20_9'){
                                                     $('#S2_20_9').val(valor);

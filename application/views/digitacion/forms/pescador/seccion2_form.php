@@ -3613,7 +3613,32 @@ $('#S2_19').change(function() {
 		s2p19a.attr("disabled", "disabled"); 			
 	}
 });
-
+$('#S2_19G').change(function() {
+	var s2p12a = $('#S2_19A');
+	var th = $('#S2_19').val();
+	if( th == 3 ){	
+		if($(this).val() != ''){
+			s2p12a.val('');
+			s2p12a.attr("disabled", "disabled"); 
+		}else{
+			s2p12a.removeAttr('disabled');
+		}
+	}else{		
+	}
+});
+$('#S2_19A').change(function() {
+	var s2p12g = $('#S2_19G');
+	var th = $('#S2_19').val();
+	if( th == 3 ){	
+		if($(this).val() != ''){
+			s2p12g.val('');
+			s2p12g.attr("disabled", "disabled"); 
+		}else{
+			s2p12g.removeAttr('disabled');
+		}
+	}else{		
+	}
+});
 //No tiene hijos
 $('#S2_21').change(function() {
 	var preg22 = $('#S2_22');
