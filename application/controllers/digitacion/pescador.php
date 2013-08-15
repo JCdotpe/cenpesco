@@ -50,6 +50,8 @@ class Pescador extends CI_Controller {
 		$this->load->model('ccpp_model');	
 		$this->load->model('marco_model');	
 		$this->load->model('empadronador_model');	
+		// $this->load->library('export');
+		// $this->load->helper('csv');
 	}
 
 
@@ -209,14 +211,16 @@ class Pescador extends CI_Controller {
 	function to_excel(){
 		$this->load->helper('excel');
         $query = $this->pescador_model->get_print();
+        // $this->export->to_excel($query, 'Pescadores');
         to_excel($query, 'Pescadores');
+        // query_to_csv($query, TRUE, 'Pescadores.csv');
 	}
 	
-	function to_excel_emb(){
-		$this->load->helper('excel');
-        $query = $this->pescador_model->get_print_emb();
-        to_excel($query, 'Embarcaciones');
-	}
+	// function to_excel_emb(){
+	// 	$this->load->helper('excel');
+ //        $query = $this->pescador_model->get_print_emb();
+ //        to_excel($query, 'Embarcaciones');
+	// }
 
 }
 

@@ -22,17 +22,17 @@ if(!function_exists('to_excel')) {
          } else {
 
               foreach ($fields as $field) {
-                 $headers .= $field . "\t";
+                 $headers .= $field . "\t,";
               }
               $i = 0;
               foreach ($query->result() as $row) {
                    $line = '';
                    foreach($row as $value) {                                            
                         if ((!isset($value)) OR ($value == "")) {
-                             $value = "\t";
+                             $value = ",\t";
                         } else {
                              $value = str_replace('"', '""', $value);
-                             $value = '"' . $value . '"' . "\t";
+                             $value = '' . $value . ',' . "\t" ;
                             $value = iconv(mb_detect_encoding($value),$char_encoding,$value);
                         }
                         $line .= $value;

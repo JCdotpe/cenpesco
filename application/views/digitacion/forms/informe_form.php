@@ -69,7 +69,7 @@ $P10 = array(
 $P11 = array(
 	'name'	=> 'P11',
 	'id'	=> 'P11',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 	'readonly' => 'readonly',
 );
@@ -872,10 +872,23 @@ $("#DIST_COD").change(function(event) {
 
 $(document).on("change",'.comba',function() {
 // $(".comba").change(function(event) {
+
+
+
+
+
   		var pre = $(this).attr('id');
   		var npreg = pre.substring(4,5);
 		var sel = $('#P16' + '_' + npreg);
 		var ah = $(this);
+
+		//comunidades
+		if(ah.val() == 14){
+			$('#P15' + '_' + npreg).addClass('comunidades');
+		}else{
+			$('#P15' + '_' + npreg).removeClass('comunidades');
+		}
+
         var form_data = {
             code: $(this).val(),
             csrf_token_c: CI.cct,
@@ -994,7 +1007,7 @@ function dil(nume){
 
 														strq +=  '<div class="control-group">';
 															strq +=  '<div class="controls">';
-																strq +=  '<select id="P17' + '_' + i + '" class="span12" name="P17' + '_' + i + '"><option value="-1">-</option></select>';	
+																strq +=  '<select id="P17' + '_' + i + '" class="span12 combc" name="P17' + '_' + i + '"><option value="-1">-</option></select>';	
 																strq +=  '<span class="help-inline"></span>';
 																strq +=  '<div class="help-block error"></div>';
 															strq +=  '</div>';	
@@ -1010,7 +1023,7 @@ function dil(nume){
 															strq +=  '<div class="control-group">';
 																strq +=  'CONCEPTO';
 																strq +=  '<div class="controls">';
-																	strq +=  '<input type="text" class="span12" maxlength="1" id="P18' + '_' + i + '" value="" name="P18' + '_' + i + '">';
+																	strq +=  '<input type="text" class="span12 terror" maxlength="1" id="P18' + '_' + i + '" value="" name="P18' + '_' + i + '">';
 																	strq +=  '<span class="help-inline"></span>';
 																	strq +=  '<div class="help-block error"></div>';
 																strq +=  '</div>';	
@@ -1021,7 +1034,7 @@ function dil(nume){
 															strq +=  '<div class="control-group">';
 																strq +=  'DILIGENCIAMIENTO';
 																strq +=  '<div class="controls">';
-																	strq +=  '<input type="text" class="span12" maxlength="1" id="P19' + '_' + i + '" value="" name="P19' + '_' + i + '">';
+																	strq +=  '<input type="text" class="span12 terror" maxlength="1" id="P19' + '_' + i + '" value="" name="P19' + '_' + i + '">';
 																	strq +=  '<span class="help-inline"></span>';
 																	strq +=  '<div class="help-block error"></div>';
 																strq +=  '</div>';	
@@ -1032,7 +1045,7 @@ function dil(nume){
 															strq +=  '<div class="control-group">';
 																strq +=  'FORMULACIÓN';
 																strq +=  '<div class="controls">';
-																	strq +=  '<input type="text" class="span12" maxlength="1" id="P20' + '_' + i + '" value="" name="P20' + '_' + i + '">';
+																	strq +=  '<input type="text" class="span12 terror" maxlength="1" id="P20' + '_' + i + '" value="" name="P20' + '_' + i + '">';
 																	strq +=  '<span class="help-inline"></span>';
 																	strq +=  '<div class="help-block error"></div>';
 																strq +=  '</div>';	
@@ -1043,7 +1056,7 @@ function dil(nume){
 															strq +=  '<div class="control-group">';
 																strq +=  'SONDEO';										
 																strq +=  '<div class="controls">';
-																	strq +=  '<input type="text" class="span12" maxlength="1" id="P21' + '_' + i + '" value="" name="P21' + '_' + i + '">';
+																	strq +=  '<input type="text" class="span12 terror" maxlength="1" id="P21' + '_' + i + '" value="" name="P21' + '_' + i + '">';
 																	strq +=  '<span class="help-inline"></span>';
 																	strq +=  '<div class="help-block error"></div>';
 																strq +=  '</div>';	
@@ -1054,7 +1067,7 @@ function dil(nume){
 															strq +=  '<div class="control-group">';
 																strq +=  'OMISIÓN';										
 																strq +=  '<div class="controls">';
-																	strq +=  '<input type="text" class="span12" maxlength="1" id="P22' + '_' + i + '" value="" name="P22' + '_' + i + '">';
+																	strq +=  '<input type="text" class="span12 terror" maxlength="1" id="P22' + '_' + i + '" value="" name="P22' + '_' + i + '">';
 																	strq +=  '<span class="help-inline"></span>';
 																	strq +=  '<div class="help-block error"></div>';
 																strq +=  '</div>';	
@@ -1146,7 +1159,7 @@ $.validator.addMethod("year", function(value, element, param) {
 }, "Ingrese un año válido");
 $.validator.addMethod("valueEquals", function (value, element, param) {
     return param == value;
-}, "Acepta la declaración de veracidad?");
+}, "Solo 1 formulario por comunidad");
 
 $.validator.addMethod("peruDate",function(value, element) {
     return value.match(/^\d\d?\-\d\d?\-\d\d\d\d$/);
@@ -1432,8 +1445,30 @@ $("#inform").validate({
 
 
 
+$.validator.addClassRules('terror', {
+  required: true,
+  range:[0,1],
+});
 
+$.validator.addClassRules('comba', {
+  required: true,
+  valueNotEquals:-1,
+});
 
+$.validator.addClassRules('combb', {
+  required: true,
+  valueNotEquals:-1,
+});
+
+$.validator.addClassRules('combc', {
+  required: true,
+  valueNotEquals:-1,
+});
+
+$.validator.addClassRules('comunidades', {
+  required: true,
+  valueEquals: '00001',
+});
 //validacion inform
 $("#serrors").validate({
     rules: {
