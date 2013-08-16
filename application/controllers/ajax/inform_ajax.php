@@ -19,7 +19,7 @@ class Inform_ajax extends CI_Controller {
 		show_404();
 	}
 
-	public function get_ajax_dep($c)
+	public function get_ajax_dep()
 	{
 		$this->output->cache(9999999999);
 		$s = $this->input->post('code');
@@ -32,7 +32,7 @@ class Inform_ajax extends CI_Controller {
 		}
 	}
 
-	public function get_ajax_prov($c)
+	public function get_ajax_prov()
 	{
 		$this->output->cache(9999999999);
 		$s = $this->input->post('odei');
@@ -46,7 +46,7 @@ class Inform_ajax extends CI_Controller {
 		}
 	}
 
-	public function get_ajax_dist($c)
+	public function get_ajax_dist()
 	{
 		$this->output->cache(9999999999);
 		// $this->output->cache(30);
@@ -62,7 +62,7 @@ class Inform_ajax extends CI_Controller {
 		}
 	}
 
-	public function get_ajax_ccpp($c)
+	public function get_ajax_ccpp()
 	{
 		$this->output->cache(9999999999);
 		// $this->output->cache(30);
