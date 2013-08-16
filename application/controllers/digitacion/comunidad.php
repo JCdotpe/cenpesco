@@ -185,15 +185,11 @@ class Comunidad extends CI_Controller {
 
 	function to_excel(){
 		$this->load->helper('excel');
-        $query = $this->pescador_model->get_print();
-        to_excel($query, 'Pescadores');
+        $query = $this->comunidad_model->get_all();
+        to_excel($query, 'Comunidades');
 	}
 	
-	function to_excel_emb(){
-		$this->load->helper('excel');
-        $query = $this->pescador_model->get_print_emb();
-        to_excel($query, 'Embarcaciones');
-	}
+
 
 }
 

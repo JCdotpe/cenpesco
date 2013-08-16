@@ -102,9 +102,12 @@ class Registro_pescadores_model extends CI_MODEL
 		foreach($sedes->result() as $filas){
             $sede[] = ($filas->ODEI_COD);
 		}
-		$this->db->where_in('ODEI_COD',$sede);
-		$this->db->select('SEDE_COD,NOM_SEDE,ODEI_COD,NOM_ODEI,NOM_DD,CCDD,NOM_PP,CCPP,NOM_DI,CCDI,NOM_CCPP,COD_CCPP,NOM_AUT,DNI_AUT,F_D,F_M,F_A,T_F_D,T_PES,T_ACUI,T_PES_ACUI,T_EMB,NOM_EMP,DNI_EMP,
-							P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15');
+		//$this->db->where_in('ODEI_COD',$sede);
+		$this->db->select('SEDE_COD,NOM_SEDE,ODEI_COD,NOM_ODEI,NOM_DD,CCDD,NOM_PP,CCPP,NOM_DI,CCDI,NOM_CCPP,COD_CCPP,CCPP_PROC, CCPP_CODPROC,  NOM_AUT,DNI_AUT,F_D,F_M,F_A,T_F_D,T_PES,T_ACUI,T_PES_ACUI,T_EMB,NOM_EMP,DNI_EMP,
+							P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15, OBS');
+
+
+
 		$this->db->from('registro_pescadores r');
 		$this->db->join('registro_pescadores_dat d','r.id_reg=d.id_reg','left');
 		$this->db->order_by('NOM_DD');

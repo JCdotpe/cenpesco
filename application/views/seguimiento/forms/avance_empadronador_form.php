@@ -2121,7 +2121,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 		         },   
 		       NOM_CCPP: {
 		           required: true,
-		           validName: true,
+		           //validName: true,
 		         }, 
 		       REG_DIA: {
 		           required: true,

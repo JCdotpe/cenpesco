@@ -1665,6 +1665,13 @@ class Avance_empadronador extends CI_Controller {
 
  	}
 
+	function to_excel(){
+		$this->load->helper('excel');
+        $query = $this->avance_campo_subrutas_model->get_all_export();
+        to_excel($query, 'Avance_empadronador');
+	}
+
+
 }
 
 

@@ -81,6 +81,11 @@ class Udra_pescador_model extends CI_MODEL
 		return $q;
 	}		
 
+	function get_all_export(){
+		$q = $this->db->get('udra_pescador');
+		return $q;
+	}
+
 
 }
 

@@ -130,7 +130,12 @@ class Pescador extends CI_Controller {
         		$this->load->view('backend/includes/template', $data);				
 	        }
 
-		
-
 	}
+
+	function to_excel(){
+		$this->load->helper('excel');
+        $query = $this->udra_pescador_model->get_all_export();
+        to_excel($query, 'Udra_Pescador');
+	}
+
 }

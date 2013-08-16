@@ -136,4 +136,13 @@ class Acuicultor extends CI_Controller {
 
 	}
 
+
+	function to_excel(){
+		$this->load->helper('excel');
+        $query = $this->udra_acuicultor_model->get_all_export();
+        to_excel($query, 'Udra_Acuicultor');
+	}
+
+
+
 }

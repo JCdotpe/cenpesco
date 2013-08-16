@@ -132,4 +132,11 @@ class Comunidad extends CI_Controller {
 
 	}
 
+	function to_excel(){
+		$this->load->helper('excel');
+        $query = $this->udra_comunidad_model->get_all_export();
+        to_excel($query, 'Udra_Comunidad');
+	}
+
+
 }

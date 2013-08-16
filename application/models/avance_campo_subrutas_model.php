@@ -284,6 +284,86 @@ class Avance_campo_subrutas_model extends CI_MODEL
         return $q;
     }
 
+    //EXPORT EXCEL
+
+    function get_all_export(){
+        $sql = '
+        SELECT 
+      `avance_campo_subrutas`.`COD` ,
+      `avance_campo_subrutas`.`COD_REG` ,
+      `avance_campo_subrutas`.`CCSE` ,
+      `avance_campo_subrutas`.`NOM_SEDE` ,
+      `avance_campo_subrutas`.`COD_ODEI` ,
+      `avance_campo_subrutas`.`CCDD` ,
+      `avance_campo_subrutas`.`NOM_DD` ,
+      `avance_campo_subrutas`.`EQP` ,
+      `avance_campo_subrutas`.`RUTA` ,
+      `avance_campo_subrutas`.`SUB_R` ,
+      `avance_campo_subrutas`.`CCPP` ,
+      `avance_campo_subrutas`.`NOM_PP` ,
+      `avance_campo_subrutas`.`CCDI` ,
+      `avance_campo_subrutas`.`NOM_DI` ,
+      `avance_campo_subrutas`.`EMP_IN` ,
+      `avance_campo_subrutas`.`EMP_FIN`,
+      `avance_campo_subrutas`.`CC_CCPP`,
+      `avance_campo_subrutas`.`CC_CCPP_NUM`,
+      `avance_campo_subrutas`.`NOM_CCPP`,
+      `avance_campo_subrutas`.`TIPO_IN`,
+      `avance_campo_subrutas`.`TIPO_FIN`,
+      `avance_campo_subrutas`.`REG` ,
+      `avance_campo_subrutas`.`REG_DIA` ,
+      `avance_campo_subrutas`.`REG_MES` ,
+      `avance_campo_subrutas`.`NUM_P` ,
+      `avance_campo_subrutas`.`NUM_A` ,
+      `avance_campo_subrutas`.`NUM_C` ,
+      `avance_campo_subrutas`.`NUEV_CCPP` ,
+      `avance_campo_subrutas`.`OBS` ,
+      `avance_campo_subrutas`.`TOTAL_CCPP` ,
+      `avance_campo_subrutas`.`TOTAL_REG` ,
+      `avance_campo_subrutas`.`TOTAL_P` ,
+      `avance_campo_subrutas`.`TOTAL_A` ,
+      `avance_campo_subrutas`.`TOTAL_C` ,
+      `avance_campo_subrutas`.`P1_P` ,
+      `avance_campo_subrutas`.`P2_P` ,
+      `avance_campo_subrutas`.`P3_P` ,
+      `avance_campo_subrutas`.`P4_P` ,
+      `avance_campo_subrutas`.`P5_P` ,
+      `avance_campo_subrutas`.`P6_P` ,
+      `avance_campo_subrutas`.`P7_P` ,
+      `avance_campo_subrutas`.`P8_P` ,
+      `avance_campo_subrutas`.`P9_P` ,
+      `avance_campo_subrutas`.`P10_P` ,
+      `avance_campo_subrutas`.`P1_A` ,
+      `avance_campo_subrutas`.`P2_A` ,
+      `avance_campo_subrutas`.`P3_A` ,
+      `avance_campo_subrutas`.`P4_A` ,
+      `avance_campo_subrutas`.`P5_A` ,
+      `avance_campo_subrutas`.`P6_A` ,
+      `avance_campo_subrutas`.`P7_A` ,
+      `avance_campo_subrutas`.`P8_A` ,
+      `avance_campo_subrutas`.`P9_A` ,
+      `avance_campo_subrutas`.`P10_A` ,
+      `avance_campo_subrutas`.`P1_C` ,
+      `avance_campo_subrutas`.`P2_C` ,
+      `avance_campo_subrutas`.`P3_C` ,
+      `avance_campo_subrutas`.`P4_C` ,
+      `avance_campo_subrutas`.`P5_C` ,
+      `avance_campo_subrutas`.`P6_C` ,
+      `avance_campo_subrutas`.`P7_C` ,
+      `avance_campo_subrutas`.`P8_C` ,
+      `avance_campo_subrutas`.`P9_C` ,
+      `avance_campo_subrutas`.`P10_C` ,
+      `avance_campo_subrutas`.`user_id` ,
+      `avance_campo_subrutas`.`created` ,
+      `avance_campo_subrutas`.`user_id_m` ,    
+      `avance_campo_subrutas`.`modified` 
+    
+      FROM cenpesco.avance_campo_subrutas where activo=1
+      ' ;
+      $q = $this->db->query($sql);
+      return $q;
+    }
+
 
 }
 

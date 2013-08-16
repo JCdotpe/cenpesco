@@ -454,5 +454,15 @@ class Registro_pescadores extends CI_Controller {
 	}
 
 
+	public function to_excel()
+	{
+		$this->load->helper('excel');
+		$departamento = $this->marco_model->get_odei($this->tank_auth->get_ubigeo()); 
+		$query = $this->registro_pescadores_model->select_todo($departamento);
+		to_excel($query,'Registro');
+	}
+
+
+
 
 }

@@ -68,6 +68,12 @@ class Udra_registro_model extends CI_MODEL
     	$q = $this->db->get('acuicultura_1');
 		return $q;
 	}
+
+	function get_all_export(){
+		$q = $this->db->get('udra_registro');
+		return $q;
+	}
+	
 }
 
 
