@@ -3885,7 +3885,7 @@ $('#S2_9_DD_COD').trigger("change");
 		            required: true,
 		            exactlength: 4,
 		            digits: true, 
-		            valrango: [1930,2000,9999],
+		            valrango: [1930,2005,9999],
 		         },  
 		        S2_3:{
 		        	required: true,

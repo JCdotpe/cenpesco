@@ -1,4 +1,4 @@
-
+<script src="<?php echo base_url('js/vendor/jquery.printElement.min.js'); ?>"></script>
 <?php  
 $labelnroform=  array('class' => 'preguntas_sub2 nroformpesc');
 $label1=  array('class' => 'preguntas_sub2');
@@ -162,6 +162,7 @@ $OBS_2 = array(
 
 
 $attr = array('class' => 'form-vertical form-auth','id' => 'inform');
+echo '<div id="imprimir" style="overflow:auto">';
 echo '<div class="row-fluid">';
 echo '<div class="span12">';
 echo form_open($this->uri->uri_string(),$attr); 
@@ -639,10 +640,13 @@ echo '</div>';
 
 
 //modulo fin
-echo '</div>'; 	
+echo '</div>'; 
+
+// echo '<a class="btn btn-success pull-left" href="#" id="printt">Imprimir</a>';
 echo form_submit('guardar', 'Guardar','class="btn btn-primary pull-right"');
 echo form_close(); 
-
+//imprimir
+echo '</div>'; 
 ?>
 
 <script type="text/javascript">
@@ -726,7 +730,6 @@ $("#ODEI_COD").change(function(event) {
 		var sel = $('#DEP_COD');
 		var ah = $(this);
         var form_data = {
-            code: $(this).val(),
             csrf_token_c: CI.cct,
             code: ah.val(),
             ajax:1
@@ -763,7 +766,7 @@ $("#DEP_COD").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_prov/" + $(this).val(),
+            url: CI.base_url + "ajax/inform_ajax/get_ajax_prov/" + aha.val() + '/' + ah.val(),
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -796,7 +799,7 @@ $("#PROV_COD").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_dist/" + $(this).val(),
+            url: CI.base_url + "ajax/inform_ajax/get_ajax_dist/" + aha.val() + '/' + ahaa.val() + '/' + ah.val(),
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -831,7 +834,7 @@ $("#DIST_COD").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_ccpp/" + $(this).val(),
+            url: CI.base_url + "ajax/inform_ajax/get_ajax_ccpp/" + aha.val() + '/' + ahaa.val() + '/' + ahaaa.val() + '/' +  $(this).val(),
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -1563,6 +1566,10 @@ $("#serrors").validate({
     }       
 });
 
+
+$('#printt').click(function(){
+	$('#imprimir').show().printElement();
+})
 
 
 
