@@ -28,7 +28,7 @@ $span_class =  'span12';
 	$S4_1_C = array(
 		'name'	=> 'S4_1_C',
 		'id'	=> 'S4_1_C',
-		'maxlength'	=> 2,
+		'maxlength'	=> 3,
 		'class' => $span_class,
 		'onkeypress'=>"return solo_numeros(event)",
 		//'onblur'=> 'especifique(this,S4_1,1)',
@@ -621,7 +621,7 @@ $(function(){
 				S4_1_C: {
 		            required: false,
 		            digits: true,
-		            ranges: [[1,20],[99]],
+		            ranges: [[1,500],[999]],
 		         },   
 				S4_2_1: {
 		            required: true,

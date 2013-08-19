@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pescador_avance extends CI_Controller {
+class General_avance extends CI_Controller {
 	protected $secciones = array(
 					2 => 'Seccion II',
 					3 => 'Seccion III',
@@ -9,8 +9,7 @@ class Pescador_avance extends CI_Controller {
 					6 => 'Seccion VI',
 					7 => 'Seccion VII',
 					8 => 'Seccion VIII',
-					9 => 'Seccion IX',
-					10 => 'Info',
+					9 => 'Info',
 	);
 	function __construct()
 	{
@@ -20,7 +19,7 @@ class Pescador_avance extends CI_Controller {
 		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');	
-		$this->load->model('udra_pescador_model');
+		$this->load->model('udra_comunidad_model');
 		$this->load->model('pesca_piloto_model');
 		$this->load->model('marco_model');
 		$this->load->helper('date');
@@ -59,34 +58,31 @@ class Pescador_avance extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
 			}					
-			$data['tables'] = $this->marco_model->get_pescadores_by_odei($odei); //get forms por ODEIS, 
-			$data['udra'] = $this->udra_pescador_model->get_formularios_total_by_odei($odei); //get forms por ODEIS, 
+			$data['tables'] = $this->marco_model->get_comunidad_by_odei($odei); //get forms por ODEIS, 
+			$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_odei($odei); //get forms por ODEIS, 
 
-			$data['main_content'] = 'digitacion/avance_digitacion/pescador_by_odei_view';
-			$data['option'] = 1;
+			$data['main_content'] = 'digitacion/avance_digitacion/comunidad_by_odei_view';
+			$data['option'] = 21;
 					
-
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
 			if($forms->num_rows() > 0){
 		
 				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					
 					$i = 0;
 					$table = null;
 					foreach($this->secciones as $s=>$k){
-						$table = 'pesc_seccion' . $s;
-						if($s == 10){
-							$table = 'pesc_info';
+						$table = 'comunidad_seccion' . $s;
+						if($s == 9){
+							$table = 'comunidad_info';
 						}
-						  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-						//var_dump($rega->result());echo '<br>';
 					}
 					if ($i == 9){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
@@ -98,20 +94,18 @@ class Pescador_avance extends CI_Controller {
 			}
 
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos); 
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
 			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_incompletos); 
+			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_incompletos); //N° formularios ingresados en pescador incompletos
 			}else{
 				$data['formularios_inc'] = NULL;
 			}
-			$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
-			//$data['registros_total'] = $this->udra_pescador_model->get_registros_total($seccion_completos); 
+
 	    	$this->load->view('backend/includes/template', $data);	
 	
-
 	}
 
 	public function provincia()
@@ -124,33 +118,31 @@ class Pescador_avance extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
 			}					
-			$data['tables'] = $this->marco_model->get_pescadores_by_prov($odei); //get forms por ODEIS, 
-			$data['udra'] = $this->udra_pescador_model->get_formularios_total_by_prov($odei); //get forms por ODEIS, 
+			$data['tables'] = $this->marco_model->get_comunidad_by_prov($odei); //get forms por ODEIS, 
+			$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_prov($odei); //get forms por ODEIS, 
 
-			$data['main_content'] = 'digitacion/avance_digitacion/pescador_by_prov_view';
-			$data['option'] = 2;
+			$data['main_content'] = 'digitacion/avance_digitacion/comunidad_by_prov_view';
+			$data['option'] = 22;
 					
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
 			if($forms->num_rows() > 0){
 		
 				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					
 					$i = 0;
 					$table = null;
 					foreach($this->secciones as $s=>$k){
-						$table = 'pesc_seccion' . $s;
-						if($s == 10){
-							$table = 'pesc_info';
+						$table = 'comunidad_seccion' . $s;
+						if($s == 9){
+							$table = 'comunidad_info';
 						}
-						  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-						//var_dump($rega->result());echo '<br>';
 					}
 					if ($i == 9){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
@@ -162,18 +154,17 @@ class Pescador_avance extends CI_Controller {
 			}
 
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_prov($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_prov($seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
 			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_prov($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
+			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_prov($seccion_incompletos); //N° formularios ingresados en pescador incompletos
 			}else{
 				$data['formularios_inc'] = NULL;
 			}
 
-			$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
-	    	$this->load->view('backend/includes/template', $data);	
+	    	$this->load->view('backend/includes/template', $data);		$this->load->view('backend/includes/template', $data);	
 	
 	}
 
@@ -187,33 +178,31 @@ class Pescador_avance extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
 			}					
-			$data['tables'] = $this->marco_model->get_pescadores_by_dist($odei); //get forms por ODEIS, 
-			$data['udra'] = $this->udra_pescador_model->get_formularios_total_by_dist($odei); //get forms por ODEIS, 
+			$data['tables'] = $this->marco_model->get_comunidad_by_dist($odei); //get forms por ODEIS, 
+			$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_dist($odei); //get forms por ODEIS, 
 
-			$data['main_content'] = 'digitacion/avance_digitacion/pescador_by_dist_view';
-			$data['option'] = 3;
+			$data['main_content'] = 'digitacion/avance_digitacion/comunidad_by_dist_view';
+			$data['option'] = 23;
 					
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
 			if($forms->num_rows() > 0){
 		
 				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					
 					$i = 0;
 					$table = null;
 					foreach($this->secciones as $s=>$k){
-						$table = 'pesc_seccion' . $s;
-						if($s == 10){
-							$table = 'pesc_info';
+						$table = 'comunidad_seccion' . $s;
+						if($s == 9){
+							$table = 'comunidad_info';
 						}
-						  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-						//var_dump($rega->result());echo '<br>';
 					}
 					if ($i == 9){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
@@ -225,18 +214,17 @@ class Pescador_avance extends CI_Controller {
 			}
 
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_dist($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_dist($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
 			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_dist($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
+			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_dist($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
 			}else{
 				$data['formularios_inc'] = NULL;
 			}
 
-			//$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
-	    	$this->load->view('backend/includes/template', $data);	
+	    	$this->load->view('backend/includes/template', $data);		
 			
 	}
 
@@ -250,33 +238,31 @@ class Pescador_avance extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
 			}					
-			$data['tables'] = $this->marco_model->get_pescadores_by_ccpp($odei); //get forms por ODEIS, 
-			$data['udra'] = $this->udra_pescador_model->get_formularios_total_by_ccpp($odei); //get forms por ODEIS, 
+			$data['tables'] = $this->marco_model->get_comunidad_by_ccpp($odei); //get MARCO por CENTRO POBLADO, 
+			$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_ccpp($odei); //get forms por CENTRO POBLADO, 
 
-			$data['main_content'] = 'digitacion/avance_digitacion/pescador_by_ccpp_view';
-			$data['option'] = 4;
+			$data['main_content'] = 'digitacion/avance_digitacion/comunidad_by_ccpp_view';
+			$data['option'] = 24;
 					
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
 
 			if($forms->num_rows() > 0){
 		
 				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					
 					$i = 0;
 					$table = null;
 					foreach($this->secciones as $s=>$k){
-						$table = 'pesc_seccion' . $s;
-						if($s == 10){
-							$table = 'pesc_info';
+						$table = 'comunidad_seccion' . $s;
+						if($s == 9){
+							$table = 'comunidad_info';
 						}
-						  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-						//var_dump($rega->result());echo '<br>';
 					}
 					if ($i == 9){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
@@ -288,19 +274,17 @@ class Pescador_avance extends CI_Controller {
 			}
 
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
 			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
+			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
 			}else{
 				$data['formularios_inc'] = NULL;
 			}
 
-			//$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
-	    	$this->load->view('backend/includes/template', $data);	
-			
+	    	$this->load->view('backend/includes/template', $data);		$this->load->view('backend/includes/template', $data);	
 	}
 
 

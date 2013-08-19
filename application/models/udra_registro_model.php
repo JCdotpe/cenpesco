@@ -74,6 +74,103 @@ class Udra_registro_model extends CI_MODEL
 		return $q;
 	}
 	
+
+
+// ******************************************************************************
+// para AVANCE DIGITACION
+// ******************************************************************************
+
+	function get_forms_by_odei($cod) // obtiene todos los registros formulario registrados inicialmente
+	{	
+		$this->db->where_in('ODEI_COD',$cod);		
+		$this->db->select('id,SEDE_COD,ODEI_COD,CCDD,CCPP,CCDI ,COD_CCPP');
+    	$q = $this->db->get('registro_pescadores');
+		return $q;
+	}	
+	// ODEI
+	function get_udra_total_by_odei($cod)// obtiene el total de formularios declarados en UDRA
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+    	$q = $this->db->get('udra_registro');
+		return $q;
+	}	
+
+	function get_n_formularios_by_odei()// cuenta por ODEI, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id_reg) as TOTAL_DIG ');
+		$this->db->group_by('ODEI_COD');
+    	$q = $this->db->get('registro_pescadores');
+		return $q;
+	}	
+
+	// PROVINCIA
+	function get_udra_total_by_prov($cod)// obtiene el total de formularios declarados en UDRA por Provincia
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+    	$q = $this->db->get('udra_registro');
+		return $q;
+	}	
+
+	function get_n_formularios_by_prov()// cuenta por ODEI, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, count(id_reg) as TOTAL_DIG ');
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+    	$q = $this->db->get('registro_pescadores');
+		return $q;
+	}
+
+	//DISTRITO
+	function get_udra_total_by_dist($cod)// obtiene N° total de  declarados en UDRA por DISTRITO
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, CCDI, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+    	$q = $this->db->get('udra_registro');
+		return $q;
+	}	
+
+	function get_n_formularios_by_dist()// N°  por DISTRITO, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI, count(id_reg) as TOTAL_DIG ');
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+    	$q = $this->db->get('registro_pescadores');
+		return $q;
+	}
+
+	//CENTRO POBLADO
+	function get_udra_total_by_ccpp($cod)// obtiene el total de formularios  en UDRA por CENTRO_POBLADO
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, CCDI,COD_CCPP, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+		$this->db->group_by('COD_CCPP');
+    	$q = $this->db->get('udra_registro');
+		return $q;
+	}	
+
+	function get_n_formularios_by_ccpp()// cuenta por CCPP, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI,COD_CCPP, count(id_reg) as TOTAL_DIG ');
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+		$this->db->group_by('COD_CCPP');
+    	$q = $this->db->get('registro_pescadores');
+		return $q;
+	}
+
 }
 
 

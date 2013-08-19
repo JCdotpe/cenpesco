@@ -421,30 +421,6 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f").change(function(event) {
             dataType:'json',
             success:function(json_data){
             
-                // sel.empty();
-                // if (op==3){
-                //     sel.append('<option value=" -"> - </option>');
-                // }                
-                // $.each(json_data, function(i, data){
-                //     if (op==1){
-                //         sel.append('<option value="' + (data.UBIGEO).substring(2,4) + '">' + data.PROVINCIA + '</option>');
-                //     }
-                //     if (op==2){
-                //         sel.append('<option value="' + (data.UBIGEO).substring(4,6)  + '">' + data.DISTRITO + '</option>');
-                //    }
-                //     if (op==3){
-                //         sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');}
-                // });
-               
-                // if (op==1){
-                //     $("#NOM_PP_f").trigger('change');
-                //     }  
-                // if (op==2){
-                //     $("#NOM_DI_f").trigger('change');
-                // }
-                // if (op==3){
-                //     $("#NOM_CCPP_f").trigger('change');
-                // }
 
                 sel.empty();
                 if (op==3){

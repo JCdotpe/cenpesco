@@ -10,7 +10,7 @@
 
     <div class="span10" id="freg">
 
-    	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO PESCADOR A NIVEL ODEI</h4>
+    	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO DE COMUNIDADES A NIVEL ODEI</h4>
     	<?php
 
 				echo '<table border="1" class="table table-hover table-condensed">';
@@ -21,7 +21,7 @@
 						echo '<th>ODEI</th>';						
 						// echo '<th>CODIGO</th>';
 						// echo '<th>DEPARTAMENTO</th>';
-						echo '<th>PEA PESCADOR</th>';
+						echo '<th>MARCO COMUNIDADES</th>';
 						echo '<th>UDRA</th>';
 						echo '<th>DIGITACIÓN</th>';
 						echo '<th>% AVANCE DE DIGITACION</th>';
@@ -39,7 +39,7 @@
 						echo "<td>". $row->NOM_ODEI ."</td>";						
 						// echo "<td>". $row->CCDD ."</td>";
 						// echo "<td>". $row->DEPARTAMENTO ."</td>";
-						echo "<td>". $row->TOTAL_PES ."</td>";
+						echo "<td>". $row->TOTAL_COM ."</td>";
 						//echo "<td>". $row->FORMULARIOS ."</td>";
 
 						if (isset($udra)){
@@ -79,13 +79,13 @@
 						if ( $nform_udra>0){
 							echo "<td>". number_format( ($nform_pes*100)/$nform_udra , 2,'.' ,'') ." %</td>";								
 						}else{
-							echo "<td> ". 0 ."</td>";
+							echo "<td> 0.00% </td>";
 						}
 
 						if ( $nform_pes>0){
-							echo "<td><strong>". number_format( ($nform_udra*100)/$row->TOTAL_PES , 2,'.' ,'') ." %</strong></td>";								
+							echo "<td><strong>". number_format( ($nform_udra*100)/$row->TOTAL_COM , 2,'.' ,'') ." %</strong></td>";								
 						}else{
-							echo "<td> ". 0 ."</td>";
+							echo "<td> 0.00% </td>";
 						}
 
 						$nform_udra = null;
@@ -96,15 +96,6 @@
 					echo '</tbody>';
 				echo '</table>';
 
-		// echo '<div class="span3 preguntas titulos">';
-		// 	echo '<h5>UDRA TOTAL  : &nbsp;&nbsp;&nbsp;'.$udra_total->row()->FORMULARIOS.'</h5>';
-		// echo '</div>';	
-		// echo '<div class="offset1 span3 preguntas titulos">';
-		// 	echo '<h5>TOTAL REGISTRADOS : &nbsp;&nbsp;&nbsp;'.$registros_total->row()->NFORM.'</h5>';
-		// echo '</div>';	
-		// echo '<div class="offset1 span2 preguntas titulos">';
-		// 	echo '<h5>AVANCE : &nbsp;&nbsp;&nbsp;'.number_format(($registros_total->row()->NFORM*100)/$udra_total->row()->FORMULARIOS).'%</h5>';
-		// echo '</div>';	
 
 		?>
 

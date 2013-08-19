@@ -38,7 +38,7 @@ class Marco_ajax extends CI_Controller {
 
 	public function get_ajax_prov($c)
 	{
-		$this->output->cache(30);
+		//$this->output->cache(30);
 		$sede = $this->tank_auth->get_ubigeo();
 		$dep = $this->input->post('code');
 		foreach ($this->marco_model->get_odei($sede)->result() as $key ) {
@@ -55,7 +55,7 @@ class Marco_ajax extends CI_Controller {
 
 	public function get_ajax_dist($c)
 	{
-		$this->output->cache(30);
+		//$this->output->cache(30);
 		$sede = $this->tank_auth->get_ubigeo();
 		foreach ($this->marco_model->get_odei($sede)->result() as $key ) {
 			$odei[] = $key->ODEI_COD;
@@ -73,7 +73,7 @@ class Marco_ajax extends CI_Controller {
 
 	public function get_ajax_ccpp($c)
 	{
-		$this->output->cache(30);		
+		//$this->output->cache(30);		
 		$sede = $this->tank_auth->get_ubigeo();
 		foreach ($this->marco_model->get_odei($sede)->result() as $key ) {
 			$odei[] = $key->ODEI_COD;

@@ -150,28 +150,184 @@ class Marco_model extends CI_Model{
     }   
 
 
-
-//** para reportes de digitacion 
-
-    function get_pescadores_by_odei($cod)
-    {   
-        $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(PEA_PESCADOR) as TOTAL_PES ');
-        $this->db->where_in('ODEI_COD',$cod);
-        $this->db->group_by('ODEI_COD');
-        $this->db->order_by('NOM_ODEI');
-        $q = $this->db->get('marco');
-        return $q->result();
-    }      
+// ************************************************************************************************************************************************
+// ** para reportes de digitacion *****************************************************************************************************************
+// ************************************************************************************************************************************************
 
 
-    function get_pescadores_by_dist($cod)
-    {   
-        $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(PEA_PESCADOR) as TOTAL_PES ');
-        $this->db->where_in('ODEI_COD',$cod);
-        $this->db->group_by('ODEI_COD');
-        $this->db->order_by('NOM_ODEI');
-        $q = $this->db->get('marco');
-        return $q->result();
-    }     
+    // PESCADORES 
+        // ODEI ****************************************************************************************************
+        function get_pescadores_by_odei($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(PEA_PESCADOR) as TOTAL_PES ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->order_by('NOM_ODEI');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }      
+       
+        // PROVINCIA ***********************************************************************************************
+        function get_pescadores_by_prov($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, sum(PEA_PESCADOR) as TOTAL_PES ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $q = $this->db->get('marco');
+            return $q->result();
+        } 
+
+        // DISTRITO  ***********************************************************************************************
+        function get_pescadores_by_dist($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA,CCDI, DISTRITO, sum(PEA_PESCADOR) as TOTAL_PES ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->group_by('CCDI');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $this->db->order_by('DISTRITO');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }     
+
+        // CENTRO POBLADO  *****************************************************************************************
+        function get_pescadores_by_ccpp($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA,CCDI, DISTRITO, CODCCPP, CENTRO_POBLADO, sum(PEA_PESCADOR) as TOTAL_PES ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->group_by('CCDI');
+            $this->db->group_by('CODCCPP');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $this->db->order_by('DISTRITO');
+            $this->db->order_by('CENTRO_POBLADO');
+            $q = $this->db->get('marco');
+            return $q->result();
+        } 
+
+
+    // COMUNIDAD 
+        // ODEI ****************************************************************************************************
+        function get_comunidad_by_odei($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(MARCO_COMUNIDAD) as TOTAL_COM ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->order_by('NOM_ODEI');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }      
+       
+        // PROVINCIA ***********************************************************************************************
+        function get_comunidad_by_prov($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, sum(MARCO_COMUNIDAD) as TOTAL_COM ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $q = $this->db->get('marco');
+            return $q->result();
+        } 
+
+        // DISTRITO  ***********************************************************************************************
+        function get_comunidad_by_dist($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA,CCDI, DISTRITO, sum(MARCO_COMUNIDAD) as TOTAL_COM ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->group_by('CCDI');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $this->db->order_by('DISTRITO');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }     
+
+        // CENTRO POBLADO  *****************************************************************************************
+        function get_comunidad_by_ccpp($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA,CCDI, DISTRITO, CODCCPP, CENTRO_POBLADO, sum(MARCO_COMUNIDAD) as TOTAL_COM ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->group_by('CCDI');
+            $this->db->group_by('CODCCPP');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $this->db->order_by('DISTRITO');
+            $this->db->order_by('CENTRO_POBLADO');
+            $q = $this->db->get('marco');
+            return $q->result();
+        } 
+
+    // REGISTRO 
+        // ODEI ****************************************************************************************************
+        function get_registro_by_odei($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->order_by('NOM_ODEI');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }      
+       
+        // PROVINCIA ***********************************************************************************************
+        function get_registro_by_prov($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $q = $this->db->get('marco');
+            return $q->result();
+        } 
+
+        // DISTRITO  ***********************************************************************************************
+        function get_registro_by_dist($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA,CCDI, DISTRITO, sum(MARCO_COMUNIDAD) as TOTAL_COM ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->group_by('CCDI');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $this->db->order_by('DISTRITO');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }     
+
+        // CENTRO POBLADO  *****************************************************************************************
+        function get_registro_by_ccpp($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA,CCDI, DISTRITO, CODCCPP, CENTRO_POBLADO, sum(MARCO_COMUNIDAD) as TOTAL_COM ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->group_by('CCPP');
+            $this->db->group_by('CCDI');
+            $this->db->group_by('CODCCPP');
+            $this->db->order_by('NOM_ODEI');
+            $this->db->order_by('PROVINCIA');
+            $this->db->order_by('DISTRITO');
+            $this->db->order_by('CENTRO_POBLADO');
+            $q = $this->db->get('marco');
+            return $q->result();
+        } 
+
+
+
 
  }
