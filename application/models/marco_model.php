@@ -150,4 +150,28 @@ class Marco_model extends CI_Model{
     }   
 
 
+
+//** para reportes de digitacion 
+
+    function get_pescadores_by_odei($cod)
+    {   
+        $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(PEA_PESCADOR) as TOTAL_PES ');
+        $this->db->where_in('ODEI_COD',$cod);
+        $this->db->group_by('ODEI_COD');
+        $this->db->order_by('NOM_ODEI');
+        $q = $this->db->get('marco');
+        return $q->result();
+    }      
+
+
+    function get_pescadores_by_dist($cod)
+    {   
+        $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(PEA_PESCADOR) as TOTAL_PES ');
+        $this->db->where_in('ODEI_COD',$cod);
+        $this->db->group_by('ODEI_COD');
+        $this->db->order_by('NOM_ODEI');
+        $q = $this->db->get('marco');
+        return $q->result();
+    }     
+
  }

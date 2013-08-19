@@ -55,8 +55,8 @@ class Pescador_avance extends CI_Controller {
 			$data['title'] = 'Avance UDRA';
 			$data['user_id']	= $this->tank_auth->get_user_id();
 			$data['username']	= $this->tank_auth->get_username();
-			$departamento = $this->ubigeo_piloto_model->get_dpto_by_code($this->tank_auth->get_ubigeo()); //PILOTO
-			$data['tables'] = $this->udra_pescador_model->get_pescadores($departamento); 
+			//$this->ubigeo_piloto_model->get_dpto_by_code($this->tank_auth->get_ubigeo()); //PILOTO
+			$data['tables'] = $this->udra_pescador_model->get_pescadores_by_odei(  $this->tank_auth->get_ubigeo() ); //get forms por ODEI, y por COD_SEDE del usuario
 
 			$data['main_content'] = 'udra/pescador_avance_view';
 			$data['option'] = 5;
@@ -65,7 +65,8 @@ class Pescador_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_pescador_model->get_forms($departamento);
+			$forms = $this->udra_pescador_model->get_forms_by_odei( $this->tank_auth->get_ubigeo() );//get forms por ODEI, y por COD_SEDE del usuario
+
 			if($forms->num_rows() > 0){
 		
 				foreach($forms->result() as $filas){
@@ -81,7 +82,7 @@ class Pescador_avance extends CI_Controller {
 						 if ($rega->num_rows() >0){
 							$i++;
 						}
-
+						//var_dump($rega->result());echo '<br>';
 					}
 					if ($i == 9){
 						$seccion_completos[] = $filas->id;
@@ -90,17 +91,21 @@ class Pescador_avance extends CI_Controller {
 						$seccion_incompletos[] = $filas->id;
 					}
 					//print ($i); echo '<br>';
-				}//var_dump($seccion_completos);echo '<br>';
+				}//var_dump($seccion_incompletos);echo '<br>';
 			}
 
-			 $data['formularios'] = $this->udra_pescador_model->get_n_formularios($seccion_completos); 
+			if (count($seccion_completos)>0){
+			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos); 
+			}else{
+				$data['formularios'] = NULL;
+			}			
 			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios($seccion_incompletos); 
+			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_incompletos); 
 			}else{
 				$data['formularios_inc'] = NULL;
 			}
-			$data['udra_total'] = $this->udra_pescador_model->get_formularios_total($departamento); 
-			$data['registros_total'] = $this->udra_pescador_model->get_registros_total($seccion_completos); 
+			$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
+			//$data['registros_total'] = $this->udra_pescador_model->get_registros_total($seccion_completos); 
 	    	$this->load->view('backend/includes/template', $data);	
 	
 

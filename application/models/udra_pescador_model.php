@@ -18,25 +18,16 @@ class Udra_pescador_model extends CI_MODEL
 		return $q->num_rows();
 	}	
 
-	function get_pescadores_by_odei($sede)
+	function get_pescadores_by_odei($cod)
 	{	
-		if ($sede == 99){ $sedes = range(1,26);}else{ $sedes = $sede;}
-		$this->db->where_in('SEDE_COD',$sedes);
+		if ($cod == 99){ $cod = range(1,26); }
+		$this->db->where_in('SEDE_COD',$cod);
 		$this->db->order_by('DEPARTAMENTO');
     	$q = $this->db->get('udra_pescador');
 		return $q->result();
 	}	
 
-	function get_forms($departamento) // obtiene todos los registros formulario registrados inicialmente
-	{	
-		foreach($departamento->result() as $filas){
-            $deps[] = ($filas->COD_DEPARTAMENTO);
-		}		
-		$this->db->where_in('CCDD',$deps);		
-		$this->db->select('id,CCDD,CCPP,CCDI ,COD_CCPP');
-    	$q = $this->db->get('pescador');
-		return $q;
-	}	
+
 	function get_n_formularios($forms)// cuenta por DEP, la cantidad de formularios registrados en todas las secciones
 	{	
 		$this->db->select('COUNT(NFORM) as NFORM,CCDD,CCPP,CCDI ,COD_CCPP');
@@ -46,6 +37,7 @@ class Udra_pescador_model extends CI_MODEL
 		return $q;
 	}		
 
+	
 
 
 	function get_regs_a($table,$num) //verifica si todas las secciones de pescador fueron ingresadas
@@ -61,16 +53,7 @@ class Udra_pescador_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_formularios_total($departamento)// obtiene el total de formularios declarados en UDRA
-	{	
-		foreach($departamento->result() as $filas){
-            $deps[] = ($filas->COD_DEPARTAMENTO);
-		}
-		$this->db->where_in('CCDD',$deps);
-    	$this->db->select_sum('FORMULARIOS');
-    	$q = $this->db->get('udra_pescador');
-		return $q;
-	}	
+
 
 
 	function get_registros_total($forms)// cuenta  la cantidad de formularios registrados en todas las secciones
@@ -85,6 +68,37 @@ class Udra_pescador_model extends CI_MODEL
 		$q = $this->db->get('udra_pescador');
 		return $q;
 	}
+
+// ******************************************************************************
+// para REPORTES
+// ******************************************************************************
+
+	function get_formularios_total_by_odei($cod)// obtiene el total de formularios declarados en UDRA
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+    	$q = $this->db->get('udra_pescador');
+		return $q;
+	}	
+
+	function get_forms_by_odei($cod) // obtiene todos los registros formulario registrados inicialmente
+	{	
+		//if ($cod == 99){ $cod = range(1,26); }
+		$this->db->where_in('ODEI_COD',$cod);		
+		$this->db->select('id,SEDE_COD,ODEI_COD,CCDD,CCPP,CCDI ,COD_CCPP');
+    	$q = $this->db->get('pescador');
+		return $q;
+	}	
+
+	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id) as TOTAL_DIG ');
+		$this->db->where_in('id',$forms);
+		$this->db->group_by('ODEI_COD');
+    	$q = $this->db->get('pescador');
+		return $q;
+	}	
 
 
 }

@@ -3,7 +3,7 @@
 
 <div class="row-fluid">
     <div class="span2">
-        <?php $this->load->view('udra/includes/sidebar_view.php'); ?>
+		<?php $this->load->view('digitacion/includes/sidebar_reportes_view');?>           
     </div><!--/span-->
 
 
@@ -18,8 +18,8 @@
 						echo '<th>N°</th>';
 						echo '<th>CODIGO</th>';
 						echo '<th>ODEI</th>';						
-						echo '<th>CODIGO</th>';
-						echo '<th>DEPARTAMENTO</th>';
+						// echo '<th>CODIGO</th>';
+						// echo '<th>DEPARTAMENTO</th>';
 						echo '<th>CODIGO</th>';
 						echo '<th>PROVINCIA</th>';
 						echo '<th>CODIGO</th>';
@@ -40,8 +40,8 @@
 						echo "<td>". $i++."</td>";
 						echo "<td>". $row->ODEI_COD ."</td>";
 						echo "<td>". $row->NOM_ODEI ."</td>";						
-						echo "<td>". $row->CCDD ."</td>";
-						echo "<td>". $row->DEPARTAMENTO ."</td>";
+						// echo "<td>". $row->CCDD ."</td>";
+						// echo "<td>". $row->DEPARTAMENTO ."</td>";
 						echo "<td>". $row->CCPP ."</td>";
 						echo "<td>". $row->PROVINCIA ."</td>";
 						echo "<td>". $row->CCDI ."</td>";
