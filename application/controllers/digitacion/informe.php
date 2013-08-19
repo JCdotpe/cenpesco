@@ -216,9 +216,22 @@ class Informe extends CI_Controller {
 
 
 
+	function to_excel(){
+		$this->load->helper('excel');
+        $query = $this->inform_model->get_print();
+        // $this->export->to_excel($query, 'Pescadores');
+        to_excel($query, 'Informe');
+        // query_to_csv($query, TRUE, 'Pescadores.csv');
+	}
 
 
-
+	function to_excel_error(){
+		$this->load->helper('excel');
+        $query = $this->inform_model->get_print_error();
+        // $this->export->to_excel($query, 'Pescadores');
+        to_excel($query, 'Errores');
+        // query_to_csv($query, TRUE, 'Pescadores.csv');
+	}
 
 
 
