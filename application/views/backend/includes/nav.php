@@ -52,7 +52,7 @@
                     <?php 
                       } 
                     ?>
-
+ <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li>  
           </ul>            
               <?php } }elseif($this->uri->segment(1) == 'convocatoria' || isset($convocatoria)){?>
                 <ul class="nav"> 
@@ -62,11 +62,11 @@
                 </ul>       
          
             <?php }?>
-                <ul class="nav"> 
+                <!-- <ul class="nav">  -->
                   <!--  <li><a href="<?php //echo site_url('convocatoria/registro'); ?>">Inscripción</a></li>  -->
-                   <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li>  
+                   <!-- <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li>   -->
                    <!-- <li><a href="<?php //echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>    -->
-                </ul>  
+                <!-- </ul>   -->
 
                                       
                     </div><!--/.nav-collapse -->

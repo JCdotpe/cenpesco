@@ -19,7 +19,7 @@ class Informe extends CI_Controller {
 		$roles = $this->tank_auth->get_roles();
 		$flag = FALSE;
 		foreach ($roles as $role) {
-			if($role->role_id == 5 && $role->rolename == 'Digitación'){
+			if($role->role_id == 9 && $role->rolename == 'Informe de supervisión'){
 				$flag = TRUE;
 				break;
 			}
