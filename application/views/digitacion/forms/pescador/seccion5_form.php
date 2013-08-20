@@ -1721,6 +1721,208 @@ $S5_6_49_C = array(
 	'maxlength'	=> 2,
 	'class' => $span_class,
 );
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_50 = array(
+	'name'	=> 'S5_6_50',
+	'id'	=> 'S5_6_50',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_50_O = array(
+	'name'	=> 'S5_6_50_O',
+	'id'	=> 'S5_6_50_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_50_C = array(
+	'name'	=> 'S5_6_50_C',
+	'id'	=> 'S5_6_50_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_51 = array(
+	'name'	=> 'S5_6_51',
+	'id'	=> 'S5_6_51',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_51_O = array(
+	'name'	=> 'S5_6_51_O',
+	'id'	=> 'S5_6_51_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_51_C = array(
+	'name'	=> 'S5_6_51_C',
+	'id'	=> 'S5_6_51_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_52 = array(
+	'name'	=> 'S5_6_52',
+	'id'	=> 'S5_6_52',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_52_O = array(
+	'name'	=> 'S5_6_52_O',
+	'id'	=> 'S5_6_52_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_52_C = array(
+	'name'	=> 'S5_6_52_C',
+	'id'	=> 'S5_6_52_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_53 = array(
+	'name'	=> 'S5_6_53',
+	'id'	=> 'S5_6_53',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_53_O = array(
+	'name'	=> 'S5_6_53_O',
+	'id'	=> 'S5_6_53_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_53_C = array(
+	'name'	=> 'S5_6_53_C',
+	'id'	=> 'S5_6_53_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_54 = array(
+	'name'	=> 'S5_6_54',
+	'id'	=> 'S5_6_54',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_54_O = array(
+	'name'	=> 'S5_6_54_O',
+	'id'	=> 'S5_6_54_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_54_C = array(
+	'name'	=> 'S5_6_54_C',
+	'id'	=> 'S5_6_54_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_55 = array(
+	'name'	=> 'S5_6_55',
+	'id'	=> 'S5_6_55',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_55_O = array(
+	'name'	=> 'S5_6_55_O',
+	'id'	=> 'S5_6_55_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_55_C = array(
+	'name'	=> 'S5_6_55_C',
+	'id'	=> 'S5_6_55_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_56 = array(
+	'name'	=> 'S5_6_56',
+	'id'	=> 'S5_6_56',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_56_O = array(
+	'name'	=> 'S5_6_56_O',
+	'id'	=> 'S5_6_56_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_56_C = array(
+	'name'	=> 'S5_6_56_C',
+	'id'	=> 'S5_6_56_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_57 = array(
+	'name'	=> 'S5_6_57',
+	'id'	=> 'S5_6_57',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_57_O = array(
+	'name'	=> 'S5_6_57_O',
+	'id'	=> 'S5_6_57_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_57_C = array(
+	'name'	=> 'S5_6_57_C',
+	'id'	=> 'S5_6_57_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_58 = array(
+	'name'	=> 'S5_6_58',
+	'id'	=> 'S5_6_58',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_58_O = array(
+	'name'	=> 'S5_6_58_O',
+	'id'	=> 'S5_6_58_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_58_C = array(
+	'name'	=> 'S5_6_58_C',
+	'id'	=> 'S5_6_58_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+/////////////////////////////////////
+//Peces Ornamenatales - Otro
+$S5_6_59 = array(
+	'name'	=> 'S5_6_59',
+	'id'	=> 'S5_6_59',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' especie s5preg6p',
+);
+$S5_6_59_O = array(
+	'name'	=> 'S5_6_59_O',
+	'id'	=> 'S5_6_59_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_6_59_C = array(
+	'name'	=> 'S5_6_59_C',
+	'id'	=> 'S5_6_59_C',
+	'maxlength'	=> 2,
+	'class' => $span_class,
+);
+
+
 
 
 //////////////////////////////////////////
@@ -3128,7 +3330,127 @@ echo '</div>';
 					                  echo '<td>Especifique</td>';
 					                  echo '<td>' . form_input($S5_6_49_O) . '<div class="help-block error">' . form_error($S5_6_49_O['name']) . '</div></td>';   
 					                  echo '<td>' . form_input($S5_6_49_C) . '<div class="help-block error">' . form_error($S5_6_49_C['name']) . '</div></td>'; 
-					               echo '</tr>'; 				                						               				               					               
+					               echo '</tr>';
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_50) . '<div class="help-block error">' . form_error($S5_6_50['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_50_O) . '<div class="help-block error">' . form_error($S5_6_50_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_50_C) . '<div class="help-block error">' . form_error($S5_6_50_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_51) . '<div class="help-block error">' . form_error($S5_6_51['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_51_O) . '<div class="help-block error">' . form_error($S5_6_51_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_51_C) . '<div class="help-block error">' . form_error($S5_6_51_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 	
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_52) . '<div class="help-block error">' . form_error($S5_6_52['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_52_O) . '<div class="help-block error">' . form_error($S5_6_52_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_52_C) . '<div class="help-block error">' . form_error($S5_6_52_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_53) . '<div class="help-block error">' . form_error($S5_6_53['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_53_O) . '<div class="help-block error">' . form_error($S5_6_53_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_53_C) . '<div class="help-block error">' . form_error($S5_6_53_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 	
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_54) . '<div class="help-block error">' . form_error($S5_6_54['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_54_O) . '<div class="help-block error">' . form_error($S5_6_54_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_54_C) . '<div class="help-block error">' . form_error($S5_6_54_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_55) . '<div class="help-block error">' . form_error($S5_6_55['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_55_O) . '<div class="help-block error">' . form_error($S5_6_55_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_55_C) . '<div class="help-block error">' . form_error($S5_6_55_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_56) . '<div class="help-block error">' . form_error($S5_6_56['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_56_O) . '<div class="help-block error">' . form_error($S5_6_56_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_56_C) . '<div class="help-block error">' . form_error($S5_6_56_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 	
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_57) . '<div class="help-block error">' . form_error($S5_6_57['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_57_O) . '<div class="help-block error">' . form_error($S5_6_57_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_57_C) . '<div class="help-block error">' . form_error($S5_6_57_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 	
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_58) . '<div class="help-block error">' . form_error($S5_6_58['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_58_O) . '<div class="help-block error">' . form_error($S5_6_58_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_58_C) . '<div class="help-block error">' . form_error($S5_6_58_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 
+
+					               echo '<tr>';
+					                  echo '<td>Otro</td>';
+					                  echo '<td>' . form_input($S5_6_59) . '<div class="help-block error">' . form_error($S5_6_59['name']) . '</div></td>';   
+					                  echo '<td></td>'; 
+					               echo '</tr>';  	
+
+					               echo '<tr>';
+					                  echo '<td>Especifique</td>';
+					                  echo '<td>' . form_input($S5_6_59_O) . '<div class="help-block error">' . form_error($S5_6_59_O['name']) . '</div></td>';   
+					                  echo '<td>' . form_input($S5_6_59_C) . '<div class="help-block error">' . form_error($S5_6_59_C['name']) . '</div></td>'; 
+					               echo '</tr>'; 
 			              echo '</tbody>';
 			            echo '</table>';
 
@@ -3700,7 +4022,7 @@ $('#S5_1_8').change(function() {
 });
 
 
-$('#S5_6_41, #S5_6_49, #S5_9_14,#S5_5_9, #S5_5_14, #S5_5_17').change(function() {
+$('#S5_6_41, #S5_6_49, #S5_6_50, #S5_6_51, #S5_6_52, #S5_6_53, #S5_6_54, #S5_6_55, #S5_6_56, #S5_6_57, #S5_6_58, #S5_6_59, #S5_9_14,#S5_5_9, #S5_5_14, #S5_5_17').change(function() {
 	var th = $(this).val();
 	var des = $('#' + $(this).attr('id') + '_O');
 	if(th == 1){
@@ -3728,7 +4050,7 @@ $('#S5_8_4').change(function() {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
- $('#S5_1_1_1, #S5_1_2_1, #S5_1_3_1, #S5_1_4_1, #S5_1_5_1, #S5_1_6_1, #S5_1_7_1, #S5_1_8_O, #S5_1_8_1, #S5_6_41_O, #S5_6_49_O, #S5_8_4_O ,#S5_8_4_1, #S5_9_14_O, #S5_5_9_O, #S5_8_1_1, #S5_8_2_1, #S5_8_3_1').attr("disabled", "disabled");
+ $('#S5_1_1_1, #S5_1_2_1, #S5_1_3_1, #S5_1_4_1, #S5_1_5_1, #S5_1_6_1, #S5_1_7_1, #S5_1_8_O, #S5_1_8_1, #S5_6_41_O, #S5_6_49_O, #S5_6_50_O, #S5_6_51_O, #S5_6_52_O, #S5_6_53_O, #S5_6_54_O, #S5_6_55_O, #S5_6_56_O, #S5_6_57_O, #S5_6_58_O, #S5_6_59_O, #S5_8_4_O ,#S5_8_4_1, #S5_9_14_O, #S5_5_9_O, #S5_8_1_1, #S5_8_2_1, #S5_8_3_1').attr("disabled", "disabled");
 $('#S5_2_DD_COD').trigger("change");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4243,7 +4565,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_1_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4253,7 +4575,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_2_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4263,7 +4585,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_3_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4273,7 +4595,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_4_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4283,7 +4605,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_5_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4293,7 +4615,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_6_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4303,7 +4625,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_7_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4313,7 +4635,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_8_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4323,7 +4645,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_9_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4333,7 +4655,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_10_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4343,7 +4665,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_11_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4353,7 +4675,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_12_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 
@@ -4364,7 +4686,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_13_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4374,7 +4696,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_14_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4384,7 +4706,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_15_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4394,7 +4716,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_16_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4404,7 +4726,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_17_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4414,7 +4736,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_18_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4424,7 +4746,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_19_C: {
 		            digits: true,
-		             valrango: [1,9,99],
+		             valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4434,7 +4756,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_20_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4444,7 +4766,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_21_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4454,7 +4776,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_22_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4464,7 +4786,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_23_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4474,7 +4796,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_24_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4484,7 +4806,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_25_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4494,7 +4816,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_26_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4504,7 +4826,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_27_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4514,7 +4836,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_28_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4524,7 +4846,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_29_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4534,7 +4856,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_30_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4544,7 +4866,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_31_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4554,7 +4876,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_32_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4564,7 +4886,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_33_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4574,7 +4896,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_34_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4584,7 +4906,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_35_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4594,7 +4916,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_36_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4604,7 +4926,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_37_C: {
 		            digits: true,
-		           valrango: [1,9,99],
+		           valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4614,7 +4936,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_38_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4624,7 +4946,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_39_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4634,7 +4956,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_40_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4650,7 +4972,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },				         
 		    	S5_6_41_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4660,7 +4982,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_42_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4670,7 +4992,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_43_C: {
 		            digits: true,
-		             valrango: [1,9,99],
+		             valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4680,7 +5002,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_44_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4690,7 +5012,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_45_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4700,7 +5022,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_46_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4710,7 +5032,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_47_C: {
 		            digits: true,
-		             valrango: [1,9,99],
+		             valrango: [0,9,99],
 		         },			         
 //especie
 //especie
@@ -4720,14 +5042,13 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_6_48_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
 		         },			         
 //especie
 //especie
 		    	S5_6_49: {
 		            digits: true,
 		            valrango: [0,1,9],
-		            valzero: ['S5_6_1','S5_6_2','S5_6_3','S5_6_4','S5_6_5','S5_6_6','S5_6_7','S5_6_8','S5_6_9','S5_6_10','S5_6_11','S5_6_12','S5_6_13','S5_6_14','S5_6_15','S5_6_16','S5_6_17','S5_6_18','S5_6_19','S5_6_20','S5_6_21','S5_6_22','S5_6_23','S5_6_24','S5_6_25','S5_6_26','S5_6_27','S5_6_28','S5_6_29','S5_6_30','S5_6_31','S5_6_32','S5_6_33','S5_6_34','S5_6_35','S5_6_36','S5_6_37','S5_6_38','S5_6_39','S5_6_40','S5_6_41','S5_6_42','S5_6_43','S5_6_44','S5_6_45','S5_6_46','S5_6_47','S5_6_48'],
 		         },	
 		    	S5_6_49_O: {
 		    		required:true,
@@ -4736,8 +5057,139 @@ $('#S5_2_DD_COD').trigger("change");
 		         },			         
 		    	S5_6_49_C: {
 		            digits: true,
-		            valrango: [1,9,99],
+		            valrango: [0,9,99],
+		         },		
+		    	S5_6_50: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_50_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
 		         },			         
+		    	S5_6_50_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },	
+		    	S5_6_51: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_51_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_51_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },		
+		    	S5_6_52: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_52_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_52_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },			
+		    	S5_6_53: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_53_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_53_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },		
+		    	S5_6_54: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_54_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_54_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },			         		                  	         		         	         
+		    	S5_6_55: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_55_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_55_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },			         
+		    	S5_6_56: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_56_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_56_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },		
+		    	S5_6_57: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_57_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_57_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },			   
+		    	S5_6_58: {
+		            digits: true,
+		            valrango: [0,1,9],
+		         },	
+		    	S5_6_58_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_58_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },	
+		    	S5_6_59: {
+		            digits: true,
+		            valrango: [0,1,9],
+		            valzero: ['S5_6_1','S5_6_2','S5_6_3','S5_6_4','S5_6_5','S5_6_6','S5_6_7','S5_6_8','S5_6_9','S5_6_10','S5_6_11','S5_6_12','S5_6_13','S5_6_14','S5_6_15','S5_6_16','S5_6_17','S5_6_18','S5_6_19','S5_6_20','S5_6_21','S5_6_22','S5_6_23','S5_6_24','S5_6_25','S5_6_26','S5_6_27','S5_6_28','S5_6_29','S5_6_30','S5_6_31','S5_6_32','S5_6_33','S5_6_34','S5_6_35','S5_6_36','S5_6_37','S5_6_38','S5_6_39','S5_6_40','S5_6_41','S5_6_42','S5_6_43','S5_6_44','S5_6_45','S5_6_46','S5_6_47','S5_6_48','S5_6_49','S5_6_50','S5_6_51','S5_6_52','S5_6_53','S5_6_54','S5_6_55','S5_6_56','S5_6_57','S5_6_58'],
+		         },	
+		    	S5_6_59_O: {
+		    		required:true,
+					maxlength: 100,
+					validName: true,
+		         },			         
+		    	S5_6_59_C: {
+		            digits: true,
+		            valrango: [0,9,99],
+		         },					                  		               	         
 //especie
 
 		    	S5_7: {
