@@ -2445,7 +2445,7 @@ echo '<div class="well modulo">';
 					echo '<div class="control-group">';
 					echo form_label('Departamento', 'S5_2_DD_COD', $label_class);	
 						echo '<div class="controls">';
-							echo form_dropdown('S5_2_DD_COD', $ubidepaArray, FALSE,'class=" span12" id="S5_2_DD_COD"'); 
+							echo form_dropdown('S5_2_DD_COD', $depaxArray, FALSE,'class=" span12" id="S5_2_DD_COD"'); 
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error('S5_2_DD_COD') . '</div>';
 						echo '</div>';	
@@ -3475,7 +3475,7 @@ $("#S5_2_DD_COD").change(function(event) {
         switch(event.target.id){
             case 'S5_2_DD_COD':
                 sel = $("#S5_2_PP_COD");
-                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                urlx = CI.base_url + "ajax/ubigeo_ajax/get_ajax_prov/" + $(this).val();
                 break;                
         }
 
@@ -3494,7 +3494,7 @@ $("#S5_2_DD_COD").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1">-</option>');
                 $.each(json_data, function(i, data){
-                	sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');	
+                	sel.append('<option value="' + data.COD_PROVINCIA + '">' + data.DES_DISTRITO + '</option>');	
                 });
                 sel.change();
             }
@@ -3509,7 +3509,7 @@ $("#S5_2_PP_COD").change(function(event) {
             case 'S5_2_PP_COD':
                 sel = $("#S5_2_DI_COD");
                 dep = $("#S5_2_DD_COD");
-                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
+                urlx = CI.base_url + "ajax/ubigeo_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
                 break;                
         }     
            
@@ -3529,7 +3529,7 @@ $("#S5_2_PP_COD").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1">-</option>');
                 $.each(json_data, function(i, data){
-                	sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
+                	sel.append('<option value="' + data.COD_DISTRITO + '">' + data.DES_DISTRITO + '</option>');
                 });
                 if(event.target.id == 'S5_2_PP_COD')
                 	sel.change();
@@ -3547,7 +3547,7 @@ $("#S5_2_DI_COD").change(function(event) {
                 sel = $("#S5_2_CCPP_COD");
                 dep = $("#S5_2_DD_COD");
                 prov = $("#S5_2_PP_COD");
-                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                urlx = CI.base_url + "ajax/ccpp_ajax/get_ajax_ccpp/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 break;                
         }     
            
@@ -3568,7 +3568,7 @@ $("#S5_2_DI_COD").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1">-</option>');
                 $.each(json_data, function(i, data){
-                	sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
+                	sel.append('<option value="' + data.COD_CCPP + '">' + data.CENTRO_POBLADO + '</option>');
                 });
             }
         });           
