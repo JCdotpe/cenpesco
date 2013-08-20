@@ -934,7 +934,7 @@ $(document).on("change",'.combb',function() {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_c/" + $(this).val(),
+            url: CI.base_url + "ajax/inform_ajax/get_ajax_c/" + aha.val() + '/' + ah.val(),
             type:'POST',
             data:form_data,
             async:false,
@@ -1542,7 +1542,7 @@ $("#serrors").validate({
     submitHandler: function(form) {
 
 			var nexta = $("#quest").children().last().attr('id');
-  			var npreg = parseInt(nexta.substring(5,6));	
+  			var npreg = parseInt(nexta.substring(5,7));	
 			var inform_data = $("#serrors").serializeArray();
 				inform_data.push(
 					{name: 'ajax',value:1},

@@ -896,7 +896,7 @@ $S2_23_11_3 = array(
 $S2_23_11_3_O = array(
 	'name'	=> 'S2_23_11_3_O',
 	'id'	=> 'S2_23_11_3_O',
-	'maxlength'	=> 1,
+	'maxlength'	=> 100,
 	'class' => $span_class. ' hijo hnro3 hespe',
 );
 ///////////////////////////fin hijo 3
@@ -3675,8 +3675,14 @@ $('#S2_22').change(function() {
 $('.hano').change(function() {
 
 	var pre = $(this).attr('id');
-	var npreg = pre.substring(8,9);
-	var at = pre.substring(0,9);
+	if(pre.length == 11){
+		var npreg = pre.substring(8,10);
+		var at = pre.substring(0,10);
+	}
+	else{
+		var npreg = pre.substring(8,9);
+		var at = pre.substring(0,9);
+	}
 
 	if($(this).val() == 0 && $(this).val() !=''){
 		$('#' + at + 'M').removeAttr('disabled');
@@ -3707,6 +3713,9 @@ $('.hano').change(function() {
 //Estudia hijo?
 $('.estudia').change(function() {
 	var pre = $(this).attr('id');
+	if(pre.length == 10)
+	var npreg = pre.substring(8,10);
+	else
 	var npreg = pre.substring(8,9);
 	if($(this).val() == 1){
 		$('#S2_23_10_' + npreg).removeAttr('disabled');
@@ -3719,6 +3728,9 @@ $('.estudia').change(function() {
 //actividad hijo
 $('.hacti').change(function() {
 	var pre = $(this).attr('id');
+	if(pre.length == 11)
+	var npreg = pre.substring(9,11);
+	else
 	var npreg = pre.substring(9,10);
 	if($(this).val() == 8){
 		$('#S2_23_11_' + npreg + '_O').removeAttr('disabled');
