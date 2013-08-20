@@ -451,35 +451,35 @@ $S5_5_1_C = array(
 $S5_5_1_1 = array(
 	'name'	=> 'S5_5_1_1',
 	'id'	=> 'S5_5_1_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //agallera 2
 $S5_5_1_2 = array(
 	'name'	=> 'S5_5_1_2',
 	'id'	=> 'S5_5_1_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //agallera 3
 $S5_5_1_3 = array(
 	'name'	=> 'S5_5_1_3',
 	'id'	=> 'S5_5_1_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //agallera 4
 $S5_5_1_4 = array(
 	'name'	=> 'S5_5_1_4',
 	'id'	=> 'S5_5_1_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //agallera 4
 $S5_5_1_5 = array(
 	'name'	=> 'S5_5_1_5',
 	'id'	=> 'S5_5_1_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 /////////////////////////////////////////
@@ -501,35 +501,35 @@ $S5_5_2_C = array(
 $S5_5_2_1 = array(
 	'name'	=> 'S5_5_2_1',
 	'id'	=> 'S5_5_2_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Trasmallo 2
 $S5_5_2_2 = array(
 	'name'	=> 'S5_5_2_2',
 	'id'	=> 'S5_5_2_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Trasmallo 3
 $S5_5_2_3 = array(
 	'name'	=> 'S5_5_2_3',
 	'id'	=> 'S5_5_2_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Trasmallo 4
 $S5_5_2_4 = array(
 	'name'	=> 'S5_5_2_4',
 	'id'	=> 'S5_5_2_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Trasmallo 4
 $S5_5_2_5 = array(
 	'name'	=> 'S5_5_2_5',
 	'id'	=> 'S5_5_2_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 
@@ -552,35 +552,35 @@ $S5_5_3_C = array(
 $S5_5_3_1 = array(
 	'name'	=> 'S5_5_3_1',
 	'id'	=> 'S5_5_3_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Hondera 2
 $S5_5_3_2 = array(
 	'name'	=> 'S5_5_3_2',
 	'id'	=> 'S5_5_3_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Hondera 3
 $S5_5_3_3 = array(
 	'name'	=> 'S5_5_3_3',
 	'id'	=> 'S5_5_3_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Hondera 4
 $S5_5_3_4 = array(
 	'name'	=> 'S5_5_3_4',
 	'id'	=> 'S5_5_3_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Hondera 4
 $S5_5_3_5 = array(
 	'name'	=> 'S5_5_3_5',
 	'id'	=> 'S5_5_3_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 /////////////////////////////////////////
@@ -602,35 +602,35 @@ $S5_5_4_C = array(
 $S5_5_4_1 = array(
 	'name'	=> 'S5_5_4_1',
 	'id'	=> 'S5_5_4_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Tarrafa 2
 $S5_5_4_2 = array(
 	'name'	=> 'S5_5_4_2',
 	'id'	=> 'S5_5_4_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Tarrafa 3
 $S5_5_4_3 = array(
 	'name'	=> 'S5_5_4_3',
 	'id'	=> 'S5_5_4_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Tarrafa 4
 $S5_5_4_4 = array(
 	'name'	=> 'S5_5_4_4',
 	'id'	=> 'S5_5_4_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Tarrafa 5
 $S5_5_4_5 = array(
 	'name'	=> 'S5_5_4_5',
 	'id'	=> 'S5_5_4_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 
@@ -653,35 +653,35 @@ $S5_5_5_C = array(
 $S5_5_5_1 = array(
 	'name'	=> 'S5_5_5_1',
 	'id'	=> 'S5_5_5_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Arrastradora 2
 $S5_5_5_2 = array(
 	'name'	=> 'S5_5_5_2',
 	'id'	=> 'S5_5_5_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Arrastradora 3
 $S5_5_5_3 = array(
 	'name'	=> 'S5_5_5_3',
 	'id'	=> 'S5_5_5_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Arrastradora 4
 $S5_5_5_4 = array(
 	'name'	=> 'S5_5_5_4',
 	'id'	=> 'S5_5_5_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Arrastradora 5
 $S5_5_5_5 = array(
 	'name'	=> 'S5_5_5_5',
 	'id'	=> 'S5_5_5_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 
@@ -704,35 +704,35 @@ $S5_5_6_C = array(
 $S5_5_6_1 = array(
 	'name'	=> 'S5_5_6_1',
 	'id'	=> 'S5_5_6_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Capiccuhuana 2
 $S5_5_6_2 = array(
 	'name'	=> 'S5_5_6_2',
 	'id'	=> 'S5_5_6_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Capiccuhuana 3
 $S5_5_6_3 = array(
 	'name'	=> 'S5_5_6_3',
 	'id'	=> 'S5_5_6_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Capiccuhuana 4
 $S5_5_6_4 = array(
 	'name'	=> 'S5_5_6_4',
 	'id'	=> 'S5_5_6_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Capiccuhuana 5
 $S5_5_6_5 = array(
 	'name'	=> 'S5_5_6_5',
 	'id'	=> 'S5_5_6_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 
@@ -755,35 +755,35 @@ $S5_5_7_C = array(
 $S5_5_7_1 = array(
 	'name'	=> 'S5_5_7_1',
 	'id'	=> 'S5_5_7_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Chinchorro 2
 $S5_5_7_2 = array(
 	'name'	=> 'S5_5_7_2',
 	'id'	=> 'S5_5_7_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Chinchorro 3
 $S5_5_7_3 = array(
 	'name'	=> 'S5_5_7_3',
 	'id'	=> 'S5_5_7_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Chinchorro 4
 $S5_5_7_4 = array(
 	'name'	=> 'S5_5_7_4',
 	'id'	=> 'S5_5_7_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Chinchorro 5
 $S5_5_7_5 = array(
 	'name'	=> 'S5_5_7_5',
 	'id'	=> 'S5_5_7_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 /////////////////////////////////////////
@@ -805,35 +805,35 @@ $S5_5_8_C = array(
 $S5_5_8_1 = array(
 	'name'	=> 'S5_5_8_1',
 	'id'	=> 'S5_5_8_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Aissaccahuanna 2
 $S5_5_8_2 = array(
 	'name'	=> 'S5_5_8_2',
 	'id'	=> 'S5_5_8_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Aissaccahuanna 3
 $S5_5_8_3 = array(
 	'name'	=> 'S5_5_8_3',
 	'id'	=> 'S5_5_8_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Aissaccahuanna 4
 $S5_5_8_4 = array(
 	'name'	=> 'S5_5_8_4',
 	'id'	=> 'S5_5_8_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //Aissaccahuanna 5
 $S5_5_8_5 = array(
 	'name'	=> 'S5_5_8_5',
 	'id'	=> 'S5_5_8_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 
@@ -865,35 +865,35 @@ $S5_5_9_C = array(
 $S5_5_9_1 = array(
 	'name'	=> 'S5_5_9_1',
 	'id'	=> 'S5_5_9_1',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //otro 2
 $S5_5_9_2 = array(
 	'name'	=> 'S5_5_9_2',
 	'id'	=> 'S5_5_9_2',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //otro 3
 $S5_5_9_3 = array(
 	'name'	=> 'S5_5_9_3',
 	'id'	=> 'S5_5_9_3',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //otro 4
 $S5_5_9_4 = array(
 	'name'	=> 'S5_5_9_4',
 	'id'	=> 'S5_5_9_4',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 //otro 5
 $S5_5_9_5 = array(
 	'name'	=> 'S5_5_9_5',
 	'id'	=> 'S5_5_9_5',
-	'maxlength'	=> 2,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 );
 
@@ -3876,24 +3876,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_1_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_1_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_1_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_1_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_1_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	
 //red1
@@ -3907,24 +3907,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_2_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_2_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_2_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_2_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_2_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	
 //red1
@@ -3938,24 +3938,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_3_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_3_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_3_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_3_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_3_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1		
 //red1
@@ -3969,24 +3969,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_4_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_4_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_4_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_4_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_4_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	        
 //red1
@@ -4000,25 +4000,25 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_5_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_5_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_5_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_5_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 
 		    	S5_5_5_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	  	      
 //red1
@@ -4032,24 +4032,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_6_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_6_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_6_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_6_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_6_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	  
 //red1
@@ -4063,24 +4063,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_7_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_7_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_7_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_7_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_7_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	 	
 //red1
@@ -4094,24 +4094,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_8_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_8_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_8_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_8_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_8_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	 	
 //red1
@@ -4130,24 +4130,24 @@ $('#S5_2_DD_COD').trigger("change");
 		            valrango: [0,100,999],
 		         },		
 		    	S5_5_9_1: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_9_2: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_9_3: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },	
 		    	S5_5_9_4: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 		    	S5_5_9_5: {
-		            digits: true,
-		            valjango: [1,20,''],
+		            number: true,
+		            valrango: [0.1,20.00,99.99],
 		         },		
 //end red1	 	    
 
