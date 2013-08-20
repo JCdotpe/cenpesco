@@ -881,7 +881,10 @@ $(document).on("change",'.comba',function() {
 
 
   		var pre = $(this).attr('id');
-  		var npreg = pre.substring(4,5);
+  		if(pre.length == 6)
+  			var npreg = pre.substring(4,6);
+  		else
+  			var npreg = pre.substring(4,5);
 		var sel = $('#P16' + '_' + npreg);
 		var ah = $(this);
 
@@ -921,7 +924,10 @@ $(document).on("change",'.comba',function() {
 
 $(document).on("change",'.combb',function() {
   		var pre = $(this).attr('id');
-  		var npreg = pre.substring(4,5);
+  		if(pre.length == 6)
+  			var npreg = pre.substring(4,6);
+  		else
+  			var npreg = pre.substring(4,5);
 		var sel = $('#P17' + '_' + npreg);
 		var ah = $(this);
 		var aha = $("#P14" + '_' + npreg);
@@ -958,7 +964,11 @@ function dil(nume){
   			var inic = 1;
 			if(nume==0){
 				var nexta = $("#quest").children().last().attr('id');
-  				var npreg = parseInt(nexta.substring(5,6)) + 1;				
+				if(nexta.length == 7)
+					var pnpreg = parseInt(nexta.substring(5,7))
+				else
+					var pnpreg = parseInt(nexta.substring(5,6))
+  				var npreg =  pnpreg + 1;				
 				cont = npreg;
 				inic = npreg;
 			}

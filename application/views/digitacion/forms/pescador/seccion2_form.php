@@ -149,7 +149,7 @@ $S2_6 = array(
 $S2_7 = array(
 	'name'	=> 'S2_7',
 	'id'	=> 'S2_7',
-	'maxlength'	=> 7,
+	'maxlength'	=> 9,
 	'class' => $span_class,
 );
 
@@ -3933,8 +3933,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },  		         	         
 		        S2_7:{
 		            digits:true,
-		            range:[200000,8999999],
-		            exactlength: 7, 
+		            maxlength: 9, 
 		         },  		      
 		        S2_8:{
 		            email: true,

@@ -310,21 +310,21 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
             case 'NOM_DD':
                 sel     = $("#NOM_PP");
                 $('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + <?php echo $ubigeo; ?> + '/' + $(this).val();
                 op      = 1;
                 break;
 
             case 'NOM_PP':
                 sel     = $("#NOM_DI");
                 $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + <?php echo $ubigeo; ?> + '/' + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
             case 'NOM_DI':
                 sel     = $("#NOM_CCPP");
                 $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + <?php echo $ubigeo; ?> + '/' + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 

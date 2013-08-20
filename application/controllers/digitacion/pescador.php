@@ -83,7 +83,7 @@ class Pescador extends CI_Controller {
 			$data['emps'] = $this->empadronador_model->get_emp_by_odei($odei);
 
 			$data['departamento'] =  $this->marco_model->get_dpto_by_odei($odei); 
-			
+			$data['ubigeo'] = $this->tank_auth->get_ubigeo();
 			$data['nav'] = TRUE;
 			//regular
 			$data['departamentos'] = $this->ubigeo_model->get_dptos();

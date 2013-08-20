@@ -537,7 +537,12 @@ $S7_7_3 = array(
 	'maxlength'	=> 1,
 	'class' => $span_class . ' nothing7 wothing7 s7preg7',
 );
-
+$S7_7_4 = array(
+	'name'	=> 'S7_7_4',
+	'id'	=> 'S7_7_4',
+	'maxlength'	=> 1,
+	'class' => $span_class . ' nothing7 wothing7 s7preg7',
+);
 ////////////////////////////
 $S7_8_1 = array(
 	'name'	=> 'S7_8_1',
@@ -1274,7 +1279,11 @@ echo '<div class="well modulo">';
 					               echo '<tr>';
 					                  echo '<td>En el mercado</td>';
 					                  echo '<td>' . form_input($S7_7_3) . '<div class="help-block error">' . form_error($S7_7_3['name']) . '</div></td>';
-					               echo '</tr>'; 					               				               				               				               					                					                						               				               					               					               
+					               echo '</tr>'; 
+					               echo '<tr>';
+					                  echo '<td>Venta por vivienda</td>';
+					                  echo '<td>' . form_input($S7_7_4) . '<div class="help-block error">' . form_error($S7_7_4['name']) . '</div></td>';
+					               echo '</tr>'; 						               					               				               				               				               					                					                						               				               					               					               
 			              echo '</tbody>';
 			            echo '</table>';	
 				echo '</div>';	
@@ -2059,9 +2068,12 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		    	S7_7_3: {
 		            digits: true,
 		            valrango: [0,1,9],
-		            valzero: ['S7_7_1','S7_7_2'],
 		         }, 
-
+		    	S7_7_4: {
+		            digits: true,
+		            valrango: [0,1,9],
+		            valzero: ['S7_7_1','S7_7_2','S7_7_3'],
+		         }, 
 		    	S7_8_1: {
 		            digits: true,
 		            valrango: [0,1,9],
