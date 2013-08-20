@@ -47,10 +47,10 @@ class Pescador extends CI_Controller {
 			$data['user_id']	= $this->tank_auth->get_user_id();
 			$data['username']	= $this->tank_auth->get_username();
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
-				$odei[] = $key->ODEI_COD;
+				$odeis[] = $key->ODEI_COD;
 			}				
-			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei);
-			$data['tables'] = $this->udra_pescador_model->get_pescadores_by_odei($odei); 			
+			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odeis);
+			$data['tables'] = $this->udra_pescador_model->get_pescadores_by_odei($this->tank_auth->get_ubigeo(), $odeis); 			
 			$data['main_content'] = 'udra/pescador_view';
 			$data['option'] = 2;
 			$data['error'] = 0;

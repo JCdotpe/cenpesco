@@ -1122,19 +1122,20 @@ $("#buscar").click(function(){
 			ruta: $("#RUTA").val(),
 			sub_ruta: $("#SUB_R").val(),
 			ajax: 1,
+			opcion : 0,
 		};
 
         $.ajax({
-            url: CI.base_url + "seguimiento/avance_empadronador/consulta/" ,
+            url: CI.base_url + "seguimiento/avance_empadronador/consulta/" + $("#CCSE").val() + "/" + $("#CCDD").val() + "/" + $("#EQP").val() + "/" + $("#RUTA").val() + "/" + $("#SUB_R").val(),
             type:'POST',
             data:datas,
             dataType:'json',
             success:function(json){
             	if (json === 0) {// si no existe registros en tabla
 						//llenar provincia, distrito, empadronador
-
+						datas['opcion']= 111;
 				        $.ajax({
-				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + 1, //consulta de la tabla seguimiento ESPECIAL
+				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + datas['opcion'] + "/" + $("#CCSE").val() + "/" + $("#CCDD").val() + "/" + $("#EQP").val() + "/" + $("#RUTA").val() + "/" + $("#SUB_R").val(), //consulta de la tabla seguimiento ESPECIAL
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
@@ -1165,7 +1166,6 @@ $("#buscar").click(function(){
 				            				tipo_emp = 'B';
 				            			}
 				            		})
-
 
 									alert('Ingrese en la subruta de acontinuación');
 							        //llena inputs detalle
@@ -1220,19 +1220,17 @@ $("#buscar").click(function(){
 												actualizar_input('NUM_P');
 												actualizar_input('NUM_A');
 												actualizar_input('NUM_C');
-
-
 							            }
-							        }); 
-								            	
+							        }); 		            	
 				            }
 				        }); 
 
 
             	}else{////////////////////////////////////////////// editar la consulta
+            			datas['opcion'] = 222;
             			alert('Subruta en Base de Datos, actualizalo  ');
 				        $.ajax({
-				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + 2, //consulta de la tabla AVANCE CAMPO SUBRUTAS
+				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + datas['opcion'] + "/" + $("#CCSE").val() + "/" + $("#CCDD").val() + "/" + $("#EQP").val() + "/" + $("#RUTA").val() + "/" + $("#SUB_R").val(), //consulta de la tabla AVANCE CAMPO SUBRUTAS
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
@@ -1932,7 +1930,6 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
             type:'POST',
             data:form_data,
             dataType:'json',
-            cache: false,
             success:function(json_data){
                 sel.empty();
                 // if (op==3){

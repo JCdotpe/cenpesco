@@ -18,10 +18,10 @@ class Udra_acuicultor_model extends CI_MODEL
 		return $q->num_rows();
 	}	
 
-	function get_acuicultores_by_sede($sede)
+	function get_acuicultores_by_sede($user,$odeis)
 	{	
-		if ($sede == 99){ $sedes = range(1,26);}else{ $sedes = $sede;}
-		$this->db->where_in('SEDE_COD',$sedes);
+		($user == 99) ? '' : $this->db->where('SEDE_COD',$user)  ;
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->order_by('DEPARTAMENTO');		
     	$q = $this->db->get('udra_acuicultor');
 		return $q->result();

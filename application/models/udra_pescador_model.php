@@ -18,10 +18,10 @@ class Udra_pescador_model extends CI_MODEL
 		return $q->num_rows();
 	}	
 
-	function get_pescadores_by_odei($cod)
+	function get_pescadores_by_odei($user, $odeis)
 	{	
-		if ($cod == 99){ $cod = range(1,26); }
-		$this->db->where_in('SEDE_COD',$cod);
+		($user == 99) ? '' : $this->db->where('SEDE_COD',$user)  ;
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->order_by('DEPARTAMENTO');
     	$q = $this->db->get('udra_pescador');
 		return $q->result();

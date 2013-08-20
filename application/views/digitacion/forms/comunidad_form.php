@@ -1489,7 +1489,7 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
             case 'NOM_PP':
                 sel     = $("#NOM_DI");
                 $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + dep.val() + "/" + $(this).val();
                 op      = 2;
                 break;
 

@@ -2640,7 +2640,7 @@ $("#NOM_DD_2, #NOM_PP_2, #NOM_DI_2, #NOM_CCPP_2").change(function(event) {
             case 'NOM_PP_2':
                 sel     = $("#NOM_DI_2");
                 //$('#CCPP').val($(this).val()); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + dep.val() + "/" + $(this).val();
                 op      = 2;
                 break;
 

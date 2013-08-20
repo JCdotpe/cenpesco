@@ -383,7 +383,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f").change(function(event) {
                 sel     = $("#NOM_DI_f");
                 $('#CCPP').val($(this).val()); 
                 $('#NOM_PP').val($('#NOM_PP_f option:selected').text());                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val()  + "/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + dep.val() + "/" + $(this).val();
                 op      = 2;
                 break;
 

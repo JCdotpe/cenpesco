@@ -161,57 +161,56 @@ class Avance_empadronador extends CI_Controller {
 
 	}
 
+	// LLENA COMBOS
+		function get_ajax_equipo()
+		{
+			$this->output->cache(30);		
+			$sede = $this->input->post('sede');
+			$dep = $this->input->post('dep');
+			$datos = $this->monitoreo_especial_model->get_equipo($sede, $dep)->result();// envia array de equipos
+			$data['datos'] = $datos;
+			$this->load->view('backend/json/json_view',$data);
+		}
 
-	function get_ajax_equipo()
-	{
-		//$this->output->cache(30);		
-		$sede = $this->input->post('sede');
-		$dep = $this->input->post('dep');
+		function get_ajax_ruta()
+		{	
+			$this->output->cache(30);
+			$sede = $this->input->post('sede');
+			$dep = $this->input->post('dep');
+			$equipo =  $this->input->post('equipo');
 
-		// $equipo = 
-		// $datos = $equipo->result();
-		$datos = $this->monitoreo_especial_model->get_equipo($sede, $dep)->result();// envia array de equipos
-		$data['datos'] = $datos;
-		$this->load->view('backend/json/json_view',$data);
-	}
+			$datos = $this->monitoreo_especial_model->get_ruta($sede, $dep,$equipo)->result(); //  array de rutas
+			$data['datos'] = $datos;
+			$this->load->view('backend/json/json_view',$data);
+		}
 
-	function get_ajax_ruta()
-	{	
-		//$this->output->cache(30);
-		$sede = $this->input->post('sede');
-		$dep = $this->input->post('dep');
-		$equipo =  $this->input->post('equipo');
+		function get_ajax_sub_ruta()
+		{	
+			$this->output->cache(30);
+			$sede = $this->input->post('sede');
+			$dep = $this->input->post('dep');
+			$equipo =  $this->input->post('equipo');
+			$ruta =  $this->input->post('ruta');
 
-		$datos = $this->monitoreo_especial_model->get_ruta($sede, $dep,$equipo)->result(); //  array de rutas
-		$data['datos'] = $datos;
-		$this->load->view('backend/json/json_view',$data);
-	}
+			$datos = $this->monitoreo_especial_model->get_sub_ruta($sede, $dep, $equipo, $ruta)->result(); //  array de sub_rutas
+			$data['datos'] = $datos;
+			$this->load->view('backend/json/json_view',$data);
+		}	
+	//
 
-	function get_ajax_sub_ruta()
-	{	
-		//$this->output->cache(30);
-		$sede = $this->input->post('sede');
-		$dep = $this->input->post('dep');
-		$equipo =  $this->input->post('equipo');
-		$ruta =  $this->input->post('ruta');
-
-		$datos = $this->monitoreo_especial_model->get_sub_ruta($sede, $dep, $equipo, $ruta)->result(); //  array de sub_rutas
-		$data['datos'] = $datos;
-		$this->load->view('backend/json/json_view',$data);
-	}	
-
-
-	function get_ajax_all($opcion){
+	//LLENAR EL DETALLE
+	function get_ajax_all(){
 		//$this->output->cache(30);
 		$sede = $this->input->post('sede');
 		$dep = $this->input->post('dep');
 		$equipo = $this->input->post('equipo');
 		$ruta =  $this->input->post('ruta');
 		$sub_ruta =  $this->input->post('sub_ruta');
-		if ($opcion == 1){
+		$opcion =  $this->input->post('opcion');
+		if ($opcion == 111){ // LLENA 
 			$data['datos'] = $this->monitoreo_especial_model->get_all($sede,$dep,$equipo,$ruta,$sub_ruta)->result(); // envia la consulta_ccpp
-		}else if($opcion == 2){
-			$data['datos'] = $this->avance_campo_subrutas_model->get_all($sede,$dep,$equipo,$ruta,$sub_ruta)->result(); // de la tabla AVANCE CAMPO SUBRATOS
+		}else if($opcion == 222){
+			$data['datos'] = $this->avance_campo_subrutas_model->get_all($sede,$dep,$equipo,$ruta,$sub_ruta)->result(); // la tabla AVANCE CAMPO SUBRATOS
 		}
 
 		$this->load->view('backend/json/json_view', $data);	

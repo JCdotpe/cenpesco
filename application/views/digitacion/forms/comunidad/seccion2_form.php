@@ -841,7 +841,7 @@ $("#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD, #S2_10_CCPP_COD").change(functio
             case 'S2_10_PP_COD':
                 sel     = $("#S2_10_DI_COD");
                 // $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + dep.val() + "/" + $(this).val();
                 op      = 2;
                 break;
 
