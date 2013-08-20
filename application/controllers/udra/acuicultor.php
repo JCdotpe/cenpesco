@@ -54,8 +54,7 @@ class Acuicultor extends CI_Controller {
 			$data['main_content'] = 'udra/acuicultor_view';
 			$data['option'] = 1;
 			$data['error'] = 0;
-
-
+			$data['sede_cod'] = $this->tank_auth->get_ubigeo();
 
 
 

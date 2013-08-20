@@ -112,6 +112,7 @@ $NROFORM = array(
 							echo '</div>';	
 							echo '<div class="controls span6">';
 								echo form_dropdown('NOM_DD', $ubidepaArray, FALSE,'class="span12" id="NOM_DD"'); 
+								echo '<input type="hidden" name="SEDE_COD" id="SEDE_COD" value="'. $sede_cod.'"/>';
 							echo '</div>';
 					echo '</div>';  
 
@@ -1481,21 +1482,21 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
             case 'NOM_DD':
                 sel     = $("#NOM_PP");
                 $('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $("#SEDE_COD").val() + "/" + $(this).val();
                 op      = 1;
                 break;
 
             case 'NOM_PP':
                 sel     = $("#NOM_DI");
                 $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
             case 'NOM_DI':
                 sel     = $("#NOM_CCPP");
                 $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + $("#SEDE_COD").val() + "/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 

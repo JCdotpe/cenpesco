@@ -834,21 +834,21 @@ $("#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD, #S2_10_CCPP_COD").change(functio
             case 'S2_10_DD_COD':
                 sel     = $("#S2_10_PP_COD");
                 //$('#CCDD').val(mivalue); 
-                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_prov/" + $("#SEDE_COD").val() + "/" + $(this).val();
                 op      = 1;
                 break;
 
             case 'S2_10_PP_COD':
                 sel     = $("#S2_10_DI_COD");
                 // $('#CCPP').val(mivalue);                 
-                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
             case 'S2_10_DI_COD':
                 sel     = $("#S2_10_CCPP_COD");
                 // $("#CCDI").val(mivalue);          
-                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/ccpp_ajax/get_ajax_ccpp/" + $("#SEDE_COD").val() + "/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 

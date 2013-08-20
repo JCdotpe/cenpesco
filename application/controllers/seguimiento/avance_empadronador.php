@@ -246,8 +246,6 @@ class Avance_empadronador extends CI_Controller {
 	}
 
 
-
-
     public function export(){
 
     	//colores

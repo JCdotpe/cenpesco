@@ -49,6 +49,7 @@ $route['seguimiento'] = "seguimiento/seguimiento";
 $route['supervision'] = "digitacion/informe";
 $route['supervision/to_excel'] = "digitacion/informe/to_excel";
 $route['supervision/to_excel_error'] = "digitacion/informe/to_excel_error";
+$route['consistencia'] = "consistencia/consistencia";
 $route['tabulados'] = "tabulados/tabulados";
 $route['ajax'] = "ajax/ajax.php";
 $route['404_override'] = '';

@@ -54,7 +54,8 @@ class Pescador extends CI_Controller {
 			$data['main_content'] = 'udra/pescador_view';
 			$data['option'] = 2;
 			$data['error'] = 0;
-
+			$data['sede_cod'] = $this->tank_auth->get_ubigeo();
+			
 			$this->form_validation->set_rules('NOM_DD_f','DEPARTAMENTO','required|alpha_numeric');
 			$this->form_validation->set_rules('CCDD','CODIGO','required|numeric');
 			$this->form_validation->set_rules('NOM_PP_f','PROVINCIA','required|alpha_numeric');

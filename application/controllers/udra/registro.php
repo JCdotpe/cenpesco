@@ -53,7 +53,7 @@ class Registro extends CI_Controller {
 			$data['main_content'] = 'udra/registro_view';
 			$data['option'] = 4;
 			$data['error'] = 0;
-
+			$data['sede_cod'] = $this->tank_auth->get_ubigeo();
 
 			$this->form_validation->set_rules('NOM_DD_f','DEPARTAMENTO','required|alpha_numeric');
 			$this->form_validation->set_rules('CCDD','CODIGO','required|numeric');

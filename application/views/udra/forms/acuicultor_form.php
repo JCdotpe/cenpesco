@@ -154,6 +154,7 @@ echo form_open($this->uri->uri_string(),$attr);
 							echo '<input type="hidden" name="NOM_DD" id="NOM_DD" />';
                             echo '<input type="hidden" name="ODEI_COD" id="ODEI_COD" />';
                             echo '<input type="hidden" name="NOM_ODEI" id="NOM_ODEI" />';
+                            echo '<input type="hidden" name="SEDE_COD" id="SEDE_COD" value="'. $sede_cod.'"/>';
 						echo '</div>';
 					echo '</fieldset>';
 				echo '</div>';
@@ -371,7 +372,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f").change(function(event) {
             case 'NOM_DD_f':
                 sel     = $("#NOM_PP_f");
                 $('#CCDD').val($(this).val()); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $("#SEDE_COD").val() + "/" + $(this).val();
                 op      = 1;
   
                $('#NOM_DD').val($('#NOM_DD_f option:selected').text());   
@@ -382,7 +383,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f").change(function(event) {
                 sel     = $("#NOM_DI_f");
                 $('#CCPP').val($(this).val()); 
                 $('#NOM_PP').val($('#NOM_PP_f option:selected').text());                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val()  + "/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
@@ -390,7 +391,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f").change(function(event) {
                 sel     = $("#NOM_CCPP_f");
                 $("#CCDI").val($(this).val());  
                 $('#NOM_DI').val($('#NOM_DI_f option:selected').text());                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + $("#SEDE_COD").val()  + "/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 

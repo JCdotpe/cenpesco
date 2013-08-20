@@ -58,6 +58,7 @@ class Registro_pescadores extends CI_Controller {
 			$data['title'] = 'Formato de Registro';
 			$data['main_content'] = 'digitacion/forms/registro_pescadores_form';
 			$data['option'] = 'digitacion/registro_pescadores_view';
+			$data['sede_cod'] = $this->tank_auth->get_ubigeo();
 			  
 			//$odei = array();
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
@@ -400,7 +401,7 @@ class Registro_pescadores extends CI_Controller {
 			$pes_acui_t = $this->registro_pescadores_model->get_pes_acuicultores_t($id);
 			$acui_i = $this->registro_pescadores_dat_model->get_acuicultores_i($id);			
 			$emb_t = $this->registro_pescadores_model->get_embarcaciones_t($id);
-			$emb_i = $this->registro_pescadores_dat_model->get_embarcaciones_i($id);
+			$emb_i = ($this->registro_pescadores_dat_model->get_embarcaciones_i($id)) ? NULL : 0;
 
 			$cabecera = $this->registro_pescadores_model->get_detalles($id);
 			$data['obs'] = $cabecera->row('OBS');

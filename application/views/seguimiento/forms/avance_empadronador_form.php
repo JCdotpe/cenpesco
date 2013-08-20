@@ -1132,11 +1132,13 @@ $("#buscar").click(function(){
             success:function(json){
             	if (json === 0) {// si no existe registros en tabla
 						//llenar provincia, distrito, empadronador
+
 				        $.ajax({
 				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_all/" + 1, //consulta de la tabla seguimiento ESPECIAL
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
+				            cache: false,
 				            success:function(json){
 									$("select").attr('disabled','disabled');// solo lectura ubigeo				            	
 				            		$("#EMP_IN").val('');
@@ -1165,66 +1167,67 @@ $("#buscar").click(function(){
 				            		})
 
 
+									alert('Ingrese en la subruta de acontinuación');
+							        //llena inputs detalle
+							        $.ajax({
+							            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" ,
+							            type:'POST',
+							            data:datas,
+							            dataType:'json',
+							            success:function(json2){
+							   
+							    	     		var cant =  json2.length;
+							    	     		$("#cant_reg").val(cant);
+							    	     		$("#TOTAL_CCPP").val($("#cant_reg").val());// dar valor al TOTAL CCPP
+												$("#provincia").removeClass('hide');
+												$("#detalle").removeClass('hide');
+												$("#ccpp_cab").removeClass('hide');
+												$("#ccpp_total").removeClass('hide');
+												$("#totales").removeClass('hide');
+
+												
+										        for (var i = 1; i <= cant; i++) {
+									        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
+									        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" maxlength=4/><input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" onblur="return mayusculas(this);" /></div>');
+									        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" onkeypress="return solo_a_b(event)" maxlength=1 /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
+									        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
+									        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)"  maxlength=1 >	</div>'		);
+									        		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" maxlength=1000 onblur="return mayusculas(this);" ></div>');
+
+									        		centro.append(inputs1);
+									        		centro.append(inputs2);
+									        		centro.append(inputs3);
+									        		centro.append(inputs4);
+									        		centro.append(inputs5);
+													$("#contenedor").append(centro);			        	
+										        };
+
+								        		$.each(json2 , function(i, data) {
+								        			var k = i+1;
+								        			$("#ccpp_div_"+k+" :input[name='CC_CCPP']").val(data.COD_CCPP);
+								        			$("#ccpp_div_"+k+" :input[name='CC_CCPP_NUM']").val(data.NUM_CENTRO_POBLADO);
+								        			$("#ccpp_div_"+k+" :input[name='NOM_CCPP']").val(data.NOM_CCPP);
+								        			$("#ccpp_div_"+k+" :input[name='TIPO_IN']").val(tipo_emp);
+								        			// $("#NOM_CCPP").val(data.NOM_CCPP);
+								        			// $("#TIPO_IN").val(tipo_emp);
+								        		})		
+								        		$("#agregar_boton").removeClass('hide');// habilita boton agregar ccpp;
+								        		$("input[name='Enviar']").removeClass('hide');//muestra boton enviar
+								        		//$("#export_excel").removeClass('hide');//muestra boton enviar
+												//$("#buscar").removeAttr('disabled');//activar boton despues de json exitoso
+												
+												actualizar_input('REG'); //actualiza los totales
+												actualizar_input('NUM_P');
+												actualizar_input('NUM_A');
+												actualizar_input('NUM_C');
+
+
+							            }
+							        }); 
 								            	
 				            }
 				        }); 
-						alert('Ingrese en la subruta de acontinuación');
-				        //llena inputs detalle
-				        $.ajax({
-				            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" ,
-				            type:'POST',
-				            data:datas,
-				            dataType:'json',
-				            success:function(json2){
-				   
-				    	     		var cant =  json2.length;
-				    	     		$("#cant_reg").val(cant);
-				    	     		$("#TOTAL_CCPP").val($("#cant_reg").val());// dar valor al TOTAL CCPP
-									$("#provincia").removeClass('hide');
-									$("#detalle").removeClass('hide');
-									$("#ccpp_cab").removeClass('hide');
-									$("#ccpp_total").removeClass('hide');
-									$("#totales").removeClass('hide');
 
-									
-							        for (var i = 1; i <= cant; i++) {
-						        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
-						        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" maxlength=4/><input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" onblur="return mayusculas(this);" /></div>');
-						        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" onkeypress="return solo_a_b(event)" maxlength=1 /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
-						        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
-						        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)"  maxlength=1 >	</div>'		);
-						        		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" maxlength=1000 onblur="return mayusculas(this);" ></div>');
-
-						        		centro.append(inputs1);
-						        		centro.append(inputs2);
-						        		centro.append(inputs3);
-						        		centro.append(inputs4);
-						        		centro.append(inputs5);
-										$("#contenedor").append(centro);			        	
-							        };
-
-					        		$.each(json2 , function(i, data) {
-					        			var k = i+1;
-					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP']").val(data.COD_CCPP);
-					        			$("#ccpp_div_"+k+" :input[name='CC_CCPP_NUM']").val(data.NUM_CENTRO_POBLADO);
-					        			$("#ccpp_div_"+k+" :input[name='NOM_CCPP']").val(data.NOM_CCPP);
-					        			$("#ccpp_div_"+k+" :input[name='TIPO_IN']").val(tipo_emp);
-					        			// $("#NOM_CCPP").val(data.NOM_CCPP);
-					        			// $("#TIPO_IN").val(tipo_emp);
-					        		})		
-					        		$("#agregar_boton").removeClass('hide');// habilita boton agregar ccpp;
-					        		$("input[name='Enviar']").removeClass('hide');//muestra boton enviar
-					        		//$("#export_excel").removeClass('hide');//muestra boton enviar
-									//$("#buscar").removeAttr('disabled');//activar boton despues de json exitoso
-									
-									actualizar_input('REG'); //actualiza los totales
-									actualizar_input('NUM_P');
-									actualizar_input('NUM_A');
-									actualizar_input('NUM_C');
-
-
-				            }
-				        }); 
 
             	}else{////////////////////////////////////////////// editar la consulta
             			alert('Subruta en Base de Datos, actualizalo  ');
@@ -1233,6 +1236,7 @@ $("#buscar").click(function(){
 				            type:'POST',
 				            data:datas,
 				            dataType:'json',
+				            cache: false,
 				            success:function(json){
 
 				            		$("#EMP_IN").val('');
@@ -1928,6 +1932,7 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
             type:'POST',
             data:form_data,
             dataType:'json',
+            cache: false,
             success:function(json_data){
                 sel.empty();
                 // if (op==3){
@@ -2567,37 +2572,18 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 
 				        $.ajax({
-				            url: CI.base_url + "seguimiento/avance_empadronador/grabar",
+				            url: CI.base_url + "seguimiento/avance_empadronador/grabar/" + $("#CCSE").val() + "/" + $("#CCDD").val() + "/" +  $("#EQP").val() + "/" + $("#RUTA").val() + "/" +$("#SUB_R").val(),
 				            type:'POST',
 				            data:form_data,
 				            dataType:'json',
+				            cache: false,
 				            success:function(json){
 				            	contador++;
 				            	if (json == 'guardado') {
 				            		guar = guar + 1;
 				            	}else if(json == 'modificado'){
 				            		modi = modi + 1;
-				            	}
-
-				        //     	if(json.operacion == 0){
-						     	// 		mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>El centro poblado ya está registrado</div>')
-				        //     	}else if(json.operacion == 1){    
-						    		// mensaje = $('<div />').html('<div class="alert alert-success"><button class="close" data-dismiss="alert" type="button">×</button><strong>EXITOSO! </strong>El registro fue guardado satisfactoriamente</div>')
-							   		// 	$('input:text').val("");
-							   		// 	$('textarea').val("");
-							   		// 	$('select').val(-1);
-							   		// 	$('#NOM_DD').trigger('change');            		
-				        //     	}else if(json.operacion == 7){
-						     	// 		mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR</div>')         		
-				        //     	}else if(json.operacion == 8){
-						     	// 		mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ERROR! </strong>Inesperado, no se pudo registrar</div>')         		
-				        //     	}else if(json.operacion == 99){
-						     	// 		mensaje = $('<div />').html('<div class="alert alert-info"><button type="button"  class="close" data-dismiss="alert">×</button><strong>ADVERTENCIA! </strong>Usuario PILOTO no esta permitido guardar</div>')
-				        //     	}
-
-				        // 		$('.extra').empty();
-				        // 		$('.extra').hide().append(mensaje);              	
-				        // 		$('.extra').show('slow');              	
+				            	}             	
 				        		if (contador == $("#cant_reg").val() ){
 							    	if ( !(modi + guar == parseInt($("#cant_reg").val() ) ) ){
 							    			alert('Error INESPERADO, no se guardó o modificó todos los registros')

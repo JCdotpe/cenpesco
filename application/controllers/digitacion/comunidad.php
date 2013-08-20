@@ -70,6 +70,7 @@ class Comunidad extends CI_Controller {
 			//$data['pais']=$this->pais_model->select_pais();
 			$data['title'] = 'Formulario Comunidad';
 			$data['main_content'] = 'digitacion/comunidad_view';
+	        $data['sede_cod'] = $this->tank_auth->get_ubigeo();			
 	        $this->load->view('backend/includes/template', $data);
 
 	}

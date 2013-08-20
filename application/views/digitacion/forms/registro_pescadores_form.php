@@ -489,8 +489,8 @@ echo form_open($this->uri->uri_string(),$attr);
 									echo '<input type="hidden" name="NOM_DD" id="NOM_DD" />';
 									echo '<input type="hidden" name="ODEI_COD" id="ODEI_COD" />';
 									echo '<input type="hidden" name="NOM_ODEI" id="NOM_ODEI" />';
-									echo '<input type="hidden" name="SEDE_COD" id="SEDE_COD" />';
-									echo '<input type="hidden" name="NOM_SEDE" id="NOM_SEDE" />';									
+									echo '<input type="hidden" name="NOM_SEDE" id="NOM_SEDE" />';	
+									echo '<input type="hidden" name="SEDE_COD" id="SEDE_COD" value="'. $sede_cod.'"/>';								
 								echo '</div>';
 							echo '</fieldset>';
 						echo '</div>'; 
@@ -847,10 +847,9 @@ if($detalle){
 	$attr = array('class' => 'form-val','id' => 'form_registro_dat', 'style' => 'overflow: auto;');
 	echo form_open($this->uri->uri_string(),$attr); 
 		
-
+		if ($num_filas<$num_filas_t){ //
 		echo '<div class="well modulo">';
-			
-			if ($num_filas<$num_filas_t){ //
+
 				echo '<div class="row-fluid">';
 
 					echo '<div class="offset1 span2">';
@@ -870,7 +869,7 @@ if($detalle){
 					echo '</div>';
 
 				echo '</div>';
-			}
+		
 
 			//Fila 1
 			echo '<div class="row-fluid ">';
@@ -1292,8 +1291,9 @@ if($detalle){
 			echo '</div>'; 
 
 		echo '</div>'; 	
+		//}
 
-		if ($num_filas < $num_filas_t){ //si hay filas para ingresar
+		//if ($num_filas < $num_filas_t){ //si hay filas para ingresar
 
 			echo '<div class="row-fluid">';
 				echo form_submit('send', 'Ingresar','class="btn btn-primary pull-right"');  
@@ -2632,7 +2632,7 @@ $("#NOM_DD_2, #NOM_PP_2, #NOM_DI_2, #NOM_CCPP_2").change(function(event) {
             case 'NOM_DD_2':
                 sel     = $("#NOM_PP_2");
                 //$('#CCDD').val($(this).val());                  
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $("#SEDE_COD").val() + "/" + $(this).val();
                 op      = 1;
 
                 break;
@@ -2640,14 +2640,14 @@ $("#NOM_DD_2, #NOM_PP_2, #NOM_DI_2, #NOM_CCPP_2").change(function(event) {
             case 'NOM_PP_2':
                 sel     = $("#NOM_DI_2");
                 //$('#CCPP').val($(this).val()); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
             case 'NOM_DI_2':
                 sel     = $("#NOM_CCPP_2");
                // $("#CCDI").val($(this).val());  
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + $("#SEDE_COD").val() + "/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 
@@ -2808,7 +2808,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f, #CCPP_PROC_f").change(function(
             case 'NOM_DD_f':
                 sel     = $("#NOM_PP_f");
                 $('#CCDD').val($(this).val()); 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $("#SEDE_COD").val() + "/" + $(this).val();
                 op      = 1;
                $('#NOM_DD').val($('#NOM_DD_f option:selected').text());   
                 break;
@@ -2817,7 +2817,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f, #CCPP_PROC_f").change(function(
                 sel     = $("#NOM_DI_f");
                 $('#CCPP').val($(this).val()); 
                 $('#NOM_PP').val($('#NOM_PP_f option:selected').text());                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
                 op      = 2;
                 break;
 
@@ -2826,7 +2826,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f, #CCPP_PROC_f").change(function(
                 sel2    = $("#CCPP_PROC_f");
                 $("#CCDI").val($(this).val());  
                 $('#NOM_DI').val($('#NOM_DI_f option:selected').text());                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + $("#SEDE_COD").val() + "/"  + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 op      = 3;
                 break;  
 
