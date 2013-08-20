@@ -3367,7 +3367,7 @@ $("#S2_10_DD_COD, #S2_11_DD_COD, #S2_9_DD_COD").change(function(event) {
                 break;
             case 'S2_9_DD_COD':
                 sel = $("#S2_9_PP_COD");
-                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + $(this).val();
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + <?php echo $ubigeo; ?> + '/' + $(this).val();
                 break;                
         }
 
@@ -3415,7 +3415,7 @@ $("#S2_10_PP_COD, #S2_11_PP_COD, #S2_9_PP_COD").change(function(event) {
             case 'S2_9_PP_COD':
                 sel = $("#S2_9_DI_COD");
                 dep = $("#S2_9_DD_COD");
-                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $(this).val() + "/" + dep.val();
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + <?php echo $ubigeo; ?> + '/'  + $(this).val() + "/" + dep.val();
                 break;                
         }     
            
@@ -3460,7 +3460,7 @@ $("#S2_9_DI_COD").change(function(event) {
                 sel = $("#S2_9_CCPP_COD");
                 dep = $("#S2_9_DD_COD");
                 prov = $("#S2_9_PP_COD");
-                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + dep.val() + "/" + prov.val() + "/" + $(this).val();
+                urlx = CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + <?php echo $ubigeo; ?> + '/'  + dep.val() + "/" + prov.val() + "/" + $(this).val();
                 break;                
         }     
            
