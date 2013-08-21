@@ -10,7 +10,7 @@ class Comunidad extends CI_Controller {
 		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');	
-		$this->load->model('udra_comunidad_model');
+		$this->load->model('comunidad_model');
 		$this->load->model('marco_model');
 		$this->load->helper('date');
 		date_default_timezone_set('America/Lima');		
@@ -40,21 +40,26 @@ class Comunidad extends CI_Controller {
 
 	public function index()
 	{
-
 			$data['nav'] = TRUE;
 			$data['title'] = 'Consistencia';
 			$data['user_id']	= $this->tank_auth->get_user_id();
-			$data['username']	= $this->tank_auth->get_username();
-			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
-				$odei[] = $key->ODEI_COD;
-			}				
-			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
-			$data['tables'] = $this->udra_comunidad_model->get_acuicultores_by_sede($odei); 
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->comunidad_model->get_report_1(); 
+			$data['opcion'] = 1;
 			$data['main_content'] = 'consistencia/comunidad/reporte_1_view';
-			$data['option'] = 1;
-		
+			$this->load->view('backend/includes/template', $data);		
 	}
-
+	public function reporte_2()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->comunidad_model->get_report_2(); 
+			$data['opcion'] = 2;
+			$data['main_content'] = 'consistencia/comunidad/reporte_2_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
 	function to_excel(){
 		$this->load->helper('excel');
         $query = $this->udra_comunidad_model->get_all_export();

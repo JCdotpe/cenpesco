@@ -2026,11 +2026,6 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 
 
-
-
-
-
-
 //$("#frm_avance_campo").validate({});
 
 
@@ -2077,10 +2072,6 @@ $.validator.addMethod("peruDate",function(value, element) {
 				// 	});	
 				
 		  //   	}
-
-
-
-
 
 
 		$("#frm_avance_campo").validate({

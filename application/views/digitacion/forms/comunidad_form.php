@@ -1634,6 +1634,7 @@ $("#frm_comunidad").validate({
             maxlength: 6,
 			digits: true,
 			valueNotEquals: 0,
+			range: [1,10000],
          }, 
         NOM_DD: {
             required: true,

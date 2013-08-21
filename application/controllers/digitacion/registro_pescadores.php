@@ -264,6 +264,7 @@ class Registro_pescadores extends CI_Controller {
 		$data['main_content'] = 'digitacion/forms/registro_pescadores_form';
 		//$data['departamento'] = $this->pesca_piloto_model->get_dptos();
 		//$data['departamento'] = $this->marco_model->get_dpto_by_odei($this->tank_auth->get_ubigeo()); 
+		$data['sede_cod'] = $this->tank_auth->get_ubigeo();
 		
 
 		$data['opx'] = 1;  //habilitar anchor
