@@ -477,7 +477,7 @@ echo '<div class="well modulo">';
 /////////////////////////////////////////////PREGUNTA 2
 
 		echo '<div class="question">';
-			echo '<p>2.	En los últimos 6 meses, ¿Ha recibido alguna capacitaciónrelacionada a la pesca?</p>';	
+			echo '<p>2.	En los últimos 12 meses, ¿Ha recibido alguna capacitaciónrelacionada a la pesca?</p>';	
 				echo '<div class="row-fluid">';
 							echo '<div class="control-group offset4 span4">';
 								echo '<div class="controls">';

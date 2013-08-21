@@ -26,7 +26,24 @@ $provArray = array(-1 => ' -');
 $distArray = array(-1 => ' -'); 
 $ccppArray = array(-1 => ' -');
 
-
+$S5_2_PP_O = array(
+	'name'	=> 'S5_2_PP_O',
+	'id'	=> 'S5_2_PP_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_2_DI_O = array(
+	'name'	=> 'S5_2_DI_O',
+	'id'	=> 'S5_2_DI_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
+$S5_2_CCPP_O = array(
+	'name'	=> 'S5_2_CCPP_O',
+	'id'	=> 'S5_2_CCPP_O',
+	'maxlength'	=> 100,
+	'class' => $span_class,
+);
 //SECCION 5
 //rio
 $S5_1_1 = array(
@@ -2657,6 +2674,7 @@ echo '<div class="well modulo">';
 					echo form_label('Provincia', 'S5_2_PP_COD', $label_class);
 						echo '<div class="controls">';
 							echo form_dropdown('S5_2_PP_COD', $provArray, FALSE,'class="span12" id="S5_2_PP_COD"'); 
+							echo form_input($S5_2_PP_O);  
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error('S5_2_PP_COD') . '</div>';
 						echo '</div>';	
@@ -2666,6 +2684,7 @@ echo '<div class="well modulo">';
 					echo form_label('Distrito', 'S5_2_DI_COD', $label_class);
 						echo '<div class="controls">';
 								echo form_dropdown('S5_2_DI_COD', $distArray, FALSE,'class="span12" id="S5_2_DI_COD"'); 
+								echo form_input($S5_2_DI_O);  
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error('S5_2_DI_COD') . '</div>';
 						echo '</div>';	
@@ -2675,6 +2694,7 @@ echo '<div class="well modulo">';
 					echo form_label('Centro Poblado', 'S5_2_CCPP_COD', $label_class);
 						echo '<div class="controls">';
 								echo form_dropdown('S5_2_CCPP_COD', $ccppArray, FALSE,'class="span12" id="S5_2_CCPP_COD"'); 
+								echo form_input($S5_2_CCPP_O);  
 							echo '<span class="help-inline"></span>';
 							echo '<div class="help-block error">' . form_error('S5_2_CCPP_COD') . '</div>';
 						echo '</div>';	
@@ -4046,11 +4066,42 @@ $('#S5_8_4').change(function() {
 });
 
 
+$('#S5_2_PP_COD').change(function() {
+    var ugo = $('#S5_2_PP_O');
+    if($(this).val() == -1){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 
+    }
+   
+});
 
+$('#S5_2_DI_COD').change(function() {
+    var ugo = $('#S5_2_DI_O');
+    if($(this).val() == -1){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 
+    }
+   
+});
+
+$('#S5_2_CCPP_COD').change(function() {
+    var ugo = $('#S5_2_CCPP_O');
+    if($(this).val() == -1){
+		ugo.removeAttr('disabled');
+    }else{
+ 		ugo.val('');     
+		ugo.attr("disabled", "disabled"); 
+    }
+   
+});
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Campos deshabilitados
- $('#S5_1_1_1, #S5_1_2_1, #S5_1_3_1, #S5_1_4_1, #S5_1_5_1, #S5_1_6_1, #S5_1_7_1, #S5_1_8_O, #S5_1_8_1, #S5_6_41_O, #S5_6_49_O, #S5_6_50_O, #S5_6_51_O, #S5_6_52_O, #S5_6_53_O, #S5_6_54_O, #S5_6_55_O, #S5_6_56_O, #S5_6_57_O, #S5_6_58_O, #S5_6_59_O, #S5_8_4_O ,#S5_8_4_1, #S5_9_14_O, #S5_5_9_O, #S5_8_1_1, #S5_8_2_1, #S5_8_3_1').attr("disabled", "disabled");
+ $('#S5_1_1_1, #S5_1_2_1, #S5_1_3_1, #S5_1_4_1, #S5_1_5_1, #S5_1_6_1, #S5_1_7_1, #S5_1_8_O, #S5_1_8_1, #S5_6_41_O, #S5_6_49_O, #S5_6_50_O, #S5_6_51_O, #S5_6_52_O, #S5_6_53_O, #S5_6_54_O, #S5_6_55_O, #S5_6_56_O, #S5_6_57_O, #S5_6_58_O, #S5_6_59_O, #S5_8_4_O ,#S5_8_4_1, #S5_9_14_O, #S5_5_9_O, #S5_8_1_1, #S5_8_2_1, #S5_8_3_1, #S5_2_PP_O, #S5_2_DI_O, #S5_2_CCPP_O').attr("disabled", "disabled");
 $('#S5_2_DD_COD').trigger("change");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4152,16 +4203,27 @@ $('#S5_2_DD_COD').trigger("change");
 		        S5_2_DD_COD:{
            			valueNotEquals: -1,
 		         }, 		
-		        S5_2_PP_COD:{
-           			valueNotEquals: -1,
+		        // S5_2_PP_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 			
+		        // S5_2_DI_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 	
+		        // S5_2_CCPP_COD:{
+          //  			valueNotEquals: -1,
+		        //  }, 
+		        S5_2_PP_O:{
+		        	required:true,
+           			validName: true,
 		         }, 			
-		        S5_2_DI_COD:{
-           			valueNotEquals: -1,
+		        S5_2_DI_O:{
+		        	required:true,
+           			validName: true,
 		         }, 	
-		        S5_2_CCPP_COD:{
-           			valueNotEquals: -1,
+		        S5_2_CCPP_O:{
+		        	required:true,
+           			validName: true,
 		         }, 
-
 		    	S5_3: {
 		            digits: true,
 		            valrango: [1,4,9],

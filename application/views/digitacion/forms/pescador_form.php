@@ -943,7 +943,9 @@ $("#pesca_dor").validate({
                                                         if($('#S5_2_CCPP_COD option:nth-child(2)').length){
                                                             clearInterval(interval_CCPPP);
                                                             $('#S5_2_CCPP_COD').val(valor);
-                                                            
+                                                            $('#S5_2_CCPP_COD').trigger('change');
+                                                        }else{
+                                                            $('#S5_2_CCPP_COD').trigger('change');
                                                         }
                                                     }, 1000);                                   
                                                }  

@@ -314,7 +314,8 @@ margin-left:4px !important;
 .breadcrumbs{
    color: #C2C2C2;
    font-size: 12px;
-   margin-top: 80px;
+   /*margin-top: 80px;*/
+   margin-top: 135px !important;
 }
 
 .breadcrumbs p{
