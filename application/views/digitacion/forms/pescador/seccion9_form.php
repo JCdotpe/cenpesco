@@ -334,7 +334,7 @@ $('#S9_2').change(function(event) {
     // $('#emb_table > tbody:last').append('<tr class="embx"><td><input type="text" class="span12" maxlength="80" name="S9_3_1' + '_' + i + '" id="S9_3_1' + '_' + i + '" value="' + i + '" ></td></tr>');
     var asd2 = '<tr class="embarc2">';
     asd2 +='<td><input type="text" class="span12" maxlength="1" class="embc' + i + '" name="S9_33' + '_' + i + '" id="S9_33' + '_' + i + '" readonly value="' + i + '" ></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + ' embbb' + i + '" maxlength="50" name="S9_14' + '_' + i + '" id="S9_14' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_15' + '_' + i + '" id="S9_15' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_16' + '_' + i + '" id="S9_16' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
@@ -395,17 +395,22 @@ $(document).on("change",'#S9_5_1, #S9_5_2, #S9_5_3, #S9_5_4, #S9_5_5, #S9_5_6',f
   var th = $(this).val();
   var des = $('.embe' + npreg); 
   var dese = $('.embd' + npreg); 
+  var desex = $('.embbb' + npreg); 
   if(th == 1 || th == 2){
     dese.removeAttr('disabled');
     des.removeAttr('disabled');
+    desex.removeAttr('disabled');
+    desex.removeAttr('disabled');    
     deso.val('');
     deso.attr("disabled", "disabled");     
-  }else if(th == 7){
+  }else if(th == 7 || th == 3 || th == 4 || th == 5 || th == 6){
     deso.removeAttr('disabled');
     des.val('');
     des.attr("disabled", "disabled");    
     dese.val('');
-    dese.attr("disabled", "disabled");          
+    dese.attr("disabled", "disabled");        
+    desex.val('');
+    desex.attr("disabled", "disabled");            
   }else{
     deso.val('');
     deso.attr("disabled", "disabled"); 
@@ -413,6 +418,8 @@ $(document).on("change",'#S9_5_1, #S9_5_2, #S9_5_3, #S9_5_4, #S9_5_5, #S9_5_6',f
     des.attr("disabled", "disabled");   
     dese.val('');
     dese.attr("disabled", "disabled");        
+    desex.val('');
+    desex.attr("disabled", "disabled");       
   }
 });
 

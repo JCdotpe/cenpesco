@@ -1050,5 +1050,106 @@ FROM `cenpesco`.`pesc_info`;
        return $q; 
 }
 
+
+
+
+
+
+//consistencia
+
+function get_report1(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_2A');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2', 'p.id = p2.pescador_id','join');
+    $this->db->where('p2.S2_2A >',1997);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report2(){
+     $q = $this->db->query('
+    select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_4 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_4 in (
+    select S2_4 from pesc_seccion2 group by S2_4 having count(*) > 1) and p2.S2_4 not in("77777777", "88888888", "99999999");
+    ');
+    return $q;
+}
+
+function get_report3(){
+     $q = $this->db->query('
+    select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_5 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_5 in (
+    select S2_5 from pesc_seccion2 group by S2_5 having count(*) > 1) and p2.S2_5 not in("77777777777", "88888888888", "99999999999");
+    ');
+    return $q;
+}
+
+function get_report4(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p2.PTANUM, p2.BLOCK, p2.INT, p2.MZ, p2.LOTE, p2.KM');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2', 'p.id = p2.pescador_id','join');
+    $this->db->where('p2.PTANUM',NULL);
+    $this->db->where('p2.BLOCK',NULL);
+    $this->db->where('p2.INT',NULL);
+    $this->db->where('p2.MZ',NULL);
+    $this->db->where('p2.LOTE',NULL);
+    $this->db->where('p2.KM',NULL);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report5(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_12, p2.S2_2A');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2', 'p.id = p2.pescador_id','join');
+    $this->db->where('p2.S2_12',2);
+    $this->db->where('p2.S2_2A <=',1963);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report6(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_12,p2.S2_12A, p2.S2_2A');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2', 'p.id = p2.pescador_id','join');
+    $this->db->where('p2.S2_12',3);
+    $this->db->where('p2.S2_12A >=',1);
+    $this->db->where('p2.S2_2A >',1968);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report7(){
+   $q = $this->db->query('
+        SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_12`, `p2`.`S2_12A`, `p2`.`S2_2A` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` WHERE (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 1 AND `p2`.`S2_2A` > 2001) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 2 AND `p2`.`S2_2A` > 2000) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 3 AND `p2`.`S2_2A` > 1999) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 4 AND `p2`.`S2_2A` > 1998) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 5 AND `p2`.`S2_2A` > 1997)    
+    ');
+    return $q;
+}
+
+
+function get_report8(){
+    $q = $this->db->query('
+    SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_12`, `p2`.`S2_2A` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` WHERE (`p2`.`S2_12` = 5 AND `p2`.`S2_2A` > 1997) OR (`p2`.`S2_12` = 6 AND `p2`.`S2_2A` > 1994) OR (`p2`.`S2_12` = 7 AND `p2`.`S2_2A` > 1997) OR (`p2`.`S2_12` = 8 AND `p2`.`S2_2A` > 1991)
+    ');
+    return $q;
+}
+
+
+function get_report9(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_13,p2.S2_14_8');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2', 'p.id = p2.pescador_id','join');
+    $this->db->where('p2.S2_13',2);
+    $this->db->where('p2.S2_14_8',1);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report10(){
+    $q = $this->db->query('
+    SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_2A`, `p2`.`S2_22` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` WHERE (`p2`.`S2_22` > 2 AND `p2`.`S2_2A` > 1995) OR (`p2`.`S2_22` > 3 AND `p2`.`S2_2A` > 1993) OR (`p2`.`S2_22` > 4 AND `p2`.`S2_2A` > 1991) OR (`p2`.`S2_22` > 5 AND `p2`.`S2_2A` > 1987) OR (`p2`.`S2_22` > 6 AND `p2`.`S2_2A` > 1983) OR (`p2`.`S2_22` > 7 AND `p2`.`S2_2A` > 1978) OR (`p2`.`S2_22` > 8 AND `p2`.`S2_2A` > 1968) OR (`p2`.`S2_22` > 9 AND `p2`.`S2_2A` > 1953)
+     ');
+    return $q;
+}
+
+
 }
 ?>

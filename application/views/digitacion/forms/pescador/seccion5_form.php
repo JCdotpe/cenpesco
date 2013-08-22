@@ -3917,7 +3917,7 @@ $("#S5_2_DI_COD").change(function(event) {
 });
 
 $('#S5_2_2').change(function() {
-	var s5p2 = $('#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD');
+	var s5p2 = $('#S5_2_DD_COD, #S5_2_PP_COD, #S5_2_DI_COD, #S5_2_CCPP_COD, #S5_2_PP_O, #S5_2_DI_O, #S5_2_CCPP_O');
 	var th = $(this).val();
 	if( th == 0 || th == 9){	
 		s5p2.val('')
@@ -4544,7 +4544,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_10_C: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valrango: [1,50,99],
 		         },	
 //aparejo
 //aparejo
@@ -4555,7 +4555,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_11_C: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valrango: [1,50,99],
 		         },	
 //aparejo
 //aparejo
@@ -4566,7 +4566,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_12_C: {
 		            digits: true,
-		           valrango: [1,20,99],
+		           valrango: [1,50,99],
 		         },	
 //aparejo
 
@@ -4578,7 +4578,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_13_C: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valrango: [1,50,99],
 		         },	
 //aparejo
 //aparejo
@@ -4594,7 +4594,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },			         
 		    	S5_5_14_C: {
 		            digits: true,
-		            valrango: [1,20,99],
+		            valrango: [1,50,99],
 		         },	
 //aparejo
 //trampa
