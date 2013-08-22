@@ -10,7 +10,8 @@
 
     <div class="span10" id="freg">
 
-    	<h4>VERIFICACION DEL NUMERO DE INSTITUCIONES EDUCATIVAS EN LA COMUNIDAD MAYOR A 10 (P1  DE LA SECCION IV)</h4>
+    	<h4>VERIFICACION DE P1 DE SECCION VII INDICA QUE REALIZA CULTIVO DE ANIMALES EN EL AGUA PERO EN LA P7 DE LA MISMA SECION INDICAN QUE NO REALIZAN CRIANZA Y VICEVERSA Y VICEVERSA
+</h4>
     	<?php
 
 				echo '<table border="1" class="table table-hover table-condensed">';
@@ -28,8 +29,8 @@
 						echo '<th>COD CCPP</th>';						
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
-						echo '<th>En la comunidad, ¿Existen instituciones educativas? (S4_1_C)</th>';
-
+						echo '<th>"¿Los miembros de la comunidad se dedican a la actividad de: (S7_1_2 )" </th>';
+						echo '<th>"¿Qué especies acuicolas generalmente crian en la comunidad? Ninguno (S7_7_16 )"</th>';
 																																				
 						echo '</tr>';
 					echo '</thead>';
@@ -50,7 +51,8 @@
 						echo "<td>". $row->COD_CCPP ."</td>";	
 						echo "<td>". $row->NOM_CCPP ."</td>";	
 						echo "<td>". $row->NFORM ."</td>";
-						echo "<td>". $row->S4_1_C ."</td>";																																															
+						echo "<td>". $row->S7_1_2 ."</td>";																																															
+						echo "<td>". $row->S7_7_16 ."</td>";																																															
 
 						echo "</tr>"; 
 

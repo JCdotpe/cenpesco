@@ -402,7 +402,7 @@ class Registro_pescadores extends CI_Controller {
 			$pes_acui_t = $this->registro_pescadores_model->get_pes_acuicultores_t($id);
 			$acui_i = $this->registro_pescadores_dat_model->get_acuicultores_i($id);			
 			$emb_t = $this->registro_pescadores_model->get_embarcaciones_t($id);
-			$emb_i = ($this->registro_pescadores_dat_model->get_embarcaciones_i($id)) ? NULL : 0;
+			$emb_i = ($this->registro_pescadores_dat_model->get_embarcaciones_i($id) == NULL) ? 0 : $this->registro_pescadores_dat_model->get_embarcaciones_i($id);
 
 			$cabecera = $this->registro_pescadores_model->get_detalles($id);
 			$data['obs'] = $cabecera->row('OBS');

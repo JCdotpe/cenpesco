@@ -83,8 +83,8 @@ class Comunidad_avance extends CI_Controller {
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-					}
-					if ($i == 9){
+					}echo $i;
+					if ($i == 8){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
 					}else{
@@ -95,7 +95,8 @@ class Comunidad_avance extends CI_Controller {
 
 			if (count($seccion_completos)>0){
 			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos); //N° formularios ingresados en pescador completos
-			}else{
+			}
+			else{
 				$data['formularios'] = NULL;
 			}			
 			if (count($seccion_incompletos)>0){
@@ -144,7 +145,7 @@ class Comunidad_avance extends CI_Controller {
 							$i++;
 						}
 					}
-					if ($i == 9){
+					if ($i == 8){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
 					}else{
@@ -204,7 +205,7 @@ class Comunidad_avance extends CI_Controller {
 							$i++;
 						}
 					}
-					if ($i == 9){
+					if ($i == 8){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
 					}else{
@@ -264,7 +265,7 @@ class Comunidad_avance extends CI_Controller {
 							$i++;
 						}
 					}
-					if ($i == 9){
+					if ($i == 8){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
 					}else{

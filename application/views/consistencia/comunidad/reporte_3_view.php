@@ -10,7 +10,7 @@
 
     <div class="span10" id="freg">
 
-    	<h4>VERIFICACION DEL NUMERO DE INSTITUCIONES EDUCATIVAS EN LA COMUNIDAD MAYOR A 10 (P1  DE LA SECCION IV)</h4>
+    	<h4>VERIFICACION DE P1 DE SECCION IV EL  NUMERO DE INSTITUCIONES EDUCATIVAS EN LA COMUNIDAD Y LOS NIVELES EDUCATIVOS DE LA P2 DE LA SECCION IV</h4>
     	<?php
 
 				echo '<table border="1" class="table table-hover table-condensed">';
@@ -28,9 +28,12 @@
 						echo '<th>COD CCPP</th>';						
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
-						echo '<th>En la comunidad, ¿Existen instituciones educativas? (S4_1_C)</th>';
-
-																																				
+						echo '<th> ¿Existen instituciones educativas? Cuantos (S4_1_C) </th>';
+						echo '<th> Los niveles que brindan estas instituciones educativas son: (S4_2_1) </th>';
+						echo '<th> Los niveles que brindan estas instituciones educativas son: (S4_2_2) </th>';
+						echo '<th> Los niveles que brindan estas instituciones educativas son: (S4_2_3) </th>';
+						echo '<th> Los niveles que brindan estas instituciones educativas son: (S4_2_4) </th>';
+						echo '<th> Los niveles que brindan estas instituciones educativas son: (S4_2_5) </th>';
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
@@ -51,6 +54,11 @@
 						echo "<td>". $row->NOM_CCPP ."</td>";	
 						echo "<td>". $row->NFORM ."</td>";
 						echo "<td>". $row->S4_1_C ."</td>";																																															
+						echo "<td>". $row->S4_2_1 ."</td>";																																															
+						echo "<td>". $row->S4_2_2 ."</td>";																																															
+						echo "<td>". $row->S4_2_3 ."</td>";																																															
+						echo "<td>". $row->S4_2_4 ."</td>";																																															
+						echo "<td>". $row->S4_2_5 ."</td>";																																															
 
 						echo "</tr>"; 
 

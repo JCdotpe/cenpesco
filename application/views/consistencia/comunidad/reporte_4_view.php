@@ -10,13 +10,12 @@
 
     <div class="span10" id="freg">
 
-    	<h4>VERIFICACION DEL NUMERO DE INSTITUCIONES EDUCATIVAS EN LA COMUNIDAD MAYOR A 10 (P1  DE LA SECCION IV)</h4>
+    	<h4>VERIFICACION DE P1 DE SECCION VII INDICA UQE REALIZA PESCA PERO EN LA P2 DE LA MISMA SECION INDICAN QUE NO REALIZAN PESCA Y VICEVERSA</h4>
     	<?php
 
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
-						echo '<th>N°</th>';
 						echo '<th>COD</th>';
 						echo '<th>SEDE</th>';
 						echo '<th>CCDD</th>';						
@@ -28,7 +27,8 @@
 						echo '<th>COD CCPP</th>';						
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
-						echo '<th>En la comunidad, ¿Existen instituciones educativas? (S4_1_C)</th>';
+						echo '<th>¿Los miembros de la comunidad se dedican a la actividad de: (S7_1_1)</th>';
+						echo '<th>La pesca la realiza en: No realizan pesca (S7_2_9)</th>';
 
 																																				
 						echo '</tr>';
@@ -50,8 +50,8 @@
 						echo "<td>". $row->COD_CCPP ."</td>";	
 						echo "<td>". $row->NOM_CCPP ."</td>";	
 						echo "<td>". $row->NFORM ."</td>";
-						echo "<td>". $row->S4_1_C ."</td>";																																															
-
+						echo "<td>". $row->S7_1_1 ."</td>";																																															
+						echo "<td>". $row->S7_2_9 ."</td>";																																															
 						echo "</tr>"; 
 
 					 }

@@ -60,6 +60,44 @@ class Comunidad extends CI_Controller {
 			$data['main_content'] = 'consistencia/comunidad/reporte_2_view';
 			$this->load->view('backend/includes/template', $data);		
 	}
+
+	public function reporte_3()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->comunidad_model->get_report_3(); 
+			$data['opcion'] = 3;
+			$data['main_content'] = 'consistencia/comunidad/reporte_3_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_4()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->comunidad_model->get_report_4(); 
+			$data['opcion'] = 4;
+			$data['main_content'] = 'consistencia/comunidad/reporte_4_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_5()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->comunidad_model->get_report_5(); 
+			$data['opcion'] = 5;
+			$data['main_content'] = 'consistencia/comunidad/reporte_5_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
 	function to_excel(){
 		$this->load->helper('excel');
         $query = $this->udra_comunidad_model->get_all_export();

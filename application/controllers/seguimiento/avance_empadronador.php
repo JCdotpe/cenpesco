@@ -1668,6 +1668,53 @@ class Avance_empadronador extends CI_Controller {
         to_excel($query, 'Avance_empadronador');
 	}
 
+	function to_excel2(){
+
+		//$filtros = $this->segmentacion_model->get_empadronador($sede, $dep, $equi, $ruta);    	
+		$registros = $this->avance_campo_subrutas_model->get_all_export();   	
+ 
+		// pestaña
+		$sheet = $this->phpexcel->getActiveSheet(0);
+		
+	    // CUERPO
+
+			// EXPORTACION A EXCEL
+			$row = 2;
+			$col = 1;
+
+			 foreach($registros->result() as $filas){
+			    
+				foreach($filas as $celdas){ // llena cada celda
+			  		$sheet->getCellByColumnAndRow($col++, $row)->setValue($celdas);
+				}
+				$col = 1;
+				$row ++;
+			}
+
+ 		// CUERPO
+
+		// SALIDA EXCEL
+			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
+			// Propiedades del archivo excel
+				$sheet->setTitle("empadronador");
+				$this->phpexcel->getProperties()
+				->setTitle("Avance")
+				->setDescription("Avance empadronador");
+
+			header("Content-Type: application/vnd.ms-excel");
+			$nombreArchivo = 'Avance_Empadronador_'.date('YmdHis');
+			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\""); //EXCEL
+			header("Cache-Control: max-age=0");
+			
+			// Genera Excel
+			$writer = PHPExcel_IOFactory::createWriter($this->phpexcel, "Excel5");
+			//$writer = new PHPExcel_Writer_Excel2007($this->phpexcel);
+
+			$writer->save('php://output');
+			exit;
+		// SALIDA EXCEL
+
+	}
 
 }
 
