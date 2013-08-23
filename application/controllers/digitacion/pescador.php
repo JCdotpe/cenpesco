@@ -98,7 +98,7 @@ class Pescador extends CI_Controller {
 	{
 		$is_ajax = $this->input->post('ajax');
 		if($is_ajax){
-			$NFORM = $idf = sprintf("%05d", $this->input->post('NFORM'));
+			$NFORM = sprintf("%05d", $this->input->post('NFORM'));
 			$CCDD = $this->input->post('CCDD');
 			$CCPP = $this->input->post('CCPP');
 			$CCDI = $this->input->post('CCDI');
