@@ -1150,6 +1150,150 @@ function get_report10(){
     return $q;
 }
 
+function get_report_cab(){
+    $this->db->select('id');
+    $this->db->from('pescador p');
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report11_son($id){
+    $q = $this->db->query('
+    SELECT `p`.`id`,`p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`,
+`pesc_seccion2`.`S2_23_1_1`,
+`pesc_seccion2`.`S2_23_4_1A`,
+`pesc_seccion2`.`S2_23_8_1`,
+
+`pesc_seccion2`.`S2_23_1_2`,
+`pesc_seccion2`.`S2_23_4_2A`,
+`pesc_seccion2`.`S2_23_8_2`,
+
+`pesc_seccion2`.`S2_23_1_3`,
+`pesc_seccion2`.`S2_23_4_3A`,
+`pesc_seccion2`.`S2_23_8_3`,
+
+`pesc_seccion2`.`S2_23_1_4`,
+`pesc_seccion2`.`S2_23_4_4A`,
+`pesc_seccion2`.`S2_23_8_4`,
+
+`pesc_seccion2`.`S2_23_1_5`,
+`pesc_seccion2`.`S2_23_4_5A`,
+`pesc_seccion2`.`S2_23_8_5`,
+
+`pesc_seccion2`.`S2_23_1_6`,
+`pesc_seccion2`.`S2_23_4_6A`,
+`pesc_seccion2`.`S2_23_8_6`,
+
+`pesc_seccion2`.`S2_23_1_7`,
+`pesc_seccion2`.`S2_23_4_7A`,
+`pesc_seccion2`.`S2_23_8_7`,
+
+`pesc_seccion2`.`S2_23_1_8`,
+`pesc_seccion2`.`S2_23_4_8A`,
+`pesc_seccion2`.`S2_23_8_8`,
+
+`pesc_seccion2`.`S2_23_1_9`,
+`pesc_seccion2`.`S2_23_4_9A`,
+`pesc_seccion2`.`S2_23_8_9`,
+
+`pesc_seccion2`.`S2_23_1_10`,
+`pesc_seccion2`.`S2_23_4_10A`,
+`pesc_seccion2`.`S2_23_8_10`
+
+    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE p.id = ?
+     ',array($id));
+    return $q;
+}
+
+
+function get_report12_son($id){
+    $q = $this->db->query('
+    SELECT `p`.`id`,`p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, pesc_seccion2.S2_2A,
+`pesc_seccion2`.`S2_23_1_1`,
+`pesc_seccion2`.`S2_23_4_1A`,
+
+`pesc_seccion2`.`S2_23_1_2`,
+`pesc_seccion2`.`S2_23_4_2A`,
+
+`pesc_seccion2`.`S2_23_1_3`,
+`pesc_seccion2`.`S2_23_4_3A`,
+
+`pesc_seccion2`.`S2_23_1_4`,
+`pesc_seccion2`.`S2_23_4_4A`,
+
+`pesc_seccion2`.`S2_23_1_5`,
+`pesc_seccion2`.`S2_23_4_5A`,
+
+`pesc_seccion2`.`S2_23_1_6`,
+`pesc_seccion2`.`S2_23_4_6A`,
+
+`pesc_seccion2`.`S2_23_1_7`,
+`pesc_seccion2`.`S2_23_4_7A`,
+
+`pesc_seccion2`.`S2_23_1_8`,
+`pesc_seccion2`.`S2_23_4_8A`,
+
+`pesc_seccion2`.`S2_23_1_9`,
+`pesc_seccion2`.`S2_23_4_9A`,
+
+`pesc_seccion2`.`S2_23_1_10`,
+`pesc_seccion2`.`S2_23_4_10A`
+
+    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE p.id = ? 
+     ',array($id));
+    return $q;
+}
+
+function get_report13_son($id){
+    $q = $this->db->query('
+    SELECT `p`.`id`,`p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`,
+`pesc_seccion2`.`S2_23_1_1`,
+`pesc_seccion2`.`S2_23_4_1A`,
+`pesc_seccion2`.`S2_23_6_1`,
+
+`pesc_seccion2`.`S2_23_1_2`,
+`pesc_seccion2`.`S2_23_4_2A`,
+`pesc_seccion2`.`S2_23_6_2`,
+
+`pesc_seccion2`.`S2_23_1_3`,
+`pesc_seccion2`.`S2_23_4_3A`,
+`pesc_seccion2`.`S2_23_6_3`,
+
+`pesc_seccion2`.`S2_23_1_4`,
+`pesc_seccion2`.`S2_23_4_4A`,
+`pesc_seccion2`.`S2_23_6_4`,
+
+`pesc_seccion2`.`S2_23_1_5`,
+`pesc_seccion2`.`S2_23_4_5A`,
+`pesc_seccion2`.`S2_23_6_5`,
+
+`pesc_seccion2`.`S2_23_1_6`,
+`pesc_seccion2`.`S2_23_4_6A`,
+`pesc_seccion2`.`S2_23_6_6`,
+
+`pesc_seccion2`.`S2_23_1_7`,
+`pesc_seccion2`.`S2_23_4_7A`,
+`pesc_seccion2`.`S2_23_6_7`,
+
+`pesc_seccion2`.`S2_23_1_8`,
+`pesc_seccion2`.`S2_23_4_8A`,
+`pesc_seccion2`.`S2_23_6_8`,
+
+`pesc_seccion2`.`S2_23_1_9`,
+`pesc_seccion2`.`S2_23_4_9A`,
+`pesc_seccion2`.`S2_23_6_9`,
+
+`pesc_seccion2`.`S2_23_1_10`,
+`pesc_seccion2`.`S2_23_4_10A`,
+`pesc_seccion2`.`S2_23_6_10`
+
+    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE p.id = ? 
+     ',array($id));
+    return $q;
+}
+
+
+
 
 }
 ?>

@@ -12,5 +12,7 @@
   <li <?php echo ($opcion == 9) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte9'); ?>">Reporte 9</a></li>
   <li <?php echo ($opcion == 10) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte10'); ?>">Reporte 10</a></li>
   <li <?php echo ($opcion == 11) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte11'); ?>">Reporte 11</a></li>
+  <li <?php echo ($opcion == 12) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte12'); ?>">Reporte 12</a></li>
+  <li <?php echo ($opcion == 13) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte13'); ?>">Reporte 13</a></li>
 </ul>
 </div><!--/.well -->

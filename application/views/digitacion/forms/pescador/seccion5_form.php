@@ -4544,7 +4544,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_10_C: {
 		            digits: true,
-		            valrango: [1,50,99],
+		            valrango: [1,100,99],
 		         },	
 //aparejo
 //aparejo
@@ -4555,7 +4555,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_11_C: {
 		            digits: true,
-		            valrango: [1,50,99],
+		            valrango: [1,100,99],
 		         },	
 //aparejo
 //aparejo
@@ -4566,7 +4566,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_12_C: {
 		            digits: true,
-		           valrango: [1,50,99],
+		           valrango: [1,100,99],
 		         },	
 //aparejo
 
@@ -4578,7 +4578,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_13_C: {
 		            digits: true,
-		            valrango: [1,50,99],
+		            valrango: [1,100,99],
 		         },	
 //aparejo
 //aparejo
@@ -4594,7 +4594,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },			         
 		    	S5_5_14_C: {
 		            digits: true,
-		            valrango: [1,50,99],
+		            valrango: [1,100,99],
 		         },	
 //aparejo
 //trampa

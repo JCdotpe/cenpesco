@@ -98,7 +98,7 @@ class Pescador extends CI_Controller {
 	{
 		$is_ajax = $this->input->post('ajax');
 		if($is_ajax){
-			$NFORM = $this->input->post('NFORM');
+			$NFORM = $idf = sprintf("%05d", $this->input->post('NFORM'));
 			$CCDD = $this->input->post('CCDD');
 			$CCPP = $this->input->post('CCPP');
 			$CCDI = $this->input->post('CCDI');
@@ -167,13 +167,16 @@ class Pescador extends CI_Controller {
 			}else{
     				// $this->session->set_flashdata('msgbox','error_odei');
         // 			redirect('/digitacion');					
-			}					
+			}			
+
+			$idf = sprintf("%05d", $this->input->post('NFORM'));
+
 			$c_data = array(
 					'SEDE_COD'	=> $this->tank_auth->get_ubigeo(),
 					'NOM_SEDE'	=> $NOM_SEDE,				
 					'ODEI_COD'	=> $ODEI_COD,
 					'NOM_ODEI'	=> $NOM_ODEI,				
-					'id' =>  $this->input->post('CCDD') . $this->input->post('CCPP') . $this->input->post('CCDI') . $this->input->post('COD_CCPP') . $this->input->post('NFORM'),
+					'id' =>  $this->input->post('CCDD') . $this->input->post('CCPP') . $this->input->post('CCDI') . $this->input->post('COD_CCPP') . $idf,
 					'NFORM' => $this->input->post('NFORM'),
 					'CCDD' => $this->input->post('CCDD'),
 					'NOM_DD' => $this->input->post('NOM_DD'),

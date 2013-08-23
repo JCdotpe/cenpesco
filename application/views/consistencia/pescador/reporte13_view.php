@@ -9,7 +9,7 @@
 
 
  	<div class="span10" id="freg">
-    	<h4>VERIFICACION DEL NIVEL EDUCATIVO DE LOS HIJOS DEL PESCADOR SEGÚN EDAD</h4>
+    	<h4>VERIFICACIÓN DE LA EDAD DE LOS HIJOS Y SU DEPENDENCIA CON EL PESCADOR</h4>
     	<?php
     			echo $this->table->generate(); 
 		?>

@@ -536,7 +536,7 @@ $("#pesca_dor").validate({
         NFORM:{
             required: true,
             minlength: 1,
-            maxlength: 6,
+            maxlength: 5,
 			digits: true,
 			valueNotEquals: 0,
          }, 
