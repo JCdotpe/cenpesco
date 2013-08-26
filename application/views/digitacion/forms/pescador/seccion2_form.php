@@ -4842,7 +4842,7 @@ $('#S2_9_DD_COD').trigger("change");
 								    );
 									
 							        var bsub2 = $( "#seccion2 :submit" );
-							        // bsub2.attr("disabled", "disabled");
+							         bsub2.attr("disabled", "disabled");
 							        $.ajax({
 							            url: CI.base_url + "digitacion/pesc_seccion2",
 							            type:'POST',
@@ -4851,6 +4851,7 @@ $('#S2_9_DD_COD').trigger("change");
 							            success:function(json){
 											alert(json.msg);
 											$('#pesca_dor').trigger('submit');
+											bsub2.removeAttr('disabled');
 							            }
 							        }); 
 					  //   }else{

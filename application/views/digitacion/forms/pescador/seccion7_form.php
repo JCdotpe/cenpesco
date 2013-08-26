@@ -2229,7 +2229,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 												    );
 													
 											        var bsub7 = $( "#seccion7 :submit" );
-											        // bsub7.attr("disabled", "disabled");
+											         bsub7.attr("disabled", "disabled");
 											        $.ajax({
 											            url: CI.base_url + "digitacion/pesc_seccion7",
 											            type:'POST',
@@ -2241,6 +2241,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 															// $('#pesc_tabs').append(window.clonetabs);
 															// $('#pesc_tabs').removeClass('hide');
 															$('#pesca_dor').trigger('submit');
+															bsub7.removeAttr('disabled');
 											            }
 											        });  
 				// 							}else{

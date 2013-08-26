@@ -376,7 +376,7 @@ $(function(){
 			    );
 				
 		        var bsubinfo = $( "#pesc_info :submit" );
-		        // bsubinfo.attr("disabled", "disabled");
+		         bsubinfo.attr("disabled", "disabled");
 		        $.ajax({
 		            url: CI.base_url + "digitacion/pesc_info",
 		            type:'POST',
@@ -388,6 +388,7 @@ $(function(){
 						// $('#pesc_tabs').append(window.clonetabs);
 						// $('#pesc_tabs').removeClass('hide');
 						$('#pesca_dor').trigger('submit');
+						bsubinfo.removeAttr('disabled');
 		            }
 		        });     
 		          	

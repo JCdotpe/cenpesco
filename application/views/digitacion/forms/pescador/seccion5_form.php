@@ -5456,7 +5456,7 @@ $('#S5_2_DD_COD').trigger("change");
 								    );
 									
 							        var bsub5 = $( "#seccion5 :submit" );
-							        // bsub5.attr("disabled", "disabled");
+							         bsub5.attr("disabled", "disabled");
 							        $.ajax({
 							            url: CI.base_url + "digitacion/pesc_seccion5",
 							            type:'POST',
@@ -5468,6 +5468,7 @@ $('#S5_2_DD_COD').trigger("change");
 											// $('#pesc_tabs').append(window.clonetabs);
 											// $('#pesc_tabs').removeClass('hide');
 											$('#pesca_dor').trigger('submit');
+											bsub5.removeAttr('disabled');
 							            }
 							        });     
 					// 	   		 }else{

@@ -1316,7 +1316,7 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
             );
           
               var bsub9 = $( "#seccion9 :submit" );
-              // bsub9.attr("disabled", "disabled");
+               bsub9.attr("disabled", "disabled");
               $.ajax({
                   url: CI.base_url + "digitacion/pesc_seccion9",
                   type:'POST',
@@ -1328,6 +1328,7 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
               // $('#pesc_tabs').append(window.clonetabs);
               // $('#pesc_tabs').removeClass('hide');
               $('#pesca_dor').trigger('submit');
+              bsub9.removeAttr('disabled');
                   }
               });     
                   
