@@ -317,7 +317,7 @@ $('#S9_2').change(function(event) {
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_3' + '_' + i + '" id="S9_3' + '_' + i + '" readonly value="' + i + '" ></td>';
     asd +='<td><input type="text" class="span12" maxlength="1" name="S9_4' + '_' + i + '" id="S9_4' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_5' + '_' + i + '" id="S9_5' + '_' + i + '" value="" ><div class="help-block error"></div><input type="text" class="span12 embc' + i + '" maxlength="100" name="S9_5' + '_' + i + '_O" id="S9_5' + '_' + i + '_O" value="" >Especifique</td>';
-    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_6' + '_' + i + '" id="S9_6' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_6' + '_' + i + '" id="S9_6' + '_' + i + '" value="" ><div class="help-block error"></div><input type="text" class="span12 embc' + i + '" maxlength="100" name="S9_6' + '_' + i + '_O" id="S9_6' + '_' + i + '_O" value="" >Especifique</td>';
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_7' + '_' + i + '" id="S9_7' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="4" name="S9_8' + '_' + i + '" id="S9_8' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_9' + '_' + i + '_A" id="S9_9' + '_' + i + '_A" value="" ><div class="help-block error"></div></td>';
@@ -434,6 +434,21 @@ $(document).on("change",'#S9_5_1, #S9_5_2, #S9_5_3, #S9_5_4, #S9_5_5, #S9_5_6',f
   }
 });
 
+$(document).on("change",'#S9_6_1, #S9_6_2, #S9_6_3, #S9_6_4, #S9_6_5, #S9_6_6',function() {
+  var deso = $('#' + $(this).attr('id') + '_O');
+  var pre = $(this).attr('id');
+  var npreg = pre.substring(5,6);
+  var th = $(this).val();
+    
+  if(th == 8){
+    deso.removeAttr('disabled');
+  }else{
+    deso.val('');
+    deso.attr("disabled", "disabled"); 
+  }
+});
+
+
 $(document).on("change",'#S9_13_1, #S9_13_2, #S9_13_3, #S9_13_4, #S9_13_5, #S9_13_6',function() {
   var pre = $(this).attr('id');
   var npreg = pre.substring(6,7);
@@ -515,8 +530,13 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                },                    
             S9_6_1: {
                 digits: true,
-                valrango: [1,7,9],
+                valrango: [1,8,9],
                },   
+            S9_6_1_O: {
+                required:true,
+                maxlength: 100,
+                validName:true,
+               },                    
             S9_7_1: {
                 digits: true,
                 valrango: [1,4,9],
@@ -638,8 +658,13 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                },                    
             S9_6_2: {
                 digits: true,
-                valrango:[1,7,9],
+                valrango:[1,8,9],
                },   
+            S9_6_2_O: {
+                required:true,
+                maxlength: 100,
+                validName:true,
+               },                  
             S9_7_2: {
                 digits: true,
                 valrango:[1,4,9],
@@ -761,8 +786,13 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                },                    
             S9_6_3: {
                 digits: true,
-                valrango:[1,7,9],
+                valrango:[1,8,9],
                },   
+            S9_6_3_O: {
+              required:true,
+                maxlength: 100,
+                validName:true,
+               },                 
             S9_7_3: {
                 digits: true,
                 valrango:[1,4,9],
@@ -884,8 +914,13 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                },                    
             S9_6_4: {
                 digits: true,
-                valrango:[1,7,9],
-               },   
+                valrango:[1,8,9],
+               },  
+            S9_6_4_O: {
+              required:true,
+                maxlength: 100,
+                validName:true,
+               },                  
             S9_7_4: {
                 digits: true,
                 valrango:[1,4,9],
@@ -1007,8 +1042,13 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                },                    
             S9_6_5: {
                 digits: true,
-                valrango:[1,7,9],
-               },   
+                valrango:[1,8,9],
+               },  
+            S9_6_5_O: {
+              required:true,
+                maxlength: 100,
+                validName:true,
+               },                  
             S9_7_5: {
                 digits: true,
                 valrango:[1,4,9],
@@ -1130,8 +1170,13 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                },                    
             S9_6_6: {
                 digits: true,
-                valrango:[1,7,9],
-               },   
+                valrango:[1,8,9],
+               },  
+            S9_6_6_O: {
+                required:true,
+                maxlength: 100,
+                validName:true,
+               },                  
             S9_7_6: {
                 digits: true,
                 valrango:[1,4,9],
