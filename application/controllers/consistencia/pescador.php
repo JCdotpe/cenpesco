@@ -281,6 +281,114 @@ class Pescador extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
+	public function reporte14()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report14(); 
+			$data['opcion'] = 14;
+			$data['main_content'] = 'consistencia/pescador/reporte14_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte15()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report15(); 
+			$data['opcion'] = 15;
+			$data['main_content'] = 'consistencia/pescador/reporte15_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte16()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report16(); 
+			$data['opcion'] = 16;
+			$data['main_content'] = 'consistencia/pescador/reporte16_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte17()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report17(); 
+			$data['opcion'] = 17;
+			$data['main_content'] = 'consistencia/pescador/reporte17_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte18()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report18(); 
+			$data['opcion'] = 18;
+			$data['main_content'] = 'consistencia/pescador/reporte18_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte19()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report19(); 
+			$data['opcion'] = 19;
+			$data['main_content'] = 'consistencia/pescador/reporte19_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte20()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report20(); 
+			$data['opcion'] = 20;
+			$data['main_content'] = 'consistencia/pescador/reporte20_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte21()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report21(); 
+			$data['opcion'] = 21;
+			$data['main_content'] = 'consistencia/pescador/reporte21_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte22()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['tables'] = $this->pescador_model->get_report22(); 
+			$data['opcion'] = 22;
+			$data['main_content'] = 'consistencia/pescador/reporte22_view';
+			$this->load->view('backend/includes/template', $data);		
+	}
+
 	// function to_excel(){
 	// 	$this->load->helper('excel');
  //        $query = $this->udra_comunidad_model->get_all_export();

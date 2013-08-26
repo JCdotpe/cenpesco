@@ -14,5 +14,14 @@
   <li <?php echo ($opcion == 11) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte11'); ?>">Reporte 11</a></li>
   <li <?php echo ($opcion == 12) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte12'); ?>">Reporte 12</a></li>
   <li <?php echo ($opcion == 13) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte13'); ?>">Reporte 13</a></li>
+  <li <?php echo ($opcion == 14) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte14'); ?>">Reporte 14</a></li>
+  <li <?php echo ($opcion == 15) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte15'); ?>">Reporte 15</a></li>
+  <li <?php echo ($opcion == 16) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte16'); ?>">Reporte 16</a></li>
+  <li <?php echo ($opcion == 17) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte17'); ?>">Reporte 17</a></li>
+  <li <?php echo ($opcion == 18) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte18'); ?>">Reporte 18</a></li>
+  <li <?php echo ($opcion == 19) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte19'); ?>">Reporte 19</a></li>
+  <li <?php echo ($opcion == 20) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte20'); ?>">Reporte 20</a></li>
+  <li <?php echo ($opcion == 21) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte21'); ?>">Reporte 21</a></li>
+  <li <?php echo ($opcion == 22) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte22'); ?>">Reporte 22</a></li>
 </ul>
 </div><!--/.well -->

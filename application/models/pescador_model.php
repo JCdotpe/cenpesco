@@ -1293,7 +1293,87 @@ function get_report13_son($id){
 }
 
 
+function get_report14(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p3.S3_200, p3.S3_300');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion3 p3', 'p.id = p3.pescador_id','join');
+    $this->db->where_in('p3.S3_200',array(5,6,7,8));
+    $this->db->where_in('p3.S3_300',array(1,2,3));
+    $q = $this->db->get();
+    return $q;
+}
 
+function get_report15(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p3.S3_200, p3.S3_400');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion3 p3', 'p.id = p3.pescador_id','join');
+    $this->db->where_in('p3.S3_200',array(5,6,7,8));
+    $this->db->where('p3.S3_400',1);
+    $q = $this->db->get();
+    return $q;
+}
 
+function get_report16(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p3.S3_300, p3.S3_400');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion3 p3', 'p.id = p3.pescador_id','join');
+    $this->db->where_in('p3.S3_300',array(1,2,3));
+    $this->db->where_in('p3.S3_400',array(4,5,6,7,8));
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report17(){
+    $q = $this->db->query('
+        SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p3`.`S3_902`, `p3`.`S3_908`, `p3`.`S3_1004`, `p3`.`S3_1003` FROM (`pescador` p) JOIN `pesc_seccion3` p3 ON `p`.`id` = `p3`.`pescador_id` WHERE (`p3`.`S3_902` = 0 AND `p3`.`S3_1004` = 1) OR (`p3`.`S3_908` = 0 AND `p3`.`S3_1003` = 1)
+     ');
+    return $q;
+}
+
+function get_report18(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p5.S5_3_H, p5.S5_3_M');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion5 p5', 'p.id = p5.pescador_id','join');
+    $this->db->where_in('p5.S5_3_H', 0);
+    $this->db->where_in('p5.S5_3_M', 0);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report19(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p5.S5_4_H, p5.S5_4_M');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion5 p5', 'p.id = p5.pescador_id','join');
+    $this->db->where_in('p5.S5_4_H', 0);
+    $this->db->where_in('p5.S5_4_M', 0);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report20(){
+    $q = $this->db->query('
+        SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p7`.`S7_101A`, `p7`.`S7_102A` FROM (`pescador` p) JOIN `pesc_seccion7` p7 ON `p`.`id` = `p7`.`pescador_id` WHERE (`p7`.`S7_101A` < 100 OR `p7`.`S7_101A` > 10000) OR (`p7`.`S7_102A` < 100 OR `p7`.`S7_102A` > 10000)
+    ');
+    return $q;
+}
+
+function get_report21(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p7.S7_4_1_1, p7.S7_4_2_1, p7.S7_4_3_1, p7.S7_4_4_1');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion7 p7', 'p.id = p7.pescador_id','join');
+    $this->db->where('p7.S7_4_1_1 + p7.S7_4_2_1 + p7.S7_4_3_1 + p7.S7_4_4_1 !=', 100);
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report22(){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p7.S7_3_1, p7.S7_3_1_C');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion7 p7', 'p.id = p7.pescador_id','join');
+    $this->db->where('p7.S7_3_1_C <', 10);
+    $this->db->or_where('p7.S7_3_1_C >', 5000);
+    $q = $this->db->get();
+    return $q;
+}
 }
 ?>
