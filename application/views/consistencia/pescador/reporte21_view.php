@@ -9,7 +9,7 @@
 
 
  	<div class="span10" id="freg">
-    	<h4>VERIFICAR QUE LOS PORCENTAJES DE DESTINO DE P4 DE LA SECCIO VII SUMEN100 POR CIENTO</h4>
+    	<h4>VERIFICAR QUE LOS PORCENTAJES DE DESTINO DE P4 DE LA SECCION VII SUMEN 100 POR CIENTO</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';

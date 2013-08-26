@@ -377,17 +377,17 @@ class Pescador extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte22()
-	{
-			$data['nav'] = TRUE;
-			$data['title'] = 'Consistencia';
-			$data['user_id']	= $this->tank_auth->get_user_id();
-			$data['username']	= $this->tank_auth->get_username();				
-			$data['tables'] = $this->pescador_model->get_report22(); 
-			$data['opcion'] = 22;
-			$data['main_content'] = 'consistencia/pescador/reporte22_view';
-			$this->load->view('backend/includes/template', $data);		
-	}
+	// public function reporte22()
+	// {
+	// 		$data['nav'] = TRUE;
+	// 		$data['title'] = 'Consistencia';
+	// 		$data['user_id']	= $this->tank_auth->get_user_id();
+	// 		$data['username']	= $this->tank_auth->get_username();				
+	// 		$data['tables'] = $this->pescador_model->get_report22(); 
+	// 		$data['opcion'] = 22;
+	// 		$data['main_content'] = 'consistencia/pescador/reporte22_view';
+	// 		$this->load->view('backend/includes/template', $data);		
+	// }
 
 	// function to_excel(){
 	// 	$this->load->helper('excel');

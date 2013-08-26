@@ -22,6 +22,6 @@
   <li <?php echo ($opcion == 19) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte19'); ?>">Reporte 19</a></li>
   <li <?php echo ($opcion == 20) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte20'); ?>">Reporte 20</a></li>
   <li <?php echo ($opcion == 21) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte21'); ?>">Reporte 21</a></li>
-  <li <?php echo ($opcion == 22) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('consistencia/pescador/reporte22'); ?>">Reporte 22</a></li>
+  <!-- <li <?php //echo ($opcion == 22) ? 'class="active"' : ''; ?>><a href="<?php //echo site_url('consistencia/pescador/reporte22'); ?>">Reporte 22</a></li> -->
 </ul>
 </div><!--/.well -->

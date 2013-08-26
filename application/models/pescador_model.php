@@ -1366,14 +1366,17 @@ function get_report21(){
     return $q;
 }
 
-function get_report22(){
-    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p7.S7_3_1, p7.S7_3_1_C');
-    $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7', 'p.id = p7.pescador_id','join');
-    $this->db->where('p7.S7_3_1_C <', 10);
-    $this->db->or_where('p7.S7_3_1_C >', 5000);
-    $q = $this->db->get();
-    return $q;
-}
+// function get_report22(){
+//     $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p7.S7_3_1, p7.S7_3_1_C');
+//     $this->db->from('pescador p');
+//     $this->db->join('pesc_seccion7 p7', 'p.id = p7.pescador_id','join');
+//     $this->db->where('p7.S7_3_1_C <', 10);
+//     $this->db->or_where('p7.S7_3_1_C >', 5000);
+//     $this->db->where('p7.S7_3_1_C <', 10);
+//     $this->db->or_where('p7.S7_3_1_C >', 5000);    
+//     $q = $this->db->get();
+//     return $q;
+// }
+
 }
 ?>
