@@ -635,14 +635,15 @@ $("#pesca_dor").validate({
 				            data:form_data,
 				            dataType:'json',
 				            success:function(json){
-				            	alert(json.msg);
 				            	$("#pesca_dor :input").attr("disabled", true);
 				            	//insercion correcta
 				            	if(json.flag == 1){
+                                     alert(json.msg);
 				            		$('#pesca_dor').trigger('submit');
-				            	}else{
-				            	//error en la insercion	
-				            	}
+				            	}else if(json.flag == 2){
+				            	     alert(json.msg);   
+				            	}else if(json.flag == 0){
+                                }
 				            }
 				        });    
 				//form encontrado, ver secciones que faltan               		

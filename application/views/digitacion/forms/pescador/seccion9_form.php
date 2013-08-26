@@ -339,7 +339,7 @@ $('#S9_2').change(function(event) {
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_16' + '_' + i + '" id="S9_16' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_17' + '_' + i + '" id="S9_17' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="1" name="S9_18' + '_' + i + '" id="S9_18' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
-    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="2" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
+    asd2 +='<td><input type="text" class="span12 embc' + i + '" maxlength="5" name="S9_19' + '_' + i + '" id="S9_19' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="1" name="S9_20' + '_' + i + '_T" id="S9_20' + '_' + i + '_T" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="5" name="S9_20' + '_' + i + '_C" id="S9_20' + '_' + i + '_C" value="" ><div class="help-block error"></div></td>';
     asd2 +='<td><input type="text" class="span12 embd' + i + '" maxlength="1" name="S9_21' + '_' + i + '" id="S9_21' + '_' + i + '" value="" ><div class="help-block error"></div></td>';
@@ -602,8 +602,8 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                 valrango:[1,2,9],
                }, 
             S9_19_1: {
-                digits: true,
-                valrango:[10,98,99],
+                number: true,
+                valrango:[2.5,98.98,99.99],
                }, 
             S9_20_1_T: {
                 digits: true,
@@ -730,8 +730,8 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                 valrango:[1,2,9],
                }, 
             S9_19_2: {
-                digits: true,
-                valrango:[10,98,99],
+                number: true,
+                valrango:[2.5,98.98,99.99],
                }, 
             S9_20_2_T: {
                 digits: true,
@@ -858,8 +858,8 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                 valrango:[1,2,9],
                }, 
             S9_19_3: {
-                digits: true,
-                valrango:[10,98,99],
+                number: true,
+                valrango:[2.5,98.98,99.99],
                }, 
             S9_20_3_T: {
                 digits: true,
@@ -986,8 +986,8 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                 valrango:[1,2,9],
                }, 
             S9_19_4: {
-                digits: true,
-                valrango:[10,98,99],
+                number: true,
+                valrango:[2.5,98.98,99.99],
                }, 
             S9_20_4_T: {
                 digits: true,
@@ -1114,8 +1114,8 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                 valrango:[1,2,9],
                }, 
             S9_19_5: {
-                digits: true,
-                valrango:[10,98,99],
+                number: true,
+                valrango:[2.5,98.98,99.99],
                }, 
             S9_20_5_T: {
                 digits: true,
@@ -1242,8 +1242,8 @@ $(document).on("change",'#S9_20_1_T, #S9_20_2_T, #S9_20_3_T, #S9_20_4_T, #S9_20_
                 valrango:[1,2,9],
                }, 
             S9_19_6: {
-                digits: true,
-                valrango:[10,98,99],
+                number: true,
+                valrango:[2.5,98.98,99.99],
                }, 
             S9_20_6_T: {
                 digits: true,
