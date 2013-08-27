@@ -377,17 +377,283 @@ class Pescador extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	// public function reporte22()
-	// {
-	// 		$data['nav'] = TRUE;
-	// 		$data['title'] = 'Consistencia';
-	// 		$data['user_id']	= $this->tank_auth->get_user_id();
-	// 		$data['username']	= $this->tank_auth->get_username();				
-	// 		$data['tables'] = $this->pescador_model->get_report22(); 
-	// 		$data['opcion'] = 22;
-	// 		$data['main_content'] = 'consistencia/pescador/reporte22_view';
-	// 		$this->load->view('backend/includes/template', $data);		
-	// }
+	public function reporte22()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','En los ultimos 12 meses realizo su actividad de pesca','¿En que meses realizó su actividad de pesca? Agosto 2012 CANTIDAD');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report22($c->id)->row_array(); 
+				for($i = 1; $i<=12; $i++){
+					$aa = 'S7_3_' . $i;
+					$ab = 'S7_3_' . $i . '_C';
+					if($son[$c->id][$aa]!=0 && !is_null($son[$c->id][$ab]) && $son[$c->id][$ab]!=99999){
+						if($son[$c->id][$ab] < 10 || $son[$c->id][$ab] > 5000){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 22;
+			$data['main_content'] = 'consistencia/pescador/reporte22_view';
+			$this->load->view('backend/includes/template', $data);			
+	}
+
+	public function reporte23()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','Numero de embarcacion','La embarcacion que utiliza es:');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report23($c->id)->row_array(); 
+				for($i = 1; $i<=6; $i++){
+					$aa = 'S9_3_' . $i;
+					$ab = 'S9_9_' . $i . '_A';
+					if(!is_null($son[$c->id][$aa])){
+						if($son[$c->id][$ab] > 5){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 23;
+			$data['main_content'] = 'consistencia/pescador/reporte23_view';
+			$this->load->view('backend/includes/template', $data);			
+	}
+
+	public function reporte24()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','Numero de embarcacion','¿El tipo de bodega es: Capacidad');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report24($c->id)->row_array(); 
+				for($i = 1; $i<=6; $i++){
+					$aa = 'S9_3_' . $i;
+					$ab = 'S9_20_' . $i . '_C';
+					if(!is_null($son[$c->id][$aa]) && $son[$c->id][$aa]!=0){
+						if($son[$c->id][$ab] < 5 || $son[$c->id][$ab] > 500){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 24;
+			$data['main_content'] = 'consistencia/pescador/reporte24_view';
+			$this->load->view('backend/includes/template', $data);			
+	}
+
+	public function reporte25()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','Numero de embarcacion','UNIDAD DE MEDIDA DE LA EMBARCACION','medidas de la embarcacion largo', 'medidas de la embarcacion ancho','medidas de la embarcacion altura');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report25($c->id)->row_array(); 
+				for($i = 1; $i<=6; $i++){
+					$aa = 'S9_3_' . $i;
+					$ab = 'S9_10_' . $i . '_MED';
+					$ac = 'S9_10_' . $i . '_1';
+					$ad = 'S9_10_' . $i . '_2';
+					$ae = 'S9_10_' . $i . '_3';
+					if(!is_null($son[$c->id][$ab]) && $son[$c->id][$ab]==1){
+						if(($son[$c->id][$ac] < 1 || $son[$c->id][$ac] > 7) || ($son[$c->id][$ad] < 1 || $son[$c->id][$ad] > 4) || ($son[$c->id][$ae] < 0.5 || $son[$c->id][$ae] > 1)){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab],
+								$son[$c->id][$ac],
+								$son[$c->id][$ad],
+								$son[$c->id][$ae]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 25;
+			$data['main_content'] = 'consistencia/pescador/reporte25_view';
+			$this->load->view('backend/includes/template', $data);			
+	}
+
+
+	public function reporte26()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','Numero de embarcacion','UNIDAD DE MEDIDA DE LA EMBARCACION','medidas de la embarcacion largo', 'medidas de la embarcacion ancho','medidas de la embarcacion altura');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report25($c->id)->row_array(); 
+				for($i = 1; $i<=6; $i++){
+					$aa = 'S9_3_' . $i;
+					$ab = 'S9_10_' . $i . '_MED';
+					$ac = 'S9_10_' . $i . '_1';
+					$ad = 'S9_10_' . $i . '_2';
+					$ae = 'S9_10_' . $i . '_3';
+					if(!is_null($son[$c->id][$ab]) && $son[$c->id][$ab]==2){
+						if(($son[$c->id][$ac] < 4 || $son[$c->id][$ac] > 18) || ($son[$c->id][$ad] < 4 || $son[$c->id][$ad] > 14) || ($son[$c->id][$ae] < 1 || $son[$c->id][$ae] > 8)){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab],
+								$son[$c->id][$ac],
+								$son[$c->id][$ad],
+								$son[$c->id][$ae]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 26;
+			$data['main_content'] = 'consistencia/pescador/reporte25_view';
+			$this->load->view('backend/includes/template', $data);			
+	}	
+
+
+	public function reporte27()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','Numero de embarcacion','UNIDAD DE MEDIDA DE LA BODEGA','medidas de la bodega largo', 'medidas de la bodega ancho','medidas de la bodega altura');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report27($c->id)->row_array(); 
+				for($i = 1; $i<=6; $i++){
+					$aa = 'S9_3_' . $i;
+					$ab = 'S9_22_' . $i . '_MED';
+					$ac = 'S9_22_' . $i . '_1';
+					$ad = 'S9_22_' . $i . '_2';
+					$ae = 'S9_22_' . $i . '_3';
+					if(!is_null($son[$c->id][$ab]) && $son[$c->id][$ab]==1){
+						if(($son[$c->id][$ac] < 1 || $son[$c->id][$ac] > 8) || ($son[$c->id][$ad] < 1 || $son[$c->id][$ad] > 6) || ($son[$c->id][$ae] < 0.5 || $son[$c->id][$ae] > 2)){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab],
+								$son[$c->id][$ac],
+								$son[$c->id][$ad],
+								$son[$c->id][$ae]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 27;
+			$data['main_content'] = 'consistencia/pescador/reporte27_view';
+			$this->load->view('backend/includes/template', $data);			
+	}	
+
+	public function reporte28()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$cab = $this->pescador_model->get_report_cab(); 
+			$this->table->set_heading('SEDE', 'DEPARTAMENTO','PROVINCIA','DISTRITO','CENTRO POBLADO','FORMULARIO N°','Numero de embarcacion','UNIDAD DE MEDIDA DE LA BODEGA','medidas de la bodega largo', 'medidas de la bodega ancho','medidas de la bodega altura');
+			$son = null;
+			foreach($cab->result() as $c){
+				$son[$c->id] = $this->pescador_model->get_report27($c->id)->row_array(); 
+				for($i = 1; $i<=6; $i++){
+					$aa = 'S9_3_' . $i;
+					$ab = 'S9_22_' . $i . '_MED';
+					$ac = 'S9_22_' . $i . '_1';
+					$ad = 'S9_22_' . $i . '_2';
+					$ae = 'S9_22_' . $i . '_3';
+					if(!is_null($son[$c->id][$ab]) && $son[$c->id][$ab]==2){
+						if(($son[$c->id][$ac] < 2 || $son[$c->id][$ac] > 15) || ($son[$c->id][$ad] < 2 || $son[$c->id][$ad] > 8) || ($son[$c->id][$ae] < 1 || $son[$c->id][$ae] > 3)){
+							$this->table->add_row(
+								$son[$c->id]['NOM_SEDE'],
+								$son[$c->id]['NOM_DD'],
+								$son[$c->id]['NOM_PP'],
+								$son[$c->id]['NOM_DI'],
+								$son[$c->id]['NOM_CCPP'],
+								$son[$c->id]['NFORM'],
+								$son[$c->id][$aa],
+								$son[$c->id][$ab],
+								$son[$c->id][$ac],
+								$son[$c->id][$ad],
+								$son[$c->id][$ae]
+							);		
+						}		
+					}
+				}
+			}
+			$data['son'] = $son;
+			$data['opcion'] = 28;
+			$data['main_content'] = 'consistencia/pescador/reporte28_view';
+			$this->load->view('backend/includes/template', $data);			
+	}
 
 	// function to_excel(){
 	// 	$this->load->helper('excel');

@@ -1366,17 +1366,52 @@ function get_report21(){
     return $q;
 }
 
-// function get_report22(){
-//     $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p7.S7_3_1, p7.S7_3_1_C');
-//     $this->db->from('pescador p');
-//     $this->db->join('pesc_seccion7 p7', 'p.id = p7.pescador_id','join');
-//     $this->db->where('p7.S7_3_1_C <', 10);
-//     $this->db->or_where('p7.S7_3_1_C >', 5000);
-//     $this->db->where('p7.S7_3_1_C <', 10);
-//     $this->db->or_where('p7.S7_3_1_C >', 5000);    
-//     $q = $this->db->get();
-//     return $q;
-// }
+function get_report22($id){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p7.S7_3_1, p7.S7_3_1_C, p7.S7_3_2, p7.S7_3_2_C, p7.S7_3_3, p7.S7_3_3_C, p7.S7_3_4, p7.S7_3_4_C, p7.S7_3_5, p7.S7_3_5_C, p7.S7_3_6, p7.S7_3_6_C, p7.S7_3_7, p7.S7_3_7_C, p7.S7_3_8, p7.S7_3_8_C, p7.S7_3_9, p7.S7_3_9_C, p7.S7_3_10, p7.S7_3_10_C, p7.S7_3_11, p7.S7_3_11_C, p7.S7_3_12, p7.S7_3_12_C');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion7 p7', 'p.id = p7.pescador_id','left');
+    $this->db->where('p.id', $id);                                                 
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report23($id){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p9.S9_3_1, p9.S9_9_1_A, p9.S9_3_2, p9.S9_9_2_A, p9.S9_3_3, p9.S9_9_3_A, p9.S9_3_4, p9.S9_9_4_A, p9.S9_3_5, p9.S9_9_5_A, p9.S9_3_6, p9.S9_9_6_A');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9', 'p.id = p9.pescador_id','left');
+    $this->db->where('p.id', $id);                                                 
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report24($id){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p9.S9_3_1, p9.S9_20_1_C, p9.S9_3_2, p9.S9_20_2_C, p9.S9_3_3, p9.S9_20_3_C, p9.S9_3_4, p9.S9_20_4_C, p9.S9_3_5, p9.S9_20_5_C, p9.S9_3_6, p9.S9_20_6_C');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9', 'p.id = p9.pescador_id','left');
+    $this->db->where('p.id', $id);                                                 
+    $q = $this->db->get();
+    return $q;
+}
+//report26 too
+function get_report25($id){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p9.S9_3_1, p9.S9_10_1_MED, p9.S9_10_1_1, p9.S9_10_1_2, p9.S9_10_1_3, p9.S9_3_2, p9.S9_10_2_MED, p9.S9_10_2_1, p9.S9_10_2_2, p9.S9_10_2_3, p9.S9_3_3, p9.S9_10_3_MED, p9.S9_10_3_1, p9.S9_10_3_2, p9.S9_10_3_3, p9.S9_3_4, p9.S9_10_4_MED, p9.S9_10_4_1, p9.S9_10_4_2, p9.S9_10_4_3, p9.S9_5_1, p9.S9_10_5_MED, p9.S9_10_5_1, p9.S9_10_5_2, p9.S9_10_5_3, p9.S9_6_1, p9.S9_10_6_MED, p9.S9_10_6_1, p9.S9_10_6_2, p9.S9_10_6_3');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9', 'p.id = p9.pescador_id','left');
+    $this->db->where('p.id', $id);                                                 
+    $q = $this->db->get();
+    return $q;
+}
+
+//report28 too
+function get_report27($id){
+    $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p9.S9_3_1, p9.S9_22_1_MED, p9.S9_22_1_1, p9.S9_22_1_2, p9.S9_22_1_3, p9.S9_3_2, p9.S9_22_2_MED, p9.S9_22_2_1, p9.S9_22_2_2, p9.S9_22_2_3, p9.S9_3_3, p9.S9_22_3_MED, p9.S9_22_3_1, p9.S9_22_3_2, p9.S9_22_3_3, p9.S9_3_4, p9.S9_22_4_MED, p9.S9_22_4_1, p9.S9_22_4_2, p9.S9_22_4_3, p9.S9_5_1, p9.S9_22_5_MED, p9.S9_22_5_1, p9.S9_22_5_2, p9.S9_22_5_3, p9.S9_6_1, p9.S9_22_6_MED, p9.S9_22_6_1, p9.S9_22_6_2, p9.S9_22_6_3');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9', 'p.id = p9.pescador_id','left');
+    $this->db->where('p.id', $id);                                                 
+    $q = $this->db->get();
+    return $q;
+}
 
 }
 ?>

@@ -22,9 +22,9 @@
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
 						echo '<th>Su vivienda cuenta con: Televisor a color</th>';																											
-						echo '<th>Su vivienda cuenta con: Conexión a TV por cable</th>';																											
-						echo '<th>La vivienda tiene alumbrado eléctrico por red pública?</th>';																											
-						echo '<th>Su vivienda cuenta con: Conexión a internet</th>';																											
+						echo '<th>¿Los servicios de comunicación con que cuenta su vivienda son: Conexión a tv por cable?</th>';																											
+						echo '<th>Su vivienda cuenta con: Computadora</th>';																											
+						echo '<th>¿Los servicios de comunicación con que cuenta su vivienda son: Conexion a internet?</th>';																											
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';

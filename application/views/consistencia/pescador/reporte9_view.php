@@ -22,7 +22,7 @@
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
 						echo '<th>¿Usted considera la pesca como su ocupación:</th>';																											
-						echo '<th>¿A qué otra actividad se dedica?</th>';																											
+						echo '<th>¿A qué otra actividad se dedica: No tiene otra actividad?</th>';																											
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';

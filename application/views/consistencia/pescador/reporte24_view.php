@@ -9,7 +9,7 @@
 
 
  	<div class="span10" id="freg">
-    	<h4>VERIFICAR LOS MAXIMOS Y MINIMOS DE LA CANTIDAD DE PESCA EN KILOS PREGUNTA 3 SECCION VII</h4>
+    	<h4>VERIFICAR LA CAPACIDAD DE LA BODEGA DE LA EMBARCACION P20 DE LA SECCION IX</h4>
     	<?php
     		echo $this->table->generate(); 
 		?>
