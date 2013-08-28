@@ -46,6 +46,7 @@ class Comunidad_seccion8 extends CI_Controller {
 
 			if ($this->comunidad_model->consulta_in_seccion($id,'comunidad_seccion8')->num_rows() == 0) {
 				// inserta nuevo registro
+					$c_data['salto_seccion'] = 0;
 					$c_data['user_id'] = $this->tank_auth->get_user_id();
 					$c_data['created'] = date('Y-m-d H:i:s');
 					$c_data['last_ip'] =  $this->input->ip_address();
@@ -59,6 +60,7 @@ class Comunidad_seccion8 extends CI_Controller {
 
 			} else {
 				// actualiza
+					$c_data['salto_seccion'] = 0;
 					$c_data['user_id'] = $this->tank_auth->get_user_id();
 					$c_data['last_ip'] =  $this->input->ip_address();
 					$c_data['modified'] = date('Y-m-d H:i:s');
@@ -81,6 +83,7 @@ class Comunidad_seccion8 extends CI_Controller {
 		}
 
 	}
+	
 	public function salto($var)
 	{
 

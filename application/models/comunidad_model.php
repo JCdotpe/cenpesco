@@ -105,7 +105,8 @@ class Comunidad_model extends CI_MODEL
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       function get_report_1(){ //generar reporte cuando  N < 0.3 or  N > 10
         $sql = '
-              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP, S3_21_1_1_H,S3_21_2_1_M,S3_21_1_2_H,S3_21_2_2_M,S3_21_1_3_H,S3_21_2_3_M,S3_21_1_4_H,
+              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP, 
+              S3_21_1_1_H,S3_21_2_1_M,S3_21_1_2_H,S3_21_2_2_M,S3_21_1_3_H,S3_21_2_3_M,S3_21_1_4_H,
               S3_21_2_4_M,S3_21_1_5_H,S3_21_2_5_M,S3_21_1_6_H,S3_21_2_6_M,S3_21_1_7_H,S3_21_2_7_M,
               S3_21_1_8_H,S3_21_2_8_M,S3_21_1_9_H,S3_21_2_9_M
               from comunidad c inner join comunidad_seccion3 s3 on c.id = s3.comunidad_id
@@ -128,6 +129,7 @@ class Comunidad_model extends CI_MODEL
               S3_21_1_7_H + (S3_21_2_7_M/60) +
               S3_21_1_8_H + (S3_21_2_8_M/60) +
               S3_21_1_9_H + (S3_21_2_9_M/60) < 0.3 
+              order by NOM_SEDE, NOM_DD, NOM_PP,  NOM_DI, NOM_CCPP;
               ';
         $q = $this->db->query($sql);
         return $q;
@@ -135,9 +137,11 @@ class Comunidad_model extends CI_MODEL
 
       function get_report_2(){
         $sql = '
-              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  S4_1, S4_1_C
+              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  
+              S4_1, S4_1_C
               from comunidad c inner join comunidad_seccion4 s4 on c.id = s4.comunidad_id
-              where S4_1=1 AND  S4_1_C>10;
+              where S4_1=1 AND  S4_1_C>10
+              order by NOM_SEDE, NOM_DD, NOM_PP,  NOM_DI, NOM_CCPP;
               ';
         $q = $this->db->query($sql);
         return $q;
@@ -145,10 +149,12 @@ class Comunidad_model extends CI_MODEL
 
       function get_report_3(){
         $sql = '
-              select id,NFORM, NOM_SEDE, NOM_DD, NOM_PP, NOM_DI, NOM_CCPP,  S4_1_C, S4_2_1, S4_2_2, S4_2_3, S4_2_4, S4_2_5
+              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  
+              S4_1_C, S4_2_1, S4_2_2, S4_2_3, S4_2_4, S4_2_5
               from comunidad c inner join comunidad_seccion4 s4 on c.id = s4.comunidad_id
               where ( S4_1_C=1 and ( (S4_2_1=1 or S4_2_2=1 or S4_2_3=1) and  (S4_2_4=1 or S4_2_5=1) ) ) 
-              or ( S4_1_C=2 and  ( (S4_2_1=1 or S4_2_2=1 or S4_2_3=1) and (S4_2_4=1 or S4_2_5=1) ) );
+              or ( S4_1_C=2 and  ( (S4_2_1=1 or S4_2_2=1 or S4_2_3=1) and (S4_2_4=1 or S4_2_5=1) ) )
+              order by NOM_SEDE, NOM_DD, NOM_PP,  NOM_DI, NOM_CCPP;
               ';
         $q = $this->db->query($sql);
         return $q;
@@ -156,9 +162,11 @@ class Comunidad_model extends CI_MODEL
 
       function get_report_4(){
         $sql = '
-              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  S7_1_1, S7_2_9
+              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  
+              S7_1_1, S7_2_9
               from comunidad c inner join comunidad_seccion7 s7 on c.id = s7.comunidad_id
-              where (S7_1_1 = 1 and  S7_2_9=1) OR  (S7_1_1 = 0 and S7_2_9 = 0);
+              where (S7_1_1 = 1 and  S7_2_9=1) OR  (S7_1_1 = 0 and S7_2_9 = 0)
+              order by NOM_SEDE, NOM_DD, NOM_PP,  NOM_DI, NOM_CCPP;
               ';
         $q = $this->db->query($sql);
         return $q;
@@ -166,9 +174,31 @@ class Comunidad_model extends CI_MODEL
 
       function get_report_5(){
         $sql = '
-              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  S7_1_2, S7_7_16
+              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  
+              S7_1_2, S7_7_16
               from comunidad c inner join comunidad_seccion7 s7 on c.id = s7.comunidad_id
-              where (S7_1_2 = 1 and  S7_7_16=1) OR  (S7_1_2 = 0 and S7_7_16 = 0);
+              where (S7_1_2 = 1 and  S7_7_16=1) OR  (S7_1_2 = 0 and S7_7_16 = 0)
+              order by NOM_SEDE, NOM_DD, NOM_PP,  NOM_DI, NOM_CCPP;
+              ';
+        $q = $this->db->query($sql);
+        return $q;
+      }
+
+      function get_report_6(){
+        $sql = '
+              select id,NFORM, SEDE_COD, NOM_SEDE, CCDD, NOM_DD, CCPP, NOM_PP, CCDI, NOM_DI, COD_CCPP, NOM_CCPP,  
+              S3_1_O, S3_4_4_O, S3_5_3_O, S3_6_5_O, S3_8_4_O, S3_10_5_O, S3_12_6_O, S3_16_5_O,  S3_17_8_O,  S3_17_9_O,  S3_18_7_O,  S3_18_8_O,  S3_19_4_O, 
+              S5_2_7_O, S5_3_17_O, 
+              S6_3_6_O, S6_4_15_O,
+              S7_1_9_O, S7_2_8_O, S7_5_41_O, S7_5_49_O, S7_6_3_O, S7_7_14_O, S7_7_15_O, S7_8_18_O, S7_9_13_O, S7_10_9_O, S7_12_4_O, S7_13_12_O, S7_15_O,
+              S8_2_12_O, S8_3_10_O
+              from comunidad c 
+              inner join comunidad_seccion3 s3 on c.id = s3.comunidad_id
+              inner join comunidad_seccion5 s5 on c.id = s5.comunidad_id
+              inner join comunidad_seccion6 s6 on c.id = s6.comunidad_id
+              inner join comunidad_seccion7 s7 on c.id = s7.comunidad_id
+              inner join comunidad_seccion8 s8 on c.id = s8.comunidad_id
+              order by NOM_SEDE, NOM_DD, NOM_PP,  NOM_DI, NOM_CCPP;
               ';
         $q = $this->db->query($sql);
         return $q;

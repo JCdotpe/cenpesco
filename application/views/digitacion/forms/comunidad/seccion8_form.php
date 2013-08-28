@@ -1062,9 +1062,110 @@ echo '</div>';
 
 $(function(){
 
-	// $("#seccion8").on("submit", function(event) {
-	// 	$('#seccion8').trigger('validate');
- // 	});
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+		$("#S8_2_1").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_2").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_3").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_4").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_5").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_6").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_7").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_8").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_9").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_10").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_2_11").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})	
+		$("#S8_2_12").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+				$("#" + $(this).attr('id') + "_1").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+				$("#" + $(this).attr('id') + "_1").attr('disabled','disabled');
+			}
+		})		
+		$("#S8_3_10").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+
+
+
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+
+
 		$("#seccion8").validate({
 		    rules: {  
 
@@ -1165,7 +1266,7 @@ $(function(){
 		            digits: true,
 		         },  
 				S8_2_12_O : {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         }, 
 				S8_2_12_1 :{
@@ -1213,7 +1314,7 @@ $(function(){
 		            digits: true,
 		         },  
 				S8_3_10_O : {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         }, 
 				S8_4_1 :{

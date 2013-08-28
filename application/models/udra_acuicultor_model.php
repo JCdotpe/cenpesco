@@ -3,7 +3,7 @@
 class Udra_acuicultor_model extends CI_MODEL
 {
 	
-	function insert_registro_pescadores ($data)
+	function insert_registro_acuicultores ($data)
 	{
 		$this->db->insert('udra_acuicultor',$data);
 		return $this->db->affected_rows();
@@ -45,12 +45,7 @@ class Udra_acuicultor_model extends CI_MODEL
     	$q = $this->db->get('acuicultura_1');
 		return $q;
 	}	
-	function get_regs_a($table,$num) //verifica si todas las secciones de acuicultor fueron ingresadas
-	{	
-		$this->db->where('id',$num);
-    	$q = $this->db->get($table);
-		return $q;
-	}			
+			
 	function get_formularios_total($departamento)// obtiene el total de formularios declarados en UDRA
 	{	
 		foreach($departamento->result() as $filas){
@@ -73,6 +68,117 @@ class Udra_acuicultor_model extends CI_MODEL
 		$q = $this->db->get('udra_acuicultor');
 		return $q;
 	}
+
+
+
+// ******************************************************************************
+// para REPORTES
+// ******************************************************************************
+
+	function get_regs_a($table,$num, $s) //verifica si todas las secciones de acuicultor fueron ingresadas
+	{	
+		$this->db->where('id'.$s,$num);
+    	$q = $this->db->get($table);
+		return $q;
+	}
+	function get_udra_total_by_odei($cod)// obtiene el total de formularios declarados en UDRA
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+    	$q = $this->db->get('udra_acuicultor');
+		return $q;
+	}	
+
+	function get_forms_by_odei($cod) // obtiene todos los registros formulario registrados inicialmente
+	{	
+		//if ($cod == 99){ $cod = range(1,26); }
+		$this->db->where_in('ODEI_COD',$cod);		
+		$this->db->select('id1,SEDE_COD,ODEI_COD,CCDD,CCPP,CCDI ,COD_CCPP');
+    	$q = $this->db->get('acu_seccion1');
+		return $q;
+	}	
+
+	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('id1',$forms);
+		$this->db->group_by('ODEI_COD');
+    	$q = $this->db->get('acu_seccion1');
+		return $q;
+	}	
+
+	// PROVINCIA
+	function get_udra_total_by_prov($cod)// obtiene el total de formularios declarados en UDRA por Provincia
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+    	$q = $this->db->get('udra_acuicultor');
+		return $q;
+	}	
+
+	function get_n_formularios_by_prov($forms)// cuenta por ODEI, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('id1',$forms);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+    	$q = $this->db->get('acu_seccion1');
+		return $q;
+	}
+
+	//DISTRITO
+	function get_udra_total_by_dist($cod)// obtiene el total de formularios declarados en UDRA por Provincia
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, CCDI, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+    	$q = $this->db->get('udra_acuicultor');
+		return $q;
+	}	
+
+	function get_n_formularios_by_dist($forms)// cuenta por distrito, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('id1',$forms);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+    	$q = $this->db->get('acu_seccion1');
+		return $q;
+	}
+
+	//CENTRO POBLADO
+	function get_udra_total_by_ccpp($cod)// obtiene el total de formularios declarados en UDRA por CENTRO_POBLADO
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, PROVINCIA, CCDI,COD_CCPP, sum(FORMULARIOS) as TOTAL_FORM ');
+		$this->db->where_in('ODEI_COD',$cod);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+		$this->db->group_by('COD_CCPP');
+    	$q = $this->db->get('udra_acuicultor');
+		return $q;
+	}	
+
+	function get_n_formularios_by_ccpp($forms)// cuenta por CCPP, la cantidad de formularios 
+	{	
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI,COD_CCPP, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('id1',$forms);
+		$this->db->group_by('ODEI_COD');
+		$this->db->group_by('CCPP');
+		$this->db->group_by('CCDI');
+		$this->db->group_by('COD_CCPP');
+    	$q = $this->db->get('acu_seccion1');
+		return $q;
+	}
+
+
+
 }
 
 

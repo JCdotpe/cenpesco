@@ -18,7 +18,7 @@ $span_class =  'span12';
 		'id'	=> 'OBS',
 		'maxlength'	=> 1000,
 		'class' => $span_class,
-		'onkeypress'=>"return solo_letras_2(event)",		
+		'onkeypress'=>"return alfa_numericos(event)",		
 	);
 
 //FECHA DE EMPADRONAMIENTO DIA

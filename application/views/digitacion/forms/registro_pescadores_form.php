@@ -358,14 +358,19 @@ $OBS =array(
 	if (!$detalle){
 		foreach($departamento->result() as $filas) {
 	        $depaArray[$filas->CCDD]=strtoupper($filas->DEPARTAMENTO);	
-	       	$emp_jefe = array( -1 => '-');  	
 	    }
+	     $emp_jefe[-1]= '-';
+		foreach($emps_jefes->result() as $filas) {
+	        $emp_jefe[$filas->DNI]=strtoupper($filas->NOMBRE);	
+	    }
+
 	}else {
 		foreach($departamento->result() as $filas) {
 	        $depaArray[$filas->CCDD]=strtoupper($filas->NOM_DD);	
 		}
-	$emp_jefe = array($NOM_EMP => $NOM_EMP); 
+		$emp_jefe = array($NOM_EMP => $NOM_EMP); 
 	}
+
 
 	$selected_NOM_DD = (set_value('NOM_DD_f')) ?  set_value('NOM_DD_f') : '';
 
@@ -1853,7 +1858,7 @@ function soloLetras(e) {
 function alfa_numericos(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toLowerCase();
-    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz123456789.;,";
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz0123456789.;,";
     especiales = [8, 37, 39];
 
     tecla_especial = false
@@ -2038,21 +2043,21 @@ $.validator.addMethod("peruDate",function(value, element) {
 // window.clo
 
 
-$("#NOM_DD_f").change(function() {
-        $.ajax({
-            url: CI.base_url + "digitacion/registro_pescadores/get_emp_jefe/"+ $(this).val(),
-            type:'POST',
-            data:{dep: $(this).val(), csrf_token_c: CI.cct},
-            dataType:'json',
-            success:function(json_data){
-                $("#NOM_EMP_combo").empty();
-                $("#NOM_EMP_combo").append('<option value="-"> - </option>');
-                $.each(json_data.emps_jefes, function(i, data){
-                    $("#NOM_EMP_combo").append('<option value="' + data.DNI + '">' + data.NOMBRE + '</option>');
-                });
-            }
-        }); 
-});
+// $("#NOM_DD_f").change(function() {
+//         $.ajax({
+//             url: CI.base_url + "digitacion/registro_pescadores/get_emp_jefe/" + $("#SEDE_COD").val() + "/" + $(this).val(),
+//             type:'POST',
+//             data:{dep: $(this).val(), csrf_token_c: CI.cct},
+//             dataType:'json',
+//             success:function(json_data){
+//                 $("#NOM_EMP_combo").empty();
+//                 $("#NOM_EMP_combo").append('<option value="-"> - </option>');
+//                 $.each(json_data.emps_jefes, function(i, data){
+//                     $("#NOM_EMP_combo").append('<option value="' + data.DNI + '">' + data.NOMBRE + '</option>');
+//                 });
+//             }
+//         }); 
+// });
 
 $("#NOM_EMP_combo").change(function(){
 	$("#DNI_EMP").val($(this).val());
@@ -2332,7 +2337,7 @@ $("#form_registro_dat").validate({
             required: true,
             number: true,
             exactlength: 8, 
-            range: [1,99999998],
+            range: [1,99999999],
          },
 
         P5:{
@@ -2458,12 +2463,12 @@ $("#form_registro_dat").validate({
     },
 
 
-    // submitHandler: function(form) {
+    //submitHandler: function(form) {
 
-    // var bsub = $( ":submit" );
-    // bsub.attr("disabled", "disabled");
+	    // var bsub = $( ":submit" );
+	    // bsub.attr("disabled", "disabled");
 
-    // }       
+    //}       
 }); 
 
     // $("#P2").keydown(function(event) {

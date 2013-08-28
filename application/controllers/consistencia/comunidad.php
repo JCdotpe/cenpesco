@@ -97,6 +97,52 @@ class Comunidad extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
+	public function reporte_6()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Consistencia';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();				
+			$data['opcion'] = 6;
+			$data['main_content'] = 'consistencia/comunidad/reporte_6_view';
+			$registros = $this->comunidad_model->get_report_6();
+
+			$tablas = array();
+			$tables = array();
+			$otros = array(
+			'S3_1_O', 'S3_4_4_O', 'S3_5_3_O', 'S3_6_5_O', 'S3_8_4_O','S3_10_5_O', 'S3_12_6_O',	'S3_16_5_O',	'S3_17_8_O',	'S3_17_9_O',	'S3_18_7_O',	'S3_18_8_O',	'S3_19_4_O', 
+			'S5_2_7_O', 'S5_3_17_O', 
+			'S6_3_6_O', 'S6_4_15_O',
+			'S7_1_9_O', 'S7_2_8_O', 'S7_5_41_O', 'S7_5_49_O', 'S7_6_3_O', 'S7_7_14_O', 'S7_7_15_O', 'S7_8_18_O', 'S7_9_13_O', 'S7_10_9_O', 'S7_12_4_O', 'S7_13_12_O', 'S7_15_O',
+			'S8_2_12_O', 'S8_3_10_O');
+			$cont = 0;
+			foreach ($registros->result() as $filas) {
+
+				foreach ($filas as $key => $value) {
+					if ( in_array($key, $otros) && !is_null($value)) {
+						$tablas['SEDE_COD'] = $filas->SEDE_COD;
+						$tablas['NOM_SEDE'] = $filas->NOM_SEDE;
+						$tablas['CCDD'] = $filas->CCDD;
+						$tablas['NOM_DD'] = $filas->NOM_DD;
+						$tablas['CCPP'] = $filas->CCPP;
+						$tablas['NOM_PP'] = $filas->NOM_PP;
+						$tablas['CCDI'] = $filas->CCDI;
+						$tablas['NOM_DI'] = $filas->NOM_DI;
+						$tablas['COD_CCPP'] = $filas->COD_CCPP;
+						$tablas['NOM_CCPP'] = $filas->NOM_CCPP;
+						$tablas['NFORM'] = $filas->NFORM;
+						$tablas[$key] = $value;													
+						$tablas['id'] = $filas->id;
+						$tables[$cont++] = $tablas;
+						$tablas = null;
+					} 
+				}
+				
+			}
+			//var_dump($tables);
+			$data['tables'] = $tables; 
+			$this->load->view('backend/includes/template', $data);		
+	}
 
 	function to_excel(){
 		$this->load->helper('excel');

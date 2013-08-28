@@ -10,11 +10,9 @@
 
     <div class="span10" id="freg">
 
-    	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO PESCADOR A NIVEL CENTRO POBLADO</h4>
+    	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO ACUICULTOR A NIVEL PROVINCIAL</h4>
     	<?php
-    		if ($ubigeo == 99){
-				echo anchor(site_url('digitacion/pescador_avance/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');	
-    		}
+
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
@@ -23,11 +21,7 @@
 						echo '<th>ODEI</th>';						
 						echo '<th>CCPP</th>';
 						echo '<th>PROVINCIA</th>';
-						echo '<th>CCDI</th>';
-						echo '<th>DISTRITO</th>';						
-						echo '<th>CODCCPP</th>';
-						echo '<th>CENTRO POBLADO</th>';						
-						echo '<th>PEA PESCADOR</th>';
+						echo '<th>PEA ACUICULTOR</th>';
 						echo '<th>UDRA</th>';
 						echo '<th>DIGITACIÓN</th>';
 						echo '<th>% AVANCE DE DIGITACION</th>';
@@ -41,16 +35,12 @@
 						echo "<td></td>";
 						echo "<td></td>";
 						echo "<td></td>";
-						echo "<td></td>";
-						echo "<td></td>";
-						echo "<td></td>";
-						echo "<td></td>";
 						echo "<td>TOTAL</td>";
 						$total_1 = 0;
 						$total_2 = 0;
 						$total_3 = 0;
 						foreach($tables as $row){ //TOTAL MARCO
-							$total_1 = $total_1 + $row->TOTAL_PES;
+							$total_1 = $total_1 + $row->TOTAL_ACUI;
 						}
 						echo "<td>". $total_1 . "</td>";
 
@@ -59,10 +49,14 @@
 						}
 						echo "<td>". $total_2 ."</td>";
 
-						foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
-								$total_3 = $total_3 +  $key->TOTAL_DIG;
-						}	
-						echo "<td>" . $total_3 ."</td>";
+						if (isset($formularios)){
+							foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
+									$total_3 = $total_3 +  $key->TOTAL_DIG;
+							}	
+							echo "<td>" . $total_3 ."</td>";
+						}else{
+								echo "<td> ". 0 ."</td>";
+						}
 
 						if ( $total_2>0){
 							echo "<td>". number_format( ($total_3*100)/$total_2 , 2,'.' ,'') ." %</td>";								
@@ -88,15 +82,12 @@
 						echo "<td>". $row->NOM_ODEI ."</td>";						
 						echo "<td>". $row->CCPP ."</td>";
 						echo "<td>". $row->PROVINCIA ."</td>";
-						echo "<td>". $row->CCDI ."</td>";
-						echo "<td>". $row->DISTRITO ."</td>";	
-						echo "<td>". $row->CODCCPP ."</td>";
-						echo "<td>". $row->CENTRO_POBLADO ."</td>";												
-						echo "<td>". $row->TOTAL_PES ."</td>";
+						echo "<td>". $row->TOTAL_ACUI ."</td>";
+						//echo "<td>". $row->FORMULARIOS ."</td>";
 
 						if (isset($udra)){
 							foreach ($udra->result() as $key ) {
-								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP) ){
+								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP)  ){
 									$nform_udra =  $key->TOTAL_FORM; break;
 								}
 							}
@@ -112,7 +103,7 @@
 
 						if (isset($formularios)){
 							foreach ($formularios->result() as $key ) {
-								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP)  ){
+								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP)  ){
 									$nform_pes =  $key->TOTAL_DIG;
 									break;
 								}
@@ -133,8 +124,8 @@
 							echo "<td> 0.00% </td>";
 						}
 
-						if ( $row->TOTAL_PES>0){
-							echo "<td><strong>". number_format( ($nform_udra*100)/$row->TOTAL_PES , 2,'.' ,'') ." %</strong></td>";								
+						if ( $nform_pes>0){
+							echo "<td><strong>". number_format( ($nform_udra*100)/$row->TOTAL_ACUI , 2,'.' ,'') ." %</strong></td>";								
 						}else{
 							echo "<td> 0.00% </td>";
 						}

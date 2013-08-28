@@ -31,6 +31,48 @@
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
+					//TOTALES
+						echo "<tr>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td>TOTAL</td>";
+						$total_1 = 0;
+						$total_2 = 0;
+						$total_3 = 0;
+						foreach($tables as $row){ //TOTAL MARCO
+							$total_1 = $total_1 + $row->TOTAL_COM;
+						}
+						echo "<td>". $total_1 . "</td>";
+
+						foreach ($udra->result() as $key ) {// TOTAL UDRA
+								$total_2 = $total_2 +  $key->TOTAL_FORM; 
+						}
+						echo "<td>". $total_2 ."</td>";
+
+						foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
+								$total_3 = $total_3 +  $key->TOTAL_DIG;
+						}	
+						echo "<td>" . $total_3 ."</td>";
+
+						if ( $total_2>0){
+							echo "<td>". number_format( ($total_3*100)/$total_2 , 2,'.' ,'') ." %</td>";								
+						}else{
+							echo "<td> 0.00% </td>";
+						}
+
+						if ( $total_1>0){
+							echo "<td><strong>". number_format( ($total_2*100)/$total_1 , 2,'.' ,'') ." %</strong></td>";								
+						}else{
+							echo "<td> 0.00% </td>";
+						}
+						echo "</tr>";
+					// TOTALES
+
+					
 					$i = 1;
 					$nform_udra = null;
 					$nform_pes = null;

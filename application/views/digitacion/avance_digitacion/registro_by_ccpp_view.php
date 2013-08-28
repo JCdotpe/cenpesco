@@ -12,7 +12,9 @@
 
     	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO REGISTRO PESCADORES Y ACUICULTORES A NIVEL CENTRO POBLADO</h4>
     	<?php
-
+    		if ($ubigeo == 99){
+				echo anchor(site_url('digitacion/registro_avance/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');	
+    		}
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
@@ -31,6 +33,37 @@
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
+					//TOTALES
+						echo "<tr>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td></td>";
+						echo "<td>TOTAL</td>";
+						$total_2 = 0;
+						$total_3 = 0;
+
+						foreach ($udra->result() as $key ) {// TOTAL UDRA
+								$total_2 = $total_2 +  $key->TOTAL_FORM; 
+						}
+						echo "<td>". $total_2 ."</td>";
+
+						foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
+								$total_3 = $total_3 +  $key->TOTAL_DIG;
+						}	
+						echo "<td>" . $total_3 ."</td>";
+						if ( $total_2>0){
+							echo "<td><strong>". number_format( ($total_3*100)/$total_2 , 2,'.' ,'') ." %</strong></td>";								
+						}else{
+							echo "<td> 0.00% </td>";
+						}
+						echo "</tr>";
+					// TOTALES
+
 					$i = 1;
 					$nform_udra = null;
 					$nform_reg = null;
@@ -63,7 +96,7 @@
 
 						if (isset($formularios)){
 							foreach ($formularios->result() as $key ) {
-								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP)  ){
+								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->CCPP_CODPROC)  ){
 									$nform_reg =  $key->TOTAL_DIG;
 									break;
 								}

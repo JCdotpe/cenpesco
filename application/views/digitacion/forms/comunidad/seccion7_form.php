@@ -4652,9 +4652,186 @@ echo '</div>';
 
 $(function(){
 
-	// $("#seccion7").on("submit", function(event) {
-	// 	$('#seccion7').trigger('validate');
- // 	});
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+		$("#S7_1_9").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_1").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_2").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_3").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_4").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_5").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_6").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_2_7").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})	
+		$("#S7_2_8").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+				$("#" + $(this).attr('id') + "_F").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+				$("#" + $(this).attr('id') + "_F").attr('disabled','disabled');
+			}
+		})	
+
+		$("#S7_5_41").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_5_49").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_6_3").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+
+		$("#S7_7_14").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+
+		$("#S7_7_15").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})			
+
+		$("#S7_8_18").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})	
+
+		$("#S7_9_13").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})
+
+		$("#S7_10_9").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})			
+
+		$("#S7_12_1").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_N").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_N").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_12_2").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_N").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_N").attr('disabled','disabled');
+			}
+		})	
+		$("#S7_12_3").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_N").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_N").attr('disabled','disabled');
+			}
+		})	
+		$("#S7_12_4").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+				$("#" + $(this).attr('id') + "_N").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+				$("#" + $(this).attr('id') + "_N").attr('disabled','disabled');
+			}
+		})			
+		$("#S7_13_12").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+		$("#S7_15").change(function () {
+			if ($(this).val() == 6){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})																
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+
+
 		$("#seccion7").validate({
 		    rules: {           
 			S7_1_1:{
@@ -4694,7 +4871,7 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_1_9_O: {
-		            //required: false,
+		           required: true,
 		            validName: true,
 		         },  
 			S7_2_1:{
@@ -4758,7 +4935,7 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_2_8_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_2_8_F: {
@@ -4768,6 +4945,7 @@ $(function(){
 			S7_2_9:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_2_1','S7_2_2','S7_2_3','S7_2_4','S7_2_5','S7_2_6','S7_2_7','S7_2_8'],	
 		         },  
 			S7_3_1:{
 		            required: true,
@@ -4816,6 +4994,7 @@ $(function(){
 			S7_3_12:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_3_1','S7_3_2','S7_3_3','S7_3_4','S7_3_5','S7_3_6','S7_3_7','S7_3_8','S7_3_9','S7_3_10','S7_3_11'],
 		         },  
 			S7_4_1:{
 		            required: true,
@@ -4864,6 +5043,7 @@ $(function(){
 			S7_4_12:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_4_1','S7_4_2','S7_4_3','S7_4_4','S7_4_5','S7_4_6','S7_4_7','S7_4_8','S7_4_9','S7_4_10','S7_4_11'],
 		         },  
 			S7_5_1:{
 		            required: true,
@@ -5030,7 +5210,7 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_5_41_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_5_42:{
@@ -5064,9 +5244,14 @@ $(function(){
 			S7_5_49:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_5_1','S7_5_2','S7_5_3','S7_5_4','S7_5_5','S7_5_6','S7_5_7','S7_5_8','S7_5_9','S7_5_10',
+		            		 'S7_5_11','S7_5_12','S7_5_13','S7_5_14','S7_5_15','S7_5_16','S7_5_17','S7_5_18','S7_5_19','S7_5_20',
+		            		 'S7_5_21','S7_5_22','S7_5_23','S7_5_24','S7_5_25','S7_5_26','S7_5_27','S7_5_28','S7_5_29','S7_5_30',
+		            		 'S7_5_31','S7_5_32','S7_5_33','S7_5_34','S7_5_35','S7_5_36','S7_5_37','S7_5_38','S7_5_39','S7_5_40',
+		            		 'S7_5_41','S7_5_42','S7_5_43','S7_5_44','S7_5_45','S7_5_46','S7_5_47','S7_5_48'],
 		         },  
 			S7_5_49_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_6_1:{
@@ -5082,12 +5267,13 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_6_3_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_6_4:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_6_1','S7_6_2','S7_6_3'],		            
 		         },  
 			S7_7_1:{
 		            required: true,
@@ -5146,7 +5332,7 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_7_14_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_7_15:{
@@ -5154,12 +5340,13 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_7_15_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_7_16:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_7_1','S7_7_2','S7_7_3','S7_7_4','S7_7_5','S7_7_6','S7_7_7','S7_7_8','S7_7_9','S7_7_10','S7_7_11','S7_7_12','S7_7_13','S7_7_14','S7_7_15'],	
 		         },  
 			S7_8_1:{
 		            required: true,
@@ -5228,14 +5415,20 @@ $(function(){
 			S7_8_17:{
 		            required: true,
 		            digits: true,
-		         },  		         
+		         },  	
+			S7_8_18:{
+		            required: true,
+		            digits: true,
+		         },  			         	         
 			S7_8_18_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_8_19:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_8_1','S7_8_2','S7_8_3','S7_8_4','S7_8_5','S7_8_6','S7_8_7','S7_8_8','S7_8_9','S7_8_10',
+		            		 'S7_8_11','S7_8_12','S7_8_13','S7_8_14','S7_8_15','S7_8_16','S7_8_17','S7_8_18'],		            
 		         },  		           
 			S7_9_1:{
 		            required: true,
@@ -5288,9 +5481,10 @@ $(function(){
 			S7_9_13:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_9_1','S7_9_2','S7_9_3','S7_9_4','S7_9_5','S7_9_6','S7_9_7','S7_9_8','S7_9_9','S7_9_10', 'S7_9_11','S7_9_12'],				            
 		         },  
 			S7_9_13_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_10_1:{
@@ -5328,9 +5522,10 @@ $(function(){
 			S7_10_9:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_10_1','S7_10_2','S7_10_3','S7_10_4','S7_10_5','S7_10_6','S7_10_7','S7_10_8'],	
 		         },  
 			S7_10_9_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_11:{
@@ -5364,9 +5559,10 @@ $(function(){
 			S7_12_4:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_12_1','S7_12_2','S7_12_3'],	
 		         },  
 			S7_12_4_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_12_4_N: {
@@ -5420,9 +5616,10 @@ $(function(){
 			S7_13_12:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_13_1','S7_13_2','S7_13_3','S7_13_4','S7_13_5','S7_13_6','S7_13_7','S7_13_8','S7_13_9','S7_13_10','S7_13_11'],	
 		         },  
 			S7_13_12_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_14:{
@@ -5434,7 +5631,7 @@ $(function(){
 		            digits: true,
 		         },  
 			S7_15_O: {
-		            //required: false,
+		            required: true,
 		            validName: true,
 		         },  
 			S7_16_1:{
@@ -5456,6 +5653,7 @@ $(function(){
 			S7_16_5:{
 		            required: true,
 		            digits: true,
+		            valzero:['S7_16_1','S7_16_2','S7_16_3','S7_16_4'],	
 		         },  
 
 					         

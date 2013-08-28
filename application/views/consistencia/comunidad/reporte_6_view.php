@@ -17,32 +17,43 @@
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th>N°</th>';
+						echo '<th>COD</th>';
 						echo '<th>SEDE</th>';
+						echo '<th>CCDD</th>';						
 						echo '<th>DEPARTAMENTO</th>';						
+						echo '<th>CCPP</th>';						
 						echo '<th>PROVINCIA</th>';
+						echo '<th>CCDI</th>';						
 						echo '<th>DISTRITO</th>';						
+						echo '<th>COD CCPP</th>';						
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
-						echo '<th>En la comunidad, ¿Existen instituciones educativas? (S4_1_C)</th>';
+						echo '<th>TODAS LAS PREGUNTAS QUE TENGAN RESPUESTA EN LA ALTERNATIVA OTROS</th>'; 
+						echo '<th>LITERAL DE LAS ESPECIFICACIONES</th>';
 
 																																				
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
 					$i = 1;
+					$k = 1;
 
-					foreach($tables->result() as $row){
+					foreach($tables as $row){
 						echo "<tr>";
-						echo "<td>". $i++."</td>";
-						echo "<td>". $row->NOM_SEDE ."</td>";
-						echo "<td>". $row->NOM_DD ."</td>";						
-						echo "<td>". $row->NOM_PP ."</td>";
-						echo "<td>". $row->NOM_DI ."</td>";
-						echo "<td>". $row->NOM_CCPP ."</td>";	
-						echo "<td>". $row->NFORM ."</td>";
-						echo "<td>". $row->S4_1_C ."</td>";																																															
-
+						echo "<td>". $i++."</td>";						
+						foreach($row as $key => $value){
+							if ( $k <= 11) {
+								echo "<td>". $value ."</td>";
+							} else if ( $k == 12) {
+								echo "<td>". $key ."</td>";
+								echo "<td>". $value ."</td>";
+							}
+							$k++;
+						}
+						$k = 1;
 						echo "</tr>"; 
+
+
 
 					 }
 					echo '</tbody>';

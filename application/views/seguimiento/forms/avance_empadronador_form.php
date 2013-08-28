@@ -1170,10 +1170,11 @@ $("#buscar").click(function(){
 									alert('Ingrese en la subruta de acontinuación');
 							        //llena inputs detalle
 							        $.ajax({
-							            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" ,
+							            url: CI.base_url + "seguimiento/avance_empadronador/get_ajax_ccpp_by_sub_ruta/" + datas['opcion'] + "/" + $("#CCSE").val() + "/" + $("#CCDD").val() + "/" + $("#EQP").val() + "/" + $("#RUTA").val() + "/" + $("#SUB_R").val(),
 							            type:'POST',
 							            data:datas,
 							            dataType:'json',
+							            cache: false,
 							            success:function(json2){
 							   
 							    	     		var cant =  json2.length;
@@ -2528,14 +2529,6 @@ $.validator.addMethod("peruDate",function(value, element) {
 				};
 		        var bsub = $( "#frm_avance_campo :submit" );
 		        bsub.attr("disabled", "disabled");
-		        //  if (parseInt($("#C_TOTAL").val()) !== (parseInt($("#C_COMP").val()) + parseInt($("#C_INC").val()) + parseInt($("#C_RECH").val()) ) ){
-		        // 	alert('El total no debe ser diferente a la suma'); $("#C_TOTAL").focus(); $("#C_TOTAL").select(); return;
-		        // }else if (parseInt($("#P_TOTAL").val()) !== (parseInt($("#P_COMP").val()) + parseInt($("#P_INC").val()) + parseInt($("#P_RECH").val()) ) ){
-		        // 	alert('El total no debe ser diferente a la suma'); $("#P_TOTAL").focus(); $("#P_TOTAL").select(); return;
-		        // }else if (parseInt($("#A_TOTAL").val()) !== (parseInt($("#A_COMP").val()) + parseInt($("#A_INC").val()) + parseInt($("#A_RECH").val()) ) ){
-		        // 	alert('El total no debe ser diferente a la suma'); $("#A_TOTAL").focus(); $("#A_TOTAL").select(); return;
-		        // }
-		        //var form_data = $("#ubi_geo :select").serializeArray();
 
 		    	var guar = 0;
 		    	var modi = 0; 
@@ -2577,7 +2570,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 							    			alert('Error INESPERADO, no se guardó o modificó todos los registros')
 							    	} else{
 							    			alert('EXITOSO: [' + guar + '] guardada(s), [' + modi + '] modificada(s)');
-							    			bsub.removeAttr("disabled");// vuelve habilitar guardar
+							    			//bsub.removeAttr("disabled");// vuelve habilitar guardar
 							    	}		        			
 				        		}
 

@@ -787,6 +787,29 @@ echo '</div>';
 
 $(function(){
 
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+		$("#S6_3_6").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+
+		$("#S6_4_15").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+
+
 	// $("#seccion6").on("submit", function(event) {
 	// 	$('#seccion6').trigger('validate');
  // 	});
@@ -842,7 +865,7 @@ $(function(){
 		            digits: true,
 		         },   		         		         		         
 				S6_3_6_O: {
-		            required: false,
+		            required: true,
 		            validName: true,
 		         },   
 				S6_3_9: {
@@ -914,7 +937,7 @@ $(function(){
 		            digits: true,
 		         },  
 				S6_4_15_O: {
-		            required: false,
+		            required: true,
 		            validName: true,
 		         },  		         
 			//FIN RULES

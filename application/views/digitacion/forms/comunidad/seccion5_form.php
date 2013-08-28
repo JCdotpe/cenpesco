@@ -752,6 +752,27 @@ echo '</div>';
 //FORM REGISTRO -------------------------------------------------------------------------------------------------------------------------------
 
 $(function(){
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+		$("#S5_2_7").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+
+		$("#S5_3_17").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+			}
+		})		
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
 
 	// $("#seccion5").on("submit", function(event) {
 	// 	$('#seccion5').trigger('validate');
@@ -796,7 +817,7 @@ $(function(){
 		            digits: true,
 		         },   		         		         
 				S5_2_7_O: {
-		            required: false,
+		            required: true,
 		            validName: true,
 		         },   
 				S5_3_1: {
@@ -868,7 +889,7 @@ $(function(){
 		            digits: true,
 		         },  
 				S5_3_17_O: {
-		            required: false,
+		            required: true,
 		            validName: true,
 		         },  		         
 			//FIN RULES

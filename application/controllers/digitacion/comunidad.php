@@ -79,7 +79,8 @@ class Comunidad extends CI_Controller {
 	{
 		$is_ajax = $this->input->post('ajax');
 		if($is_ajax){
-			$NFORM = $this->input->post('NFORM');
+			$NFORM = $idf = sprintf("%05d", $this->input->post('NFORM'));
+			//$NFORM = $this->input->post('NFORM');
 			$CCDD = $this->input->post('CCDD');
 			$CCPP = $this->input->post('CCPP');
 			$CCDI = $this->input->post('CCDI');
@@ -136,43 +137,55 @@ class Comunidad extends CI_Controller {
 	{
 		$is_ajax = $this->input->post('ajax');
 		if($is_ajax){
-			$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
-			if ($od->num_rows() == 1){
-				$ODEI_COD = $od->row('ODEI_COD');
-				$NOM_ODEI = $od->row('NOM_ODEI');
-				$NOM_SEDE= $od->row('NOM_SEDE');				
-			}else{
-    				$this->session->set_flashdata('msgbox','error_odei');
-        			redirect('/digitacion/registro_pescadores');					
-			}			
-			$c_data = array(
-					'SEDE_COD'	=> $this->tank_auth->get_ubigeo(),
-					'NOM_SEDE'	=> $NOM_SEDE,				
-					'ODEI_COD'	=> $ODEI_COD,
-					'NOM_ODEI'	=> $NOM_ODEI,
-					'id' =>  $this->input->post('CCDD') . $this->input->post('CCPP') . $this->input->post('CCDI') . $this->input->post('COD_CCPP') . $this->input->post('NFORM'),
-					'NFORM' => $this->input->post('NFORM'),
-					'CCDD' => $this->input->post('CCDD'),
-					'NOM_DD' => $this->input->post('NOM_DD'),
-					'CCPP'=> $this->input->post('CCPP'),
-					'NOM_PP' => $this->input->post('NOM_PP'),
-					'CCDI'=> $this->input->post('CCDI'),
-					'NOM_DI' => $this->input->post('NOM_DI'),
-					'COD_CCPP'=> $this->input->post('COD_CCPP'),
-					'NOM_CCPP'=> $this->input->post('NOM_CCPP'),
-					'activo'=>1,
-					'user_id'=>$this->tank_auth->get_user_id(),
-					'created'=> date('Y-m-d H:i:s'),
-					'last_ip' => $this->input->ip_address(),
-					'user_agent' => $this->agent->agent_string()									
-			);
 
-			$flag = 0;
-			$msg = 'Error inesperado, por favor intentalo nuevamente';
-			if($this->comunidad_model->insert_comunidad($c_data) > 0){
-				$flag = 1;
-				$msg = 'Se ha registrado satisfactoriamente';
+			if($this->tank_auth->get_ubigeo() != 99){
+
+					$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
+					if ($od->num_rows() == 1){
+						$ODEI_COD = $od->row('ODEI_COD');
+						$NOM_ODEI = $od->row('NOM_ODEI');
+						$NOM_SEDE= $od->row('NOM_SEDE');				
+					}else{
+		    				$this->session->set_flashdata('msgbox','error_odei');
+		        			redirect('/digitacion/registro_pescadores');					
+					}			
+
+					$idf = sprintf("%05d", $this->input->post('NFORM'));
+					$c_data = array(
+							'SEDE_COD'	=> $this->tank_auth->get_ubigeo(),
+							'NOM_SEDE'	=> $NOM_SEDE,				
+							'ODEI_COD'	=> $ODEI_COD,
+							'NOM_ODEI'	=> $NOM_ODEI,
+							'id' =>  $this->input->post('CCDD') . $this->input->post('CCPP') . $this->input->post('CCDI') . $this->input->post('COD_CCPP') . $idf,
+							'NFORM' => $this->input->post('NFORM'),
+							'CCDD' => $this->input->post('CCDD'),
+							'NOM_DD' => $this->input->post('NOM_DD'),
+							'CCPP'=> $this->input->post('CCPP'),
+							'NOM_PP' => $this->input->post('NOM_PP'),
+							'CCDI'=> $this->input->post('CCDI'),
+							'NOM_DI' => $this->input->post('NOM_DI'),
+							'COD_CCPP'=> $this->input->post('COD_CCPP'),
+							'NOM_CCPP'=> $this->input->post('NOM_CCPP'),
+							'activo'=>1,
+							'user_id'=>$this->tank_auth->get_user_id(),
+							'created'=> date('Y-m-d H:i:s'),
+							'last_ip' => $this->input->ip_address(),
+							'user_agent' => $this->agent->agent_string()									
+					);
+
+					$flag = 0;
+					$msg = 'Error inesperado, por favor intentalo nuevamente';
+					if($this->comunidad_model->insert_comunidad($c_data) > 0){
+						$flag = 1;
+						$msg = 'Se ha registrado satisfactoriamente';
+					}
+
+			}else{
+					$flag = 2;
+					$msg = 'El usuario con permisos generales no puede ingresar un nuevo formulario.';	
 			}
+
+
 			$datos['flag'] = $flag;	
 			$datos['msg'] = $msg;		
 			$data['datos'] = $datos;

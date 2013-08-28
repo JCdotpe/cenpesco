@@ -1607,7 +1607,7 @@ class Avance_empadronador extends CI_Controller {
 					$sheet5->setCellValue('P'.$row, 0 );
 				}		
 
-				if($tot_trab_pes > 0  && $tot_trab_acui > 0 ){ //AVANCE %
+				if( ( $tot_trab_pes + $tot_trab_acui ) > 0 ){ //AVANCE %
 					$sheet5->setCellValue('Q'.$row, number_format( ( ( ($tot_trab_pes_totales  + $tot_trab_acui_totales)*100)/($tot_trab_pes + $tot_trab_acui) ) ,2,'.',' '));
 				}else{
 					$sheet5->setCellValue('Q'.$row, '0.0');
@@ -1633,6 +1633,317 @@ class Avance_empadronador extends CI_Controller {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   6 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		$odeis_data			= $this->avance_campo_subrutas_model->get_all_avance_trabajo_campo();	// odeis, y su data
+		$total_trab	 		= $this->avance_campo_subrutas_model->get_num_reg();     				// TOTAL CCPP con reg  nacional
+		$total_trab_pes	 	= $this->avance_campo_subrutas_model->get_pescadores();     			// TOTAL PESCADORES  nacional		
+		$total_trab_acui 	= $this->avance_campo_subrutas_model->get_acuicultores();     			// TOTAL ACUICULTORES  nacional
+		$total_trab_pes_totales	 	= $this->avance_campo_subrutas_model->get_pescadores_totales();     	// TOTAL FORM PESCADORES  nacional		
+		$total_trab_acui_totales 	= $this->avance_campo_subrutas_model->get_acuicultores_totales();     	// TOTAL FORM ACUICULTORES  nacional						
+		$total_trab_com_totales 	= $this->avance_campo_subrutas_model->get_comunidades_totales();     	// TOTAL FORM COMUNIDADES  nacional						
+
+
+
+
+		// pestaña
+		$sheet6 = $this->phpexcel->createSheet(5);	
+		//$sheet2 = $this->phpexcel->setActiveSheetIndex(1);55
+		//$sheet = $this->phpexcel->getActiveSheet(1);
+		
+		// formato de la hoja
+			// Set Orientation, size and scaling
+			//$objPHPExcel->setActiveSheetIndex(0);
+			$sheet6->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);// horizontal
+			//$sheet6->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); // vertical
+			$sheet6->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+			$sheet6->getPageSetup()->setFitToPage(false); // ajustar pagina
+			$sheet6->getPageSetup()->setFitToWidth(1);
+			$sheet6->getPageSetup()->setFitToHeight(0);		
+			$sheet6->setShowGridlines(false);// oculta lineas de cuadricula		
+		// formato de la hoja
+
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet6->getColumnDimension('A')->setWidth(2);
+			$sheet6->getColumnDimension('B')->setWidth(35);
+			$sheet6->getColumnDimension('C')->setWidth(20);
+			$sheet6->getColumnDimension('D')->setWidth(20);
+			$sheet6->getColumnDimension('E')->setWidth(12);
+			$sheet6->getColumnDimension('F')->setWidth(14);
+			$sheet6->getColumnDimension('G')->setWidth(14);
+			$sheet6->getColumnDimension('H')->setWidth(12);
+			$sheet6->getColumnDimension('I')->setWidth(15);
+			$sheet6->getColumnDimension('J')->setWidth(15);
+			$sheet6->getColumnDimension('K')->setWidth(15);
+			$sheet6->getColumnDimension('L')->setWidth(15);
+			$sheet6->getColumnDimension('M')->setWidth(11);
+			$sheet6->getColumnDimension('N')->setWidth(15);
+			$sheet6->getColumnDimension('O')->setWidth(15);
+			$sheet6->getColumnDimension('P')->setWidth(15);
+			$sheet6->getColumnDimension('Q')->setWidth(15);
+			$sheet6->getColumnDimension('R')->setWidth(15);
+			$sheet6->getColumnDimension('S')->setWidth(15);
+			$sheet6->getColumnDimension('T')->setWidth(15);
+			$sheet6->getColumnDimension('U')->setWidth(15);
+			$sheet6->getColumnDimension('V')->setWidth(15);
+
+
+			$sheet6->getRowDimension(4)->setRowHeight(2);
+			$sheet6->getRowDimension(6)->setRowHeight(2);
+			$sheet6->getRowDimension(16)->setRowHeight(70);
+			$sheet6->getRowDimension(17)->setRowHeight(60);
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+
+		// TITULOS
+			$sheet6->setCellValue('A3','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet6->mergeCells('A3:V3');
+			$sheet6->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet6->mergeCells('A5:V5');
+			$sheet6->setCellValue('A9','REPORTE DEL AVANCE DEL TRABAJO DE CAMPO SEGUN MARCO PRODUCE' );
+			$sheet6->mergeCells('A9:V9');	
+					
+			$sheet6->getStyle('A3:J9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet6->getStyle('A3:J9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet6->getStyle('A3:J9')->getFont()->setname('Arial black')->setSize(25);	
+			$sheet6->getStyle('A5:J9')->getFont()->setname('Arial ')->setSize(22);	
+			$sheet6->getStyle('A9')->getFont()->setname('Arial black')->setSize(18);	
+
+
+
+			// LOGO
+	          $objDrawing = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing->setWorksheet($sheet6);
+	          $objDrawing->setName("inei");
+	          $objDrawing->setDescription("Inei");
+	          $objDrawing->setPath("img/inei.jpeg");
+	          $objDrawing->setCoordinates('B7');
+	          $objDrawing->setHeight(80);
+	          $objDrawing->setOffsetX(1);
+	          $objDrawing->setOffsetY(5);
+
+	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing2->setWorksheet($sheet6);
+	          $objDrawing2->setName("CENPESCO");
+	          $objDrawing2->setDescription("CENPESCO");
+	          $objDrawing2->setPath("img/cenpesco.jpg");
+	          $objDrawing2->setCoordinates('U7');
+	          $objDrawing2->setHeight(80);
+	          $objDrawing2->setWidth(100);
+	          $objDrawing2->setOffsetX(1);
+	          $objDrawing2->setOffsetY(10);
+		// TITULOS
+
+
+		// CABECERA
+			// INICIO DE LA  cabecera
+			$cab = 16;	
+				
+			// NOMBRE CABECERAS
+
+					// $sheet6->setCellValue('A'.$cab,'ODEI COD');
+					// $sheet6->mergeCells('A'.$cab.':A'.($cab+1));
+					$sheet6->setCellValue('B'.$cab,'NACIONAL' );
+					$sheet6->mergeCells('B'.$cab.':B'.($cab+1));
+					$sheet6->setCellValue('C'.$cab,'PROVINCIAS' );
+					$sheet6->mergeCells('C'.$cab.':C'.($cab+1));
+					$sheet6->setCellValue('D'.$cab,'DISTRITOS' );
+					$sheet6->mergeCells('D'.$cab.':D'.($cab+1));
+					$sheet6->setCellValue('E'.$cab,'Centros Poblado' );
+					$sheet6->mergeCells('E'.$cab.':E'.($cab+1));
+					$sheet6->setCellValue('F'.$cab,'MARCO INICIAL' );
+					$sheet6->mergeCells('F'.$cab.':G'.($cab));
+						$sheet6->setCellValue('F'.($cab+1),'Pescador' );
+						$sheet6->setCellValue('G'.($cab+1),'Acuicultor' );
+
+					$sheet6->setCellValue('H'.$cab,'Centros Poblado Trabajados' );
+					$sheet6->mergeCells('H'.$cab.':H'.($cab+1));					
+					$sheet6->setCellValue('I'.$cab,'Avance de CCPP. %' );
+					$sheet6->mergeCells('I'.$cab.':I'.($cab+1));	
+					$sheet6->setCellValue('J'.$cab,'REGISTRO' );
+					$sheet6->mergeCells('J'.$cab.':M'.($cab));	
+						$sheet6->setCellValue('J'.($cab+1),'Pescador' );
+						$sheet6->setCellValue('K'.($cab+1),'% de Marco' );
+						$sheet6->setCellValue('L'.($cab+1),'Acuicultor' );
+						$sheet6->setCellValue('M'.($cab+1),'% de Marco' );
+
+					$sheet6->setCellValue('N'.$cab,'Formulario del Pescador' );
+					$sheet6->mergeCells('N'.$cab.':N'.($cab+1));					
+					$sheet6->setCellValue('O'.$cab,'Formulario del Acuicultor' );
+					$sheet6->mergeCells('O'.$cab.':O'.($cab+1));	
+					$sheet6->setCellValue('P'.$cab,'Formulario de la Comunidad' );
+					$sheet6->mergeCells('P'.$cab.':P'.($cab+1));	
+					$sheet6->setCellValue('Q'.$cab,'AVANCE %' );
+					$sheet6->mergeCells('Q'.$cab.':Q'.($cab+1));
+
+					$sheet6->setCellValue('R'.$cab,'MARCO PRODUCE' );
+					$sheet6->mergeCells('R'.$cab.':S'.($cab));
+						$sheet6->setCellValue('R'.($cab+1),'Pescador' );
+						$sheet6->setCellValue('S'.($cab+1),'Acuicultor' );
+
+					$sheet6->setCellValue('T'.$cab,'% AVANCE  respecto marco PRODUCE pescador' );
+					$sheet6->mergeCells('T'.$cab.':T'.($cab+1));
+					$sheet6->setCellValue('U'.$cab,'% AVANCE respecto marco PRODUCE acuicultor');
+					$sheet6->mergeCells('U'.$cab.':U'.($cab+1));	
+					$sheet6->setCellValue('V'.$cab,'% AVANCE PRODUCE');
+					$sheet6->mergeCells('V'.$cab.':V'.($cab+1));																
+			// NOMBRE CABECERAS
+
+			// ESTILOS  CABECERAS
+				$sheet6->getStyle("B".$cab.":V".($cab+1))->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+				$sheet6->getStyle("B".$cab.":V".($cab+1))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);						
+				$sheet6->getStyle("B".$cab.":V".($cab+1))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);						
+				$sheet6->getStyle("B".$cab.":V".($cab+1))->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+				$sheet6->getStyle("B".$cab.":V".($cab+1))->getFont()->setname('Arial')->setSize(15);
+
+
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("B".$cab.":V".($cab+1));
+		        //$headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
+				$headStyle->applyFromArray($color_celda_cabeceras);
+
+				$sheet6->getStyle("V".$cab.":V".($cab) )->applyFromArray(array(
+				'borders' => array(
+							'allborders' => array(
+											'style' => PHPExcel_Style_Border::BORDER_THIN)
+						)
+				));
+
+			// ESTILOS  CABECERAS
+		// CABECERA
+
+	    // CUERPO
+			//$total = $odeis_data->num_rows() + ($cab+1); // total del cuerpo
+			$total =  1 + ($cab+1); // total del cuerpo
+
+			$sheet6->getStyle("B".($cab+2).":V".$total)->getFont()->setname('Arial ')->setSize(14);
+
+			//bordes cuerpo
+			$sheet6->getStyle("B".($cab).":V".($total) )->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));
+
+
+			// **************************************************************************
+			$row = $cab+1;// inicio de la fila del cuerpo
+			$col = 1; // inicio del column
+			$num = 0; // para numerar
+			$cambio = FALSE; // para intercarlar colores registros
+			$tot_trab = null;
+			$tot_trab_pes = null;
+			$tot_trab_acui = null;
+			$tot_trab_pes_totales  = null;
+			$tot_trab_acui_totales = null;
+			$tot_trab_com_totales  = null;
+			$marco_prod_pes = 20350;
+			$marco_prod_acui = 2145;
+
+
+			foreach($odeis_data->result() as $celda){
+				$row++;
+				$sheet6->setCellValue('A'.$row, $celda->ODEI_COD);
+				$sheet6->setCellValue('B'.$row, $celda->NOM_ODEI);
+				$sheet6->setCellValue('C'.$row, $celda->PROVINCIA);
+				$sheet6->setCellValue('D'.$row, $celda->DISTRITO);
+				$sheet6->setCellValue('E'.$row, $celda->CENTRO_POBLADO);
+				$sheet6->setCellValue('F'.$row, $celda->PESCADOR);
+				$sheet6->setCellValue('G'.$row, $celda->ACUICULTOR);
+
+				//Total de REG de Comunidades por DEP
+				if ( $celda->NOM_ODEI == 'TOTAL' ){
+					$tot_trab 		= $total_trab->num_rows() ;  //jala el total de registros de CCPP			
+					$tot_trab_pes 	= $total_trab_pes->row('TOTAL') ;  //jala el total de pescadores nacional			
+					$tot_trab_acui 	= $total_trab_acui->row('TOTAL') ;  //jala el total de pescadores nacional			
+					$tot_trab_pes_totales 	= $total_trab_pes_totales->row('TOT_FORM') ;  //jala el total FORM de pescadores nacional			
+					$tot_trab_acui_totales 	= $total_trab_acui_totales->row('TOT_FORM') ;  //jala el total FORM de ACUICULTORES nacional			
+					$tot_trab_com_totales 	= $total_trab_com_totales->row('TOT_FORM') ;  //jala el total FORM de COMUNIDADES nacional	
+				}
+
+				if (is_numeric($tot_trab)){ //total de CCPP trabajados
+					$sheet6->setCellValue('H'.$row, $tot_trab);
+					$sheet6->setCellValue('I'.$row, number_format( (($tot_trab * 100)/$celda->CENTRO_POBLADO),2,'.',' ' ) );
+				}else{
+					$sheet6->setCellValue('H'.$row, 0 );
+					$sheet6->setCellValue('I'.$row, 0);
+				}	
+				if (is_numeric($tot_trab_pes)){ //total de PESCADORES
+					$sheet6->setCellValue('J'.$row, $tot_trab_pes);
+					$sheet6->setCellValue('K'.$row, number_format( (($tot_trab_pes * 100)/$celda->PESCADOR),2,'.',' ' ) );
+				}else{
+					$sheet6->setCellValue('J'.$row, 0 );
+					$sheet6->setCellValue('K'.$row, 0);
+				}		
+				if (is_numeric($tot_trab_acui)){ //total de ACUICULTORES
+					$sheet6->setCellValue('L'.$row, $tot_trab_acui);
+					$sheet6->setCellValue('M'.$row, number_format( (($tot_trab_acui * 100)/$celda->ACUICULTOR),2,'.',' ' ) );
+				}else{
+					$sheet6->setCellValue('L'.$row, 0 );
+					$sheet6->setCellValue('M'.$row, 0);
+				}	
+
+				if (is_numeric($tot_trab_pes_totales)){ //total FORM de PESCADORES
+					$sheet6->setCellValue('N'.$row, $tot_trab_pes_totales);
+				}else{
+					$sheet6->setCellValue('N'.$row, 0 );
+				}	
+
+				if (is_numeric($tot_trab_acui_totales)){ //total FORM de ACUICULTORES
+					$sheet6->setCellValue('O'.$row, $tot_trab_acui_totales);
+				}else{
+					$sheet6->setCellValue('O'.$row, 0 );
+				}		
+
+				if (is_numeric($tot_trab_com_totales)){ //total FORM de COMUNIDADES
+					$sheet6->setCellValue('P'.$row, $tot_trab_com_totales);
+				}else{
+					$sheet6->setCellValue('P'.$row, 0 );
+				}		
+
+				if( ( $tot_trab_pes + $tot_trab_acui ) > 0 ){ //AVANCE %
+					$sheet6->setCellValue('Q'.$row, number_format( ( ( ($tot_trab_pes_totales  + $tot_trab_acui_totales)*100)/($tot_trab_pes + $tot_trab_acui) ) ,2,'.',' '));
+				}else{
+					$sheet6->setCellValue('Q'.$row, '0.0');
+				}
+
+				$sheet6->setCellValue('R'.$row, $marco_prod_pes); // marco produce PESCADOR
+
+				$sheet6->setCellValue('S'.$row, $marco_prod_acui); // marco produce ACUICULTOR
+
+				//%avance marco produce PESCADOR
+				$sheet6->setCellValue('T'.$row, number_format( ( ( ($tot_trab_pes_totales)*100)/($marco_prod_pes) ) ,2,'.',' '));
+
+				//%avance marco produce PESCADOR
+				$sheet6->setCellValue('U'.$row, number_format( ( ( ($tot_trab_acui_totales)*100)/($marco_prod_acui) ) ,2,'.',' '));
+
+				//%avance  produce GENERAL
+				$sheet6->setCellValue('V'.$row, number_format( ( ( ($tot_trab_pes_totales + $tot_trab_acui_totales)*100)/($marco_prod_pes + $marco_prod_acui) ) ,2,'.',' '));
+
+
+				$tot_trab = null;
+				$tot_trab_pes = null;
+				$tot_trab_acui = null;
+				$tot_trab_pes_totales 	= null;
+				$tot_trab_acui_totales  = null;
+				$tot_trab_com_totales   = null;
+
+				if ( $celda->NOM_ODEI == 'TOTAL' ){ break;}//para bucle, solo mostrar TOTAL
+
+			}
+			$sheet6->getStyle("A".($cab+2).":V".($cab+2))->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
+			$sheet6->getStyle("V".($cab+2).":V".$total)->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
+			$sheet6->getStyle('A3:Q5')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	//opcional 
+
+ 		// CUERPO
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   6 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 		// SALIDA EXCEL
@@ -1642,7 +1953,8 @@ class Avance_empadronador extends CI_Controller {
 				$sheet2->setTitle("Reporte-Pescador");
 				$sheet3->setTitle("Reporte-Acuicultor");
 				$sheet4->setTitle("Reporte-Comunidades");
-				$sheet5->setTitle("Reporte-Avance-trajo-campo");
+				$sheet5->setTitle("Reporte-Avance-trabajo-campo");
+				$sheet6->setTitle("Reporte-Avance-PRODUCE");
 				$this->phpexcel->getProperties()
 				->setTitle("Reporte de Avance de campo")
 				->setDescription("Reporte de Avance de campo");
@@ -1661,6 +1973,7 @@ class Avance_empadronador extends CI_Controller {
 		// SALIDA EXCEL
 
  	}
+
 
 	function to_excel(){
 		$this->load->helper('excel');

@@ -113,7 +113,7 @@ class Acuicultor extends CI_Controller {
 					'FECHA'			=> date('y-m-d H:i:s',now())
 					);
 
-    			$afectados = $this->udra_acuicultor_model->insert_registro_pescadores($registros);
+    			$afectados = $this->udra_acuicultor_model->insert_registro_acuicultores($registros);
 				
 				if ($afectados>0){
 					$this->session->set_flashdata('msgbox',1);

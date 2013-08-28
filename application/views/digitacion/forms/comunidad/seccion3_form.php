@@ -3256,22 +3256,6 @@ function pase_preguntas_5_to_8(){
 	
 
 
-
-
-
-
-// $(":input").on("keydown", function(event) {
-//     if (event.which === 13 && !$(this).is("textarea, :button, :submit")) {
-//         event.stopPropagation();
-//         event.preventDefault();
-
-//         $(this)
-//             .nextAll(":input:not(:disabled, [readonly='readonly'])")
-//             .first()
-//             .focus();
-//     }
-// });
-
     function enter2tab(e) {
     if (e.keyCode == 13) {
     cb = parseInt($(this).attr('tabindex'));
@@ -3294,7 +3278,102 @@ function pase_preguntas_5_to_8(){
 
 $(function(){
 
+	$("#S3_1").change(function (){
+		if ($(this).val() == 4){
+			$("#S3_1_O").removeAttr('disabled');
+		}else{
+			$("#S3_1_O").attr('disabled','disabled');
+		}
+	})
 
+	$("#S3_4_4").change(function (){  
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+
+	$("#S3_6_5").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+
+	$("#S3_8_4").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+
+	$("#S3_10_5").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+
+	$("#S3_12_6").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+	$("#S3_16_5").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+
+	$("#S3_17_8").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})
+
+	$("#S3_17_9").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})			
+
+	$("#S3_18_7").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})		
+
+	$("#S3_18_8").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})		
+
+	$("#S3_19_4").change(function () {
+		if ($(this).val() == 1){
+			$("#" + $(this).attr('id') + "_O").removeAttr('disabled');
+		}else{
+			$("#" + $(this).attr('id') + "_O").attr('disabled','disabled');
+		}
+	})		
+
+	
 
 // lets say you bind the event on the whole document...
 
@@ -3337,7 +3416,7 @@ $.extend(jQuery.validator.messages, {
 		         },    	
 				//otro
 				S3_1_O : {
-		    		//required: true,						
+		    		required: true,						
 		            validName: true,
 					maxlength:100,
 		         }, 
@@ -3379,13 +3458,34 @@ $.extend(jQuery.validator.messages, {
 		    		required: true,						
 		            number: true,
 		            exactlength: 1,
+		            valzero:['S3_4_1','S3_4_2','S3_4_3'],
 		         },    
 				//especifique
 				S3_4_4_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 
 			//PREGUNTA 5
+				//red publica
+				S3_5_1 : {
+		    		required: true,						
+		            number: true,
+		            exactlength: 1,
+		         },
+		         //camion cisterna
+				S3_5_2 : {
+		    		required: true,						
+		            number: true,
+		            exactlength: 1,
+		         }, 
+				//pozo
+				S3_5_3 : {
+		    		required: true,						
+		            number: true,
+		            exactlength: 1,
+		         }, 		         
+			//PREGUNTA 6
 				//red publica
 				S3_6_1 : {
 		    		required: true,						
@@ -3415,10 +3515,11 @@ $.extend(jQuery.validator.messages, {
 		    		required: true,						
 		            number: true,
 		            exactlength: 1,
+		            valzero:['S3_6_1','S3_6_2','S3_6_3','S3_6_4'],
 		        }, 
 				//especifique
 				S3_6_5_O : {
-		    		//required: true,						
+		    		required: true,						
 		            validName: true,
 					maxlength:100,
 				}, 	
@@ -3456,7 +3557,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_8_4_O: {
-		    		//required: true,						
+		    		required: true,						
 		            validName: true,
 					maxlength:100,
 		         }, 
@@ -3530,7 +3631,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_10_5_O :{
-		    		//required: true,						
+		    		required: true,						
 		            validName: true,
 					maxlength:100,
 		         }, 
@@ -3634,6 +3735,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_12_6_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 			
@@ -3691,6 +3793,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_16_5_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 	
@@ -3752,6 +3855,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_17_8_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 
@@ -3763,6 +3867,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 	
 				//especifique
 				S3_17_9_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 
@@ -3817,6 +3922,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 
 				//especifique
 				S3_18_7_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 
@@ -3828,6 +3934,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 	
 				//especifique
 				S3_18_8_O :{
+					required: true,
 		            validName: true,
 					maxlength:100,
 		         }, 					
@@ -3858,6 +3965,7 @@ $.extend(jQuery.validator.messages, {
 		        }, 	
 				//especifique
 				S3_19_4_O : {
+					required: true,
 		            validName: true,
 					maxlength:100,
 		        }, 
@@ -3921,6 +4029,7 @@ $.extend(jQuery.validator.messages, {
 		    		required: true,
 		            number: true,
 		            exactlength: 1,
+		            valzero:['S3_20_1', 'S3_20_2', 'S3_20_3', 'S3_20_4', 'S3_20_5', 'S3_20_6', 'S3_20_7', 'S3_20_8', 'S3_20_9'],
 		        }, 									
 			//PREGUNTA 20
 				//horas

@@ -19,6 +19,7 @@ class Registro_pescadores extends CI_Controller {
 		$this->load->library('datatables');
 		$this->load->model('ubigeo_piloto_model');
 		$this->load->model('empadronador_jefe_model');
+		$this->load->model('empadronador_model');
 		$this->load->helper('date');
 		date_default_timezone_set('America/Lima');	
 
@@ -59,11 +60,12 @@ class Registro_pescadores extends CI_Controller {
 			$data['main_content'] = 'digitacion/forms/registro_pescadores_form';
 			$data['option'] = 'digitacion/registro_pescadores_view';
 			$data['sede_cod'] = $this->tank_auth->get_ubigeo();
-			  
+
 			//$odei = array();
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {
 				$odei[] = $key->ODEI_COD;
 			}
+			$data['emps_jefes'] = $this->empadronador_model->get_emp_by_odei($odei);				
 			$data['departamento'] = $this->marco_model->get_dpto_by_odei($odei); 
 			$data['tables'] = NULL; // tabla vacia
 			$data['opx'] = ''; // anchor oculto
@@ -464,7 +466,34 @@ class Registro_pescadores extends CI_Controller {
 		to_excel($query,'Registro');
 	}
 
+	public function editables($id)
+	{
+	$data['nav'] = TRUE;
+	$data['title'] = 'Formato de Registro';
+	$data['main_content'] = 'digitacion/registro_pescadores_rp3_view';	
+	$data['tables'] = $this->registro_pescadores_dat_model->get_detalles($id);	
+	$data['datos'] = $this->form_validation->error_array();
+	$this->load->view('backend/includes/template', $data);	
+	}
 
+	public function edit_detalle()
+	{
 
+		$opt = explode('-', $this->input->post('id')) ;
+		$campo = $opt[0];
+		$id_reg = $opt[1];
+		$id_dat = $opt[2];
+		$value = $this->input->post('value');
+		$registros = array(
+			$campo => $value);
+
+		$afectados = $this->registro_pescadores_dat_model->update_detalle($registros, $id_dat, $id_reg);
+		if ($afectados ==1 ) {
+			echo 'actulizado';
+		} else {
+			echo "no actulizado";
+		}
+		
+	}
 
 }

@@ -21,7 +21,7 @@ class Registro_pescadores_dat_model extends CI_MODEL
 	function get_detalles($cod)
 	{
 		$this->db->where('id_reg',$cod);
-		$this->db->select('P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15');
+		$this->db->select('id_reg, id_dat, P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11,P12,P13,P14,P15');
 		$q = $this->db->get('registro_pescadores_dat');
 		return $q->result();
 	}
@@ -67,6 +67,13 @@ class Registro_pescadores_dat_model extends CI_MODEL
 		return $q->row('P15');
 	}
 
+		function update_detalle($values, $id_dat, $id_reg)
+		{
+			$this->db->where('id_dat', $id_dat);
+			$this->db->where('id_reg', $id_reg);
+			$q = $this->db->update('registro_pescadores_dat',$values);
+			return $q->affected_rows();
+		}
 }
 
 

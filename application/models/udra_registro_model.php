@@ -97,9 +97,10 @@ class Udra_registro_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_odei()// cuenta por ODEI, la cantidad de formularios 
+	function get_n_formularios_by_odei($cod)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id_reg) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$cod);
 		$this->db->group_by('ODEI_COD');
     	$q = $this->db->get('registro_pescadores');
 		return $q;
@@ -116,9 +117,10 @@ class Udra_registro_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_prov()// cuenta por ODEI, la cantidad de formularios 
+	function get_n_formularios_by_prov($cod)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, count(id_reg) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$cod);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
     	$q = $this->db->get('registro_pescadores');
@@ -137,9 +139,10 @@ class Udra_registro_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_dist()// N°  por DISTRITO, la cantidad de formularios 
+	function get_n_formularios_by_dist($cod)// N°  por DISTRITO, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI, count(id_reg) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$cod);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
 		$this->db->group_by('CCDI');
@@ -160,13 +163,14 @@ class Udra_registro_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_ccpp()// cuenta por CCPP, la cantidad de formularios 
+	function get_n_formularios_by_ccpp($cod)// cuenta por CCPP, la cantidad de formularios 
 	{	
-		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI,COD_CCPP, count(id_reg) as TOTAL_DIG ');
+		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI,COD_CCPP, CCPP_CODPROC, count(id_reg) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$cod);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
 		$this->db->group_by('CCDI');
-		$this->db->group_by('COD_CCPP');
+		$this->db->group_by('CCPP_CODPROC');
     	$q = $this->db->get('registro_pescadores');
 		return $q;
 	}
