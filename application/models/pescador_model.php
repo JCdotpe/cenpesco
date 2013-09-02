@@ -438,10 +438,13 @@ SELECT
 `pesc_seccion5`.`S5_2_DD_COD`,
 `pesc_seccion5`.`S5_2_PP`,
 `pesc_seccion5`.`S5_2_PP_COD`,
+`pesc_seccion5`.`S5_2_PP_O`,
 `pesc_seccion5`.`S5_2_DI`,
 `pesc_seccion5`.`S5_2_DI_COD`,
+`pesc_seccion5`.`S5_2_DI_O`,
 `pesc_seccion5`.`S5_2_CCPP`,
 `pesc_seccion5`.`S5_2_CCPP_COD`,
+`pesc_seccion5`.`S5_2_CCPP_O`,
 `pesc_seccion5`.`S5_3`,
 `pesc_seccion5`.`S5_3_H`,
 `pesc_seccion5`.`S5_3_M`,
@@ -627,6 +630,36 @@ SELECT
 `pesc_seccion5`.`S5_6_49`,
 `pesc_seccion5`.`S5_6_49_O`,
 `pesc_seccion5`.`S5_6_49_C`,
+`pesc_seccion5`.`S5_6_50`,
+`pesc_seccion5`.`S5_6_50_O`,
+`pesc_seccion5`.`S5_6_50_C`,
+`pesc_seccion5`.`S5_6_51`,
+`pesc_seccion5`.`S5_6_51_O`,
+`pesc_seccion5`.`S5_6_51_C`,
+`pesc_seccion5`.`S5_6_52`,
+`pesc_seccion5`.`S5_6_52_O`,
+`pesc_seccion5`.`S5_6_52_C`,
+`pesc_seccion5`.`S5_6_53`,
+`pesc_seccion5`.`S5_6_53_O`,
+`pesc_seccion5`.`S5_6_53_C`,
+`pesc_seccion5`.`S5_6_54`,
+`pesc_seccion5`.`S5_6_54_O`,
+`pesc_seccion5`.`S5_6_54_C`,
+`pesc_seccion5`.`S5_6_55`,
+`pesc_seccion5`.`S5_6_55_O`,
+`pesc_seccion5`.`S5_6_55_C`,
+`pesc_seccion5`.`S5_6_56`,
+`pesc_seccion5`.`S5_6_56_O`,
+`pesc_seccion5`.`S5_6_56_C`,
+`pesc_seccion5`.`S5_6_57`,
+`pesc_seccion5`.`S5_6_57_O`,
+`pesc_seccion5`.`S5_6_57_C`,
+`pesc_seccion5`.`S5_6_58`,
+`pesc_seccion5`.`S5_6_58_O`,
+`pesc_seccion5`.`S5_6_58_C`,
+`pesc_seccion5`.`S5_6_59`,
+`pesc_seccion5`.`S5_6_59_O`,
+`pesc_seccion5`.`S5_6_59_C`,
 `pesc_seccion5`.`S5_7`,
 `pesc_seccion5`.`S5_8_1`,
 `pesc_seccion5`.`S5_8_1_1`,
@@ -749,6 +782,7 @@ SELECT
 `pesc_seccion7`.`S7_7_1`,
 `pesc_seccion7`.`S7_7_2`,
 `pesc_seccion7`.`S7_7_3`,
+`pesc_seccion7`.`S7_7_4`,
 `pesc_seccion7`.`S7_8_1`,
 `pesc_seccion7`.`S7_8_2`,
 `pesc_seccion7`.`S7_8_3`,
@@ -829,6 +863,7 @@ SELECT
 `pesc_seccion9`.`S9_5_1`,
 `pesc_seccion9`.`S9_5_1_O`,
 `pesc_seccion9`.`S9_6_1`,
+`pesc_seccion9`.`S9_6_1_O`,
 `pesc_seccion9`.`S9_7_1`,
 `pesc_seccion9`.`S9_8_1`,
 `pesc_seccion9`.`S9_9_1_A`,
@@ -859,6 +894,7 @@ SELECT
 `pesc_seccion9`.`S9_5_2`,
 `pesc_seccion9`.`S9_5_2_O`,
 `pesc_seccion9`.`S9_6_2`,
+`pesc_seccion9`.`S9_6_2_O`,
 `pesc_seccion9`.`S9_7_2`,
 `pesc_seccion9`.`S9_8_2`,
 `pesc_seccion9`.`S9_9_2_A`,
@@ -889,6 +925,7 @@ SELECT
 `pesc_seccion9`.`S9_5_3`,
 `pesc_seccion9`.`S9_5_3_O`,
 `pesc_seccion9`.`S9_6_3`,
+`pesc_seccion9`.`S9_6_3_O`,
 `pesc_seccion9`.`S9_7_3`,
 `pesc_seccion9`.`S9_8_3`,
 `pesc_seccion9`.`S9_9_3_A`,
@@ -919,6 +956,7 @@ SELECT
 `pesc_seccion9`.`S9_5_4`,
 `pesc_seccion9`.`S9_5_4_O`,
 `pesc_seccion9`.`S9_6_4`,
+`pesc_seccion9`.`S9_6_4_O`,
 `pesc_seccion9`.`S9_7_4`,
 `pesc_seccion9`.`S9_8_4`,
 `pesc_seccion9`.`S9_9_4_A`,
@@ -949,6 +987,7 @@ SELECT
 `pesc_seccion9`.`S9_5_5`,
 `pesc_seccion9`.`S9_5_5_O`,
 `pesc_seccion9`.`S9_6_5`,
+`pesc_seccion9`.`S9_6_5_O`,
 `pesc_seccion9`.`S9_7_5`,
 `pesc_seccion9`.`S9_8_5`,
 `pesc_seccion9`.`S9_9_5_A`,
@@ -981,6 +1020,7 @@ SELECT
 `pesc_seccion9`.`S9_5_6`,
 `pesc_seccion9`.`S9_5_6_O`,
 `pesc_seccion9`.`S9_6_6`,
+`pesc_seccion9`.`S9_6_6_O`,
 `pesc_seccion9`.`S9_7_6`,
 `pesc_seccion9`.`S9_8_6`,
 `pesc_seccion9`.`S9_9_6_A`,
@@ -1014,15 +1054,15 @@ SELECT
 `pesc_info`.`EMP`,
 `pesc_info`.`EMP_DNI`
 FROM `cenpesco`.`pescador`
-INNER JOIN `cenpesco`.`pesc_seccion2` ON  `pescador`.`id`= `pesc_seccion2`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion3` ON  `pescador`.`id`= `pesc_seccion3`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion4` ON  `pescador`.`id`= `pesc_seccion4`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion5` ON  `pescador`.`id`= `pesc_seccion5`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion6` ON  `pescador`.`id`= `pesc_seccion6`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion7` ON  `pescador`.`id`= `pesc_seccion7`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion8` ON  `pescador`.`id`= `pesc_seccion8`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_seccion9` ON  `pescador`.`id`= `pesc_seccion9`.`pescador_id`
-INNER JOIN `cenpesco`.`pesc_info` ON  `pescador`.`id`= `pesc_info`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion2` ON  `pescador`.`id`= `pesc_seccion2`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion3` ON  `pescador`.`id`= `pesc_seccion3`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion4` ON  `pescador`.`id`= `pesc_seccion4`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion5` ON  `pescador`.`id`= `pesc_seccion5`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion6` ON  `pescador`.`id`= `pesc_seccion6`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion7` ON  `pescador`.`id`= `pesc_seccion7`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion8` ON  `pescador`.`id`= `pesc_seccion8`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_seccion9` ON  `pescador`.`id`= `pesc_seccion9`.`pescador_id`
+LEFT JOIN `cenpesco`.`pesc_info` ON  `pescador`.`id`= `pesc_info`.`pescador_id`
 
 ');
         return $q;  

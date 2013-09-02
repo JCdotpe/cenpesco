@@ -926,7 +926,7 @@ $S5_5_10 = array(
 $S5_5_10_C = array(
 	'name'	=> 'S5_5_10_C',
 	'id'	=> 'S5_5_10_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 /////////////////////////////////////
@@ -941,7 +941,7 @@ $S5_5_11 = array(
 $S5_5_11_C = array(
 	'name'	=> 'S5_5_11_C',
 	'id'	=> 'S5_5_11_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 /////////////////////////////////////
@@ -956,7 +956,7 @@ $S5_5_12 = array(
 $S5_5_12_C = array(
 	'name'	=> 'S5_5_12_C',
 	'id'	=> 'S5_5_12_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 /////////////////////////////////////
@@ -971,7 +971,7 @@ $S5_5_13 = array(
 $S5_5_13_C = array(
 	'name'	=> 'S5_5_13_C',
 	'id'	=> 'S5_5_13_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 /////////////////////////////////////
@@ -993,7 +993,7 @@ $S5_5_14_O = array(
 $S5_5_14_C = array(
 	'name'	=> 'S5_5_14_C',
 	'id'	=> 'S5_5_14_C',
-	'maxlength'	=> 2,
+	'maxlength'	=> 3,
 	'class' => $span_class,
 );
 /////////////////////////////////////
@@ -4257,7 +4257,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_1_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_1_1: {
 		            number: true,
@@ -4288,7 +4288,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_2_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_2_1: {
 		            number: true,
@@ -4319,7 +4319,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_3_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_3_1: {
 		            number: true,
@@ -4350,7 +4350,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_4_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_4_1: {
 		            number: true,
@@ -4381,7 +4381,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_5_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_5_1: {
 		            number: true,
@@ -4413,7 +4413,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_6_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_6_1: {
 		            number: true,
@@ -4444,7 +4444,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_7_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_7_1: {
 		            number: true,
@@ -4475,7 +4475,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_8_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_8_1: {
 		            number: true,
@@ -4511,7 +4511,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },			         
 		    	S5_5_9_C: {
 		            digits: true,
-		            valrango: [0,100,999],
+		            valrango: [0,998,999],
 		         },		
 		    	S5_5_9_1: {
 		            number: true,
@@ -4544,7 +4544,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_10_C: {
 		            digits: true,
-		            valrango: [1,100,99],
+		            valrango: [1,998,999],
 		         },	
 //aparejo
 //aparejo
@@ -4555,7 +4555,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_11_C: {
 		            digits: true,
-		            valrango: [1,100,99],
+		            valrango: [1,998,999],
 		         },	
 //aparejo
 //aparejo
@@ -4566,7 +4566,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_12_C: {
 		            digits: true,
-		           valrango: [1,100,99],
+		           valrango: [1,998,999],
 		         },	
 //aparejo
 
@@ -4578,7 +4578,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },	
 		    	S5_5_13_C: {
 		            digits: true,
-		            valrango: [1,100,99],
+		            valrango: [1,998,999],
 		         },	
 //aparejo
 //aparejo
@@ -4594,7 +4594,7 @@ $('#S5_2_DD_COD').trigger("change");
 		         },			         
 		    	S5_5_14_C: {
 		            digits: true,
-		            valrango: [1,100,99],
+		            valrango: [1,998,999],
 		         },	
 //aparejo
 //trampa

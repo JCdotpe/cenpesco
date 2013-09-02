@@ -27,7 +27,7 @@ $S7_101 = array(
 $S7_101A = array(
 	'name'	=> 'S7_101A',
 	'id'	=> 'S7_101A',
-	'maxlength'	=> 5,
+	'maxlength'	=> 7,
 	'class' => $span_class,
 );
 
@@ -43,7 +43,7 @@ $S7_102 = array(
 $S7_102A = array(
 	'name'	=> 'S7_102A',
 	'id'	=> 'S7_102A',
-	'maxlength'	=> 5,
+	'maxlength'	=> 7,
 	'class' => $span_class,
 );
 
@@ -131,7 +131,7 @@ $S7_3_1 = array(
 $S7_3_1_C = array(
 	'name'	=> 'S7_3_1_C',
 	'id'	=> 'S7_3_1_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_2 = array(
@@ -143,7 +143,7 @@ $S7_3_2 = array(
 $S7_3_2_C = array(
 	'name'	=> 'S7_3_2_C',
 	'id'	=> 'S7_3_2_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_3 = array(
@@ -155,7 +155,7 @@ $S7_3_3 = array(
 $S7_3_3_C = array(
 	'name'	=> 'S7_3_3_C',
 	'id'	=> 'S7_3_3_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_4 = array(
@@ -167,7 +167,7 @@ $S7_3_4 = array(
 $S7_3_4_C = array(
 	'name'	=> 'S7_3_4_C',
 	'id'	=> 'S7_3_4_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_5 = array(
@@ -179,7 +179,7 @@ $S7_3_5 = array(
 $S7_3_5_C = array(
 	'name'	=> 'S7_3_5_C',
 	'id'	=> 'S7_3_5_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_6 = array(
@@ -191,7 +191,7 @@ $S7_3_6 = array(
 $S7_3_6_C = array(
 	'name'	=> 'S7_3_6_C',
 	'id'	=> 'S7_3_6_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_7 = array(
@@ -203,7 +203,7 @@ $S7_3_7 = array(
 $S7_3_7_C = array(
 	'name'	=> 'S7_3_7_C',
 	'id'	=> 'S7_3_7_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_8 = array(
@@ -215,7 +215,7 @@ $S7_3_8 = array(
 $S7_3_8_C = array(
 	'name'	=> 'S7_3_8_C',
 	'id'	=> 'S7_3_8_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_9 = array(
@@ -227,7 +227,7 @@ $S7_3_9 = array(
 $S7_3_9_C = array(
 	'name'	=> 'S7_3_9_C',
 	'id'	=> 'S7_3_9_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_10 = array(
@@ -239,7 +239,7 @@ $S7_3_10 = array(
 $S7_3_10_C = array(
 	'name'	=> 'S7_3_10_C',
 	'id'	=> 'S7_3_10_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_11 = array(
@@ -251,7 +251,7 @@ $S7_3_11 = array(
 $S7_3_11_C = array(
 	'name'	=> 'S7_3_11_C',
 	'id'	=> 'S7_3_11_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 $S7_3_12 = array(
@@ -263,7 +263,7 @@ $S7_3_12 = array(
 $S7_3_12_C = array(
 	'name'	=> 'S7_3_12_C',
 	'id'	=> 'S7_3_12_C',
-	'maxlength'	=> 5,
+	'maxlength'	=> 8,
 	'class' => $span_class . ' nothing7',
 );
 //////////////////////////////////////////
@@ -1715,7 +1715,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         },     
 		    	S7_101A: {
 		            digits: true,
-		            valrango: [1,99998,99999],
+		            valrango: [1,5000000,9999999],
 		         }, 	
 		    	S7_102: {
 		            digits: true,
@@ -1723,7 +1723,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 	
 		    	S7_102A: {
 		            digits: true,
-		            valrango: [1,99998,99999],
+		            valrango: [1,5000000,9999999],
 		         }, 	
 		    	S7_103: {
 		            digits: true,
@@ -1771,8 +1771,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_1_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_2: {
@@ -1780,8 +1780,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_2_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_3: {
@@ -1789,8 +1789,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_3_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_4: {
@@ -1798,8 +1798,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_4_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 
@@ -1808,8 +1808,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_5_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_6: {
@@ -1817,8 +1817,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_6_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 
@@ -1827,8 +1827,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_7_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_8: {
@@ -1836,8 +1836,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_8_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_9: {
@@ -1845,8 +1845,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_9_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 		    	S7_3_10: {
@@ -1854,8 +1854,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_10_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 
@@ -1864,8 +1864,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valrango: [0,1,9],
 		         }, 
 		    	S7_3_11_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 
@@ -1875,8 +1875,8 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		            valzero:['S7_3_1', 'S7_3_2', 'S7_3_3', 'S7_3_4', 'S7_3_5', 'S7_3_6', 'S7_3_7', 'S7_3_8', 'S7_3_9', 'S7_3_10', 'S7_3_11'],
 		         }, 
 		    	S7_3_12_C: {
-		            digits: true,
-		            valrango: [1,99998,99999],
+		            number: true,
+		            valrango: [0.1,99998.00,99999.99],
 		         }, 
 
 
