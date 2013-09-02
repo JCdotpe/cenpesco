@@ -119,6 +119,22 @@ echo form_open($this->uri->uri_string(),$attr);
                 echo ' Usuario PILOTO no esta permitido guardar';
             echo '</div>';
         echo '</div>';
+    }elseif ($this->session->flashdata('msgbox')==='update_nform') {
+        echo '<div class="row-fluid">';
+		    echo '<div class="alert alert-success">';
+			    echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+			    echo '<strong>EXITOSO! </strong>';
+			    echo ' El número de formulario del centro poblado fue modificado satisfactoriamente';
+		    echo '</div>';
+        echo '</div>';
+    }elseif ($this->session->flashdata('msgbox')==='no_update_nform') {
+        echo '<div class="row-fluid">';
+            echo '<div class="alert alert-info">';
+                echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+                echo '<strong>ERROR! </strong>';
+                echo ' Inesperado, no se pudo modificar';
+            echo '</div>';
+        echo '</div>';
     }
 
 	echo '<div class="row-fluid ">';

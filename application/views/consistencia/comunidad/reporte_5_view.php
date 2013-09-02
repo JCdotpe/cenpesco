@@ -10,7 +10,7 @@
 
     <div class="span10" id="freg">
 
-    	<h4>VERIFICACION DE P1 DE SECCION VII INDICA QUE REALIZA CULTIVO DE ANIMALES EN EL AGUA PERO EN LA P7 DE LA MISMA SECION INDICAN QUE NO REALIZAN CRIANZA Y VICEVERSA Y VICEVERSA
+    	<h4>VERIFICACION LA P1 DE LA SECCION VII INDICA QUE SE DEDICA A LA ACTIVIDAD DE ACUICULTURA CONTINENTAL PERO EN LA P7 DE LA MISMA SECCION INDICAN QUE NO CULTIVAN
 </h4>
     	<?php
 
@@ -29,8 +29,8 @@
 						echo '<th>COD CCPP</th>';						
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
-						echo '<th>"¿Los miembros de la comunidad se dedican a la actividad de: (S7_1_2 )" </th>';
-						echo '<th>"¿Qué especies acuicolas generalmente crian en la comunidad? Ninguno (S7_7_16 )"</th>';
+						echo '<th>"¿Los miembros de la comunidad se dedican a la actividad de: acuicultura continental? (S7_1_2 )" </th>';
+						echo '<th>"¿Qué especies acuicolas generalmente crian en la comunidad? No cultivan (S7_7_16 )"</th>';
 																																				
 						echo '</tr>';
 					echo '</thead>';

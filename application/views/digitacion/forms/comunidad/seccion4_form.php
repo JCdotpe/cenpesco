@@ -608,6 +608,22 @@ echo '</div>';
 
 $(function(){
 
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+		$("#S4_1").change(function () {
+			if ($(this).val() == 1){
+				$("#" + $(this).attr('id') + "_C").removeAttr('disabled');
+			}else{
+				$("#" + $(this).attr('id') + "_C").attr('disabled','disabled');
+				$("#" + $(this).attr('id') + "_C").val('');
+			}
+		})	
+	/////////////////////////////////////////////////////////////////////////////////
+	// DESHABILITAR ESPCIFIQUE (OTROS) 
+	////////////////////////////////////////////////////////////////////////////////
+
+
 	// $("#seccion4").on("submit", function(event) {
 	// 	$('#seccion4').trigger('validate');
  // 	});
@@ -619,7 +635,7 @@ $(function(){
 		            digits: true,
 		         },   
 				S4_1_C: {
-		            required: false,
+		            required: true,
 		            digits: true,
 		            ranges: [[1,500],[999]],
 		         },   

@@ -105,11 +105,47 @@ echo form_open($this->uri->uri_string(),$attr);
 			    echo ' El centro poblado ya fue registrado';
 		    echo '</div>';
 	    echo '</div>';
-	}
+	}elseif ($this->session->flashdata('msgbox')==='error_odei') {
+        echo '<div class="row-fluid">';
+            echo '<div class="alert alert-info">';
+                echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+                echo '<strong>ERROR! </strong>';
+                echo ' Inesperado, DOBLE o NINGUN ODEI AL MOMENTO DE GUARDAR';
+            echo '</div>';
+        echo '</div>';
+    }elseif ($this->session->flashdata('msgbox')==='no_piloto') {
+        echo '<div class="row-fluid">';
+            echo '<div class="alert alert-info">';
+                echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+                echo '<strong>ERROR! </strong>';
+                echo ' Usuario PILOTO no esta permitido guardar';
+            echo '</div>';
+        echo '</div>';
+    }elseif ($this->session->flashdata('msgbox')==='update_nform') {
+        echo '<div class="row-fluid">';
+		    echo '<div class="alert alert-success">';
+			    echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+			    echo '<strong>EXITOSO! </strong>';
+			    echo ' El número de formulario del centro poblado fue modificado satisfactoriamente';
+		    echo '</div>';
+        echo '</div>';
+    }elseif ($this->session->flashdata('msgbox')==='no_update_nform') {
+        echo '<div class="row-fluid">';
+            echo '<div class="alert alert-info">';
+                echo '<button class="close" data-dismiss="alert" type="button">×</button>';
+                echo '<strong>ERROR! </strong>';
+                echo ' Inesperado, no se pudo modificar';
+            echo '</div>';
+        echo '</div>';
+    }
+
+
+
+
 
 	echo '<div class="row-fluid ">';
 		echo '<div class="span12 preguntas_n">';
-			echo '<h3>REGISTRO DE PESCADORES </h3>';
+			echo '<h3>REGISTRO DE PESCADORES Y EMBARCACIONES </h3>';
 		echo '</div>';	
 	echo '</div>'; 
 

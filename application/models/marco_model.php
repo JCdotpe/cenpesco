@@ -383,6 +383,16 @@ class Marco_model extends CI_Model{
             $q = $this->db->get('marco');
             return $q->result();
         } 
-
+    // GENERAL
+        // ODEI ****************************************************************************************************
+        function get_general_by_odei($cod)
+        {   
+            $this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, sum(PEA_GENERAL) as TOTAL_GEN ');
+            $this->db->where_in('ODEI_COD',$cod);
+            $this->db->group_by('ODEI_COD');
+            $this->db->order_by('NOM_ODEI');
+            $q = $this->db->get('marco');
+            return $q->result();
+        }     
 
  }

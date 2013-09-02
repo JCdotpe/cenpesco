@@ -10,12 +10,13 @@
 
     <div class="span10" id="freg">
 
-    	<h4>VERIFICACION DE P1 DE SECCION VII INDICA UQE REALIZA PESCA PERO EN LA P2 DE LA MISMA SECION INDICAN QUE NO REALIZAN PESCA Y VICEVERSA</h4>
+    	<h4>VERIFICACION DE P1 DE SECCION VII INDICA QUE REALIZA PESCA PERO EN LA P2 DE LA MISMA SECION INDICAN QUE NO REALIZAN PESCA Y VICEVERSA</h4>
     	<?php
 
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
+						echo '<th>N°</th>';
 						echo '<th>COD</th>';
 						echo '<th>SEDE</th>';
 						echo '<th>CCDD</th>';						
@@ -27,7 +28,7 @@
 						echo '<th>COD CCPP</th>';						
 						echo '<th>CENTRO POBLADO</th>';						
 						echo '<th>FORMULARIO N°</th>';
-						echo '<th>¿Los miembros de la comunidad se dedican a la actividad de: (S7_1_1)</th>';
+						echo '<th>¿Los miembros de la comunidad se dedican a la actividad de pesca continental? (S7_1_1)</th>';
 						echo '<th>La pesca la realiza en: No realizan pesca (S7_2_9)</th>';
 
 																																				

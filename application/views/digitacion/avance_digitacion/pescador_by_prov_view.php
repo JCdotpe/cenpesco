@@ -120,7 +120,7 @@
 							echo "<td> 0.00% </td>";
 						}
 
-						if ( $nform_pes>0){
+						if ( $row->TOTAL_PES>0){
 							echo "<td><strong>". number_format( ($nform_udra*100)/$row->TOTAL_PES , 2,'.' ,'') ." %</strong></td>";								
 						}else{
 							echo "<td> 0.00% </td>";

@@ -91,14 +91,14 @@ class Comunidad_seccion8 extends CI_Controller {
 			if($is_ajax){
 				$id = $this->input->post('comunidad_id');
 				$c_data['comunidad_id'] = $this->input->post('comunidad_id');
-				$c_data['salto_seccion'] = $var;
+				$c_data['salto_seccion'] = $this->input->post('salto');
 				$c_data['user_id'] = $this->tank_auth->get_user_id();
 				$c_data['last_ip'] =  $this->input->ip_address();
 				$c_data['user_agent'] = $this->agent->agent_string();
 
 				$flag = 0;
 				
-				if ($var == 1) {
+				if ( $this->input->post('salto') == 1) {
 					$msg = 'Error inesperado, por favor intentalo nuevamente';
 					if ($this->comunidad_model->consulta_in_seccion($this->input->post('comunidad_id'),'comunidad_seccion8')->num_rows() >= 1) {
 						$c_data['modified'] = date('Y-m-d H:i:s');

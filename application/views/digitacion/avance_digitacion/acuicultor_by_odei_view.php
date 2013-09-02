@@ -73,7 +73,7 @@
 
 					$i = 1;
 					$nform_udra = null;
-					$nform_pes = null;
+					$nform_acui = null;
 					foreach($tables as $row){
 						echo "<tr>";
 						echo "<td>". $i++."</td>";
@@ -103,12 +103,12 @@
 						if (isset($formularios)){
 							foreach ($formularios->result() as $key ) {
 								if ( ($row->ODEI_COD == $key->ODEI_COD) ){
-									$nform_pes =  $key->TOTAL_DIG;
+									$nform_acui =  $key->TOTAL_DIG;
 									break;
 								}
 							}
-							if (is_numeric($nform_pes)){
-								echo "<td>". $nform_pes ."</td>";
+							if (is_numeric($nform_acui)){
+								echo "<td>". $nform_acui ."</td>";
 								//echo "<td>". number_format( ($nform*100)/$row->FORMULARIOS) ." %</td>";	
 							}else{
 								echo "<td> ". 0 ."</td>";
@@ -119,19 +119,19 @@
 						}
 
 						if ( $nform_udra>0){
-							echo "<td>". number_format( ($nform_pes*100)/$nform_udra , 2,'.' ,'') ." %</td>";								
+							echo "<td>". number_format( ($nform_acui*100)/$nform_udra , 2,'.' ,'') ." %</td>";								
 						}else{
 							echo "<td> ". 0 ."</td>";
 						}
 
-						if ( $nform_pes>0){
+						if ( $row->TOTAL_ACUI>0){
 							echo "<td><strong>". number_format( ($nform_udra*100)/$row->TOTAL_ACUI , 2,'.' ,'') ." %</strong></td>";								
 						}else{
 							echo "<td> ". 0 ."</td>";
 						}
 
 						$nform_udra = null;
-						$nform_pes = null;
+						$nform_acui = null;
 						echo "</tr>"; 
 
 					 }

@@ -1311,7 +1311,7 @@ class Avance_empadronador extends CI_Controller {
 
 		$total_trab_by_odei 		= $this->avance_campo_subrutas_model->total_trab_by_odei();     	// TOTAL CCPP  por ODEI
 		$total_trab_pes_by_odei 	= $this->avance_campo_subrutas_model->total_trab_pes_by_odei();     // TOTAL PESCADORES  por ODEI
-		$total_trab_acui_by_odei 	= $this->avance_campo_subrutas_model->total_trab_acui_by_odei();    // TOTAL PESCADORES  por ODEI
+		$total_trab_acui_by_odei 	= $this->avance_campo_subrutas_model->total_trab_acui_by_odei();    // TOTAL ACUICULTORES  por ODEI
 		$total_trab_pes_totales_by_odei		= $this->avance_campo_subrutas_model->total_trab_pes_totales_by_odei();		// TOTALES de formulario PESCADOR por ODEI
 		$total_trab_acui_totales_by_odei	= $this->avance_campo_subrutas_model->total_trab_acui_totales_by_odei();	// TOTALES de formulario ACUICULTOR por ODEI
 		$total_trab_com_totales_by_odei		= $this->avance_campo_subrutas_model->total_trab_com_totales_by_odei();		// TOTALES de formulario COMUNIDAD por ODEI

@@ -748,16 +748,16 @@ echo form_close();
 // CAMPOS SIN PASE
     var array_otros_v = [ 'S3_4_4','S3_8_4','S3_10_5','S3_12_6','S3_16_5','S3_17_8','S3_17_9','S3_18_7','S3_18_8','S3_19_4', //SECCCION 3
                         'S5_2_7','S5_3_17', // SECCION 5
-                        'S6_3_6','S6_4_15', // SECCION 6
-                        'S7_1_9','S7_5_41','S7_5_49','S7_6_3','S7_7_14','S7_7_15','S7_8_18','S7_9_13','S7_10_9','S7_13_12',// SECCION 7
-                        'S7_2_1','S7_2_2','S7_2_3','S7_2_4','S7_2_5','S7_2_6','S7_2_7','S7_12_1','S7_12_2','S7_12_3',
+                        /*'S6_3_6',*/'S6_4_15', // SECCION 6
+                        'S7_1_9','S7_5_41','S7_5_49','S7_6_3',/*'S7_7_14','S7_7_15','S7_8_18',*/'S7_9_13','S7_10_9','S7_13_12',// SECCION 7
+                        /*'S7_2_1','S7_2_2','S7_2_3','S7_2_4','S7_2_5','S7_2_6','S7_2_7','S7_12_1','S7_12_2','S7_12_3',*/
                         'S8_3_10','S8_2_1','S8_2_2','S8_2_3','S8_2_4','S8_2_5','S8_2_6','S8_2_7','S8_2_8','S8_2_9','S8_2_10','S8_2_11']; // SECCION 8
                        
     var array_otros_u = [];
     	array_otros_u['S3_1'] 	= 4;
     	array_otros_u['S7_15'] 	= 6;	
 
-    var array_otros_esp = ['S7_2_8','S7_12_4','S8_2_12']; // OTROS especiales
+    var array_otros_esp = [/*'S7_2_8',*/'S7_12_4','S8_2_12']; // OTROS especiales
 
     var array_especiales_tras = ['S3_20_1','S3_20_2','S3_20_3','S3_20_4','S3_20_5'];// TIPO TRANSPORTE SECCION 3	  	 
     var array_especiales_tras2 = ['S3_20_6','S3_20_7','S3_20_8','S3_20_9'];	// TIPO TRANSPORTE SECCION 3	 
@@ -784,14 +784,14 @@ echo form_close();
  		array_pases['S3_6_5'] = [1,9,2,5,1,0,0,0];
  		array_pases['S3_9_6'] = [1,11,2,6,0,0,1,0];
  		array_pases['S3_15'] = [0,19,2,2,0,0,0,0];
- 		array_pases['S4_1'] = [0,4,2,2,1,1,0,1];
+ 		array_pases['S4_1'] = [0,4,2,2,1,1,0,2];
  		array_pases['S5_1'] = [0,3,2,2,0,0,0,0];
  		array_pases['S6_1'] = [0,3,2,2,0,0,0,0];
  		array_pases['S7_1_9'] = [1,17,3,9,1,1,0,1];
  		array_pases['S7_2_9'] = [1,7,9,9,0,0,1,0];
  		array_pases['S7_8_19'] = [1,10,19,19,0,0,1,0];
- 		array_pases['S7_11'] = [0,17,2,2,0,0,0,1];
- 		array_pases['S7_14'] = [0,17,2,2,0,0,0,1];
+ 		array_pases['S7_11'] = [0,17,2,2,0,0,0,2];
+ 		array_pases['S7_14'] = [0,17,2,2,0,0,0,2];
  		array_pases['S8_1'] = [0,4,2,2,0,0,0,0];
 
  	//excep_1 = null;//, para la pregunta del pases S3_7
@@ -943,7 +943,7 @@ echo form_close();
 						                        	inputs.eq( inputs.index(this) ).focus();  
 						                        	inputs.eq( inputs.index(this) ).select();  
 					                        	}else{
-					                        		if (termina_s == 1) {alert("Finalice esta sección");};
+					                        		if ($(this).val() == termina_s ) {alert("Finalice esta sección");};
 					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
 					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
 					                        	};
@@ -972,12 +972,12 @@ echo form_close();
 						                        	inputs.eq( inputs.index(this) ).focus();  
 						                        	inputs.eq( inputs.index(this) ).select();  
 					                        	} else{
-					                        		if (termina_s == 1) {alert("Finalice esta sección");};
+					                        		if ( $(this).val() == termina_s ) {alert("Finalice esta sección");};
 					                        		inputs.eq( inputs.index(this) + 1 ).focus();					                        		
 					                        		inputs.eq( inputs.index(this) + 1 ).select();					                        		
 					                        	};
                        						}else{
-                       							if (termina_s == 1) {alert("Finalice esta sección");};
+                       							if ( $(this).val() == termina_s ) {alert("Finalice esta sección");};
 					                        	inputs.eq( inputs.index(this) + 1 ).focus();
 					                        	inputs.eq( inputs.index(this) + 1 ).select();
 					                        }
@@ -1018,6 +1018,7 @@ echo form_close();
                             inputs.eq( inputs.index(this)+ 1 ).select();                             
                         }
                     }else if( array_otros_u[$(this).attr('id')] >= 1 ){//  CAMPOS OTRO, de UN solo ingreso
+                    	inputs = $(this).closest('form').find(':input:enabled');
                         if ($(this).val() == array_otros_u[$(this).attr('id')] ) {
                             inputs.eq( inputs.index(this)+ 1 ).focus();                              
                             inputs.eq( inputs.index(this)+ 1 ).select();                              

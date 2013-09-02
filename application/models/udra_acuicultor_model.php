@@ -69,7 +69,13 @@ class Udra_acuicultor_model extends CI_MODEL
 		return $q;
 	}
 
-
+	function update_nform($dep, $prov,$dist,$ccpp, $set)
+	{	
+		$condicion = 'CCDD ="'. $dep .'" AND CCPP="'. $prov .'" AND CCDI="'. $dist .'" AND COD_CCPP="'. $ccpp.'"';
+    	$this->db->where($condicion);
+    	$this->db->update('udra_acuicultor', $set);
+    	return $this->db->affected_rows();
+	}
 
 // ******************************************************************************
 // para REPORTES

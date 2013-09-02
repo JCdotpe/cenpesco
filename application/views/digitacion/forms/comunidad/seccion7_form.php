@@ -5767,7 +5767,7 @@ $(function(){
 				        $.ajax({
 				            url: CI.base_url + "digitacion/comunidad_seccion8/salto/1",
 				            type:'POST',
-				            data:{ajax: 1,comunidad_id:$("input[name='comunidad_id']").val(), csrf_token_c:CI.cct},
+				            data:{ajax: 1, salto: 1,comunidad_id:$("input[name='comunidad_id']").val(), csrf_token_c:CI.cct},
 				            dataType:'json',
 				            success:function(json){
 								alert(json.msg);
@@ -5778,7 +5778,7 @@ $(function(){
 				        $.ajax({
 				            url: CI.base_url + "digitacion/comunidad_seccion8/salto/0",
 				            type:'POST',
-				            data:{ajax: 1,comunidad_id:$("input[name='comunidad_id']").val(), csrf_token_c:CI.cct},
+				            data:{ajax: 1, salto: 0,comunidad_id:$("input[name='comunidad_id']").val(), csrf_token_c:CI.cct},
 				            dataType:'json',
 				            success:function(json){
 								alert(json.msg);

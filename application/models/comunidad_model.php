@@ -265,7 +265,7 @@ class Comunidad_model extends CI_MODEL
       `comunidad_seccion3`.`S3_4_4_O` ,
       `comunidad_seccion3`.`S3_5_1` ,
       `comunidad_seccion3`.`S3_5_2` ,
-      `comunidad_seccion3`.`S3_5_3_O` ,
+      `comunidad_seccion3`.`S3_5_3` ,
       `comunidad_seccion3`.`S3_6_1` ,
       `comunidad_seccion3`.`S3_6_2` ,
       `comunidad_seccion3`.`S3_6_3` ,

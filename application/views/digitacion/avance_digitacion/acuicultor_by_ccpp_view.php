@@ -12,9 +12,9 @@
 
     	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO ACUICULTOR A NIVEL CENTRO POBLADO</h4>
     	<?php
-    // 		if ($ubigeo == 99){
-				// echo anchor(site_url('digitacion/pescador_avance/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');	
-    // 		}
+    		if ($ubigeo == 99){
+				echo anchor(site_url('digitacion/acuicultor_avance/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');	
+    		}
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
@@ -85,7 +85,7 @@
 
 					$i = 1;
 					$nform_udra = null;
-					$nform_pes = null;
+					$nform_acui = null;
 					foreach($tables as $row){
 						echo "<tr>";
 						echo "<td>". $i++."</td>";
@@ -118,12 +118,12 @@
 						if (isset($formularios)){
 							foreach ($formularios->result() as $key ) {
 								if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP)  ){
-									$nform_pes =  $key->TOTAL_DIG;
+									$nform_acui =  $key->TOTAL_DIG;
 									break;
 								}
 							}
-							if (is_numeric($nform_pes)){
-								echo "<td>". $nform_pes ."</td>";
+							if (is_numeric($nform_acui)){
+								echo "<td>". $nform_acui ."</td>";
 							}else{
 								echo "<td> ". 0 ."</td>";
 							}
@@ -133,7 +133,7 @@
 						}
 
 						if ( $nform_udra>0){
-							echo "<td>". number_format( ($nform_pes*100)/$nform_udra , 2,'.' ,'') ." %</td>";								
+							echo "<td>". number_format( ($nform_acui*100)/$nform_udra , 2,'.' ,'') ." %</td>";								
 						}else{
 							echo "<td> 0.00% </td>";
 						}
@@ -145,7 +145,7 @@
 						}
 
 						$nform_udra = null;
-						$nform_pes = null;
+						$nform_acui = null;
 						echo "</tr>"; 
 
 					 }

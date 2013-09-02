@@ -69,16 +69,16 @@ class Acuicultor extends CI_Controller {
 			$this->form_validation->set_rules('COD_CCPP','CODIGO','required|numeric|centro_poblado'); //regla que valida si el CCPP fue registrado
 			$this->form_validation->set_rules('FORMULARIOS','required|numeric');		
 
-
+			$dep = $this->input->post('CCDD');
+			$prov = $this->input->post('CCPP');
+			$dist = $this->input->post('CCDI');
+			$ccpp = $this->input->post('COD_CCPP');
 
 	    if ($this->form_validation->run() === TRUE) {
 	    		//VALIDA USUARIO NO PILOTO
 			if ($this->tank_auth->get_ubigeo()<99) {
 				//VALIDA si el CCPP ya fue registrado
-				$dep = $this->input->post('CCDD');
-				$prov = $this->input->post('CCPP');
-				$dist = $this->input->post('CCDI');
-				$ccpp = $this->input->post('COD_CCPP');
+
 				if($this->udra_acuicultor_model->get_centro_poblado($dep,$prov,$dist,$ccpp) > 0){
 					$this->session->set_flashdata('msgbox',3);
 					redirect('/udra/acuicultor');
@@ -122,14 +122,28 @@ class Acuicultor extends CI_Controller {
 				}
 				redirect('/udra/acuicultor');
 			}else{
-			$this->session->set_flashdata('msgbox','no_piloto');
-			redirect('/udra/acuicultor');
+				//VALIDA si el CCPP ya fue registrado, para modificarlo, solo usuarios globales
+				if ( $this->udra_acuicultor_model->get_centro_poblado($dep,$prov,$dist,$ccpp) > 0 ) {
+					$set =  array(
+						'FORMULARIOS' 	=> $this->input->post('formularios'),
+						'USUARIO_M'		=> $this->tank_auth->get_user_id(),
+						'FECHA_M'		=> date('y-m-d H:i:s',now()));
+					$modificados = $this->udra_acuicultor_model->update_nform($dep,$prov,$dist,$ccpp, $set);
+					if ($modificados == 1) {
+						$this->session->set_flashdata('msgbox','update_nform');
+						redirect('/udra/acuicultor');
+					} else {
+						$this->session->set_flashdata('msgbox','no_update_nform');
+						redirect('/udra/acuicultor');
+					}
+				} else {
+					$this->session->set_flashdata('msgbox','no_piloto');
+					redirect('/udra/acuicultor');
+				}			
 			}
 		}else{
-					
  			$data['datos'] = $this->form_validation->error_array();
     		$this->load->view('backend/includes/template', $data);				
-	        
 	    }
 		
 

@@ -53,9 +53,6 @@ class Udra_pescador_model extends CI_MODEL
 		return $q;
 	}	
 
-
-
-
 	function get_registros_total($forms)// cuenta  la cantidad de formularios registrados en todas las secciones
 	{	
 		$this->db->select('COUNT(NFORM) as NFORM');
@@ -68,6 +65,14 @@ class Udra_pescador_model extends CI_MODEL
 		$q = $this->db->get('udra_pescador');
 		return $q;
 	}
+
+	function update_nform($dep, $prov,$dist,$ccpp, $set)
+	{	
+		$condicion = 'CCDD ="'. $dep .'" AND CCPP="'. $prov .'" AND CCDI="'. $dist .'" AND COD_CCPP="'. $ccpp.'"';
+    	$this->db->where($condicion);
+    	$this->db->update('udra_pescador', $set);
+    	return $this->db->affected_rows();
+	}	
 
 // ******************************************************************************
 // para REPORTES

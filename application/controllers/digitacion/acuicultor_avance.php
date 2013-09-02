@@ -82,13 +82,13 @@ class Acuicultor_avance extends CI_Controller {
 					$table = null;
 					foreach($this->secciones as $s=>$k){
 						$table = 'acu_seccion' . $s;
-							$cod = $filas->id1.$s;
-						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$cod, $s);//recorre cada tabla
+							//$cod = $filas->id1.$s;echo $cod.'<br>';
+						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
 						//var_dump($rega->num_rows());echo '<br>';
-					}
+					}//echo $i.'<br>';
 					if ($i == 9){
 						$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
@@ -97,6 +97,7 @@ class Acuicultor_avance extends CI_Controller {
 					}
 				}
 			}//var_dump($seccion_completos);echo '<br>';
+			//var_dump($seccion_incompletos);echo '<br>';
 			
 
 			if (count($seccion_completos)>0){
@@ -149,13 +150,13 @@ class Acuicultor_avance extends CI_Controller {
 					$table = null;
 					foreach($this->secciones as $s=>$k){
 						$table = 'acu_seccion' . $s;
-							$cod = $filas->id1.$s;
-						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$cod, $s);//recorre cada tabla
+							//$cod = $filas->id1.$s;echo $cod.'<br>';
+						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
 						//var_dump($rega->num_rows());echo '<br>';
-					}
+					}//echo $i.'<br>';
 					if ($i == 9){
 						$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
@@ -164,6 +165,7 @@ class Acuicultor_avance extends CI_Controller {
 					}
 				}
 			}//var_dump($seccion_completos);echo '<br>';
+			//var_dump($seccion_incompletos);echo '<br>';
 			
 
 			if (count($seccion_completos)>0){
@@ -215,13 +217,13 @@ class Acuicultor_avance extends CI_Controller {
 					$table = null;
 					foreach($this->secciones as $s=>$k){
 						$table = 'acu_seccion' . $s;
-							$cod = $filas->id1.$s;
-						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$cod, $s);//recorre cada tabla
+							//$cod = $filas->id1.$s;echo $cod.'<br>';
+						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
 						//var_dump($rega->num_rows());echo '<br>';
-					}
+					}//echo $i.'<br>';
 					if ($i == 9){
 						$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
@@ -230,6 +232,7 @@ class Acuicultor_avance extends CI_Controller {
 					}
 				}
 			}//var_dump($seccion_completos);echo '<br>';
+			//var_dump($seccion_incompletos);echo '<br>';
 			
 
 			if (count($seccion_completos)>0){
@@ -255,6 +258,7 @@ class Acuicultor_avance extends CI_Controller {
 			$data['title'] = 'CENTRO POBLADO';
 			$data['user_id']	= $this->tank_auth->get_user_id();
 			$data['username']	= $this->tank_auth->get_username();
+			$data['ubigeo'] = $this->tank_auth->get_ubigeo();
 
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
@@ -281,13 +285,13 @@ class Acuicultor_avance extends CI_Controller {
 					$table = null;
 					foreach($this->secciones as $s=>$k){
 						$table = 'acu_seccion' . $s;
-							$cod = $filas->id1.$s;
-						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$cod, $s);//recorre cada tabla
+							//$cod = $filas->id1.$s;echo $cod.'<br>';
+						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
 						//var_dump($rega->num_rows());echo '<br>';
-					}
+					}//echo $i.'<br>';
 					if ($i == 9){
 						$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
@@ -296,6 +300,7 @@ class Acuicultor_avance extends CI_Controller {
 					}
 				}
 			}//var_dump($seccion_completos);echo '<br>';
+			//var_dump($seccion_incompletos);echo '<br>';
 			
 
 			if (count($seccion_completos)>0){
@@ -324,8 +329,8 @@ class Acuicultor_avance extends CI_Controller {
 				$odei[] = $key->ODEI_COD;
 			}
 
-			$tables = $this->marco_model->get_pescadores_by_ccpp($odei); 
-			$udra = $this->udra_acuicultor_model->get_formularios_total_by_ccpp($odei); //get UDRA por ODEIS,  	
+			$tables = $this->marco_model->get_acuicultores_by_ccpp($odei); 
+			$udra = $this->udra_acuicultor_model->get_udra_total_by_ccpp($odei); //get UDRA por ODEIS,  	
 
 
  			$seccion_completos = array();
@@ -338,32 +343,29 @@ class Acuicultor_avance extends CI_Controller {
 					$i = 0;
 					$table = null;
 					foreach($this->secciones as $s=>$k){
-						$table = 'pesc_seccion' . $s;
-						if($s == 10){
-							$table = 'pesc_info';
-						}
-						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id);//recorre cada tabla
+						$table = 'acu_seccion' . $s;
+							//$cod = $filas->id1.$s;echo $cod.'<br>';
+						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-						//var_dump($rega->result());echo '<br>';
-					}
+						//var_dump($rega->num_rows());echo '<br>';
+					}//echo $i.'<br>';
 					if ($i == 9){
-						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+						$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
 					}else{
-						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+						$seccion_incompletos[] = $filas->id1; //guarda los ID de formularios incompletos
 					}
-				}//var_dump($seccion_completos);echo '<br>';
-			}
+				}
+			}//var_dump($seccion_completos);echo '<br>';
+			//var_dump($seccion_incompletos);echo '<br>';
 
 			if (count($seccion_completos)>0){
 			 	$formularios = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$formularios = NULL;
 			}	
-
-
 
 			//******************************************************************************************
 
@@ -382,7 +384,7 @@ class Acuicultor_avance extends CI_Controller {
 				$sheet->setCellValue('G1','DISTRITO' );
 				$sheet->setCellValue('H1','COD_CCPP' );
 				$sheet->setCellValue('I1','CENTRO POBLADO' );
-				$sheet->setCellValue('J1','PEA PESCADOR ' );
+				$sheet->setCellValue('J1','PEA ACUICULTOR ' );
 				$sheet->setCellValue('K1','UDRA' );
 				$sheet->setCellValue('L1','DIGITACION' );
 				$sheet->setCellValue('M1','% AVANCE DE DIGITACION' );
@@ -407,7 +409,7 @@ class Acuicultor_avance extends CI_Controller {
 				$total_2 = 0;
 				$total_3 = 0;
 				foreach($tables as $row){ //TOTAL MARCO
-					$total_1 = $total_1 + $row->TOTAL_PES;
+					$total_1 = $total_1 + $row->TOTAL_ACUI;
 				}
 				$sheet->setCellValue('J2', $total_1);
 
@@ -442,7 +444,7 @@ class Acuicultor_avance extends CI_Controller {
 
 			$i = 1;
 			$nform_udra = null;
-			$nform_pes = null;
+			$nform_acui = null;
 			foreach($tables as $row){
 				$celda++;
 				$sheet->setCellValue('A'.$celda, $i++);
@@ -454,9 +456,9 @@ class Acuicultor_avance extends CI_Controller {
 				$sheet->setCellValue('G'.$celda, $row->DISTRITO);
 				$sheet->setCellValue('H'.$celda, $row->CODCCPP);
 				$sheet->setCellValue('I'.$celda, $row->CENTRO_POBLADO);
-				$sheet->setCellValue('J'.$celda, $row->TOTAL_PES);
+				$sheet->setCellValue('J'.$celda, $row->TOTAL_ACUI);
 
-
+					//udra
 					if (isset($udra)){
 						foreach ($udra->result() as $key ) {
 							if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP) ){
@@ -471,16 +473,16 @@ class Acuicultor_avance extends CI_Controller {
 					}else{
 							$sheet->setCellValue('K'.$celda, 0);
 					}
-					//PESCADOR
+					//ACUICULTOR
 					if (isset($formularios)){
 						foreach ($formularios->result() as $key ) {
 							if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP)  ){
-								$nform_pes =  $key->TOTAL_DIG;
+								$nform_acui =  $key->TOTAL_DIG;
 								break;
 							}
 						}
-						if (is_numeric($nform_pes)){
-							$sheet->setCellValue('L'.$celda, $nform_pes);
+						if (is_numeric($nform_acui)){
+							$sheet->setCellValue('L'.$celda, $nform_acui);
 						}else{
 							$sheet->setCellValue('L'.$celda, 0);
 						}
@@ -490,19 +492,19 @@ class Acuicultor_avance extends CI_Controller {
 					}
 					//TOTAL AVANCE
 					if ( $nform_udra>0){
-						$sheet->setCellValue('M'.$celda, number_format( ($nform_pes*100)/$nform_udra , 2,'.' ,'') );								
+						$sheet->setCellValue('M'.$celda, number_format( ($nform_acui*100)/$nform_udra , 2,'.' ,'') );								
 					}else{
 						$sheet->setCellValue('M'.$celda, 0);
 					}
 					//TOTAL UDRA Y MARCO
-					if ( $row->TOTAL_PES>0){
-						$sheet->setCellValue('N'.$celda, number_format( ($nform_udra*100)/$row->TOTAL_PES , 2,'.' ,'') );						
+					if ( $row->TOTAL_ACUI>0){
+						$sheet->setCellValue('N'.$celda, number_format( ($nform_udra*100)/$row->TOTAL_ACUI , 2,'.' ,'') );						
 					}else{
 						$sheet->setCellValue('N'.$celda, 0);
 					}
 
 					$nform_udra = null;
-					$nform_pes = null;
+					$nform_acui = null;
 
 			}
 
@@ -511,13 +513,13 @@ class Acuicultor_avance extends CI_Controller {
 		// SALIDA EXCEL
 			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
 			// Propiedades del archivo excel
-				$sheet->setTitle("PESCADOR");
+				$sheet->setTitle("ACUICULTOR");
 				$this->phpexcel->getProperties()
 				->setTitle("Avance")
-				->setDescription("Avance pescador");
+				->setDescription("Avance ACUICULTOR");
 
 			header("Content-Type: application/vnd.ms-excel");
-			$nombreArchivo = 'AVANCE_PESCADOR_'.date('YmdHis');
+			$nombreArchivo = 'AVANCE_ACUICULTOR_'.date('YmdHis');
 			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\""); //EXCEL
 			header("Cache-Control: max-age=0");
 			
@@ -530,6 +532,7 @@ class Acuicultor_avance extends CI_Controller {
 		// SALIDA EXCEL
 
 	}
+
 
 
 

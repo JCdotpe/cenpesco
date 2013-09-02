@@ -331,7 +331,7 @@ class Registro_pescadores extends CI_Controller {
 				$this->form_validation->set_rules('P11','N° Puerta, Block, Interior, Piso N°, Manz. N°, Lote o KM','required');
 			}
 			$this->form_validation->set_rules('P12','MANZANA','');
-			$this->form_validation->set_rules('P13','LOTE','numeric');
+			$this->form_validation->set_rules('P13','LOTE','');
 			$this->form_validation->set_rules('P14','KM','numeric');
 			$this->form_validation->set_rules('P15','NUMERO','required|numeric');
 			

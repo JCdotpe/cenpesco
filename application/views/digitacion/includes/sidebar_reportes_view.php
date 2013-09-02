@@ -23,6 +23,9 @@
 	  <li <?php echo ($option == 32) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('digitacion/registro_avance/provincia'); ?>">R. por Provincia </a></li>                                           
 	  <li <?php echo ($option == 33) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('digitacion/registro_avance/distrito'); ?>">R. por Distrito</a></li>                                           
 	  <li <?php echo ($option == 34) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('digitacion/registro_avance/centro_poblado'); ?>">R. por centro Poblado</a></li>   
+	<?php }elseif ( $option >= 41 && $option <= 50 ) { ?>
+	  <!-- <li <?php echo ($option == 41) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('digitacion/general_avance'); ?>">Avance General</a></li>  -->
+	  <li <?php echo ($option == 42) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('digitacion/general_avance_by_seguimiento'); ?>">Avance General segun seguimiento</a></li> 
 	<?php }?>
 </ul>
 </div><!--/.well --> 	
