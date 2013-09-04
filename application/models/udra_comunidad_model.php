@@ -182,7 +182,37 @@ class Udra_comunidad_model extends CI_MODEL
 		return $q;
 	}
 
-
+	// PARA RESULTADO DEL EMPADRONAMIENTO
+	function get_dig_res_completo_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as COMPLETO');
+		$this->db->where_in('comunidad_id', $forms);
+		$this->db->where('RES',1);	
+		$this->db->from('comunidad');
+		$this->db->join('comunidad_info','comunidad.id = comunidad_info.comunidad_id', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
+	function get_dig_res_incompleto_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as INCOMPLETO');
+		$this->db->where_in('comunidad_id', $forms);
+		$this->db->where('RES',2);	
+		$this->db->from('comunidad');
+		$this->db->join('comunidad_info','comunidad.id = comunidad_info.comunidad_id', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
+	function get_dig_res_rechazo_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as RECHAZO');
+		$this->db->where_in('comunidad_id', $forms);
+		$this->db->where('RES',3);	
+		$this->db->from('comunidad');
+		$this->db->join('comunidad_info','comunidad.id = comunidad_info.comunidad_id', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
 
 }
 

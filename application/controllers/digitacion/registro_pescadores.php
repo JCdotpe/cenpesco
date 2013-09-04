@@ -97,6 +97,7 @@ class Registro_pescadores extends CI_Controller {
 			$data['NOM_EMP'] = '';
 			$data['DNI_EMP'] = '';
 			$data['OBS'] = '';
+			$data['OMISION'] = FALSE;
 
 			$opcion = $this->input->post('send');
 
@@ -290,21 +291,27 @@ class Registro_pescadores extends CI_Controller {
 		$data['DNI_AUT'] = $cabecera->row('DNI_AUT');
 		$data['F_D'] = $cabecera->row('F_D');
 		$data['F_M'] = $cabecera->row('F_M');
-		$data['T_F_D'] = $cabecera->row('T_F_D');
-		$data['T_PES'] = $cabecera->row('T_PES');
-		$data['T_ACUI'] = $cabecera->row('T_ACUI');
-		$data['T_PES_ACUI'] = $cabecera->row('T_PES_ACUI');
-		$data['T_EMB'] = $cabecera->row('T_EMB');
+		$data['T_F_D'] = $omi_1 = $cabecera->row('T_F_D');
+		$data['T_PES'] = $omi_2 = $cabecera->row('T_PES');
+		$data['T_ACUI'] = $omi_3 = $cabecera->row('T_ACUI');
+		$data['T_PES_ACUI'] = $omi_4 = $cabecera->row('T_PES_ACUI');
+		$data['T_EMB'] = $omi_5 = $cabecera->row('T_EMB');
 		$data['NOM_EMP'] = $cabecera->row('NOM_EMP');
 		$data['DNI_EMP'] = $cabecera->row('DNI_EMP');
 		$data['OBS'] = $cabecera->row('OBS');
+
 	
 		$data['tables'] = $this->registro_pescadores_dat_model->get_detalles($id);
 		$opcion = $this->input->post('send');
 
-		$num_filas 		= $this->registro_pescadores_dat_model->get_num_filas($id); // N° filas 
-		$num_filas_t 	= $this->registro_pescadores_model->get_num_total($id); // N° TOTAL filas 
-	
+		$num_filas 		= $this->registro_pescadores_dat_model->get_num_filas($id); // N° filas de REGISTRO_PESCADORES_DAT
+		$num_filas_t 	= $this->registro_pescadores_model->get_num_total($id); // N° TOTAL filas  REGISTRO_PESCADORES
+
+		$data['OMISION'] = FALSE;
+		if ( ($omi_1 == 99998) && ($omi_2 == 99998) && ($omi_3 == 99998) && ($omi_4 == 99998) && ($omi_5 == 99998) && ($num_filas == 0)) {
+				$data['OMISION'] = TRUE;
+		} 
+				
 		$data['num_filas'] = $num_filas;
  		$data['num_filas_t'] = $num_filas_t;
  		
@@ -410,7 +417,13 @@ class Registro_pescadores extends CI_Controller {
 			$data['obs'] = $cabecera->row('OBS');
 			//echo '<script> alert("'.$pes_acui_t.'- '.$pes_acui_i. '");</script>';
 
-			if($num_filas>$num_filas_t){ 
+			if($data['OMISION']){ 
+				$registros = array('OBS' => $this->input->post('OBS'));
+				$OBS = $this->input->post('OBS');
+				$this->registro_pescadores_model->update_resumen($registros,$id);
+				$this->session->set_flashdata('msgbox','guardado');
+				redirect('digitacion/registro_pescadores/');
+			}elseif($num_filas>$num_filas_t){ 
 				$data['error'] = 1;
 				$this->load->view('backend/includes/template', $data);
 			}elseif($pes_i<>$pes_t){ 

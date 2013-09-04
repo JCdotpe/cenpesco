@@ -11,7 +11,7 @@ $filas_i = array(
 	'name'	=> 'filas_i',
 	'id'	=> 'filas_i',
 	'value'	=> $num_filas +1,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'readonly' => 'readonly',
 );
@@ -19,7 +19,7 @@ $filas_t = array(
 	'name'	=> 'filas_t',
 	'id'	=> 'filas_t',
 	'value'	=> $num_filas_t,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'readonly' => 'readonly',
 );
@@ -123,7 +123,7 @@ $T_F_D =array(
 	'name'	=> 'T_F_D',
 	'id'	=> 'T_F_D',
 	'value'	=> $T_F_D ,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
 
@@ -132,7 +132,7 @@ $T_PES =array(
 	'name'	=> 'T_PES',
 	'id'	=> 'T_PES',
 	'value'	=> $T_PES,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
 );
@@ -141,7 +141,7 @@ $T_ACUI =array(
 	'name'	=> 'T_ACUI',
 	'id'	=> 'T_ACUI',
 	'value'	=> $T_ACUI,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
 );
@@ -150,7 +150,7 @@ $T_PES_ACUI =array(
 	'name'	=> 'T_PES_ACUI',
 	'id'	=> 'T_PES_ACUI',
 	'value'	=> $T_PES_ACUI,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
 );
@@ -159,7 +159,7 @@ $T_EMB =array(
 	'name'	=> 'T_EMB',
 	'id'	=> 'T_EMB',
 	'value'	=> $T_EMB,
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",
 
@@ -303,7 +303,7 @@ $T_F_D_m =array(
 	'name'	=> 'T_F_D_m',
 	'id'	=> 'T_F_D_m',
 	'value'	=> $T_F_D['value'],
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",		
 );
@@ -311,7 +311,7 @@ $T_PES_m =array(
 	'name'	=> 'T_PES_m',
 	'id'	=> 'T_PES_m',
 	'value'	=> $T_PES['value'],
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",		
 );
@@ -319,7 +319,7 @@ $T_ACUI_m =array(
 	'name'	=> 'T_ACUI_m',
 	'id'	=> 'T_ACUI_m',
 	'value'	=> $T_ACUI['value'],
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",		
 );
@@ -327,7 +327,7 @@ $T_PES_ACUI_m =array(
 	'name'	=> 'T_PES_ACUI_m',
 	'id'	=> 'T_PES_ACUI_m',
 	'value'	=> $T_PES_ACUI['value'],
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",		
 );
@@ -335,7 +335,7 @@ $T_EMB_m =array(
 	'name'	=> 'T_EMB_m',
 	'id'	=> 'T_EMB_m',
 	'value'	=> $T_EMB['value'],
-	'maxlength'	=> 4,
+	'maxlength'	=> 5,
 	'class' => $span_class,
 	'onkeypress'=>"return soloNumeros(event)",	
 );
@@ -411,7 +411,7 @@ echo form_open($this->uri->uri_string(),$attr);
 		    echo '<div class="alert alert-info">';
 			    echo '<button class="close" data-dismiss="alert" type="button">×</button>';
 			    echo '<strong>ADVERTENCIA! </strong>';
-			    echo ' El centro poblado ya está registrado';
+			    echo ' El centro poblado de procedencia ya está registrado';
 		    echo '</div>';
 	    echo '</div>';
 	}elseif ($this->session->flashdata('msgbox')==='guardado') {
@@ -852,7 +852,7 @@ if($detalle){
 	$attr = array('class' => 'form-val','id' => 'form_registro_dat', 'style' => 'overflow: auto;');
 	echo form_open($this->uri->uri_string(),$attr); 
 		
-		if ($num_filas<$num_filas_t){ //
+		if ( ($num_filas<$num_filas_t) && !$OMISION){ //
 		echo '<div class="well modulo">';
 
 				echo '<div class="row-fluid">';
@@ -1346,7 +1346,7 @@ if($detalle){
 	// MENSAJES ERRORES <-----------------------
 
 	// TABLA DETALLE --------------------------------------------------------------------------------->
-	if ($num_filas>= 1 && $num_filas_t >= 0 ){
+	if ( ($num_filas>= 1 && $num_filas_t >= 0) && !$OMISION ){
 		
 		echo '<div class="row-fluid">';
 
@@ -1406,7 +1406,7 @@ if($detalle){
 			$attr = array('class' => 'form-val','id' => 'guarda', 'style' => 'overflow: auto;');
 			echo form_open($this->uri->uri_string(),$attr); 
 
-				if (($num_filas == $num_filas_t) && is_numeric($opx))
+				if ( (($num_filas == $num_filas_t) && is_numeric($opx) ) || $OMISION)
 					{ 
 						echo '<div class="row-fluid">';
 							echo form_textarea ($OBS);
@@ -2143,32 +2143,32 @@ $("#frm_reg_pesc").validate({
         T_F_D:{
             required: true,
             number: true,
-            maxlength: 4,  
-            range: [0,9998],           
+            maxlength: 5,  
+            range: [0,99998],           
          },   
         T_PES:{
             required: true,
             number: true,
-            maxlength: 4, 
-            range: [0,9998],              
+            maxlength: 5, 
+            range: [0,99998],              
          },   
         T_ACUI:{
             required: true,
             number: true,
-            maxlength: 4, 
-            range: [0,9998],             
+            maxlength: 5, 
+            range: [0,99998],             
          },   
         T_PES_ACUI:{
             required: true,
             number: true,
-            maxlength: 4, 
-            range: [0,9998],             
+            maxlength: 5, 
+            range: [0,99998],             
          },   
         T_EMB:{
             required: true,
             number: true,
-            maxlength: 4,     
-            range: [0,9998],         
+            maxlength: 5,     
+            range: [0,99998],         
          },   
         NOM_EMP_combo:{
             required: true,

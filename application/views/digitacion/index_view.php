@@ -15,7 +15,7 @@
               <li ><a href="<?php echo site_url('digitacion/acuicultor'); ?>">Acuicultor</a></li> 
               <li ><a href="<?php echo site_url('digitacion/comunidad'); ?>">Comunidad</a></li>
               <!-- <li ><a href="<?php //echo site_url('digitacion/informe'); ?>">Informe</a></li> -->
-              <li ><a href="<?php echo site_url('digitacion/general_avance'); ?>">Avance digitación General</a></li> 
+              <li ><a href="<?php echo site_url('digitacion/general_avance_by_seguimiento'); ?>">Avance digitación General</a></li> 
               <li ><a href="<?php echo site_url('digitacion/registro_avance'); ?>">Avance digitación Registro de Pescadores y Acuicultores</a></li>
               <li ><a href="<?php echo site_url('digitacion/pescador_avance'); ?>">Avance digitación Pescador y Embarcaciones</a></li>
               <li ><a href="<?php echo site_url('digitacion/acuicultor_avance'); ?>">Avance digitación Acuicultor</a></li>

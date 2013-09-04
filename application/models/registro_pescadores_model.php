@@ -150,6 +150,15 @@ class Registro_pescadores_model extends CI_MODEL
         $q = $this->db->get('udra_registro');
         return $q;
     }
+
+    function ccpp_no_coberturado_by_odei()//CCPP NO COBERTURADOS TFD = 99998
+    {
+    	$sql = "select ODEI_COD, NOM_ODEI, COUNT(*) TOTAL from registro_pescadores where T_F_D = 99998 GROUP BY ODEI_COD ORDER BY NOM_ODEI";
+    	$q = $this->db->query($sql);
+    	return $q;
+    }
+
+
 }
 
 

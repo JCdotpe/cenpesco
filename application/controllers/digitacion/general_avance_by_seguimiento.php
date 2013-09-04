@@ -169,6 +169,14 @@ class General_avance_by_seguimiento extends CI_Controller {
 				$nac_dig_reg = null;
 				$nac_udra_pes = null;
 				$nac_dig_pes = null;
+				$nac_udra_acui = null;
+				$nac_dig_acui = null;
+				$nac_udra_com = null;				
+				$nac_dig_com = null;
+				$nac_seg_trab_pes_totales = null;
+				$nac_seg_trab_acui_totales = null;
+				$nac_seg_trab_com_totales = null;
+
 				$filas['ODEI_COD'] = '';
 				$filas['NOM_ODEI'] = 'NACIONAL';
 
@@ -194,6 +202,58 @@ class General_avance_by_seguimiento extends CI_Controller {
 				} 
 				$filas['PES_DIG'] = $nac_dig_pes;
 				$filas['PES_AVANCE'] = ($nac_udra_pes>0) ? number_format( (($nac_dig_pes*100)/$nac_udra_pes),2,'.','') : 0 ;
+				// ACUICULTOR ******************************************************************************************************
+				foreach ($registros_udra_acui->result() as $acui) {
+				 	 $nac_udra_acui =  $nac_udra_acui + $acui->TOTAL_FORM;
+				} 
+				$filas['ACUI_UDRA'] = $nac_udra_acui;
+
+				if (isset($formularios_dig_acui)) {
+					foreach ($formularios_dig_acui->result() as $acui) {
+					 	$nac_dig_acui = $nac_dig_acui + $acui->TOTAL_DIG;  
+					} 
+				} 
+				$filas['ACUI_DIG'] = $nac_dig_acui;
+				$filas['ACUI_AVANCE'] = ($nac_udra_acui>0) ? number_format( (($nac_dig_acui*100)/$nac_udra_acui),2,'.','') : 0 ;
+				// COMUNIDAD *******************************************************************************************************
+				foreach ($registros_udra_com->result() as $com) {
+				 	$nac_udra_com = $nac_udra_com + $com->TOTAL_FORM; 
+				} 
+				$filas['COM_UDRA'] = $nac_udra_com;
+
+				if (isset($formularios_dig_com)) {
+					foreach ($formularios_dig_com->result() as $com) {
+					 	$nac_dig_com = $nac_dig_com + $com->TOTAL_DIG;
+					} 
+				} 
+				$filas['COM_DIG'] = $nac_dig_com;
+				$filas['COM_AVANCE'] = ($nac_udra_com>0) ? number_format( (($nac_dig_com*100)/$nac_udra_com),2,'.','') : 0 ;
+				// TOTALES *********************************************************************************************************
+				$nac_udra_total = $nac_udra_reg + $nac_udra_pes + $nac_udra_acui + $nac_udra_com;
+				$filas['UDRA_TOTAL'] = $nac_udra_total;
+				$nac_dig_total = $nac_dig_reg + $nac_dig_pes + $nac_dig_acui + $nac_dig_com;
+				$filas['DIG_TOTAL'] = $nac_dig_total;
+				$filas['AVANCE_TOTAL'] = ( $nac_udra_total>0 ) ? number_format( ( ($nac_dig_total*100)/$nac_udra_total ), 2,'.','') : 0 ;
+				// AVANCE CAMPO SUB RUTAS, SEGUIMIENTO *****************************************************************************
+				foreach ($total_trab_pes_totales_by_odei->result() as  $seg) {
+					$nac_seg_trab_pes_totales = $nac_seg_trab_pes_totales + $seg->TOT_FORM  ; 
+				}	
+				$filas['SEG_PES'] = $nac_seg_trab_pes_totales;
+
+				foreach ($total_trab_acui_totales_by_odei->result() as  $seg) {
+					$nac_seg_trab_acui_totales = $nac_seg_trab_acui_totales + $seg->TOT_FORM  ; 
+				}	
+				$filas['SEG_ACUI'] = $nac_seg_trab_acui_totales;
+
+				foreach ($total_trab_com_totales_by_odei->result() as  $seg) {
+					$nac_seg_trab_com_totales = $nac_seg_trab_com_totales + $seg->TOT_FORM  ;
+				}
+				$filas['SEG_COM'] = $nac_seg_trab_com_totales;
+				// TOTALES DIGITACION VS SEGUIMIENTO *******************************************************************************
+				$filas['SEG_AVAN_PES'] =  ( $nac_seg_trab_pes_totales > 0 ) ? number_format( ( ($nac_dig_pes*100)/$nac_seg_trab_pes_totales ),2, '.','' ) : 0 ;
+				$filas['SEG_AVAN_ACUI'] =  ( $nac_seg_trab_acui_totales > 0 ) ? number_format( ( ($nac_dig_acui*100)/$nac_seg_trab_acui_totales ),2, '.','' ) : 0 ;
+				$filas['SEG_AVAN_COM'] =  ( $nac_seg_trab_com_totales > 0 ) ? number_format( ( ($nac_dig_com*100)/$nac_seg_trab_com_totales ),2, '.','' ) : 0 ;
+
 				$tablas[] = $filas;//agrega un registro a la tabla
 
 			foreach ($registros as $key => $value) {
@@ -300,7 +360,6 @@ class General_avance_by_seguimiento extends CI_Controller {
 				$filas['SEG_COM'] = $seg_trab_com_totales;
 
 				// TOTALES DIGITACION VS SEGUIMIENTO *******************************************************************************
-
 				$filas['SEG_AVAN_PES'] =  ( $seg_trab_pes_totales > 0 ) ? number_format( ( ($dig_pes*100)/$seg_trab_pes_totales ),2, '.','' ) : 0 ;
 				$filas['SEG_AVAN_ACUI'] =  ( $seg_trab_acui_totales > 0 ) ? number_format( ( ($dig_acui*100)/$seg_trab_acui_totales ),2, '.','' ) : 0 ;
 				$filas['SEG_AVAN_COM'] =  ( $seg_trab_com_totales > 0 ) ? number_format( ( ($dig_com*100)/$seg_trab_com_totales ),2, '.','' ) : 0 ;

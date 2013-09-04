@@ -12,7 +12,6 @@
 
     	<h4>REPORTE DE AVANCE DE DIGITACION GENERAL</h4>
 
-
 				<table border="1" class="table table-hover table-condensed">
 					<thead>
 						<tr>

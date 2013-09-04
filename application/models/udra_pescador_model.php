@@ -173,7 +173,37 @@ class Udra_pescador_model extends CI_MODEL
     	$q = $this->db->get('pescador');
 		return $q;
 	}
-
+	// PARA RESULTADO DEL EMPADRONAMIENTO
+	function get_dig_res_completo_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as COMPLETO');
+		$this->db->where_in('pescador_id', $forms);
+		$this->db->where('RES',1);	
+		$this->db->from('pescador');
+		$this->db->join('pesc_info','pescador.id=pesc_info.pescador_id', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
+	function get_dig_res_incompleto_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as INCOMPLETO');
+		$this->db->where_in('pescador_id', $forms);
+		$this->db->where('RES',2);
+		$this->db->from('pescador');
+		$this->db->join('pesc_info','pescador.id=pesc_info.pescador_id', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
+	function get_dig_res_rechazo_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as RECHAZO');
+		$this->db->where_in('pescador_id', $forms);
+		$this->db->where('RES',3);
+		$this->db->from('pescador');
+		$this->db->join('pesc_info','pescador.id=pesc_info.pescador_id', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
 }
 
 

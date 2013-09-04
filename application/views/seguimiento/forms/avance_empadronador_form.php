@@ -1092,6 +1092,7 @@ $("#agregar").click(function () {
         };
         $("#cant_reg").val(add);
         $("#TOTAL_CCPP").val( $("#cant_reg").val() );
+        $("#agregar").attr('disabled','disabled');
 
 });
 
@@ -1884,7 +1885,7 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
     			$("#EMP").val(''); //
 
         		sel = $("#NOM_DD");
-
+        		sel.attr('disabled','disabled');
         		$("#CCSE").val(mivalue);
         		url 	= CI.base_url + "ajax/marco_ajax/get_ajax_dep/" + $(this).val();
         		op 		= 0;
@@ -1892,6 +1893,7 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
 
             case 'NOM_DD':
                 sel     = $("#EQP");
+                sel.attr('disabled','disabled');
                 $('#CCDD').val(mivalue); 
                 url     = CI.base_url + "seguimiento/avance_empadronador/get_ajax_equipo/" + sede.val() +  "/"+ $(this).val();
                 op      = 1;
@@ -1899,6 +1901,7 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
 
             case 'EQP':
                 sel     = $("#RUTA");
+                sel.attr('disabled','disabled');
                 //$('#CCPP').val(mivalue);                 
                 url     = CI.base_url + "seguimiento/avance_empadronador/get_ajax_ruta/" + sede.val() +  "/" + dep.val() + "/" +  $(this).val();
                 op      = 2;
@@ -1906,6 +1909,7 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
 
             case 'RUTA':
                 sel     = $("#SUB_R");
+                sel.attr('disabled','disabled');
                 //$("#CCDI").val(mivalue);          
                 url     = CI.base_url + "seguimiento/avance_empadronador/get_ajax_sub_ruta/" + sede.val() +  "/" + dep.val() + "/" + equipo.val() + "/" + $(this).val();
                 op      = 3;
@@ -1931,8 +1935,10 @@ $("#NOM_SEDE, #NOM_DD, #EQP, #RUTA").change(function(event) {
             type:'POST',
             data:form_data,
             dataType:'json',
+            cache: false,
             success:function(json_data){
                 sel.empty();
+                sel.removeAttr('disabled');
                 // if (op==3){
                 //     sel.append('<option value="-1"> - </option>');
                 // }                
@@ -2535,8 +2541,8 @@ $.validator.addMethod("peruDate",function(value, element) {
 		    	var contador = 0;       	
 		        for ( c = 1 ; c <= $("#cant_reg").val() ; c++){
 
-			        var form_data = $("#ubi_geo").find("input").serializeArray();
-			        form_data.push(
+			        var form_data_2 = $("#ubi_geo").find("input").serializeArray();
+			        form_data_2.push(
 			        	{name: 'csrf_token_c', 	value: CI.cct},
 			        	{name: 'EQP', 	value: $("#EQP").val()},
 			        	{name: 'RUTA', 	value: $("#RUTA").val()},
@@ -2545,17 +2551,17 @@ $.validator.addMethod("peruDate",function(value, element) {
 			        	{name: 'NOM_DD', 	value: $("#NOM_DD :selected").text()},
 			        	{name: 'ajax', 	value: true });
 			        var form_ccpp_total = $("#ccpp_total").find("input").serializeArray();
-			        	$.merge(form_data,form_ccpp_total);
+			        	$.merge(form_data_2,form_ccpp_total);
 			        var form_totales = $("#totales").find("input, textarea").serializeArray();
-			        	$.merge(form_data, form_totales);
+			        	$.merge(form_data_2, form_totales);
 				        var form_div = $("#ccpp_div_"+c+" :input").serializeArray();
-				        $.merge(form_data,form_div);
+				        $.merge(form_data_2,form_div);
 
 
 				        $.ajax({
 				            url: CI.base_url + "seguimiento/avance_empadronador/grabar/" + $("#CCSE").val() + "/" + $("#CCDD").val() + "/" +  $("#EQP").val() + "/" + $("#RUTA").val() + "/" +$("#SUB_R").val(),
 				            type:'POST',
-				            data:form_data,
+				            data:form_data_2,
 				            dataType:'json',
 				            cache: false,
 				            success:function(json){

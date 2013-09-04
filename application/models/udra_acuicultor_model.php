@@ -183,7 +183,37 @@ class Udra_acuicultor_model extends CI_MODEL
 		return $q;
 	}
 
-
+	// PARA RESULTADO DEL EMPADRONAMIENTO
+	function get_dig_res_completo_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as COMPLETO');
+		$this->db->where_in('id1', $forms);
+		$this->db->where('RES',1);	
+		$this->db->from('acu_seccion1');
+		$this->db->join('acu_seccion10','acu_seccion1.id1=acu_seccion10.id10', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
+	function get_dig_res_incompleto_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as INCOMPLETO');
+		$this->db->where_in('id1', $forms);
+		$this->db->where('RES',2);	
+		$this->db->from('acu_seccion1');
+		$this->db->join('acu_seccion10','acu_seccion1.id1=acu_seccion10.id10', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
+	function get_dig_res_rechazo_by_odei($forms)
+	{
+		$this->db->select('ODEI_COD, NOM_ODEI, count(*) as RECHAZO');
+		$this->db->where_in('id1', $forms);
+		$this->db->where('RES',3);	
+		$this->db->from('acu_seccion1');
+		$this->db->join('acu_seccion10','acu_seccion1.id1=acu_seccion10.id10', 'inner');
+		$this->db->group_by('NOM_ODEI');
+		return $q = $this->db->get();
+	}
 
 }
 
