@@ -282,7 +282,8 @@ class Avance_empadronador extends CI_Controller {
 				            'type' => PHPExcel_Style_Fill::FILL_SOLID,
 				            'color' => array('rgb' => '27408B')
 				        )
-				    );    		
+				    ); 
+
     	//colores
 		// 	$data['pea_marco'] = ; // obtiene la PEA MARCO
 		// 	$data['avance_campo'] = $this->avance_campo_model->get_reporte_avance(); // avance de PEA CAMPO
@@ -1976,6 +1977,65 @@ class Avance_empadronador extends CI_Controller {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+		$color_celda_cabeceras2 =   array( //AZUL electrico
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '0000FF')
+			        )
+			    ); 
+		$color_celda_cabeceras3 =   array( //VERDE pastel
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '00868B')
+			        )
+			    ); 
+		$color_celda_cabeceras4 =   array( //PLOMO
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'A6A6A6')
+			        )
+			    ); 
+		$color_celda_cabeceras5 =   array( //verde palta
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '698B22')
+			        )
+			    ); 
+
+		$color_celda_cabeceras6 =   array( //CELESTE claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '98F5FF')
+			        )
+			    ); 
+		$color_celda_cabeceras7 =   array( //PASTEL claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'D1EEEE')
+			        )
+			    ); 
+		$color_celda_cabeceras8 =   array( //PLOMO claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'F2F2F2')
+			        )
+			    ); 
+		$color_celda_cabeceras9 =   array( //VERDE claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'EBF1DE')
+			        )
+			    ); 
+
+		$color_celda_cabeceras10 =   array( //VIOLETA claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'C5D9F1')
+			        )
+			    ); 
+
+
 		$odeis_data			= $this->meta_marco_model->get_all();	// odeis, y su data de META MARCO
 		$total_trab	 		= $this->avance_campo_subrutas_model->get_num_reg();     				// TOTAL CCPP con reg  nacional
 		$total_trab_pes	 	= $this->avance_campo_subrutas_model->get_pescadores();     			// TOTAL PESCADORES  nacional		
@@ -2007,72 +2067,79 @@ class Avance_empadronador extends CI_Controller {
 
 
 			//PESCADOR, recorrido en tablas, buscando formularios completos
-				if($registros_dig_pes->num_rows() > 0){
-					$seccion_completos_pes = array();			
-					foreach($registros_dig_pes->result() as $filas){//busca en todas las tablas de pescador
-						$i = 0;
-						$table = null;
-						foreach($this->secciones as $s=>$k){
-							$table = 'pesc_seccion' . $s;
-							if($s == 10){ $table = 'pesc_info'; }
+				// if($registros_dig_pes->num_rows() > 0){
+				// 	$seccion_completos_pes = array();			
+				// 	foreach($registros_dig_pes->result() as $filas){//busca en todas las tablas de pescador
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'pesc_seccion' . $s;
+				// 			if($s == 10){ $table = 'pesc_info'; }
 
-							$rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
-							if ( $rega->num_rows() >0 ){ $i++; }
-						}
-						if ($i == 9){
-							$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
-						}else{
-							$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
-						}
-					}
+				// 			$rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ( $rega->num_rows() >0 ){ $i++; }
+				// 		}
+				// 		if ($i == 9){
+				// 			$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos_pes[] = $value->id;
 				}
-
 				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); }
 				else { $formularios_dig_pes = NULL;	}		
 
 			// ACUICULTOR, recorrido en tablas, buscando formularios completos
-				if($registros_dig_acui->num_rows() > 0){
-					$seccion_completos_acui = array();
-					foreach($registros_dig_acui->result() as $filas){//busca en todas las tablas de pescador
-						$a = 0;
-						$table = null;
-						foreach($this->secciones as $s=>$k){
-							$table = 'acu_seccion' . $s;
+				// if($registros_dig_acui->num_rows() > 0){
+				// 	$seccion_completos_acui = array();
+				// 	foreach($registros_dig_acui->result() as $filas){//busca en todas las tablas de pescador
+				// 		$a = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'acu_seccion' . $s;
 
-							$rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
-							if ($rega->num_rows() >0){$a++;	}
-						}
-						if ($a == 9){
-							$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
-						}else{
-							$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
-						}
-					}
-				}
+				// 			$rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){$a++;	}
+				// 		}
+				// 		if ($a == 9){
+				// 			$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
+					$seccion_completos_acui[] = $filas->id1;
+				}	//var_dump($seccion_completos_acui)	;			
 				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); }
 				else{ $formularios_dig_acui = NULL;	}	
 
 			//COMUNIDAD, recorrido en tablas, buscando formularios completos
-				if($registros_dig_com->num_rows() > 0){
-					$seccion_completos_com = array();
-					foreach($registros_dig_com->result() as $filas){//busca en todas las tablas de pescador
-						$i = 0;
-						$table = null;
-						foreach($this->secciones_com as $s=>$k){
-							$table = 'comunidad_seccion' . $s;
-							if($s == 9){ $table = 'comunidad_info';	}
+				// if($registros_dig_com->num_rows() > 0){
+				// 	$seccion_completos_com = array();
+				// 	foreach($registros_dig_com->result() as $filas){//busca en todas las tablas de pescador
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones_com as $s=>$k){
+				// 			$table = 'comunidad_seccion' . $s;
+				// 			if($s == 9){ $table = 'comunidad_info';	}
 
-							$rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-							if ($rega->num_rows() >0){ $i++; }
-						}
-						if ($i == 8){
-							$seccion_completos_com[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
-						}else{
-							$seccion_incompletos_com[] = $filas->id; //guarda los ID de formularios incompletos
-						}
-					}
-				}
-				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
+				// 			$rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){ $i++; }
+				// 		}
+				// 		if ($i == 8){
+				// 			$seccion_completos_com[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_com[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos_com[] = $value->id;
+				}						if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
 				else { $formularios_dig_com = NULL; }	
 
 		// resultado de digitaicon
@@ -2124,33 +2191,27 @@ class Avance_empadronador extends CI_Controller {
 			$sheet7->getColumnDimension('I')->setWidth(15);
 			$sheet7->getColumnDimension('J')->setWidth(13);
 			$sheet7->getColumnDimension('K')->setWidth(15);
-			// $sheet7->getColumnDimension('L')->setWidth(15);
-			// $sheet7->getColumnDimension('M')->setWidth(11);
-			// $sheet7->getColumnDimension('N')->setWidth(15);
-			// $sheet7->getColumnDimension('O')->setWidth(15);
-			// $sheet7->getColumnDimension('P')->setWidth(15);
-			// $sheet7->getColumnDimension('Q')->setWidth(15);
-			// $sheet7->getColumnDimension('R')->setWidth(15);
-			// $sheet7->getColumnDimension('S')->setWidth(15);
-			// $sheet7->getColumnDimension('T')->setWidth(15);
-			// $sheet7->getColumnDimension('U')->setWidth(15);
-			// $sheet7->getColumnDimension('V')->setWidth(15);
-			// $sheet7->getColumnDimension('W')->setWidth(15);
-			// $sheet7->getColumnDimension('X')->setWidth(15);
-			// $sheet7->getColumnDimension('Y')->setWidth(15);
-			// $sheet7->getColumnDimension('Z')->setWidth(15);
-			// $sheet7->getColumnDimension('AA')->setWidth(15);
-			// $sheet7->getColumnDimension('AB')->setWidth(15);
-			// $sheet7->getColumnDimension('AC')->setWidth(15);
-			// $sheet7->getColumnDimension('AD')->setWidth(15);
 
 
-			$sheet7->getRowDimension(3)->setRowHeight(70);
+
+			$sheet7->getRowDimension(1)->setRowHeight(2);
+			$sheet7->getRowDimension(2)->setRowHeight(2);
+			$sheet7->getRowDimension(3)->setRowHeight(2);
 			$sheet7->getRowDimension(4)->setRowHeight(2);
-			$sheet7->getRowDimension(5)->setRowHeight(70);
-			$sheet7->getRowDimension(16)->setRowHeight(30);
-			$sheet7->getRowDimension(17)->setRowHeight(30);
-			$sheet7->getRowDimension(18)->setRowHeight(110);
+			$sheet7->getRowDimension(5)->setRowHeight(50);
+			$sheet7->getRowDimension(6)->setRowHeight(2);
+			$sheet7->getRowDimension(7)->setRowHeight(2);
+			$sheet7->getRowDimension(8)->setRowHeight(2);
+			$sheet7->getRowDimension(9)->setRowHeight(40);
+			$sheet7->getRowDimension(10)->setRowHeight(2);
+			$sheet7->getRowDimension(11)->setRowHeight(2);
+			$sheet7->getRowDimension(12)->setRowHeight(2);
+			$sheet7->getRowDimension(13)->setRowHeight(2);
+			$sheet7->getRowDimension(14)->setRowHeight(15);
+			$sheet7->getRowDimension(15)->setRowHeight(2);
+			$sheet7->getRowDimension(16)->setRowHeight(25);
+			$sheet7->getRowDimension(17)->setRowHeight(25);
+			$sheet7->getRowDimension(18)->setRowHeight(90);
 			$sheet7->getRowDimension(19)->setRowHeight(25);
 		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
 
@@ -2166,7 +2227,7 @@ class Avance_empadronador extends CI_Controller {
 			$sheet7->getStyle('A3:BI9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
 			$sheet7->getStyle('A3:BI9')->getFont()->setname('Arial black')->setSize(50);	
 			$sheet7->getStyle('A5:BI9')->getFont()->setname('Arial ')->setSize(42);	
-			$sheet7->getStyle('A9')->getFont()->setname('Arial black')->setSize(35);	
+			$sheet7->getStyle('A9')->getFont()->setname('Arial black')->setSize(32);	
 
 			// LOGO
 	          $objDrawing = new PHPExcel_Worksheet_Drawing();
@@ -2174,22 +2235,22 @@ class Avance_empadronador extends CI_Controller {
 	          $objDrawing->setName("inei");
 	          $objDrawing->setDescription("Inei");
 	          $objDrawing->setPath("img/inei.jpeg");
-	          $objDrawing->setCoordinates('B6');
-	          $objDrawing->setHeight(100);
-	          $objDrawing->setWidth(220);
-	          $objDrawing->setOffsetX(1);
-	          $objDrawing->setOffsetY(5);
+	          $objDrawing->setCoordinates('A5');
+	          $objDrawing->setHeight(80);
+	          $objDrawing->setWidth(120);
+	          $objDrawing->setOffsetX(10);
+	          $objDrawing->setOffsetY(20);
 
 	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
 	          $objDrawing2->setWorksheet($sheet7);
 	          $objDrawing2->setName("CENPESCO");
 	          $objDrawing2->setDescription("CENPESCO");
 	          $objDrawing2->setPath("img/cenpesco.jpg");
-	          $objDrawing2->setCoordinates('BE5');
-	          $objDrawing2->setHeight(100);
-	          $objDrawing2->setWidth(220);
-	          $objDrawing2->setOffsetX(1);
-	          $objDrawing2->setOffsetY(1);
+	          $objDrawing2->setCoordinates('B5');
+	          $objDrawing2->setHeight(60);
+	          $objDrawing2->setWidth(90);
+	          $objDrawing2->setOffsetX(120);
+	          $objDrawing2->setOffsetY(20);
 		// TITULOS
 
 
@@ -2292,7 +2353,12 @@ class Avance_empadronador extends CI_Controller {
 						$sheet7->setCellValue('BF'.($cab+2),'Acuicultor' );
 						$sheet7->setCellValue('BG'.($cab+2),'% ' );
 						$sheet7->setCellValue('BH'.($cab+2),'Comunidad' );
-						$sheet7->setCellValue('BI'.($cab+2),'% ' );						
+						$sheet7->setCellValue('BI'.($cab+2),'% ' );	
+
+					$sheet7->setCellValue('A14', 'FECHA: '. date('d/m/y') . '      HORA: ' . date('H:i') );
+					$sheet7->mergeCells('A14:B14');
+					$sheet7->getStyle('A14:B14')->getFont()->setname('Arial black')->setSize(11);
+
 			// NOMBRE CABECERAS
 
 			// ESTILOS  CABECERAS
@@ -2303,9 +2369,19 @@ class Avance_empadronador extends CI_Controller {
 				$sheet7->getStyle("A".$cab.":BI".($cab+2))->getFont()->setname('Arial')->setSize(15);
 
 
-		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":BI".($cab+2));
-		        //$headStyle->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('#FF9900');
-				$headStyle->applyFromArray($color_celda_cabeceras);
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":E".($cab+2));
+				$headStyle->applyFromArray($color_celda_cabeceras); // azul de defecto
+				$sheet7->getStyle("F".$cab.":G".($cab+2) )->applyFromArray($color_celda_cabeceras2); // AZUL ELECTRICO
+				$sheet7->getStyle("H".$cab.":K".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("L".$cab.":S".($cab+2) )->applyFromArray($color_celda_cabeceras3); // VERDE PASTEL
+				$sheet7->getStyle("T".$cab.":Y".($cab+2) )->applyFromArray($color_celda_cabeceras4); // PLOMO
+				$sheet7->getStyle("Z".$cab.":AE".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("AF".$cab.":AJ".($cab+2) )->applyFromArray($color_celda_cabeceras5); // AZUL PALTA
+				$sheet7->getStyle("AK".$cab.":AO".($cab+2) )->applyFromArray($color_celda_cabeceras2); // AZUL ELECTRICO
+				$sheet7->getStyle("AP".$cab.":AT".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("AU".$cab.":AZ".($cab+2) )->applyFromArray($color_celda_cabeceras4); // PLOMO
+				$sheet7->getStyle("BA".$cab.":BC".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("BD".$cab.":BI".($cab+2) )->applyFromArray($color_celda_cabeceras4); // PLOMO
 
 				$sheet7->getStyle("A".$cab.":BI".($cab+2) )->applyFromArray(array(
 				'borders' => array(
@@ -2322,6 +2398,21 @@ class Avance_empadronador extends CI_Controller {
 			$total = $odeis_data->num_rows() + ($cab+2); // total del cuerpo
 
 			$sheet7->getStyle("A".($cab+3).":BI".$total)->getFont()->setname('Arial Narrow')->setSize(14);
+			//COLOR DE FUENTE
+			$sheet7->getStyle("I".($cab+3).":I".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("K".($cab+3).":K".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("M".($cab+3).":M".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("O".($cab+3).":O".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("S".($cab+3).":S".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("U".($cab+3).":U".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("W".($cab+3).":W".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("Y".($cab+3).":Y".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AA".($cab+3).":AA".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AC".($cab+3).":AC".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AE".($cab+3).":AE".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AJ".($cab+3).":AJ".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AO".($cab+3).":AO".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AT".($cab+3).":AT".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
 
 			//bordes cuerpo
 			$sheet7->getStyle("A".($cab).":BI".($total) )->applyFromArray(array(
@@ -2330,7 +2421,22 @@ class Avance_empadronador extends CI_Controller {
 										'style' => PHPExcel_Style_Border::BORDER_THIN)
 					)
 			));
-			$sheet7->getStyle('A'.($cab+3).':A'.$total)->getNumberFormat()->setFormatCode('00');// formato para codigo col A, 
+			//FORMATO DE FUENTE
+			$sheet7->getStyle('A'.($cab+3).':A'.$total)->getNumberFormat()->setFormatCode('00');// formato para codigo col A,
+			$sheet7->getStyle("I".($cab+3).":I".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("K".($cab+3).":K".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("M".($cab+3).":M".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("O".($cab+3).":O".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("S".($cab+3).":S".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("U".($cab+3).":U".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("W".($cab+3).":W".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("Y".($cab+3).":Y".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AA".($cab+3).":AA".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AC".($cab+3).":AC".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AE".($cab+3).":AE".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AJ".($cab+3).":AJ".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AO".($cab+3).":AO".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AT".($cab+3).":AT".$total)->getNumberFormat()->setFormatCode('0.0');			 
 
 			// **************************************************************************
 			$row = $cab+2;// inicio de la fila del cuerpo
@@ -2577,28 +2683,28 @@ class Avance_empadronador extends CI_Controller {
 
 				if (is_numeric($proc_trab)){ //total de CCPP trabajados
 					$sheet7->setCellValue('H'.$row, $proc_trab);
-					$sheet7->setCellValue('I'.$row, number_format( (($proc_trab * 100)/$celda->CENTRO_POBLADO),2,'.',' ' ) );
+					$sheet7->setCellValue('I'.$row, number_format( (($proc_trab * 100)/$celda->CENTRO_POBLADO),1,'.',' ' ) );
 				}else{
 					$sheet7->setCellValue('H'.$row, 0 );
 					$sheet7->setCellValue('I'.$row, 0);
 				}	
 				if (is_numeric($proc_ccpp_no_cob)){ //total de CCPP no coberturados
 					$sheet7->setCellValue('J'.$row, $proc_ccpp_no_cob);
-					$sheet7->setCellValue('K'.$row, number_format( (($proc_ccpp_no_cob * 100)/$celda->CENTRO_POBLADO),2,'.',' ' ) );
+					$sheet7->setCellValue('K'.$row, number_format( (($proc_ccpp_no_cob * 100)/$celda->CENTRO_POBLADO),1,'.',' ' ) );
 				}else{
 					$sheet7->setCellValue('J'.$row, 0 );
 					$sheet7->setCellValue('K'.$row, 0);
 				}	
 				if (is_numeric($proc_trab_pes)){ //total de PESCADORES
 					$sheet7->setCellValue('L'.$row, $proc_trab_pes);
-					$sheet7->setCellValue('M'.$row, number_format( (($proc_trab_pes * 100)/$celda->PESCADOR),2,'.',' ' ) );
+					$sheet7->setCellValue('M'.$row, number_format( (($proc_trab_pes * 100)/$celda->PESCADOR),1,'.',' ' ) );
 				}else{
 					$sheet7->setCellValue('L'.$row, 0 );
 					$sheet7->setCellValue('M'.$row, 0);
 				}						
 				if (is_numeric($proc_trab_acui)){ //total de ACUICULTORES
 					$sheet7->setCellValue('N'.$row, $proc_trab_acui);
-					$sheet7->setCellValue('O'.$row, number_format( (($proc_trab_acui * 100)/$celda->ACUICULTOR),2,'.',' ' ) );
+					$sheet7->setCellValue('O'.$row, number_format( (($proc_trab_acui * 100)/$celda->ACUICULTOR),1,'.',' ' ) );
 				}else{
 					$sheet7->setCellValue('N'.$row, 0 );
 					$sheet7->setCellValue('O'.$row, 0);
@@ -2623,7 +2729,7 @@ class Avance_empadronador extends CI_Controller {
 				}		
 
 				if( ( $proc_trab_pes + $proc_trab_acui ) > 0 ){ //AVANCE %
-					$sheet7->setCellValue('S'.$row, number_format( ( ( ($proc_trab_pes_totales  + $proc_trab_acui_totales)*100)/($proc_trab_pes + $proc_trab_acui) ) ,2,'.',' '));
+					$sheet7->setCellValue('S'.$row, number_format( ( ( ($proc_trab_pes_totales  + $proc_trab_acui_totales)*100)/($proc_trab_pes + $proc_trab_acui) ) ,1,'.',' '));
 				}else{
 					$sheet7->setCellValue('S'.$row, '0.0');
 				}
@@ -2631,14 +2737,14 @@ class Avance_empadronador extends CI_Controller {
 				//UDRA ***************************************************************************
 				if ( is_numeric($proc_udra_pes) ){
 					$sheet7->setCellValue('T'.$row, $proc_udra_pes); 
-					$sheet7->setCellValue('U'.$row, number_format( ( ( ($proc_udra_pes*100)/$celda->PESCADOR) ),2,'.','') ); 
+					$sheet7->setCellValue('U'.$row, number_format( ( ( ($proc_udra_pes*100)/$celda->PESCADOR) ),1,'.','') ); 
 				}else{
 					$sheet7->setCellValue('T'.$row, 0); 
 					$sheet7->setCellValue('U'.$row, 0); 
 				}
 				if ( is_numeric($proc_udra_acui) ){
 					$sheet7->setCellValue('V'.$row, $proc_udra_acui); 
-					$sheet7->setCellValue('W'.$row, number_format( ( ( ($proc_udra_acui*100)/$celda->ACUICULTOR) ),2,'.','') ); 
+					$sheet7->setCellValue('W'.$row, number_format( ( ( ($proc_udra_acui*100)/$celda->ACUICULTOR) ),1,'.','') ); 
 				}else{
 					$sheet7->setCellValue('V'.$row, 0); 
 					$sheet7->setCellValue('W'.$row, 0); 
@@ -2775,6 +2881,21 @@ class Avance_empadronador extends CI_Controller {
 				$proc_dig_rechazo_com = NULL;		
 				$proc_dig_otro_com = NULL;	
 
+				if($cambio){ // ALTERNAR colores
+					$sheet7->getStyle("A".$row.":E".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("F".$row.":G".$row )->applyFromArray($color_celda_cabeceras6); //CELESTE claro
+					$sheet7->getStyle("H".$row.":K".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("L".$row.":S".$row )->applyFromArray($color_celda_cabeceras7); 
+					$sheet7->getStyle("T".$row.":Y".$row )->applyFromArray($color_celda_cabeceras8); //PLOMO claro
+					$sheet7->getStyle("Z".$row.":AE".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("AF".$row.":AJ".$row )->applyFromArray($color_celda_cabeceras9); 
+					$sheet7->getStyle("AK".$row.":AO".$row )->applyFromArray($color_celda_cabeceras6); 
+					$sheet7->getStyle("AP".$row.":AT".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("AU".$row.":AZ".$row )->applyFromArray($color_celda_cabeceras8); //PLOMO claro
+					$sheet7->getStyle("BA".$row.":BC".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("BD".$row.":BI".$row )->applyFromArray($color_celda_cabeceras8); //PLOMO claro
+				}
+				$cambio = !$cambio;
 			}
 			$sheet7->getStyle("A".($cab+3).":BI".($cab+3))->getFont()->setname('Arial black')->setSize(13);// FORMATO negro al total
 			//$sheet7->getStyle("Q".($cab+3).":Q".$total)->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
@@ -2872,6 +2993,993 @@ class Avance_empadronador extends CI_Controller {
 		// SALIDA EXCEL
 
 	}
+
+
+
+    public function export_especial(){
+
+    	//colores
+    		//$color_celda_cabeceras = '27408B';
+
+			$color_celda_cabeceras =   array(
+				        'fill' => array(
+				            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+				            'color' => array('rgb' => '27408B')
+				        )
+				    ); 
+
+    	//colores
+		// 	$data['pea_marco'] = ; // obtiene la PEA MARCO
+		// 	$data['avance_campo'] = $this->avance_campo_model->get_reporte_avance(); // avance de PEA CAMPO
+		// $filtros = $this->segmentacion_model->get_empadronador($sede, $dep, $equi, $ruta);   
+
+
+
+		$color_celda_cabeceras2 =   array( //AZUL electrico
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '0000FF')
+			        )
+			    ); 
+		$color_celda_cabeceras3 =   array( //VERDE pastel
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '00868B')
+			        )
+			    ); 
+		$color_celda_cabeceras4 =   array( //PLOMO
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'A6A6A6')
+			        )
+			    ); 
+		$color_celda_cabeceras5 =   array( //verde palta
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '698B22')
+			        )
+			    ); 
+
+		$color_celda_cabeceras6 =   array( //CELESTE claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => '98F5FF')
+			        )
+			    ); 
+		$color_celda_cabeceras7 =   array( //PASTEL claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'D1EEEE')
+			        )
+			    ); 
+		$color_celda_cabeceras8 =   array( //PLOMO claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'F2F2F2')
+			        )
+			    ); 
+		$color_celda_cabeceras9 =   array( //VERDE claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'EBF1DE')
+			        )
+			    ); 
+
+		$color_celda_cabeceras10 =   array( //VIOLETA claro
+			        'fill' => array(
+			            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+			            'color' => array('rgb' => 'C5D9F1')
+			        )
+			    ); 
+
+
+		$odeis_data			= $this->meta_marco_model->get_all();	// odeis, y su data de META MARCO
+		$total_trab	 		= $this->avance_campo_subrutas_model->get_num_reg();     				// TOTAL CCPP con reg  nacional
+		$total_trab_pes	 	= $this->avance_campo_subrutas_model->get_pescadores();     			// TOTAL PESCADORES  nacional		
+		$total_trab_acui 	= $this->avance_campo_subrutas_model->get_acuicultores();     			// TOTAL ACUICULTORES  nacional
+		$total_trab_pes_totales	 	= $this->avance_campo_subrutas_model->get_pescadores_totales();     	// TOTAL FORM PESCADORES  nacional		
+		$total_trab_acui_totales 	= $this->avance_campo_subrutas_model->get_acuicultores_totales();     	// TOTAL FORM ACUICULTORES  nacional						
+		$total_trab_com_totales 	= $this->avance_campo_subrutas_model->get_comunidades_totales();     	// TOTAL FORM COMUNIDADES  nacional						
+
+
+		$total_trab_by_odei 		= $this->avance_campo_subrutas_model->total_trab_by_odei();     	// TOTAL CCPP  por ODEI
+		$total_trab_pes_by_odei 	= $this->avance_campo_subrutas_model->total_trab_pes_by_odei();     // TOTAL PESCADORES  por ODEI
+		$total_trab_acui_by_odei 	= $this->avance_campo_subrutas_model->total_trab_acui_by_odei();    // TOTAL ACUICULTORES  por ODEI
+		$total_ccpp_no_coberturado_by_odei	= $this->registro_pescadores_model->ccpp_no_coberturado_by_odei();
+		$total_trab_pes_totales_by_odei		= $this->avance_campo_subrutas_model->total_trab_pes_totales_by_odei();		// TOTALES de formulario PESCADOR por ODEI
+		$total_trab_acui_totales_by_odei	= $this->avance_campo_subrutas_model->total_trab_acui_totales_by_odei();	// TOTALES de formulario ACUICULTOR por ODEI
+		$total_trab_com_totales_by_odei		= $this->avance_campo_subrutas_model->total_trab_com_totales_by_odei();		// TOTALES de formulario COMUNIDAD por ODEI
+
+		foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
+			$odei[] = $key->ODEI_COD;
+		}	
+		$registros_udra_reg	= $this->udra_registro_model->get_udra_total_by_odei($odei); //get forms por ODEIS, 
+		$registros_udra_pes	= $this->udra_pescador_model->get_formularios_total_by_odei($odei); //get forms por ODEIS, 						
+		$registros_udra_acui = $this->udra_acuicultor_model->get_udra_total_by_odei($odei); //get forms por ODEIS, 
+		$registros_udra_com	= $this->udra_comunidad_model->get_udra_total_by_odei($odei); //get forms por ODEIS, 
+
+		$registros_dig_pes = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+		$registros_dig_acui = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en ACUICULTOR 
+		$registros_dig_com = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 		
+
+
+			//PESCADOR, recorrido en tablas, buscando formularios completos
+				// if($registros_dig_pes->num_rows() > 0){
+				// 	$seccion_completos_pes = array();			
+				// 	foreach($registros_dig_pes->result() as $filas){//busca en todas las tablas de pescador
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'pesc_seccion' . $s;
+				// 			if($s == 10){ $table = 'pesc_info'; }
+
+				// 			$rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ( $rega->num_rows() >0 ){ $i++; }
+				// 		}
+				// 		if ($i == 9){
+				// 			$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos_pes[] = $value->id;
+				}
+				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); }
+				else { $formularios_dig_pes = NULL;	}		
+
+			// ACUICULTOR, recorrido en tablas, buscando formularios completos
+				// if($registros_dig_acui->num_rows() > 0){
+				// 	$seccion_completos_acui = array();
+				// 	foreach($registros_dig_acui->result() as $filas){//busca en todas las tablas de pescador
+				// 		$a = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'acu_seccion' . $s;
+
+				// 			$rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){$a++;	}
+				// 		}
+				// 		if ($a == 9){
+				// 			$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
+					$seccion_completos_acui[] = $filas->id1;
+				}	//var_dump($seccion_completos_acui)	;		
+				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); }
+				else{ $formularios_dig_acui = NULL;	}	
+
+			//COMUNIDAD, recorrido en tablas, buscando formularios completos
+				// if($registros_dig_com->num_rows() > 0){
+				// 	$seccion_completos_com = array();
+				// 	foreach($registros_dig_com->result() as $filas){//busca en todas las tablas de pescador
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones_com as $s=>$k){
+				// 			$table = 'comunidad_seccion' . $s;
+				// 			if($s == 9){ $table = 'comunidad_info';	}
+
+				// 			$rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){ $i++; }
+				// 		}
+				// 		if ($i == 8){
+				// 			$seccion_completos_com[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_com[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos_com[] = $value->id;
+				}					
+				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
+				else { $formularios_dig_com = NULL; }	
+
+		// resultado de digitaicon
+		$res_dig_completo_pes		= $this->udra_pescador_model->get_dig_res_completo_by_odei($seccion_completos_pes);
+		$res_dig_incompleto_pes		= $this->udra_pescador_model->get_dig_res_incompleto_by_odei($seccion_completos_pes);
+		$res_dig_rechazo_pes		= $this->udra_pescador_model->get_dig_res_rechazo_by_odei($seccion_completos_pes);
+		$res_dig_completo_acui		= $this->udra_acuicultor_model->get_dig_res_completo_by_odei($seccion_completos_acui);
+		$res_dig_incompleto_acui	= $this->udra_acuicultor_model->get_dig_res_incompleto_by_odei($seccion_completos_acui);
+		$res_dig_rechazo_acui		= $this->udra_acuicultor_model->get_dig_res_rechazo_by_odei($seccion_completos_acui);
+		$res_dig_completo_com		= $this->udra_comunidad_model->get_dig_res_completo_by_odei($seccion_completos_com);
+		$res_dig_incompleto_com		= $this->udra_comunidad_model->get_dig_res_incompleto_by_odei($seccion_completos_com);
+		$res_dig_rechazo_com		= $this->udra_comunidad_model->get_dig_res_rechazo_by_odei($seccion_completos_com);		
+
+		// pestaña
+		$sheet7 = $this->phpexcel->createSheet(0);	
+		//$sheet2 = $this->phpexcel->setActiveSheetIndex(1);55
+		//$sheet = $this->phpexcel->getActiveSheet(1);
+		
+		// formato de la hoja
+			// Set Orientation, size and scaling
+			//$objPHPExcel->setActiveSheetIndex(0);
+			$sheet7->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);// horizontal
+			//$sheet7->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_PORTRAIT); // vertical
+			$sheet7->getPageSetup()->setPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A3);
+			$sheet7->getPageSetup()->setFitToPage(false); // ajustar pagina
+			$sheet7->getPageSetup()->setFitToWidth(1);
+			$sheet7->getPageSetup()->setFitToHeight(0);		
+			$sheet7->setShowGridlines(false);// oculta lineas de cuadricula		
+
+			// margin is set in inches (0.5cm)
+			$margin = 0.5 / 2.54;
+			//$sheet7->getPageMargins->setTop($margin);
+			//$sheet7->getPageMargins->setBottom($margin);
+			$sheet7->getPageMargins()->setLeft($margin);
+			$sheet7->getPageMargins()->setRight($margin);
+
+
+		// formato de la hoja
+
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+			$sheet7->getColumnDimension('A')->setWidth(8);
+			$sheet7->getColumnDimension('B')->setWidth(35);
+			$sheet7->getColumnDimension('C')->setWidth(20);
+			$sheet7->getColumnDimension('D')->setWidth(20);
+			$sheet7->getColumnDimension('E')->setWidth(12);
+			$sheet7->getColumnDimension('F')->setWidth(14);
+			$sheet7->getColumnDimension('G')->setWidth(14);
+			$sheet7->getColumnDimension('H')->setWidth(12);
+			$sheet7->getColumnDimension('I')->setWidth(15);
+			$sheet7->getColumnDimension('J')->setWidth(13);
+			$sheet7->getColumnDimension('K')->setWidth(15);
+
+
+
+			$sheet7->getRowDimension(1)->setRowHeight(2);
+			$sheet7->getRowDimension(2)->setRowHeight(2);
+			$sheet7->getRowDimension(3)->setRowHeight(2);
+			$sheet7->getRowDimension(4)->setRowHeight(2);
+			$sheet7->getRowDimension(5)->setRowHeight(50);
+			$sheet7->getRowDimension(6)->setRowHeight(2);
+			$sheet7->getRowDimension(7)->setRowHeight(2);
+			$sheet7->getRowDimension(8)->setRowHeight(2);
+			$sheet7->getRowDimension(9)->setRowHeight(40);
+			$sheet7->getRowDimension(10)->setRowHeight(2);
+			$sheet7->getRowDimension(11)->setRowHeight(2);
+			$sheet7->getRowDimension(12)->setRowHeight(2);
+			$sheet7->getRowDimension(13)->setRowHeight(2);
+			$sheet7->getRowDimension(14)->setRowHeight(15);
+			$sheet7->getRowDimension(15)->setRowHeight(2);
+			$sheet7->getRowDimension(16)->setRowHeight(25);
+			$sheet7->getRowDimension(17)->setRowHeight(25);
+			$sheet7->getRowDimension(18)->setRowHeight(90);
+			$sheet7->getRowDimension(19)->setRowHeight(25);
+		// ANCHO Y ALTURA DE COLUMNAS DEL FILE
+
+		// TITULOS
+			$sheet7->setCellValue('A3','INSTITUTO NACIONAL DE ESTADÍSTICA E INFORMATICA');
+			$sheet7->mergeCells('A3:BI3');
+			$sheet7->setCellValue('A5','PRIMER CENSO NACIONAL DE PESCA CONTINENTAL' );
+			$sheet7->mergeCells('A5:BI5');
+			$sheet7->setCellValue('A9','PROCESOS' );
+			$sheet7->mergeCells('A9:BI9');	
+					
+			$sheet7->getStyle('A3:BI9')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+			$sheet7->getStyle('A3:BI9')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_BLACK);
+			$sheet7->getStyle('A3:BI9')->getFont()->setname('Arial black')->setSize(50);	
+			$sheet7->getStyle('A5:BI9')->getFont()->setname('Arial ')->setSize(42);	
+			$sheet7->getStyle('A9')->getFont()->setname('Arial black')->setSize(32);	
+
+			// LOGO
+	          $objDrawing = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing->setWorksheet($sheet7);
+	          $objDrawing->setName("inei");
+	          $objDrawing->setDescription("Inei");
+	          $objDrawing->setPath("img/inei.jpeg");
+	          $objDrawing->setCoordinates('A5');
+	          $objDrawing->setHeight(80);
+	          $objDrawing->setWidth(120);
+	          $objDrawing->setOffsetX(10);
+	          $objDrawing->setOffsetY(20);
+
+	          $objDrawing2 = new PHPExcel_Worksheet_Drawing();
+	          $objDrawing2->setWorksheet($sheet7);
+	          $objDrawing2->setName("CENPESCO");
+	          $objDrawing2->setDescription("CENPESCO");
+	          $objDrawing2->setPath("img/cenpesco.jpg");
+	          $objDrawing2->setCoordinates('B5');
+	          $objDrawing2->setHeight(60);
+	          $objDrawing2->setWidth(90);
+	          $objDrawing2->setOffsetX(120);
+	          $objDrawing2->setOffsetY(20);
+		// TITULOS
+
+
+		// CABECERA
+			// INICIO DE LA  cabecera
+			$cab = 16;	
+				
+			// NOMBRE CABECERAS
+
+					$sheet7->setCellValue('A'.$cab,'ODEI COD');
+					$sheet7->mergeCells('A'.$cab.':A'.($cab+2));
+					$sheet7->setCellValue('B'.$cab,'ODEI' );
+					$sheet7->mergeCells('B'.$cab.':B'.($cab+2));
+					$sheet7->setCellValue('C'.$cab,'PROVINCIAS' );
+					$sheet7->mergeCells('C'.$cab.':C'.($cab+2));
+					$sheet7->setCellValue('D'.$cab,'DISTRITOS' );
+					$sheet7->mergeCells('D'.$cab.':D'.($cab+2));
+					$sheet7->setCellValue('E'.$cab,'Centros Poblado' );
+					$sheet7->mergeCells('E'.$cab.':E'.($cab+2));
+					$sheet7->setCellValue('F'.$cab,'META (MARCO)' );
+					$sheet7->mergeCells('F'.($cab).':G'.($cab+1));
+						$sheet7->setCellValue('F'.($cab+2),'Pescador' );
+						$sheet7->setCellValue('G'.($cab+2),'Acuicultor' );
+					$sheet7->setCellValue('H'.$cab,'Centros Poblado Trabajados' );
+					$sheet7->mergeCells('H'.$cab.':H'.($cab+2));					
+					$sheet7->setCellValue('I'.$cab,'Avance de CCPP. %' );
+					$sheet7->mergeCells('I'.$cab.':I'.($cab+2));	
+					$sheet7->setCellValue('J'.$cab,'Centros Poblados con Actas de no cobertura' );
+					$sheet7->mergeCells('J'.$cab.':J'.($cab+2));					
+					$sheet7->setCellValue('K'.$cab,'Avance de CCPP. %' );
+					$sheet7->mergeCells('K'.$cab.':K'.($cab+2));
+					$sheet7->setCellValue('L'.$cab,'SEGUIMIENTO' );
+					$sheet7->mergeCells('L'.$cab.':S'.$cab);	
+						$sheet7->setCellValue('L'.($cab+1),'REGISTRO' );
+						$sheet7->mergeCells('L'.($cab+1).':O'.($cab+1));	
+							$sheet7->setCellValue('L'.($cab+2),'Pescador' );
+							$sheet7->setCellValue('M'.($cab+2),'% de Marco' );
+							$sheet7->setCellValue('N'.($cab+2),'Acuicultor' );
+							$sheet7->setCellValue('O'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('P'.($cab+1),'FORMULARIO' );
+						$sheet7->mergeCells('P'.($cab+1).':S'.($cab+1));	
+							$sheet7->setCellValue('P'.($cab+2),'Pescador' );
+							$sheet7->setCellValue('Q'.($cab+2),'Acuicultor' );
+							$sheet7->setCellValue('R'.($cab+2),'Comunidad' );
+							$sheet7->setCellValue('S'.($cab+2),'AVANCE %' );
+					$sheet7->setCellValue('T'.$cab,'UDRA' );
+					$sheet7->mergeCells('T'.($cab).':Y'.($cab+1));
+						$sheet7->setCellValue('T'.($cab+2),'Pescador' );
+						$sheet7->setCellValue('U'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('V'.($cab+2),'Acuicultor' );
+						$sheet7->setCellValue('W'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('X'.($cab+2),'Comunidad' );
+						$sheet7->setCellValue('Y'.($cab+2),'% de Marco' );
+					$sheet7->setCellValue('Z'.$cab,'DIGITACIÓN' );
+					$sheet7->mergeCells('Z'.($cab).':AE'.($cab+1));
+						$sheet7->setCellValue('Z'.($cab+2),'Pescador' );
+						$sheet7->setCellValue('AA'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AB'.($cab+2),'Acuicultor' );
+						$sheet7->setCellValue('AC'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AD'.($cab+2),'Comunidad' );
+						$sheet7->setCellValue('AE'.($cab+2),'% de Marco' );
+					$sheet7->setCellValue('AF'.$cab,'RESULTADOS DEL PESCADOR' );
+					$sheet7->mergeCells('AF'.($cab).':AJ'.($cab+1));
+						$sheet7->setCellValue('AF'.($cab+2),'Completo' );
+						$sheet7->setCellValue('AG'.($cab+2),'Imcompleto' );
+						$sheet7->setCellValue('AH'.($cab+2),'Rechazo' );
+						$sheet7->setCellValue('AI'.($cab+2),'Otro' );
+						$sheet7->setCellValue('AJ'.($cab+2),'Tasa de no respuesta' );
+					$sheet7->setCellValue('AK'.$cab,'RESULTADOS DEL ACUICULTOR' );
+					$sheet7->mergeCells('AK'.($cab).':AO'.($cab+1));
+						$sheet7->setCellValue('AK'.($cab+2),'Completo' );
+						$sheet7->setCellValue('AL'.($cab+2),'Imcompleto' );
+						$sheet7->setCellValue('AM'.($cab+2),'Rechazo' );
+						$sheet7->setCellValue('AN'.($cab+2),'Otro' );
+						$sheet7->setCellValue('AO'.($cab+2),'Tasa de no respuesta' );
+					$sheet7->setCellValue('AP'.$cab,'RESULTADOS DE LA COMUNIDAD' );
+					$sheet7->mergeCells('AP'.($cab).':AT'.($cab+1));
+						$sheet7->setCellValue('AP'.($cab+2),'Completo' );
+						$sheet7->setCellValue('AQ'.($cab+2),'Imcompleto' );
+						$sheet7->setCellValue('AR'.($cab+2),'Rechazo' );
+						$sheet7->setCellValue('AS'.($cab+2),'Otro' );
+						$sheet7->setCellValue('AT'.($cab+2),'Tasa de no respuesta' );
+					$sheet7->setCellValue('AU'.$cab,'CONSISTENCIA' );
+					$sheet7->mergeCells('AU'.($cab).':AZ'.($cab+1));
+						$sheet7->setCellValue('AU'.($cab+2),'Pescador' );
+						$sheet7->setCellValue('AV'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AW'.($cab+2),'Acuicultor' );
+						$sheet7->setCellValue('AX'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AY'.($cab+2),'Comunidad' );
+						$sheet7->setCellValue('AZ'.($cab+2),'% de Marco' );
+					$sheet7->setCellValue('BA'.$cab,'TABULADOS' );
+					$sheet7->mergeCells('BA'.($cab).':BC'.($cab+1));
+						$sheet7->setCellValue('BA'.($cab+2),'Pescador' );
+						$sheet7->setCellValue('BB'.($cab+2),'Acuicultor' );
+						$sheet7->setCellValue('BC'.($cab+2),'Comunidad' );
+					$sheet7->setCellValue('BD'.$cab,'MAPAS TEMÁTICOS' );
+					$sheet7->mergeCells('BD'.($cab).':BI'.($cab+1));
+						$sheet7->setCellValue('BD'.($cab+2),'Pescador' );
+						$sheet7->setCellValue('BE'.($cab+2),'%' );
+						$sheet7->setCellValue('BF'.($cab+2),'Acuicultor' );
+						$sheet7->setCellValue('BG'.($cab+2),'% ' );
+						$sheet7->setCellValue('BH'.($cab+2),'Comunidad' );
+						$sheet7->setCellValue('BI'.($cab+2),'% ' );	
+
+					$sheet7->setCellValue('A14', 'FECHA: '. date('d/m/y') . '      HORA: ' . date('H:i') );
+					$sheet7->mergeCells('A14:B14');
+					$sheet7->getStyle('A14:B14')->getFont()->setname('Arial black')->setSize(11);
+
+			// NOMBRE CABECERAS
+
+			// ESTILOS  CABECERAS
+				$sheet7->getStyle("A".$cab.":BI".($cab+2))->getAlignment()->setWrapText(true);// AJUSTA TEXTO A CELDA
+				$sheet7->getStyle("A".$cab.":BI".($cab+2))->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);						
+				$sheet7->getStyle("A".$cab.":BI".($cab+2))->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);						
+				$sheet7->getStyle("A".$cab.":BI".($cab+2))->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+				$sheet7->getStyle("A".$cab.":BI".($cab+2))->getFont()->setname('Arial')->setSize(15);
+
+
+		     	$headStyle = $this->phpexcel->getActiveSheet()->getStyle("A".$cab.":E".($cab+2));
+				$headStyle->applyFromArray($color_celda_cabeceras); // azul de defecto
+				$sheet7->getStyle("F".$cab.":G".($cab+2) )->applyFromArray($color_celda_cabeceras2); // AZUL ELECTRICO
+				$sheet7->getStyle("H".$cab.":K".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("L".$cab.":S".($cab+2) )->applyFromArray($color_celda_cabeceras3); // VERDE PASTEL
+				$sheet7->getStyle("T".$cab.":Y".($cab+2) )->applyFromArray($color_celda_cabeceras4); // PLOMO
+				$sheet7->getStyle("Z".$cab.":AE".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("AF".$cab.":AJ".($cab+2) )->applyFromArray($color_celda_cabeceras5); // AZUL PALTA
+				$sheet7->getStyle("AK".$cab.":AO".($cab+2) )->applyFromArray($color_celda_cabeceras2); // AZUL ELECTRICO
+				$sheet7->getStyle("AP".$cab.":AT".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("AU".$cab.":AZ".($cab+2) )->applyFromArray($color_celda_cabeceras4); // PLOMO
+				$sheet7->getStyle("BA".$cab.":BC".($cab+2) )->applyFromArray($color_celda_cabeceras); // AZUL DEFECTO
+				$sheet7->getStyle("BD".$cab.":BI".($cab+2) )->applyFromArray($color_celda_cabeceras4); // PLOMO
+
+				$sheet7->getStyle("A".$cab.":BI".($cab+2) )->applyFromArray(array(
+				'borders' => array(
+							'allborders' => array(
+											'style' => PHPExcel_Style_Border::BORDER_THIN)
+						)
+				));
+
+				//$sheet->getStyle('J16')->getFont()->setname('Arial Narrow')->setSize(9); // tamaño especial para esta celda
+			// ESTILOS  CABECERAS
+		// CABECERA
+
+	    // CUERPO
+			$total = $odeis_data->num_rows() + ($cab+2); // total del cuerpo
+
+			$sheet7->getStyle("A".($cab+3).":BI".$total)->getFont()->setname('Arial Narrow')->setSize(14);
+			//COLOR DE FUENTE
+			$sheet7->getStyle("I".($cab+3).":I".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("K".($cab+3).":K".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("M".($cab+3).":M".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("O".($cab+3).":O".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("S".($cab+3).":S".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("U".($cab+3).":U".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("W".($cab+3).":W".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("Y".($cab+3).":Y".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AA".($cab+3).":AA".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AC".($cab+3).":AC".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AE".($cab+3).":AE".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AJ".($cab+3).":AJ".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AO".($cab+3).":AO".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+			$sheet7->getStyle("AT".($cab+3).":AT".$total)->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_RED);
+
+			//bordes cuerpo
+			$sheet7->getStyle("A".($cab).":BI".($total) )->applyFromArray(array(
+			'borders' => array(
+						'allborders' => array(
+										'style' => PHPExcel_Style_Border::BORDER_THIN)
+					)
+			));
+			//FORMATO DE FUENTE
+			$sheet7->getStyle('A'.($cab+3).':A'.$total)->getNumberFormat()->setFormatCode('00');// formato para codigo col A,
+			$sheet7->getStyle("I".($cab+3).":I".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("K".($cab+3).":K".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("M".($cab+3).":M".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("O".($cab+3).":O".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("S".($cab+3).":S".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("U".($cab+3).":U".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("W".($cab+3).":W".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("Y".($cab+3).":Y".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AA".($cab+3).":AA".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AC".($cab+3).":AC".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AE".($cab+3).":AE".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AJ".($cab+3).":AJ".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AO".($cab+3).":AO".$total)->getNumberFormat()->setFormatCode('0.0');
+			$sheet7->getStyle("AT".($cab+3).":AT".$total)->getNumberFormat()->setFormatCode('0.0');			 
+
+			// **************************************************************************
+			$row = $cab+2;// inicio de la fila del cuerpo
+			$col = 1; // inicio del column
+			$num = 0; // para numerar
+			$cambio = FALSE; // para intercarlar colores registros
+			$proc_ccpp_no_cob = null;
+			$proc_trab = null;
+			$proc_trab_pes = null;
+			$proc_trab_acui = null;
+			$proc_trab_pes_totales  = null;
+			$proc_trab_acui_totales = null;
+			$proc_trab_com_totales  = null;
+			$proc_udra_pes = null;
+			$proc_udra_acui = null;
+			$proc_udra_com = null;
+			$proc_dig_pes = null;
+			$proc_dig_acui = null;
+			$proc_dig_com = null;
+			$proc_dig_completo_pes = NULL;
+			$proc_dig_incompleto_pes = NULL;
+			$proc_dig_rechazo_pes = NULL;
+			$proc_dig_otro_pes = NULL;
+			$proc_dig_completo_acui = NULL;
+			$proc_dig_incompleto_acui = NULL;
+			$proc_dig_rechazo_acui = NULL;		
+			$proc_dig_otro_acui = NULL;		
+			$proc_dig_completo_com = NULL;
+			$proc_dig_incompleto_com = NULL;
+			$proc_dig_rechazo_com = NULL;		
+			$proc_dig_otro_com = NULL;		
+
+			foreach($odeis_data->result() as $celda){
+				$row++;
+				$sheet7->setCellValue('A'.$row, $celda->ODEI_COD);
+				$sheet7->setCellValue('B'.$row, $celda->NOM_ODEI);
+				$sheet7->setCellValue('C'.$row, $celda->PROVINCIA);
+				$sheet7->setCellValue('D'.$row, $celda->DISTRITO);
+				$sheet7->setCellValue('E'.$row, $celda->CENTRO_POBLADO);
+				$sheet7->setCellValue('F'.$row, $celda->PESCADOR);
+				$sheet7->setCellValue('G'.$row, $celda->ACUICULTOR);
+
+				//Total de REG de Comunidades por DEP
+				if ( $celda->NOM_ODEI == 'TOTAL' ){
+					$proc_trab 		= $total_trab->num_rows() ;  //jala el total de registros de CCPP			
+					$proc_trab_pes 	= $total_trab_pes->row('TOTAL') ;  //jala el total de pescadores nacional			
+					$proc_trab_acui 	= $total_trab_acui->row('TOTAL') ;  //jala el total de pescadores nacional			
+					$proc_trab_pes_totales 	= $total_trab_pes_totales->row('TOT_FORM') ;  //jala el total FORM de pescadores nacional			
+					$proc_trab_acui_totales 	= $total_trab_acui_totales->row('TOT_FORM') ;  //jala el total FORM de pescadores nacional			
+					$proc_trab_com_totales 	= $total_trab_com_totales->row('TOT_FORM') ;  //jala el total FORM de pescadores nacional	
+
+					foreach ($total_ccpp_no_coberturado_by_odei->result() as $value) {// CCPP NO Coberturado
+						$proc_ccpp_no_cob = $proc_ccpp_no_cob + $value->TOTAL;
+					}	
+					//UDRA ***************************************************************************
+					foreach ($registros_udra_pes->result() as $pes) {
+					 	$proc_udra_pes = $proc_udra_pes + $pes->TOTAL_FORM; 
+					}
+					foreach ($registros_udra_acui->result() as $acui) {
+					 	$proc_udra_acui =  $proc_udra_acui + $acui->TOTAL_FORM;
+					} 
+					foreach ($registros_udra_com->result() as $com) {
+					 	$proc_udra_com = $proc_udra_com + $com->TOTAL_FORM; 
+					} 
+					//DIGITACION
+					if (isset($formularios_dig_pes)) { //pescador
+						foreach ($formularios_dig_pes->result() as $pes) {
+						 	 $proc_dig_pes = $proc_dig_pes + $pes->TOTAL_DIG; 
+						} 
+					} 					
+					if (isset($formularios_dig_acui)) { // acuicultor
+						foreach ($formularios_dig_acui->result() as $acui) {
+						 	$proc_dig_acui = $proc_dig_acui + $acui->TOTAL_DIG;  
+						} 
+					} 
+					if (isset($formularios_dig_com)) { // comunidad
+						foreach ($formularios_dig_com->result() as $com) {
+						 	$proc_dig_com = $proc_dig_com + $com->TOTAL_DIG;
+						} 
+					} 		
+					// RESULTADO DIGITACION			
+					if (isset($res_dig_completo_pes)) { 	// PESCADOR completo
+						foreach ($res_dig_completo_pes->result() as $pes) {
+							$proc_dig_completo_pes = $proc_dig_completo_pes + $pes->COMPLETO;
+						}
+					}
+					if (isset($res_dig_incompleto_pes)) { 	// PESCADOR incompleto
+						foreach ($res_dig_incompleto_pes->result() as $pes) {
+							$proc_dig_incompleto_pes = $proc_dig_incompleto_pes + $pes->INCOMPLETO;
+						}
+					}		
+					if (isset($res_dig_rechazo_pes)) { 		// PESCADOR rechazo
+						foreach ($res_dig_rechazo_pes->result() as $pes) {
+							$proc_dig_rechazo_pes = $proc_dig_rechazo_pes + $pes->RECHAZO;
+						}
+					}	
+					if (isset($res_dig_completo_acui)) { 	// ACUICULTOR completo
+						foreach ($res_dig_completo_acui->result() as $acui) {
+							$proc_dig_completo_acui = $proc_dig_completo_acui + $acui->COMPLETO;
+						}
+					}
+					if (isset($res_dig_incompleto_acui)) { 	// ACUICULTOR incompleto
+						foreach ($res_dig_incompleto_acui->result() as $acui) {
+							$proc_dig_incompleto_acui = $proc_dig_incompleto_acui + $acui->INCOMPLETO;
+						}
+					}		
+					if (isset($res_dig_rechazo_acui)) { 	// ACUICULTOR rechazo
+						foreach ($res_dig_rechazo_acui->result() as $acui) {
+							$proc_dig_rechazo_acui = $proc_dig_rechazo_acui + $acui->RECHAZO;
+						}
+					}	
+					if (isset($res_dig_completo_com)) { 	// COMUNIDAD completo
+						foreach ($res_dig_completo_com->result() as $com) {
+							$proc_dig_completo_com = $proc_dig_completo_com + $com->COMPLETO;
+						}
+					}
+					if (isset($res_dig_incompleto_com)) { 	// COMUNIDAD incompleto
+						foreach ($res_dig_incompleto_com->result() as $com) {
+							$proc_dig_incompleto_com = $proc_dig_incompleto_com + $com->INCOMPLETO;
+						}
+					}		
+					if (isset($res_dig_rechazo_com)) { 	// COMUNIDAD rechazo
+						foreach ($res_dig_rechazo_com->result() as $com) {
+							$proc_dig_rechazo_com = $proc_dig_rechazo_com + $com->RECHAZO;
+						}
+					}																			
+				}else{
+					foreach ($total_trab_by_odei->result() as  $value) {
+						if ($celda->ODEI_COD == $value->COD_ODEI){
+							$proc_trab = $value->TOTAL  ; break;
+						}
+					}	
+
+					foreach ($total_ccpp_no_coberturado_by_odei->result() as $value) {// CCPP NO COBERTURADO
+						if ($celda->ODEI_COD == $value->ODEI_COD) {
+							$proc_ccpp_no_cob =  $value->TOTAL; break;
+						}
+						
+					}
+
+					foreach ($total_trab_pes_by_odei->result() as  $value) {
+
+						if ($celda->ODEI_COD == $value->COD_ODEI){
+							$proc_trab_pes = $value->TOTAL  ; break;
+						}
+					}	
+					foreach ($total_trab_acui_by_odei->result() as  $value) {
+
+						if ($celda->ODEI_COD == $value->COD_ODEI){
+							$proc_trab_acui = $value->TOTAL  ; break;
+						}
+					}	
+					foreach ($total_trab_pes_totales_by_odei->result() as  $value) {
+
+						if ($celda->ODEI_COD == $value->COD_ODEI){
+							$proc_trab_pes_totales = $value->TOT_FORM  ; break;
+						}
+					}	
+					foreach ($total_trab_acui_totales_by_odei->result() as  $value) {
+						if ($celda->ODEI_COD == $value->COD_ODEI){
+							$proc_trab_acui_totales = $value->TOT_FORM  ; break;
+						}
+					}	
+					foreach ($total_trab_com_totales_by_odei->result() as  $value) {
+						if ($celda->ODEI_COD == $value->COD_ODEI){
+							$proc_trab_com_totales = $value->TOT_FORM  ; break;
+						}
+					}		
+					//UDRA ***************************************************************************
+					foreach ($registros_udra_pes->result() as $pes) {
+					 	if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_udra_pes = $pes->TOTAL_FORM; break; }
+					} 
+					foreach ($registros_udra_acui->result() as $acui) {
+						if ( $celda->ODEI_COD == $acui->ODEI_COD) { $proc_udra_acui = $acui->TOTAL_FORM; break; }
+					} 					
+					foreach ($registros_udra_com->result() as $com) {
+						if ( $celda->ODEI_COD == $com->ODEI_COD) { $proc_udra_com =  $com->TOTAL_FORM; break; }
+					 	
+					} 
+					//DIGITACION
+					if (isset($formularios_dig_pes)) {
+						foreach ($formularios_dig_pes->result() as $pes) {
+							if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_dig_pes =  $pes->TOTAL_DIG; break; }
+						} 
+					}	
+					if (isset($formularios_dig_acui)) {
+						foreach ($formularios_dig_acui->result() as $acui) {
+							if ( $celda->ODEI_COD == $acui->ODEI_COD) { $proc_dig_acui = $acui->TOTAL_DIG;  }
+						} 
+					}
+					if (isset($formularios_dig_com)) {
+						foreach ($formularios_dig_com->result() as $com) {
+							if ( $celda->ODEI_COD == $com->ODEI_COD) { $proc_dig_com = $com->TOTAL_DIG; break;}
+						} 
+					} 
+					// RESULTADO DIGITACION
+					if (isset($res_dig_completo_pes)) { // pescador completo
+						foreach ($res_dig_completo_pes->result() as $pes) {
+							if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_dig_completo_pes =  $pes->COMPLETO; break; }
+						}
+					}	
+					if (isset($res_dig_incompleto_pes)) { // pescador incompleto
+						foreach ($res_dig_incompleto_pes->result() as $pes) {
+							if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_dig_incompleto_pes = $pes->INCOMPLETO; break; }
+						}
+					}	
+					if (isset($res_dig_rechazo_pes)) { // pescador rechazo
+						foreach ($res_dig_rechazo_pes->result() as $pes) {
+							if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_dig_rechazo_pes = $pes->INCOMPLETO; break; }
+						}
+					}
+					if (isset($res_dig_completo_acui)) { 	// ACUICULTOR completo
+						foreach ($res_dig_completo_acui->result() as $acui) {
+							if ( $celda->ODEI_COD == $acui->ODEI_COD) { $proc_dig_completo_acui =  $acui->COMPLETO; break; }
+						}
+					}
+					if (isset($res_dig_incompleto_acui)) { 	// ACUICULTOR incompleto
+						foreach ($res_dig_incompleto_acui->result() as $acui) {
+							if ( $celda->ODEI_COD == $acui->ODEI_COD) { $proc_dig_incompleto_acui =  $acui->INCOMPLETO; break; }
+						}
+					}		
+					if (isset($res_dig_rechazo_acui)) { 	// ACUICULTOR rechazo
+						foreach ($res_dig_rechazo_acui->result() as $acui) {
+							if ( $celda->ODEI_COD == $acui->ODEI_COD) { $proc_dig_rechazo_acui =  $acui->RECHAZO; break; }
+						}
+					}	
+					if (isset($res_dig_completo_com)) { 	// COMUNIDAD completo
+						foreach ($res_dig_completo_com->result() as $com) {
+							if ( $celda->ODEI_COD == $com->ODEI_COD) { $proc_dig_completo_com =  $com->COMPLETO; break; }
+						}
+					}
+					if (isset($res_dig_incompleto_com)) { 	// COMUNIDAD incompleto
+						foreach ($res_dig_incompleto_com->result() as $com) {
+							if ( $celda->ODEI_COD == $com->ODEI_COD) { $proc_dig_incompleto_com =  $com->INCOMPLETO; break; }
+						}
+					}		
+					if (isset($res_dig_rechazo_com)) { 	// COMUNIDAD rechazo
+						foreach ($res_dig_rechazo_com->result() as $com) {
+							if ( $celda->ODEI_COD == $com->ODEI_COD) { $proc_dig_rechazo_com =  $com->RECHAZO; break; }
+						}
+					}
+				}				
+
+
+				if (is_numeric($proc_trab)){ //total de CCPP trabajados
+					$sheet7->setCellValue('H'.$row, $proc_trab);
+					$sheet7->setCellValue('I'.$row, number_format( (($proc_trab * 100)/$celda->CENTRO_POBLADO),1,'.',' ' ) );
+				}else{
+					$sheet7->setCellValue('H'.$row, 0 );
+					$sheet7->setCellValue('I'.$row, 0);
+				}	
+				if (is_numeric($proc_ccpp_no_cob)){ //total de CCPP no coberturados
+					$sheet7->setCellValue('J'.$row, $proc_ccpp_no_cob);
+					$sheet7->setCellValue('K'.$row, number_format( (($proc_ccpp_no_cob * 100)/$celda->CENTRO_POBLADO),1,'.',' ' ) );
+				}else{
+					$sheet7->setCellValue('J'.$row, 0 );
+					$sheet7->setCellValue('K'.$row, 0);
+				}	
+				if (is_numeric($proc_trab_pes)){ //total de PESCADORES
+					$sheet7->setCellValue('L'.$row, $proc_trab_pes);
+					$sheet7->setCellValue('M'.$row, number_format( (($proc_trab_pes * 100)/$celda->PESCADOR),1,'.',' ' ) );
+				}else{
+					$sheet7->setCellValue('L'.$row, 0 );
+					$sheet7->setCellValue('M'.$row, 0);
+				}						
+				if (is_numeric($proc_trab_acui)){ //total de ACUICULTORES
+					$sheet7->setCellValue('N'.$row, $proc_trab_acui);
+					$sheet7->setCellValue('O'.$row, number_format( (($proc_trab_acui * 100)/$celda->ACUICULTOR),1,'.',' ' ) );
+				}else{
+					$sheet7->setCellValue('N'.$row, 0 );
+					$sheet7->setCellValue('O'.$row, 0);
+				}	
+
+				if (is_numeric($proc_trab_pes_totales)){ //total FORM de PESCADORES
+					$sheet7->setCellValue('P'.$row, $proc_trab_pes_totales);
+				}else{
+					$sheet7->setCellValue('P'.$row, 0 );
+				}	
+
+				if (is_numeric($proc_trab_acui_totales)){ //total FORM de ACUICULTORES
+					$sheet7->setCellValue('Q'.$row, $proc_trab_acui_totales);
+				}else{
+					$sheet7->setCellValue('Q'.$row, 0 );
+				}		
+
+				if (is_numeric($proc_trab_com_totales)){ //total FORM de COMUNIDADES
+					$sheet7->setCellValue('R'.$row, $proc_trab_com_totales);
+				}else{
+					$sheet7->setCellValue('S'.$row, 0 );
+				}		
+
+				if( ( $proc_trab_pes + $proc_trab_acui ) > 0 ){ //AVANCE %
+					$sheet7->setCellValue('S'.$row, number_format( ( ( ($proc_trab_pes_totales  + $proc_trab_acui_totales)*100)/($proc_trab_pes + $proc_trab_acui) ) ,1,'.',' '));
+				}else{
+					$sheet7->setCellValue('S'.$row, '0.0');
+				}
+
+				//UDRA ***************************************************************************
+				if ( is_numeric($proc_udra_pes) ){
+					$sheet7->setCellValue('T'.$row, $proc_udra_pes); 
+					$sheet7->setCellValue('U'.$row, number_format( ( ( ($proc_udra_pes*100)/$celda->PESCADOR) ),1,'.','') ); 
+				}else{
+					$sheet7->setCellValue('T'.$row, 0); 
+					$sheet7->setCellValue('U'.$row, 0); 
+				}
+				if ( is_numeric($proc_udra_acui) ){
+					$sheet7->setCellValue('V'.$row, $proc_udra_acui); 
+					$sheet7->setCellValue('W'.$row, number_format( ( ( ($proc_udra_acui*100)/$celda->ACUICULTOR) ),1,'.','') ); 
+				}else{
+					$sheet7->setCellValue('V'.$row, 0); 
+					$sheet7->setCellValue('W'.$row, 0); 
+				}
+				if ( is_numeric($proc_udra_com) ){
+					$sheet7->setCellValue('X'.$row, $proc_udra_com); 
+					$sheet7->setCellValue('Y'.$row, number_format( ( ( ($proc_udra_com*100)/$celda->CENTRO_POBLADO) ),2,'.','') ); 
+				}else{
+					$sheet7->setCellValue('X'.$row, 0); 
+					$sheet7->setCellValue('Y'.$row, 0); 
+				}
+				//DIGITACION **********************************************************************
+				if ( is_numeric($proc_dig_pes) ){
+					$sheet7->setCellValue('Z'.$row, $proc_dig_pes); 
+					$sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$celda->PESCADOR) ),2,'.','') ); 
+				}else{
+					$sheet7->setCellValue('Z'.$row, 0); 
+					$sheet7->setCellValue('AA'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_acui) ){
+					$sheet7->setCellValue('AB'.$row, $proc_dig_acui); 
+					$sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$celda->ACUICULTOR) ),2,'.','') ); 
+				}else{
+					$sheet7->setCellValue('AB'.$row, 0); 
+					$sheet7->setCellValue('AC'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_com ) ){
+					$sheet7->setCellValue('AD'.$row, $proc_dig_com); 
+					$sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$celda->CENTRO_POBLADO) ),2,'.','') ); 
+				}else{
+					$sheet7->setCellValue('AD'.$row, 0); 
+					$sheet7->setCellValue('AE'.$row, 0); 
+				}
+				//RESULTADO DIGITACION
+				if ( is_numeric($proc_dig_completo_pes) ){ // pescador completo
+					$sheet7->setCellValue('AF'.$row, $proc_dig_completo_pes); 
+				}else{
+					$sheet7->setCellValue('AF'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_incompleto_pes) ){ // pescador incompleto
+					$sheet7->setCellValue('AG'.$row, $proc_dig_incompleto_pes); 
+				}else{
+					$sheet7->setCellValue('AG'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_rechazo_pes) ){ // pescador rechazo
+					$sheet7->setCellValue('AH'.$row, $proc_dig_rechazo_pes); 
+				}else{
+					$sheet7->setCellValue('AH'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_otro_pes) ){ // pescador otro
+					$sheet7->setCellValue('AI'.$row, $proc_dig_otro_pes); 
+				}else{
+					$sheet7->setCellValue('AI'.$row, 0); 
+				}
+				if ( $proc_dig_pes>0) { // pescador tasa de no respuesta
+					$sheet7->setCellValue('AJ'.$row,  number_format( (($proc_dig_otro_pes + $proc_dig_rechazo_pes)*100)/$proc_dig_pes,2,'.','') ); 
+				} else {
+					$sheet7->setCellValue('AJ'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_completo_acui) ){ 		// ACUICULTOR completo
+					$sheet7->setCellValue('AK'.$row, $proc_dig_completo_acui); 
+				}else{
+					$sheet7->setCellValue('AK'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_incompleto_acui) ){ 	// ACUICULTOR incompleto
+					$sheet7->setCellValue('AL'.$row, $proc_dig_incompleto_acui); 
+				}else{
+					$sheet7->setCellValue('AL'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_rechazo_acui) ){ 		// ACUICULTOR rechazo
+					$sheet7->setCellValue('AM'.$row, $proc_dig_rechazo_acui); 
+				}else{
+					$sheet7->setCellValue('AM'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_otro_acui) ){ 			// ACUICULTOR otro
+					$sheet7->setCellValue('AN'.$row, $proc_dig_otro_acui); 
+				}else{
+					$sheet7->setCellValue('AN'.$row, 0); 
+				}
+				if ( $proc_dig_acui>0) { 						// ACUICULTOR tasa de no respuesta
+					$sheet7->setCellValue('AO'.$row,  number_format( (($proc_dig_rechazo_acui + $proc_dig_otro_acui)*100)/$proc_dig_acui,2,'.','') ); 
+				} else {
+					$sheet7->setCellValue('AO'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_completo_com) ){ 	// COMUNIDAD completo
+					$sheet7->setCellValue('AP'.$row, $proc_dig_completo_com); 
+				}else{
+					$sheet7->setCellValue('AP'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_incompleto_com) ){ 	// COMUNIDAD incompleto
+					$sheet7->setCellValue('AQ'.$row, $proc_dig_incompleto_com); 
+				}else{
+					$sheet7->setCellValue('AQ'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_rechazo_com) ){ 		// COMUNIDAD rechazo
+					$sheet7->setCellValue('AR'.$row, $proc_dig_rechazo_com); 
+				}else{
+					$sheet7->setCellValue('AR'.$row, 0); 
+				}
+				if ( is_numeric($proc_dig_otro_com) ){ 		// COMUNIDAD otro
+					$sheet7->setCellValue('AS'.$row, $proc_dig_otro_com); 
+				}else{
+					$sheet7->setCellValue('AS'.$row, 0); 
+				}
+				if ( $proc_dig_com>0) { 						// COMUNIDAD tasa de no respuesta
+					$sheet7->setCellValue('AT'.$row,  number_format( (($proc_dig_rechazo_com + $proc_dig_otro_com)*100)/$proc_dig_com,2,'.','') ); 
+				} else {
+					$sheet7->setCellValue('AT'.$row, 0); 
+				}
+
+				$proc_ccpp_no_cob = null;
+				$proc_trab = null;
+				$proc_trab_pes = null;
+				$proc_trab_acui = null;
+				$proc_trab_pes_totales 	= null;
+				$proc_trab_acui_totales  = null;
+				$proc_trab_com_totales   = null;
+				$proc_udra_pes = null;
+				$proc_udra_acui = null;
+				$proc_udra_com = null;		
+				$proc_dig_pes = null;
+				$proc_dig_acui = null;
+				$proc_dig_com = null;						
+				$proc_dig_completo_pes = NULL;
+				$proc_dig_incompleto_pes = NULL;
+				$proc_dig_rechazo_pes = NULL;
+				$proc_dig_otro_pes = NULL;
+				$proc_dig_completo_acui = NULL;
+				$proc_dig_incompleto_acui = NULL;
+				$proc_dig_rechazo_acui = NULL;		
+				$proc_dig_otro_acui = NULL;		
+				$proc_dig_completo_com = NULL;
+				$proc_dig_incompleto_com = NULL;
+				$proc_dig_rechazo_com = NULL;		
+				$proc_dig_otro_com = NULL;	
+
+				if($cambio){ // ALTERNAR colores
+					$sheet7->getStyle("A".$row.":E".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("F".$row.":G".$row )->applyFromArray($color_celda_cabeceras6); //CELESTE claro
+					$sheet7->getStyle("H".$row.":K".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("L".$row.":S".$row )->applyFromArray($color_celda_cabeceras7); 
+					$sheet7->getStyle("T".$row.":Y".$row )->applyFromArray($color_celda_cabeceras8); //PLOMO claro
+					$sheet7->getStyle("Z".$row.":AE".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("AF".$row.":AJ".$row )->applyFromArray($color_celda_cabeceras9); 
+					$sheet7->getStyle("AK".$row.":AO".$row )->applyFromArray($color_celda_cabeceras6); 
+					$sheet7->getStyle("AP".$row.":AT".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("AU".$row.":AZ".$row )->applyFromArray($color_celda_cabeceras8); //PLOMO claro
+					$sheet7->getStyle("BA".$row.":BC".$row )->applyFromArray($color_celda_cabeceras10); //VIOLETA claro
+					$sheet7->getStyle("BD".$row.":BI".$row )->applyFromArray($color_celda_cabeceras8); //PLOMO claro
+				}
+				$cambio = !$cambio;
+			}
+			$sheet7->getStyle("A".($cab+3).":BI".($cab+3))->getFont()->setname('Arial black')->setSize(13);// FORMATO negro al total
+			//$sheet7->getStyle("Q".($cab+3).":Q".$total)->getFont()->setname('Arial black')->setSize(14);// FORMATO negro al total
+			$sheet7->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	//opcional 
+
+ 		// CUERPO
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////  H O J A   7 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+		// SALIDA EXCEL
+			//$objPHPExcel->getActiveSheet()->setCellValueExplicitByColumnAndRow($numColum,$numRow,$products[$i][$colName], PHPExcel_Cell_DataType::TYPE_STRING);
+			// Propiedades del archivo excel
+				$sheet7->setTitle("PROCESOS_ICENPESCO");
+				$this->phpexcel->getProperties()
+				->setTitle("Reporte de Procesos")
+				->setDescription("Reporte de Avance de campo");
+
+			header("Content-Type: application/vnd.ms-excel");
+			$nombreArchivo = 'ReporteAvanceCampo_'.date('YmdHis');
+			header("Content-Disposition: attachment; filename=\"$nombreArchivo.xls\""); //EXCEL
+			header("Cache-Control: max-age=0");
+			//header("Pragma: no-cache");
+			//header("Expires: 0");
+			
+			// Genera Excel
+			$writer = PHPExcel_IOFactory::createWriter($this->phpexcel, "Excel5");
+			//$writer = new PHPExcel_Writer_Excel2007($this->phpexcel);
+
+			$writer->save('php://output');
+			exit;
+		// SALIDA EXCEL
+
+ 	}
+
+
+
+
+
+
+
+
 
 }
 

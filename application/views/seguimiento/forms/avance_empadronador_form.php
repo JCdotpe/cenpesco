@@ -1092,7 +1092,7 @@ $("#agregar").click(function () {
         };
         $("#cant_reg").val(add);
         $("#TOTAL_CCPP").val( $("#cant_reg").val() );
-        $("#agregar").attr('disabled','disabled');
+        //$("#agregar").attr('disabled','disabled');
 
 });
 
@@ -2107,7 +2107,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 		           valueNotEquals: -1,
 		         }, 
 		       EMP_IN: {
-		           required: true,
+		           //required: true,
 		         }, 
 		       EMP_FIN: {
 		           //required: true,

@@ -1567,7 +1567,7 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
                 $("#COD_CCPP").val(mivalue);           
                 break;  
         }     
-        
+         
         var form_data = {
             code: $(this).val(),
             csrf_token_c: CI.cct,
@@ -1576,17 +1576,19 @@ $("#NOM_DD, #NOM_PP, #NOM_DI, #NOM_CCPP").change(function(event) {
             dist:dist.val(),
             ajax:1
         };
-
+		
         if(event.target.id != 'NOM_CCPP')
         {
-
+        //sel.empty(); // LIMPIAS EL COMBO SIGUIENTE	
+		sel.attr('disabled','disabled');   // deshabilita el siguiente combo a llenar   
         $.ajax({
             url: url,
             type:'POST',
             data:form_data,
             dataType:'json',
-            success:function(json_data){
-                sel.empty();
+            success:function(json_data){ // habilita el siguiente combo a llenar 
+				sel.empty();
+                sel.removeAttr('disabled');  
                 if (op==3){
                     sel.append('<option value="-1"> - </option>');
                 }                
@@ -1856,47 +1858,39 @@ $("#frm_comunidad").validate({
                         i++;
 					});
 					if (!$.isEmptyObject(json.secciones_llenas)){
-						$.each(json.secciones_llenas, function(p, va){
-                    		$.each(va , function(k, v){
-                    			$.each(v, function(key, value){
+						$.each(json.secciones_llenas, function(p, va){//tablas
+                    		$.each(va , function(k, v){ // registros
+                    			$.each(v, function(key, value){ // campos
 									if(key == 'S2_10_DD_COD'){
 										$("#"+key).val(value);
 										$('#S2_10_DD_COD').trigger('change');
 									}else if(key == 'S2_10_PP_COD'){
                                         var interval_PP = setInterval(function(){
-                                            if($('#S2_10_PP_COD').has('option').length > 0){
+                                        	if($('#S2_10_PP_COD option:nth-child(2)').length){
                                                 clearInterval(interval_PP);
-                                                $('#S2_10_PP_COD').val(value);
+                                                $('#S2_10_PP_COD').val(value); 
                                                 $('#S2_10_PP_COD').trigger('change');
                                             }
-                                        }, 1000); 
+                                        }, 100); 
 									}else if(key == 'S2_10_DI_COD'){
-                                        var interval_PP = setInterval(function(){
+                                        var interval_DI = setInterval(function(){
                                             if($('#S2_10_DI_COD').has('option').length > 0){
-                                                clearInterval(interval_PP);
-                                                $('#S2_10_DI_COD').val(value);
-                                                $('#S2_10_DI_COD').trigger('change');
+                                                clearInterval(interval_DI);
+                                                $('#S2_10_DI_COD').val(value); 
+                                                $('#S2_10_DI_COD').trigger('change'); 
                                             }
                                         }, 2000); 
 									}else if(key == 'S2_10_CCPP_COD'){
-                                        var interval_PP = setInterval(function(){
+                                        var interval_CCPP = setInterval(function(){
                                             if($('#S2_10_CCPP_COD').has('option').length > 0){
-                                                clearInterval(interval_PP);
-                                                $('#S2_10_CCPP_COD').val(value);
-                                                $('#S2_10_CCPP_COD').trigger('change');
+                                                clearInterval(interval_CCPP);
+                                                $('#S2_10_CCPP_COD').val(value); 
+                                                $('#S2_10_CCPP_COD').trigger('change'); 
                                             }
                                         }, 3000); 
 									}else if(key == 'EMP_DNI'){
 											$("#EMP_combo").val(value);
 											$("#EMP_DNI").val(value);
-
-                                        // var interval_PP = setInterval(function(){
-                                        //     if($('#EMP').has('option').length > 0){
-                                        //         clearInterval(interval_PP);
-                                        //         $('#S2_10_CCPP_COD').val(value);
-                                        //         $('#S2_10_CCPP_COD').trigger('change');
-                                        //     }
-                                        // }, 3000); 
 									}else{
 										$("#"+key).val(value);
 										if(key == 'S2_5'){	$("#S2_5_DD").val(value);}

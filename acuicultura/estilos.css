@@ -1,0 +1,69 @@
+.titulo_general
+{
+font: 22px "Lucida Sans Unicode", sans-serif;
+color:#073A56;
+}
+
+.titulo_mediano
+{
+font: 18px "Lucida Sans Unicode", sans-serif;
+color:#333;
+}
+
+.subtitulo
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#06C;
+}
+
+.texto_mediano
+{
+font: 14px "Lucida Sans Unicode", sans-serif;
+color:#069;
+}
+.texto
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#363636;
+}
+.aviso
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#06F;
+}
+.advertencia
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#F00;
+}
+
+
+.textin
+{
+font: 10px "Lucida Sans Unicode", sans-serif;
+color:#363636;
+}
+
+.division
+{
+border:1px solid #98BCD1;
+ moz-border-radius: 8px 8px 8px 8px ;
+      /*para Safari y Chrome*/
+ webkit-border-radius: 8px 8px 6px 8px;
+      /*para IE */
+behavior:url(border.htc);
+      /* para Opera */
+ border-radius: 8px 8px 8px 8px;
+
+ 
+
+text-align:center;
+/*height: 780px; */
+margin-top: 5px;
+width: 990px;
+margin-right: auto;
+margin-left: auto;
+/*background-color:#DEECF3; */
+background-color: #EFF7FA;
+
+}

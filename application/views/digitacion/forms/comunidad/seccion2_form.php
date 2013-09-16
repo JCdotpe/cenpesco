@@ -584,7 +584,7 @@ $("#seccion2").validate({
 		    	S2_3_M: {
 		            required: true,
 		            number: true,
-		            range:[0,11],
+		            ranges:[[0,11],[99]],
 		            maxlength:2,
 		            minlength:1,
 		         }, 		            
@@ -897,7 +897,7 @@ $("#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD, #S2_10_CCPP_COD").change(functio
                     $("#S2_10_DI_COD").trigger('change');
                 }
                 if (op==3){
-                    $("#S2_10_CCPP_COD").trigger('change');
+                    //$("#S2_10_CCPP_COD").trigger('change');
                 }
 
 

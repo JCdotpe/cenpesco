@@ -68,32 +68,34 @@ class Comunidad_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			// $forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
-			if($forms->num_rows() > 0){
+			// if($forms->num_rows() > 0){
 		
-				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					$i = 0;
-					$table = null;
-					foreach($this->secciones as $s=>$k){
-						$table = 'comunidad_seccion' . $s;
-						if($s == 9){
-							$table = 'comunidad_info';
-						}
-						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-						if ($rega->num_rows() >0){
-							$i++;
-						}
-					}echo $i;
-					if ($i == 8){
-						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'comunidad_seccion' . $s;
+			// 			if($s == 9){
+			// 				$table = 'comunidad_info';
+			// 			}
+			// 			  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}//echo $i;
+			// 		if ($i == 8){
+			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
-					}else{
-						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
-					}
-				}//var_dump($seccion_completos);echo '<br>';
-			}
-
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}//var_dump($seccion_completos);echo '<br>';
+			// }
+			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id;
+			}	
 			if (count($seccion_completos)>0){
 			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos); //N° formularios ingresados en pescador completos
 			}
@@ -129,32 +131,33 @@ class Comunidad_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
-
-			if($forms->num_rows() > 0){
+			// $forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			// if($forms->num_rows() > 0){
 		
-				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					$i = 0;
-					$table = null;
-					foreach($this->secciones as $s=>$k){
-						$table = 'comunidad_seccion' . $s;
-						if($s == 9){
-							$table = 'comunidad_info';
-						}
-						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-						if ($rega->num_rows() >0){
-							$i++;
-						}
-					}
-					if ($i == 8){
-						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'comunidad_seccion' . $s;
+			// 			if($s == 9){
+			// 				$table = 'comunidad_info';
+			// 			}
+			// 			  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}
+			// 		if ($i == 8){
+			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
-					}else{
-						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
-					}
-				}//var_dump($seccion_completos);echo '<br>';
-			}
-
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}//var_dump($seccion_completos);echo '<br>';
+			// }
+			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id;
+			}	
 			if (count($seccion_completos)>0){
 			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_prov($seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
@@ -189,32 +192,33 @@ class Comunidad_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
-
-			if($forms->num_rows() > 0){
+			// $forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			// if($forms->num_rows() > 0){
 		
-				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					$i = 0;
-					$table = null;
-					foreach($this->secciones as $s=>$k){
-						$table = 'comunidad_seccion' . $s;
-						if($s == 9){
-							$table = 'comunidad_info';
-						}
-						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-						if ($rega->num_rows() >0){
-							$i++;
-						}
-					}
-					if ($i == 8){
-						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'comunidad_seccion' . $s;
+			// 			if($s == 9){
+			// 				$table = 'comunidad_info';
+			// 			}
+			// 			  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}
+			// 		if ($i == 8){
+			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
-					}else{
-						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
-					}
-				}//var_dump($seccion_completos);echo '<br>';
-			}
-
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}//var_dump($seccion_completos);echo '<br>';
+			// }
+			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id;
+			}	
 			if (count($seccion_completos)>0){
 			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_dist($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
@@ -250,7 +254,68 @@ class Comunidad_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
+			// $forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
+			// if($forms->num_rows() > 0){
+		
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'comunidad_seccion' . $s;
+			// 			if($s == 9){
+			// 				$table = 'comunidad_info';
+			// 			}
+			// 			  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}
+			// 		if ($i == 8){
+			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}//var_dump($seccion_completos);echo '<br>';
+			// }
+			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id;
+			}	
+			if (count($seccion_completos)>0){
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			}else{
+				$data['formularios'] = NULL;
+			}			
+			if (count($seccion_incompletos)>0){
+			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
+			}else{
+				$data['formularios_inc'] = NULL;
+			}
+
+	    	$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function forms_incompletos()
+	{
+
+			$data['nav'] = TRUE;
+			$data['title'] = 'INCOMPLETOS';
+			$data['user_id']	= $this->tank_auth->get_user_id();
+			$data['username']	= $this->tank_auth->get_username();
+
+			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
+				$odei[] = $key->ODEI_COD;
+			}					
+			$data['tables'] = $this->marco_model->get_comunidad_by_odei($odei); //get forms por ODEIS, 
+			$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_odei($odei); //get forms por ODEIS, 
+
+			$data['main_content'] = 'digitacion/avance_digitacion/comunidad_incompletos_view';
+			$data['option'] = 25;
+					
+			$seccion_completos = array();
+			$seccion_incompletos = array();
+
+			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
 			if($forms->num_rows() > 0){
 		
@@ -266,28 +331,30 @@ class Comunidad_avance extends CI_Controller {
 						if ($rega->num_rows() >0){
 							$i++;
 						}
-					}
+					}//echo $i;
 					if ($i == 8){
 						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
 					}else{
 						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
 					}
-				}//var_dump($seccion_completos);echo '<br>';
+				}//var_dump($forms);echo '<br>';
 			}
 
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
-			}else{
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos); //N° formularios ingresados en pescador completos
+			}
+			else{
 				$data['formularios'] = NULL;
 			}			
 			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
+			 $data['formularios_inc'] = $this->udra_comunidad_model->get_forms_incompletos($seccion_incompletos); //N° formularios ingresados en pescador incompletos
 			}else{
 				$data['formularios_inc'] = NULL;
 			}
-
-	    	$this->load->view('backend/includes/template', $data);		
+			//var_dump( $seccion_incompletos );echo '<br>';
+	    	$this->load->view('backend/includes/template', $data);	
+	
 	}
 
 
@@ -303,32 +370,34 @@ class Comunidad_avance extends CI_Controller {
 
 
  			$seccion_completos = array();
-			$forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
 
-			if($forms->num_rows() > 0){
+			// $forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
+			// if($forms->num_rows() > 0){
 		
-				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					$i = 0;
-					$table = null;
-					foreach($this->secciones as $s=>$k){
-						$table = 'comunidad_seccion' . $s;
-						if($s == 9){
-							$table = 'comunidad_info';
-						}
-						  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-						if ($rega->num_rows() >0){
-							$i++;
-						}
-					}
-					if ($i == 8){
-						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'comunidad_seccion' . $s;
+			// 			if($s == 9){
+			// 				$table = 'comunidad_info';
+			// 			}
+			// 			  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}
+			// 		if ($i == 8){
+			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
-					}else{
-						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
-					}
-				}//var_dump($seccion_completos);echo '<br>';
-			}
-
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}//var_dump($seccion_completos);echo '<br>';
+			// }
+			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id;
+			}	
 			if (count($seccion_completos)>0){
 			 	$formularios = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{

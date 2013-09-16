@@ -55,9 +55,12 @@
 ?>		
 
 <script type="text/javascript">
+
+
+
 $(function () {
 
-$(".input_edit").editable( CI.base_url + "digitacion/registro_pescadores/edit_detalle/" ,{csrf_token_c: CI.cct,});
+$(".input_edit").editable( CI.base_url + "digitacion/registro_pescadores/edit_detalle/" );
 
         var form_data = {
             csrf_token_c: CI.cct,
@@ -65,12 +68,13 @@ $(".input_edit").editable( CI.base_url + "digitacion/registro_pescadores/edit_de
             csrf_token_c: CI.cct,
         };
 
+
 // $(".input_edit").editable( 
 
 //         $.ajax({
-//             url: CI.base_url + "digitacion/registro_pescadores/edit_detalle/",
+//             url: CI.base_url + "digitacion/registro_pescadores/edit_detalle/" + $.now(),
 //             type:'POST',
-//             data:form_data,
+//             data:{ csrf_token_c: CI.cct, id: $(this).attr('id'), value: $(this).val() },
 //             dataType:'json',
 //             success:function(json){
 
@@ -78,8 +82,7 @@ $(".input_edit").editable( CI.base_url + "digitacion/registro_pescadores/edit_de
 //         }) 
 
 
-//	);
-
+// 	);
 
 
 

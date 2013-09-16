@@ -28,7 +28,9 @@ class Home extends CI_Controller {
 			$data['nav'] = TRUE;
 			$data['title'] = 'Inicio';
 			$data['main_content'] = 'backend/index_view';
+	        $data['user_ubigeo']	= $this->tank_auth->get_ubigeo();			
 	        $this->load->view('backend/includes/template', $data);
+
 		}
 
 	}

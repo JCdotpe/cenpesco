@@ -94,6 +94,21 @@ class Udra_comunidad_model extends CI_MODEL
     	$q = $this->db->get('comunidad');
 		return $q;
 	}	
+	function get_forms_sec_info()//formularios de la ultima seccion para contar como formularios completos
+	{
+		$q = $this->db->query('
+			select distinct(id) from comunidad c1 
+			inner join comunidad_seccion2 c2 on c1.id = c2.comunidad_id
+			inner join comunidad_seccion3 c3 on c1.id = c3.comunidad_id
+			inner join comunidad_seccion4 c4 on c1.id = c4.comunidad_id
+			inner join comunidad_seccion5 c5 on c1.id = c5.comunidad_id
+			inner join comunidad_seccion6 c6 on c1.id = c6.comunidad_id
+			inner join comunidad_seccion7 c7 on c1.id = c7.comunidad_id
+			inner join comunidad_seccion8 c8 on c1.id = c8.comunidad_id
+			inner join comunidad_info c9  on c1.id = c9.comunidad_id
+			');
+		return $q;
+	}
 	// ODEI
 	function get_udra_total_by_odei($cod)// obtiene el total de formularios declarados en UDRA
 	{	
@@ -110,6 +125,17 @@ class Udra_comunidad_model extends CI_MODEL
 		$this->db->where_in('id',$forms);
 		$this->db->group_by('ODEI_COD');
     	$q = $this->db->get('comunidad');
+		return $q;
+	}	
+	function get_forms_incompletos($forms)//  formularios incompletos
+	{	
+		$this->db->select('c.id,  sede_cod, nom_sede, odei_cod, nom_odei, ccdd, nom_dd, ccpp, nom_pp, ccdi, nom_di, cod_ccpp, nom_ccpp, nform,  users.user_id, users.nombres, created');
+		$this->db->from('( select  u.id, p.user_id, p.nombres, p.ubigeo  from users u inner join user_profiles p on u.id = p.user_id) as users');
+		$this->db->join('comunidad c ','c.user_id = users.id', 'inner');
+		$this->db->where_in('c.id',$forms);
+		$this->db->order_by('nom_sede');		
+		$this->db->order_by('created');
+		$q = $this->db->get();
 		return $q;
 	}	
 

@@ -1,0 +1,86 @@
+.titulo_general
+{
+font: 22px "Lucida Sans Unicode", sans-serif;
+color:#073A56;
+}
+
+.titulo_mediano
+{
+font: 18px "Lucida Sans Unicode", sans-serif;
+color:#666;
+}
+.titulo_mediano1
+{
+font: 13px "Lucida Sans Unicode", sans-serif;
+color:#666;
+}
+
+.subtitulo
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#06C;
+}
+
+.texto_mediano
+{
+font: 14px "Lucida Sans Unicode", sans-serif;
+color:#069;
+}
+.texto
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#363636;
+}
+.texto1
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#999;
+}
+.aviso
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#06F;
+}
+.advertencia
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#F00;
+}
+
+.reporte1
+{
+font: 12px "Lucida Sans Unicode", sans-serif;
+color:#F30;
+}
+
+
+.textin
+{
+font: 10px "Lucida Sans Unicode", sans-serif;
+color:#363636;
+}
+
+.division
+{
+	
+border:1px solid #CCC;
+ moz-border-radius: 6px 6px 6px 6px ;
+      /*para Safari y Chrome*/
+ webkit-border-radius: 6px 6px 6px 6px;
+      /*para IE */
+behavior:url(border.htc);
+      /* para Opera */
+ border-radius: 6px 6px 6px 6px;
+
+ text-align:left;
+/*height: 780px; */
+margin-top: 5px;
+width: 130px;
+/*margin-right: auto;
+margin-left: auto; */
+/*background-color:#DEECF3; */
+background-color:#F5F5F5;
+
+}
+
+

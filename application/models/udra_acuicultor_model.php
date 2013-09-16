@@ -105,6 +105,23 @@ class Udra_acuicultor_model extends CI_MODEL
 		return $q;
 	}	
 
+	function get_forms_sec_info()//formularios de la ultima seccion para contar como formularios completos
+	{
+		$q = $this->db->query('
+			select distinct(id1) from acu_seccion1 c1 
+			inner join acu_seccion2 c2 on c1.id1 = c2.id2
+			inner join acu_seccion3 c3 on c1.id1 = c3.id3
+			inner join acu_seccion4 c4 on c1.id1 = c4.id4
+			inner join acu_seccion5 c5 on c1.id1 = c5.id5
+			inner join acu_seccion6 c6 on c1.id1 = c6.id6
+			inner join acu_seccion7 c7 on c1.id1 = c7.id7
+			inner join acu_seccion8 c8 on c1.id1 = c8.id8
+			inner join acu_seccion9 c9 on c1.id1 = c9.id9
+			inner join acu_seccion10 c10  on c1.id1 = c10.id10
+			');
+		return $q;
+	}
+
 	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id1) as TOTAL_DIG ');
@@ -113,6 +130,18 @@ class Udra_acuicultor_model extends CI_MODEL
     	$q = $this->db->get('acu_seccion1');
 		return $q;
 	}	
+
+	function get_forms_incompletos($forms)//  formularios incompletos
+	{	
+		$this->db->select('c.id1,  sede_cod, nom_sede, odei_cod, nom_odei, ccdd, nom_dd, ccpp, nom_pp, ccdi, nom_di, cod_ccpp, nom_ccpp, nform,  users.user_id, users.nombres, ff_rr1');
+		$this->db->from('( select  u.id, p.user_id, p.nombres, p.ubigeo  from users u inner join user_profiles p on u.id = p.user_id) as users');
+		$this->db->join('acu_seccion1 c ','c.user1 = users.id', 'inner');
+		$this->db->where_in('c.id1',$forms);
+		$this->db->order_by('nom_sede');		
+		$this->db->order_by('ff_rr1');
+		$q = $this->db->get();
+		return $q;
+	}
 
 	// PROVINCIA
 	function get_udra_total_by_prov($cod)// obtiene el total de formularios declarados en UDRA por Provincia

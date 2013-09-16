@@ -96,6 +96,23 @@ class Udra_pescador_model extends CI_MODEL
 		return $q;
 	}	
 
+	function get_forms_sec_info()//formularios de la ultima seccion para contar como formularios completos
+	{
+		$q = $this->db->query('
+			select distinct(id) from pescador c1 
+			inner join pesc_seccion2 c2 on c1.id = c2.pescador_id
+			inner join pesc_seccion3 c3 on c1.id = c3.pescador_id
+			inner join pesc_seccion4 c4 on c1.id = c4.pescador_id
+			inner join pesc_seccion5 c5 on c1.id = c5.pescador_id
+			inner join pesc_seccion6 c6 on c1.id = c6.pescador_id
+			inner join pesc_seccion7 c7 on c1.id = c7.pescador_id
+			inner join pesc_seccion8 c8 on c1.id = c8.pescador_id
+			inner join pesc_seccion9 c9 on c1.id = c9.pescador_id
+			inner join pesc_info c10  on c1.id = c10.pescador_id
+			');
+		return $q;
+	}
+
 	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id) as TOTAL_DIG ');
@@ -104,6 +121,19 @@ class Udra_pescador_model extends CI_MODEL
     	$q = $this->db->get('pescador');
 		return $q;
 	}	
+
+	function get_forms_incompletos($forms)//  formularios incompletos
+	{	
+		$this->db->select('c.id,  sede_cod, nom_sede, odei_cod, nom_odei, ccdd, nom_dd, ccpp, nom_pp, ccdi, nom_di, cod_ccpp, nom_ccpp, nform,  users.user_id, users.nombres, created');
+		$this->db->from('( select  u.id, p.user_id, p.nombres, p.ubigeo  from users u inner join user_profiles p on u.id = p.user_id) as users');
+		$this->db->join('pescador c ','c.user_id = users.id', 'inner');
+		$this->db->where_in('c.id',$forms);
+		$this->db->order_by('nom_sede');		
+		$this->db->order_by('created');
+		$q = $this->db->get();
+		return $q;
+	}
+
 
 	// PROVINCIA
 	function get_formularios_total_by_prov($cod)// obtiene el total de formularios declarados en UDRA por Provincia
