@@ -2,7 +2,7 @@
 
 
 <div class="row-fluid">
-    <div class="span2">
+   <div id="ap-sidebar" class="span2">
 		<?php $this->load->view('tabulados/pescador/includes/sidebar_view'); ?>       
     </div><!--/span-->
 
@@ -16,7 +16,7 @@
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="16" style="text-align:center">Número de hijos</th>';																																														
+						echo '<th colspan="20" style="text-align:center">Número de hijos</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										
@@ -105,3 +105,5 @@
 	</div>
 	<?php //print_r($dep); ?>
 </div>
+
+ <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>

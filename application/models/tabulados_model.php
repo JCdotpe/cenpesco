@@ -216,6 +216,19 @@ function get_report15($a = null, $b = null){
     return $q;
 }
 
+function get_report16($a = null, $b = null){
+    $this->db->select('COUNT(p.CCDD) as num');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');
+    $this->db->where('p2.S2_22',$a);        
+    if(!is_null($b)){
+    $this->db->where('p.CCDD',$b);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
 
 function get_report25($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');

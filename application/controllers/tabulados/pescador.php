@@ -309,7 +309,7 @@ class Pescador extends CI_Controller {
 			$data['dep'] = $dep;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';			
-			$data['opcion'] = 8;
+			$data['opcion'] = 9;
 			$data['main_content'] = 'tabulados/pescador/reporte9_view';
 			$this->load->view('backend/includes/template', $data);		
 	}
@@ -506,14 +506,14 @@ class Pescador extends CI_Controller {
 			foreach($dep->result() as $d){
 				$dd = 0;
 				for($i=1; $i<=10; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report15($i,$d->CCDD)->row()->num;
+					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report16($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
 			for($i=1; $i<=10; $i++){
-				$tr[$i] = $this->tabulados_model->get_report15($i)->row()->num; 
+				$tr[$i] = $this->tabulados_model->get_report16($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -522,21 +522,11 @@ class Pescador extends CI_Controller {
 			$data['dep'] = $dep;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';			
-			$data['opcion'] = 15;
-			$data['main_content'] = 'tabulados/pescador/reporte15_view';
+			$data['opcion'] = 16;
+			$data['main_content'] = 'tabulados/pescador/reporte16_view';
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////HIJOS/////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	public function reporte25()

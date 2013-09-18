@@ -2,13 +2,13 @@
 
 
 <div class="row-fluid">
-    <div class="span2">
+      <div id="ap-sidebar" class="span2">
 		<?php $this->load->view('tabulados/pescador/includes/sidebar_view'); ?>       
     </div><!--/span-->
 
 
 
- 	<div class="span10" id="freg">
+ 	<div class="span10" id="ap-content">
     	<h4>PERÚ: PESCADORES POR ACTIVIDAD ADICIONAL QUE REALIZA, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';
@@ -52,7 +52,9 @@
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';																				
 						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';							
+						echo '<th style="text-align:center;color:green">%</th>';	
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';													
 						echo '</tr>';
 						$aa = 0;
 						$bb = 0;
@@ -100,3 +102,4 @@
 	</div>
 	<?php //print_r($dep); ?>
 </div>
+ <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
