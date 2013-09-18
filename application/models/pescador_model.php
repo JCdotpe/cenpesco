@@ -1107,20 +1107,43 @@ function get_report1(){
 }
 
 function get_report2(){
-     $q = $this->db->query('
-    select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_4 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_4 in (
-    select S2_4 from pesc_seccion2 group by S2_4 having count(*) > 1) and p2.S2_4 not in("77777777", "88888888", "99999999");
+    //  $q = $this->db->query('
+    //  select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_4 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_4 in (
+    //  select S2_4 from pesc_seccion2 group by S2_4 having count(*) > 1) and p2.S2_4 not in("77777777", "88888888", "99999999");
+    // ');
+    $q = $this->db->query('
+        select S2_4, COUNT(*) c from pesc_seccion2  group by S2_4 having c > 1 and S2_4 not in("77777777", "88888888", "99999999")
     ');
     return $q;
 }
 
-function get_report3(){
+function get_report2_dni($dni){
      $q = $this->db->query('
-    select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_5 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_5 in (
-    select S2_5 from pesc_seccion2 group by S2_5 having count(*) > 1) and p2.S2_5 not in("77777777777", "88888888888", "99999999999");
+     select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_4 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_4 = ?;
+    ',array($dni));
+    return $q;
+}
+
+
+function get_report3(){
+    //  $q = $this->db->query('
+    // select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_5 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_5 in (
+    // select S2_5 from pesc_seccion2 group by S2_5 having count(*) > 1) and p2.S2_5 not in("77777777777", "88888888888", "99999999999");
+    // ');
+    $q = $this->db->query('
+        select S2_5, COUNT(*) c from pesc_seccion2  group by S2_5 having c > 1 and S2_5 not in("77777777777", "88888888888", "99999999999")
     ');
     return $q;
 }
+
+function get_report3_ruc($ruc){
+     $q = $this->db->query('
+     select p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM,p2.S2_5 from pescador p inner join pesc_seccion2 p2 ON p.id=p2.pescador_id where p2.S2_5 = ?;
+    ',array($ruc));
+    return $q;
+}
+
+
 
 function get_report4(){
     $this->db->select('p.NOM_SEDE,p.NOM_DD,p.NOM_PP,p.NOM_DI,p.NOM_CCPP,p.NFORM, p2.PTANUM, p2.BLOCK, p2.INT, p2.MZ, p2.LOTE, p2.KM');

@@ -57,20 +57,37 @@ class Pescador extends CI_Controller {
 			$data['nav'] = TRUE;
 			$data['title'] = 'Consistencia';
 			$data['user_id']	= $this->tank_auth->get_user_id();
-			$data['username']	= $this->tank_auth->get_username();				
-			$data['tables'] = $this->pescador_model->get_report2(); 
+			$data['username']	= $this->tank_auth->get_username();	
+			$all = $this->pescador_model->get_report2();	
+			$i = 0;			
+			$ag = null;
+			foreach($all->result() as $a){
+				$ag[$i] = $this->pescador_model->get_report2_dni($a->S2_4);	
+				$i++;
+			}
+			$data['all'] = $all;
+			$data['tables'] = $ag;
 			$data['opcion'] = 2;
 			$data['main_content'] = 'consistencia/pescador/reporte2_view';
 			$this->load->view('backend/includes/template', $data);		
 	}
+
 
 	public function reporte3()
 	{
 			$data['nav'] = TRUE;
 			$data['title'] = 'Consistencia';
 			$data['user_id']	= $this->tank_auth->get_user_id();
-			$data['username']	= $this->tank_auth->get_username();				
-			$data['tables'] = $this->pescador_model->get_report3(); 
+			$data['username']	= $this->tank_auth->get_username();	
+			$all = $this->pescador_model->get_report3();	
+			$i = 0;			
+			$ag = null;
+			foreach($all->result() as $a){
+				$ag[$i] = $this->pescador_model->get_report3_ruc($a->S2_5);	
+				$i++;
+			}
+			$data['all'] = $all;
+			$data['tables'] = $ag;
 			$data['opcion'] = 3;
 			$data['main_content'] = 'consistencia/pescador/reporte3_view';
 			$this->load->view('backend/includes/template', $data);		

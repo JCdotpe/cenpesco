@@ -25,21 +25,25 @@
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
-					$i = 1;
-
-					foreach($tables->result() as $row){
-						echo "<tr>";
-						echo "<td>". $i++."</td>";
-						echo "<td>". $row->NOM_SEDE ."</td>";
-						echo "<td>". $row->NOM_DD ."</td>";
-						echo "<td>". $row->NOM_PP ."</td>";						
-						echo "<td>". $row->NOM_DI ."</td>";						
-						echo "<td>". $row->NOM_CCPP ."</td>";
-						echo "<td>". $row->NFORM ."</td>";
-						echo "<td>". $row->S2_4 ."</td>";																	
-						echo "</tr>"; 
-
-					 }
+					$j = 1;
+					$i = 0;
+					// foreach($tables->result() as $row){
+					foreach($all->result() as $a){
+						foreach($tables[$i]->result() as $row){
+							echo "<tr>";
+							echo "<td>". $j++."</td>";
+							echo "<td>". $row->NOM_SEDE ."</td>";
+							echo "<td>". $row->NOM_DD ."</td>";
+							echo "<td>". $row->NOM_PP ."</td>";						
+							echo "<td>". $row->NOM_DI ."</td>";						
+							echo "<td>". $row->NOM_CCPP ."</td>";
+							echo "<td>". $row->NFORM ."</td>";
+							echo "<td>". $row->S2_4 ."</td>";																	
+							echo "</tr>"; 
+						}
+						$i++;
+					}
+					 // }
 					echo '</tbody>';
 				echo '</table>';
 
