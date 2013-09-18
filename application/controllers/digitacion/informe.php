@@ -128,7 +128,7 @@ class Informe extends CI_Controller {
 						$flag = 1;
 						$datos['errors'] = $this->inform_model->get_errors($varia->row()->id)->result();
 						$datos['numerrors'] = $this->inform_model->get_errors($varia->row()->id)->num_rows();
-						$datos['isup'] = $this->inform_model->get_isup($ODEI_COD,$DEP_COD,$PROV_COD,$DIST_COD,$CCPPCOD)->row();
+						// $datos['isup'] = $this->inform_model->get_isup($ODEI_COD,$DEP_COD,$PROV_COD,$DIST_COD,$CCPPCOD)->row();
 						$datos['supform'] = $varia->row();		
 						$msg = 'Por favor complete los campos a continuación.';
 				}else{

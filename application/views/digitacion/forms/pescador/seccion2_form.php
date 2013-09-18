@@ -4226,7 +4226,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_1M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_1:{
 		            digits:true,
@@ -4281,7 +4281,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_2M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_2:{
 		            digits:true,
@@ -4336,7 +4336,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_3M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_3:{
 		            digits:true,
@@ -4391,7 +4391,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_4M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_4:{
 		            digits:true,
@@ -4446,7 +4446,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_5M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_5:{
 		            digits:true,
@@ -4501,7 +4501,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_6M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_6:{
 		            digits:true,
@@ -4556,7 +4556,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_7M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_7:{
 		            digits:true,
@@ -4611,7 +4611,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_8M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_8:{
 		            digits:true,
@@ -4666,7 +4666,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_9M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_9:{
 		            digits:true,
@@ -4721,7 +4721,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },		
 		        S2_23_4_10M:{
 		            digits:true,
-		            valrango: [1,11,99],
+		            valrango: [0,11,99],
 		         },		
 		        S2_23_5_10:{
 		            digits:true,

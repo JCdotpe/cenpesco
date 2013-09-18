@@ -38,7 +38,7 @@ $P7 = array(
 	'id'	=> 'P7',
 	'maxlength'	=> 4,
 	'class' => $span_class,
-	'readonly' => 'readonly',
+	// 'readonly' => 'readonly',
 );
 
 $P8 = array(
@@ -54,15 +54,15 @@ $P9 = array(
 	'id'	=> 'P9',
 	'maxlength'	=> 1,
 	'class' => $span_class,
-	'readonly' => 'readonly',
+	// 'readonly' => 'readonly',
 );
 
 $P10 = array(
 	'name'	=> 'P10',
 	'id'	=> 'P10',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class,
-	'readonly' => 'readonly',
+	// 'readonly' => 'readonly',
 );
 
 
@@ -71,7 +71,7 @@ $P11 = array(
 	'id'	=> 'P11',
 	'maxlength'	=> 3,
 	'class' => $span_class,
-	'readonly' => 'readonly',
+	// 'readonly' => 'readonly',
 );
 
 
@@ -358,6 +358,7 @@ echo '</div>';
 
 echo form_submit('consulta', 'Consulta','class="btn btn-primary pull-right"');
 echo anchor(site_url('digitacion/informe'), 'Nuevo Formato','class="btn btn-success pull-left"');
+echo anchor(site_url('digitacion/informe_reporte'), 'Exportar','class="btn btn-success pull-left" style="margin-left:20px"');
 echo form_close(); 
 
 		echo '</div>'; 			
@@ -766,7 +767,7 @@ $("#DEP_COD").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_prov/" + aha.val() + '/' + ah.val(),
+            url: CI.base_url + "ajax/marco_ajax/get_ajax_prov/" + aha.val() + '/' + ah.val(),
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -774,7 +775,7 @@ $("#DEP_COD").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1"> - </option>');             
                 $.each(json_data, function(i, data){
-                    sel.append('<option value="' + data.prov_cod + '">' + data.nombre + '</option>');
+                    sel.append('<option value="' + data.CCPP + '">' + data.PROVINCIA + '</option>');
                 });
                 sel.trigger('change');
             }
@@ -799,7 +800,7 @@ $("#PROV_COD").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_dist/" + aha.val() + '/' + ahaa.val() + '/' + ah.val(),
+            url: CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + aha.val() + '/' + ahaa.val() + '/' + ah.val(),
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -807,7 +808,7 @@ $("#PROV_COD").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1"> - </option>');             
                 $.each(json_data, function(i, data){
-                    sel.append('<option value="' + data.di_cod + '">' + data.nombre + '</option>');
+                    sel.append('<option value="' + data.CCDI + '">' + data.DISTRITO + '</option>');
                 });
                 sel.trigger('change');
             }
@@ -834,7 +835,7 @@ $("#DIST_COD").change(function(event) {
         };
 
         $.ajax({
-            url: CI.base_url + "ajax/inform_ajax/get_ajax_ccpp/" + aha.val() + '/' + ahaa.val() + '/' + ahaaa.val() + '/' +  $(this).val(),
+            url: CI.base_url + "ajax/marco_ajax/get_ajax_ccpp/" + aha.val() + '/' + ahaa.val() + '/' + ahaaa.val() + '/' +  $(this).val(),
             type:'POST',
             data:form_data,
             dataType:'json',
@@ -842,7 +843,7 @@ $("#DIST_COD").change(function(event) {
                 sel.empty();
                 sel.append('<option value="-1"> - </option>');             
                 $.each(json_data, function(i, data){
-                    sel.append('<option value="' + data.ccpp_cod + '">' + data.nombre + '</option>');
+                    sel.append('<option value="' + data.CODCCPP + '">' + data.CENTRO_POBLADO + '</option>');
                 });
                 sel.trigger('change');
             }
@@ -1122,8 +1123,8 @@ function dil(nume){
 
 
 //especifique por que pescador
-$('#P6').change(function() {
-	valor = $(this).val();
+$('#P6, #P7').change(function() {
+	valor = $('#P6').val();
 	peam = $('#P7').val();
 	$('#P8').val(Math.round(valor * 100 / peam));
 });
@@ -1381,15 +1382,16 @@ $("#inform").validate({
 								$("#inform :input").attr("disabled", true);  
 								$('#serrors').removeClass('hide');	
 								$("input[name='informid']").val(json.supform.id);	
-								$('#P7').val(json.isup.MARCO);															
-								$('#P9').val(json.isup.EQUIPO);																
-								$('#P10').val(json.isup.RUTA);																
-								$('#P11').val(json.isup.CCPPCONCOD);																
+								// $('#P7').val(json.isup.MARCO);															
+								// $('#P9').val(json.isup.EQUIPO);																
+								// $('#P10').val(json.isup.RUTA);																
+								// $('#P11').val(json.isup.CCPPCONCOD);																
 								$.each(json.supform, function( fila, valor ) {
-	                                if(fila == 'P12' || fila == 'P6'){
+	                                if(fila == 'P12' || fila == 'P6' || fila == 'P7'){
 	                                     $('#' + fila).val(valor);
 	                                     $('#' + fila).trigger('change');
-	                                }else if( fila != 'P7' && fila != 'P9' && fila != 'P10' && fila != 'P11'){
+	                                // }else if( fila != 'P7' && fila != 'P9' && fila != 'P10' && fila != 'P11'){
+	                                 }else{
 	                                     $('#' + fila).val(valor);
 	                                }  				
                                 });						
@@ -1406,25 +1408,25 @@ $("#inform").validate({
 			                                if(fila == 'P14' || fila == 'P16'){
                                                 $('#' + fila + '_' + k).val(valor);
                                                 $('#' + fila + '_' + k).trigger('change');
-                                    //mierda intento de evitar async false
-			                                 // }else if(fila == 'P16' ){
-                                    //                    window['intervalo' + k] = setInterval(function(){
-                                    //                 	alert(1);
-                                    //                    if($('#P16_'+ k + ' option:nth-child(2)').length){
-                                    //                         clearInterval(window['intervalo' + k]);
-                                    //                         $('#P16_' + k).val(valor);
-                                    //                         $('#P16_' + k).trigger('change');
-                                    //                     }
-                                    //                 }, 1000); 
-			                                // }else if(fila == 'P17' ){
-                                   //                     intervalosx[(j+1)] = setInterval(function(){
-                                   //                  	alert(1);
-                                   //                     if($('#P17_'+ (j+1) + ' option:nth-child(2)').length){
-                                   //                          clearInterval(this);
-                                   //                          $('#P17_' +  (j+1)).val(valor);
-                                   //                          $('#P17_' +  (j+1)).trigger('change');
-                                   //                      }
-                                   //                  }, 1000); 
+											}else if(fila == 'P17'){
+
+												subv = valor.split(".");
+												var mval;
+													if(subv[1] == null){
+														mval = valor;
+													}else if(subv[1].length == 1){
+														mval = valor;
+													}else if(subv[1].length == 2){
+														if(subv[1] == '00'){
+															mval = subv[0];
+														}														
+														else if(subv[1].substring(1,2) == '0' && valor!='23.10'){
+															mval = subv[0] + '.' + subv[1].substring(0,1);	
+														}else{
+															mval = valor;
+														}
+													}
+			                                   $('#' + fila + '_' + k).val(mval);
 			                                }else if(fila == 'id'){
 			                                   $('#error_' + k).val(valor);
 			                                }else{
@@ -1509,6 +1511,22 @@ $("#serrors").validate({
            required: true,
            range: [0,1000],
          },   
+        P7: {
+           required: true,
+           range: [0,1000],
+         },     
+        P9: {
+           required: true,
+           digits: true,
+         },    
+        P10: {
+           required: true,
+           digits: true,
+         },     
+        P11: {
+           required: true,
+           digits: true,
+         },                               
        P12: {
            required: true,
            valueNotEquals: -1,

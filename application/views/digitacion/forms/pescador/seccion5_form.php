@@ -4068,7 +4068,7 @@ $('#S5_8_4').change(function() {
 
 $('#S5_2_PP_COD').change(function() {
     var ugo = $('#S5_2_PP_O');
-    if($(this).val() == -1){
+    if($(this).val() == -1 && $('#S5_2_2').val() !=0){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -4079,7 +4079,7 @@ $('#S5_2_PP_COD').change(function() {
 
 $('#S5_2_DI_COD').change(function() {
     var ugo = $('#S5_2_DI_O');
-    if($(this).val() == -1){
+    if($(this).val() == -1 && $('#S5_2_2').val() !=0){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -4090,7 +4090,7 @@ $('#S5_2_DI_COD').change(function() {
 
 $('#S5_2_CCPP_COD').change(function() {
     var ugo = $('#S5_2_CCPP_O');
-    if($(this).val() == -1){
+    if($(this).val() == -1 && $('#S5_2_2').val() !=0){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -4261,23 +4261,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_1_1: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_1_2: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_1_3: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },	
 		    	S5_5_1_4: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_1_5: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 //end red1	
 //red1
@@ -4292,23 +4292,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_2_1: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_2_2: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_2_3: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },	
 		    	S5_5_2_4: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_2_5: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 //end red1	
 //red1
@@ -4323,23 +4323,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_3_1: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_3_2: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_3_3: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },	
 		    	S5_5_3_4: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_3_5: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 //end red1		
 //red1
@@ -4354,23 +4354,23 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_4_1: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_4_2: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_4_3: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },	
 		    	S5_5_4_4: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_4_5: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 //end red1	        
 //red1
@@ -4385,24 +4385,24 @@ $('#S5_2_DD_COD').trigger("change");
 		         },		
 		    	S5_5_5_1: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_5_2: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 		    	S5_5_5_3: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },	
 		    	S5_5_5_4: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 
 		    	S5_5_5_5: {
 		            number: true,
-		            valrango: [0,20.00,99.99],
+		            valrango: [0,50.00,99.99],
 		         },		
 //end red1	  	      
 //red1

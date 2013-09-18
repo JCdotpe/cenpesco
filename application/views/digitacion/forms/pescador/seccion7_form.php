@@ -1928,7 +1928,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_1_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_1_P: {
 		            number: true,
@@ -1941,7 +1941,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_2_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_2_P: {
 		            number: true,
@@ -1954,7 +1954,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_3_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_3_P: {
 		            number: true,
@@ -1967,7 +1967,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_4_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_4_P: {
 		            number: true,
@@ -1980,7 +1980,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_5_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_5_P: {
 		            number: true,
@@ -1993,7 +1993,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_6_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_6_P: {
 		            number: true,
@@ -2006,7 +2006,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_7_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_7_P: {
 		            number: true,
@@ -2019,7 +2019,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_8_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_8_P: {
 		            number: true,
@@ -2032,7 +2032,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_9_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_9_P: {
 		            number: true,
@@ -2045,7 +2045,7 @@ $('#S7_5_1_C, #S7_5_1_P, #S7_5_2_C, #S7_5_2_P, #S7_5_3_C, #S7_5_3_P, #S7_5_4_C, 
 		         }, 
 		    	S7_5_10_C: {
 		            digits: true,
-		            valrango: [1,49,99],
+		            valrango: [1,59,99],
 		         }, 
 		    	S7_5_10_P: {
 		            number: true,

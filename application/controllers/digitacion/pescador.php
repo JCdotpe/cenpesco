@@ -222,9 +222,14 @@ class Pescador extends CI_Controller {
 		$this->load->helper('excel');
         $query = $this->pescador_model->get_print();
         // $this->export->to_excel($query, 'Pescadores');
+        // ini_set("memory_limit","128M");
         to_excel($query, 'Pescadores');
         // query_to_csv($query, TRUE, 'Pescadores.csv');
 	}
+
+ 
+}
+
 	
 	// function to_excel_emb(){
 	// 	$this->load->helper('excel');
@@ -232,7 +237,6 @@ class Pescador extends CI_Controller {
  //        to_excel($query, 'Embarcaciones');
 	// }
 
-}
 
 
 
