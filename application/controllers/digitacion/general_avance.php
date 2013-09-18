@@ -75,33 +75,36 @@ class General_avance extends CI_Controller {
 				$seccion_completos_acui = array();
 				$seccion_incompletos_acui = array();
 
-				$forms_acui = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
-				//var_dump($forms->result());
+				// $forms_acui = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+				// //var_dump($forms->result());
 
-				if($forms_acui->num_rows() > 0){
+				// if($forms_acui->num_rows() > 0){
 			
-					foreach($forms_acui->result() as $filas){//busca en todas las tablas de pescador
+				// 	foreach($forms_acui->result() as $filas){//busca en todas las tablas de pescador
 						
-						$a = 0;
-						$table = null;
-						foreach($this->secciones as $s=>$k){
-							$table = 'acu_seccion' . $s;
-								//$cod = $filas->id1.$s;echo $cod.'<br>';
-							  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
-							if ($rega->num_rows() >0){
-								$a++;
-							}
-							//var_dump($rega->num_rows());echo '<br>';
-						}//echo $a.'<br>';
-						if ($a == 9){
-							$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
+				// 		$a = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'acu_seccion' . $s;
+				// 				//$cod = $filas->id1.$s;echo $cod.'<br>';
+				// 			  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){
+				// 				$a++;
+				// 			}
+				// 			//var_dump($rega->num_rows());echo '<br>';
+				// 		}//echo $a.'<br>';
+				// 		if ($a == 9){
+				// 			$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
-						}else{
-							$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
-						}
-					}
-				}//var_dump($seccion_completos);echo '<br>';
-
+				// 		}else{
+				// 			$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }//var_dump($seccion_completos);echo '<br>';
+				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
+					$seccion_completos[] = $filas->id1;
+				}	
+				
 				if (count($seccion_completos_acui)>0){
 				 	$data['formularios_acui'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); 
 				}else{
@@ -118,34 +121,36 @@ class General_avance extends CI_Controller {
 				$seccion_completos_pes = array();
 				$seccion_incompletos_pes = array();
 
-				$forms_pes = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+				// $forms_pes = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
-				if($forms_pes->num_rows() > 0){
+				// if($forms_pes->num_rows() > 0){
 			
-					foreach($forms_pes->result() as $filas){//busca en todas las tablas de pescador
+				// 	foreach($forms_pes->result() as $filas){//busca en todas las tablas de pescador
 						
-						$i = 0;
-						$table = null;
-						foreach($this->secciones as $s=>$k){
-							$table = 'pesc_seccion' . $s;
-							if($s == 10){
-								$table = 'pesc_info';
-							}
-							  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
-							if ($rega->num_rows() >0){
-								$i++;
-							}
-							//var_dump($rega->result());echo '<br>';
-						}
-						if ($i == 9){
-							$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'pesc_seccion' . $s;
+				// 			if($s == 10){
+				// 				$table = 'pesc_info';
+				// 			}
+				// 			  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){
+				// 				$i++;
+				// 			}
+				// 			//var_dump($rega->result());echo '<br>';
+				// 		}
+				// 		if ($i == 9){
+				// 			$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
-						}else{
-							$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
-						}
-					}//var_dump($seccion_completos);echo '<br>';
+				// 		}else{
+				// 			$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}//var_dump($seccion_completos);echo '<br>';
+				// }
+				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos[] = $value->id;
 				}
-
 				if (count($seccion_completos_pes)>0){
 				 	$data['formularios_pes'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); 
 				}else{

@@ -332,35 +332,43 @@ class Pescador_avance extends CI_Controller {
 
 			$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
-			if($forms->num_rows() > 0){
+			// if($forms->num_rows() > 0){
 		
-				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-					$i = 0;
-					$table = null;
-					foreach($this->secciones as $s=>$k){
-						$table = 'pesc_seccion' . $s;
-						if($s == 10){
-							$table = 'pesc_info';
-						}
-						  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
-						if ($rega->num_rows() >0){
-							$i++;
-						}
-					}
-					if ($i == 9){
-						$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'pesc_seccion' . $s;
+			// 			if($s == 10){
+			// 				$table = 'pesc_info';
+			// 			}
+			// 			  $rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}
+			// 		if ($i == 9){
+			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
-					}else{
-						$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
-					}
-				}
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}
+			// }
+			foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id;
 			}
+			foreach ( $this->udra_pescador_model->get_id_forms()->result() as $value) {
+				if (!in_array($value->id, $seccion_completos)) {
+					$seccion_incompletos[] = $value->id;
 
-			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos); 
-			}else{
-				$data['formularios'] = NULL;
+				}
 			}			
+			// if (count($seccion_completos)>0){
+			//  	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos); 
+			// }else{
+			// 	$data['formularios'] = NULL;
+			// }			
 			if (count($seccion_incompletos)>0){
 			 $data['formularios_inc'] = $this->udra_pescador_model->get_forms_incompletos($seccion_incompletos); 
 			}else{

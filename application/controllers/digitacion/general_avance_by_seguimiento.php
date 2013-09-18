@@ -82,9 +82,9 @@ class General_avance_by_seguimiento extends CI_Controller {
 			$registros_udra_com	= $this->udra_comunidad_model->get_udra_total_by_odei($odei); //get forms por ODEIS, 
 
 			$registros_dig_reg = $this->udra_registro_model->get_n_formularios_by_odei($odei); 
-			$registros_dig_pes = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
-			$registros_dig_acui = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en ACUICULTOR 
-			$registros_dig_com = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
+			// $registros_dig_pes = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			// $registros_dig_acui = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en ACUICULTOR 
+			// $registros_dig_com = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
 
 			$total_trab_pes_totales_by_odei		= $this->avance_campo_subrutas_model->total_trab_pes_totales_by_odei();		// TOTALES de formulario PESCADOR por ODEI
 			$total_trab_acui_totales_by_odei	= $this->avance_campo_subrutas_model->total_trab_acui_totales_by_odei();	// TOTALES de formulario ACUICULTOR por ODEI
@@ -92,71 +92,79 @@ class General_avance_by_seguimiento extends CI_Controller {
 
 
 			//PESCADOR, recorrido en tablas, buscando formularios completos
-				if($registros_dig_pes->num_rows() > 0){
-					$seccion_completos_pes = array();			
-					foreach($registros_dig_pes->result() as $filas){//busca en todas las tablas de pescador
-						$i = 0;
-						$table = null;
-						foreach($this->secciones as $s=>$k){
-							$table = 'pesc_seccion' . $s;
-							if($s == 10){ $table = 'pesc_info'; }
+				// if($registros_dig_pes->num_rows() > 0){
+				// 	$seccion_completos_pes = array();			
+				// 	foreach($registros_dig_pes->result() as $filas){//busca en todas las tablas de pescador
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'pesc_seccion' . $s;
+				// 			if($s == 10){ $table = 'pesc_info'; }
 
-							$rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
-							if ( $rega->num_rows() >0 ){ $i++; }
-						}
-						if ($i == 9){
-							$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
-						}else{
-							$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
-						}
-					}
+				// 			$rega = $this->udra_pescador_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ( $rega->num_rows() >0 ){ $i++; }
+				// 		}
+				// 		if ($i == 9){
+				// 			$seccion_completos_pes[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_pes[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos_pes[] = $value->id;
 				}
-
 				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); }
 				else { $formularios_dig_pes = NULL;	}		
 
 			// ACUICULTOR, recorrido en tablas, buscando formularios completos
-				if($registros_dig_acui->num_rows() > 0){
-					$seccion_completos_acui = array();
-					foreach($registros_dig_acui->result() as $filas){//busca en todas las tablas de pescador
-						$a = 0;
-						$table = null;
-						foreach($this->secciones as $s=>$k){
-							$table = 'acu_seccion' . $s;
+				// if($registros_dig_acui->num_rows() > 0){
+				// 	$seccion_completos_acui = array();
+				// 	foreach($registros_dig_acui->result() as $filas){//busca en todas las tablas de pescador
+				// 		$a = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones as $s=>$k){
+				// 			$table = 'acu_seccion' . $s;
 
-							$rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
-							if ($rega->num_rows() >0){$a++;	}
-						}
-						if ($a == 9){
-							$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
-						}else{
-							$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
-						}
-					}
-				}
+				// 			$rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){$a++;	}
+				// 		}
+				// 		if ($a == 9){
+				// 			$seccion_completos_acui[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_acui[] = $filas->id1; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
+					$seccion_completos_acui[] = $filas->id1;
+				}					
 				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); }
 				else{ $formularios_dig_acui = NULL;	}	
 
 			//COMUNIDAD, recorrido en tablas, buscando formularios completos
-				if($registros_dig_com->num_rows() > 0){
-					$seccion_completos_com = array();
-					foreach($registros_dig_com->result() as $filas){//busca en todas las tablas de pescador
-						$i = 0;
-						$table = null;
-						foreach($this->secciones_com as $s=>$k){
-							$table = 'comunidad_seccion' . $s;
-							if($s == 9){ $table = 'comunidad_info';	}
+				// if($registros_dig_com->num_rows() > 0){
+				// 	$seccion_completos_com = array();
+				// 	foreach($registros_dig_com->result() as $filas){//busca en todas las tablas de pescador
+				// 		$i = 0;
+				// 		$table = null;
+				// 		foreach($this->secciones_com as $s=>$k){
+				// 			$table = 'comunidad_seccion' . $s;
+				// 			if($s == 9){ $table = 'comunidad_info';	}
 
-							$rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-							if ($rega->num_rows() >0){ $i++; }
-						}
-						if ($i == 8){
-							$seccion_completos_com[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
-						}else{
-							$seccion_incompletos_com[] = $filas->id; //guarda los ID de formularios incompletos
-						}
-					}
-				}
+				// 			$rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
+				// 			if ($rega->num_rows() >0){ $i++; }
+				// 		}
+				// 		if ($i == 8){
+				// 			$seccion_completos_com[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
+				// 		}else{
+				// 			$seccion_incompletos_com[] = $filas->id; //guarda los ID de formularios incompletos
+				// 		}
+				// 	}
+				// }
+				foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+					$seccion_completos_com[] = $value->id;
+				}					
 				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
 				else { $formularios_dig_com = NULL; }	
 

@@ -112,6 +112,13 @@ class Udra_pescador_model extends CI_MODEL
 			');
 		return $q;
 	}
+function get_id_forms()
+{
+		$q = $this->db->query('
+			select distinct(id) from pescador 
+			');
+		return $q;
+}
 
 	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
 	{	

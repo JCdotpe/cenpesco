@@ -1736,7 +1736,7 @@ $("#frm_comunidad").validate({
 
     messages: {
     	NFORM:{
-    		required: 'Ingrese Nro Formulario',
+    		required: 'Ingrese Nro Formularios',
     		valueNotEquals: 'Ingrese un número válido',
     	},
         NOM_DD: {

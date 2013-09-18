@@ -812,7 +812,7 @@ class Informe_reporte extends CI_Controller {
 
 			// ANCHO Y ALTURA DE COLUMNAS DEL FILE
 				$sheet_3->getColumnDimension('A')->setWidth(5);
-				$sheet_3->getColumnDimension('B')->setWidth(45);
+				$sheet_3->getColumnDimension('B')->setWidth(30);
 				$sheet_3->getColumnDimension('C')->setWidth(15);
 				$sheet_3->getColumnDimension('D')->setWidth(15);
 		
@@ -1089,7 +1089,7 @@ class Informe_reporte extends CI_Controller {
 
 			// ANCHO Y ALTURA DE COLUMNAS DEL FILE
 				$sheet_4->getColumnDimension('A')->setWidth(5);
-				$sheet_4->getColumnDimension('B')->setWidth(45);
+				$sheet_4->getColumnDimension('B')->setWidth(30);
 				$sheet_4->getColumnDimension('C')->setWidth(15);
 				$sheet_4->getColumnDimension('D')->setWidth(15);
 		
@@ -1367,7 +1367,7 @@ class Informe_reporte extends CI_Controller {
 
 			// ANCHO Y ALTURA DE COLUMNAS DEL FILE
 				$sheet_5->getColumnDimension('A')->setWidth(5);
-				$sheet_5->getColumnDimension('B')->setWidth(45);
+				$sheet_5->getColumnDimension('B')->setWidth(30);
 				$sheet_5->getColumnDimension('C')->setWidth(15);
 				$sheet_5->getColumnDimension('D')->setWidth(15);
 		
