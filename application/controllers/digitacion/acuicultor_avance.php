@@ -341,38 +341,47 @@ class Acuicultor_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
-			//var_dump($forms->result());
+			// $forms = $this->udra_acuicultor_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			// //var_dump($forms->result());
 
-			if($forms->num_rows() > 0){
+			// if($forms->num_rows() > 0){
 		
-				foreach($forms->result() as $filas){//busca en todas las tablas de pescador
+			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
 					
-					$i = 0;
-					$table = null;
-					foreach($this->secciones as $s=>$k){
-						$table = 'acu_seccion' . $s;
-							//$cod = $filas->id1.$s;echo $cod.'<br>';
-						  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
-						if ($rega->num_rows() >0){
-							$i++;
-						}
-					}//echo $i.'<br>';
-					if ($i == 9){
-						$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
+			// 		$i = 0;
+			// 		$table = null;
+			// 		foreach($this->secciones as $s=>$k){
+			// 			$table = 'acu_seccion' . $s;
+			// 				//$cod = $filas->id1.$s;echo $cod.'<br>';
+			// 			  $rega = $this->udra_acuicultor_model->get_regs_a($table,$filas->id1, $s);//recorre cada tabla
+			// 			if ($rega->num_rows() >0){
+			// 				$i++;
+			// 			}
+			// 		}//echo $i.'<br>';
+			// 		if ($i == 9){
+			// 			$seccion_completos[] = $filas->id1; //guarda los ID de formularios completos en todas las secciones
 
-					}else{
-						$seccion_incompletos[] = $filas->id1; //guarda los ID de formularios incompletos
-					}
+			// 		}else{
+			// 			$seccion_incompletos[] = $filas->id1; //guarda los ID de formularios incompletos
+			// 		}
+			// 	}
+			// }//var_dump($seccion_completos);echo '<br>';
+
+			foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $value) {
+				$seccion_completos[] = $value->id1;
+			}
+			foreach ( $this->udra_acuicultor_model->get_id_forms()->result() as $value) {
+				if (!in_array($value->id1, $seccion_completos)) {
+					$seccion_incompletos[] = $value->id1;
 				}
-			}//var_dump($seccion_completos);echo '<br>';
-			//var_dump($seccion_incompletos);echo '<br>';
+			}
+
 			
-			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos); 
-			}else{
-				$data['formularios'] = NULL;
-			}			
+			// if (count($seccion_completos)>0){
+			//  	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos); 
+			// }else{
+			// 	$data['formularios'] = NULL;
+			// }			
 			if (count($seccion_incompletos)>0){
 			 $data['formularios_inc'] = $this->udra_acuicultor_model->get_forms_incompletos($seccion_incompletos); 
 			}else{

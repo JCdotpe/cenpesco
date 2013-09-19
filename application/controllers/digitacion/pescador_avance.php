@@ -330,7 +330,7 @@ class Pescador_avance extends CI_Controller {
 			$seccion_completos = array();
 			$seccion_incompletos = array();
 
-			$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
+			//$forms = $this->udra_pescador_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en PESCADOR 
 
 			// if($forms->num_rows() > 0){
 		

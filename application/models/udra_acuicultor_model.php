@@ -121,7 +121,13 @@ class Udra_acuicultor_model extends CI_MODEL
 			');
 		return $q;
 	}
-
+function get_id_forms()
+{
+		$q = $this->db->query('
+			select distinct(id1) from acu_seccion1 
+			');
+		return $q;
+}
 	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id1) as TOTAL_DIG ');

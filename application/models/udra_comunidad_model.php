@@ -109,6 +109,14 @@ class Udra_comunidad_model extends CI_MODEL
 			');
 		return $q;
 	}
+	
+	function get_id_forms()
+	{
+			$q = $this->db->query('
+				select distinct(id) from comunidad 
+				');
+			return $q;
+	}	
 	// ODEI
 	function get_udra_total_by_odei($cod)// obtiene el total de formularios declarados en UDRA
 	{	
