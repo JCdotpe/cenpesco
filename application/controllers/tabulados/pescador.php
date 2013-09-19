@@ -501,24 +501,37 @@ class Pescador extends CI_Controller {
 	{
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
-			$tr = null;
+			$td = null;
+			$ttt = 0;
+			$ddm = 0;
+			$ddf = 0;
 			$total = 0;
+			$male = null;
+			$female = null;		
 			foreach($dep->result() as $d){
-				$dd = 0;
-				for($i=1; $i<=10; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report16($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				$vr[$d->CCDD] = $this->tabulados_model->get_report16($d->CCDD);	
+				$male[$d->CCDD] = 0;				
+				$female[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_3_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$male[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$female[$d->CCDD]++; 		
+					}
 				}
-				$vt[$d->CCDD] = $dd; 
-				$total += $dd;
+				$ddm += $male[$d->CCDD];
+				$ddf += $female[$d->CCDD] ;		
+				$td[$d->CCDD] = $male[$d->CCDD] + $female[$d->CCDD];
+				$ttt += $td[$d->CCDD];
 			}
-			for($i=1; $i<=10; $i++){
-				$tr[$i] = $this->tabulados_model->get_report16($i)->row()->num; 
-			}
-			$data['vr'] = $vr;
-			$data['vt'] = $vt;
-			$data['tr'] = $tr;
-			$data['total'] = $total;
+			$data['male'] = $male;
+			$data['female'] = $female;
+			$data['tm'] = $ddm;
+			$data['tf'] = $ddf;
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';			

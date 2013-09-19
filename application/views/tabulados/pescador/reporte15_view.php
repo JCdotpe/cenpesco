@@ -8,7 +8,7 @@
 
 
 
- 	<div class="span10" id="freg">
+ 	<div class="span10" id="ap-content">
     	<h4>PERÚ: PESCADORES POR NÚMERO DE HIJOS, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';

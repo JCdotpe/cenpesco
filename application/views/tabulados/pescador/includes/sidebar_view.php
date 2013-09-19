@@ -16,6 +16,7 @@
   <li <?php echo ($opcion == 13) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte13'); ?>">Reporte 13</a></li>
   <li <?php echo ($opcion == 14) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte14'); ?>">Reporte 14</a></li>
   <li <?php echo ($opcion == 15) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte15'); ?>">Reporte 15</a></li>
+  <li <?php echo ($opcion == 16) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte16'); ?>">Reporte 16</a></li>
   <li <?php echo ($opcion == 25) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte25'); ?>">Reporte 25</a></li>
   <li <?php echo ($opcion == 26) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte26'); ?>">Reporte 26</a></li>
   <li <?php echo ($opcion == 27) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte27'); ?>">Reporte 27</a></li>

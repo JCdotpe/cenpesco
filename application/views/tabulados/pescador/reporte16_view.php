@@ -2,62 +2,39 @@
 
 
 <div class="row-fluid">
-    <div class="span2">
+    <div id="ap-sidebar" class="span2">
 		<?php $this->load->view('tabulados/pescador/includes/sidebar_view'); ?>       
     </div><!--/span-->
 
 
 
- 	<div class="span10" id="freg">
-    	<h4>PERÚ: PESCADORES POR NÚMERO DE HIJOS, SEGÚN DEPARTAMENTO, 2013</h4>
+ 	<div class="span10" id="ap-content">
+    	<h4>PERÚ: HIJOS DE PESCADORES POR SEXO, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="16" style="text-align:center">Número de hijos</th>';																																														
+						echo '<th colspan="16" style="text-align:center">Sexo</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										
 						echo '<th></th>';										
 						echo '<th></th>';										
-						echo '<th colspan="2" style="text-align:center">1</th>';										
-						echo '<th colspan="2" style="text-align:center">2</th>';											
-						echo '<th colspan="2" style="text-align:center">3</th>';											
-						echo '<th colspan="2" style="text-align:center">4</th>';											
-						echo '<th colspan="2" style="text-align:center">5</th>';											
-						echo '<th colspan="2" style="text-align:center">6</th>';											
-						echo '<th colspan="2" style="text-align:center">7</th>';											
-						echo '<th colspan="2" style="text-align:center">8</th>';											
-						echo '<th colspan="2" style="text-align:center">9</th>';											
-						echo '<th colspan="2" style="text-align:center">10</th>';											
+						echo '<th colspan="2" style="text-align:center">Hombre</th>';										
+						echo '<th colspan="2" style="text-align:center">Mujer</th>';																					
 						echo '</tr>';
 
 						echo '<tr>';
 						echo '<th></th>';										
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';	
+
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center">Abs</th>';																															
 						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																																														
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																				
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																				
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';													
 						echo '</tr>';
 						$aa = 0;
 						$bb = 0;
@@ -65,33 +42,28 @@
 						foreach($dep->result() as $d){
 							echo '<tr>';
 							echo '<td>' . $d->DEPARTAMENTO . '</td>';										
-							echo '<td style="text-align:center">' . $vt[$d->CCDD] . '</td>';									
-							echo '<td style="text-align:center;color:green">' . round($vt[$d->CCDD]*100/$total,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $td[$d->CCDD] . '</td>';									
+							echo '<td style="text-align:center;color:green">' . round($td[$d->CCDD]*100/$ttt,2) . '%</td>';	
 
-							for($i=1; $i<=10;$i++){
+								echo '<td style="text-align:center">' . $male[$d->CCDD] . '</td>';										
+								echo '<td style="text-align:center;color:green">' . round($male[$d->CCDD]*100/$ttt,2) . '%</td>';	
 
-								$a = (isset($vr[$d->CCDD][$i])) ? $vr[$d->CCDD][$i] : 0;
-								$ap = ($total!=0) ? round($a*100/$total,2) : 0;
-								echo '<td style="text-align:center">' . $a . '</td>';										
-								echo '<td style="text-align:center;color:green">' . $ap . '%</td>';																																
-							}
-
+								echo '<td style="text-align:center">' . $female[$d->CCDD] . '</td>';										
+								echo '<td style="text-align:center;color:green">' . round($female[$d->CCDD]*100/$ttt,2) . '%</td>';		
 							echo '</tr>';
 
 						}			
 
 						echo '<tr>';
 						echo '<td>Total</td>';										
-						echo '<td style="text-align:center">' . $total . '</td>';										
+						echo '<td style="text-align:center">' . ($ttt) . '</td>';										
 						echo '<td style="text-align:center;color:green">100%</td>';	
 
-							for($i=1; $i<=10;$i++){
-								$a = (isset($tr[$i])) ? $tr[$i] : 0;
-								$ap = ($total!=0) ? round($a*100/$total,2) : 0;
-								echo '<td style="text-align:center">' . $a . '</td>';										
-								echo '<td style="text-align:center;color:green">' . $ap . '%</td>';																														
-							}
+								echo '<td style="text-align:center">' . $tm . '</td>';										
+								echo '<td style="text-align:center;color:green">' . round($tm*100/$ttt,2) . '%</td>';	
 
+								echo '<td style="text-align:center">' . $tf . '</td>';										
+								echo '<td style="text-align:center;color:green">' . round($tf*100/$ttt,2) . '%</td>';				
 						echo '</tr>';
 
 					echo '</thead>';
