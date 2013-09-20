@@ -9,7 +9,7 @@
               <li class="nav-header">OPCIONES</li>
               <li ><a href="<?php echo site_url('tabulados/pescador'); ?>">Tabulados Pescador</a></li>
               <li ><a href="#">Tabulados Acuicultor</a></li> 
-              <li ><a href="<?php echo site_url('tabulados/Comunidad'); ?>">Tabulados Comunidad</a></li>
+              <li ><a href="<?php echo site_url('tabulados/comunidad'); ?>">Tabulados Comunidad</a></li>
           </div>
   </div>
 </div>

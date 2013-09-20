@@ -337,6 +337,202 @@ function get_tabulado_8()
       return $q;
 }
 
+function get_tabulado_9()
+{           
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  COALESCE(C6.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as RED, COALESCE(C2.t,0) as LETRINA, COALESCE(C3.t,0) as SEPTICO,  COALESCE(C4.t,0) as CIEGO,  COALESCE(C5.t,0) as RIO,  COALESCE(C6.t,0) as NO_TIENEN
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_9_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_9_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_9_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_9_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_9_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_9_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd  ;
+        ');
+      return $q;
+}
+
+function get_tabulado_10()
+{           /* TABULADO N° 10 ---->destino del desague*/
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as RIO, COALESCE(C2.t,0) as BOSQUE, COALESCE(C3.t,0) as LAGUNA,  COALESCE(C4.t,0) as CANAL,  COALESCE(C5.t,0) as OTRO
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd ;        
+        ');
+      return $q;
+}
+
+function get_tabulado_11()
+{         /* TABULADO N° 11 ---->serviocios de la comunicacion */
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  COALESCE(C6.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as FIJA, COALESCE(C2.t,0) as PUBLICA, COALESCE(C3.t,0) as CELULAR,  COALESCE(C4.t,0) as INTERNET,  COALESCE(C5.t,0) as CABLE,  COALESCE(C6.t,0) as NINGUNO
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_11_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_11_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_11_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_11_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_11_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_11_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd  ;
+        ');
+      return $q;
+}
+
+function get_tabulado_12()
+{         /* TABULADO N° 12 ---->destino final basura */
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  COALESCE(C6.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as RELLENO, COALESCE(C2.t,0) as BOTADERO, COALESCE(C3.t,0) as VERTIDOS,  COALESCE(C4.t,0) as RECICLAJE,  COALESCE(C5.t,0) as QUEMADA,  COALESCE(C6.t,0) as OTRO
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd  ;
+        ');
+      return $q;
+}
+
+function get_tabulado_13()
+{         /* TABULADO N° 13 -------> existen minas */
+      $q = $this->db->query("
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as SI, COALESCE(C2.t,0) as 'NO'
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s1 on c.id = s1.comunidad_id  where S3_13 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s2 on c.id = s2.comunidad_id  where S3_13 = 2 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd  ;
+        ");
+      return $q;
+}
+
+function get_tabulado_14()
+{         /* TABULADO N° 14 -------> existen hidrocarburos */
+      $q = $this->db->query("
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as SI, COALESCE(C2.t,0) as 'NO'
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s1 on c.id = s1.comunidad_id  where S3_14 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s2 on c.id = s2.comunidad_id  where S3_14 = 2 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd  ;
+        ");
+      return $q;
+}
+
+function get_tabulado_15()
+{         /* TABULADO N° 15 -------> existen contaminacion */
+      $q = $this->db->query("
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as SI, COALESCE(C2.t,0) as 'NO'
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s1 on c.id = s1.comunidad_id  where S3_15 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s2 on c.id = s2.comunidad_id  where S3_15 = 2 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd  ;        
+        ");
+      return $q;
+}
+
+function get_tabulado_16()
+{       /* TABULADO N° 16 ---->tipo de contaminacion*/
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as RIO, COALESCE(C2.t,0) as SUELO, COALESCE(C3.t,0) as AIRE,  COALESCE(C4.t,0) as ACUSTICA,  COALESCE(C5.t,0) as OTRO
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_16_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_16_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_16_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_16_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_16_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd ;        
+        ');
+      return $q;
+}
+
+function get_tabulado_17()
+{         /* TABULADO N° 17 ---->origen contaminacion */
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  COALESCE(C6.t,0) +  COALESCE(C7.t,0) +  COALESCE(C8.t,0) +  COALESCE(C9.t,0) ) AS TOTAL,   
+          COALESCE(C1.t,0) as BASURA, COALESCE(C2.t,0) as DESAGUES, COALESCE(C3.t,0) as PETROLERAS,  COALESCE(C4.t,0) as MINERAS,  COALESCE(C5.t,0) as PESQUERAS,  COALESCE(C6.t,0) as AGRICOLAS,  
+          COALESCE(C7.t,0) as DETERGENTE, (COALESCE(C8.t,0)  + COALESCE(C9.t,0) ) as OTRO
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_9 = 1 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd  ;        
+        ');
+      return $q;
+}
+
+function get_tabulado_18()
+{     /* TABULADO N° 18 ---->origen contaminacion */
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  COALESCE(C6.t,0) +  COALESCE(C7.t,0) +  COALESCE(C8.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as DEFORESTACION, COALESCE(C2.t,0) as ENFERMEDADES, COALESCE(C3.t,0) as MORTANDAD,  COALESCE(C4.t,0) as ALEJAMIENTO,  COALESCE(C5.t,0) as PERDIDA,  COALESCE(C6.t,0) as ALTERACION,  
+          (COALESCE(C7.t,0) + COALESCE(C8.t,0)  ) as OTRO
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_18_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd  ;        
+        ');
+      return $q;
+}
+
+function get_tabulado_19()
+{       /* TABULADO N° 19 ---->tipo de violencia*/
+      $q = $this->db->query('
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as DOMESTICA, COALESCE(C2.t,0) as SEXUAL, COALESCE(C3.t,0) as ASALTOS,  COALESCE(C4.t,0) as OTRO,  COALESCE(C5.t,0) as NINGUNA
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_19_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_19_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_19_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_19_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_19_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd ;        
+        ');
+      return $q;
+}
+
+function get_tabulado_20()
+{       /* TABULADO N° 20 ------->  existe centros educativos */
+      $q = $this->db->query("
+          select 
+          DEP.CCDD, DEPARTAMENTO, (COALESCE(C1.t,0) + COALESCE(C2.t,0) ) AS TOTAL,  
+          COALESCE(C1.t,0) as SI, COALESCE(C2.t,0) as 'NO'
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion4 s on c.id = s.comunidad_id  where S4_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion4 s on c.id = s.comunidad_id  where S4_1 = 2 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd  ;        
+        ");
+      return $q;
+}
+
+
+
+
+
 
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

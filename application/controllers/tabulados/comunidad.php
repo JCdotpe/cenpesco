@@ -129,4 +129,133 @@ class Comunidad extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
+	public function reporte_9()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 9;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_9();
+			$data['main_content'] = 'tabulados/comunidad/reporte_9_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}	
+	public function reporte_10()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 10;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_10();
+			$data['main_content'] = 'tabulados/comunidad/reporte_10_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}		
+
+	public function reporte_11()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 11;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_11();
+			$data['main_content'] = 'tabulados/comunidad/reporte_11_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_12()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 12;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_12();
+			$data['main_content'] = 'tabulados/comunidad/reporte_12_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte_13()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 13;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_13();
+			$data['main_content'] = 'tabulados/comunidad/reporte_13_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_14()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 14;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_14();
+			$data['main_content'] = 'tabulados/comunidad/reporte_14_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_15()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 15;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_15();
+			$data['main_content'] = 'tabulados/comunidad/reporte_15_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_16()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 16;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_16();
+			$data['main_content'] = 'tabulados/comunidad/reporte_16_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte_17()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 17;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_17();
+			$data['main_content'] = 'tabulados/comunidad/reporte_17_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+	public function reporte_18()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 18;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_18();
+			$data['main_content'] = 'tabulados/comunidad/reporte_18_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+	public function reporte_19()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 19;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_19();
+			$data['main_content'] = 'tabulados/comunidad/reporte_19_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}	
+	public function reporte_20()
+	{
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';	
+			$data['opcion'] = 20;		
+			$data['tables'] = $this->comunidad_model->get_tabulado_20();
+			$data['main_content'] = 'tabulados/comunidad/reporte_20_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}		
 }
