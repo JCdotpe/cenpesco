@@ -5,6 +5,29 @@
 class Tabulados_model extends CI_MODEL
 {
 
+    function get_texto ($tipo,$preg){
+        $this->db->select('texto');
+        $this->db->where('tipo', $tipo);
+        $this->db->where('pregunta', $preg);
+        $q = $this->db->get('tabulados');
+        return $q;   
+    }   
+
+    function insert_texto($d)
+    {     
+        $q = $this->db->insert('tabulados', $d);
+        return $this->db->affected_rows() > 0;
+    }
+
+    function update_texto($tipo,$preg,$texto)
+    {
+        $this->db->where('tipo', $tipo);
+        $this->db->where('pregunta', $preg);        
+        $this->db->update('tabulados', $texto);
+        return $this->db->affected_rows() > 0;
+    }
+
+
 function get_dptos (){
 	$q = $this->db->query('
 		SELECT distinct(DEPARTAMENTO),CCDD  FROM cenpesco.marco ORDER BY DEPARTAMENTO; 
@@ -227,7 +250,93 @@ function get_report16($a = null){
     return $q;
 }
 
+function get_report17($a = null){
+    $this->db->select('p2.S2_23_4_1A,p2.S2_23_4_2A,p2.S2_23_4_3A,p2.S2_23_4_4A,p2.S2_23_4_5A,p2.S2_23_4_6A,p2.S2_23_4_7A,p2.S2_23_4_8A,p2.S2_23_4_9A,p2.S2_23_4_10A');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
 
+function get_report18($a = null){
+    $this->db->select('p2.S2_23_5_1,p2.S2_23_5_2,p2.S2_23_5_3,p2.S2_23_5_4,p2.S2_23_5_5,p2.S2_23_5_6,p2.S2_23_5_7,p2.S2_23_5_8,p2.S2_23_5_9,p2.S2_23_5_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report19($a = null){
+    $this->db->select('p2.S2_23_6_1,p2.S2_23_6_2,p2.S2_23_6_3,p2.S2_23_6_4,p2.S2_23_6_5,p2.S2_23_6_6,p2.S2_23_6_7,p2.S2_23_6_8,p2.S2_23_6_9,p2.S2_23_6_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report20($a = null){
+    $this->db->select('p2.S2_23_7_1,p2.S2_23_7_2,p2.S2_23_7_3,p2.S2_23_7_4,p2.S2_23_7_5,p2.S2_23_7_6,p2.S2_23_7_7,p2.S2_23_7_8,p2.S2_23_7_9,p2.S2_23_7_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report21($a = null){
+    $this->db->select('p2.S2_23_8_1,p2.S2_23_8_2,p2.S2_23_8_3,p2.S2_23_8_4,p2.S2_23_8_5,p2.S2_23_8_6,p2.S2_23_8_7,p2.S2_23_8_8,p2.S2_23_8_9,p2.S2_23_8_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report22($a = null){
+    $this->db->select('p2.S2_23_9_1,p2.S2_23_9_2,p2.S2_23_9_3,p2.S2_23_9_4,p2.S2_23_9_5,p2.S2_23_9_6,p2.S2_23_9_7,p2.S2_23_9_8,p2.S2_23_9_9,p2.S2_23_9_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report23($a = null){
+    $this->db->select('p2.S2_23_10_1,p2.S2_23_10_2,p2.S2_23_10_3,p2.S2_23_10_4,p2.S2_23_10_5,p2.S2_23_10_6,p2.S2_23_10_7,p2.S2_23_10_8,p2.S2_23_10_9,p2.S2_23_10_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report24($a = null){
+    $this->db->select('p2.S2_23_11_1,p2.S2_23_11_2,p2.S2_23_11_3,p2.S2_23_11_4,p2.S2_23_11_5,p2.S2_23_11_6,p2.S2_23_11_7,p2.S2_23_11_8,p2.S2_23_11_9,p2.S2_23_11_10');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
 
 function get_report25($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
@@ -502,6 +611,32 @@ function get_report46($a = null, $b = null){
     return $q;
 }
 
+
+function get_report47($a = null, $b = null){
+    $this->db->select('COUNT(p.CCDD) as num');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');     
+    $this->db->where('p5.S5_3',$a);      
+    if(!is_null($b)){
+    $this->db->where('p.CCDD',$b);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report48($a = null, $b = null){
+    $this->db->select('COUNT(p.CCDD) as num');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');     
+    $this->db->where('p5.S5_4',$a);      
+    if(!is_null($b)){
+    $this->db->where('p.CCDD',$b);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
 function get_report49($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
@@ -531,6 +666,19 @@ function get_report51($a = null, $b = null){
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');
     $this->db->where('p5.S5_5_1' . $a,1);        
+    if(!is_null($b)){
+    $this->db->where('p.CCDD',$b);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report52($a = null, $b = null){
+    $this->db->select('COUNT(p.CCDD) as num');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');
+    $this->db->where('p5.S5_6_' . $a,1);        
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -727,6 +875,19 @@ function get_report67($a = null, $b = null){
     return $q;
 }
 
+function get_report69($a = null, $b = null){
+    $this->db->select('COUNT(p.CCDD) as num');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
+    $this->db->where('p7.S7_6_1',$a);        
+    if(!is_null($b)){
+    $this->db->where('p.CCDD',$b);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
 function get_report70($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
@@ -909,6 +1070,174 @@ function get_report84($a = null, $b = null){
     return $q;
 }
 
+function get_report85($a = null, $b = null){
+    $this->db->select('COUNT(p.CCDD) as num');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    $this->db->where('p9.S9_2' , $a);        
+    if(!is_null($b)){
+    $this->db->where('p.CCDD',$b);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
 
+function get_report86($a = null){
+    $this->db->select('p9.S9_4_1,p9.S9_4_2,p9.S9_4_3,p9.S9_4_4,p9.S9_4_5,p9.S9_4_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report87($a = null){
+    $this->db->select('p9.S9_5_1,p9.S9_5_2,p9.S9_5_3,p9.S9_5_4,p9.S9_5_5,p9.S9_5_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report88($a = null){
+    $this->db->select('p9.S9_6_1,p9.S9_6_2,p9.S9_6_3,p9.S9_6_4,p9.S9_6_5,p9.S9_6_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report89($a = null){
+    $this->db->select('p9.S9_7_1,p9.S9_7_2,p9.S9_7_3,p9.S9_7_4,p9.S9_7_5,p9.S9_7_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report90($a = null){
+    $this->db->select('p9.S9_9_1_A,p9.S9_9_1_M,p9.S9_9_2_A,p9.S9_9_2_M,p9.S9_9_3_A,p9.S9_9_3_M,p9.S9_9_4_A,p9.S9_9_4_M,p9.S9_9_5_A,p9.S9_9_5_M,p9.S9_9_6_A,p9.S9_9_6_M');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report91($a = null){
+        $this->db->select('p9.S9_11_1,p9.S9_11_2,p9.S9_11_3,p9.S9_11_4,p9.S9_11_5,p9.S9_11_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report92($a = null){
+        $this->db->select('p9.S9_12_1,p9.S9_12_2,p9.S9_12_3,p9.S9_12_4,p9.S9_12_5,p9.S9_12_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report93($a = null){
+        $this->db->select('p9.S9_13_1,p9.S9_13_2,p9.S9_13_3,p9.S9_13_4,p9.S9_13_5,p9.S9_13_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report94($a = null){
+        $this->db->select('p9.S9_15_1,p9.S9_15_2,p9.S9_15_3,p9.S9_15_4,p9.S9_15_5,p9.S9_15_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report95($a = null){
+        $this->db->select('p9.S9_16_1,p9.S9_16_2,p9.S9_16_3,p9.S9_16_4,p9.S9_16_5,p9.S9_16_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+
+function get_report96($a = null){
+        $this->db->select('p9.S9_18_1,p9.S9_18_2,p9.S9_18_3,p9.S9_18_4,p9.S9_18_5,p9.S9_18_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report97($a = null){
+        $this->db->select('p9.S9_20_1_T,p9.S9_20_2_T,p9.S9_20_3_T,p9.S9_20_4_T,p9.S9_20_5_T,p9.S9_20_6_T');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report98($a = null){
+        $this->db->select('p9.S9_21_1,p9.S9_21_2,p9.S9_21_3,p9.S9_21_4,p9.S9_21_5,p9.S9_21_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
+
+function get_report99($a = null){
+        $this->db->select('p9.S9_23_1,p9.S9_23_2,p9.S9_23_3,p9.S9_23_4,p9.S9_23_5,p9.S9_23_6');
+    $this->db->from('pescador p');
+    $this->db->join('pesc_seccion9 p9','p.id = p9.pescador_id','left');     
+    if(!is_null($a)){
+    $this->db->where('p.CCDD',$a);
+    }   
+    $q = $this->db->get();
+    return $q;
+}
 }
 ?>

@@ -83,6 +83,8 @@
 
 		?>
 		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
+		<?php $this->load->view('tabulados/pescador/includes/text_view.php'); ?>
+
 	</div>
 </div>
 
