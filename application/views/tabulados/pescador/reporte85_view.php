@@ -11,12 +11,12 @@
  	<div class="span10" id="ap-content">
     	<h4>PERÚ: PESCADORES QUE TIENEN EMBARCACIONES PESQUERAS, POR NÚMERO DE EMBARCACIONES, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
-				echo '<table border="1" class="table table-hover table-condensed">';
+				echo '<table border="1" class="table table-hover table-condensed" id="tabul">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="10" style="text-align:center">Número de embarcaciones</th>';																																														
+						echo '<th colspan="12" style="text-align:center">Número de embarcaciones</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										

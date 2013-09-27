@@ -11,7 +11,7 @@
  	<div class="span10" id="ap-content">
     	<h4>PERÚ: PESCADORES QUE PERTENCEN A ALGUNA ORGANIZACIÓN DE PESCADORES, POR TIPO DE BENEFICIOS QUE OBTIENE, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
-				echo '<table border="1" class="table table-hover table-condensed">';
+				echo '<table border="1" class="table table-hover table-condensed" id="tabul">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th>Departamento</th>';					

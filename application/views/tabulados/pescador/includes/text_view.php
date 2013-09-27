@@ -30,5 +30,18 @@ $(function(){
 					
  		}); 	
 
+
+
+$.fn.extend({ 
+  moveRow: function(oldPosition, newPosition) { 
+    return this.each(function(){ 
+      var row = $(this).find('tr').eq(oldPosition).remove(); 
+      $(this).find('tr').eq(newPosition).before(row); 
+    }); 
+   } 
+ }); 
+
+$('#tabul').moveRow(27, 3);
+
  }); 						
 </script>

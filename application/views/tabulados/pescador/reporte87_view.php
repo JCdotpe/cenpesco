@@ -11,12 +11,12 @@
  	<div class="span10" id="ap-content">
     	<h4>PERÚ: EMBARCACIONES PESQUERAS PROPIAS O AUTOCONSTRUIDAS, POR TIPO DE EMBARCACIÓN, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
-				echo '<table border="1" class="table table-hover table-condensed">';
+				echo '<table border="1" class="table table-hover table-condensed" id="tabul">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="10" style="text-align:center">Tipo de embarcación</th>';																																														
+						echo '<th colspan="14" style="text-align:center">Tipo de embarcación</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										
