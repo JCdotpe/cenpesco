@@ -345,7 +345,7 @@ $("#EQUIPO").change(function() {
 
 
 <div id="header" style="display: block;">
-  <a id="logo" href="#"><img src="http://webinei.inei.gob.pe/convocatorias/cnpc/img/brand.png" alt="I CENPESCO"></a> 
+  <a id="logo" href="#"><img src="<?php echo base_url('img/brand.png') ; ?>" alt="I CENPESCO"></a> 
   <div id="oted">Oficina Técnica de Estadísticas Departamentales - OTED</div>
 </div>    
 

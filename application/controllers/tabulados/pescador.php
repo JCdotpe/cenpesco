@@ -40,6 +40,28 @@ class Pescador extends CI_Controller {
 			die();
 		}
 	}
+	public function texto()
+	{
+		$texto = $this->input->post('texto');
+		$preg = $this->input->post('preg');
+		$is_ajax = $this->input->post('ajax');
+		if ($is_ajax) {
+			if( !is_null($this->tabulados_model->get_texto(1,$preg)->row()->texto) ){
+					$c_data['user_id'] = $this->tank_auth->get_user_id();
+					$c_data['texto'] = $texto;
+				$this->tabulados_model->update_texto(1,$preg,$c_data);	
+			}else{
+					$c_data['user_id'] = $this->tank_auth->get_user_id();
+					$c_data['pregunta'] = $preg;
+					$c_data['tipo'] = 1;
+					$c_data['texto'] = $texto;				
+				$this->tabulados_model->insert_texto($c_data);	
+			}
+		}else{
+			show_404();;
+		}			
+	}
+
 
 	public function index()
 	{
@@ -65,7 +87,6 @@ class Pescador extends CI_Controller {
 				$total += $t1[$i];
 			}
 
-
 			$data['opcion'] = 1;
 			$data['total'] = $total; 
 			$data['totales'] = $t1; 
@@ -74,6 +95,12 @@ class Pescador extends CI_Controller {
 			$data['aacu'] = $aacu;
 			$data['apc'] = $apc;
 			$data['main_content'] = 'tabulados/pescador/reporte1_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -106,6 +133,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 2;
 			$data['main_content'] = 'tabulados/pescador/reporte2_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 			
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -133,6 +166,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 3;
 			$data['main_content'] = 'tabulados/pescador/reporte3_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -158,6 +197,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 4;
 			$data['main_content'] = 'tabulados/pescador/reporte4_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -188,6 +233,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 5;
 			$data['main_content'] = 'tabulados/pescador/reporte5_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -219,6 +270,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 6;
 			$data['main_content'] = 'tabulados/pescador/reporte6_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -249,6 +306,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 7;
 			$data['main_content'] = 'tabulados/pescador/reporte7_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -279,6 +342,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 8;
 			$data['main_content'] = 'tabulados/pescador/reporte8_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -311,6 +380,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 9;
 			$data['main_content'] = 'tabulados/pescador/reporte9_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -341,6 +416,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 10;
 			$data['main_content'] = 'tabulados/pescador/reporte10_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -372,6 +453,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 11;
 			$data['main_content'] = 'tabulados/pescador/reporte11_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -402,6 +489,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 12;
 			$data['main_content'] = 'tabulados/pescador/reporte12_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -432,6 +525,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 13;
 			$data['main_content'] = 'tabulados/pescador/reporte13_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -462,6 +561,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 14;
 			$data['main_content'] = 'tabulados/pescador/reporte14_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -492,6 +597,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 15;
 			$data['main_content'] = 'tabulados/pescador/reporte15_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -515,10 +626,15 @@ class Pescador extends CI_Controller {
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_3_' . $x;
-							if(!is_null($uv->$a) && $uv->$a == 1)
-								$male[$d->CCDD]++;
-							elseif(!is_null($uv->$a) && $uv->$a == 2)
-								$female[$d->CCDD]++; 		
+							if(!is_null($uv->$a)){
+								if($uv->$a == 1){
+									$male[$d->CCDD] += 1;
+								}
+								elseif($uv->$a == 2){
+									$female[$d->CCDD] += 1; 		
+								}								
+							}
+
 					}
 				}
 				$ddm += $male[$d->CCDD];
@@ -537,6 +653,562 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 16;
 			$data['main_content'] = 'tabulados/pescador/reporte16_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte17()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+			$dde6 = 0;
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			$e6 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report17($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;				
+				$e6[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_4_' . $x . 'A';
+							if(!is_null($uv->$a) && $uv->$a < 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a >= 1 && $uv->$a <= 5)
+								$e2[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a >= 6 && $uv->$a <= 10)
+								$e3[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a >= 11 && $uv->$a <= 15)
+								$e4[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a >= 16 && $uv->$a <= 20)
+								$e5[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a > 20)
+								$e6[$d->CCDD]++; 															
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;		
+				$dde6 += $e6[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+			$data['e6'] = $e6;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+			$data['te6'] = $dde6;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 17;
+			$data['main_content'] = 'tabulados/pescador/reporte17_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+
+	public function reporte18()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$total = 0;
+			$e1 = null;
+			$e2 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report18($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_5_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 		
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 18;
+			$data['main_content'] = 'tabulados/pescador/reporte18_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte19()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$total = 0;
+			$e1 = null;
+			$e2 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report19($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_6_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 		
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 19;
+			$data['main_content'] = 'tabulados/pescador/reporte19_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte20()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$total = 0;
+			$e1 = null;
+			$e2 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report20($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_7_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 		
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 20;
+			$data['main_content'] = 'tabulados/pescador/reporte20_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte21()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+			$dde6 = 0;
+			$dde7 = 0;
+			$dde8 = 0;
+			$dde9 = 0;
+			$dde10 = 0;
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			$e6 = null;		
+			$e7 = null;		
+			$e8 = null;		
+			$e9 = null;		
+			$e10 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report21($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;				
+				$e6[$d->CCDD] = 0;				
+				$e7[$d->CCDD] = 0;				
+				$e8[$d->CCDD] = 0;				
+				$e9[$d->CCDD] = 0;				
+				$e10[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_8_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 5)
+								$e5[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 6)
+								$e6[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 7)
+								$e7[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 8)
+								$e8[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$e9[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 10)
+								$e10[$d->CCDD]++; 																																																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;		
+				$dde6 += $e6[$d->CCDD] ;		
+				$dde7 += $e7[$d->CCDD] ;		
+				$dde8 += $e8[$d->CCDD] ;		
+				$dde9 += $e9[$d->CCDD] ;		
+				$dde10 += $e10[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD] + $e7[$d->CCDD] + $e8[$d->CCDD] + $e9[$d->CCDD] + $e10[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+			$data['e6'] = $e6;
+			$data['e7'] = $e7;
+			$data['e8'] = $e8;
+			$data['e9'] = $e9;
+			$data['e10'] = $e10;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+			$data['te6'] = $dde6;
+			$data['te7'] = $dde7;
+			$data['te8'] = $dde8;
+			$data['te9'] = $dde9;
+			$data['te10'] = $dde10;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 21;
+			$data['main_content'] = 'tabulados/pescador/reporte21_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte22()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$total = 0;
+			$e1 = null;
+			$e2 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report22($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_9_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 		
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 22;
+			$data['main_content'] = 'tabulados/pescador/reporte22_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte23()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$total = 0;
+			$e1 = null;
+			$e2 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report23($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_10_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 		
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 23;
+			$data['main_content'] = 'tabulados/pescador/reporte23_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte24()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+			$dde6 = 0;
+			$dde7 = 0;
+			$dde8 = 0;
+			$dde9 = 0;
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			$e6 = null;		
+			$e7 = null;		
+			$e8 = null;		
+			$e9 = null;			
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report24($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;				
+				$e6[$d->CCDD] = 0;				
+				$e7[$d->CCDD] = 0;				
+				$e8[$d->CCDD] = 0;				
+				$e9[$d->CCDD] = 0;							
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=10; $x++){
+							$a = 'S2_23_11_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++;
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 5)
+								$e5[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 6)
+								$e6[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 7)
+								$e7[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 8)
+								$e8[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$e9[$d->CCDD]++; 																																																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;		
+				$dde6 += $e6[$d->CCDD] ;		
+				$dde7 += $e7[$d->CCDD] ;		
+				$dde8 += $e8[$d->CCDD] ;		
+				$dde9 += $e9[$d->CCDD] ;			
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD] + $e7[$d->CCDD] + $e8[$d->CCDD] + $e9[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+			$data['e6'] = $e6;
+			$data['e7'] = $e7;
+			$data['e8'] = $e8;
+			$data['e9'] = $e9;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+			$data['te6'] = $dde6;
+			$data['te7'] = $dde7;
+			$data['te8'] = $dde8;
+			$data['te9'] = $dde9;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 24;
+			$data['main_content'] = 'tabulados/pescador/reporte24_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -569,6 +1241,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 25;
 			$data['main_content'] = 'tabulados/pescador/reporte25_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -599,6 +1277,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 26;
 			$data['main_content'] = 'tabulados/pescador/reporte26_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -630,6 +1314,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 27;
 			$data['main_content'] = 'tabulados/pescador/reporte27_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -662,6 +1352,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 28;
 			$data['main_content'] = 'tabulados/pescador/reporte28_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -693,6 +1389,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 29;
 			$data['main_content'] = 'tabulados/pescador/reporte29_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -723,6 +1425,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 30;
 			$data['main_content'] = 'tabulados/pescador/reporte30_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -753,6 +1461,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 31;
 			$data['main_content'] = 'tabulados/pescador/reporte31_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -783,6 +1497,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 32;
 			$data['main_content'] = 'tabulados/pescador/reporte32_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -813,6 +1533,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 33;
 			$data['main_content'] = 'tabulados/pescador/reporte33_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -844,6 +1570,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 34;
 			$data['main_content'] = 'tabulados/pescador/reporte34_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -875,6 +1607,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 35;
 			$data['main_content'] = 'tabulados/pescador/reporte35_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -906,6 +1644,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 36;
 			$data['main_content'] = 'tabulados/pescador/reporte36_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -936,6 +1680,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 37;
 			$data['main_content'] = 'tabulados/pescador/reporte37_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -966,6 +1716,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 38;
 			$data['main_content'] = 'tabulados/pescador/reporte38_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -996,6 +1752,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 39;
 			$data['main_content'] = 'tabulados/pescador/reporte39_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1027,6 +1789,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 40;
 			$data['main_content'] = 'tabulados/pescador/reporte40_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1058,6 +1826,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 41;
 			$data['main_content'] = 'tabulados/pescador/reporte41_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1088,6 +1862,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 42;
 			$data['main_content'] = 'tabulados/pescador/reporte42_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1118,6 +1898,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 43;
 			$data['main_content'] = 'tabulados/pescador/reporte43_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1148,6 +1934,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 44;
 			$data['main_content'] = 'tabulados/pescador/reporte44_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1179,6 +1971,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 45;
 			$data['main_content'] = 'tabulados/pescador/reporte45_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1209,10 +2007,86 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 46;
 			$data['main_content'] = 'tabulados/pescador/reporte46_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
+	public function reporte47()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$tr = null;
+			$total = 0;
+			foreach($dep->result() as $d){
+				$dd = 0;
+				for($i=1; $i<=4; $i++){
+					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report47($i,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$i]; 
+				}
+				$vt[$d->CCDD] = $dd; 
+				$total += $dd;
+			}
+			for($i=1; $i<=4; $i++){
+				$tr[$i] = $this->tabulados_model->get_report47($i)->row()->num; 
+			}
+			$data['vr'] = $vr;
+			$data['vt'] = $vt;
+			$data['tr'] = $tr;
+			$data['total'] = $total;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 47;
+			$data['main_content'] = 'tabulados/pescador/reporte47_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
 
+	public function reporte48()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$tr = null;
+			$total = 0;
+			foreach($dep->result() as $d){
+				$dd = 0;
+				for($i=1; $i<=4; $i++){
+					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report48($i,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$i]; 
+				}
+				$vt[$d->CCDD] = $dd; 
+				$total += $dd;
+			}
+			for($i=1; $i<=4; $i++){
+				$tr[$i] = $this->tabulados_model->get_report48($i)->row()->num; 
+			}
+			$data['vr'] = $vr;
+			$data['vt'] = $vt;
+			$data['tr'] = $tr;
+			$data['total'] = $total;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 48;
+			$data['main_content'] = 'tabulados/pescador/reporte48_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
 	public function reporte49()
 	{
 			$dep = $this->tabulados_model->get_dptos();
@@ -1240,6 +2114,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 49;
 			$data['main_content'] = 'tabulados/pescador/reporte49_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1271,6 +2151,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 50;
 			$data['main_content'] = 'tabulados/pescador/reporte50_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1302,6 +2188,49 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 51;
 			$data['main_content'] = 'tabulados/pescador/reporte51_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte52()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$tr = null;
+			$total = 0;
+			foreach($dep->result() as $d){
+				$dd = 0;
+				for($i=1; $i<=49; $i++){
+					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report52($i,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$i]; 
+				}
+				$vt[$d->CCDD] = $dd; 
+				$total += $dd;
+			}
+			for($i=1; $i<=49; $i++){
+				$tr[$i] = $this->tabulados_model->get_report52($i)->row()->num; 
+			}
+			$data['vr'] = $vr;
+			$data['vt'] = $vt;
+			$data['tr'] = $tr;
+			$data['total'] = $total;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 52;
+			$data['main_content'] = 'tabulados/pescador/reporte52_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1333,6 +2262,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 53;
 			$data['main_content'] = 'tabulados/pescador/reporte53_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1363,6 +2298,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 54;
 			$data['main_content'] = 'tabulados/pescador/reporte54_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1393,6 +2334,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 55;
 			$data['main_content'] = 'tabulados/pescador/reporte55_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1423,6 +2370,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 56;
 			$data['main_content'] = 'tabulados/pescador/reporte56_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1454,6 +2407,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 57;
 			$data['main_content'] = 'tabulados/pescador/reporte57_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1484,6 +2443,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 58;
 			$data['main_content'] = 'tabulados/pescador/reporte58_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1514,6 +2479,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 59;
 			$data['main_content'] = 'tabulados/pescador/reporte59_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1545,6 +2516,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 60;
 			$data['main_content'] = 'tabulados/pescador/reporte60_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1575,6 +2552,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 61;
 			$data['main_content'] = 'tabulados/pescador/reporte61_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1605,6 +2588,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 62;
 			$data['main_content'] = 'tabulados/pescador/reporte62_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1635,6 +2624,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 63;
 			$data['main_content'] = 'tabulados/pescador/reporte63_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1665,6 +2660,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 64;
 			$data['main_content'] = 'tabulados/pescador/reporte64_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1695,6 +2696,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 65;
 			$data['main_content'] = 'tabulados/pescador/reporte65_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1726,6 +2733,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 66;
 			$data['main_content'] = 'tabulados/pescador/reporte66_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1756,8 +2769,53 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 67;
 			$data['main_content'] = 'tabulados/pescador/reporte67_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
+
+
+	public function reporte69()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$tr = null;
+			$total = 0;
+			foreach($dep->result() as $d){
+				$dd = 0;
+				for($i=1; $i<=5; $i++){
+					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report69($i,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$i]; 
+				}
+				$vt[$d->CCDD] = $dd; 
+				$total += $dd;
+			}
+			for($i=1; $i<=5; $i++){
+				$tr[$i] = $this->tabulados_model->get_report69($i)->row()->num; 
+			}
+			$data['vr'] = $vr;
+			$data['vt'] = $vt;
+			$data['tr'] = $tr;
+			$data['total'] = $total;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 69;
+			$data['main_content'] = 'tabulados/pescador/reporte69_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
 
 	public function reporte70()
 	{
@@ -1786,6 +2844,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 70;
 			$data['main_content'] = 'tabulados/pescador/reporte70_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1817,6 +2881,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 71;
 			$data['main_content'] = 'tabulados/pescador/reporte71_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1848,6 +2918,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 72;
 			$data['main_content'] = 'tabulados/pescador/reporte72_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1878,6 +2954,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 73;
 			$data['main_content'] = 'tabulados/pescador/reporte73_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1908,6 +2990,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 74;
 			$data['main_content'] = 'tabulados/pescador/reporte74_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1938,6 +3026,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 75;
 			$data['main_content'] = 'tabulados/pescador/reporte75_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1968,6 +3062,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 76;
 			$data['main_content'] = 'tabulados/pescador/reporte76_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1998,6 +3098,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 77;
 			$data['main_content'] = 'tabulados/pescador/reporte77_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2028,6 +3134,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 78;
 			$data['main_content'] = 'tabulados/pescador/reporte78_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2059,6 +3171,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 79;
 			$data['main_content'] = 'tabulados/pescador/reporte79_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2089,6 +3207,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 80;
 			$data['main_content'] = 'tabulados/pescador/reporte80_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2119,6 +3243,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 81;
 			$data['main_content'] = 'tabulados/pescador/reporte81_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2149,6 +3279,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 82;
 			$data['main_content'] = 'tabulados/pescador/reporte82_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2179,6 +3315,12 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 83;
 			$data['main_content'] = 'tabulados/pescador/reporte83_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -2209,8 +3351,977 @@ class Pescador extends CI_Controller {
 			$data['title'] = 'Tabulados';			
 			$data['opcion'] = 84;
 			$data['main_content'] = 'tabulados/pescador/reporte84_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte85()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$tr = null;
+			$total = 0;
+			foreach($dep->result() as $d){
+				$dd = 0;
+				for($i=1; $i<=6; $i++){
+					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report85($i,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$i]; 
+				}
+				$vt[$d->CCDD] = $dd; 
+				$total += $dd;
+			}
+			for($i=1; $i<=6; $i++){
+				$tr[$i] = $this->tabulados_model->get_report85($i)->row()->num; 
+			}
+			$data['vr'] = $vr;
+			$data['vt'] = $vt;
+			$data['tr'] = $tr;
+			$data['total'] = $total;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 85;
+			$data['main_content'] = 'tabulados/pescador/reporte85_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte86()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report86($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;						
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_4_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 5)
+								$e5[$d->CCDD]++; 															
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 86;
+			$data['main_content'] = 'tabulados/pescador/reporte86_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte87()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+			$dde6 = 0;
+			$dde7 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			$e6 = null;		
+			$e7 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report87($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;						
+				$e6[$d->CCDD] = 0;						
+				$e7[$d->CCDD] = 0;						
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_5_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 5)
+								$e5[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 6)
+								$e6[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 7)
+								$e7[$d->CCDD]++; 																															
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;		
+				$dde6 += $e6[$d->CCDD] ;		
+				$dde7 += $e7[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD] + $e7[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+			$data['e6'] = $e6;
+			$data['e7'] = $e7;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+			$data['te6'] = $dde6;
+			$data['te7'] = $dde7;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 87;
+			$data['main_content'] = 'tabulados/pescador/reporte87_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte88()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+			$dde6 = 0;
+			$dde7 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			$e6 = null;		
+			$e7 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report88($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;						
+				$e6[$d->CCDD] = 0;						
+				$e7[$d->CCDD] = 0;						
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_6_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 5)
+								$e5[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 6)
+								$e6[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 7)
+								$e7[$d->CCDD]++; 																															
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;		
+				$dde6 += $e6[$d->CCDD] ;		
+				$dde7 += $e7[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD] + $e7[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+			$data['e6'] = $e6;
+			$data['e7'] = $e7;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+			$data['te6'] = $dde6;
+			$data['te7'] = $dde7;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 88;
+			$data['main_content'] = 'tabulados/pescador/reporte88_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte89()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report89($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_7_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 																													
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 89;
+			$data['main_content'] = 'tabulados/pescador/reporte89_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+
+	public function reporte90()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+			$dde5 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;		
+			$e5 = null;		
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report90($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;				
+				$e5[$d->CCDD] = 0;											
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_9_' . $x . '_A';
+							$b = 'S9_9_' . $x . '_M';
+							if((is_null($uv->$a) || $uv->$a == 0) && (!is_null($uv->$b) && $uv->$b>0 && $uv->$b <=3))
+								$e1[$d->CCDD]++; 	
+							elseif((is_null($uv->$a) || $uv->$a == 0) && (!is_null($uv->$b) && $uv->$b>0 && $uv->$b <=6))
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 1 && ($uv->$b == 0 || is_null($uv->$b)) )
+								$e3[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 2 && ($uv->$b == 0 || is_null($uv->$b)) )
+								$e4[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3 && ($uv->$b == 0 || is_null($uv->$b)) )
+								$e5[$d->CCDD]++; 																															
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;		
+				$dde5 += $e5[$d->CCDD] ;			
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+			$data['e5'] = $e5;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+			$data['te5'] = $dde5;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 90;
+			$data['main_content'] = 'tabulados/pescador/reporte90_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte91()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report91($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+										
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_11_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+	
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 91;
+			$data['main_content'] = 'tabulados/pescador/reporte91_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte92()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report92($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+										
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_12_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+	
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 92;
+			$data['main_content'] = 'tabulados/pescador/reporte92_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte93()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report93($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+										
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_13_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+	
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 93;
+			$data['main_content'] = 'tabulados/pescador/reporte93_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte94()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report94($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;							
+
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_15_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																																													
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;			
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 94;
+			$data['main_content'] = 'tabulados/pescador/reporte94_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte95()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report95($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+										
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_16_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+	
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 95;
+			$data['main_content'] = 'tabulados/pescador/reporte95_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+
+	public function reporte96()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report96($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+										
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_18_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+	
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 96;
+			$data['main_content'] = 'tabulados/pescador/reporte96_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte97()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+			$dde4 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;		
+			$e4 = null;			
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report97($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;				
+				$e4[$d->CCDD] = 0;													
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_20_' . $x . '_T';
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																	
+							elseif(!is_null($uv->$a) && $uv->$a == 4)
+								$e4[$d->CCDD]++; 																														
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;		
+				$dde4 += $e4[$d->CCDD] ;				
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+			$data['e4'] = $e4;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+			$data['te4'] = $dde4;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 97;
+			$data['main_content'] = 'tabulados/pescador/reporte97_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte98()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report98($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+										
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_21_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 																
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+	
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 98;
+			$data['main_content'] = 'tabulados/pescador/reporte98_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+
+	public function reporte99()
+	{
+			$dep = $this->tabulados_model->get_dptos();
+			$vr = null;
+			$td = null;
+			$ttt = 0;
+			$dde1 = 0;
+			$dde2 = 0;
+			$dde3 = 0;
+
+			$e1 = null;
+			$e2 = null;		
+			$e3 = null;				
+			foreach($dep->result() as $d){
+				$vr[$d->CCDD] = $this->tabulados_model->get_report99($d->CCDD);	
+				$e1[$d->CCDD] = 0;				
+				$e2[$d->CCDD] = 0;				
+				$e3[$d->CCDD] = 0;													
+				foreach($vr[$d->CCDD]->result() as $uv){			
+					for($x=1; $x<=6; $x++){
+							$a = 'S9_23_' . $x;
+							if(!is_null($uv->$a) && $uv->$a == 1)
+								$e1[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 2)
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 3)
+								$e3[$d->CCDD]++; 																																													
+					}
+				}
+				$dde1 += $e1[$d->CCDD];
+				$dde2 += $e2[$d->CCDD] ;		
+				$dde3 += $e3[$d->CCDD] ;					
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD];
+				$ttt += $td[$d->CCDD];
+			}
+			$data['e1'] = $e1;
+			$data['e2'] = $e2;
+			$data['e3'] = $e3;
+
+			$data['te1'] = $dde1;
+			$data['te2'] = $dde2;
+			$data['te3'] = $dde3;
+
+			$data['td'] = $td;
+			$data['ttt'] = $ttt;
+			$data['dep'] = $dep;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados';			
+			$data['opcion'] = 99;
+			$data['main_content'] = 'tabulados/pescador/reporte99_view';
+			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
+			$texto = '';
+			if($prete->num_rows() > 0){
+				$texto = $prete->row()->texto;
+			}
+			$data['texto'] =  $texto; 				
 			$this->load->view('backend/includes/template', $data);		
 	}
 
 
 }
+
