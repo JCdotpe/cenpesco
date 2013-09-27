@@ -1373,24 +1373,50 @@ if($detalle){
 						echo '</tr>';
 					echo '</thead>';
 					echo '<tbody>';
-					foreach($tables as $row){
-						echo "<tr>";
-						echo "<td>". $row->P1 ."</td>";
-						echo "<td>". $row->P2 ."</td>";
-						echo "<td>". $row->P3 ."</td>";
-						echo "<td>". $row->P4 ."</td>";
-						echo "<td>". $row->P5 ."</td>";
-						echo "<td>". $row->P6 ."</td>";
-						echo "<td>". $row->P7 ."</td>";
-						echo "<td>". $row->P8 ."</td>";
-						echo "<td>". $row->P9 ."</td>";
-						echo "<td>". $row->P10 ."</td>";
-						echo "<td>". $row->P11 ."</td>";
-						echo "<td>". $row->P12 ."</td>";
-						echo "<td>". $row->P13 ."</td>";
-						echo "<td>". $row->P14 ."</td>";
-						echo "<td>". $row->P15 ."</td>";
-						echo "</tr>";  }
+					if ($sede_cod == 99) { // si ubigeo dle usuario es GLOBAL, es editable
+						foreach($tables as $row){
+							echo "<tr>";
+							echo "<td><div class='input_edit' id='P1_". $row->id_reg . "_". $row->id_dat ."' name='P1_". $row->id_reg . "_". $row->id_dat ."' >". $row->P1 ."</div></td>";
+							echo "<td><div class='input_edit' id='P2_". $row->id_reg . "_". $row->id_dat ."' name='P2_". $row->id_reg . "_". $row->id_dat ."' >". $row->P2 ."</div></td>";
+							echo "<td><div class='input_edit' id='P3_". $row->id_reg . "_". $row->id_dat ."' name='P3_". $row->id_reg . "_". $row->id_dat ."' >". $row->P3 ."</div></td>";
+							echo "<td><div class='input_edit' id='P4_". $row->id_reg . "_". $row->id_dat ."' name='P4_". $row->id_reg . "_". $row->id_dat ."' >". $row->P4 ."</div></td>";
+							echo "<td><div class='input_edit' id='P5_". $row->id_reg . "_". $row->id_dat ."' name='P5_". $row->id_reg . "_". $row->id_dat ."' >". $row->P5 ."</div></td>";
+							echo "<td><div class='input_edit' id='P6_". $row->id_reg . "_". $row->id_dat ."' name='P6_". $row->id_reg . "_". $row->id_dat ."' >". $row->P6 ."</div></td>";
+							echo "<td><div class='input_edit' id='P7_". $row->id_reg . "_". $row->id_dat ."' name='P7_". $row->id_reg . "_". $row->id_dat ."' >". $row->P7 ."</div></td>";
+							echo "<td><div class='input_edit' id='P8_". $row->id_reg . "_". $row->id_dat ."' name='P8_". $row->id_reg . "_". $row->id_dat ."' >". $row->P8 ."</div></td>";
+							echo "<td><div class='input_edit' id='P9_". $row->id_reg . "_". $row->id_dat ."' name='P9_". $row->id_reg . "_". $row->id_dat ."' >". $row->P9 ."</div></td>";
+							echo "<td><div class='input_edit' id='P10_". $row->id_reg . "_". $row->id_dat ."' name='P10_". $row->id_reg . "_". $row->id_dat ."' >". $row->P10 ."</div></td>";
+							echo "<td><div class='input_edit' id='P11_". $row->id_reg . "_". $row->id_dat ."' name='P11_". $row->id_reg . "_". $row->id_dat ."' >". $row->P11 ."</div></td>";
+							echo "<td><div class='input_edit' id='P12_". $row->id_reg . "_". $row->id_dat ."' name='P12_". $row->id_reg . "_". $row->id_dat ."' >". $row->P12 ."</div></td>";
+							echo "<td><div class='input_edit' id='P13_". $row->id_reg . "_". $row->id_dat ."' name='P13_". $row->id_reg . "_". $row->id_dat ."' >". $row->P13 ."</div></td>";
+							echo "<td><div class='input_edit' id='P14_". $row->id_reg . "_". $row->id_dat ."' name='P14_". $row->id_reg . "_". $row->id_dat ."' >". $row->P14 ."</div></td>";
+							echo "<td><div class='input_edit' id='P15_". $row->id_reg . "_". $row->id_dat ."' name='P15_". $row->id_reg . "_". $row->id_dat ."' >". $row->P15 ."</div></td>";
+							echo "</tr>";  }
+					}else{
+						foreach($tables as $row){ 
+							echo "<tr>";
+							echo "<td>". $row->P1 ."</td>";
+							echo "<td>". $row->P2 ."</td>";
+							echo "<td>". $row->P3 ."</td>";
+							echo "<td>". $row->P4 ."</td>";
+							echo "<td>". $row->P5 ."</td>";
+							echo "<td>". $row->P6 ."</td>";
+							echo "<td>". $row->P7 ."</td>";
+							echo "<td>". $row->P8 ."</td>";
+							echo "<td>". $row->P9 ."</td>";
+							echo "<td>". $row->P10 ."</td>";
+							echo "<td>". $row->P11 ."</td>";
+							echo "<td>". $row->P12 ."</td>";
+							echo "<td>". $row->P13 ."</td>";
+							echo "<td>". $row->P14 ."</td>";
+							echo "<td>". $row->P15 ."</td>";
+							echo "</tr>";  }						
+					}
+
+
+
+
+
 					echo '</tbody>';
 				echo '</table>';
 
@@ -2063,6 +2089,51 @@ $("#NOM_EMP_combo").change(function(){
 	$("#DNI_EMP").val($(this).val());
 	$("#NOM_EMP").val($("#NOM_EMP_combo :selected").text());
 });
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  E D I T A B L E S 
+	$(".input_edit").editable( function(value, settings) {
+	        selectedId = $(this).attr("id");
+	        $.ajax({
+	            url: CI.base_url + "digitacion/registro_pescadores/edit_detalle/" + $.now(),
+	            type:'post',
+	            data:{
+	                    //requestType: "Trans",
+	                    id : $(this).attr("id"),
+	                    value:  value,
+	                    csrf_token_c: CI.cct,
+	                },
+	            success: function(data) {
+	                if (data != "Error")
+	                    {
+	                        //$("#"+selectedId).html(data);
+	                        if ( !(data == 0)) {alert(data);}
+	                    }
+	            },
+	            error: function(req) {
+	                alert("Error in request. Por favor intentelo luego.");
+	            }
+	        });
+	        return value; //need the return
+	    },{
+	         indicator : 'Guardando...',
+	         tooltip   : 'Click para editar',
+	         onblur    : "submit",
+			 onsubmit : function (settings, original) {// deshabilitar  ajax si  ! TEXT CHANGED
+			    if (original.revert == $('input',this).val()) {
+			        original.reset();
+			        return false;
+			    }
+			}	         
+	});
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 // R E G I S T R O    D E P E S C A D O R E S ------------------------------------------------------------------>
 $("#frm_reg_pesc").validate({
     rules: {
@@ -2822,7 +2893,7 @@ $("#NOM_DD_f, #NOM_PP_f, #NOM_DI_f, #NOM_CCPP_f, #CCPP_PROC_f").change(function(
                 sel     = $("#NOM_DI_f");
                 $('#CCPP').val($(this).val()); 
                 $('#NOM_PP').val($('#NOM_PP_f option:selected').text());                 
-                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + $(this).val()+ "/" + dep.val();
+                url     = CI.base_url + "ajax/marco_ajax/get_ajax_dist/" + $("#SEDE_COD").val() + "/" + dep.val() + "/" + $(this).val();
                 op      = 2;
                 break;
 

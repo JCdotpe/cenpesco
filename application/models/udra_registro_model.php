@@ -22,7 +22,10 @@ class Udra_registro_model extends CI_MODEL
 	{	
 		($user == 99) ? '' : $this->db->where('SEDE_COD',$user)  ;
 		$this->db->where_in('ODEI_COD',$odeis);
-		$this->db->order_by('DEPARTAMENTO');		
+		$this->db->order_by('DEPARTAMENTO');	
+		$this->db->order_by('PROVINCIA');		
+		$this->db->order_by('DISTRITO');		
+		$this->db->order_by('CENTRO_POBLADO');			
     	$q = $this->db->get('udra_registro');
 		return $q->result();
 	}		

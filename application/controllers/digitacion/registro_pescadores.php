@@ -492,19 +492,25 @@ class Registro_pescadores extends CI_Controller {
 	public function edit_detalle()
 	{
 
-		$opt = explode('-', $this->input->post('id')) ;
+		$opt = explode('_', $this->input->post('id')) ;
+
 		$campo = $opt[0];
 		$id_reg = $opt[1];
 		$id_dat = $opt[2];
 		$value = $this->input->post('value');
 		$registros = array(
-			$campo => $value);
+			$campo 		=> $value,
+			'user_id'	=>$this->tank_auth->get_user_id(),
+			'modified'	=> date('Y-m-d H:i:s')
+			);
 
 		$afectados = $this->registro_pescadores_dat_model->update_detalle($registros, $id_dat, $id_reg);
-		if ($afectados ==1 ) {
-			echo 'actulizado';
-		} else {
-			echo "no actulizado";
+		if ($afectados == 1 ) {
+			echo 'Actualizado satisfactoriamente';
+		} else if( $afectados > 1 ) {
+			echo "ERROR, Se modificó en varios campos";
+		}else{
+			echo 0;
 		}
 		
 	}

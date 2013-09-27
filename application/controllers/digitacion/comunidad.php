@@ -157,7 +157,7 @@ class Comunidad extends CI_Controller {
 							'ODEI_COD'	=> $ODEI_COD,
 							'NOM_ODEI'	=> $NOM_ODEI,
 							'id' =>  $this->input->post('CCDD') . $this->input->post('CCPP') . $this->input->post('CCDI') . $this->input->post('COD_CCPP') . $idf,
-							'NFORM' => $this->input->post('NFORM'),
+							'NFORM' => $idf,
 							'CCDD' => $this->input->post('CCDD'),
 							'NOM_DD' => $this->input->post('NOM_DD'),
 							'CCPP'=> $this->input->post('CCPP'),

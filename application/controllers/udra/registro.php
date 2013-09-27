@@ -70,8 +70,8 @@ class Registro extends CI_Controller {
 
 	    if ($this->form_validation->run() === TRUE) {
 	    		//VALIDA USUARIO NO PILOTO
-			if ($this->tank_auth->get_ubigeo()<99) {
-				//VALIDA si el CCPP ya fue registrado
+			if ($this->tank_auth->get_ubigeo()<99) {//VALIDA si el CCPP ya fue registrado
+				
 				$dep = $this->input->post('CCDD');
 				$prov = $this->input->post('CCPP');
 				$dist = $this->input->post('CCDI');
@@ -79,45 +79,45 @@ class Registro extends CI_Controller {
 				if($this->udra_registro_model->get_centro_poblado($dep,$prov,$dist,$ccpp) > 0){
 					$this->session->set_flashdata('msgbox',3);
 					redirect('/udra/registro');
-				}
-
-				$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
-				if ($od->num_rows() == 1){
-					$ODEI_COD = $od->row('ODEI_COD');
-					$NOM_ODEI = $od->row('NOM_ODEI');
-					$NOM_SEDE= $od->row('NOM_SEDE');				
 				}else{
-	    				$this->session->set_flashdata('msgbox','error_odei');
-	        			redirect('/udra/registro');					
+					$od = $this->marco_model->get_odei_by_sede_dep($this->tank_auth->get_ubigeo(),$this->input->post('CCDD'));
+					if ($od->num_rows() == 1){
+						$ODEI_COD = $od->row('ODEI_COD');
+						$NOM_ODEI = $od->row('NOM_ODEI');
+						$NOM_SEDE= $od->row('NOM_SEDE');
+
+			    		$registros = array(
+							'SEDE_COD'	=> $this->tank_auth->get_ubigeo(),
+							'NOM_SEDE'	=> $NOM_SEDE,		    			
+							'ODEI_COD'	=> $ODEI_COD,
+							'NOM_ODEI'	=> $NOM_ODEI,					
+							'DEPARTAMENTO'	=> $this->input->post('NOM_DD'),
+							'CCDD'		=> $this->input->post('CCDD'),
+							'PROVINCIA'	=> $this->input->post('NOM_PP'),
+							'CCPP'		=> $this->input->post('CCPP'),
+							'DISTRITO'	=> $this->input->post('NOM_DI'),
+							'CCDI'		=> $this->input->post('CCDI'),
+
+							'CENTRO_POBLADO'=> $this->input->post('NOM_CCPP'),
+							'COD_CCPP'		=> $this->input->post('COD_CCPP'),
+							'FORMULARIOS'	=> $this->input->post('formularios'),
+							'USUARIO'		=> $this->tank_auth->get_user_id(),
+							'FECHA'			=> date('y-m-d H:i:s',now())
+							);
+
+		    			$afectados = $this->udra_registro_model->insert_registro($registros);
+						
+						if ($afectados>0){
+							$this->session->set_flashdata('msgbox',1);
+						}elseif ($afectados===0) {
+							$this->session->set_flashdata('msgbox',2);;
+						}
+						redirect('/udra/registro');
+					}else{
+		    				$this->session->set_flashdata('msgbox','error_odei');
+		        			redirect('/udra/registro');					
+					}
 				}
-
-	    		$registros = array(
-					'SEDE_COD'	=> $this->tank_auth->get_ubigeo(),
-					'NOM_SEDE'	=> $NOM_SEDE,		    			
-					'ODEI_COD'	=> $ODEI_COD,
-					'NOM_ODEI'	=> $NOM_ODEI,					
-					'DEPARTAMENTO'	=> $this->input->post('NOM_DD'),
-					'CCDD'		=> $this->input->post('CCDD'),
-					'PROVINCIA'	=> $this->input->post('NOM_PP'),
-					'CCPP'		=> $this->input->post('CCPP'),
-					'DISTRITO'	=> $this->input->post('NOM_DI'),
-					'CCDI'		=> $this->input->post('CCDI'),
-
-					'CENTRO_POBLADO'=> $this->input->post('NOM_CCPP'),
-					'COD_CCPP'		=> $this->input->post('COD_CCPP'),
-					'FORMULARIOS'	=> $this->input->post('formularios'),
-					'USUARIO'		=> $this->tank_auth->get_user_id(),
-					'FECHA'			=> date('y-m-d H:i:s',now())
-					);
-
-    			$afectados = $this->udra_registro_model->insert_registro($registros);
-				
-				if ($afectados>0){
-					$this->session->set_flashdata('msgbox',1);
-				}elseif ($afectados===0) {
-					$this->session->set_flashdata('msgbox',2);;
-				}
-				redirect('/udra/registro');
 			}else{
 			$this->session->set_flashdata('msgbox','no_piloto');
 			redirect('/udra/registro');

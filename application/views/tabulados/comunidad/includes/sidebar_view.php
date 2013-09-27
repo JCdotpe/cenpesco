@@ -21,7 +21,24 @@
   <li <?php echo ($opcion == 18) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_18'); ?>">Reporte 18</a></li>
   <li <?php echo ($opcion == 19) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_19'); ?>">Reporte 19</a></li>
   <li <?php echo ($opcion == 20) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_20'); ?>">Reporte 20</a></li>
-
+  <li <?php echo ($opcion == 21) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_21'); ?>">Reporte 21</a></li>
+  <li <?php echo ($opcion == 22) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_22'); ?>">Reporte 22</a></li>
+  <li <?php echo ($opcion == 23) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_23'); ?>">Reporte 23</a></li>
+  <li <?php echo ($opcion == 24) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_24'); ?>">Reporte 24</a></li>
+  <li <?php echo ($opcion == 25) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_25'); ?>">Reporte 25</a></li>
+  <li <?php echo ($opcion == 26) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_26'); ?>">Reporte 26</a></li>
+  <li <?php echo ($opcion == 27) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_27'); ?>">Reporte 27</a></li>
+  <li <?php echo ($opcion == 28) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_28'); ?>">Reporte 28</a></li>
+  <li <?php echo ($opcion == 29) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_29'); ?>">Reporte 29</a></li>
+  <li <?php echo ($opcion == 30) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_30'); ?>">Reporte 30</a></li>
+  <li <?php echo ($opcion == 31) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_31'); ?>">Reporte 31</a></li>
+  <li <?php echo ($opcion == 32) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_32'); ?>">Reporte 32</a></li>
+  <li <?php echo ($opcion == 33) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_33'); ?>">Reporte 33</a></li>
+  <li <?php echo ($opcion == 34) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_34'); ?>">Reporte 34</a></li>
+  <li <?php echo ($opcion == 35) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_35'); ?>">Reporte 35</a></li>
+  <li <?php echo ($opcion == 36) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_36'); ?>">Reporte 36</a></li>
+  <li <?php echo ($opcion == 37) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_37'); ?>">Reporte 37</a></li>
+  <li <?php echo ($opcion == 38) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/comunidad/reporte_38'); ?>">Reporte 38</a></li>
 
 </ul>
 </div><!--/.well -->

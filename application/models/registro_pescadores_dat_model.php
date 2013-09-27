@@ -71,8 +71,8 @@ class Registro_pescadores_dat_model extends CI_MODEL
 		{
 			$this->db->where('id_dat', $id_dat);
 			$this->db->where('id_reg', $id_reg);
-			$q = $this->db->update('registro_pescadores_dat',$values);
-			return $q->affected_rows();
+			$this->db->update('registro_pescadores_dat',$values);
+			return $this->db->affected_rows();
 		}
 }
 

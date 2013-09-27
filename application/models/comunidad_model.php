@@ -529,11 +529,109 @@ function get_tabulado_20()
       return $q;
 }
 
+function get_tabulado_21()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
 
+function get_tabulado_22()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
 
+function get_tabulado_23()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
 
+function get_tabulado_24()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
 
+function get_tabulado_25()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
 
+function get_tabulado_26()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_27()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_28()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_29()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_30()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_31()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_32()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
+
+function get_tabulado_33()
+{       
+      $q = $this->db->query("
+     
+        ");
+      return $q;
+}
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // T A B U L A D O S  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -12,9 +12,9 @@
 
     	<h4>REPORTE DE AVANCE DE DIGITACION DE FORMULARIO REGISTRO PESCADORES Y ACUICULTORES A NIVEL CENTRO POBLADO</h4>
     	<?php
-    		if ($ubigeo == 99){
+    		//if ($ubigeo == 99){
 				echo anchor(site_url('digitacion/registro_avance/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');	
-    		}
+    		//}
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';

@@ -80,7 +80,7 @@ echo form_open($this->uri->uri_string(),$attr);
 $NROFORM = array(
 	'name'	=> 'NFORM',
 	'id'	=> 'NFORM',
-	'maxlength'	=> 6,
+	'maxlength'	=> 5,
 	'class' => 'offset5 span2',
 	'onkeypress'=>"return solo_numeros(event)",
 );
@@ -1710,7 +1710,7 @@ $("#frm_comunidad").validate({
         NFORM:{
             required: true,
             minlength: 1,
-            maxlength: 6,
+            maxlength: 5,
 			digits: true,
 			valueNotEquals: 0,
 			range: [1,10000],

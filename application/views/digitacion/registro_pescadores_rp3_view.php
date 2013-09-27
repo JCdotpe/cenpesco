@@ -51,38 +51,43 @@
 
 		echo '</div>'; 
 
-
 ?>		
 
 <script type="text/javascript">
 
-
-
 $(function () {
 
-$(".input_edit").editable( CI.base_url + "digitacion/registro_pescadores/edit_detalle/" );
-
-        var form_data = {
-            csrf_token_c: CI.cct,
-            id: CI.cct,
-            csrf_token_c: CI.cct,
-        };
+//$(".input_edit").editable( CI.base_url + "digitacion/registro_pescadores/edit_detalle/" );
 
 
-// $(".input_edit").editable( 
+$(".input_edit").editable( function(value, settings) {
+        selectedId = $(this).attr("id");
+        $.ajax({
+            url: CI.base_url + "digitacion/registro_pescadores/edit_detalle/" + $.now(),
+            type:'post',
+            data:{
+                    //requestType: "Trans",
+                    id : $(this).attr("id"),
+                    value:  value,
+                    csrf_token_c: CI.cct,
+                },
+            success: function(data) {
+                if (data != "Error")
+                    {
+                        //$("#"+selectedId).html(data);
+                        alert(data);
+                    }
+            },
+            error: function(req) {
+                alert("Error in request. Por favor intentelo luego.");
+            }
+        });
+        return value; //need the return
+    },{
+         indicator : 'Guardando...',
+         tooltip   : 'Click para editar'
+});
 
-//         $.ajax({
-//             url: CI.base_url + "digitacion/registro_pescadores/edit_detalle/" + $.now(),
-//             type:'POST',
-//             data:{ csrf_token_c: CI.cct, id: $(this).attr('id'), value: $(this).val() },
-//             dataType:'json',
-//             success:function(json){
-
-//             }
-//         }) 
-
-
-// 	);
 
 
 

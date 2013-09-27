@@ -23,6 +23,9 @@ class Udra_pescador_model extends CI_MODEL
 		($user == 99) ? '' : $this->db->where('SEDE_COD',$user)  ;
 		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->order_by('DEPARTAMENTO');
+		$this->db->order_by('PROVINCIA');		
+		$this->db->order_by('DISTRITO');		
+		$this->db->order_by('CENTRO_POBLADO');
     	$q = $this->db->get('udra_pescador');
 		return $q->result();
 	}	
@@ -114,8 +117,31 @@ class Udra_pescador_model extends CI_MODEL
 	}
 function get_id_forms()
 {
+		// $q = $this->db->query('
+		// 	select distinct(id) from pescador 
+		// 	');
 		$q = $this->db->query('
-			select distinct(id) from pescador 
+			SELECT distinct(id)
+			FROM pescador c1 
+			LEFT JOIN    pesc_seccion2  c2 ON c1.id = c2.pescador_id
+			LEFT JOIN    pesc_seccion3  c3 ON c1.id = c3.pescador_id
+			LEFT JOIN    pesc_seccion4  c4 ON c1.id = c4.pescador_id
+			LEFT JOIN    pesc_seccion5  c5 ON c1.id = c5.pescador_id
+			LEFT JOIN    pesc_seccion6  c6 ON c1.id = c6.pescador_id
+			LEFT JOIN    pesc_seccion7  c7 ON c1.id = c7.pescador_id
+			LEFT JOIN    pesc_seccion8  c8 ON c1.id = c8.pescador_id
+			LEFT JOIN    pesc_seccion9  c9 ON c1.id = c9.pescador_id
+			LEFT JOIN    pesc_info   c10       ON c1.id = c10.pescador_id
+			WHERE   
+			c2.pescador_id IS NULL OR
+			c3.pescador_id IS NULL OR
+			c4.pescador_id IS NULL OR
+			c5.pescador_id IS NULL OR
+			c6.pescador_id IS NULL OR
+			c7.pescador_id IS NULL OR
+			c8.pescador_id IS NULL OR
+			c9.pescador_id IS NULL OR
+			c10.pescador_id IS NULL ;
 			');
 		return $q;
 }
