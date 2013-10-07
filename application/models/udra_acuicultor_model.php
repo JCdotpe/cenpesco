@@ -131,9 +131,10 @@ function get_id_forms()
 			');
 		return $q;
 }
-	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
+	function get_n_formularios_by_odei($odeis, $forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id1',$forms);
 		$this->db->group_by('ODEI_COD');
     	$q = $this->db->get('acu_seccion1');
@@ -163,9 +164,10 @@ function get_id_forms()
 		return $q;
 	}	
 
-	function get_n_formularios_by_prov($forms)// cuenta por ODEI, la cantidad de formularios 
+	function get_n_formularios_by_prov($odeis,$forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id1',$forms);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
@@ -185,9 +187,10 @@ function get_id_forms()
 		return $q;
 	}	
 
-	function get_n_formularios_by_dist($forms)// cuenta por distrito, la cantidad de formularios 
+	function get_n_formularios_by_dist($odeis,$forms)// cuenta por distrito, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id1',$forms);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
@@ -209,9 +212,10 @@ function get_id_forms()
 		return $q;
 	}	
 
-	function get_n_formularios_by_ccpp($forms)// cuenta por CCPP, la cantidad de formularios 
+	function get_n_formularios_by_ccpp($odeis,$forms)// cuenta por CCPP, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI,COD_CCPP, count(id1) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id1',$forms);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');

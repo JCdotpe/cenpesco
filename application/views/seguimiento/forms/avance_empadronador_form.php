@@ -1020,7 +1020,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 	echo '<div class="row-fluid">';
 
-		echo '<div class="span6">';
+		echo '<div class="span2">';
 		// 	//echo anchor(base_url('digitacion/revision'), 'Visualizar','class="btn btn-success pull-left"');
 		// 	echo '<a href="'. site_url('seguimiento/avance/get_todo') . '" class="btn btn-success pull-left" target="_blank">Visualizar</a>';
 				echo anchor(site_url('seguimiento/avance_empadronador/export'), 'Exportar Excel','class="btn btn-success pull-left " id="export_excel"');		
@@ -1028,6 +1028,8 @@ echo form_open($this->uri->uri_string(),$attr);
 	 	echo '</div>';
 
 		echo '<div class="extra span5">';
+
+
 	    echo '</div>';
 
 		echo '<div >';
@@ -1035,6 +1037,20 @@ echo form_open($this->uri->uri_string(),$attr);
 	   echo '</div>';
 
     echo '</div>';
+
+	echo '<div class="row-fluid">';
+
+		echo '<div class="offset2 span8">';
+
+			echo  '<div class="progress progress-striped active">';
+			  echo  '<div class="bar" style="width: 0%;" id="guardando" name="guardando"></div>'; 
+			echo  '</div>';
+		echo  '</div>';
+
+    echo '</div>';
+
+
+
 
 	echo form_close(); 
 	echo '</div>'; 			
@@ -2573,14 +2589,21 @@ $.validator.addMethod("peruDate",function(value, element) {
 				            	}             	
 				        		if (contador == $("#cant_reg").val() ){
 							    	if ( !(modi + guar == parseInt($("#cant_reg").val() ) ) ){
-							    			alert('Error INESPERADO, no se guardó o modificó todos los registros')
+							    			alert('Error INESPERADO, no se guardó o modificó todos los registros');
 							    	} else{
+							    			$("#guardando").width("100%");
+							    			$("#guardando").text("100%");
 							    			alert('EXITOSO: [' + guar + '] guardada(s), [' + modi + '] modificada(s)');
 							    			//bsub.removeAttr("disabled");// vuelve habilitar guardar
 							    	}		        			
+				        		}else{
+				        			porc = parseInt(( 100/ parseInt($("#cant_reg").val() ) )) * contador;
+				        			$("#guardando").width(porc + "%");
+				        			$("#guardando").text(porc + "%");
 				        		}
 
-
+				        		
+				        		
 				            }
 				        }); 
 

@@ -113,105 +113,92 @@
 
 				?>
 		</div>
-		<a href="#chart_div" target="_blank">Barrars</a>
-		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
-		<div class="row-fluid">
+		<?php $this->load->view('tabulados/comunidad/includes/text_view.php'); ?>
+		<div class="row-fluid" style="overflow:auto;">
 
 			
-			    <div id="chart_div"></div>
-				    <script type="text/javascript" src="<?php echo base_url('js/highcharts/highcharts.js'); ?>"></script>
-				    <script type="text/javascript" src="<?php echo base_url('js/highcharts/exporting.js'); ?>"></script>
+			    <div id="chart_div" style="width:160%;"></div>
 
-				    <script type="text/javascript">
-				      $(function () {
-				        var chart;
-				        //array_1 = JSON.parse(<?php echo json_encode($arreglo_1); ?>);
-				        //array_1 = new Array(<?php echo json_encode($arreglo_1); ?>);
-				        $(document).ready(function() {
-				            chart = new Highcharts.Chart({
-				                credits: {
-				                    enabled: false
-				                },
-				                chart: {
-				                    renderTo: 'chart_div',
-				                    type: 'column'
-				                },
-				                title: {
-				                    text: 'Tabulado 1'
-				                },
-				                subtitle: {
-				                    text: 'CENPESCO'
-				                },
-				                xAxis: {
-				                    categories: [
-				              			'Amazonas','Ancash','Apurimac','Arequipa','Ayacucho','Cajamarca','Cuzco','Huancavelica','Huanuco','Ica','Junin','La Libertad',
-				              			'Lambayeque','Lima','Loreto','Madre de Dios','Moquegua','Pasco','Piura','Puno' ,'San Martin','Tacna','Tumbes', 'Ucayali'
-				                    ]
-				                },
-				                yAxis: {
-				                    min: 0,
-				                    title: {
-				                        text: 'Number'
-				                    }
-				                },
-				                legend: {
-				                    layout: 'vertical',
-				                    backgroundColor: '#FFFFFF',
-				                    align: 'left',
-				                    verticalAlign: 'top',
-				                    x:100,
-				                    y: 50,
-				                    floating: true,
-				                    shadow: true
-				                },
-				                tooltip: {
-				                    formatter: function() {
-				                        return ''+
-				                            this.x +': '+ this.y;
-				                    }
-				                },
-				                plotOptions: {
-				                    column: {
-				                        pointPadding: 0.2,
-				                        borderWidth: 0
-				                    }
-				                },
-				                
-				                series: [
+			    <script type="text/javascript" src="<?php echo base_url('js/highcharts/highcharts.js'); ?>"></script>
+			    <script type="text/javascript" src="<?php echo base_url('js/highcharts/exporting.js'); ?>"></script>
 
-				              			{name: 'Castellano',data: [<?php echo join($arreglo_1,','); ?> ]},              
-				              			{name: 'Quechua',data:[<?php echo join($arreglo_2,','); ?> ]},
-				              			{name: 'Aymara',data: [<?php echo join($arreglo_3,','); ?> ]},        
-				              			{name: 'Otro',data: [<?php echo join($arreglo_4,','); ?> ]},        
-				              			]
-				            });
+			    <script type="text/javascript">
+			      $(function () {
+			        var chart;
+			        //array_1 = JSON.parse(<?php echo json_encode($arreglo_1); ?>);
+			        //array_1 = new Array(<?php echo json_encode($arreglo_1); ?>);
+			        $(document).ready(function() {
+			            chart = new Highcharts.Chart({
+			                credits: {
+			                    enabled: false
+			                },
+			                chart: {
+			                    renderTo: 'chart_div',
+			                    type: 'column'
+			                },
+			                title: {
+			                    text: 'Tabulado 1'
+			                },
+			                subtitle: {
+			                    text: 'CENPESCO'
+			                },
+			                xAxis: {
+			                    categories: [
+			              			'Amazonas','Ancash','Apurimac','Arequipa','Ayacucho','Cajamarca','Cuzco','Huancavelica','Huanuco','Ica','Junin','La Libertad',
+			              			'Lambayeque','Lima','Loreto','Madre de Dios','Moquegua','Pasco','Piura','Puno' ,'San Martin','Tacna','Tumbes', 'Ucayali'
+			                    ]
+			                },
+			                yAxis: {
+			                    min: 0,
+			                    title: {
+			                        text: 'Number'
+			                    }
+			                },
+			                legend: {
+			                    layout: 'vertical',
+			                    backgroundColor: '#FFFFFF',
+			                    align: 'left',
+			                    verticalAlign: 'top',
+			                    x:100,
+			                    y: 50,
+			                    floating: true,
+			                    shadow: true
+			                },
+			                tooltip: {
+			                    formatter: function() {
+			                        return ''+
+			                            this.x +': '+ this.y;
+			                    }
+			                },
+			                plotOptions: {
+			                    column: {
+			                        pointPadding: 0.2,
+			                        borderWidth: 0
+			                    }
+			                },
+			                
+			                series: [
 
-				        });
+			              			{name: 'Castellano',data: [<?php echo join($arreglo_1,','); ?> ]},              
+			              			{name: 'Quechua',data:[<?php echo join($arreglo_2,','); ?> ]},
+			              			{name: 'Aymara',data: [<?php echo join($arreglo_3,','); ?> ]},        
+			              			{name: 'Otro',data: [<?php echo join($arreglo_4,','); ?> ]},        
+			              			]
+			            });
 
-				    });
+			        });
 
-				    </script>
-				
+			    });
 
-			
+			    </script>	
 
 		</div>
-
-
 		
-
-
+		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
 
 	</div>
 
-
-
-
-
-
 </div>
-
-
 
 
 

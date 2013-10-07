@@ -101,16 +101,16 @@ class Pescador_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos); 
+			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_odei($odei, $seccion_completos); 
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_incompletos); 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
-			$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_incompletos); 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
+			//$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 			//$data['registros_total'] = $this->udra_pescador_model->get_registros_total($seccion_completos); 
 	    	$this->load->view('backend/includes/template', $data);	
 	
@@ -167,17 +167,17 @@ class Pescador_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_prov($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_prov($odei,$seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_prov($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_prov($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
-			$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
+			//$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 	    	$this->load->view('backend/includes/template', $data);	
 	
 	}
@@ -232,15 +232,15 @@ class Pescador_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_dist($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_dist($odei,$seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_dist($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_dist($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
 			//$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 	    	$this->load->view('backend/includes/template', $data);	
@@ -298,15 +298,15 @@ class Pescador_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_pescador_model->get_n_formularios_by_ccpp($odei,$seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_pescador_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en pescador incompletos 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
 			//$data['udra_total'] = $this->udra_pescador_model->get_formularios_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 	    	$this->load->view('backend/includes/template', $data);	
@@ -423,7 +423,7 @@ class Pescador_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}
 			if (count($seccion_completos)>0){
-			 	$formularios = $this->udra_pescador_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			 	$formularios = $this->udra_pescador_model->get_n_formularios_by_ccpp($odei,$seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$formularios = NULL;
 			}	
@@ -472,17 +472,17 @@ class Pescador_avance extends CI_Controller {
 				$total_2 = 0;
 				$total_3 = 0;
 				foreach($tables as $row){ //TOTAL MARCO
-					$total_1 = $total_1 + $row->TOTAL_PES;
+					$total_1 += $row->TOTAL_PES;
 				}
 				$sheet->setCellValue('J2', $total_1);
 
 				foreach ($udra->result() as $key ) {// TOTAL UDRA
-						$total_2 = $total_2 +  $key->TOTAL_FORM; 
+						$total_2 +=  $key->TOTAL_FORM; 
 				}
 				$sheet->setCellValue('K2', $total_2);
 
 				foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
-						$total_3 = $total_3 +  $key->TOTAL_DIG;
+						$total_3 +=  $key->TOTAL_DIG;
 				}	
 				$sheet->setCellValue('L2', $total_3);
 
@@ -498,7 +498,6 @@ class Pescador_avance extends CI_Controller {
 					$sheet->setCellValue('N2', 0 );	
 				}
 			// TOTALES
-
 
 			// EXPORTACION A EXCEL
 			$celda = 2;

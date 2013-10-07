@@ -114,7 +114,7 @@ class General_avance_by_seguimiento extends CI_Controller {
 				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
 					$seccion_completos_pes[] = $value->id;
 				}
-				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); }
+				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($odei, $seccion_completos_pes); }
 				else { $formularios_dig_pes = NULL;	}		
 
 			// ACUICULTOR, recorrido en tablas, buscando formularios completos
@@ -139,7 +139,7 @@ class General_avance_by_seguimiento extends CI_Controller {
 				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
 					$seccion_completos_acui[] = $filas->id1;
 				}					
-				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); }
+				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($odei, $seccion_completos_acui); }
 				else{ $formularios_dig_acui = NULL;	}	
 
 			//COMUNIDAD, recorrido en tablas, buscando formularios completos
@@ -165,7 +165,7 @@ class General_avance_by_seguimiento extends CI_Controller {
 				foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
 					$seccion_completos_com[] = $value->id;
 				}					
-				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
+				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($odei, $seccion_completos_com); } //N° formularios ingresados en pescador completos
 				else { $formularios_dig_com = NULL; }	
 
 

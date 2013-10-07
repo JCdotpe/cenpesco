@@ -97,16 +97,16 @@ class Comunidad_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}	
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_odei($odei, $seccion_completos); //N° formularios ingresados en pescador completos
 			}
 			else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_incompletos); //N° formularios ingresados en pescador incompletos
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_incompletos); //N° formularios ingresados en pescador incompletos
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
 	    	$this->load->view('backend/includes/template', $data);	
 	
@@ -159,15 +159,15 @@ class Comunidad_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}	
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_prov($seccion_completos); //N° formularios ingresados en pescador completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_prov($odei, $seccion_completos); //N° formularios ingresados en pescador completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_prov($seccion_incompletos); //N° formularios ingresados en pescador incompletos
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_prov($seccion_incompletos); //N° formularios ingresados en pescador incompletos
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
 	    	$this->load->view('backend/includes/template', $data);	
 	
@@ -220,15 +220,15 @@ class Comunidad_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}	
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_dist($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_dist($odei, $seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_dist($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_dist($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
 	    	$this->load->view('backend/includes/template', $data);		
 			
@@ -282,15 +282,15 @@ class Comunidad_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}	
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($odei, $seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 
 	    	$this->load->view('backend/includes/template', $data);		
 	}
@@ -399,7 +399,7 @@ class Comunidad_avance extends CI_Controller {
 			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
 
 			// 		}else{
-			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos
+			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos|
 			// 		}
 			// 	}//var_dump($seccion_completos);echo '<br>';
 			// }
@@ -407,7 +407,7 @@ class Comunidad_avance extends CI_Controller {
 				$seccion_completos[] = $value->id;
 			}	
 			if (count($seccion_completos)>0){
-			 	$formularios = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			 	$formularios = $this->udra_comunidad_model->get_n_formularios_by_ccpp($odei, $seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$formularios = NULL;
 			}	
@@ -415,7 +415,6 @@ class Comunidad_avance extends CI_Controller {
 
 
 			//******************************************************************************************
-
 
 			// pestaña
 			$sheet = $this->phpexcel->getActiveSheet(0);
@@ -456,17 +455,18 @@ class Comunidad_avance extends CI_Controller {
 				$total_2 = 0;
 				$total_3 = 0;
 				foreach($tables as $row){ //TOTAL MARCO
-					$total_1 = $total_1 + $row->TOTAL_COM;
+					$total_1 += $row->TOTAL_COM;
 				}
 				$sheet->setCellValue('J2', $total_1);
 
 				foreach ($udra->result() as $key ) {// TOTAL UDRA
-						$total_2 = $total_2 +  $key->TOTAL_FORM; 
+						//$total_2 = $total_2 +  $key->TOTAL_FORM; 
+						$total_2 +=  $key->TOTAL_FORM; 
 				}
 				$sheet->setCellValue('K2', $total_2);
 
 				foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
-						$total_3 = $total_3 +  $key->TOTAL_DIG;
+						$total_3 +=   $key->TOTAL_DIG;
 				}	
 				$sheet->setCellValue('L2', $total_3);
 

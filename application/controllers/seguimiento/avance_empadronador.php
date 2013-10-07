@@ -2089,7 +2089,7 @@ class Avance_empadronador extends CI_Controller {
 				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
 					$seccion_completos_pes[] = $value->id;
 				}
-				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); }
+				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($odei,$seccion_completos_pes); }
 				else { $formularios_dig_pes = NULL;	}		
 
 			// ACUICULTOR, recorrido en tablas, buscando formularios completos
@@ -2114,7 +2114,7 @@ class Avance_empadronador extends CI_Controller {
 				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
 					$seccion_completos_acui[] = $filas->id1;
 				}	//var_dump($seccion_completos_acui)	;			
-				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); }
+				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($odei,$seccion_completos_acui); }
 				else{ $formularios_dig_acui = NULL;	}	
 
 			//COMUNIDAD, recorrido en tablas, buscando formularios completos
@@ -2139,7 +2139,7 @@ class Avance_empadronador extends CI_Controller {
 				// }
 				foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
 					$seccion_completos_com[] = $value->id;
-				}						if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
+				}						if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($odei, $seccion_completos_com); } //N° formularios ingresados en pescador completos
 				else { $formularios_dig_com = NULL; }	
 
 		// resultado de digitaicon
@@ -2296,7 +2296,7 @@ class Avance_empadronador extends CI_Controller {
 							$sheet7->setCellValue('Q'.($cab+2),'Acuicultor' );
 							$sheet7->setCellValue('R'.($cab+2),'Comunidad' );
 							$sheet7->setCellValue('S'.($cab+2),'AVANCE %' );
-					$sheet7->setCellValue('T'.$cab,'UDRA' );
+					$sheet7->setCellValue('T'.$cab,'OPERACIÓN DE CAMPO' );
 					$sheet7->mergeCells('T'.($cab).':Y'.($cab+1));
 						$sheet7->setCellValue('T'.($cab+2),'Pescador' );
 						$sheet7->setCellValue('U'.($cab+2),'% de Marco' );
@@ -2304,14 +2304,17 @@ class Avance_empadronador extends CI_Controller {
 						$sheet7->setCellValue('W'.($cab+2),'% de Marco' );
 						$sheet7->setCellValue('X'.($cab+2),'Comunidad' );
 						$sheet7->setCellValue('Y'.($cab+2),'% de Marco' );
-					$sheet7->setCellValue('Z'.$cab,'DIGITACIÓN' );
+					$sheet7->setCellValue('Z'.$cab,'INGRESO DE DATOS' );
 					$sheet7->mergeCells('Z'.($cab).':AE'.($cab+1));
 						$sheet7->setCellValue('Z'.($cab+2),'Pescador' );
-						$sheet7->setCellValue('AA'.($cab+2),'% de Marco' );
+						//$sheet7->setCellValue('AA'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AA'.($cab+2),'% de Operación de campo' );
 						$sheet7->setCellValue('AB'.($cab+2),'Acuicultor' );
-						$sheet7->setCellValue('AC'.($cab+2),'% de Marco' );
+						//$sheet7->setCellValue('AC'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AC'.($cab+2),'% de Operación de campo' );
 						$sheet7->setCellValue('AD'.($cab+2),'Comunidad' );
-						$sheet7->setCellValue('AE'.($cab+2),'% de Marco' );
+						//$sheet7->setCellValue('AE'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AE'.($cab+2),'% de Operación de campo' );
 					$sheet7->setCellValue('AF'.$cab,'RESULTADOS DEL PESCADOR' );
 					$sheet7->mergeCells('AF'.($cab).':AJ'.($cab+1));
 						$sheet7->setCellValue('AF'.($cab+2),'Completo' );
@@ -2759,21 +2762,24 @@ class Avance_empadronador extends CI_Controller {
 				//DIGITACION **********************************************************************
 				if ( is_numeric($proc_dig_pes) ){
 					$sheet7->setCellValue('Z'.$row, $proc_dig_pes); 
-					$sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$celda->PESCADOR) ),2,'.','') ); 
+					//$sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$celda->PESCADOR) ),2,'.','') ); 
+					( is_numeric($proc_udra_pes) && $proc_udra_pes > 0) ?  $sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$proc_udra_pes) ),2,'.','') ) : ''; 
 				}else{
 					$sheet7->setCellValue('Z'.$row, 0); 
 					$sheet7->setCellValue('AA'.$row, 0); 
 				}
 				if ( is_numeric($proc_dig_acui) ){
 					$sheet7->setCellValue('AB'.$row, $proc_dig_acui); 
-					$sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$celda->ACUICULTOR) ),2,'.','') ); 
+					//$sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$celda->ACUICULTOR) ),2,'.','') ); 
+					( is_numeric($proc_udra_acui) && $proc_udra_acui > 0) ?  $sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$proc_udra_acui) ),2,'.','') ) : ''; 
 				}else{
 					$sheet7->setCellValue('AB'.$row, 0); 
 					$sheet7->setCellValue('AC'.$row, 0); 
 				}
 				if ( is_numeric($proc_dig_com ) ){
 					$sheet7->setCellValue('AD'.$row, $proc_dig_com); 
-					$sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$celda->CENTRO_POBLADO) ),2,'.','') ); 
+					//$sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$celda->CENTRO_POBLADO) ),2,'.','') ); 
+					( is_numeric($proc_udra_com) && $proc_udra_com > 0) ?  $sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$proc_udra_com) ),2,'.','') ) : ''; 
 				}else{
 					$sheet7->setCellValue('AD'.$row, 0); 
 					$sheet7->setCellValue('AE'.$row, 0); 
@@ -3126,7 +3132,7 @@ class Avance_empadronador extends CI_Controller {
 				foreach ( $this->udra_pescador_model->get_forms_sec_info()->result() as $value) {
 					$seccion_completos_pes[] = $value->id;
 				}
-				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($seccion_completos_pes); }
+				if (count($seccion_completos_pes)>0){ $formularios_dig_pes = $this->udra_pescador_model->get_n_formularios_by_odei($odei, $seccion_completos_pes); }
 				else { $formularios_dig_pes = NULL;	}		
 
 			// ACUICULTOR, recorrido en tablas, buscando formularios completos
@@ -3151,7 +3157,7 @@ class Avance_empadronador extends CI_Controller {
 				foreach ( $this->udra_acuicultor_model->get_forms_sec_info()->result() as $filas) {
 					$seccion_completos_acui[] = $filas->id1;
 				}	//var_dump($seccion_completos_acui)	;		
-				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos_acui); }
+				if (count($seccion_completos_acui)>0){ $formularios_dig_acui = $this->udra_acuicultor_model->get_n_formularios_by_odei($odei, $seccion_completos_acui); }
 				else{ $formularios_dig_acui = NULL;	}	
 
 			//COMUNIDAD, recorrido en tablas, buscando formularios completos
@@ -3177,7 +3183,7 @@ class Avance_empadronador extends CI_Controller {
 				foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
 					$seccion_completos_com[] = $value->id;
 				}					
-				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($seccion_completos_com); } //N° formularios ingresados en pescador completos
+				if (count($seccion_completos_com)>0){ $formularios_dig_com = $this->udra_comunidad_model->get_n_formularios_by_odei($odei, $seccion_completos_com); } //N° formularios ingresados en pescador completos
 				else { $formularios_dig_com = NULL; }	
 
 		// resultado de digitaicon
@@ -3334,7 +3340,7 @@ class Avance_empadronador extends CI_Controller {
 							$sheet7->setCellValue('Q'.($cab+2),'Acuicultor' );
 							$sheet7->setCellValue('R'.($cab+2),'Comunidad' );
 							$sheet7->setCellValue('S'.($cab+2),'AVANCE %' );
-					$sheet7->setCellValue('T'.$cab,'UDRA' );
+					$sheet7->setCellValue('T'.$cab,'OPERACIÓN DE CAMPO' );
 					$sheet7->mergeCells('T'.($cab).':Y'.($cab+1));
 						$sheet7->setCellValue('T'.($cab+2),'Pescador' );
 						$sheet7->setCellValue('U'.($cab+2),'% de Marco' );
@@ -3342,14 +3348,17 @@ class Avance_empadronador extends CI_Controller {
 						$sheet7->setCellValue('W'.($cab+2),'% de Marco' );
 						$sheet7->setCellValue('X'.($cab+2),'Comunidad' );
 						$sheet7->setCellValue('Y'.($cab+2),'% de Marco' );
-					$sheet7->setCellValue('Z'.$cab,'DIGITACIÓN' );
+					$sheet7->setCellValue('Z'.$cab,'INGRESO DE DATOS' );
 					$sheet7->mergeCells('Z'.($cab).':AE'.($cab+1));
 						$sheet7->setCellValue('Z'.($cab+2),'Pescador' );
-						$sheet7->setCellValue('AA'.($cab+2),'% de Marco' );
+						//$sheet7->setCellValue('AA'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AA'.($cab+2),'% de Operación de campo' );
 						$sheet7->setCellValue('AB'.($cab+2),'Acuicultor' );
-						$sheet7->setCellValue('AC'.($cab+2),'% de Marco' );
+						//$sheet7->setCellValue('AC'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AC'.($cab+2),'% de Operación de campo' );
 						$sheet7->setCellValue('AD'.($cab+2),'Comunidad' );
-						$sheet7->setCellValue('AE'.($cab+2),'% de Marco' );
+						//$sheet7->setCellValue('AE'.($cab+2),'% de Marco' );
+						$sheet7->setCellValue('AE'.($cab+2),'% de Operación de campo' );
 					$sheet7->setCellValue('AF'.$cab,'RESULTADOS DEL PESCADOR' );
 					$sheet7->mergeCells('AF'.($cab).':AJ'.($cab+1));
 						$sheet7->setCellValue('AF'.($cab+2),'Completo' );
@@ -3797,21 +3806,24 @@ class Avance_empadronador extends CI_Controller {
 				//DIGITACION **********************************************************************
 				if ( is_numeric($proc_dig_pes) ){
 					$sheet7->setCellValue('Z'.$row, $proc_dig_pes); 
-					$sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$celda->PESCADOR) ),2,'.','') ); 
+					//$sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$celda->PESCADOR) ),2,'.','') ); 
+					( is_numeric($proc_udra_pes) && $proc_udra_pes > 0) ?  $sheet7->setCellValue('AA'.$row, number_format( ( ( ($proc_dig_pes*100)/$proc_udra_pes) ),2,'.','') ) : ''; 
 				}else{
 					$sheet7->setCellValue('Z'.$row, 0); 
 					$sheet7->setCellValue('AA'.$row, 0); 
 				}
 				if ( is_numeric($proc_dig_acui) ){
 					$sheet7->setCellValue('AB'.$row, $proc_dig_acui); 
-					$sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$celda->ACUICULTOR) ),2,'.','') ); 
+					//$sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$celda->ACUICULTOR) ),2,'.','') ); 
+					( is_numeric($proc_udra_acui) && $proc_udra_acui > 0) ?  $sheet7->setCellValue('AC'.$row, number_format( ( ( ($proc_dig_acui*100)/$proc_udra_acui) ),2,'.','') ) : ''; 
 				}else{
 					$sheet7->setCellValue('AB'.$row, 0); 
 					$sheet7->setCellValue('AC'.$row, 0); 
 				}
 				if ( is_numeric($proc_dig_com ) ){
 					$sheet7->setCellValue('AD'.$row, $proc_dig_com); 
-					$sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$celda->CENTRO_POBLADO) ),2,'.','') ); 
+					//$sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$celda->CENTRO_POBLADO) ),2,'.','') ); 
+					( is_numeric($proc_udra_com) && $proc_udra_com > 0) ?  $sheet7->setCellValue('AE'.$row, number_format( ( ( ($proc_dig_com*100)/$proc_udra_com) ),2,'.','') ) : ''; 
 				}else{
 					$sheet7->setCellValue('AD'.$row, 0); 
 					$sheet7->setCellValue('AE'.$row, 0); 

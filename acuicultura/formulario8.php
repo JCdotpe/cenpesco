@@ -385,98 +385,98 @@ $s8_10_4=$row['s8_10_4'];
                   <td align="left">Trucha</td>
                   <td align="left"><input name="s8_7_1" type="text" id="s8_7_1" onchange="return saltar(this.name,'s8_7_2','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_1; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_1" type="text" id="s8_8_1"  onkeypress="return numeros(event)" value="<?php echo $s8_8_1; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_2','0')"/></td>
-                  <td align="left"><input name="s8_9_1" type="text" id="s8_9_1"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_1; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_1" type="text" id="s8_9_1"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_1; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Tilapia</td>
                   <td align="left"><input name="s8_7_2" type="text" id="s8_7_2" onchange="return saltar(this.name,'s8_7_3','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_2; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_2" type="text" id="s8_8_2"  onkeypress="return numeros(event)" value="<?php echo $s8_8_2; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_3','0')"/></td>
-                  <td align="left"><input name="s8_9_2" type="text" id="s8_9_2"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_2; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_2" type="text" id="s8_9_2"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_2; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Boquichico</td>
                   <td align="left"><input name="s8_7_3" type="text" id="s8_7_3" onchange="return saltar(this.name,'s8_7_4','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_3; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_3" type="text" id="s8_8_3" onkeypress="return numeros(event)" value="<?php echo $s8_8_3; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_4','0')"/></td>
-                  <td align="left"><input name="s8_9_3" type="text" id="s8_9_3"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_3; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_3" type="text" id="s8_9_3"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_3; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Paiche</td>
                   <td align="left"><input name="s8_7_4" type="text" id="s8_7_4" onchange="return saltar(this.name,'s8_7_5','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_4; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_4" type="text" id="s8_8_4" onkeypress="return numeros(event)" value="<?php echo $s8_8_4; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_5','0')"/></td>
-                  <td align="left"><input name="s8_9_4" type="text" id="s8_9_4" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_4; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_4" type="text" id="s8_9_4" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_4; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Gamitana</td>
                   <td align="left"><input name="s8_7_5" type="text" id="s8_7_5" onchange="return saltar(this.name,'s8_7_6','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_5; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_5" type="text" id="s8_8_5" onkeypress="return numeros(event)" value="<?php echo $s8_8_5; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_6','0')"/></td>
-                  <td align="left"><input name="s8_9_5" type="text" id="s8_9_5" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_5; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_5" type="text" id="s8_9_5" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_5; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Paco</td>
                   <td align="left"><input name="s8_7_6" type="text" id="s8_7_6" onchange="return saltar(this.name,'s8_7_7','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_6; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_6" type="text" id="s8_8_6" onkeypress="return numeros(event)" value="<?php echo $s8_8_6; ?>" size="5" maxlength="5"/ onchange="return saltar('s8_6_1','s8_7_7','0')"></td>
-                  <td align="left"><input name="s8_9_6" type="text" id="s8_9_6" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_6; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_6" type="text" id="s8_9_6" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_6; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Caracol &quot;Churo&quot;</td>
                   <td align="left"><input name="s8_7_7" type="text" id="s8_7_7" onchange="return saltar(this.name,'s8_7_8','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_7; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_7" type="text" id="s8_8_7" onkeypress="return numeros(event)" value="<?php echo $s8_8_7; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_8','0')"/></td>
-                  <td align="left"><input name="s8_9_7" type="text" id="s8_9_7" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_7; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_7" type="text" id="s8_9_7" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_7; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Camarón gigante</td>
                   <td align="left"><input name="s8_7_8" type="text" id="s8_7_8" onchange="return saltar(this.name,'s8_7_9','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_8; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_8" type="text" id="s8_8_8" onkeypress="return numeros(event)" value="<?php echo $s8_8_8; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_9','0')"/></td>
-                  <td align="left"><input name="s8_9_8" type="text" id="s8_9_8" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_8; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_8" type="text" id="s8_9_8" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_8; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Langostino</td>
                   <td align="left"><input name="s8_7_9" type="text" id="s8_7_9" onchange="return saltar(this.name,'s8_7_10','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_9; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_9" type="text" id="s8_8_9" onkeypress="return numeros(event)" value="<?php echo $s8_8_9; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_10','0')"/></td>
-                  <td align="left"><input name="s8_9_9" type="text" id="s8_9_9" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_9; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_9" type="text" id="s8_9_9" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_9; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Carpa</td>
                   <td align="left"><input name="s8_7_10" type="text" id="s8_7_10" onchange="return saltar(this.name,'s8_7_11','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_10; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_10" type="text" id="s8_8_10" onkeypress="return numeros(event)" value="<?php echo $s8_8_10; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_11','0')"/></td>
-                  <td align="left"><input name="s8_9_10" type="text" id="s8_9_10" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_10; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_10" type="text" id="s8_9_10" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_10; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Carachama</td>
                   <td align="left"><input name="s8_7_11" type="text" id="s8_7_11" onchange="return saltar(this.name,'s8_7_12','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_11; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_11" type="text" id="s8_8_11" onkeypress="return numeros(event)" value="<?php echo $s8_8_11; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_12','0')"/></td>
-                  <td align="left"><input name="s8_9_11" type="text" id="s8_9_11" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_11; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_11" type="text" id="s8_9_11" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_11; ?>" size="5" maxlength="5"/></td>
                   <td align="left">&nbsp;</td>
                   </tr>
                 <tr>
                   <td align="left">Sábalo</td>
                   <td align="left"><input name="s8_7_12" type="text" id="s8_7_12" onchange="return saltar(this.name,'s8_7_13','0')" onkeypress="return binario(event)" value="<?php echo $s8_7_12; ?>" size="3" maxlength="1"/></td>
                   <td align="left"><input name="s8_8_12" type="text" id="s8_8_12" onkeypress="return numeros(event)" value="<?php echo $s8_8_12; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_13','0')"/></td>
-                  <td align="left"><input name="s8_9_12" type="text" id="s8_9_12" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_12; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_12" type="text" id="s8_9_12" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_12; ?>" size="5" maxlength="5"/></td>
                   <td align="left">Especifique</td>
                   </tr>
                 <tr>
                   <td align="left">Otro</td>
                   <td align="left"><input name="s8_7_13" type="text" id="s8_7_13" onchange="return saltar(this.name,'s8_7_14','0')" onkeypress="return binario(event)" onkeyup="return otros(this.name,'s8_7_13_o','1')" value="<?php echo $s8_7_13; ?>" size="3" maxlength="1" /></td>
                   <td align="left"><input name="s8_8_13" type="text" id="s8_8_13"  onkeypress="return numeros(event)" value="<?php echo $s8_8_13; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_13_o','0')"/></td>
-                  <td align="left"><input name="s8_9_13" type="text" id="s8_9_13" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_13; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_13" type="text" id="s8_9_13" onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_13; ?>" size="5" maxlength="5"/></td>
                   <td align="left"><input name="s8_7_13_o" type="text" id="s8_7_13_o" value="<?php echo $s8_7_13_o; ?>" size="14" maxlength="80" /></td>
                   </tr>
                 <tr>
                   <td align="left">Otro</td>
                   <td align="left"><input name="s8_7_14" type="text" id="s8_7_14"  onkeypress="return binario(event)" onkeyup="return na2('s8_7_','14','s8_7_14')"  onchange="return salta_s3(this.name,'1','s8_10_1')" value="<?php echo $s8_7_14; ?>" size="3" maxlength="1" /></td>
                   <td align="left"><input name="s8_8_14" type="text" id="s8_8_14"  onkeypress="return numeros(event)" value="<?php echo $s8_8_14; ?>" size="5" maxlength="5" onchange="return saltar('s8_6_1','s8_7_14_o','0')"/></td>
-                  <td align="left"><input name="s8_9_14" type="text" id="s8_9_14"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'50','0','999','Ingrese un precio  entre 0.10 y 50 nuevos soles')" value="<?php echo $s8_9_14; ?>" size="5" maxlength="5"/></td>
+                  <td align="left"><input name="s8_9_14" type="text" id="s8_9_14"  onkeypress="return numeros_p(event)" onkeyup="entrada1(this.name,'500','0','999','Ingrese un precio  entre 0.10 y 500 nuevos soles')" value="<?php echo $s8_9_14; ?>" size="5" maxlength="5"/></td>
                   <td align="left"><input name="s8_7_14_o" type="text" id="s8_7_14_o" value="<?php echo $s8_7_14_o; ?>" size="14" maxlength="80" /></td>
                   </tr>
                 </table>                <span class="letra_frm"> </span></td>

@@ -130,9 +130,10 @@ class Udra_comunidad_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_odei($forms)// cuenta por ODEI, la cantidad de formularios 
+	function get_n_formularios_by_odei($odeis,$forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, count(id) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id',$forms);
 		$this->db->group_by('ODEI_COD');
     	$q = $this->db->get('comunidad');
@@ -161,9 +162,10 @@ class Udra_comunidad_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_prov($forms)// cuenta por ODEI, la cantidad de formularios 
+	function get_n_formularios_by_prov($odeis,$forms)// cuenta por ODEI, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP, count(id) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id',$forms);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
@@ -183,9 +185,10 @@ class Udra_comunidad_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_dist($forms)// N°  por DISTRITO, la cantidad de formularios 
+	function get_n_formularios_by_dist($odeis,$forms)// N°  por DISTRITO, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI, count(id) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id',$forms);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');
@@ -207,9 +210,10 @@ class Udra_comunidad_model extends CI_MODEL
 		return $q;
 	}	
 
-	function get_n_formularios_by_ccpp($forms)// cuenta por CCPP, la cantidad de formularios 
+	function get_n_formularios_by_ccpp($odeis,$forms)// cuenta por CCPP, la cantidad de formularios 
 	{	
 		$this->db->select('SEDE_COD, ODEI_COD, NOM_ODEI, CCPP,CCDI,COD_CCPP, count(id) as TOTAL_DIG ');
+		$this->db->where_in('ODEI_COD',$odeis);
 		$this->db->where_in('id',$forms);
 		$this->db->group_by('ODEI_COD');
 		$this->db->group_by('CCPP');

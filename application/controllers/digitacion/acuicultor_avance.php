@@ -102,15 +102,15 @@ class Acuicultor_avance extends CI_Controller {
 			}				
 
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_completos); 
+			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($odei,$seccion_completos); 
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_incompletos); 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_odei($seccion_incompletos); 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 			//$data['udra_total'] = $this->udra_acuicultor_model->get_udra_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 			//var_dump($data['formularios_inc']->result());echo '<br>';
 			//$data['registros_total'] = $this->udra_acuicultor_model->get_registros_total($seccion_completos); 
@@ -168,15 +168,15 @@ class Acuicultor_avance extends CI_Controller {
 				$seccion_completos[] = $filas->id1;
 			}					
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_prov($seccion_completos); 
+			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_prov($odei,$seccion_completos); 
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_prov($seccion_incompletos); 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_prov($seccion_incompletos); 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 			//$data['udra_total'] = $this->udra_acuicultor_model->get_udra_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 			//var_dump($data['formularios_inc']->result());echo '<br>';
 			//$data['registros_total'] = $this->udra_acuicultor_model->get_registros_total($seccion_completos); 
@@ -235,15 +235,15 @@ class Acuicultor_avance extends CI_Controller {
 				$seccion_completos[] = $filas->id1;
 			}					
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_dist($seccion_completos); 
+			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_dist($odei,$seccion_completos); 
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_dist($seccion_incompletos); 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_dist($seccion_incompletos); 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 			//$data['udra_total'] = $this->udra_acuicultor_model->get_udra_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 			//var_dump($data['formularios_inc']->result());echo '<br>';
 			//$data['registros_total'] = $this->udra_acuicultor_model->get_registros_total($seccion_completos); 
@@ -303,15 +303,15 @@ class Acuicultor_avance extends CI_Controller {
 				$seccion_completos[] = $filas->id1;
 			}					
 			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($seccion_completos); 
+			 	$data['formularios'] = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($odei,$seccion_completos); 
 			}else{
 				$data['formularios'] = NULL;
 			}			
-			if (count($seccion_incompletos)>0){
-			 $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($seccion_incompletos); 
-			}else{
-				$data['formularios_inc'] = NULL;
-			}
+			// if (count($seccion_incompletos)>0){
+			//  $data['formularios_inc'] = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($seccion_incompletos); 
+			// }else{
+			// 	$data['formularios_inc'] = NULL;
+			// }
 			//$data['udra_total'] = $this->udra_acuicultor_model->get_udra_total_by_odei( $this->tank_auth->get_ubigeo() ); 
 			//var_dump($data['formularios_inc']->result());echo '<br>';
 			//$data['registros_total'] = $this->udra_acuicultor_model->get_registros_total($seccion_completos); 
@@ -433,7 +433,7 @@ class Acuicultor_avance extends CI_Controller {
 				$seccion_completos[] = $filas->id1;
 			}		
 			if (count($seccion_completos)>0){
-			 	$formularios = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			 	$formularios = $this->udra_acuicultor_model->get_n_formularios_by_ccpp($odei,$seccion_completos); //N° formularios ingresados en COMUNIDAD completos
 			}else{
 				$formularios = NULL;
 			}	

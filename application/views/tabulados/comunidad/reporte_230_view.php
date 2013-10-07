@@ -9,25 +9,33 @@
 
 
  	<div class="span10" id="ap-content">
-    	<h4 style="text-align:center">CUADRO N° 217</h4>
-    	<h4 style="text-align:center">PERÚ: COMUNIDADES POR CONOCIMIENTO DE LAS CONSECUENCIAS DE LA CONTAMINACIÓN AMBIENTAL QUE EXISTE, SEGÚN DEPARTAMENTO, 2013</h4>
+    	<h4 style="text-align:center">CUADRO N° 230</h4>
+    	<h4 style="text-align:center">PERÚ: COMUNIDADES QUE REALIZAN LA PESCA POR MESES QUE GENERALMENTE REALIZAN SU ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 						echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="14" style="text-align:center">Origen de la contaminación ambiental</th>';																																														
+						echo '<th colspan="26" style="text-align:center">Meses</th>';																																														
 						echo '</tr>';
-				
-						echo '<tr>';
-						echo '<th colspan="2" style="text-align:center">Deforestación</th>';										
-						echo '<th colspan="2" style="text-align:center">Enfermedades</th>';						
-						echo '<th colspan="2" style="text-align:center">Mortandad de peces</th>';						
-						echo '<th colspan="2" style="text-align:center">Alejamiento de animales</th>';						
-						echo '<th colspan="2" style="text-align:center">Pérdida de biodiversidad</th>';						
-						echo '<th colspan="2" style="text-align:center">Alteración del ecosistema acuático</th>';						
-						echo '<th colspan="2" style="text-align:center">Otro</th>';						
+																								
+																									
+															
+						echo '<tr>';																							
+
+						echo '<th colspan="2" style="text-align:center">Enero</th>';										
+						echo '<th colspan="2" style="text-align:center">Febrero</th>';						
+						echo '<th colspan="2" style="text-align:center">Marzo</th>';						
+						echo '<th colspan="2" style="text-align:center">Abril</th>';						
+						echo '<th colspan="2" style="text-align:center">Mayo</th>';						
+						echo '<th colspan="2" style="text-align:center">Junio</th>';						
+						echo '<th colspan="2" style="text-align:center">Julio</th>';						
+						echo '<th colspan="2" style="text-align:center">Agosto</th>';						
+						echo '<th colspan="2" style="text-align:center">Setiembre</th>';						
+						echo '<th colspan="2" style="text-align:center">Octubre</th>';						
+						echo '<th colspan="2" style="text-align:center">Noviembre</th>';						
+						echo '<th colspan="2" style="text-align:center">Diciembre</th>';						
 						echo '</tr>';
 
 						echo '<tr>';
@@ -47,12 +55,21 @@
 						echo '<th style="text-align:center;color:green">%</th>';
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';	
-						// echo '<th style="text-align:center">Abs</th>';										
-						// echo '<th style="text-align:center;color:green">%</th>';																						
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';	
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';																												
 						echo '</tr>';
 
 					echo '</thead>';
 					echo '<tbody>';
+					// variable
 						$tot_tot = 0;
 						$tot_a = 0;
 						$tot_b = 0;
@@ -62,6 +79,11 @@
 						$tot_f = 0;
 						$tot_g = 0;
 						$tot_h = 0;
+						$tot_i = 0;
+						$tot_j = 0;
+						$tot_k = 0;
+						$tot_l = 0;
+						$tot_m = 0;
 					
 						$dep = NULL;
 						$tot = 0;
@@ -73,18 +95,27 @@
 						$f = 0;
 						$g = 0;
 						$h = 0;
-								
+						$i = 0;
+						$j = 0;
+						$k = 0;
+						$l = 0;
+						$m = 0;						
+					//	
 						// TOTALES
 						foreach($tables->result() as $reg){
 							$tot_tot += $reg->TOTAL;
-							$tot_a += $reg->DEFORESTACION;
-							$tot_b += $reg->ENFERMEDADES;
-							$tot_c += $reg->MORTANDAD;
-							$tot_d += $reg->ALEJAMIENTO;
-							$tot_e += $reg->PERDIDA;
-							$tot_f += $reg->ALTERACION;
-							$tot_g += $reg->OTRO;
-							//$tot_h += $reg->OTRO;
+							$tot_a += $reg->ENE;
+							$tot_b += $reg->FEB;
+							$tot_c += $reg->MAR;
+							$tot_d += $reg->ABR;
+							$tot_e += $reg->MAY;
+							$tot_f += $reg->JUN;
+							$tot_g += $reg->JUL;
+							$tot_h += $reg->AGO;
+							$tot_i += $reg->SET;
+							$tot_j += $reg->OCT;
+							$tot_k += $reg->NOV;
+							$tot_l += $reg->DIC;
 						}
 							echo '<tr>';
 							echo '<td> TOTAL</td>';										
@@ -104,20 +135,32 @@
 							echo '<td style="text-align:center;color:green">' . round($tot_f*100/$tot_tot,2) . '%</td>';	
 							echo '<td style="text-align:center">' . $tot_g . '</td>';										
 							echo '<td style="text-align:center;color:green">' . round($tot_g*100/$tot_tot,2) . '%</td>';	
-							// echo '<td style="text-align:center">' . $tot_h. '</td>';										
-							// echo '<td style="text-align:center;color:green">' . round($tot_h*100/$tot_tot,2) . '%</td>';																		
+							echo '<td style="text-align:center">' . $tot_h. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_h*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_i. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_i*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_j . '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_j*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_k. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_k*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_l . '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_l*100/$tot_tot,2) . '%</td>';																									
 							echo '</tr>';						
 						foreach($tables->result() as $reg){
 							$dep = $reg->DEPARTAMENTO;
 							$tot = $reg->TOTAL;
-							$a = $reg->DEFORESTACION;
-							$b = $reg->ENFERMEDADES;
-							$c = $reg->MORTANDAD;
-							$d = $reg->ALEJAMIENTO;
-							$e = $reg->PERDIDA;
-							$f = $reg->ALTERACION;
-							$g = $reg->OTRO;
-							//$h = $reg->OTRO;							
+							$a 	 = $reg->ENE;
+							$b 	 = $reg->FEB;
+							$c 	 = $reg->MAR;
+							$d 	 = $reg->ABR;
+							$e 	 = $reg->MAY;
+							$f 	 = $reg->JUN;
+							$g 	 = $reg->JUL;
+							$h 	 = $reg->AGO;
+							$i 	 = $reg->SET;
+							$j 	 = $reg->OCT;
+							$k 	 = $reg->NOV;
+							$l 	 = $reg->DIC;						
 
 							echo '<tr>';
 							echo '<td>' . $dep . '</td>';										
@@ -137,8 +180,16 @@
 							echo '<td style="text-align:center;color:green">' . round($f*100/$tot_tot,2) . '%</td>';		
 							echo '<td style="text-align:center">' . $g . '</td>';										
 							echo '<td style="text-align:center;color:green">' . round($g*100/$tot_tot,2) . '%</td>';	
-							// echo '<td style="text-align:center">' . $h. '</td>';										
-							// echo '<td style="text-align:center;color:green">' . round($h*100/$tot_tot,2) . '%</td>';																																																									
+							echo '<td style="text-align:center">' . $h. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($h*100/$tot_tot,2) . '%</td>';
+							echo '<td style="text-align:center">' . $i. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($i*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $j . '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($j*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $k. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($k*100/$tot_tot,2) . '%</td>';		
+							echo '<td style="text-align:center">' . $l . '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($l*100/$tot_tot,2) . '%</td>';																																																																
 							echo '</tr>';
 
 							//reiniciadores
@@ -152,11 +203,17 @@
 							$f = 0;
 							$g = 0;
 							$h = 0;
+							$i = 0;
+							$j = 0;
+							$k = 0;
+							$l = 0;
+							$m = 0;									
 						}
 					echo '</tbody>';
 				echo '</table>';
 
 		?>
+		<?php $this->load->view('tabulados/comunidad/includes/text_view.php'); ?>
 		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
 	</div>
 </div>

@@ -72,7 +72,7 @@ function anio1(a,b)
 { 
 
 anio = document.getElementById('s2_3a').value;
-if( (anio>=1930 && anio<=2005) || anio==9999)
+if( (anio>=1919 && anio<=2005) || anio==9999)
 { 
 //rellenar2(a,b);	
 }

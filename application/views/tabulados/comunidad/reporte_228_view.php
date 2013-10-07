@@ -9,24 +9,28 @@
 
 
  	<div class="span10" id="ap-content">
-    	<h4 style="text-align:center">CUADRO N° 210</h4>
-    	<h4 style="text-align:center">PERÚ: COMUNIDADES POR SERVICIOS DE COMUNICACIÓN, SEGÚN DEPARTAMENTO, 2013</h4>
+    	<h4 style="text-align:center">CUADRO N° 228</h4>
+    	<h4 style="text-align:center">PERÚ: COMUNIDADES POR TIPO DE ACTIVIDAD QUE REALIZAN, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 						echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="12" style="text-align:center">Servicios de comunicación</th>';																																														
+						echo '<th colspan="26" style="text-align:center">Tipo de actividad</th>';																																														
 						echo '</tr>';
-
+																	
+																									
 						echo '<tr>';
-						echo '<th colspan="2" style="text-align:center">Telefonía fija</th>';										
-						echo '<th colspan="2" style="text-align:center">Telefonía pública</th>';						
-						echo '<th colspan="2" style="text-align:center">Telefonía celular</th>';						
-						echo '<th colspan="2" style="text-align:center">Internet</th>';						
-						echo '<th colspan="2" style="text-align:center">TV por cable</th>';						
-						echo '<th colspan="2" style="text-align:center">Ninguno</th>';						
+						echo '<th colspan="2" style="text-align:center">Pesca continental</th>';										
+						echo '<th colspan="2" style="text-align:center">Acuicultura continental</th>';						
+						echo '<th colspan="2" style="text-align:center">Agrícola</th>';						
+						echo '<th colspan="2" style="text-align:center">Pecuaria</th>';						
+						echo '<th colspan="2" style="text-align:center">Minería</th>';						
+						echo '<th colspan="2" style="text-align:center">Caza</th>';						
+						echo '<th colspan="2" style="text-align:center">Recolección</th>';						
+						echo '<th colspan="2" style="text-align:center">Artesanía</th>';						
+						echo '<th colspan="2" style="text-align:center">Otro</th>';										
 						echo '</tr>';
 
 						echo '<tr>';
@@ -43,11 +47,18 @@
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';	
 						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																
+						echo '<th style="text-align:center;color:green">%</th>';
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';	
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';																											
 						echo '</tr>';
 
 					echo '</thead>';
 					echo '<tbody>';
+					// variables	
 						$tot_tot = 0;
 						$tot_a = 0;
 						$tot_b = 0;
@@ -55,6 +66,13 @@
 						$tot_d = 0;
 						$tot_e = 0;
 						$tot_f = 0;
+						$tot_g = 0;
+						$tot_h = 0;
+						$tot_i = 0;
+						$tot_j = 0;
+						$tot_k = 0;
+						$tot_l = 0;
+						$tot_m = 0;
 					
 						$dep = NULL;
 						$tot = 0;
@@ -64,16 +82,30 @@
 						$d = 0;
 						$e = 0;
 						$f = 0;
-								
+						$g = 0;
+						$h = 0;
+						$i = 0;
+						$j = 0;
+						$k = 0;
+						$l = 0;
+						$m = 0;						
+					//		
 						// TOTALES
 						foreach($tables->result() as $reg){
 							$tot_tot += $reg->TOTAL;
-							$tot_a += $reg->FIJA;
-							$tot_b += $reg->PUBLICA;
-							$tot_c += $reg->CELULAR;
-							$tot_d += $reg->INTERNET;
-							$tot_e += $reg->CABLE;
-							$tot_f += $reg->NINGUNO;
+							$tot_a += $reg->P_CONTINENTAL;
+							$tot_b += $reg->A_CONTINENTAL;
+							$tot_c += $reg->AGRICOLA;
+							$tot_d += $reg->PECUARIA;
+							$tot_e += $reg->MINERIA;
+							$tot_f += $reg->CAZA;
+							$tot_g += $reg->RECOLECCION;
+							$tot_h += $reg->ARTESANIA;
+							$tot_i += $reg->OTRO;
+							// $tot_j += $reg->COMPUTADORA;
+							// $tot_k += $reg->TELEVISOR;
+							// $tot_l += $reg->DVD;
+							// $tot_m += $reg->PIZARRA;							
 						}
 							echo '<tr>';
 							echo '<td> TOTAL</td>';										
@@ -90,17 +122,26 @@
 							echo '<td style="text-align:center">' . $tot_e . '</td>';										
 							echo '<td style="text-align:center;color:green">' . round($tot_e*100/$tot_tot,2) . '%</td>';	
 							echo '<td style="text-align:center">' . $tot_f. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_f*100/$tot_tot,2) . '%</td>';												
+							echo '<td style="text-align:center;color:green">' . round($tot_f*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_g . '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_g*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_h. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_h*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $tot_i. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($tot_i*100/$tot_tot,2) . '%</td>';																									
 							echo '</tr>';						
 						foreach($tables->result() as $reg){
 							$dep = $reg->DEPARTAMENTO;
 							$tot = $reg->TOTAL;
-							$a = $reg->FIJA;
-							$b = $reg->PUBLICA;
-							$c = $reg->CELULAR;
-							$d = $reg->INTERNET;
-							$e = $reg->CABLE;
-							$f = $reg->NINGUNO;
+							$a 	 = $reg->P_CONTINENTAL;
+							$b 	 = $reg->A_CONTINENTAL;
+							$c 	 = $reg->AGRICOLA;
+							$d 	 = $reg->PECUARIA;
+							$e 	 = $reg->MINERIA;
+							$f 	 = $reg->CAZA;
+							$g 	 = $reg->RECOLECCION;
+							$h 	 = $reg->ARTESANIA;
+							$i 	 = $reg->OTRO;						
 
 							echo '<tr>';
 							echo '<td>' . $dep . '</td>';										
@@ -117,7 +158,13 @@
 							echo '<td style="text-align:center">' . $e . '</td>';										
 							echo '<td style="text-align:center;color:green">' . round($e*100/$tot_tot,2) . '%</td>';	
 							echo '<td style="text-align:center">' . $f. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($f*100/$tot_tot,2) . '%</td>';																																																			
+							echo '<td style="text-align:center;color:green">' . round($f*100/$tot_tot,2) . '%</td>';		
+							echo '<td style="text-align:center">' . $g . '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($g*100/$tot_tot,2) . '%</td>';	
+							echo '<td style="text-align:center">' . $h. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($h*100/$tot_tot,2) . '%</td>';
+							echo '<td style="text-align:center">' . $i. '</td>';										
+							echo '<td style="text-align:center;color:green">' . round($i*100/$tot_tot,2) . '%</td>';																																																																
 							echo '</tr>';
 
 							//reiniciadores
@@ -129,11 +176,19 @@
 							$d = 0;
 							$e = 0;
 							$f = 0;
+							$g = 0;
+							$h = 0;
+							$i = 0;
+							$j = 0;
+							$k = 0;
+							$l = 0;
+							$m = 0;									
 						}
 					echo '</tbody>';
 				echo '</table>';
 
 		?>
+		<?php $this->load->view('tabulados/comunidad/includes/text_view.php'); ?>
 		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
 	</div>
 </div>

@@ -146,12 +146,12 @@ $s4_3=$row['s4_3'];
               <option value="0">Seleccionar</option>
               <?php
 				  
-				   $result = mysql_query("SELECT * FROM  marco GROUP BY CCDD ORDER BY DEPARTAMENTO ASC ");
+				   $result = mysql_query("SELECT * FROM  ccpp GROUP BY COD_DD ORDER BY DEPARTAMENTO ASC ");
 				   while ($row = mysql_fetch_array($result)){
 
                 
-                        if ($s4_1_dd_cod==$row['CCDD']) {  echo '<option value="'.$row['CCDD'].'" selected="selected">'.$row['DEPARTAMENTO'].'</option>'; } else
-                    { echo'<option value="'.$row['CCDD'].'">'.$row['DEPARTAMENTO'].'</option>';  }
+                        if ($s4_1_dd_cod==$row['COD_DD']) {  echo '<option value="'.$row['COD_DD'].'" selected="selected">'.$row['DEPARTAMENTO'].'</option>'; } else
+                    { echo'<option value="'.$row['COD_DD'].'">'.$row['DEPARTAMENTO'].'</option>';  }
 					
 					 }
 				  

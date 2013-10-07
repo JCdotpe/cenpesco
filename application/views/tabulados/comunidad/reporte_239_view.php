@@ -9,22 +9,22 @@
 
 
  	<div class="span10" id="ap-content">
-    	<h4 style="text-align:center">CUADRO N° 207</h4>
-    	<h4 style="text-align:center">PERÚ: COMUNIDADES POR RAZONES QUE CONSIDERAN DEFICIENTE EL SERVICIO DE AGUA POR RED PÚBLICA, SEGÚN DEPARTAMENTO, 2013</h4>
+    	<h4 style="text-align:center">CUADRO N° 239</h4>
+    	<h4 style="text-align:center">PERÚ: COMUNIDADES POR TIPO DE PUNTO DE DESEMBARQUE, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 						echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="10" style="text-align:center">Razones que consideran deficiente el servicio de agua por red pública</th>';																																														
+						echo '<th colspan="10" style="text-align:center">Tipo de punto de desembarque</th>';																																														
 						echo '</tr>';
 
 						echo '<tr>';
-						echo '<th colspan="2" style="text-align:center">Interrupciones / cortes de agua</th>';										
-						echo '<th colspan="2" style="text-align:center">Servicio de agua restringido o limitado</th>';						
-						echo '<th colspan="2" style="text-align:center">Costo elevado del servicio / tarifa elevada</th>';						
-						echo '<th colspan="2" style="text-align:center">Otra</th>';						
+						echo '<th colspan="2" style="text-align:center">Puerto</th>';										
+						echo '<th colspan="2" style="text-align:center">Playa</th>';						
+						echo '<th colspan="2" style="text-align:center">Desembarcadero pesquero artesanal</th>';						
+						echo '<th colspan="2" style="text-align:center">Otro</th>';						
 						echo '</tr>';
 
 						echo '<tr>';
@@ -60,10 +60,10 @@
 						// TOTALES
 						foreach($tables->result() as $reg){
 							$tot_tot += $reg->TOTAL;
-							$tot_a += $reg->INTERRUPCION;
-							$tot_b += $reg->RESTRINGIDO;
-							$tot_c += $reg->COSTO;
-							$tot_d += $reg->OTRA;
+							$tot_a += $reg->PUERTO;
+							$tot_b += $reg->PLAYA;
+							$tot_c += $reg->ARTESANAL;
+							$tot_d += $reg->OTRO;
 						}
 							echo '<tr>';
 							echo '<td> TOTAL</td>';										
@@ -81,10 +81,10 @@
 						foreach($tables->result() as $reg){
 							$dep = $reg->DEPARTAMENTO;
 							$tot = $reg->TOTAL;
-							$a = $reg->INTERRUPCION;
-							$b = $reg->RESTRINGIDO;
-							$c = $reg->COSTO;
-							$d = $reg->OTRA;
+							$a 	 = $reg->PUERTO;
+							$b 	 = $reg->PLAYA;
+							$c 	 = $reg->ARTESANAL;
+							$d 	 = $reg->OTRO;
 
 							echo '<tr>';
 							echo '<td>' . $dep . '</td>';										
@@ -113,6 +113,7 @@
 				echo '</table>';
 
 		?>
+		<?php $this->load->view('tabulados/comunidad/includes/text_view.php'); ?>
 		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
 	</div>
 </div>

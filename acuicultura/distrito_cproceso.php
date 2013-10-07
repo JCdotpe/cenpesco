@@ -7,12 +7,12 @@ $coddep=trim($_GET['coddep']);
 $coddis=trim($_GET['coddis']);
 
 echo '<select name="s4_1_di_cod" id="s4_1_di_cod" onchange="'."carga_cCepo1('".$codprov."')".'" class="letra_frm"> <option value="">Seleccionar</option>';
-				   $result = mysql_query("SELECT * FROM  marco WHERE CCPP ='".$codprov."' AND CCDD='".$coddep."' GROUP BY CCDI ORDER BY DISTRITO ASC");
+				   $result = mysql_query("SELECT * FROM  ccpp WHERE COD_PP ='".$codprov."' AND COD_DD='".$coddep."' GROUP BY COD_DI ORDER BY DISTRITO ASC");
 				   while ($row = mysql_fetch_array($result)){
 
                      
-                        if ($s4_1_di_cod==$row['CCDI']) {  echo '<option value="'.$row['CCDI'].'" selected="selected">'.utf8_encode($row['DISTRITO']).'</option>'; } else
-                    { echo'<option value="'.$row['CCDI'].'">'.utf8_encode($row['DISTRITO']).'</option>';  }
+                        if ($s4_1_di_cod==$row['COD_DI']) {  echo '<option value="'.$row['COD_DI'].'" selected="selected">'.utf8_encode($row['DISTRITO']).'</option>'; } else
+                    { echo'<option value="'.$row['COD_DI'].'">'.utf8_encode($row['DISTRITO']).'</option>';  }
 					
 					 }
              echo '</select>';
