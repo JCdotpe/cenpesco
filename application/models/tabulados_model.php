@@ -147,15 +147,15 @@ function get_report9($a = null, $b = null){
     if($a == 1)
         $this->db->where('p2.S2_16',1); 
     if($a == 2){
-        $this->db->where('p2.S2_16 >=',2);                  
-        $this->db->where('p2.S2_16 <=',5);                  
+        $this->db->where('p2.S2_16',2);                  
+        //$this->db->where('p2.S2_16 <=',5);                  
     }
     if($a == 3){
-        $this->db->where('p2.S2_16 >=',6);                  
-        $this->db->where('p2.S2_16 <=',10);                  
+        $this->db->where('p2.S2_16 ',3);                  
+        //$this->db->where('p2.S2_16 <=',10);                  
     }   
     if($a == 4){               
-        $this->db->where('p2.S2_16 >',10);                  
+        $this->db->where('p2.S2_16',4);                  
     }        
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);

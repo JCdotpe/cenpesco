@@ -262,7 +262,7 @@ echo form_open($this->uri->uri_string(),$attr);
 
 		//echo anchor('/udra', 'inicio','class="btn btn-primary pull-left"');  
 
-		echo form_submit('send', 'Registrar','class="btn btn-primary pull-right"');  
+		//echo form_submit('send', 'Registrar','class="btn btn-primary pull-right"');  
 
 echo form_close();
 

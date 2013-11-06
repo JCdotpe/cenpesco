@@ -542,7 +542,7 @@ $user10=$row['user10'];
                   <td align="left">&nbsp;</td>
                 </tr>
               </table>
-                <input name="s10_8_10_o" type="text" id="s10_8_10_o"  onkeypress="return letras(event)" value="<?php echo $s10_8_1_o;  ?>" size="11" readonly="readonly"/></td>
+                <input name="s10_8_10_o" type="text" id="s10_8_10_o"  onkeypress="return letras(event)" value="<?php echo $s10_8_10_o;  ?>" size="11" readonly="readonly"/></td>
             </tr>
             <tr>
               <td height="28" align="left" >9. ¿EN QUÉ TEMAS NECESITA ASISTENCIA TÉCNICA?</td>

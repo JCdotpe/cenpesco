@@ -9,27 +9,34 @@
 
 
  	<div class="span10" id="ap-content">
-    	<h4>PERÚ: PESCADORES POR TIPO DE ACTIVIDAD, SEGÚN DEPARTAMENTO</h4>
+    	<h4>PERÚ: PESCADORES POR RAZONES POR LA QUE ELIGIÓ DESARROLLAR ESTA ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013</h4>
     	<?php
 				echo '<table border="1" class="table table-hover table-condensed" id="tabul">';
 					echo '<thead>';
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="4" style="text-align:center">Tipo de Actividad</th>';																																														
+						echo '<th colspan="8" style="text-align:center">Razones  por lo que eligió ser pescador</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										
 						echo '<th></th>';										
 						echo '<th></th>';										
-						echo '<th colspan="2" style="text-align:center">Principal</th>';										
-						echo '<th colspan="2" style="text-align:center">Secundaria</th>';																					
+						echo '<th colspan="2" style="text-align:center">Tradición familiar</th>';										
+						echo '<th colspan="2" style="text-align:center">Posibilidad de desarrollo</th>';																					
+						echo '<th colspan="2" style="text-align:center">Necesidad económica</th>';																					
+						echo '<th colspan="2" style="text-align:center">Otro</th>';																					
 						echo '</tr>';
+							
 
 						echo '<tr>';
 						echo '<th></th>';										
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';	
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';	
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';	
 						echo '<th style="text-align:center">Abs</th>';										
@@ -44,7 +51,7 @@
 							echo '<td style="text-align:center">' . $vt[$d->CCDD] . '</td>';									
 							echo '<td style="text-align:center;color:green">' . round($vt[$d->CCDD]*100/$total,2) . '%</td>';	
 
-							for($i=1; $i<=2;$i++){
+							for($i=1; $i<=4;$i++){
 
 								$a = (isset($vr[$d->CCDD][$i])) ? $vr[$d->CCDD][$i] : 0;
 								$ap = ($total!=0) ? round($a*100/$total,2) : 0;
@@ -61,7 +68,7 @@
 						echo '<td style="text-align:center">' . $total . '</td>';										
 						echo '<td style="text-align:center;color:green">100%</td>';	
 
-							for($i=1; $i<=2;$i++){
+							for($i=1; $i<=4;$i++){
 								$a = (isset($tr[$i])) ? $tr[$i] : 0;
 								$ap = ($total!=0) ? round($a*100/$total,2) : 0;
 								echo '<td style="text-align:center">' . $a . '</td>';										

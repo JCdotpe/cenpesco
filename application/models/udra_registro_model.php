@@ -178,6 +178,20 @@ class Udra_registro_model extends CI_MODEL
 		return $q;
 	}
 
+	function get_avance_gby_ccpp_by_odei($odeis){/* AVANCE REGISTRO - CCPP */
+		$q = $this->db->query("
+						select m.ODEI_COD,m. NOM_ODEI, m.CCPP, m.PROVINCIA ,  m.CCDI, m.DISTRITO, m. CODCCPP, m.CENTRO_POBLADO , COALESCE(u.FORMULARIOS,0) UDRA, COALESCE(d.DIG,0) DIGITACION  
+						from marco m 
+						left join udra_registro u ON m.ODEI_COD = u.ODEI_COD AND m.CCPP = u.CCPP AND m.CCDI = u.CCDI AND m.CODCCPP = u.COD_CCPP 
+						left join (select ODEI_COD, CCPP, CCDI, CCPP_CODPROC,count(id_reg) DIG from registro_pescadores GROUP BY ODEI_COD, CCPP, CCDI, CCPP_CODPROC) d ON  m.ODEI_COD = d.ODEI_COD   AND m.CCPP = d.CCPP  AND m.CCDI = d.CCDI  AND m.CODCCPP = d.CCPP_CODPROC   
+						WHERE m.ODEI_COD IN (". join($odeis,',') .")
+						order by m.NOM_ODEI, m.PROVINCIA, m.DISTRITO, m.CENTRO_POBLADO;			
+					");
+		return $q;
+	}
+
+
+
 }
 
 

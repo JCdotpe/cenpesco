@@ -104,7 +104,7 @@ $s4_km=$row['s4_km'];
 $s4_ref=$row['s4_ref'];
 $s4_2=$row['s4_2'];
 $s4_3=$row['s4_3'];
-	
+$s4_1_ccpp1=$row['s4_1_ccpp1'];	
 }
 }
 
@@ -133,12 +133,12 @@ $s4_3=$row['s4_3'];
       <td height="23" align="left" class="texto_mediano" >1. ¿Dónde está ubicado su centro de cultivo?</td>
     </tr>
     <tr>
-      <td height="29" align="left"><table width="690" border="0" cellpadding="1" cellspacing="1">
+      <td height="29" align="left"><table width="773" border="0" cellpadding="1" cellspacing="1">
         <tr>
-          <td width="209" align="left" valign="bottom" class="texto">1.1 DEPARTAMENTO</td>
-          <td width="123" align="left" valign="bottom"><span class="texto"> 1.2 PROVINCIA</span></td>
-          <td width="106" align="left" valign="bottom"><span class="texto"> 1.3 DISTRITO</span></td>
-          <td width="239" align="left" valign="bottom"><span class="texto">1.4 CENTRO POBLADO/COMUNIDAD</span></td>
+          <td width="206" align="left" valign="bottom" class="texto">1.1 DEPARTAMENTO</td>
+          <td width="134" align="left" valign="bottom"><span class="texto"> 1.2 PROVINCIA</span></td>
+          <td width="150" align="left" valign="bottom"><span class="texto"> 1.3 DISTRITO</span></td>
+          <td width="270" align="left" valign="bottom"><span class="texto">1.4 CENTRO POBLADO/COMUNIDAD</span></td>
         </tr>
         <tr>
           <td align="left"><span class="letra_frm">
@@ -179,6 +179,14 @@ $s4_3=$row['s4_3'];
               </select>
             </label>
           </div></td>
+        </tr>
+        <tr>
+          <td align="left">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+          <td class="texto">CCPP Alternativo</td>
+          <td align="left" class="texto">
+            <input name="s4_1_ccpp1" type="text" id="s4_1_ccpp1" value="<?php echo $s4_1_ccpp1; ?>" size="40" maxlength="66" />
+          </td>
         </tr>
       </table> </td>
     </tr>

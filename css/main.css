@@ -630,3 +630,15 @@ min-height: 22px;
   color: #00A1C7;
 }
 
+/* PARA GRAFICOS HIGHCHARTS*/
+/*.chart-wrapper {
+ position: relative;
+  padding-bottom: 100%;
+    width:100%;
+    float:left;
+}*/
+
+/*.chart-inner {
+position: absolute;
+    width: 300%; height: 50%; 
+}*/

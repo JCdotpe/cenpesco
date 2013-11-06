@@ -235,9 +235,9 @@ $s8_10_4=$row['s8_10_4'];
                 </tr>
                 <tr>
                   <td align="left">Otro</td>
-                  <td align="left"><input name="s8_2_8" type="text" id="s8_2_8"    onchange="return otros(this.name,'s8_2_1_o','1')" onkeypress="return binario(event)" onkeyup="return na2('s8_2_','8','s8_2_8')" value="<?php echo $s8_2_8; ?>" size="3" maxlength="1"/></td>
+                  <td align="left"><input name="s8_2_8" type="text" id="s8_2_8"    onchange="return otros(this.name,'s8_2_8_o','1')" onkeypress="return binario(event)" onkeyup="return na2('s8_2_','8','s8_2_8')" value="<?php echo $s8_2_8; ?>" size="3" maxlength="1"/></td>
                   <td align="left">Especifique
-                    <input name="s8_2_1_o" type="text" id="s8_2_1_o" onkeypress="return letras(event)" value="<?php echo $s8_2_1_o; ?>" size="14" maxlength="80"/></td>
+                    <input name="s8_2_8_o" type="text" id="s8_2_8_o" onkeypress="return letras(event)" value="<?php echo $s8_2_8_o; ?>" size="14" maxlength="80"/></td>
                 </tr>
                 </table></td>
             </tr>

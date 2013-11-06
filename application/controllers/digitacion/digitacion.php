@@ -9,6 +9,7 @@ class Digitacion extends CI_Controller {
 		$this->load->library('security');
 		$this->load->library('tank_auth');
 		$this->lang->load('tank_auth');		
+		$this->load->model('usuarios_permisos_model');
 
 		//User is logged in
 		if (!$this->tank_auth->is_logged_in()) {
@@ -38,19 +39,55 @@ class Digitacion extends CI_Controller {
 		$this->load->model('ubigeo_piloto_model');	
 	}
 
-
 	public function index()
 	{
-			//$data['test'] = array(1,2,3,4,5);
 			// $data['departamento'] = $this->ubigeo_piloto_model->get_dpto_by_code($this->tank_auth->get_ubigeo());
 			//$data['option'] = 1; 
 			//$data['pais']=$this->pais_model->select_pais();
 			$data['nav'] = TRUE;
-
 			$data['title'] = 'Digitacion';
 			$data['main_content'] = 'digitacion/index_view';
-	        $this->load->view('backend/includes/template', $data);
+			$data['usuarios'] = $this->usuarios_permisos_model->get_users_by_tipo(6);
+			$data['sedes'] = $this->usuarios_permisos_model->get_sedes_operativas();
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 270) || ($u_id == 271) || ($u_id == 272) || ($u_id == 174) ) ? FALSE : TRUE ;
+			$this->load->view('backend/includes/template', $data);
+	       
+	}
 
+
+	public function actualizar_sede_user()
+	{
+		$is_ajax = $this->input->post('ajax');
+		if ($is_ajax) {
+
+
+			$usuario = explode('-', $this->input->post('usuario'));
+			$nombre = explode(' ', $this->input->post('nombre'));
+			$data = array(
+				'user_id' 		=> $usuario[0],
+				'user_name'		=> $nombre[0],
+				'user_dni'		=> $usuario[1],
+				'sede_cod'		=> $this->input->post('sede'),
+				'nom_sede'		=> $this->input->post('nom_sede'),
+				'supervisor_id' => $this->tank_auth->get_user_id(),
+				'observacion' 	=> $this->input->post('OBS'),
+				'fecha' 		=> date('Y-m-d H:i:s'),
+				);
+			
+			$insertados = 0;
+			$afectados	= $this->usuarios_permisos_model->update_user_ubigeo($usuario[0], $usuario[1], $this->input->post('sede')); // actualiza SEDE
+			if($afectados == 1)
+			{
+				$insertados = $this->usuarios_permisos_model->insert_historial_user_sede($data); //guarda el historial
+			}
+			$da['insertados'] = $insertados;
+			$da['afectados'] = $afectados;
+			$datos['datos'] = $da;
+			$this->load->view('backend/json/json_view', $datos);
+			//echo json_encode($insertados);
+
+		} 
 	}
 }
 

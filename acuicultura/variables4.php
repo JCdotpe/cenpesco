@@ -25,6 +25,9 @@ $s4_3=($_POST['s4_3']=='')?'NULL':'\''.$_POST['s4_3'].'\'';
 $ff_rr4=date('Y-m-d H:i:s');
 $ff_rr4=($ff_rr4=='')?'NULL':'\''.$ff_rr4.'\'';
 $user4=($_SESSION['user_id']=='')?'NULL':'\''.$_SESSION['user_id'].'\'';
+
+$s4_1_ccpp1=($_POST['s4_1_ccpp1']=='')?'NULL':'\''.$_POST['s4_1_ccpp1'].'\'';
+
 $frm4=$_POST['frm4'];
 $opc4=$_POST['opc4'];
 $opc=$_POST['opc'];
@@ -73,7 +76,7 @@ $s4_1_ccpp=($s4_1_ccpp=='')?'NULL':'\''.$s4_1_ccpp.'\'';
 if($frm4==1 and $opc4==1)
 {
 //echo $s4_1_ccpp_cod;
-$sql=sprintf("INSERT INTO acu_seccion4 (`id4`,`s4_1_dd`,`s4_1_dd_cod`,`s4_1_pp`,`s4_1_pp_cod`,`s4_1_di`,`s4_1_di_cod`,`s4_1_ccpp`,`s4_1_ccpp_cod`,`s4_tipvia`,`s4_nomvia`,`s4_ptanum`,`s4_mz`,`s4_lote`,`s4_km`,`s4_ref`,`s4_2`,`s4_3`,`ff_rr4`,`user4`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",$id4,$s4_1_dd,$s4_1_dd_cod,$s4_1_pp,$s4_1_pp_cod,$s4_1_di,$s4_1_di_cod,$s4_1_ccpp,$s4_1_ccpp_cod,$s4_tipvia,$s4_nomvia,$s4_ptanum,$s4_mz,$s4_lote,$s4_km,$s4_ref,$s4_2,$s4_3,$ff_rr4,$user4); 
+$sql=sprintf("INSERT INTO acu_seccion4 (`id4`,`s4_1_dd`,`s4_1_dd_cod`,`s4_1_pp`,`s4_1_pp_cod`,`s4_1_di`,`s4_1_di_cod`,`s4_1_ccpp`,`s4_1_ccpp_cod`,`s4_tipvia`,`s4_nomvia`,`s4_ptanum`,`s4_mz`,`s4_lote`,`s4_km`,`s4_ref`,`s4_2`,`s4_3`,`ff_rr4`,`user4`,`s4_1_ccpp1`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",$id4,$s4_1_dd,$s4_1_dd_cod,$s4_1_pp,$s4_1_pp_cod,$s4_1_di,$s4_1_di_cod,$s4_1_ccpp,$s4_1_ccpp_cod,$s4_tipvia,$s4_nomvia,$s4_ptanum,$s4_mz,$s4_lote,$s4_km,$s4_ref,$s4_2,$s4_3,$ff_rr4,$user4,$s4_1_ccpp1); 
 
 $result = mysql_query($sql);
 echo mysql_error ();
@@ -85,7 +88,7 @@ $formulario=1;
 
 if($frm4==1 and $opc4==2)
 {
-$sql= "UPDATE acu_seccion4 SET s4_1_dd=".sprintf("%s",$s4_1_dd).", s4_1_dd_cod=".sprintf("%s",$s4_1_dd_cod).", s4_1_pp=".sprintf("%s",$s4_1_pp).", s4_1_pp_cod=".sprintf("%s",$s4_1_pp_cod).", s4_1_di=".sprintf("%s",$s4_1_di).", s4_1_di_cod=".sprintf("%s",$s4_1_di_cod).", s4_1_ccpp=".sprintf("%s",$s4_1_ccpp).", s4_1_ccpp_cod=".sprintf("%s",$s4_1_ccpp_cod).", s4_tipvia=".sprintf("%s",$s4_tipvia).", s4_nomvia=".sprintf("%s",$s4_nomvia).", s4_ptanum=".sprintf("%s",$s4_ptanum).", s4_mz=".sprintf("%s",$s4_mz).", s4_lote=".sprintf("%s",$s4_lote).", s4_km=".sprintf("%s",$s4_km).", s4_ref=".sprintf("%s",$s4_ref).", s4_2=".sprintf("%s",$s4_2).", s4_3=".sprintf("%s",$s4_3)." WHERE id4='".$_SESSION['id1']."'";
+$sql= "UPDATE acu_seccion4 SET s4_1_dd=".sprintf("%s",$s4_1_dd).", s4_1_dd_cod=".sprintf("%s",$s4_1_dd_cod).", s4_1_pp=".sprintf("%s",$s4_1_pp).", s4_1_pp_cod=".sprintf("%s",$s4_1_pp_cod).", s4_1_di=".sprintf("%s",$s4_1_di).", s4_1_di_cod=".sprintf("%s",$s4_1_di_cod).", s4_1_ccpp=".sprintf("%s",$s4_1_ccpp).", s4_1_ccpp_cod=".sprintf("%s",$s4_1_ccpp_cod).", s4_tipvia=".sprintf("%s",$s4_tipvia).", s4_nomvia=".sprintf("%s",$s4_nomvia).", s4_ptanum=".sprintf("%s",$s4_ptanum).", s4_mz=".sprintf("%s",$s4_mz).", s4_lote=".sprintf("%s",$s4_lote).", s4_km=".sprintf("%s",$s4_km).", s4_ref=".sprintf("%s",$s4_ref).", s4_2=".sprintf("%s",$s4_2).", s4_3=".sprintf("%s",$s4_3).", s4_2=".sprintf("%s",$s4_2).", s4_1_ccpp1=".sprintf("%s",$s4_1_ccpp1)." WHERE id4='".$_SESSION['id1']."'";
 
 $result = mysql_query($sql);
 echo mysql_error ();	

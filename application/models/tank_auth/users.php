@@ -289,9 +289,11 @@ class Users extends CI_Model
 
 		function users_cenpesco_by_tipo($tipo)
 	{
-		$this->db->select('id, username');
+		$this->db->select('users.id, username, dni');
+		$this->db->from($this->table_name);
+		$this->db->join('user_profiles', $this->table_name.".id = user_profiles.user_id", 'inner');
 		$this->db->where('tipo', $tipo);
-		$q = $this->db->get($this->table_name);
+		$q = $this->db->get();
 		return $q;
 	}
 		function users_cenpesco_by_name($username)

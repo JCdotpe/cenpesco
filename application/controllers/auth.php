@@ -119,21 +119,22 @@ class Auth extends CI_Controller
 	//*****************************************************************************
 	// cambio de contraseñas CENPESCO
 
-	// function change_password_cenpesco($tipo = null){
-	// 	$usuarios = $this->users->users_cenpesco_by_tipo($tipo);// obtiene usuarios del mismo tipo
-	// 	$cont = 0;
-	// 	foreach ($usuarios->result() as $key ) {
-	// 		if ($this->tank_auth->change_password_cenpesco($key->id,$key->username)) {
-	// 			$cont++;
-	// 		}
+	function change_password_cenpesco($tipo = null){
+		$usuarios = $this->users->users_cenpesco_by_tipo($tipo);// obtiene usuarios del mismo tipo
+		$cont = 0;
+		foreach ($usuarios->result() as $key ) {
+			$dni = ( $key->dni == NULL || !is_numeric($key->dni) || strlen($key->dni)<4 ) ? 1234 : substr($key->dni,-4)  ; 
+			if ( $this->tank_auth->change_password_cenpesco($key->id,$key->username . $dni) ) {
+				$cont++;
+			}
 			
-	// 	}
+		}
 
-	// 		$data['msg'] = $cont .' actualizados';
-	// 		$data['main_content'] = 'backend/login/passwd_change_view';
- //    		$this->load->view('backend/includes/template', $data);		
+			$data['msg'] = $cont .' actualizados';
+			$data['main_content'] = 'backend/login/passwd_change_view';
+    		$this->load->view('backend/includes/template', $data);		
 
-	// }
+	}
 
 
 	// function change_password_by($user_name, $new_pass){

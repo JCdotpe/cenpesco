@@ -16,20 +16,21 @@
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="16" style="text-align:center">Actividad adicional que reliza</th>';																																														
+						echo '<th colspan="18" style="text-align:center">Actividad que realiza la cónyuge o conviviente</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										
 						echo '<th></th>';										
 						echo '<th></th>';										
+						echo '<th colspan="2" style="text-align:center">Al cuidado del hogar</th>';										
 						echo '<th colspan="2" style="text-align:center">Agrícola</th>';										
 						echo '<th colspan="2" style="text-align:center">Pecuaria</th>';											
 						echo '<th colspan="2" style="text-align:center">Acuícola</th>';											
+						echo '<th colspan="2" style="text-align:center">Pesca</th>';											
 						echo '<th colspan="2" style="text-align:center">Caza</th>';											
 						echo '<th colspan="2" style="text-align:center">Construcción</th>';											
 						echo '<th colspan="2" style="text-align:center">Comercio</th>';											
 						echo '<th colspan="2" style="text-align:center">Otro</th>';											
-						echo '<th colspan="2" style="text-align:center">No tiene otra Actividad</th>';											
 						echo '</tr>';
 
 						echo '<tr>';
@@ -52,6 +53,8 @@
 						echo '<th style="text-align:center;color:green">%</th>';																				
 						echo '<th style="text-align:center">Abs</th>';										
 						echo '<th style="text-align:center;color:green">%</th>';							
+						echo '<th style="text-align:center">Abs</th>';										
+						echo '<th style="text-align:center;color:green">%</th>';
 						echo '</tr>';
 						$aa = 0;
 						$bb = 0;
@@ -62,7 +65,7 @@
 							echo '<td style="text-align:center">' . $vt[$d->CCDD] . '</td>';									
 							echo '<td style="text-align:center;color:green">' . round($vt[$d->CCDD]*100/$total,2) . '%</td>';	
 
-							for($i=1; $i<=8;$i++){
+							for($i=1; $i<=9;$i++){
 
 								$a = (isset($vr[$d->CCDD][$i])) ? $vr[$d->CCDD][$i] : 0;
 								$ap = ($total!=0) ? round($a*100/$total,2) : 0;
@@ -79,7 +82,7 @@
 						echo '<td style="text-align:center">' . $total . '</td>';										
 						echo '<td style="text-align:center;color:green">100%</td>';	
 
-							for($i=1; $i<=8;$i++){
+							for($i=1; $i<=9;$i++){
 								$a = (isset($tr[$i])) ? $tr[$i] : 0;
 								$ap = ($total!=0) ? round($a*100/$total,2) : 0;
 								echo '<td style="text-align:center">' . $a . '</td>';										

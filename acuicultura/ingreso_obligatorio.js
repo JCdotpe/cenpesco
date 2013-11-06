@@ -95,7 +95,7 @@ if( document.getElementById('s4_1_pp_cod').value=='') { alert("Verique el campo 
 
 if( document.getElementById('s4_1_di_cod').value=='') { alert("Verique el campo ¿Dónde está ubicado el lugar donde desarrolla su acuicultura? DISTRITO"); document.getElementById('s4_1_di_cod').focus; return false; } 
 
-if( document.getElementById('s4_1_ccpp_cod').value=='') { alert("Verique el campo ¿Dónde está ubicado el lugar donde desarrolla su acuicultura? CENTRO POBLADO"); document.getElementById('s4_1_ccpp_cod').focus; return false; } 
+//if( document.getElementById('s4_1_ccpp_cod').value=='') { alert("Verique el campo ¿Dónde está ubicado el lugar donde desarrolla su acuicultura? CENTRO POBLADO"); document.getElementById('s4_1_ccpp_cod').focus; return false; } 
 
 if( document.getElementById('s4_tipvia').value=='') { alert("Verique el campo Tipo de vía centro de produccion"); document.getElementById('s4_tipvia').focus; return false; } 
 if( document.getElementById('s4_nomvia').value=='') { alert("Verique el campo Nombre de la vía centro de produccion"); document.getElementById('s4_nomvia').focus; return false; } 

@@ -116,10 +116,11 @@ class Registro_avance extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
 			}					
-			$data['tables'] = $this->marco_model->get_registro_by_ccpp($odei); //get forms por ODEIS, 
-			$data['udra'] = $this->udra_registro_model->get_udra_total_by_ccpp($odei); //get forms por ODEIS, 
+			//$data['tables'] = $this->marco_model->get_registro_by_ccpp($odei); //get forms por ODEIS, 
+			$data['tables'] =  $this->udra_registro_model->get_avance_gby_ccpp_by_odei($odei); //get forms por ODEIS, 
+			// $data['udra'] = $this->udra_registro_model->get_udra_total_by_ccpp($odei); //get forms por ODEIS, 
 
-			$data['formularios'] = $this->udra_registro_model->get_n_formularios_by_ccpp($odei); //N° formularios ingresados en pescador completos
+			// $data['formularios'] = $this->udra_registro_model->get_n_formularios_by_ccpp($odei); //N° formularios ingresados en pescador completos
 		
 	    	$this->load->view('backend/includes/template', $data);	
 	}
@@ -133,10 +134,11 @@ class Registro_avance extends CI_Controller {
 				$odei[] = $key->ODEI_COD;
 			}
 
-			$tables = $this->marco_model->get_registro_by_ccpp($odei); 
-			$udra = $this->udra_registro_model->get_udra_total_by_ccpp($odei); //get UDRA por ODEIS,  	CCPP
+			//$tables = $this->marco_model->get_registro_by_ccpp($odei); 
+			$tables = $this->udra_registro_model->get_avance_gby_ccpp_by_odei($odei); 
+			//$udra = $this->udra_registro_model->get_udra_total_by_ccpp($odei); //get UDRA por ODEIS,  	CCPP
 
-			 $formularios = $this->udra_registro_model->get_n_formularios_by_ccpp($odei); //N° formularios ingresados en REGISTRO completos
+			//$formularios = $this->udra_registro_model->get_n_formularios_by_ccpp($odei); //N° formularios ingresados en REGISTRO completos
 
 			//******************************************************************************************
 
@@ -171,42 +173,19 @@ class Registro_avance extends CI_Controller {
 				$sheet->getStyle('A1')->getNumberFormat()->setFormatCode('');// formato para codigo col B, 	
 			// FORMATO 
 
-			//TOTALES
-				$sheet->setCellValue('I2','TOTAL' );
-
-				$total_2 = 0;
-				$total_3 = 0;
-
-				foreach ($udra->result() as $key ) {// TOTAL UDRA
-						$total_2 = $total_2 +  $key->TOTAL_FORM; 
-				}
-				$sheet->setCellValue('J2', $total_2);
-
-				foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
-						$total_3 = $total_3 +  $key->TOTAL_DIG;
-				}	
-				$sheet->setCellValue('K2', $total_3);
-
-				if ( $total_2>0){
-					$sheet->setCellValue('L2', number_format( ($total_3*100)/$total_2 , 2,'.' ,'') );								
-				}else{
-					$sheet->setCellValue('L2', 0 );		
-				}
-
-
-			// TOTALES
-
-
 			// EXPORTACION A EXCEL
-			$celda = 2;
-			$col = 1;
+
 
 
 			$i = 1;
-			$nform_udra = null;
-			$nform_reg = null;
-			foreach($tables as $row){
-				$celda++;
+			$celda = 2;
+			$tot_udra = null;
+			$tot_dig = null;
+			foreach($tables->result() as $row){
+				$celda++;				
+				$tot_udra += $row->UDRA;
+				$tot_dig  += $row->DIGITACION;
+
 				$sheet->setCellValue('A'.$celda, $i++);
 				$sheet->setCellValue('B'.$celda, $row->ODEI_COD);
 				$sheet->setCellValue('C'.$celda, $row->NOM_ODEI);
@@ -216,50 +195,19 @@ class Registro_avance extends CI_Controller {
 				$sheet->setCellValue('G'.$celda, $row->DISTRITO);
 				$sheet->setCellValue('H'.$celda, $row->CODCCPP);
 				$sheet->setCellValue('I'.$celda, $row->CENTRO_POBLADO);
-
-
-					if (isset($udra)){
-						foreach ($udra->result() as $key ) {
-							if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP) ){
-								$nform_udra =  $key->TOTAL_FORM; break;
-							}
-						}
-						if (is_numeric($nform_udra)){
-							$sheet->setCellValue('J'.$celda, $nform_udra);
-						}else{
-							$sheet->setCellValue('J'.$celda, 0);
-						}
-					}else{
-							$sheet->setCellValue('J'.$celda, 0);
-					}
-					//REGISTRO
-					if (isset($formularios)){
-						foreach ($formularios->result() as $key ) {
-							if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->CCPP_CODPROC)  ){
-								$nform_reg =  $key->TOTAL_DIG;
-								break;
-							}
-						}
-						if (is_numeric($nform_reg)){
-							$sheet->setCellValue('K'.$celda, $nform_reg);
-						}else{
-							$sheet->setCellValue('K'.$celda, 0);
-						}
-
-					}else{
-							$sheet->setCellValue('K'.$celda, 0);
-					}
-					//TOTAL AVANCE
-					if ( $nform_udra>0){
-						$sheet->setCellValue('L'.$celda, number_format( ($nform_reg*100)/$nform_udra , 2,'.' ,'') );								
-					}else{
-						$sheet->setCellValue('L'.$celda, 0);
-					}
-
-					$nform_udra = null;
-					$nform_reg = null;
+				$sheet->setCellValue('J'.$celda, $row->UDRA);
+				$sheet->setCellValue('K'.$celda, $row->DIGITACION);
+				$sheet->setCellValue('L'.$celda, ( ($row->UDRA > 0) ? number_format( ($row->DIGITACION*100)/$row->UDRA , 2,'.' ,'') : 0 ) );
 
 			}
+			//TOTALES
+				$sheet->setCellValue('I2','TOTAL' );
+				$sheet->setCellValue('J2', $tot_udra);
+				$sheet->setCellValue('K2', $tot_dig);
+				$sheet->setCellValue('L2', ( ( $tot_udra>0 ) ? number_format( ($tot_dig*100)/$tot_udra , 2,'.' ,'') : 0 ) );								
+			// TOTALES
+
+
 
  		// CUERPO
 

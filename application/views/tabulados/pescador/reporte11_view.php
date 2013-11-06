@@ -16,7 +16,7 @@
 						echo '<tr>';
 						echo '<th>Departamento</th>';					
 						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="12" style="text-align:center">Tipo de Actividad</th>';																																														
+						echo '<th colspan="12" style="text-align:center">Estado civil o conyugal</th>';																																														
 						echo '</tr>';
 						echo '<tr>';
 						echo '<th></th>';										

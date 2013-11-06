@@ -191,28 +191,30 @@ class Pescador extends CI_Controller {
 					$aa = 'S2_23_1_' . $i;
 					$ab = 'S2_23_8_' . $i;
 					$ac = 'S2_23_4_' . $i . 'A';
-					if(!is_null($son[$c->id][$aa])){
-						if( ($son[$c->id][$ab] == 2 && $son[$c->id][$ac] > 49) 
-							|| ($son[$c->id][$ab] == 3 && $son[$c->id][$ac] < 5)
-							|| ($son[$c->id][$ab] == 4 && $son[$c->id][$ac] < 10)
-							|| ($son[$c->id][$ab] == 5 && $son[$c->id][$ac] < 11)
-							|| ($son[$c->id][$ab] == 6 && $son[$c->id][$ac] < 16)
-							|| ($son[$c->id][$ab] == 7 && $son[$c->id][$ac] < 16)
-							|| ($son[$c->id][$ab] == 8 && $son[$c->id][$ac] < 18)
-							|| ($son[$c->id][$ab] == 9 && $son[$c->id][$ac] < 16)
-							|| ($son[$c->id][$ab] == 10 && $son[$c->id][$ac] < 21)){
-							$this->table->add_row(
-								$son[$c->id]['NOM_SEDE'],
-								$son[$c->id]['NOM_DD'],
-								$son[$c->id]['NOM_PP'],
-								$son[$c->id]['NOM_DI'],
-								$son[$c->id]['NOM_CCPP'],
-								$son[$c->id]['NFORM'],
-								$son[$c->id][$aa],
-								$son[$c->id][$ab],
-								$son[$c->id][$ac]
-							);		
-						}		
+					if($son[$c->id]){
+						if(!is_null($son[$c->id][$aa])){
+							if( ($son[$c->id][$ab] == 2 && $son[$c->id][$ac] > 49) 
+								|| ($son[$c->id][$ab] == 3 && $son[$c->id][$ac] < 5)
+								|| ($son[$c->id][$ab] == 4 && $son[$c->id][$ac] < 10)
+								|| ($son[$c->id][$ab] == 5 && $son[$c->id][$ac] < 11)
+								|| ($son[$c->id][$ab] == 6 && $son[$c->id][$ac] < 16)
+								|| ($son[$c->id][$ab] == 7 && $son[$c->id][$ac] < 16)
+								|| ($son[$c->id][$ab] == 8 && $son[$c->id][$ac] < 18)
+								|| ($son[$c->id][$ab] == 9 && $son[$c->id][$ac] < 16)
+								|| ($son[$c->id][$ab] == 10 && $son[$c->id][$ac] < 21)){
+								$this->table->add_row(
+									$son[$c->id]['NOM_SEDE'],
+									$son[$c->id]['NOM_DD'],
+									$son[$c->id]['NOM_PP'],
+									$son[$c->id]['NOM_DI'],
+									$son[$c->id]['NOM_CCPP'],
+									$son[$c->id]['NFORM'],
+									$son[$c->id][$aa],
+									$son[$c->id][$ab],
+									$son[$c->id][$ac]
+								);		
+							}		
+						}
 					}
 				}
 			}
@@ -236,22 +238,25 @@ class Pescador extends CI_Controller {
 				for($i = 1; $i<=10; $i++){
 					$aa = 'S2_23_1_' . $i;
 					$ac = 'S2_23_4_' . $i . 'A';
-					if(!is_null($son[$c->id][$aa])){
-						$edad = date('Y') - $son[$c->id]['S2_2A'];
-						if( ($edad - $son[$c->id][$ac]) < 12 ){
-							$this->table->add_row(
-								$son[$c->id]['NOM_SEDE'],
-								$son[$c->id]['NOM_DD'],
-								$son[$c->id]['NOM_PP'],
-								$son[$c->id]['NOM_DI'],
-								$son[$c->id]['NOM_CCPP'],
-								$son[$c->id]['NFORM'],
-								$son[$c->id][$aa],
-								$son[$c->id][$ac],
-								$edad
-							);		
-						}		
+					if($son[$c->id]){
+						if(!is_null($son[$c->id][$aa])){
+							$edad = date('Y') - $son[$c->id]['S2_2A'];
+							if( ($edad - $son[$c->id][$ac]) < 12 ){
+								$this->table->add_row(
+									$son[$c->id]['NOM_SEDE'],
+									$son[$c->id]['NOM_DD'],
+									$son[$c->id]['NOM_PP'],
+									$son[$c->id]['NOM_DI'],
+									$son[$c->id]['NOM_CCPP'],
+									$son[$c->id]['NFORM'],
+									$son[$c->id][$aa],
+									$son[$c->id][$ac],
+									$edad
+								);		
+							}		
+						}						
 					}
+
 				}
 			}
 			$data['son'] = $son;

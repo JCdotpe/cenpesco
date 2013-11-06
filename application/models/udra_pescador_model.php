@@ -240,6 +240,32 @@ function get_id_forms()
     	$q = $this->db->get('pescador');
 		return $q;
 	}
+
+	function get_avance_gby_ccpp_by_odei($odeis){/* AVANCE COMUNIDAD - CCPP */
+		$q = $this->db->query("
+						select m.ODEI_COD,m. NOM_ODEI, m.CCPP, m.PROVINCIA ,  m.CCDI, m.DISTRITO, m. CODCCPP, m.CENTRO_POBLADO , m.PEA_PESCADOR MARCO, COALESCE(u.FORMULARIOS,0) UDRA, COALESCE(d.DIG,0) DIGITACION  
+						from marco m 
+						left join udra_pescador u ON  m.ODEI_COD = u.ODEI_COD AND m.CCPP = u.CCPP AND m.CCDI = u.CCDI AND m.CODCCPP = u.COD_CCPP  
+						left join (
+									select distinct(id), ODEI_COD, CCPP, CCDI, COD_CCPP, count(*) DIG from pescador c1 
+									inner join pesc_seccion2 c2 on c1.id = c2.pescador_id
+									inner join pesc_seccion3 c3 on c1.id = c3.pescador_id
+									inner join pesc_seccion4 c4 on c1.id = c4.pescador_id
+									inner join pesc_seccion5 c5 on c1.id = c5.pescador_id
+									inner join pesc_seccion6 c6 on c1.id = c6.pescador_id
+									inner join pesc_seccion7 c7 on c1.id = c7.pescador_id
+									inner join pesc_seccion8 c8 on c1.id = c8.pescador_id
+									inner join pesc_seccion9 c9 on c1.id = c9.pescador_id
+									inner join pesc_info     c10 on c1.id = c10.pescador_id GROUP BY ODEI_COD, CCPP, CCDI, COD_CCPP  ) d 
+									ON  m.ODEI_COD = d.ODEI_COD  COLLATE utf8_unicode_ci AND m.CCPP = d.CCPP  COLLATE utf8_unicode_ci AND m.CCDI = d.CCDI COLLATE utf8_unicode_ci AND m.CODCCPP = d.COD_CCPP  COLLATE utf8_unicode_ci
+						WHERE m.ODEI_COD IN (". join($odeis,',') . ")
+						order by m.NOM_ODEI, m.PROVINCIA, m.DISTRITO, m.CENTRO_POBLADO;			
+					");
+		return $q;
+	}
+
+
+
 	// PARA RESULTADO DEL EMPADRONAMIENTO
 	function get_dig_res_completo_by_odei($forms)
 	{

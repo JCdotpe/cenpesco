@@ -1102,6 +1102,7 @@ function get_report1(){
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion2 p2', 'p.id = p2.pescador_id','join');
     $this->db->where('p2.S2_2A >',1997);
+    $this->db->where('p2.S2_2A <>',9999);
     $q = $this->db->get();
     return $q;
 }
@@ -1176,13 +1177,20 @@ function get_report6(){
     $this->db->where('p2.S2_12',3);
     $this->db->where('p2.S2_12A >=',1);
     $this->db->where('p2.S2_2A >',1968);
+    $this->db->where('p2.S2_2A <>',9999);
     $q = $this->db->get();
     return $q;
 }
 
 function get_report7(){
    $q = $this->db->query('
-        SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_12`, `p2`.`S2_12A`, `p2`.`S2_2A` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` WHERE (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 1 AND `p2`.`S2_2A` > 2001) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 2 AND `p2`.`S2_2A` > 2000) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 3 AND `p2`.`S2_2A` > 1999) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 4 AND `p2`.`S2_2A` > 1998) OR (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 5 AND `p2`.`S2_2A` > 1997)    
+        SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_12`, `p2`.`S2_12A`, `p2`.`S2_2A` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` 
+        WHERE 
+        (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 1 AND `p2`.`S2_2A` > 2001 AND `p2`.`S2_2A` <> 9999) OR 
+        (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 2 AND `p2`.`S2_2A` > 2000 AND `p2`.`S2_2A` <> 9999) OR 
+        (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 3 AND `p2`.`S2_2A` > 1999 AND `p2`.`S2_2A` <> 9999) OR 
+        (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 4 AND `p2`.`S2_2A` > 1998 AND `p2`.`S2_2A` <> 9999) OR 
+        (`p2`.`S2_12` = 4 AND `p2`.`S2_12A` = 5 AND `p2`.`S2_2A` > 1997 AND `p2`.`S2_2A` <> 9999)    
     ');
     return $q;
 }
@@ -1190,7 +1198,12 @@ function get_report7(){
 
 function get_report8(){
     $q = $this->db->query('
-    SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_12`, `p2`.`S2_2A` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` WHERE (`p2`.`S2_12` = 5 AND `p2`.`S2_2A` > 1997) OR (`p2`.`S2_12` = 6 AND `p2`.`S2_2A` > 1994) OR (`p2`.`S2_12` = 7 AND `p2`.`S2_2A` > 1997) OR (`p2`.`S2_12` = 8 AND `p2`.`S2_2A` > 1991)
+    SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_12`, `p2`.`S2_2A` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` 
+    WHERE 
+    (`p2`.`S2_12` = 5 AND `p2`.`S2_2A` > 1997 AND `p2`.`S2_2A` > 9999) OR 
+    (`p2`.`S2_12` = 6 AND `p2`.`S2_2A` > 1994 AND `p2`.`S2_2A` > 9999) OR 
+    (`p2`.`S2_12` = 7 AND `p2`.`S2_2A` > 1997 AND `p2`.`S2_2A` > 9999) OR 
+    (`p2`.`S2_12` = 8 AND `p2`.`S2_2A` > 1991 AND `p2`.`S2_2A` > 9999)
     ');
     return $q;
 }
@@ -1208,8 +1221,12 @@ function get_report9(){
 
 function get_report10(){
     $q = $this->db->query('
-    SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_2A`, `p2`.`S2_22` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` WHERE (`p2`.`S2_22` > 2 AND `p2`.`S2_2A` > 1995) OR (`p2`.`S2_22` > 3 AND `p2`.`S2_2A` > 1993) OR (`p2`.`S2_22` > 4 AND `p2`.`S2_2A` > 1991) OR (`p2`.`S2_22` > 5 AND `p2`.`S2_2A` > 1987) OR (`p2`.`S2_22` > 6 AND `p2`.`S2_2A` > 1983) OR (`p2`.`S2_22` > 7 AND `p2`.`S2_2A` > 1978) OR (`p2`.`S2_22` > 8 AND `p2`.`S2_2A` > 1968) OR (`p2`.`S2_22` > 9 AND `p2`.`S2_2A` > 1953)
-     ');
+    SELECT `p`.`NOM_SEDE`, `p`.`NOM_DD`, `p`.`NOM_PP`, `p`.`NOM_DI`, `p`.`NOM_CCPP`, `p`.`NFORM`, `p2`.`S2_2A`, `p2`.`S2_22` FROM (`pescador` p) JOIN `pesc_seccion2` p2 ON `p`.`id` = `p2`.`pescador_id` 
+    WHERE 
+    (`p2`.`S2_22` > 2 AND `p2`.`S2_2A` > 1995 AND `p2`.`S2_2A` <> 9999) OR (`p2`.`S2_22` > 3 AND `p2`.`S2_2A` > 1993 AND `p2`.`S2_2A` <> 9999) OR 
+    (`p2`.`S2_22` > 4 AND `p2`.`S2_2A` > 1991 AND `p2`.`S2_2A` <> 9999) OR (`p2`.`S2_22` > 5 AND `p2`.`S2_2A` > 1987 AND `p2`.`S2_2A` <> 9999) OR 
+    (`p2`.`S2_22` > 6 AND `p2`.`S2_2A` > 1983 AND `p2`.`S2_2A` <> 9999) OR (`p2`.`S2_22` > 7 AND `p2`.`S2_2A` > 1978 AND `p2`.`S2_2A` <> 9999) OR 
+    (`p2`.`S2_22` > 8 AND `p2`.`S2_2A` > 1968 AND `p2`.`S2_2A` <> 9999) OR (`p2`.`S2_22` > 9 AND `p2`.`S2_2A` > 1953 AND `p2`.`S2_2A` <> 9999)   ');
     return $q;
 }
 
@@ -1263,7 +1280,7 @@ function get_report11_son($id){
 `pesc_seccion2`.`S2_23_4_10A`,
 `pesc_seccion2`.`S2_23_8_10`
 
-    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE p.id = ?
+    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE `pesc_seccion2`.`S2_2A` <> 9999 AND p.id = ?
      ',array($id));
     return $q;
 }
@@ -1302,7 +1319,7 @@ function get_report12_son($id){
 `pesc_seccion2`.`S2_23_1_10`,
 `pesc_seccion2`.`S2_23_4_10A`
 
-    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE p.id = ? 
+    FROM (`pescador` p) left join pesc_seccion2 ON p.id = pesc_seccion2.pescador_id WHERE `pesc_seccion2`.`S2_2A` <> 9999 AND p.id = ? 
      ',array($id));
     return $q;
 }

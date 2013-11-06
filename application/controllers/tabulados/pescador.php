@@ -65,20 +65,30 @@ class Pescador extends CI_Controller {
 
 	public function index()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$data['nav'] = TRUE;
-			$data['title'] = 'Tabulados';			
+			$data['title'] = 'Tabulados';	
+			$apesc = null;		
 			$pesc = $this->tabulados_model->get_report1(1);
 			foreach($pesc->result() as $p){
 				$apesc[$p->CCDD] = $p->num; 
 			} 
+			$aacu =  null;
 			$acu = $this->tabulados_model->get_report1(2); 
 			foreach($acu->result() as $p){
 				$aacu[$p->CCDD] = $p->num; 
-			} 			
+			} 	
+			$apc = null;		
 			$pc = $this->tabulados_model->get_report1(3); 
 			foreach($pc->result() as $p){
 				$apc[$p->CCDD] = $p->num; 
-			} 			
+			} 
+			$NEP = null;		
+			$pc = $this->tabulados_model->get_report1(9); 
+			foreach($pc->result() as $p){
+				$NEP[$p->CCDD] = $p->num; 
+			} 						
 			//total
 			$total = 0;
 			$t1 = null;
@@ -94,6 +104,7 @@ class Pescador extends CI_Controller {
 			$data['apesc'] = $apesc;
 			$data['aacu'] = $aacu;
 			$data['apc'] = $apc;
+			$data['NEP'] = $NEP;
 			$data['main_content'] = 'tabulados/pescador/reporte1_view';
 			$prete = $this->tabulados_model->get_texto(1,$data['opcion']);
 			$texto = '';
@@ -106,6 +117,9 @@ class Pescador extends CI_Controller {
 
 	public function reporte2()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
+
 			$h = $this->tabulados_model->get_report2(1);
 			foreach($h->result() as $p){
 				$ah[$p->CCDD] = $p->num; 
@@ -119,7 +133,7 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			$t1 = null;
 			for($i=1; $i<=2; $i++){
-				$t1[$i] = $this->tabulados_model->get_report1($i,1)->row()->num; 
+				$t1[$i] = $this->tabulados_model->get_report2($i,1)->row()->num; 
 				$total += $t1[$i];
 			}
 
@@ -145,6 +159,9 @@ class Pescador extends CI_Controller {
 
 	public function reporte3()
 	{
+			$u_id = $this->tank_auth->get_user_id();// restriccion en los comentarios
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
+
 			$deps = null;
 			$tdeps = null;
 			$dep = $this->tabulados_model->get_dptos();
@@ -177,6 +194,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte4()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$deps = null;
 			$tdeps = null;
 			$dep = $this->tabulados_model->get_dptos();
@@ -208,20 +227,22 @@ class Pescador extends CI_Controller {
 
 	public function reporte5()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=8; $i++){
+				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report5($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=8; $i++){
+			for($i=1; $i<=9; $i++){
 				$tr[$i] = $this->tabulados_model->get_report5($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -245,21 +266,25 @@ class Pescador extends CI_Controller {
 
 	public function reporte6()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=2; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report6($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=3; $i++){
+					$k = ($i == 3) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report6($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=2; $i++){
-				$tr[$i] = $this->tabulados_model->get_report6($i)->row()->num; 
+			for($i=1; $i<=3; $i++){
+				$k = ($i == 3) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report6($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -281,6 +306,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte7()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -317,6 +344,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte8()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -347,7 +376,7 @@ class Pescador extends CI_Controller {
 			if($prete->num_rows() > 0){
 				$texto = $prete->row()->texto;
 			}
-			$data['texto'] =  $texto; 				
+			$data['texto'] =  $texto; 	//var_dump($vr);
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -355,6 +384,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte9()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -385,12 +416,14 @@ class Pescador extends CI_Controller {
 			if($prete->num_rows() > 0){
 				$texto = $prete->row()->texto;
 			}
-			$data['texto'] =  $texto; 				
+			$data['texto'] =  $texto;
 			$this->load->view('backend/includes/template', $data);		
 	}
 
 	public function reporte10()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -428,6 +461,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte11()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -464,6 +499,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte12()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -500,20 +537,22 @@ class Pescador extends CI_Controller {
 
 	public function reporte13()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=8; $i++){
+				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report13($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=8; $i++){
+			for($i=1; $i<=9; $i++){
 				$tr[$i] = $this->tabulados_model->get_report13($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -530,12 +569,14 @@ class Pescador extends CI_Controller {
 			if($prete->num_rows() > 0){
 				$texto = $prete->row()->texto;
 			}
-			$data['texto'] =  $texto; 				
+			$data['texto'] =  $texto; 
 			$this->load->view('backend/includes/template', $data);		
 	}
 
 	public function reporte14()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -572,6 +613,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte15()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -610,6 +653,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte16()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -664,6 +709,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte17()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -748,6 +795,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte18()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -797,6 +846,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte19()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -846,6 +897,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte20()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -895,6 +948,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte21()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -1009,6 +1064,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte22()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -1058,6 +1115,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte23()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -1108,6 +1167,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte24()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -1216,6 +1277,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte25()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1252,6 +1315,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte26()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1289,6 +1354,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte27()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1327,6 +1394,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte28()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1364,6 +1433,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte29()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1400,6 +1471,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte30()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1436,6 +1509,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte31()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1472,6 +1547,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte32()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1508,6 +1585,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte33()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1545,6 +1624,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte34()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1582,6 +1663,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte35()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1619,6 +1702,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte36()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1655,6 +1740,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte37()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1691,6 +1778,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte38()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1727,6 +1816,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte39()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1764,6 +1855,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte40()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1801,6 +1894,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte41()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1837,6 +1932,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte42()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1873,6 +1970,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte43()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1909,6 +2008,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte44()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1946,6 +2047,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte45()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -1982,6 +2085,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte46()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2018,6 +2123,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte47()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2054,6 +2161,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte48()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2089,6 +2198,8 @@ class Pescador extends CI_Controller {
 	}
 	public function reporte49()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2126,6 +2237,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte50()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2163,6 +2276,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte51()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2200,6 +2315,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte52()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2237,6 +2354,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte53()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2273,6 +2392,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte54()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2309,6 +2430,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte55()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2345,6 +2468,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte56()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2382,6 +2507,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte57()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2418,6 +2545,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte58()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2454,6 +2583,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte59()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2491,6 +2622,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte60()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2527,6 +2660,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte61()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2563,6 +2698,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte62()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2599,6 +2736,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte63()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2635,6 +2774,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte64()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2671,6 +2812,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte65()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2708,6 +2851,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte66()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2744,6 +2889,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte67()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2781,6 +2928,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte69()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2819,6 +2968,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte70()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2856,6 +3007,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte71()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2893,6 +3046,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte72()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2929,6 +3084,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte73()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -2965,6 +3122,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte74()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3001,6 +3160,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte75()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3037,6 +3198,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte76()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3073,6 +3236,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte77()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3109,6 +3274,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte78()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3146,6 +3313,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte79()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3182,6 +3351,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte80()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3218,6 +3389,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte81()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3254,6 +3427,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte82()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3290,6 +3465,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte83()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3326,6 +3503,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte84()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3362,6 +3541,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte85()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$tr = null;
@@ -3399,6 +3580,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte86()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3475,6 +3658,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte87()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3567,6 +3752,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte88()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3658,6 +3845,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte89()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3729,6 +3918,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte90()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3806,6 +3997,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte91()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3861,6 +4054,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte92()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3915,6 +4110,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte93()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -3969,6 +4166,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte94()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -4031,6 +4230,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte95()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -4087,6 +4288,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte96()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -4142,6 +4345,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte97()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -4210,6 +4415,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte98()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;
@@ -4265,6 +4472,8 @@ class Pescador extends CI_Controller {
 
 	public function reporte99()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$dep = $this->tabulados_model->get_dptos();
 			$vr = null;
 			$td = null;

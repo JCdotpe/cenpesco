@@ -52,18 +52,18 @@ else
 //distritos
 function centro_pob($cd,$cp,$ccdi,$cod_ccpp)
 {
-	
+ 
 $result = mysql_query("SELECT * FROM  marco WHERE CCPP='".$cp."' AND CCDD='".$cd."' AND CCDI='".$ccdi."' AND CODCCPP='".$cod_ccpp."' GROUP BY CODCCPP ORDER BY CENTRO_POBLADO ASC");
 while ($row = mysql_fetch_array($result))
 {	
-if ($cod_ccpp==$row['COD_CCPP']) 
+if ($cod_ccpp==$row['CODCCPP']) 
 {  
-echo '<option value="'.$row['COD_CCPP'].'" selected="selected">'.utf8_encode($row['CENTRO_POBLADO']).'</option>'; 
+echo '<option value="'.$row['CODCCPP'].'" selected="selected">'.utf8_encode($row['CENTRO_POBLADO']).'</option>'; 
 }
 
 else
 
- { echo'<option value="'.$row['COD_CCPP'].'">'.utf8_encode($row['CENTRO_POBLADO']).'</option>';  }
+ { echo'<option value="'.$row['CODCCPP'].'">'.utf8_encode($row['CENTRO_POBLADO']).'</option>';  }
 
 }
 
@@ -96,12 +96,16 @@ $s2_8=$row['s2_8'];
 $s2_9=$row['s2_9'];
 $s2_10_dd=$row['s2_10_dd'];
 $s2_10_dd_cod=$row['s2_10_dd_cod'];
+
 $s2_10_pp=$row['s2_10_pp'];
 $s2_10_pp_cod=$row['s2_10_pp_cod'];
 $s2_10_di=$row['s2_10_di'];
 $s2_10_di_cod=$row['s2_10_di_cod'];
 $s2_10_ccpp=$row['s2_10_ccpp'];
+
+
 $s2_10_ccpp_cod=$row['s2_10_ccpp_cod'];
+
 $tipvia=$row['tipvia'];
 $nomvia=$row['nomvia'];
 $ptanum=$row['ptanum'];

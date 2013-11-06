@@ -66,6 +66,8 @@ class Comunidad extends CI_Controller {
 
 	public function index()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 200;		
@@ -78,7 +80,9 @@ class Comunidad extends CI_Controller {
 	}
 
 	public function reporte_201()
-	{
+	{	
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 201;		
@@ -93,6 +97,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_202()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;			
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 202;		
@@ -106,6 +112,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_203()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 203;		
@@ -119,6 +127,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_204()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 204;		
@@ -132,6 +142,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_205()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 205;		
@@ -146,6 +158,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_206()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 206;		
@@ -158,6 +172,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_207()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 207;		
@@ -170,6 +186,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_208()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 208;		
@@ -182,6 +200,8 @@ class Comunidad extends CI_Controller {
 	}	
 	public function reporte_209()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 209;		
@@ -195,6 +215,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_210()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 210;		
@@ -208,6 +230,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_211()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 211;		
@@ -222,6 +246,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_212()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 212;		
@@ -235,6 +261,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_213()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 213;		
@@ -248,6 +276,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_214()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 214;		
@@ -261,6 +291,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_215()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 215;		
@@ -275,6 +307,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_216()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 216;		
@@ -287,6 +321,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_217()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 217;		
@@ -299,6 +335,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_218()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 218;		
@@ -311,6 +349,8 @@ class Comunidad extends CI_Controller {
 	}	
 	public function reporte_219()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 219;		
@@ -324,6 +364,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_220()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 220;		
@@ -337,6 +379,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_221()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 221;		
@@ -351,6 +395,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_222()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 222;		
@@ -364,6 +410,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_223()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 223;		
@@ -377,6 +425,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_224()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 224;		
@@ -390,6 +440,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_225()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 225;		
@@ -404,6 +456,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_226()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 226;		
@@ -416,6 +470,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_227()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 227;		
@@ -428,6 +484,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_228()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 228;		
@@ -440,6 +498,8 @@ class Comunidad extends CI_Controller {
 	}	
 	public function reporte_229()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 229;		
@@ -452,6 +512,8 @@ class Comunidad extends CI_Controller {
 	}		
 	public function reporte_230()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 230;		
@@ -464,6 +526,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_231()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 231;		
@@ -477,6 +541,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_232()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 232;		
@@ -490,6 +556,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_233()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 233;		
@@ -502,6 +570,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_234()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 234;		
@@ -515,6 +585,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_235()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 235;		
@@ -528,6 +600,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_236()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 236;		
@@ -540,6 +614,8 @@ class Comunidad extends CI_Controller {
 	}	
 	public function reporte_237()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 237;		
@@ -552,6 +628,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_238()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 238;		
@@ -565,6 +643,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_239()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 239;		
@@ -578,6 +658,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_240()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 240;		
@@ -591,6 +673,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_241()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 241;		
@@ -604,6 +688,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_242()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 242;		
@@ -617,6 +703,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_243()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 243;		
@@ -630,6 +718,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_244()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 244;		
@@ -643,6 +733,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_245()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 245;		
@@ -655,6 +747,8 @@ class Comunidad extends CI_Controller {
 	}
 	public function reporte_246()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 246;		
@@ -668,6 +762,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_247()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 247;		
@@ -681,6 +777,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_248()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 248;		
@@ -694,6 +792,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_249()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 249;		
@@ -707,6 +807,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_250()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 250;		
@@ -720,6 +822,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_251()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 251;		
@@ -733,6 +837,8 @@ class Comunidad extends CI_Controller {
 
 	public function reporte_252()
 	{
+			$u_id = $this->tank_auth->get_user_id();
+			$data['restriccion'] = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) ) ? FALSE : TRUE ;		
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados';	
 			$data['opcion'] = 252;		

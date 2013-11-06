@@ -1264,6 +1264,7 @@ $(function(){
 				S8_2_12 :{
 		            required: true,
 		            digits: true,
+		            valzero:['S8_2_1','S8_2_2','S8_2_3','S8_2_4','S8_2_5','S8_2_6','S8_2_7','S8_2_8','S8_2_9','S8_2_10','S8_2_11'],	
 		         },  
 				S8_2_12_O : {
 		            required: true,
@@ -1312,6 +1313,7 @@ $(function(){
 				S8_3_10 :{
 		            required: true,
 		            digits: true,
+		            valzero:['S8_3_1','S8_3_2','S8_3_3','S8_3_4','S8_3_5','S8_3_6','S8_3_7','S8_3_8','S8_3_9'],	
 		         },  
 				S8_3_10_O : {
 		            required: true,

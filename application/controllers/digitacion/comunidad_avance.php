@@ -244,8 +244,9 @@ class Comunidad_avance extends CI_Controller {
 			foreach ($this->marco_model->get_odei($this->tank_auth->get_ubigeo())->result() as $key ) {//get ODEIS que tiene el usuario
 				$odei[] = $key->ODEI_COD;
 			}					
-			$data['tables'] = $this->marco_model->get_comunidad_by_ccpp($odei); //get MARCO por CENTRO POBLADO, 
-			$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_ccpp($odei); //get forms por CENTRO POBLADO, 
+			//$data['tables'] = $this->marco_model->get_comunidad_by_ccpp($odei); //get MARCO por CENTRO POBLADO, 
+			$data['tables'] = $this->udra_comunidad_model->get_avance_gby_ccpp_by_odei($odei);
+			//$data['udra'] = $this->udra_comunidad_model->get_udra_total_by_ccpp($odei); //get forms por CENTRO POBLADO, 
 
 			$data['main_content'] = 'digitacion/avance_digitacion/comunidad_by_ccpp_view';
 			$data['option'] = 24;
@@ -278,14 +279,14 @@ class Comunidad_avance extends CI_Controller {
 			// 		}
 			// 	}//var_dump($seccion_completos);echo '<br>';
 			// }
-			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
-				$seccion_completos[] = $value->id;
-			}	
-			if (count($seccion_completos)>0){
-			 	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($odei, $seccion_completos); //N° formularios ingresados en COMUNIDAD completos
-			}else{
-				$data['formularios'] = NULL;
-			}			
+			// foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
+			// 	$seccion_completos[] = $value->id;
+			// }	
+			// if (count($seccion_completos)>0){
+			//  	$data['formularios'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($odei, $seccion_completos); //N° formularios ingresados en COMUNIDAD completos
+			// }else{
+			// 	$data['formularios'] = NULL;
+			// }			
 			// if (count($seccion_incompletos)>0){
 			//  $data['formularios_inc'] = $this->udra_comunidad_model->get_n_formularios_by_ccpp($seccion_incompletos); //N° formularios ingresados en COMUNIDAD incompletos
 			// }else{
@@ -373,36 +374,12 @@ class Comunidad_avance extends CI_Controller {
 				$odei[] = $key->ODEI_COD;
 			}
 
-			$tables = $this->marco_model->get_comunidad_by_ccpp($odei); 
+			//$tables = $this->marco_model->get_comunidad_by_ccpp($odei); 
+			$tables = $this->udra_comunidad_model->get_avance_gby_ccpp_by_odei($odei); 
 			$udra = $this->udra_comunidad_model->get_udra_total_by_ccpp($odei); //get forms por ODEIS,  	
-
 
  			$seccion_completos = array();
 
-			// $forms = $this->udra_comunidad_model->get_forms_by_odei( $odei );//get forms por ODEI, ingresados en COMUNIDAD 
-			// if($forms->num_rows() > 0){
-		
-			// 	foreach($forms->result() as $filas){//busca en todas las tablas de pescador
-			// 		$i = 0;
-			// 		$table = null;
-			// 		foreach($this->secciones as $s=>$k){
-			// 			$table = 'comunidad_seccion' . $s;
-			// 			if($s == 9){
-			// 				$table = 'comunidad_info';
-			// 			}
-			// 			  $rega = $this->udra_comunidad_model->get_regs_a($table,$filas->id);//recorre cada tabla
-			// 			if ($rega->num_rows() >0){
-			// 				$i++;
-			// 			}
-			// 		}
-			// 		if ($i == 8){
-			// 			$seccion_completos[] = $filas->id; //guarda los ID de formularios completos en todas las secciones
-
-			// 		}else{
-			// 			$seccion_incompletos[] = $filas->id; //guarda los ID de formularios incompletos|
-			// 		}
-			// 	}//var_dump($seccion_completos);echo '<br>';
-			// }
 			foreach ( $this->udra_comunidad_model->get_forms_sec_info()->result() as $value) {
 				$seccion_completos[] = $value->id;
 			}	
@@ -411,7 +388,6 @@ class Comunidad_avance extends CI_Controller {
 			}else{
 				$formularios = NULL;
 			}	
-
 
 
 			//******************************************************************************************
@@ -450,110 +426,83 @@ class Comunidad_avance extends CI_Controller {
 			// FORMATO 
 
 			//TOTALES
+				
+				$tot_marco 	= 0;
+				$tot_udra 	= 0;
+				$tot_dig 	= 0;
+				foreach($tables->result() as $row){ //TOTAL MARCO
+					$tot_marco 	+= $row->MARCO;
+					$tot_udra 	+= $row->UDRA;
+					$tot_dig 	+= $row->DIGITACION;
+				}
+				// foreach ($udra->result() as $key ) {// TOTAL UDRA
+				// 	$total_2 +=  $key->TOTAL_FORM; 
+				// }
+				// $sheet->setCellValue('K2', $total_2);
+
+				// foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
+				// 	$total_3 +=   $key->TOTAL_DIG;
+				// }
 				$sheet->setCellValue('I2','TOTAL' );
-				$total_1 = 0;
-				$total_2 = 0;
-				$total_3 = 0;
-				foreach($tables as $row){ //TOTAL MARCO
-					$total_1 += $row->TOTAL_COM;
-				}
-				$sheet->setCellValue('J2', $total_1);
+				$sheet->setCellValue('J2', $tot_marco);
+				$sheet->setCellValue('K2', $tot_udra);	
+				$sheet->setCellValue('L2', $tot_dig);
+				$sheet->setCellValue('M2', ($tot_udra>0) ? number_format( ($tot_dig*100)/$tot_udra , 2,'.' ,'') : 0 );// %avance dig							
+				$sheet->setCellValue('N2', ($tot_marco>0) ? number_format( ($tot_udra*100)/$tot_marco , 2,'.' ,'') : 0 ); //  % udra y marco							
 
-				foreach ($udra->result() as $key ) {// TOTAL UDRA
-						//$total_2 = $total_2 +  $key->TOTAL_FORM; 
-						$total_2 +=  $key->TOTAL_FORM; 
-				}
-				$sheet->setCellValue('K2', $total_2);
-
-				foreach ($formularios->result() as $key ) { //TOTAL DIGITADOS
-						$total_3 +=   $key->TOTAL_DIG;
-				}	
-				$sheet->setCellValue('L2', $total_3);
-
-				if ( $total_2>0){
-					$sheet->setCellValue('M2', number_format( ($total_3*100)/$total_2 , 2,'.' ,'') );								
-				}else{
-					$sheet->setCellValue('M2', 0 );		
-				}
-
-				if ( $total_1>0){
-					$sheet->setCellValue('N2', number_format( ($total_2*100)/$total_1 , 2,'.' ,'') );									
-				}else{
-					$sheet->setCellValue('N2', 0 );	
-				}
 			// TOTALES
-
 
 			// EXPORTACION A EXCEL
 			$celda = 2;
 			$col = 1;
 
-
 			$i = 1;
-			$nform_udra = null;
-			$nform_com = null;
-			foreach($tables as $row){
-				$celda++;
-				$sheet->setCellValue('A'.$celda, $i++);
-				$sheet->setCellValue('B'.$celda, $row->ODEI_COD);
-				$sheet->setCellValue('C'.$celda, $row->NOM_ODEI);
-				$sheet->setCellValue('D'.$celda, $row->CCPP);
-				$sheet->setCellValue('E'.$celda, $row->PROVINCIA);
-				$sheet->setCellValue('F'.$celda, $row->CCDI);
-				$sheet->setCellValue('G'.$celda, $row->DISTRITO);
-				$sheet->setCellValue('H'.$celda, $row->CODCCPP);
-				$sheet->setCellValue('I'.$celda, $row->CENTRO_POBLADO);
-				$sheet->setCellValue('J'.$celda, $row->TOTAL_COM);
+
+			foreach($tables->result() as $row){
+					$nform_udra = 0;
+					$nform_com = 0;
+
+					$celda++;
+
+					// foreach ($formularios->result() as $key ) {
+
+					// 	if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP)  ){
+					// 		$nform_com =  $key->TOTAL_DIG; 
+					// 		break;
+					// 	}
+					// }
+						
+					// foreach ($udra->result() as $key_1 ) {
+					// 	if ( ($row->ODEI_COD == $key_1->ODEI_COD) && ($row->CCPP == $key_1->CCPP) && ($row->CCDI == $key_1->CCDI) && ($row->CODCCPP == $key_1->COD_CCPP) ){
+					// 		$nform_udra =  $key_1->TOTAL_FORM; 
+					// 		break; 
+					// 	}
+					// }
+
+					// foreach ($udra->result() as $key_1 ) {
+					// 	if ( ($row->ODEI_COD == $key_1->ODEI_COD) && ($row->CCPP == $key_1->CCPP) && ($row->CCDI == $key_1->CCDI) && ($row->CODCCPP == $key_1->COD_CCPP) ){
+					// 		$nform_com =  $key_1->TOTAL_FORM; 
+					// 		break; 
+					// 	}
+					// }
+
+					$sheet->setCellValue('A'.$celda, $i++);
+					$sheet->setCellValue('B'.$celda, $row->ODEI_COD);
+					$sheet->setCellValue('C'.$celda, $row->NOM_ODEI);
+					$sheet->setCellValue('D'.$celda, $row->CCPP);
+					$sheet->setCellValue('E'.$celda, $row->PROVINCIA);
+					$sheet->setCellValue('F'.$celda, $row->CCDI);
+					$sheet->setCellValue('G'.$celda, $row->DISTRITO);
+					$sheet->setCellValue('H'.$celda, $row->CODCCPP);
+					$sheet->setCellValue('I'.$celda, $row->CENTRO_POBLADO);
+					$sheet->setCellValue('J'.$celda, $row->MARCO);
+					$sheet->setCellValue('K'.$celda, $row->UDRA );					
+					$sheet->setCellValue('L'.$celda, $row->DIGITACION );
+					$sheet->setCellValue('M'.$celda, ( ( $row->UDRA>0) ?  number_format( ($row->DIGITACION * 100)/$row->UDRA , 2,'.' ,'') : 0 ) );								
+					$sheet->setCellValue('N'.$celda, ( ( $row->MARCO>0) ? number_format( ($row->UDRA * 100)/$row->MARCO , 2,'.' ,'') : 0 ) );						
 
 
-					if (isset($udra)){
-						foreach ($udra->result() as $key ) {
-							if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP) ){
-								$nform_udra =  $key->TOTAL_FORM; break;
-							}
-						}
-						if (is_numeric($nform_udra)){
-							$sheet->setCellValue('K'.$celda, $nform_udra);
-						}else{
-							$sheet->setCellValue('K'.$celda, 0);
-						}
-					}else{
-							$sheet->setCellValue('K'.$celda, 0);
-					}
-					//COMUNIDADES
-					if (isset($formularios)){
-						foreach ($formularios->result() as $key ) {
-							if ( ($row->ODEI_COD == $key->ODEI_COD) && ($row->CCPP == $key->CCPP) && ($row->CCDI == $key->CCDI) && ($row->CODCCPP == $key->COD_CCPP)  ){
-								$nform_com =  $key->TOTAL_DIG;
-								break;
-							}
-						}
-						if (is_numeric($nform_com)){
-							$sheet->setCellValue('L'.$celda, $nform_com);
-						}else{
-							$sheet->setCellValue('L'.$celda, 0);
-						}
-
-					}else{
-							$sheet->setCellValue('L'.$celda, 0);
-					}
-					//TOTAL AVANCE
-					if ( $nform_udra>0){
-						$sheet->setCellValue('M'.$celda, number_format( ($nform_com*100)/$nform_udra , 2,'.' ,'') );								
-					}else{
-						$sheet->setCellValue('M'.$celda, 0);
-					}
-					//TOTAL UDRA Y MARCO
-					if ( $row->TOTAL_COM>0){
-						$sheet->setCellValue('N'.$celda, number_format( ($nform_udra*100)/$row->TOTAL_COM , 2,'.' ,'') );						
-					}else{
-						$sheet->setCellValue('N'.$celda, 0);
-					}
-
-					$nform_udra = null;
-					$nform_com = null;
-
-			}
+			}//echo $udra->num_rows() . ' - ' . $formularios->num_rows();
 
  		// CUERPO
 
