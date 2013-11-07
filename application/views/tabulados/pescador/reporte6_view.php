@@ -52,7 +52,7 @@
 							echo '<tr>';
 							echo '<td>' . $d->DEPARTAMENTO . '</td>';										
 							echo '<td style="text-align:center">' . $vt[$d->CCDD] . '</td>';									
-							echo '<td style="text-align:center;color:green">' . 100 . '</td>';	
+							echo '<td style="text-align:center;color:green">' . ( ($vt[$d->CCDD]>0) ? 100 : 0 ) . '</td>';	
 
 							for($i=1; $i<=3;$i++){
 								$k = ($i == 3) ? 9 : $i;
@@ -96,9 +96,9 @@
 							array("name" => 'Secundaria'	,"data" => $serie[1]),
 							array("name" => 'NEP'			,"data" => $serie[2]),
 							); 
-			$data['tipo'] =  'bar';// << column >> or << bar >> 
-			$data['xx'] =  700; // ancho
-			$data['yy'] =  2000; // altura
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/pescador/includes/grafico_view.php', $data); 

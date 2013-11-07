@@ -289,8 +289,9 @@
 							array("name" => 'FRACTURAS'		,"data" => $serie_16),
 							array("name" => 'OTRO'			,"data" => $serie_17),
 							array("name" => 'NEP'			,"data" => $serie_18)	);
-			$data['xx'] =  7550;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

@@ -245,8 +245,9 @@
 							array("name" => 'Proyeccción R. sanitario',"data" => $serie_12),
 							array("name" => 'Otro'					,"data" => $serie_13),
 							array("name" => 'NEP'					,"data" => $serie_14)	);
-			$data['xx'] =  6550;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

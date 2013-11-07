@@ -12,7 +12,7 @@
 
     	<?php
 	    		echo form_open("/tabulados/export");
-	    			$c_title = 'PERÚ: COMUNIDADES POR CALIFICACIÓN AL SERVICIO NACIONAL DE SANIDAD PESQUERA SOBRE EL APOYO AL SECTOR PESQUERO, SEGÚN DEPARTAMENTO, 201';
+	    			$c_title = 'PERÚ: COMUNIDADES POR CALIFICACIÓN AL SERVICIO NACIONAL DE SANIDAD PESQUERA SOBRE EL APOYO AL SECTOR PESQUERO, SEGÚN DEPARTAMENTO, 2013';
 
 					echo '<table border="1" class="table table-hover table-condensed" id="tablet" name="tablet">';
 						echo '<caption><h4>
@@ -157,8 +157,9 @@
 							array("name" => 'Muy malo'		,"data" => $serie_5),
 							array("name" => 'No conoce'		,"data" => $serie_6),
 							array("name" => 'NEP'			,"data" => $serie_7)	);
-			$data['xx'] =  7000;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

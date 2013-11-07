@@ -25,7 +25,7 @@
 						echo '<tr>';
 						echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 						echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="26" style="text-align:center">Tipo de actividad</th>';	
+						echo '<th colspan="18" style="text-align:center">Tipo de actividad</th>';	
 						echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">NEP</th>';																																													
 						echo '</tr>';
 																	
@@ -194,8 +194,9 @@
 							array("name" => 'Artesanía'		,"data" => $serie_8),
 							array("name" => 'Otro'			,"data" => $serie_9),
 							array("name" => 'NEP'			,"data" => $serie_10)	);
-			$data['xx'] =  6000;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

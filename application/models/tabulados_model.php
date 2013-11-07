@@ -119,7 +119,10 @@ function get_report7($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');
-    $this->db->where('p2.S2_14_' . $a,1);        
+        if ($a<>9) {
+    $this->db->where('p2.S2_14_' . $a,1); }
+        else{ 
+    $this->db->where('p2.S2_14_1',9);}      
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -156,7 +159,10 @@ function get_report9($a = null, $b = null){
     }   
     if($a == 4){               
         $this->db->where('p2.S2_16',4);                  
-    }        
+    }     
+    if($a == 5){               
+        $this->db->where('p2.S2_16',9);                  
+    }     
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   

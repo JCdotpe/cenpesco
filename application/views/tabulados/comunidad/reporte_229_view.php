@@ -194,8 +194,9 @@
 							array("name" => 'Otro'			,"data" => $serie_8),
 							array("name" => 'No realizan'	,"data" => $serie_9),
 							array("name" => 'NEP'			,"data" => $serie_10)	);
-			$data['xx'] =  6000;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

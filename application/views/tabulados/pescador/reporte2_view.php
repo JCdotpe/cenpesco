@@ -91,8 +91,9 @@
 			$series = array(
 							array("name" => 'Hombres'	,"data" => $serie_1),
 							array("name" => 'Mujeres'	,"data" => $serie_2)	);
-			$data['xx'] =  3550;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/pescador/includes/grafico_view.php', $data); 

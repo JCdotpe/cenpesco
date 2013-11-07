@@ -143,8 +143,9 @@
 							array("name" => 'RIO'	,"data" => $serie_4),
 							array("name" => 'OTRO'	,"data" => $serie_5),
 							array("name" => 'NEP'	,"data" => $serie_6)	);
-			$data['xx'] =  2500;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

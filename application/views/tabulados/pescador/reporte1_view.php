@@ -108,8 +108,9 @@
 							array("name" => 'Acuicultura'			,"data" => $serie_2),
 							array("name" => 'Pesca y Acuicultura'	,"data" => $serie_3),
 							array("name" => 'NEP'					,"data" => $serie_4)	);
-			$data['xx'] =  4550;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/pescador/includes/grafico_view.php', $data); 

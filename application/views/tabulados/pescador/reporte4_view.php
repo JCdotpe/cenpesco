@@ -117,8 +117,9 @@
 							array("name" => 'Tumbes'		,"data" => $serie[22]),
 							array("name" => 'Ucayali'		,"data" => $serie[23]),
 							); 
-			$data['xx'] =  20300;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/pescador/includes/grafico_view.php', $data); 

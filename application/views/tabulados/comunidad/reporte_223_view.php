@@ -168,8 +168,9 @@
 							array("name" => 'BOTIQUIN'		,"data" => $serie_6),
 							array("name" => 'OTRO'			,"data" => $serie_7),
 							array("name" => 'NEP'			,"data" => $serie_8)	);
-			$data['xx'] =  3550;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 

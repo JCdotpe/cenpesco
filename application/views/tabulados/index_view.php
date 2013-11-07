@@ -10,6 +10,7 @@
               <li ><a href="<?php echo site_url('tabulados/pescador'); ?>">Tabulados Pescador</a></li>
               <li ><a href="<?php echo site_url('tabulados/acuicultor'); ?>">Tabulados Acuicultor</a></li> 
               <li ><a href="<?php echo site_url('tabulados/comunidad'); ?>">Tabulados Comunidad</a></li>
+              <li ><a href="<?php echo site_url('tabulados/comunidad_corte17'); ?>">Tabulados Comunidad | Corte 17</a></li>
           </div>
   </div>
 </div>

@@ -157,8 +157,9 @@
 			// array_push($series , $serie4);
 			//var_dump(json_encode($series) );
 			//var_dump(json_encode($serie1) );
-			$data['xx'] =  2500;
-			$data['yy'] =  450;
+			$data['tipo'] =  'column';// << column >> or << bar >> 
+			$data['xx'] =  2030; // ancho
+			$data['yy'] =  840; // altura
 			$data['series'] =  $series;
 			$data['c_title'] = $c_title;
 
