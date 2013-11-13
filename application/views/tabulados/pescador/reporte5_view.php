@@ -42,26 +42,26 @@
 
 						echo '<tr>';
 													
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																																														
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																				
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';						
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';	
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';	
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';	
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';	
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';																																														
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';	
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';																				
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';
+							echo '<th style="text-align:center">Abs</th>';										
+							echo '<th style="text-align:center;color:green">%</th>';						
 						echo '</tr>';
 						$aa = 0;
 						$bb = 0;
@@ -71,7 +71,7 @@
 							echo '<tr>';
 							echo '<td>' . $d->DEPARTAMENTO . '</td>';										
 							echo '<td style="text-align:center">' . $vt[$d->CCDD] . '</td>';									
-							echo '<td style="text-align:center;color:green">' . 100 . '</td>';	
+							echo '<td style="text-align:center;color:green">' . ( ($vt[$d->CCDD]>0) ? 100 : 0 ) . '</td>';	
 
 							for($i=1; $i<=9;$i++){
 								$a = (isset($vr[$d->CCDD][$i])) ? $vr[$d->CCDD][$i] : 0;
@@ -107,15 +107,15 @@
 			$this->load->view('tabulados/pescador/includes/text_view.php'); 
 
 			$series = array(
-							array("name" => 'Sin Nivel'						,"data" => $serie[0]),
-							array("name" => 'Inicial'						,"data" => $serie[1]),
-							array("name" => 'Primaria'						,"data" => $serie[2]),
-							array("name" => 'Secundaria'					,"data" => $serie[3]),
-							array("name" => 'Superior no universitaria i.'	,"data" => $serie[4]),
-							array("name" => 'Superior no universitaria c.'	,"data" => $serie[5]),
-							array("name" => 'Superior universitaria i.'		,"data" => $serie[6]),
-							array("name" => 'Superior universitaria c.'		,"data" => $serie[7]),
-							array("name" => 'NEP'							,"data" => $serie[8]),
+							array("name" => 'Sin Nivel'					,"data" => $serie[0]),
+							array("name" => 'Inicial'					,"data" => $serie[1]),
+							array("name" => 'Primaria'					,"data" => $serie[2]),
+							array("name" => 'Secundaria'				,"data" => $serie[3]),
+							array("name" => 'S. No Universitaria I.'	,"data" => $serie[4]),
+							array("name" => 'S. No Universitaria C.'	,"data" => $serie[5]),
+							array("name" => 'S. Universitaria I.'		,"data" => $serie[6]),
+							array("name" => 'S. Universitaria C.'		,"data" => $serie[7]),
+							array("name" => 'NEP'						,"data" => $serie[8]),
 							); 
 			$data['tipo'] =  'column';// << column >> or << bar >> 
 			$data['xx'] =  2030; // ancho

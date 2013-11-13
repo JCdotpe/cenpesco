@@ -1,4 +1,4 @@
-<textarea class="span12" id="textn" name="textn" rows="10"><?php echo $texto; ?></textarea>
+<textarea class="span12" id="textn" name="textn" rows="4"><?php echo $texto; ?></textarea>
 <div class="row-fluid"  style="padding-bottom:10px;padding-top:7px" >
 	<input type="submit" class="btn btn-success pull-left" id="excel" value="↓ Excel" name="excel">
 	<input type="button" class="btn btn-primary pull-right" id="btab" value="Guardar" name="guardar">

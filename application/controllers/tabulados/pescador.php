@@ -316,9 +316,9 @@ class Pescador extends CI_Controller {
 				$dd = 0;
 				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report7($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+					//$dd += $vr[$d->CCDD][$i]; 
 				}
-				$vt[$d->CCDD] = $dd; 
+				$vt[$d->CCDD] = $dd = $this->tabulados_model->get_report7(999,$d->CCDD)->row()->num;
 				$total += $dd;
 			}
 			for($i=1; $i<=9; $i++){
@@ -432,14 +432,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=9; $i++){
+				for($i=1; $i<=10; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report10($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+					//$dd += $vr[$d->CCDD][$i]; 
 				}
-				$vt[$d->CCDD] = $dd; 
+				$vt[$d->CCDD] = $dd = $this->tabulados_model->get_report10(999,$d->CCDD)->row()->num; //total formulario consultados
 				$total += $dd;
 			}
-			for($i=1; $i<=9; $i++){
+			for($i=1; $i<=10; $i++){
 				$tr[$i] = $this->tabulados_model->get_report10($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -471,15 +471,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=6; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report11($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=7; $i++){
+					$k = ($i == 7) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report11($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=6; $i++){
-				$tr[$i] = $this->tabulados_model->get_report11($i)->row()->num; 
+			for($i=1; $i<=7; $i++){
+				$k = ($i == 7) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report11($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -509,14 +511,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=8; $i++){
+				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report12($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=8; $i++){
+			for($i=1; $i<=9; $i++){
 				$tr[$i] = $this->tabulados_model->get_report12($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -547,14 +549,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=9; $i++){
+				for($i=1; $i<=10; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report13($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+					//$dd += $vr[$d->CCDD][$i]; 
 				}
-				$vt[$d->CCDD] = $dd; 
+				$vt[$d->CCDD] = $dd = $vr[$d->CCDD][$i] = $this->tabulados_model->get_report13(999,$d->CCDD)->row()->num; 
 				$total += $dd;
 			}
-			for($i=1; $i<=9; $i++){
+			for($i=1; $i<=10; $i++){
 				$tr[$i] = $this->tabulados_model->get_report13($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -585,15 +587,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=2; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report14($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=3; $i++){
+					$k = ($i == 3) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report14($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=2; $i++){
-				$tr[$i] = $this->tabulados_model->get_report14($i)->row()->num; 
+			for($i=1; $i<=3; $i++){
+				$k = ($i == 3) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report14($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -663,13 +667,16 @@ class Pescador extends CI_Controller {
 			$ttt = 0;
 			$ddm = 0;
 			$ddf = 0;
+			$ddNEP = 0;
 			$total = 0;
 			$male = null;
 			$female = null;		
+			$NEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report16($d->CCDD);	
 				$male[$d->CCDD] = 0;				
 				$female[$d->CCDD] = 0;				
+				$NEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_3_' . $x;
@@ -679,20 +686,25 @@ class Pescador extends CI_Controller {
 								}
 								elseif($uv->$a == 2){
 									$female[$d->CCDD] += 1; 		
-								}								
+								}	
+								elseif($uv->$a == 9){
+									$NEP[$d->CCDD] += 1; 		
+								}									
 							}
-
 					}
 				}
 				$ddm += $male[$d->CCDD];
 				$ddf += $female[$d->CCDD] ;		
-				$td[$d->CCDD] = $male[$d->CCDD] + $female[$d->CCDD];
+				$ddNEP += $NEP[$d->CCDD] ;		
+				$td[$d->CCDD] = $male[$d->CCDD] + $female[$d->CCDD] + $NEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['male'] = $male;
 			$data['female'] = $female;
+			$data['NEP'] = $NEP;
 			$data['tm'] = $ddm;
 			$data['tf'] = $ddf;
+			$data['tNEP'] = $ddNEP;
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
@@ -805,31 +817,39 @@ class Pescador extends CI_Controller {
 			$ttt = 0;
 			$dde1 = 0;
 			$dde2 = 0;
+			$ddeNEP = 0;
 			$total = 0;
 			$e1 = null;
 			$e2 = null;		
+			$eNEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report18($d->CCDD);	
 				$e1[$d->CCDD] = 0;				
 				$e2[$d->CCDD] = 0;				
+				$eNEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_5_' . $x;
 							if(!is_null($uv->$a) && $uv->$a == 1)
 								$e1[$d->CCDD]++;
 							elseif(!is_null($uv->$a) && $uv->$a == 2)
-								$e2[$d->CCDD]++; 		
+								$e2[$d->CCDD]++; 	
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$eNEP[$d->CCDD]++; 									
 					}
 				}
 				$dde1 += $e1[$d->CCDD];
 				$dde2 += $e2[$d->CCDD] ;		
-				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ddeNEP += $eNEP[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] +  $eNEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['e1'] = $e1;
 			$data['e2'] = $e2;
+			$data['eNEP'] = $eNEP;
 			$data['te1'] = $dde1;
 			$data['te2'] = $dde2;
+			$data['teNEP'] = $ddeNEP;
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
@@ -856,31 +876,39 @@ class Pescador extends CI_Controller {
 			$ttt = 0;
 			$dde1 = 0;
 			$dde2 = 0;
+			$ddeNEP = 0;
 			$total = 0;
 			$e1 = null;
 			$e2 = null;		
+			$eNEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report19($d->CCDD);	
 				$e1[$d->CCDD] = 0;				
 				$e2[$d->CCDD] = 0;				
+				$eNEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_6_' . $x;
 							if(!is_null($uv->$a) && $uv->$a == 1)
 								$e1[$d->CCDD]++;
 							elseif(!is_null($uv->$a) && $uv->$a == 2)
-								$e2[$d->CCDD]++; 		
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$eNEP[$d->CCDD]++; 		
 					}
 				}
 				$dde1 += $e1[$d->CCDD];
 				$dde2 += $e2[$d->CCDD] ;		
-				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ddeNEP += $eNEP[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $eNEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['e1'] = $e1;
 			$data['e2'] = $e2;
+			$data['eNEP'] = $eNEP;
 			$data['te1'] = $dde1;
 			$data['te2'] = $dde2;
+			$data['teNEP'] = $ddeNEP;
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
@@ -907,31 +935,39 @@ class Pescador extends CI_Controller {
 			$ttt = 0;
 			$dde1 = 0;
 			$dde2 = 0;
+			$ddeNEP = 0;
 			$total = 0;
 			$e1 = null;
 			$e2 = null;		
+			$eNEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report20($d->CCDD);	
 				$e1[$d->CCDD] = 0;				
 				$e2[$d->CCDD] = 0;				
+				$eNEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_7_' . $x;
 							if(!is_null($uv->$a) && $uv->$a == 1)
 								$e1[$d->CCDD]++;
 							elseif(!is_null($uv->$a) && $uv->$a == 2)
-								$e2[$d->CCDD]++; 		
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$eNEP[$d->CCDD]++; 	
 					}
 				}
 				$dde1 += $e1[$d->CCDD];
 				$dde2 += $e2[$d->CCDD] ;		
-				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ddeNEP += $eNEP[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $eNEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['e1'] = $e1;
 			$data['e2'] = $e2;
+			$data['eNEP'] = $eNEP;
 			$data['te1'] = $dde1;
 			$data['te2'] = $dde2;
+			$data['teNEP'] = $ddeNEP;
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
@@ -966,6 +1002,7 @@ class Pescador extends CI_Controller {
 			$dde8 = 0;
 			$dde9 = 0;
 			$dde10 = 0;
+			$ddeNEP = 0;
 			$e1 = null;
 			$e2 = null;		
 			$e3 = null;		
@@ -976,6 +1013,7 @@ class Pescador extends CI_Controller {
 			$e8 = null;		
 			$e9 = null;		
 			$e10 = null;		
+			$eNEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report21($d->CCDD);	
 				$e1[$d->CCDD] = 0;				
@@ -988,6 +1026,7 @@ class Pescador extends CI_Controller {
 				$e8[$d->CCDD] = 0;				
 				$e9[$d->CCDD] = 0;				
 				$e10[$d->CCDD] = 0;				
+				$eNEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_8_' . $x;
@@ -1010,7 +1049,9 @@ class Pescador extends CI_Controller {
 							elseif(!is_null($uv->$a) && $uv->$a == 9)
 								$e9[$d->CCDD]++; 	
 							elseif(!is_null($uv->$a) && $uv->$a == 10)
-								$e10[$d->CCDD]++; 																																																
+								$e10[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 99)
+								$eNEP[$d->CCDD]++; 																																																								
 					}
 				}
 				$dde1 += $e1[$d->CCDD];
@@ -1023,7 +1064,8 @@ class Pescador extends CI_Controller {
 				$dde8 += $e8[$d->CCDD] ;		
 				$dde9 += $e9[$d->CCDD] ;		
 				$dde10 += $e10[$d->CCDD] ;		
-				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD] + $e7[$d->CCDD] + $e8[$d->CCDD] + $e9[$d->CCDD] + $e10[$d->CCDD];
+				$ddeNEP += $eNEP[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $e3[$d->CCDD] + $e4[$d->CCDD] + $e5[$d->CCDD] + $e6[$d->CCDD] + $e7[$d->CCDD] + $e8[$d->CCDD] + $e9[$d->CCDD] + $e10[$d->CCDD] + $eNEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['e1'] = $e1;
@@ -1036,6 +1078,7 @@ class Pescador extends CI_Controller {
 			$data['e8'] = $e8;
 			$data['e9'] = $e9;
 			$data['e10'] = $e10;
+			$data['eNEP'] = $eNEP;
 
 			$data['te1'] = $dde1;
 			$data['te2'] = $dde2;
@@ -1047,6 +1090,7 @@ class Pescador extends CI_Controller {
 			$data['te8'] = $dde8;
 			$data['te9'] = $dde9;
 			$data['te10'] = $dde10;
+			$data['teNEP'] = $ddeNEP;
 
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
@@ -1074,31 +1118,39 @@ class Pescador extends CI_Controller {
 			$ttt = 0;
 			$dde1 = 0;
 			$dde2 = 0;
+			$ddeNEP = 0;
 			$total = 0;
 			$e1 = null;
 			$e2 = null;		
+			$eNEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report22($d->CCDD);	
 				$e1[$d->CCDD] = 0;				
 				$e2[$d->CCDD] = 0;				
+				$eNEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_9_' . $x;
 							if(!is_null($uv->$a) && $uv->$a == 1)
 								$e1[$d->CCDD]++;
 							elseif(!is_null($uv->$a) && $uv->$a == 2)
-								$e2[$d->CCDD]++; 		
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$eNEP[$d->CCDD]++; 									
 					}
 				}
 				$dde1 += $e1[$d->CCDD];
-				$dde2 += $e2[$d->CCDD] ;		
-				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$dde2 += $e2[$d->CCDD];		
+				$ddeNEP += $eNEP[$d->CCDD];		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] +$eNEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['e1'] = $e1;
 			$data['e2'] = $e2;
+			$data['eNEP'] = $eNEP;
 			$data['te1'] = $dde1;
 			$data['te2'] = $dde2;
+			$data['teNEP'] = $ddeNEP;
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
@@ -1125,31 +1177,39 @@ class Pescador extends CI_Controller {
 			$ttt = 0;
 			$dde1 = 0;
 			$dde2 = 0;
+			$ddeNEP = 0;
 			$total = 0;
 			$e1 = null;
 			$e2 = null;		
+			$eNEP = null;		
 			foreach($dep->result() as $d){
 				$vr[$d->CCDD] = $this->tabulados_model->get_report23($d->CCDD);	
 				$e1[$d->CCDD] = 0;				
 				$e2[$d->CCDD] = 0;				
+				$eNEP[$d->CCDD] = 0;				
 				foreach($vr[$d->CCDD]->result() as $uv){			
 					for($x=1; $x<=10; $x++){
 							$a = 'S2_23_10_' . $x;
 							if(!is_null($uv->$a) && $uv->$a == 1)
 								$e1[$d->CCDD]++;
 							elseif(!is_null($uv->$a) && $uv->$a == 2)
-								$e2[$d->CCDD]++; 		
+								$e2[$d->CCDD]++; 
+							elseif(!is_null($uv->$a) && $uv->$a == 9)
+								$eNEP[$d->CCDD]++; 		
 					}
 				}
 				$dde1 += $e1[$d->CCDD];
 				$dde2 += $e2[$d->CCDD] ;		
-				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD];
+				$ddeNEP += $eNEP[$d->CCDD] ;		
+				$td[$d->CCDD] = $e1[$d->CCDD] + $e2[$d->CCDD] + $eNEP[$d->CCDD];
 				$ttt += $td[$d->CCDD];
 			}
 			$data['e1'] = $e1;
 			$data['e2'] = $e2;
+			$data['eNEP'] = $eNEP;
 			$data['te1'] = $dde1;
 			$data['te2'] = $dde2;
+			$data['teNEP'] = $ddeNEP;
 			$data['td'] = $td;
 			$data['ttt'] = $ttt;
 			$data['dep'] = $dep;
@@ -1287,15 +1347,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=6; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report25($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=7; $i++){
+					$k = ($i == 7) ? 9 : $i ;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report25($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=6; $i++){
-				$tr[$i] = $this->tabulados_model->get_report25($i)->row()->num; 
+			for($i=1; $i<=7; $i++){
+				$k = ($i == 7) ? 9 : $i ;
+				$tr[$k] = $this->tabulados_model->get_report25($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1325,14 +1387,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=8; $i++){
+				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report26($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=8; $i++){
+			for($i=1; $i<=9; $i++){
 				$tr[$i] = $this->tabulados_model->get_report26($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -1364,15 +1426,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=7; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report27($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=8; $i++){
+					$k = ($i == 8) ? 9 : $i ;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report27($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=7; $i++){
-				$tr[$i] = $this->tabulados_model->get_report27($i)->row()->num; 
+			for($i=1; $i<=8; $i++){
+				$k = ($i == 8) ? 9 : $i ;
+				$tr[$k] = $this->tabulados_model->get_report27($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1404,14 +1468,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=7; $i++){
+				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report28($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=7; $i++){
+			for($i=1; $i<=9; $i++){
 				$tr[$i] = $this->tabulados_model->get_report28($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -1443,14 +1507,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=8; $i++){
+				for($i=1; $i<=9; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report29($i,$d->CCDD)->row()->num;
 					$dd += $vr[$d->CCDD][$i]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=8; $i++){
+			for($i=1; $i<=9; $i++){
 				$tr[$i] = $this->tabulados_model->get_report29($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -1481,15 +1545,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=2; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report30($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=3; $i++){
+					$k = ($i == 3) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report30($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=2; $i++){
-				$tr[$i] = $this->tabulados_model->get_report30($i)->row()->num; 
+			for($i=1; $i<=3; $i++){
+				$k = ($i == 3) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report30($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1519,15 +1585,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=7; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report31($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=8; $i++){
+					$k = ($i == 8) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report31($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=7; $i++){
-				$tr[$i] = $this->tabulados_model->get_report31($i)->row()->num; 
+			for($i=1; $i<=8; $i++){
+				$k = ($i == 8) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report31($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1557,15 +1625,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=2; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report32($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=3; $i++){
+					$k = ($i == 3) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report32($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=2; $i++){
-				$tr[$i] = $this->tabulados_model->get_report32($i)->row()->num; 
+			for($i=1; $i<=3; $i++){
+				$k = ($i == 3) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report32($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1595,14 +1665,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=11; $i++){
+				for($i=1; $i<=12; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report33($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+					//$dd += $vr[$d->CCDD][$i]; 
 				}
-				$vt[$d->CCDD] = $dd; 
+				$vt[$d->CCDD] = $dd = $this->tabulados_model->get_report33(999,$d->CCDD)->row()->num; 
 				$total += $dd;
 			}
-			for($i=1; $i<=11; $i++){
+			for($i=1; $i<=12; $i++){
 				$tr[$i] = $this->tabulados_model->get_report33($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -1634,14 +1704,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=5; $i++){
+				for($i=1; $i<=6; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report34($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+					//$dd += $vr[$d->CCDD][$k]; 
 				}
-				$vt[$d->CCDD] = $dd; 
+				$vt[$d->CCDD] = $dd = $this->tabulados_model->get_report34(999,$d->CCDD)->row()->num; 
 				$total += $dd;
 			}
-			for($i=1; $i<=5; $i++){
+			for($i=1; $i<=6; $i++){
 				$tr[$i] = $this->tabulados_model->get_report34($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
@@ -1658,7 +1728,7 @@ class Pescador extends CI_Controller {
 			if($prete->num_rows() > 0){
 				$texto = $prete->row()->texto;
 			}
-			$data['texto'] =  $texto; 				
+			$data['texto'] =  $texto; 			
 			$this->load->view('backend/includes/template', $data);		
 	}
 
@@ -1673,15 +1743,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=2; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report35($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=3; $i++){
+					$k = ($i == 3) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report35($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=2; $i++){
-				$tr[$i] = $this->tabulados_model->get_report35($i)->row()->num; 
+			for($i=1; $i<=3; $i++){
+				$k = ($i == 3) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report35($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1712,15 +1784,17 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=2; $i++){
-					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report36($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+				for($i=1; $i<=3; $i++){
+					$k = ($i == 3) ? 9 : $i;
+					$vr[$d->CCDD][$k] = $this->tabulados_model->get_report35($k,$d->CCDD)->row()->num;
+					$dd += $vr[$d->CCDD][$k]; 
 				}
 				$vt[$d->CCDD] = $dd; 
 				$total += $dd;
 			}
-			for($i=1; $i<=2; $i++){
-				$tr[$i] = $this->tabulados_model->get_report36($i)->row()->num; 
+			for($i=1; $i<=3; $i++){
+				$k = ($i == 3) ? 9 : $i;
+				$tr[$k] = $this->tabulados_model->get_report35($k)->row()->num; 
 			}
 			$data['vr'] = $vr;
 			$data['vt'] = $vt;
@@ -1750,14 +1824,14 @@ class Pescador extends CI_Controller {
 			$total = 0;
 			foreach($dep->result() as $d){
 				$dd = 0;
-				for($i=1; $i<=4; $i++){
+				for($i=1; $i<=5; $i++){
 					$vr[$d->CCDD][$i] = $this->tabulados_model->get_report37($i,$d->CCDD)->row()->num;
-					$dd += $vr[$d->CCDD][$i]; 
+					//$dd += $vr[$d->CCDD][$i]; 
 				}
-				$vt[$d->CCDD] = $dd; 
+				$vt[$d->CCDD] = $dd = $this->tabulados_model->get_report37(999,$d->CCDD)->row()->num; 
 				$total += $dd;
 			}
-			for($i=1; $i<=4; $i++){
+			for($i=1; $i<=5; $i++){
 				$tr[$i] = $this->tabulados_model->get_report37($i)->row()->num; 
 			}
 			$data['vr'] = $vr;
