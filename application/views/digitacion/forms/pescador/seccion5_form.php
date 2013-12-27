@@ -462,7 +462,7 @@ $S5_5_1_C = array(
 	'name'	=> 'S5_5_1_C',
 	'id'	=> 'S5_5_1_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //agallera 1
 $S5_5_1_1 = array(
@@ -512,7 +512,7 @@ $S5_5_2_C = array(
 	'name'	=> 'S5_5_2_C',
 	'id'	=> 'S5_5_2_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Trasmallo 1
 $S5_5_2_1 = array(
@@ -563,7 +563,7 @@ $S5_5_3_C = array(
 	'name'	=> 'S5_5_3_C',
 	'id'	=> 'S5_5_3_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Hondera 1
 $S5_5_3_1 = array(
@@ -613,7 +613,7 @@ $S5_5_4_C = array(
 	'name'	=> 'S5_5_4_C',
 	'id'	=> 'S5_5_4_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Tarrafa 1
 $S5_5_4_1 = array(
@@ -664,7 +664,7 @@ $S5_5_5_C = array(
 	'name'	=> 'S5_5_5_C',
 	'id'	=> 'S5_5_5_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Arrastradora 1
 $S5_5_5_1 = array(
@@ -715,7 +715,7 @@ $S5_5_6_C = array(
 	'name'	=> 'S5_5_6_C',
 	'id'	=> 'S5_5_6_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Capiccuhuana 1
 $S5_5_6_1 = array(
@@ -766,7 +766,7 @@ $S5_5_7_C = array(
 	'name'	=> 'S5_5_7_C',
 	'id'	=> 'S5_5_7_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Chinchorro 1
 $S5_5_7_1 = array(
@@ -816,7 +816,7 @@ $S5_5_8_C = array(
 	'name'	=> 'S5_5_8_C',
 	'id'	=> 'S5_5_8_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 //Aissaccahuanna 1
 $S5_5_8_1 = array(
@@ -875,7 +875,7 @@ $S5_5_9_C = array(
 	'name'	=> 'S5_5_9_C',
 	'id'	=> 'S5_5_9_C',
 	'maxlength'	=> 3,
-	'class' => $span_class,
+	'class' => $span_class . ' red5-cuantos',
 );
 
 //otro 1
@@ -3965,7 +3965,7 @@ $('#S5_7').change(function() {
 
 
 
-//Estudia hijo?
+//APAREJOS ?
 $('.red5').change(function() {
 	var pre = $(this).attr('id');
 	var npreg = pre.substring(5,6);
@@ -3985,13 +3985,61 @@ $('.red5').change(function() {
 		$('#S5_5_' + npreg + '_5').attr("disabled", "disabled"); 	
 	}else{
 		$('#S5_5_' + npreg + '_C' ).removeAttr('disabled');
-		$('#S5_5_' + npreg + '_1' ).removeAttr('disabled');
-		$('#S5_5_' + npreg + '_2' ).removeAttr('disabled');
-		$('#S5_5_' + npreg + '_3' ).removeAttr('disabled');
-		$('#S5_5_' + npreg + '_4' ).removeAttr('disabled');
-		$('#S5_5_' + npreg + '_5' ).removeAttr('disabled');
+		// $('#S5_5_' + npreg + '_1' ).removeAttr('disabled');
+		// $('#S5_5_' + npreg + '_2' ).removeAttr('disabled');
+		// $('#S5_5_' + npreg + '_3' ).removeAttr('disabled');
+		// $('#S5_5_' + npreg + '_4' ).removeAttr('disabled');
+		// $('#S5_5_' + npreg + '_5' ).removeAttr('disabled');
 	}
 });
+
+//APAREJOS  CANTIDAD?
+$('.red5-cuantos').change(function() {
+	var pre = $(this).attr('id');
+
+	var npreg = pre.substring(5,6);
+
+		for (var i = 1; i <= $(this).val(); i++) {
+
+				$('#S5_5_' + npreg + '_' + i ).removeAttr('disabled');
+				// $('#S5_5_' + npreg + '_2' ).removeAttr('disabled');
+				// $('#S5_5_' + npreg + '_3' ).removeAttr('disabled');
+				// $('#S5_5_' + npreg + '_4' ).removeAttr('disabled');
+				// $('#S5_5_' + npreg + '_5' ).removeAttr('disabled');
+		};
+		//if( parseInt($(this).val()) < 5 ){
+			var dc = parseInt($(this).val()) + 1;
+				for (var i = dc ; i <= 6; i++) {
+					$('#S5_5_' + npreg + '_' + i).attr("disabled", "disabled"); 
+
+
+				};
+
+		// }else{
+		// 	alert('no entra');
+		// }
+
+
+	// if($(this).val() == 0){
+	// 	$('#S5_5_' + npreg + '_C').val('');
+	// 	$('#S5_5_' + npreg + '_C').attr("disabled", "disabled"); 
+	// 	$('#S5_5_' + npreg + '_1').val('');
+
+	// 	$('#S5_5_' + npreg + '_2').val('');
+	// 	$('#S5_5_' + npreg + '_2').attr("disabled", "disabled"); 
+	// 	$('#S5_5_' + npreg + '_3').val('');
+	// 	$('#S5_5_' + npreg + '_3').attr("disabled", "disabled"); 
+	// 	$('#S5_5_' + npreg + '_4').val('');
+	// 	$('#S5_5_' + npreg + '_4').attr("disabled", "disabled"); 
+	// 	$('#S5_5_' + npreg + '_5').val('');
+	// 	$('#S5_5_' + npreg + '_5').attr("disabled", "disabled"); 	
+	// }else{
+	// 	$('#S5_5_' + npreg + '_C' ).removeAttr('disabled');
+
+	// }
+});
+
+
 
 
 $('.aparejo5').change(function() {

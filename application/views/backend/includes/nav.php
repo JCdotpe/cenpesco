@@ -4,12 +4,15 @@
 
        <div class="navtopper navbar navbar-inverse navbar-fixed-top ">
             <div class=" navbar-inner navtopper-inner" id="navbarflex">
-                <div class="container">  
+                <div class="container-fluid">  
                  <!--  <img class="span12" src="http://placehold.it/1200x25"/> -->
-                  <div class="row">
+                  <div class="row-fluid">
                     <div class="span6">
-                      <a href="<?php echo base_url(); ?>"><img style="margin-top: 2.5px;" src="<?php echo base_url('img/brand.png'); ?>"/></a>  
-                    </div>                
+                      <a href="<?php echo base_url(); ?>"><img style="margin-top: 6.5px;" src="<?php echo base_url('img/brand.png'); ?>"/></a>  
+                    </div>  
+                    <div class="span6">
+                      <div id="oted">Oficina Técnica de Estadísticas Departamentales - OTED</div>
+                    </div>
                   </div>
                   
                 </div>
@@ -18,7 +21,7 @@
        <!--  <div class="navbar navbar-inverse navbar-fixed-top " > -->
        <div class="navbar navbar-inverse navbar-fixed-top navbottom">
             <div class="navbar-inner">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -79,7 +82,7 @@
         <?php if(isset($fluid)){ ?>
         <div class="container-fluid front">  
         <?php }else{ ?>  
-        <div class="container front">  
+        <div class="container-fluid front">  
         <?php } ?>
          <?php 
 

@@ -35,13 +35,13 @@ $piso=($_POST['piso']=='')?'NULL':'\''.$_POST['piso'].'\'';
 $mz=($_POST['mz']=='')?'NULL':'\''.$_POST['mz'].'\'';
 $lote=($_POST['lote']=='')?'NULL':'\''.$_POST['lote'].'\'';
 $km=($_POST['km']=='')?'NULL':'\''.$_POST['km'].'\'';
-$s2_11_dd=($_POST['s2_11_dd']=='')?'NULL':'\''.$_POST['s2_11_dd'].'\'';
-$s2_11_dd_cod=($_POST['s2_11_dd_cod']=='')?'NULL':'\''.$_POST['s2_11_dd_cod'].'\'';
-$s2_11_pp=($_POST['s2_11_pp']=='')?'NULL':'\''.$_POST['s2_11_pp'].'\'';
-$s2_11_pp_cod=($_POST['s2_11_pp_cod']=='')?'NULL':'\''.$_POST['s2_11_pp_cod'].'\'';
-$s2_11_di=($_POST['s2_11_di']=='')?'NULL':'\''.$_POST['s2_11_di'].'\'';
-$s2_11_di_cod=($_POST['s2_11_di_cod']=='')?'NULL':'\''.$_POST['s2_11_di_cod'].'\'';
-$s2_12_dd=($_POST['s2_12_dd']=='')?'NULL':'\''.$_POST['s2_12_dd'].'\'';
+$s2_11_dd=($_POST['s2_11_dd']=='')?  'NULL' : $_POST['s2_11_dd'].'\'';
+$s2_11_dd_cod= ( ($_POST['cod_pais'] == 4028) ? '\''. $_POST['s2_11_dd_cod'].'\'' :  $_POST['cod_pais']  );
+$s2_11_pp=($_POST['s2_11_pp']=='')? 'NULL' :'\''.$_POST['s2_11_pp'].'\'';
+$s2_11_pp_cod=($_POST['s2_11_pp_cod']=='')? 'NULL' :'\''.$_POST['s2_11_pp_cod'].'\'';
+$s2_11_di=($_POST['s2_11_di']=='')? 'NULL' :'\''.$_POST['s2_11_di'].'\'';
+$s2_11_di_cod=($_POST['s2_11_di_cod']=='')? 'NULL' :'\''.$_POST['s2_11_di_cod'].'\'';
+$s2_12_dd=($_POST['s2_12_dd']=='')? 'NULL' :'\''.$_POST['s2_12_dd'].'\'';
 $s2_12_dd_cod=($_POST['s2_12_dd_cod']=='')?'NULL':'\''.$_POST['s2_12_dd_cod'].'\'';
 $s2_12_pp=($_POST['s2_12_pp']=='')?'NULL':'\''.$_POST['s2_12_pp'].'\'';
 $s2_12_pp_cod=($_POST['s2_12_pp_cod']=='')?'NULL':'\''.$_POST['s2_12_pp_cod'].'\'';
@@ -280,32 +280,56 @@ $s2_10_ccpp=($s2_10_ccpp=='')?'NULL':'\''.$s2_10_ccpp.'\'';
 //------------------------------------------------------- NACIMIENTO
 
 // 1  DEPA
-$ccdd1 = str_replace("'","",$s2_11_dd_cod); 
-$result = mysql_query("SELECT * FROM  ccpp WHERE COD_DD ='".$ccdd1."'");
-while ($row = mysql_fetch_array($result))
-{
-$s2_11_dd=$row['DEPARTAMENTO'];
-}
-$s2_11_dd=($s2_11_dd=='')?'NULL':'\''.$s2_11_dd.'\'';
+//var_dump($s2_11_dd_cod);
+//echo $_POST['s2_11_dd_cod'] . ' - ' . $_POST['cod_pais']. sprintf("%s",$s2_11_dd_cod) .'</br>' ;
+if(  ( intval($s2_11_dd_cod) > 25) && ( intval($s2_11_dd_cod) <> 4028) ){
 
-//2 PROV
-$ccpp1 = str_replace("'","",$s2_11_pp_cod); 
-$result = mysql_query("SELECT * FROM  ccpp WHERE COD_PP ='".$ccpp1."' AND  COD_DD ='".$ccdd1."'");
-while ($row = mysql_fetch_array($result))
-{
-$s2_11_pp=$row['PROVINCIA'];
-}
-$s2_11_pp=($s2_11_pp=='')?'NULL':'\''.$s2_11_pp.'\'';
+		$ccdd1 = str_replace("'","",$s2_11_dd_cod); 
+		$result = mysql_query("SELECT * FROM  pais WHERE codigo ='".$ccdd1."'");
 
-//3 DISTRITO
-$ccdi1 = str_replace("'","",$s2_11_di_cod); 
-$result = mysql_query("SELECT * FROM  ccpp WHERE COD_PP ='".$ccpp1."' AND  COD_DD ='".$ccdd1."' AND COD_DI='".$ccdi1."'");
-while ($row = mysql_fetch_array($result))
-{
-$s2_11_di=$row['DISTRITO'];
+		while ($row = mysql_fetch_array($result))
+		{
+		$s2_11_dd=$row['detalle'];
+		}
+		$s2_11_dd=($s2_11_dd=='')? 'NULL' :'\''.$s2_11_dd.'\'';
+
+		$s2_11_pp_cod = NULL;
+		$s2_11_di_cod = NULL;
+		//echo 'paises -' .$_POST['s2_11_di_cod'] ;
+
+}else{
+		$ccdd1 = str_replace("'","",$s2_11_dd_cod); 
+		$result = mysql_query("SELECT * FROM  ccpp WHERE COD_DD ='".$ccdd1."'");
+
+		while ($row = mysql_fetch_array($result))
+		{
+		$s2_11_dd=$row['DEPARTAMENTO'];
+		}
+		$s2_11_dd=($s2_11_dd=='')? 'NULL' :'\''.$s2_11_dd.'\'';echo 'deps';
+
+		//2 PROV
+		$ccpp1 = str_replace("'","",$s2_11_pp_cod); 
+		$result = mysql_query("SELECT * FROM  ccpp WHERE COD_PP ='".$ccpp1."' AND  COD_DD ='".$ccdd1."'");
+		while ($row = mysql_fetch_array($result))
+		{
+		$s2_11_pp=$row['PROVINCIA'];
+		}
+		$s2_11_pp=($s2_11_pp=='')?'NULL':'\''.$s2_11_pp.'\'';
+
+		//3 DISTRITO
+		$ccdi1 = str_replace("'","",$s2_11_di_cod); 
+		$result = mysql_query("SELECT * FROM  ccpp WHERE COD_PP ='".$ccpp1."' AND  COD_DD ='".$ccdd1."' AND COD_DI='".$ccdi1."'");
+		while ($row = mysql_fetch_array($result))
+		{
+		$s2_11_di=$row['DISTRITO'];
+		}
+		$s2_11_di=($s2_11_di=='')?'NULL':'\''.$s2_11_di.'\'';		
+
 }
-$s2_11_di=($s2_11_di=='')?'NULL':'\''.$s2_11_di.'\'';
+
+
 ///-----------fin
+
 
 ////----------------- VIVIO EN EL AÑO 2007
 
@@ -376,8 +400,7 @@ echo mysql_error ();
 
 if($frm2==1 and $opc2==2)
 { 
-
-$sql= "UPDATE acu_seccion2 SET s2_1_ap=".sprintf("%s",$s2_1_ap).", s2_1_am=".sprintf("%s",$s2_1_am).", s2_1_nom=".sprintf("%s",$s2_1_nom).", s2_2=".sprintf("%s",$s2_2).", s2_3d=".sprintf("%s",$s2_3d).", s2_3m=".sprintf("%s",$s2_3m).", s2_3a=".sprintf("%s",$s2_3a).", s2_4=".sprintf("%s",$s2_4).", s2_5=".sprintf("%s",$s2_5).", s2_6=".sprintf("%s",$s2_6).", s2_7=".sprintf("%s",$s2_7).", s2_8=".sprintf("%s",$s2_8).", s2_9=".sprintf("%s",$s2_9).", s2_10_dd=".sprintf("%s",$s2_10_dd).", s2_10_dd_cod=".sprintf("%s",$s2_10_dd_cod).", s2_10_pp=".sprintf("%s",$s2_10_pp).", s2_10_pp_cod=".sprintf("%s",$s2_10_pp_cod).", s2_10_di=".sprintf("%s",$s2_10_di).", s2_10_di_cod=".sprintf("%s",$s2_10_di_cod).", s2_10_ccpp=".sprintf("%s",$s2_10_ccpp).", s2_10_ccpp_cod=".sprintf("%s",$s2_10_ccpp_cod).", tipvia=".sprintf("%s",$tipvia).", nomvia=".sprintf("%s",$nomvia).", ptanum=".sprintf("%s",$ptanum).", block=".sprintf("%s",$block).", int_1=".sprintf("%s",$int_1).", piso=".sprintf("%s",$piso).", mz=".sprintf("%s",$mz).", lote=".sprintf("%s",$lote).", km=".sprintf("%s",$km).", s2_11_dd=".sprintf("%s",$s2_11_dd).", s2_11_dd_cod=".sprintf("%s",$s2_11_dd_cod).", s2_11_pp=".sprintf("%s",$s2_11_pp).", s2_11_pp_cod=".sprintf("%s",$s2_11_pp_cod).", s2_11_di=".sprintf("%s",$s2_11_di).", s2_11_di_cod=".sprintf("%s",$s2_11_di_cod).", s2_12_dd=".sprintf("%s",$s2_12_dd).", s2_12_dd_cod=".sprintf("%s",$s2_12_dd_cod).", s2_12_pp=".sprintf("%s",$s2_12_pp).", s2_12_pp_cod=".sprintf("%s",$s2_12_pp_cod).", s2_12_di=".sprintf("%s",$s2_12_di).", s2_12_di_cod=".sprintf("%s",$s2_12_di_cod).", s2_13=".sprintf("%s",$s2_13).", s2_13g=".sprintf("%s",$s2_13g).", s2_13a=".sprintf("%s",$s2_13a).", s2_14=".sprintf("%s",$s2_14).", s2_15_1=".sprintf("%s",$s2_15_1).", s2_15_2=".sprintf("%s",$s2_15_2).", s2_15_3=".sprintf("%s",$s2_15_3).", s2_15_4=".sprintf("%s",$s2_15_4).", s2_15_5=".sprintf("%s",$s2_15_5).", s2_15_6=".sprintf("%s",$s2_15_6).", s2_15_7=".sprintf("%s",$s2_15_7).", s2_15_7_o=".sprintf("%s",$s2_15_7_o).", s2_15_8=".sprintf("%s",$s2_15_8).", s2_16=".sprintf("%s",$s2_16).", s2_16_o=".sprintf("%s",$s2_16_o).", s2_17=".sprintf("%s",$s2_17).", s2_18_1=".sprintf("%s",$s2_18_1).", s2_18_2=".sprintf("%s",$s2_18_2).", s2_18_3=".sprintf("%s",$s2_18_3).", s2_18_4=".sprintf("%s",$s2_18_4).", s2_18_5=".sprintf("%s",$s2_18_5).", s2_18_6=".sprintf("%s",$s2_18_6).", s2_18_7=".sprintf("%s",$s2_18_7).", s2_18_8=".sprintf("%s",$s2_18_8).", s2_18_8_o=".sprintf("%s",$s2_18_8_o).", s2_18_9=".sprintf("%s",$s2_18_9).", s2_19=".sprintf("%s",$s2_19).", s2_20=".sprintf("%s",$s2_20).", s2_20g=".sprintf("%s",$s2_20g).", s2_20a=".sprintf("%s",$s2_20a).", s2_21_1=".sprintf("%s",$s2_21_1).", s2_21_2=".sprintf("%s",$s2_21_2).", s2_21_3=".sprintf("%s",$s2_21_3).", s2_21_4=".sprintf("%s",$s2_21_4).", s2_21_5=".sprintf("%s",$s2_21_5).", s2_21_6=".sprintf("%s",$s2_21_6).", s2_21_7=".sprintf("%s",$s2_21_7).", s2_21_8=".sprintf("%s",$s2_21_8).", s2_21_9=".sprintf("%s",$s2_21_9).", s2_21_9_o=".sprintf("%s",$s2_21_9_o).", s2_22=".sprintf("%s",$s2_22).", s2_23=".sprintf("%s",$s2_23).", s2_24_1_1=".sprintf("%s",$s2_24_1_1).", s2_24_2_1=".sprintf("%s",$s2_24_2_1).", s2_24_3_1=".sprintf("%s",$s2_24_3_1).", s2_24_4_1a=".sprintf("%s",$s2_24_4_1a).", s2_24_4_1m=".sprintf("%s",$s2_24_4_1m).", s2_24_5_1=".sprintf("%s",$s2_24_5_1).", s2_24_6_1=".sprintf("%s",$s2_24_6_1).", s2_24_7_1=".sprintf("%s",$s2_24_7_1).", s2_24_8_1=".sprintf("%s",$s2_24_8_1).", s2_24_9_1=".sprintf("%s",$s2_24_9_1).", s2_24_10_1=".sprintf("%s",$s2_24_10_1).", s2_24_11_1=".sprintf("%s",$s2_24_11_1).", s2_24_11_1_o=".sprintf("%s",$s2_24_11_1_o).", s2_24_1_2=".sprintf("%s",$s2_24_1_2).", s2_24_2_2=".sprintf("%s",$s2_24_2_2).", s2_24_3_2=".sprintf("%s",$s2_24_3_2).", s2_24_4_2a=".sprintf("%s",$s2_24_4_2a).", s2_24_4_2m=".sprintf("%s",$s2_24_4_2m).", s2_24_5_2=".sprintf("%s",$s2_24_5_2).", s2_24_6_2=".sprintf("%s",$s2_24_6_2).", s2_24_7_2=".sprintf("%s",$s2_24_7_2).", s2_24_8_2=".sprintf("%s",$s2_24_8_2).", s2_24_9_2=".sprintf("%s",$s2_24_9_2).", s2_24_10_2=".sprintf("%s",$s2_24_10_2).", s2_24_11_2=".sprintf("%s",$s2_24_11_2).", s2_24_11_2_o=".sprintf("%s",$s2_24_11_2_o).", s2_24_1_3=".sprintf("%s",$s2_24_1_3).", s2_24_2_3=".sprintf("%s",$s2_24_2_3).", s2_24_3_3=".sprintf("%s",$s2_24_3_3).", s2_24_4_3a=".sprintf("%s",$s2_24_4_3a).", s2_24_4_3m=".sprintf("%s",$s2_24_4_3m).", s2_24_5_3=".sprintf("%s",$s2_24_5_3).", s2_24_6_3=".sprintf("%s",$s2_24_6_3).", s2_24_7_3=".sprintf("%s",$s2_24_7_3).", s2_24_8_3=".sprintf("%s",$s2_24_8_3).", s2_24_9_3=".sprintf("%s",$s2_24_9_3).", s2_24_10_3=".sprintf("%s",$s2_24_10_3).", s2_24_11_3=".sprintf("%s",$s2_24_11_3).", s2_24_11_3_o=".sprintf("%s",$s2_24_11_3_o).", s2_24_1_4=".sprintf("%s",$s2_24_1_4).", s2_24_2_4=".sprintf("%s",$s2_24_2_4).", s2_24_3_4=".sprintf("%s",$s2_24_3_4).", s2_24_4_4a=".sprintf("%s",$s2_24_4_4a).", s2_24_4_4m=".sprintf("%s",$s2_24_4_4m).", s2_24_5_4=".sprintf("%s",$s2_24_5_4).", s2_24_6_4=".sprintf("%s",$s2_24_6_4).", s2_24_7_4=".sprintf("%s",$s2_24_7_4).", s2_24_8_4=".sprintf("%s",$s2_24_8_4).", s2_24_9_4=".sprintf("%s",$s2_24_9_4).", s2_24_10_4=".sprintf("%s",$s2_24_10_4).", s2_24_11_4=".sprintf("%s",$s2_24_11_4).", s2_24_11_4_o=".sprintf("%s",$s2_24_11_4_o).", s2_24_1_5=".sprintf("%s",$s2_24_1_5).", s2_24_2_5=".sprintf("%s",$s2_24_2_5).", s2_24_3_5=".sprintf("%s",$s2_24_3_5).", s2_24_4_5a=".sprintf("%s",$s2_24_4_5a).", s2_24_4_5m=".sprintf("%s",$s2_24_4_5m).", s2_24_5_5=".sprintf("%s",$s2_24_5_5).", s2_24_6_5=".sprintf("%s",$s2_24_6_5).", s2_24_7_5=".sprintf("%s",$s2_24_7_5).", s2_24_8_5=".sprintf("%s",$s2_24_8_5).", s2_24_9_5=".sprintf("%s",$s2_24_9_5).", s2_24_10_5=".sprintf("%s",$s2_24_10_5).", s2_24_11_5=".sprintf("%s",$s2_24_11_5).", s2_24_11_5_o=".sprintf("%s",$s2_24_11_5_o).", s2_24_1_6=".sprintf("%s",$s2_24_1_6).", s2_24_2_6=".sprintf("%s",$s2_24_2_6).", s2_24_3_6=".sprintf("%s",$s2_24_3_6).", s2_24_4_6a=".sprintf("%s",$s2_24_4_6a).", s2_24_4_6m=".sprintf("%s",$s2_24_4_6m).", s2_24_5_6=".sprintf("%s",$s2_24_5_6).", s2_24_6_6=".sprintf("%s",$s2_24_6_6).", s2_24_7_6=".sprintf("%s",$s2_24_7_6).", s2_24_8_6=".sprintf("%s",$s2_24_8_6).", s2_24_9_6=".sprintf("%s",$s2_24_9_6).", s2_24_10_6=".sprintf("%s",$s2_24_10_6).", s2_24_11_6=".sprintf("%s",$s2_24_11_6).", s2_24_11_6_o=".sprintf("%s",$s2_24_11_6_o).", s2_24_1_7=".sprintf("%s",$s2_24_1_7).", s2_24_2_7=".sprintf("%s",$s2_24_2_7).", s2_24_3_7=".sprintf("%s",$s2_24_3_7).", s2_24_4_7a=".sprintf("%s",$s2_24_4_7a).", s2_24_4_7m=".sprintf("%s",$s2_24_4_7m).", s2_24_5_7=".sprintf("%s",$s2_24_5_7).", s2_24_6_7=".sprintf("%s",$s2_24_6_7).", s2_24_7_7=".sprintf("%s",$s2_24_7_7).", s2_24_8_7=".sprintf("%s",$s2_24_8_7).", s2_24_9_7=".sprintf("%s",$s2_24_9_7).", s2_24_10_7=".sprintf("%s",$s2_24_10_7).", s2_24_11_7=".sprintf("%s",$s2_24_11_7).", s2_24_11_7_o=".sprintf("%s",$s2_24_11_7_o).", s2_24_1_8=".sprintf("%s",$s2_24_1_8).", s2_24_2_8=".sprintf("%s",$s2_24_2_8).", s2_24_3_8=".sprintf("%s",$s2_24_3_8).", s2_24_4_8a=".sprintf("%s",$s2_24_4_8a).", s2_24_4_8m=".sprintf("%s",$s2_24_4_8m).", s2_24_5_8=".sprintf("%s",$s2_24_5_8).", s2_24_6_8=".sprintf("%s",$s2_24_6_8).", s2_24_7_8=".sprintf("%s",$s2_24_7_8).", s2_24_8_8=".sprintf("%s",$s2_24_8_8).", s2_24_9_8=".sprintf("%s",$s2_24_9_8).", s2_24_10_8=".sprintf("%s",$s2_24_10_8).", s2_24_11_8=".sprintf("%s",$s2_24_11_8).", s2_24_11_8_o=".sprintf("%s",$s2_24_11_8_o).", s2_24_1_9=".sprintf("%s",$s2_24_1_9).", s2_24_2_9=".sprintf("%s",$s2_24_2_9).", s2_24_3_9=".sprintf("%s",$s2_24_3_9).", s2_24_4_9a=".sprintf("%s",$s2_24_4_9a).", s2_24_4_9m=".sprintf("%s",$s2_24_4_9m).", s2_24_5_9=".sprintf("%s",$s2_24_5_9).", s2_24_6_9=".sprintf("%s",$s2_24_6_9).", s2_24_7_9=".sprintf("%s",$s2_24_7_9).", s2_24_8_9=".sprintf("%s",$s2_24_8_9).", s2_24_9_9=".sprintf("%s",$s2_24_9_9).", s2_24_10_9=".sprintf("%s",$s2_24_10_9).", s2_24_11_9=".sprintf("%s",$s2_24_11_9).", s2_24_11_9_o=".sprintf("%s",$s2_24_11_9_o).", s2_24_1_10=".sprintf("%s",$s2_24_1_10).", s2_24_2_10=".sprintf("%s",$s2_24_2_10).", s2_24_3_10=".sprintf("%s",$s2_24_3_10).", s2_24_4_10a=".sprintf("%s",$s2_24_4_10a).", s2_24_4_10m=".sprintf("%s",$s2_24_4_10m).", s2_24_5_10=".sprintf("%s",$s2_24_5_10).", s2_24_6_10=".sprintf("%s",$s2_24_6_10).", s2_24_7_10=".sprintf("%s",$s2_24_7_10).", s2_24_8_10=".sprintf("%s",$s2_24_8_10).", s2_24_9_10=".sprintf("%s",$s2_24_9_10).", s2_24_10_10=".sprintf("%s",$s2_24_10_10).", s2_24_11_10=".sprintf("%s",$s2_24_11_10).", s2_24_11_10_o=".sprintf("%s",$s2_24_11_10_o).", pro_nac=".sprintf("%s",$pro_nac).", dis_nac=".sprintf("%s",$dis_nac).", pro_viv=".sprintf("%s",$pro_viv).", dis_viv=".sprintf("%s",$dis_viv)."  WHERE id2='".$_SESSION['id1']."'";
+$sql= "UPDATE acu_seccion2 SET s2_1_ap=".sprintf("%s",$s2_1_ap).", s2_1_am=".sprintf("%s",$s2_1_am).", s2_1_nom=".sprintf("%s",$s2_1_nom).", s2_2=".sprintf("%s",$s2_2).", s2_3d=".sprintf("%s",$s2_3d).", s2_3m=".sprintf("%s",$s2_3m).", s2_3a=".sprintf("%s",$s2_3a).", s2_4=".sprintf("%s",$s2_4).", s2_5=".sprintf("%s",$s2_5).", s2_6=".sprintf("%s",$s2_6).", s2_7=".sprintf("%s",$s2_7).", s2_8=".sprintf("%s",$s2_8).", s2_9=".sprintf("%s",$s2_9).", s2_10_dd=".sprintf("%s",$s2_10_dd).", s2_10_dd_cod=".sprintf("%s",$s2_10_dd_cod).", s2_10_pp=".sprintf("%s",$s2_10_pp).", s2_10_pp_cod=".sprintf("%s",$s2_10_pp_cod).", s2_10_di=".sprintf("%s",$s2_10_di).", s2_10_di_cod=".sprintf("%s",$s2_10_di_cod).", s2_10_ccpp=".sprintf("%s",$s2_10_ccpp).", s2_10_ccpp_cod=".sprintf("%s",$s2_10_ccpp_cod).", tipvia=".sprintf("%s",$tipvia).", nomvia=".sprintf("%s",$nomvia).", ptanum=".sprintf("%s",$ptanum).", block=".sprintf("%s",$block).", int_1=".sprintf("%s",$int_1).", piso=".sprintf("%s",$piso).", mz=".sprintf("%s",$mz).", lote=".sprintf("%s",$lote).", km=".sprintf("%s",$km).", s2_11_dd=".sprintf("%s",$s2_11_dd).", s2_11_dd_cod=".sprintf("%s",$s2_11_dd_cod).", s2_11_pp=".sprintf("%s",$s2_11_pp).", s2_11_pp_cod=".( ($s2_11_pp_cod == '') ? 'NULL' : $s2_11_pp_cod )  .", s2_11_di=".sprintf("%s",$s2_11_di).", s2_11_di_cod=".( ($s2_11_di_cod == '') ? 'NULL' : $s2_11_di_cod ) .", s2_12_dd=".sprintf("%s",$s2_12_dd).", s2_12_dd_cod=".sprintf("%s",$s2_12_dd_cod).", s2_12_pp=".sprintf("%s",$s2_12_pp).", s2_12_pp_cod=".sprintf("%s",$s2_12_pp_cod).", s2_12_di=".sprintf("%s",$s2_12_di).", s2_12_di_cod=".sprintf("%s",$s2_12_di_cod).", s2_13=".sprintf("%s",$s2_13).", s2_13g=".sprintf("%s",$s2_13g).", s2_13a=".sprintf("%s",$s2_13a).", s2_14=".sprintf("%s",$s2_14).", s2_15_1=".sprintf("%s",$s2_15_1).", s2_15_2=".sprintf("%s",$s2_15_2).", s2_15_3=".sprintf("%s",$s2_15_3).", s2_15_4=".sprintf("%s",$s2_15_4).", s2_15_5=".sprintf("%s",$s2_15_5).", s2_15_6=".sprintf("%s",$s2_15_6).", s2_15_7=".sprintf("%s",$s2_15_7).", s2_15_7_o=".sprintf("%s",$s2_15_7_o).", s2_15_8=".sprintf("%s",$s2_15_8).", s2_16=".sprintf("%s",$s2_16).", s2_16_o=".sprintf("%s",$s2_16_o).", s2_17=".sprintf("%s",$s2_17).", s2_18_1=".sprintf("%s",$s2_18_1).", s2_18_2=".sprintf("%s",$s2_18_2).", s2_18_3=".sprintf("%s",$s2_18_3).", s2_18_4=".sprintf("%s",$s2_18_4).", s2_18_5=".sprintf("%s",$s2_18_5).", s2_18_6=".sprintf("%s",$s2_18_6).", s2_18_7=".sprintf("%s",$s2_18_7).", s2_18_8=".sprintf("%s",$s2_18_8).", s2_18_8_o=".sprintf("%s",$s2_18_8_o).", s2_18_9=".sprintf("%s",$s2_18_9).", s2_19=".sprintf("%s",$s2_19).", s2_20=".sprintf("%s",$s2_20).", s2_20g=".sprintf("%s",$s2_20g).", s2_20a=".sprintf("%s",$s2_20a).", s2_21_1=".sprintf("%s",$s2_21_1).", s2_21_2=".sprintf("%s",$s2_21_2).", s2_21_3=".sprintf("%s",$s2_21_3).", s2_21_4=".sprintf("%s",$s2_21_4).", s2_21_5=".sprintf("%s",$s2_21_5).", s2_21_6=".sprintf("%s",$s2_21_6).", s2_21_7=".sprintf("%s",$s2_21_7).", s2_21_8=".sprintf("%s",$s2_21_8).", s2_21_9=".sprintf("%s",$s2_21_9).", s2_21_9_o=".sprintf("%s",$s2_21_9_o).", s2_22=".sprintf("%s",$s2_22).", s2_23=".sprintf("%s",$s2_23).", s2_24_1_1=".sprintf("%s",$s2_24_1_1).", s2_24_2_1=".sprintf("%s",$s2_24_2_1).", s2_24_3_1=".sprintf("%s",$s2_24_3_1).", s2_24_4_1a=".sprintf("%s",$s2_24_4_1a).", s2_24_4_1m=".sprintf("%s",$s2_24_4_1m).", s2_24_5_1=".sprintf("%s",$s2_24_5_1).", s2_24_6_1=".sprintf("%s",$s2_24_6_1).", s2_24_7_1=".sprintf("%s",$s2_24_7_1).", s2_24_8_1=".sprintf("%s",$s2_24_8_1).", s2_24_9_1=".sprintf("%s",$s2_24_9_1).", s2_24_10_1=".sprintf("%s",$s2_24_10_1).", s2_24_11_1=".sprintf("%s",$s2_24_11_1).", s2_24_11_1_o=".sprintf("%s",$s2_24_11_1_o).", s2_24_1_2=".sprintf("%s",$s2_24_1_2).", s2_24_2_2=".sprintf("%s",$s2_24_2_2).", s2_24_3_2=".sprintf("%s",$s2_24_3_2).", s2_24_4_2a=".sprintf("%s",$s2_24_4_2a).", s2_24_4_2m=".sprintf("%s",$s2_24_4_2m).", s2_24_5_2=".sprintf("%s",$s2_24_5_2).", s2_24_6_2=".sprintf("%s",$s2_24_6_2).", s2_24_7_2=".sprintf("%s",$s2_24_7_2).", s2_24_8_2=".sprintf("%s",$s2_24_8_2).", s2_24_9_2=".sprintf("%s",$s2_24_9_2).", s2_24_10_2=".sprintf("%s",$s2_24_10_2).", s2_24_11_2=".sprintf("%s",$s2_24_11_2).", s2_24_11_2_o=".sprintf("%s",$s2_24_11_2_o).", s2_24_1_3=".sprintf("%s",$s2_24_1_3).", s2_24_2_3=".sprintf("%s",$s2_24_2_3).", s2_24_3_3=".sprintf("%s",$s2_24_3_3).", s2_24_4_3a=".sprintf("%s",$s2_24_4_3a).", s2_24_4_3m=".sprintf("%s",$s2_24_4_3m).", s2_24_5_3=".sprintf("%s",$s2_24_5_3).", s2_24_6_3=".sprintf("%s",$s2_24_6_3).", s2_24_7_3=".sprintf("%s",$s2_24_7_3).", s2_24_8_3=".sprintf("%s",$s2_24_8_3).", s2_24_9_3=".sprintf("%s",$s2_24_9_3).", s2_24_10_3=".sprintf("%s",$s2_24_10_3).", s2_24_11_3=".sprintf("%s",$s2_24_11_3).", s2_24_11_3_o=".sprintf("%s",$s2_24_11_3_o).", s2_24_1_4=".sprintf("%s",$s2_24_1_4).", s2_24_2_4=".sprintf("%s",$s2_24_2_4).", s2_24_3_4=".sprintf("%s",$s2_24_3_4).", s2_24_4_4a=".sprintf("%s",$s2_24_4_4a).", s2_24_4_4m=".sprintf("%s",$s2_24_4_4m).", s2_24_5_4=".sprintf("%s",$s2_24_5_4).", s2_24_6_4=".sprintf("%s",$s2_24_6_4).", s2_24_7_4=".sprintf("%s",$s2_24_7_4).", s2_24_8_4=".sprintf("%s",$s2_24_8_4).", s2_24_9_4=".sprintf("%s",$s2_24_9_4).", s2_24_10_4=".sprintf("%s",$s2_24_10_4).", s2_24_11_4=".sprintf("%s",$s2_24_11_4).", s2_24_11_4_o=".sprintf("%s",$s2_24_11_4_o).", s2_24_1_5=".sprintf("%s",$s2_24_1_5).", s2_24_2_5=".sprintf("%s",$s2_24_2_5).", s2_24_3_5=".sprintf("%s",$s2_24_3_5).", s2_24_4_5a=".sprintf("%s",$s2_24_4_5a).", s2_24_4_5m=".sprintf("%s",$s2_24_4_5m).", s2_24_5_5=".sprintf("%s",$s2_24_5_5).", s2_24_6_5=".sprintf("%s",$s2_24_6_5).", s2_24_7_5=".sprintf("%s",$s2_24_7_5).", s2_24_8_5=".sprintf("%s",$s2_24_8_5).", s2_24_9_5=".sprintf("%s",$s2_24_9_5).", s2_24_10_5=".sprintf("%s",$s2_24_10_5).", s2_24_11_5=".sprintf("%s",$s2_24_11_5).", s2_24_11_5_o=".sprintf("%s",$s2_24_11_5_o).", s2_24_1_6=".sprintf("%s",$s2_24_1_6).", s2_24_2_6=".sprintf("%s",$s2_24_2_6).", s2_24_3_6=".sprintf("%s",$s2_24_3_6).", s2_24_4_6a=".sprintf("%s",$s2_24_4_6a).", s2_24_4_6m=".sprintf("%s",$s2_24_4_6m).", s2_24_5_6=".sprintf("%s",$s2_24_5_6).", s2_24_6_6=".sprintf("%s",$s2_24_6_6).", s2_24_7_6=".sprintf("%s",$s2_24_7_6).", s2_24_8_6=".sprintf("%s",$s2_24_8_6).", s2_24_9_6=".sprintf("%s",$s2_24_9_6).", s2_24_10_6=".sprintf("%s",$s2_24_10_6).", s2_24_11_6=".sprintf("%s",$s2_24_11_6).", s2_24_11_6_o=".sprintf("%s",$s2_24_11_6_o).", s2_24_1_7=".sprintf("%s",$s2_24_1_7).", s2_24_2_7=".sprintf("%s",$s2_24_2_7).", s2_24_3_7=".sprintf("%s",$s2_24_3_7).", s2_24_4_7a=".sprintf("%s",$s2_24_4_7a).", s2_24_4_7m=".sprintf("%s",$s2_24_4_7m).", s2_24_5_7=".sprintf("%s",$s2_24_5_7).", s2_24_6_7=".sprintf("%s",$s2_24_6_7).", s2_24_7_7=".sprintf("%s",$s2_24_7_7).", s2_24_8_7=".sprintf("%s",$s2_24_8_7).", s2_24_9_7=".sprintf("%s",$s2_24_9_7).", s2_24_10_7=".sprintf("%s",$s2_24_10_7).", s2_24_11_7=".sprintf("%s",$s2_24_11_7).", s2_24_11_7_o=".sprintf("%s",$s2_24_11_7_o).", s2_24_1_8=".sprintf("%s",$s2_24_1_8).", s2_24_2_8=".sprintf("%s",$s2_24_2_8).", s2_24_3_8=".sprintf("%s",$s2_24_3_8).", s2_24_4_8a=".sprintf("%s",$s2_24_4_8a).", s2_24_4_8m=".sprintf("%s",$s2_24_4_8m).", s2_24_5_8=".sprintf("%s",$s2_24_5_8).", s2_24_6_8=".sprintf("%s",$s2_24_6_8).", s2_24_7_8=".sprintf("%s",$s2_24_7_8).", s2_24_8_8=".sprintf("%s",$s2_24_8_8).", s2_24_9_8=".sprintf("%s",$s2_24_9_8).", s2_24_10_8=".sprintf("%s",$s2_24_10_8).", s2_24_11_8=".sprintf("%s",$s2_24_11_8).", s2_24_11_8_o=".sprintf("%s",$s2_24_11_8_o).", s2_24_1_9=".sprintf("%s",$s2_24_1_9).", s2_24_2_9=".sprintf("%s",$s2_24_2_9).", s2_24_3_9=".sprintf("%s",$s2_24_3_9).", s2_24_4_9a=".sprintf("%s",$s2_24_4_9a).", s2_24_4_9m=".sprintf("%s",$s2_24_4_9m).", s2_24_5_9=".sprintf("%s",$s2_24_5_9).", s2_24_6_9=".sprintf("%s",$s2_24_6_9).", s2_24_7_9=".sprintf("%s",$s2_24_7_9).", s2_24_8_9=".sprintf("%s",$s2_24_8_9).", s2_24_9_9=".sprintf("%s",$s2_24_9_9).", s2_24_10_9=".sprintf("%s",$s2_24_10_9).", s2_24_11_9=".sprintf("%s",$s2_24_11_9).", s2_24_11_9_o=".sprintf("%s",$s2_24_11_9_o).", s2_24_1_10=".sprintf("%s",$s2_24_1_10).", s2_24_2_10=".sprintf("%s",$s2_24_2_10).", s2_24_3_10=".sprintf("%s",$s2_24_3_10).", s2_24_4_10a=".sprintf("%s",$s2_24_4_10a).", s2_24_4_10m=".sprintf("%s",$s2_24_4_10m).", s2_24_5_10=".sprintf("%s",$s2_24_5_10).", s2_24_6_10=".sprintf("%s",$s2_24_6_10).", s2_24_7_10=".sprintf("%s",$s2_24_7_10).", s2_24_8_10=".sprintf("%s",$s2_24_8_10).", s2_24_9_10=".sprintf("%s",$s2_24_9_10).", s2_24_10_10=".sprintf("%s",$s2_24_10_10).", s2_24_11_10=".sprintf("%s",$s2_24_11_10).", s2_24_11_10_o=".sprintf("%s",$s2_24_11_10_o).", pro_nac=".sprintf("%s",$pro_nac).", dis_nac=".sprintf("%s",$dis_nac).", pro_viv=".sprintf("%s",$pro_viv).", dis_viv=".sprintf("%s",$dis_viv). ", ff_rr2=".sprintf("%s",$ff_rr2). ", user2=".sprintf("%s",$user2)."  WHERE id2='".$_SESSION['id1']."'";
 
 $result = mysql_query($sql);
 echo mysql_error ();
@@ -397,7 +420,7 @@ $_SESSION['aviso']="Listo para ingresar un nuevo formulario";
 
 if($formulario==1)
 {
-header("location:index.php#indizador");
+	header("location:index.php#indizador");
 }
 
 ?>

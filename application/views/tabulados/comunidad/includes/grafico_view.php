@@ -1,5 +1,5 @@
 
-<div class="span12" style="overflow:auto;">
+<div class=""  style="width:2030px; height: 840px; margin: 0 auto !important;position:relative; ">
 	
 	    <div class="chart-wrapper"><div class="chart-inner" id="chart_div" ></div></div>
 
@@ -126,8 +126,8 @@
 			                        fontName:'arial narrow',
 			                    },
 			                    formatter: function() {
-			                    	if (this.y > 0 && this.y < 1) { return Highcharts.numberFormat(this.y, 1);};
-			                    	if (this.y > 1 ) { return Highcharts.numberFormat(this.y, 2);};
+			                    	//if (this.y > 0 && this.y < 1) { return Highcharts.numberFormat(this.y, 1);};
+			                    	if (this.y > 1 ) { return Highcharts.numberFormat(this.y, 1);};
 			                        
 			                    },		                    		                    
 			                }			                

@@ -285,7 +285,7 @@ $(function(){
 		            number: true,
 		            maxlength:2,
 		            exactlength:2,	
-		            range:[8,9],	            
+		            range:[8,12],	            
 		         },     
 				F_A : {
 		            required: true,

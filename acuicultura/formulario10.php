@@ -477,7 +477,7 @@ $user10=$row['user10'];
                 </tr>
                 <tr>
                   <td align="left" class="letra_frm">Si es otro, especifique</td>
-                  <td colspan="2" align="left"><input name="s10_7_8_o" type="text" id="s10_7_8_o"  onkeypress="return letras(event)" value="<?php echo $s10_8_o;  ?>" size="14" maxlength="80"  /></td>
+                  <td colspan="2" align="left"><input name="s10_7_8_o" type="text" id="s10_7_8_o"  onkeypress="return letras(event)" value="<?php echo $s10_7_8_o;  ?>" size="14" maxlength="80"  /></td>
                   </tr>
                 </table></td>
             </tr>

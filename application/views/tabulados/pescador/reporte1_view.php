@@ -1,126 +1,212 @@
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
 
-
+<?php $this->load->view('tabulados/includes/sidebar_view'); ?> <!-- SIDE BAR -->
 <div class="row-fluid">
-    <div id="ap-sidebar" class="span2">
-		<?php $this->load->view('tabulados/pescador/includes/sidebar_view'); ?>       
-    </div><!--/span-->
 
 
+ 	<div class="span12" id="ap-content">
 
- 	<div class="span10" id="ap-content">
-    	<h4></h4>
-    	<?php
-	    		echo form_open("/tabulados/export");
-	    			$c_title = 'PERÚ: POBLACIÓN PESQUERA POR ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
+		<?php $this->load->view('tabulados/includes/tabs_view.php');?> <!--include tabs y logos	-->
+		
+		<div class="tab-content" style="clear:both">
+		  	<div class="tab-pane active" id="tabulado">
+		  		<!-- INICIO TABULADO -->
+			    	<?php	
+			    			//EVALUAR NEP					
+								$NEP = 0;
+								// foreach ($tables->result() as $value) {
+								// 			$NEP += $value->NEP;
+								// 	}
+								$cant_v = ($NEP == 0) ? 3 : 4;
+							// PREGUNTAS MULTIPLES
+								$respuesta_unica = false;
 
-					echo '<table border="1" class="table table-hover table-condensed" id="tabul" name="tabul">';
-						echo '<caption><h4>
-										CUADRO N° '. $opcion .'
-										<br><br>
-										'. $c_title .'
-						     </h4></caption>';
+				    		echo form_open("/tabulados/export");
+				    			$c_title = 'PERÚ: POBLACIÓN PESQUERA POR ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
 
-					echo '<thead>';
-						echo '<tr>';
-						echo '<th>Departamento</th>';					
-						echo '<th colspan="2" style="text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="6" style="text-align:center">Actividad</th>';
-						echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">NEP</th>';																																														
-						echo '</tr>';
-						echo '<tr>';
-						echo '<th></th>';										
-						echo '<th></th>';										
-						echo '<th></th>';										
-						echo '<th colspan="2" style="text-align:center">Pesca</th>';										
-						echo '<th colspan="2" style="text-align:center">Acuicultura</th>';						
-						echo '<th colspan="2" style="text-align:center">Pesca y Acuicultura</th>';						
-						echo '</tr>';
+								$this->load->view('tabulados/includes/tab_logo_view.php');
 
-						echo '<tr>';
-						echo '<th></th>';										
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																																
-						echo '</tr>';
-						$aa = 0;
-						$bb = 0;
-						$cc = 0;
-						$nn = 0;
-						$tt = 0;
-						foreach($dep->result() as $d){
-							$a = (isset($apesc[$d->CCDD])) ? $apesc[$d->CCDD] : 0;
-							$b = (isset($aacu[$d->CCDD])) ? $aacu[$d->CCDD] : 0;
-							$c = (isset($apc[$d->CCDD])) ? $apc[$d->CCDD] : 0;
-							$n = (isset($NEP[$d->CCDD])) ? $NEP[$d->CCDD] : 0;
-							$t = $a + $b + $c +$n;
-							echo '<tr>';
-							echo '<td>' . $d->DEPARTAMENTO . '</td>';										
-							echo '<td style="text-align:center">' . $t . '</td>';										
-							echo '<td style="text-align:center;color:green">' . 100 . '</td>';	
-							echo '<td style="text-align:center">' . $a . '</td>';										
-							echo '<td style="text-align:center;color:green">' . $serie_1[] = ( ($t>0) ? round($a*100/$t,2) : 0 ) ; echo  '</td>';	
-							echo '<td style="text-align:center">' . $b. '</td>';										
-							echo '<td style="text-align:center;color:green">' . $serie_2[] = ( ($t>0) ? round($b*100/$t,2) : 0 ) ; echo '</td>';	
-							echo '<td style="text-align:center">' . $c . '</td>';										
-							echo '<td style="text-align:center;color:green">' . $serie_3[] = ( ($t>0) ? round($c*100/$t,2) : 0 ) ; echo '</td>';
-							echo '<td style="text-align:center">' . $n . '</td>';										
-							echo '<td style="text-align:center;color:green">' . $serie_4[] = ( ($t>0) ? round($n*100/$t,2) : 0 ) ; echo '</td>';																																								
-							echo '</tr>';
-							$aa += $a;
-							$bb += $b;
-							$cc += $c;
-							$nn += $n;
-						}			
+								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
+									echo '<caption><h3>
+													CUADRO N° '. sprintf("%02d",$opcion) .'
+													<br><strong>
+													'. $c_title  .' </strong>
+									     </h3></caption>';
 
-						echo '<tr>';
-						echo '<td>Total</td>';										
-						echo '<td style="text-align:center">' . $total . '</td>';										
-						echo '<td style="text-align:center;color:green">100%</td>';	
-						echo '<td style="text-align:center">' . $aa . '</td>';										
-						echo '<td style="text-align:center;color:green">' . round($aa*100/$total,2) . '</td>';	
-						echo '<td style="text-align:center">' . $bb . '</td>';										
-						echo '<td style="text-align:center;color:green">' . round($bb*100/$total,2) . '</td>';	
-						echo '<td style="text-align:center">' . $cc . '</td>';										
-						echo '<td style="text-align:center;color:green">' . round($cc*100/$total,2) . '</td>';		
-						echo '<td style="text-align:center">' . $nn . '</td>';										
-						echo '<td style="text-align:center;color:green">' . round($nn*100/$total,2) . '</td>';																																
-						echo '</tr>';
+								echo '<thead>';
+									echo '<tr>';
+									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
+									//echo '<th rowspan="2" colspan="2" style="text-align:center">Total</th>';																																																																																										
+									echo '<th colspan="6" style="text-align:center">Actividad</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
+									echo '</tr>';
+									echo '<tr>';									
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Pesca') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Acuicultura' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Pesca y Acuicultura' ) .'</th>';						
+									echo '</tr>';
 
-					echo '</thead>';
-					echo '<tbody>';
+									echo '<tr>';
+										for ($i=1; $i <=$cant_v ; $i++) { 
+									echo '<th style="text-align:center">Abs</th>';										
+									echo '<th style="text-align:center;">%</th>';					
+										}
+									echo '</tr>';
+				
+								echo '</thead>';
+								echo '<tbody>';
 
-					echo '</tbody>';
-				echo '</table>';
-		?>
-		<?php 
-			$this->load->view('tabulados/pescador/includes/text_view.php'); 
+									$x = 1; $z = 0;  $u = 0;
+									$totales = array_fill(1, 50,0); 
+									$pes_porc=null;$acu_porc=null;$ambos_porc=null; $index_pes = null;$index_acu = null;$index_ambos = null;$diff_pes = 0;$diff_acu = 0;$diff_ambos = 0;
+									$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
+									$tot_pes = 0; $tot_acu = 0; $tot_ambos = 0;
+									foreach ($tables->result() as  $value) {
 
-			$series = array(
-							array("name" => 'Pesca'					,"data" => $serie_1),
-							array("name" => 'Acuicultura'			,"data" => $serie_2),
-							array("name" => 'Pesca y Acuicultura'	,"data" => $serie_3),
-							array("name" => 'NEP'					,"data" => $serie_4)	);
-			$data['tipo'] =  'column';// << column >> or << bar >> 
-			$data['xx'] =  2030; // ancho
-			$data['yy'] =  840; // altura
-			$data['series'] =  $series;
-			$data['c_title'] = $c_title;
-			$this->load->view('tabulados/pescador/includes/grafico_view.php', $data); 
+										//foreach ($value as $i) {
+											$tot_pes += $value->PESCADOR;
+											$tot_acu += $value->ACUICULTOR;
+											$tot_ambos += $value->AMBOS;							
+										//}
 
-			echo form_close(); 
-		?>
+									}
 
-		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
+									//if($respuesta_unica){// tabular al 100% en respuestas unicas
+										foreach ($tables->result() as  $key => $value) {
+									
+												 $pes_porc[$value->CCDD]=  round( ($value->PESCADOR*100/ $tot_pes),1) ; 
+												 $acu_porc[$value->CCDD]=  round( ($value->ACUICULTOR*100/ $tot_acu),1) ; 
+												 $ambos_porc[$value->CCDD]=  round( ($value->AMBOS*100/ $tot_ambos),1) ;
+										}
+										//bucando valores mayoyes y nmenores en los porcentajes
+										if ( round(array_sum($pes_porc),1) > 100 ) {
+											$index_pes = array_keys($pes_porc,max($pes_porc));//echo     '_mayor_ '.$index_pes[0] . '<br>';
+											$diff_pes = round( (100-array_sum($pes_porc)),1);
+										}else if( round(array_sum($pes_porc),1) < 100){
+											$diff_pes = round( (100-array_sum($pes_porc)),1);
+											//array_pop($array_porc);//delete NEP
+											$pes_porc =  array_filter($pes_porc); //solo valores no ceros
+											$index_pes = (!empty($pes_porc)) ? ( array_keys($pes_porc,min($pes_porc)) ) :  null;
+											//echo  $diff_pes .'_menor_'.  $index_pes[0] . '<br>';
+										}
+										if ( round(array_sum($acu_porc),1) > 100 ) {
+											$index_acu = array_keys($acu_porc,max($acu_porc));
+											$diff_acu = round( (100-array_sum($acu_porc)),1);//echo     '_mayor_Acu_ '.$index_acu[0] . ' '.$diff_acu.'<br>';
+										}else if( round(array_sum($acu_porc),1) < 100){
+											$diff_acu = round( (100-array_sum($acu_porc)),1);
+											//array_pop($array_porc);//delete NEP
+											$acu_porc =  array_filter($acu_porc); //solo valores no ceros
+											$index_acu = (!empty($acu_porc)) ? ( array_keys($acu_porc,min($acu_porc)) ) :  null;
+											//echo  $diff_acu .'_menor_acu_  '.  $index_acu[0] . '<br>';
+										}	
+										if ( round(array_sum($ambos_porc),1) > 100 ) {
+											$index_ambos = array_keys($ambos_porc,max($ambos_porc));
+											$diff_ambos = round( (100-array_sum($ambos_porc)),1);//echo     $diff_ambos.' _mayor_ambos_ '.$index_ambos[0] . '<br>';
+										}else if( round(array_sum($ambos_porc),1) < 100){
+											$diff_ambos = round( (100-array_sum($ambos_porc)),1);
+											//array_pop($array_porc);//delete NEP
+											$ambos_porc =  array_filter($ambos_porc); //solo valores no ceros
+											$index_ambos = (!empty($ambos_porc)) ? ( array_keys($ambos_porc,min($ambos_porc)) ) :  null;
+											//echo  $diff_ambos .'_menor_ambos_  '.  $index_ambos[0] . '<br>';
+										}																			
+									//}
+
+									foreach($tables->result() as $filas){
+										echo '<tr>';
+											
+											foreach ($filas as  $key => $value) {
+												if($key != 'CCDD'){
+														if( ($key == 'NEP' && $NEP == 0 ) || $key == 'TOTAL' ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
+													if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
+														if($key == 'NEP' && $NEP == 0 ){}else{
+															//echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? 100  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
+															if($key == 'PESCADOR') { echo '<td style="text-align:center;">' .  number_format(( $datas[$z++][$u] = ( ( ($tot_pes>0) ? round( ($value*100/ $tot_pes),1) : 0 ) +  ( (  $filas->CCDD == $index_pes[0] ) ? $diff_pes : 0 ) ) ),1,',',' ') .'</td>'; }
+															if($key == 'ACUICULTOR') { echo '<td style="text-align:center;">' . number_format((  $datas[$z++][$u] = ( ( ($tot_acu>0) ? round( ($value*100/ $tot_acu),1) : 0 ) +  ( ( $filas->CCDD == $index_acu[0] ) ? $diff_acu : 0 ) )  ),1,',',' ').'</td>'; }
+															if($key == 'AMBOS') { echo '<td style="text-align:center;">' .  number_format(( $datas[$z++][$u] = ( ( ($tot_ambos>0) ? round( ($value*100/ $tot_ambos),1) : 0 ) +  ( ( $filas->CCDD == $index_ambos[0] ) ? $diff_ambos : 0 ) ) ),1,',',' ') .'</td>'; }
+														}
+													};
+												}
+											} $x = 1; $z = 0; $u++;
+
+											//$pes_porc=null;$acu_porc=null;$ambos_porc=null; $index_pes = null;$index_acu = null;$index_amos = null;$diff_pes = 0;$diff_acu = 0;$diff_ambos = 0;
+										echo '</tr>';
+									}
+									//TOTALES
+									echo '<tr>';
+									echo '<td>Total</td>';						
+									// 	if($respuesta_unica){// tabular al 100% en respuestas unicas
+									// 		for ($i = 2; $i<=$cant_v ; $i++) {
+									// 				$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
+									// 		}
+									// 		if ( round(array_sum($array_porc_tot),1) > 100 ) {
+									// 			$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
+									// 			$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+									// 		}else if( round(array_sum($array_porc_tot),1) < 100){
+									// 			$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+									// 			array_pop($array_porc_tot);//delete NEP 
+									// 			$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
+									// 			$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
+									// 		}
+									// 	}							
+
+									// 	for ($i=1; $i <= $cant_v ; $i++) { 
+									// echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
+									// echo '<td style="text-align:center;"> '. (round( ( ($i==1) ? 100 : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ).'</td>';	
+									echo '<td style="text-align:center">'.number_format($tot_pes,0,',',' ') .'</td>';
+									echo '<td style="text-align:center">'. '100,0' .'</td>';
+									echo '<td style="text-align:center">'.number_format($tot_acu,0,',',' ') .'</td>';
+									echo '<td style="text-align:center">'. '100,0' .'</td>';
+									echo '<td style="text-align:center">'.number_format($tot_ambos,0,',',' ') .'</td>';
+									echo '<td style="text-align:center">'. '100,0' .'</td>';
+										//}
+									echo '</tr>';
+
+								echo '</tbody>';
+						echo '</table></div>';
+
+						$series = array(
+										array("name" => $variable_1 	,"data" => $datas[0]),
+										array("name" => $variable_2 	,"data" => $datas[1]), 
+										array("name" => $variable_3 	,"data" => $datas[2]), 
+									);
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[3]) ); }
+
+						$data['tipo'] =  'column';// << column >> or << bar >> 
+						$data['xx'] =  2030; // ancho
+						$data['yy'] =  840; // altura
+						$data['series'] =  $series;
+						$data['c_title'] = $c_title;
+						$this->load->view('tabulados/includes/text_view.php'); 
+
+						$this->load->view('tabulados/includes/metadata_view.php', $data); 
+						echo form_close(); 
+
+					?>
+
+		  		<!-- FIN TABULADO -->
+		  	</div>
+		  
+			<div class="tab-pane" id="grafico">
+				  	<!-- INICIO GRAFICO -->
+							<?php 
+								$this->load->view('tabulados/includes/grafico_view.php', $data); 
+							?>
+							<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
+				  	<!-- FIN GRAFICO -->
+			</div>
+
+			<div class="tab-pane" id="mapa">
+				  	<!-- INICIO MAPA -->
+				  			<?php  
+				  				$this->load->view('tabulados/includes/mapa_view.php', $data); ?>
+				  	<!-- FIN MAPA -->
+			</div>
+
+		</div>
+	 
 
 	</div>
+
 </div>
 
- <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+<?php $this->load->view('convocatoria/includes/footer_view.php'); ?>

@@ -40,7 +40,7 @@ $('a.toggles').click(function(e) {
     $('#ap-sidebar').animate({
         width: 'toggle'
     }, 0);
-    $('#ap-content').toggleClass('span12 span10');
+    $('#ap-content').toggleClass('span12 span11');
     $('#ap-content').toggleClass('no-sidebar');
 });
 
@@ -213,3 +213,12 @@ $("#form_contacto").ready(function() {
 
 
 });
+
+
+$('.left_tip').tooltip();
+
+$('#Tabs a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show').slow;
+  //$(this).fadeIn('slow');
+})

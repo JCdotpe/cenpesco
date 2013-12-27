@@ -43,7 +43,7 @@ class Seguimiento extends CI_Controller {
 			$data['username']	= $this->tank_auth->get_username();
 			$data['main_content'] = 'seguimiento/index_view';
 			$data['reporte'] = $this->tank_auth->get_ubigeo();
-			redirect('/seguimiento/observacion_campo');
+			redirect('/seguimiento/avance_empadronador');
 	        //$this->load->view('backend/includes/template', $data);
 	}
 }

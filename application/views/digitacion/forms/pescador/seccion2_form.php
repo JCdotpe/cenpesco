@@ -3,7 +3,7 @@
 $paisesArray= array(-1 => '-'); 
 	foreach ($pais->result() as $filas)
 		{
-			$paisesArray[$filas->id] = $filas->detalle;
+			$paisesArray[$filas->codigo] = $filas->detalle;
 		}
 	// CARGAR COMBOS
 
@@ -3745,7 +3745,7 @@ $('.hacti').change(function() {
 $('#S2_10_PAIS_COD').change(function() {
     var ug = $('#S2_10_DD_COD, #S2_10_PP_COD, #S2_10_DI_COD');
     var ugo = $('#S2_10_PP_O, #S2_10_DI_O');
-    if($(this).val() == 124){
+    if($(this).val() == 4028){
         ug.removeAttr('disabled');
         ugo.removeAttr('disabled');
     }else{
@@ -3759,7 +3759,7 @@ $('#S2_10_PAIS_COD').change(function() {
 $('#S2_11_PAIS_COD').change(function() {
     var ug = $('#S2_11_DD_COD, #S2_11_PP_COD, #S2_11_DI_COD');
     var ugo = $('#S2_11_PP_O, #S2_11_DI_O'); 
-    if($(this).val() == 124){
+    if($(this).val() == 4028){
         ug.removeAttr('disabled');
         ugo.removeAttr('disabled');
     }else{
@@ -3773,7 +3773,7 @@ $('#S2_11_PAIS_COD').change(function() {
 
 $('#S2_10_PP_COD').change(function() {
     var ugo = $('#S2_10_PP_O');
-    if($(this).val() == -1 && $('#S2_10_PAIS_COD').val() == 124){
+    if($(this).val() == -1 && $('#S2_10_PAIS_COD').val() == 4028){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -3784,7 +3784,7 @@ $('#S2_10_PP_COD').change(function() {
 
 $('#S2_10_DI_COD').change(function() {
     var ugo = $('#S2_10_DI_O');
-    if($(this).val() == -1 && $('#S2_10_PAIS_COD').val() == 124){
+    if($(this).val() == -1 && $('#S2_10_PAIS_COD').val() == 4028){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -3795,7 +3795,7 @@ $('#S2_10_DI_COD').change(function() {
 
 $('#S2_11_PP_COD').change(function() {
     var ugo = $('#S2_11_PP_O');
-    if($(this).val() == -1 && $('#S2_11_PAIS_COD').val() == 124){
+    if($(this).val() == -1 && $('#S2_11_PAIS_COD').val() == 4028){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -3805,7 +3805,7 @@ $('#S2_11_PP_COD').change(function() {
 
 $('#S2_11_DI_COD').change(function() {
     var ugo = $('#S2_11_DI_O');
-    if($(this).val() == -1 && $('#S2_11_PAIS_COD').val() == 124){
+    if($(this).val() == -1 && $('#S2_11_PAIS_COD').val() == 4028){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     

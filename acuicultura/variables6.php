@@ -45,7 +45,7 @@ $formulario=1;
 if($frm6==1 and $opc6==2)
 {
 
-$sql= "UPDATE acu_seccion6 SET s6_1_1=".sprintf("%s",$s6_1_1).", s6_1_2=".sprintf("%s",$s6_1_2).", s6_1_3=".sprintf("%s",$s6_1_3).", s6_1_4=".sprintf("%s",$s6_1_4).", s6_1_5=".sprintf("%s",$s6_1_5).", s6_1_6=".sprintf("%s",$s6_1_6).", s6_1_7=".sprintf("%s",$s6_1_7).", s6_1_7_o=".sprintf("%s",$s6_1_7_o).", s6_1_8=".sprintf("%s",$s6_1_8).", s6_2_1=".sprintf("%s",$s6_2_1).", s6_2_2=".sprintf("%s",$s6_2_2).", s6_2_3=".sprintf("%s",$s6_2_3).", s6_2_4=".sprintf("%s",$s6_2_4).", s6_2_5=".sprintf("%s",$s6_2_5).", s6_2_5_o=".sprintf("%s",$s6_2_5_o).", s6_2_6=".sprintf("%s",$s6_2_6)." WHERE id6='".$_SESSION['id1']."'";
+$sql= "UPDATE acu_seccion6 SET s6_1_1=".sprintf("%s",$s6_1_1).", s6_1_2=".sprintf("%s",$s6_1_2).", s6_1_3=".sprintf("%s",$s6_1_3).", s6_1_4=".sprintf("%s",$s6_1_4).", s6_1_5=".sprintf("%s",$s6_1_5).", s6_1_6=".sprintf("%s",$s6_1_6).", s6_1_7=".sprintf("%s",$s6_1_7).", s6_1_7_o=".sprintf("%s",$s6_1_7_o).", s6_1_8=".sprintf("%s",$s6_1_8).", s6_2_1=".sprintf("%s",$s6_2_1).", s6_2_2=".sprintf("%s",$s6_2_2).", s6_2_3=".sprintf("%s",$s6_2_3).", s6_2_4=".sprintf("%s",$s6_2_4).", s6_2_5=".sprintf("%s",$s6_2_5).", s6_2_5_o=".sprintf("%s",$s6_2_5_o).", s6_2_6=".sprintf("%s",$s6_2_6). ", ff_rr6=".sprintf("%s",$ff_rr6). ", user6=".sprintf("%s",$user6)." WHERE id6='".$_SESSION['id1']."'";
 
 $result = mysql_query($sql);
 echo mysql_error ();	

@@ -1,173 +1,181 @@
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
 
-
+<?php $this->load->view('tabulados/includes/sidebar_view'); ?> <!-- SIDE BAR -->
 <div class="row-fluid">
-    <div id="ap-sidebar" class="span2">
-		<?php $this->load->view('tabulados/comunidad/includes/sidebar_view'); ?>       
-    </div><!--/span-->
 
 
+ 	<div class="span12" id="ap-content">
 
- 	<div class="span10" id="ap-content">
+		<?php $this->load->view('tabulados/includes/tabs_view.php');?> <!--include tabs y logos	-->
+		
+		<div class="tab-content" style="clear:both">
+		  	<div class="tab-pane active" id="tabulado">
+		  		<!-- INICIO TABULADO -->
+			    	<?php
+			    			//EVALUAR NEP					
+								$NEP = 0;
+								foreach ($tables->result() as $value) {
+											$NEP += $value->NEP;
+									}
+								$cant_v = ($NEP == 0) ? 7 : 8;
+							// PREGUNTAS MULTIPLES
+								$respuesta_unica = FALSE;
 
-    	<?php
-	    		echo form_open("/tabulados/export");
-	    			$c_title = 'PERÚ: COMUNIDADES POR DESTINO FINAL DE LA BASURA GENERADA, SEGÚN DEPARTAMENTO, 2013';
+				    		echo form_open("/tabulados/export");
+				    			$c_title = 'PERÚ: COMUNIDADES POR DESTINO FINAL DE LA BASURA GENERADA, SEGÚN DEPARTAMENTO, 2013';
 
-					echo '<table border="1" class="table table-hover table-condensed" id="tablet" name="tablet">';
-						echo '<caption><h4>
-										CUADRO N° '. $opcion .'
-										<br><br>
-										'. $c_title .'
-						     </h4></caption>';
+								$this->load->view('tabulados/includes/tab_logo_view.php');
 
-					echo '<thead>';
-						echo '<tr>';
-						echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
-						echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-						echo '<th colspan="12" style="text-align:center">Destino final de la basura generada</th>';	
-						echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">NEP</th>';																																														
-						echo '</tr>';
+								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
+									echo '<caption><h3>
+													CUADRO N° '. sprintf("%02d",$opcion) .'
+													<br><strong>
+													'. $c_title  .' </strong>
+									     </h3></caption>';
 
-						echo '<tr>';
-						echo '<th colspan="2" style="text-align:center">Relleno sanitario</th>';										
-						echo '<th colspan="2" style="text-align:center">Botadero a cielo abierto</th>';						
-						echo '<th colspan="2" style="text-align:center">Vertidos en el río, lago o laguna</th>';						
-						echo '<th colspan="2" style="text-align:center">Reciclaje</th>';						
-						echo '<th colspan="2" style="text-align:center">Quemada / incinerada</th>';						
-						echo '<th colspan="2" style="text-align:center">Otro</th>';						
-						echo '</tr>';
+								echo '<thead>';
+									echo '<tr>';
+									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Destino final de la basura generada</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																															
+									echo '</tr>';
 
-						echo '<tr>';
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';	
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';			
-						echo '<th style="text-align:center">Abs</th>';										
-						echo '<th style="text-align:center;color:green">%</th>';																				
-						echo '</tr>';
-					echo '</thead>';
+									echo '<tr>';		
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Relleno sanitario') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Botadero a cielo abierto' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Vertidos en el río, lago o laguna' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Reciclaje' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Quemada / incinerada' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Otro' ) .'</th>';									
+									echo '</tr>';
 
-					echo '<tbody>';
-						$tot_tot = 0;
-						$tot_a = 0;
-						$tot_b = 0;
-						$tot_c = 0;
-						$tot_d = 0;
-						$tot_e = 0;
-						$tot_f = 0;
-						$tot_g = 0;
-								
-						// TOTALES
-						foreach($tables->result() as $reg){
-							$tot_tot += $reg->TOTAL;
-							$tot_a += $reg->RELLENO;
-							$tot_b += $reg->BOTADERO;
-							$tot_c += $reg->VERTIDOS;
-							$tot_d += $reg->RECICLAJE;
-							$tot_e += $reg->QUEMADA;
-							$tot_f += $reg->OTRO;
-							$tot_g += $reg->NEP;
-						}
-							echo '<tr>';
-							echo '<td> TOTAL</td>';										
-							echo '<td style="text-align:center">' . $tot_tot . '</td>';										
-							echo '<td style="text-align:center;color:green">' . 100 . '</td>';	
-							echo '<td style="text-align:center">' . $tot_a . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_a*100/$tot_tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $tot_b. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_b*100/$tot_tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $tot_c . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_c*100/$tot_tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $tot_d. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_d*100/$tot_tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $tot_e . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_e*100/$tot_tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $tot_f. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_f*100/$tot_tot,2) . '</td>';
-							echo '<td style="text-align:center">' . $tot_g. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($tot_g*100/$tot_tot,2) . '</td>';																			
-							echo '</tr>';	
-						//deps					
-						foreach($tables->result() as $reg){
-							//reiniciadores
-							$dep = NULL;
-							$tot = 0;
-							$a = 0;
-							$b = 0;
-							$c = 0;
-							$d = 0;
-							$e = 0;
-							$f = 0;		
-							$g = 0;		
+									echo '<tr>';
+											for ($i=1; $i <=$cant_v ; $i++) { 
+										echo '<th style="text-align:center">Abs</th>';										
+										echo '<th style="text-align:center;">%</th>';					
+											}								
+									echo '</tr>';
+
+								echo '</thead>';
+
+									echo '<tbody>';
+
+										$x = 1; $z = 0;  $u = 0; 
+										$totales = array_fill(1, 50,0); 
+										$array_porc=null; $index = null;$diff = 0;
+										$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
+
+										foreach($tables->result() as $filas){
+											echo '<tr>';
+												if($respuesta_unica){// tabular al 100% en respuestas unicas
+													foreach ($filas as  $key => $value) {
+														if($key == 'CCDD' || $key == 'DEPARTAMENTO' || $key == 'TOTAL' ){}
+														else{
+															$array_porc[$key]= ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1)  : 0  ) ; 
+														}
+													}
+													if ( round(array_sum($array_porc),1) > 100 ) {
+														$index = array_keys($array_porc,max($array_porc));//echo  $filas->DEPARTAMENTO .   '_mayor_ '.$index[0] . '<br>';
+														$diff = round( (100-array_sum($array_porc)),1);
+													}else if( round(array_sum($array_porc),1) < 100){
+													$diff = round( (100-array_sum($array_porc)),1);
+													array_pop($array_porc);//delete NEP
+													$array_porc =  array_filter($array_porc); //solo valores no ceros
+													$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
+													}
+												}
+												foreach ($filas as  $key => $value) {
+													if($key != 'CCDD'){
+															if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
+														if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
+															if($key == 'NEP' && $NEP == 0 ){}else{
+																echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
+														};
+														
+													}
+												} $x = 1; $z = 0; $u++;
+
+												$array_porc=null; $index = null;$diff = 0;
 												
-							$dep = $reg->DEPARTAMENTO;
-							$tot = $reg->TOTAL;
-							$serie_1[] = round(($a = $reg->RELLENO)*100/$tot);
-							$serie_2[] = round(($b = $reg->BOTADERO)*100/$tot);
-							$serie_3[] = round(($c = $reg->VERTIDOS)*100/$tot);
-							$serie_4[] = round(($d = $reg->RECICLAJE)*100/$tot);
-							$serie_5[] = round(($e = $reg->QUEMADA)*100/$tot);
-							$serie_6[] = round(($f = $reg->OTRO)*100/$tot);
-							$serie_7[] = round(($g = $reg->NEP)*100/$tot);
+											echo '</tr>';
+										}	
+										//TOTALES
+										echo '<tr>';
+										echo '<td>Total</td>';	
+											if($respuesta_unica){// tabular al 100% en respuestas unicas
+												for ($i = 2; $i<=$cant_v ; $i++) {
+														$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
+												}
+												if ( round(array_sum($array_porc_tot),1) > 100 ) {
+													$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
+													$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+												}else if( round(array_sum($array_porc_tot),1) < 100){
+													$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+													array_pop($array_porc_tot);//delete NEP 
+													$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
+													$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
+												}
+											}							
 
-							echo '<tr>';
-							echo '<td>' . $dep . '</td>';										
-							echo '<td style="text-align:center">' . $tot . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round(100,2) . '</td>';	
-							echo '<td style="text-align:center">' . $a . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($a*100/$tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $b. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($b*100/$tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $c . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($c*100/$tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $d. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($d*100/$tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $e . '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($e*100/$tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $f. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($f*100/$tot,2) . '</td>';	
-							echo '<td style="text-align:center">' . $g. '</td>';										
-							echo '<td style="text-align:center;color:green">' . round($g*100/$tot,2) . '</td>';																																																										
-							echo '</tr>';
-						}
-					echo '</tbody>';
-				echo '</table>';
+											for ($i=1; $i <= $cant_v ; $i++) { 
+										echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
+										echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+											}
+										echo '</tr>';
 
-		?>
-		<?php 
-			$this->load->view('tabulados/comunidad/includes/text_view.php'); 
+									echo '</tbody>';
+							echo '</table></div>';
 
-			$series = array(
-							array("name" => 'RELLENO'	,"data" => $serie_1),
-							array("name" => 'BOTADERO'	,"data" => $serie_2),
-							array("name" => 'VERTIDOS'	,"data" => $serie_3),
-							array("name" => 'RECICLAJE'	,"data" => $serie_4),
-							array("name" => 'QUEMADA'	,"data" => $serie_5),
-							array("name" => 'OTRO'		,"data" => $serie_6),
-							array("name" => 'NEP'		,"data" => $serie_7)	);
-			$data['tipo'] =  'column';// << column >> or << bar >> 
-			$data['xx'] =  2030; // ancho
-			$data['yy'] =  840; // altura
-			$data['series'] =  $series;
-			$data['c_title'] = $c_title;
-			$this->load->view('tabulados/comunidad/includes/grafico_view.php', $data); 
+								$series = array(
+												array("name" => $variable_1 	,"data" => $datas[0]),
+												array("name" => $variable_2 	,"data" => $datas[1]), 
+												array("name" => $variable_3 	,"data" => $datas[2]), 
+												array("name" => $variable_4 	,"data" => $datas[3]), 
+												array("name" => $variable_5 	,"data" => $datas[4]), 
+												array("name" => $variable_6 	,"data" => $datas[5]), 
+											);
+								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[6]) ); }
 
-			echo form_close(); 
-		?>
+								$data['tipo'] =  'column';// << column >> or << bar >> 
+								$data['xx'] =  2030; // ancho
+								$data['yy'] =  840; // altura
+								$data['series'] =  $series;
+								$data['c_title'] = $c_title;
+								$this->load->view('tabulados/includes/text_view.php'); 
 
-		<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
+								$this->load->view('tabulados/includes/metadata_view.php', $data);
+
+						echo form_close(); 
+					?>		  		
+		  		<!-- FIN TABULADO -->
+		  	</div>
+		  
+			<div class="tab-pane" id="grafico">
+				  	<!-- INICIO GRAFICO -->
+							<?php 
+								$this->load->view('tabulados/includes/grafico_view.php', $data); 
+							?>
+							<h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5>
+				  	<!-- FIN GRAFICO -->
+			</div>
+
+			<div class="tab-pane" id="mapa">
+				  	<!-- INICIO MAPA -->
+				  			<?php  
+				  				$this->load->view('tabulados/includes/mapa_view.php', $data); ?>
+				  	<!-- FIN MAPA -->
+			</div>
+
+		</div>
+	 
+
 	</div>
+
 </div>
 
- <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+<?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
+
+
+

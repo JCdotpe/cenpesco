@@ -1,15 +1,40 @@
-<div class="well sidebar-nav cen-sidebar">
-<ul class="nav nav-list">
-  <li class="nav-header">Opciones</li>
-  <li <?php echo ($opcion == 1) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador'); ?>">Reporte 1</a></li>
-  <li <?php echo ($opcion == 2) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte2'); ?>">Reporte 2</a></li>
-  <li <?php echo ($opcion == 3) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte3'); ?>">Reporte 3</a></li>
-  <li <?php echo ($opcion == 4) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte4'); ?>">Reporte 4</a></li>
-  <li <?php echo ($opcion == 5) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte5'); ?>">Reporte 5</a></li>
-  <li <?php echo ($opcion == 6) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte6'); ?>">Reporte 6</a></li>
-  <li <?php echo ($opcion == 7) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte7'); ?>">Reporte 7</a></li>
-  <li <?php echo ($opcion == 8) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte8'); ?>">Reporte 8</a></li>
-  <li <?php echo ($opcion == 9) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte9'); ?>">Reporte 9</a></li>
+<!-- Split button -->
+<!-- <div class="btn-group">
+  <button type="button" class="btn btn-danger">Action</button>
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div> -->
+
+
+
+<div class="scroll-menu btn-group">
+ <!--  <li class="nav-header nav-header-hide" >MENU</li> -->
+  <button type="button" class="btn btn-success">Tabulados de Pescador</button>
+  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" >
+    <span class="caret"></span>
+    <span class="sr-only"></span>
+  </button>    
+<ul class="dropdown-menu"  role="menu" >
+  <!-- style="max-height: 535px;overflow:scroll;" -->
+  
+  <li <?php echo ($opcion == 1) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador'); ?>">Reporte 01</a></li>
+  <li <?php echo ($opcion == 2) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte2'); ?>">Reporte 02</a></li>
+  <li <?php echo ($opcion == 3) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte3'); ?>">Reporte 03</a></li>
+  <li <?php echo ($opcion == 4) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte4'); ?>">Reporte 04</a></li>
+  <li <?php echo ($opcion == 5) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte5'); ?>">Reporte 05</a></li>
+  <li <?php echo ($opcion == 6) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte6'); ?>">Reporte 06</a></li>
+  <li <?php echo ($opcion == 7) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte7'); ?>">Reporte 07</a></li>
+  <li <?php echo ($opcion == 8) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte8'); ?>">Reporte 08</a></li>
+  <li <?php echo ($opcion == 9) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte9'); ?>">Reporte 09</a></li>
   <li <?php echo ($opcion == 10) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte10'); ?>">Reporte 10</a></li>
   <li <?php echo ($opcion == 11) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte11'); ?>">Reporte 11</a></li>
   <li <?php echo ($opcion == 12) ? 'class="active"' : ''; ?>><a href="<?php echo site_url('tabulados/pescador/reporte12'); ?>">Reporte 12</a></li>

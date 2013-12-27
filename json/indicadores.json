@@ -1,0 +1,96 @@
+[ { "children" : [ { "children" : [  ],
+          "data" : "Población total estimada",
+          "id" : 38950
+        },
+        { "children" : [  ],
+          "data" : "Población masculina estimada",
+          "id" : 38963
+        },
+        { "children" : [  ],
+          "data" : "Población femenina estimada",
+          "id" : 38967
+        }
+      ],
+    "data" : "Población Estimada",
+    "id" : 38949
+  },
+  { "children" : [ { "children" : [  ],
+          "data" : "Poblaci�n con percepci�n de inseguridad en los pr�ximos doce meses",
+          "id" : 38970
+        },
+        { "children" : [  ],
+          "data" : "Tipos de hecho delictivo",
+          "id" : 38983
+        }
+      ],
+    "data" : "Percepción de inseguridad",
+    "id" : 38969
+  },
+  { "children" : [  ],
+    "data" : "Robo o intento de robo en vivienda",
+    "id" : 38991
+  },
+  { "children" : [  ],
+    "data" : "Vigilancia en su zona o barrio",
+    "id" : 38994
+  },
+  { "children" : [ { "children" : [  ],
+          "data" : "Denuncias por comisión de delitos",
+          "id" : 39017
+        } ],
+    "data" : "Comisión de Delitos",
+    "id" : 39016
+  },
+  { "children" : [  ],
+    "data" : "Detenidos por comisión de delitos",
+    "id" : 39042
+  },
+  { "children" : [  ],
+    "data" : "Faltas cometidas",
+    "id" : 39065
+  },
+  { "children" : [  ],
+    "data" : "Bandas Desarticuladas",
+    "id" : 39073
+  },
+  { "children" : [  ],
+    "data" : "Personas desaparecidas",
+    "id" : 39075
+  },
+  { "children" : [  ],
+    "data" : "Vehículos robados",
+    "id" : 39077
+  },
+  { "children" : [  ],
+    "data" : "Vehículos recuperados",
+    "id" : 39087
+  },
+  { "children" : [ { "children" : [  ],
+          "data" : "Personas heridas en accidentes de tr�nsito",
+          "id" : 39107
+        },
+        { "children" : [  ],
+          "data" : "Personas fallecidas en accidentes de tr�nsito",
+          "id" : 39116
+        }
+      ],
+    "data" : "Accidentes de Tránsito",
+    "id" : 39094
+  },
+  { "children" : [  ],
+    "data" : "Denuncias por violencia familiar",
+    "id" : 39121
+  },
+  { "children" : [  ],
+    "data" : "Denuncias por violencia sexual",
+    "id" : 39151
+  },
+  { "children" : [  ],
+    "data" : "Protestas Sociales",
+    "id" : 39157
+  },
+  { "children" : [  ],
+    "data" : "Denuncias de trata de personas",
+    "id" : 39165
+  }
+]

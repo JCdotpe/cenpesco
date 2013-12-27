@@ -44,4 +44,12 @@ class Seguimiento_adm_model extends CI_Model{
 	}
 	
 
+	function get_avance_fijo()
+	{
+		$q = $this->db->query('select * from avance_empadronador_fijo');
+		return $q;
+
+	}
+
+
  }

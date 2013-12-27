@@ -5,6 +5,32 @@
 class Tabulados_model extends CI_MODEL
 {
 
+
+    //METADATA
+    function get_metadata ($tipo,$preg){
+        $this->db->where('tipo', $tipo);
+        $this->db->where('pregunta', $preg);
+        $q = $this->db->get('metadata');
+        return $q;   
+    }   
+
+    function insert_metadata($d)
+    {     
+        $q = $this->db->insert('metadata', $d);
+        return $this->db->affected_rows() > 0;
+    }
+
+    function update_metadata($tipo,$preg,$texto)
+    {
+        $this->db->where('tipo', $tipo);
+        $this->db->where('pregunta', $preg);        
+        $this->db->update('metadata', $texto);
+        return $this->db->affected_rows() > 0;
+    }
+    //METADATA
+
+
+    //TEXTO COMENTARIOS
     function get_texto ($tipo,$preg){
         $this->db->select('texto');
         $this->db->where('tipo', $tipo);
@@ -26,28 +52,46 @@ class Tabulados_model extends CI_MODEL
         $this->db->update('tabulados', $texto);
         return $this->db->affected_rows() > 0;
     }
-
-
+    //TEXTO COMENTARIOS
 function get_dptos (){
 	$q = $this->db->query('
-		SELECT distinct(DEPARTAMENTO),CCDD  FROM cenpesco.marco ORDER BY DEPARTAMENTO; 
+		select  distinct(DEPARTAMENTO), CCDD from departamentos_tab order by DEPARTAMENTO; 
     ');
     return $q;	 	
 }   
 
-function get_report1($a = null, $b = null){
-    $this->db->select('p.CCDD,p.NOM_DD,COUNT(p.id) as num');
-    $this->db->from('pescador p');
-    if(!is_null($a)){
-    	$this->db->where('p.TAC',$a);
+
+    function get_nombre_tabulados()
+    {
+    $q = $this->db->query('
+        select * from nombre_tabulados order by n; 
+    ');
+    return $q;
     }
-    if(is_null($b)){
-    	$this->db->group_by('p.NOM_DD');
-    }
-    $q = $this->db->get();
+
+/* TABULADO 01*/
+// function get_report1($a = null, $b = null){
+//     $this->db->select('p.CCDD,p.NOM_DD,COUNT(p.id) as num');
+//     $this->db->from('pescador p');
+//     if(!is_null($a)){
+//     	$this->db->where('p.TAC',$a);
+//     }
+//     if(is_null($b)){
+//     	$this->db->group_by('p.NOM_DD');
+//     }
+//     $q = $this->db->get();
+//     return $q;
+// }
+function get_report1(){//( coalesce(c1.t,0) + coalesce(c2.t,0) + coalesce( C3.t,0)) TOTAL,
+    $q = $this->db->query('
+        select  DEP.CCDD, DEPARTAMENTO,   coalesce(c1.t,0) PESCADOR, (coalesce(c2.t,0) -  coalesce(C3.t,0) ) ACUICULTOR, coalesce(C3.t,0) AMBOS 
+        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP
+        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=1 and res!=3 group by ccdd) as C1 on DEP.ccdd = C1.ccdd
+        left join (select ccdd, count(*) as t from acu_seccion1 group by ccdd) as C2  on DEP.ccdd = C2.ccdd     
+        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=3 and res!=3 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;
+                    ');
     return $q;
 }
-
 
 
 //S2_3
@@ -66,27 +110,85 @@ function get_report2($a = null, $b = null){
 }
 
 
-function get_report3($a = null, $b = null){
-	$this->db->select('COUNT(p.CCDD) as num');
-	$this->db->from('pescador p');
-    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');
-    $this->db->where('p2.S2_10_DD_COD',$a);
-    if(!is_null($b)){
-    $this->db->where('p.CCDD',$b);
-    }   
-    $q = $this->db->get();
+function get_report3($a = null, $b = null){ /* TABULADO N° 03 - lugar de nacimiento*/
+	$q = $this->db->query("       
+        select 
+        DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t,0) AS TOTAL,  
+        COALESCE(C1.t,0) as AMAZONAS, COALESCE(C2.t,0) as ANCASH, COALESCE(C3.t,0) as APURIMAC, COALESCE(C4.t,0) as AREQUIPA, COALESCE(C5.t,0) as AYACUCHO,
+        COALESCE(C6.t,0) as CAJAMARCA, COALESCE(C7.t,0) as CALLAO, COALESCE(C8.t,0) as CUSCO, COALESCE(C9.t,0) as HUANCAVELICA, COALESCE(C10.t,0) as HUANUCO, COALESCE(C11.t,0) as ICA,
+        COALESCE(C12.t,0) as JUNIN, COALESCE(C13.t,0) as LA_LIBERTAD, COALESCE(C14.t,0) as LAMBAYEQUE, COALESCE(C15.t,0) as LIMA, COALESCE(C16.t,0) as LORETO,
+        COALESCE(C17.t,0) as MADRE_DE_DIOS, COALESCE(C18.t,0) as MOQUEGUA, COALESCE(C19.t,0) as PASCO, COALESCE(C20.t,0) as PIURA, COALESCE(C21.t,0) as PUNO,
+        COALESCE(C22.t,0) as SAN_MARTIN, COALESCE(C23.t,0) as TACNA, COALESCE(C24.t,0) as TUMBES, COALESCE(C25.t,0) as UCAYALI, COALESCE(C26.t,0) as OTROS_PAISES       
+        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod is not null   group by nom_dd) as C0 on DEP.ccdd  = C0.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 01 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 02 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 03 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 04 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 05 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 06 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 07 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 08 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 09 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 10 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 11 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 12 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 13 group by nom_dd ) as C13 on DEP.ccdd  = C13.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 14 group by nom_dd ) as C14 on DEP.ccdd  = C14.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 15 group by nom_dd ) as C15 on DEP.ccdd  = C15.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 16 group by nom_dd ) as C16 on DEP.ccdd  = C16.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 17 group by nom_dd ) as C17 on DEP.ccdd  = C17.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 18 group by nom_dd ) as C18 on DEP.ccdd  = C18.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 19 group by nom_dd ) as C19 on DEP.ccdd  = C19.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 20 group by nom_dd ) as C20 on DEP.ccdd  = C20.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 21 group by nom_dd ) as C21 on DEP.ccdd  = C21.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 22 group by nom_dd ) as C22 on DEP.ccdd  = C22.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 23 group by nom_dd ) as C23 on DEP.ccdd  = C23.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 24 group by nom_dd ) as C24 on DEP.ccdd  = C24.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod = 25 group by nom_dd ) as C25 on DEP.ccdd  = C25.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_10_dd_cod > 25 and s2_10_dd_cod<>4028 group by nom_dd ) as C26 on DEP.ccdd  = C26.ccdd ;        
+        ");
     return $q;
 }
 
-function get_report4($a = null, $b = null){
-	$this->db->select('COUNT(p.CCDD) as num');
-	$this->db->from('pescador p');
-    $this->db->join('pesc_seccion2 p2','p.id = p2.pescador_id','left');
-    $this->db->where('p2.S2_11_DD_COD',$a);
-    if(!is_null($b)){
-    $this->db->where('p.CCDD',$b);
-    }   
-    $q = $this->db->get();
+function get_report4(){/* TABULADO N° 04 - en el 2007*/
+    $q = $this->db->query("       
+        select 
+        DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t,0) AS TOTAL,  
+        COALESCE(C1.t,0) as AMAZONAS, COALESCE(C2.t,0) as ANCASH, COALESCE(C3.t,0) as APURIMAC, COALESCE(C4.t,0) as AREQUIPA, COALESCE(C5.t,0) as AYACUCHO,
+        COALESCE(C6.t,0) as CAJAMARCA, COALESCE(C7.t,0) as CALLAO, COALESCE(C8.t,0) as CUSCO, COALESCE(C9.t,0) as HUANCAVELICA, COALESCE(C10.t,0) as HUANUCO, COALESCE(C11.t,0) as ICA,
+        COALESCE(C12.t,0) as JUNIN, COALESCE(C13.t,0) as LA_LIBERTAD, COALESCE(C14.t,0) as LAMBAYEQUE, COALESCE(C15.t,0) as LIMA, COALESCE(C16.t,0) as LORETO,
+        COALESCE(C17.t,0) as MADRE_DE_DIOS, COALESCE(C18.t,0) as MOQUEGUA, COALESCE(C19.t,0) as PASCO, COALESCE(C20.t,0) as PIURA, COALESCE(C21.t,0) as PUNO,
+        COALESCE(C22.t,0) as SAN_MARTIN, COALESCE(C23.t,0) as TACNA, COALESCE(C24.t,0) as TUMBES, COALESCE(C25.t,0) as UCAYALI, COALESCE(C26.t,0) as OTROS_PAISES       
+        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod is not null   group by nom_dd) as C0 on DEP.ccdd  = C0.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 01 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 02 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 03 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 04 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 05 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 06 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 07 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 08 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 09 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 10 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 11 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 12 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 13 group by nom_dd ) as C13 on DEP.ccdd  = C13.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 14 group by nom_dd ) as C14 on DEP.ccdd  = C14.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 15 group by nom_dd ) as C15 on DEP.ccdd  = C15.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 16 group by nom_dd ) as C16 on DEP.ccdd  = C16.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 17 group by nom_dd ) as C17 on DEP.ccdd  = C17.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 18 group by nom_dd ) as C18 on DEP.ccdd  = C18.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 19 group by nom_dd ) as C19 on DEP.ccdd  = C19.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 20 group by nom_dd ) as C20 on DEP.ccdd  = C20.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 21 group by nom_dd ) as C21 on DEP.ccdd  = C21.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 22 group by nom_dd ) as C22 on DEP.ccdd  = C22.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 23 group by nom_dd ) as C23 on DEP.ccdd  = C23.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 24 group by nom_dd ) as C24 on DEP.ccdd  = C24.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod = 25 group by nom_dd ) as C25 on DEP.ccdd  = C25.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_11_dd_cod > 25 and s2_11_dd_cod<>4028 group by nom_dd ) as C26 on DEP.ccdd  = C26.ccdd ;  
+        ");
     return $q;
 }
 
@@ -742,15 +844,31 @@ function get_report51($a = null, $b = null){
 }
 
 
-function get_report52($a = null, $b = null){
-    $this->db->select('COUNT(p.CCDD) as num');
-    $this->db->from('pescador p');
-    $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');
-    $this->db->where('p5.S5_6_' . $a,1);        
-    if(!is_null($b)){
-    $this->db->where('p.CCDD',$b);
-    }   
-    $q = $this->db->get();
+function get_report52(){
+    $q = $this->db->query("
+                    select 
+                    DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
+                    COALESCE(C1.t,0) as Acarahuazu, COALESCE(C2.t,0) as Bagre, COALESCE(C3.t,0) as Boquichico, COALESCE(C4.t,0) as Camaron_rio, COALESCE(C5.t,0) as Carachama,
+                    COALESCE(C6.t,0) as Carachi_amarillo, COALESCE(C7.t,0) as Doncella, COALESCE(C8.t,0) as Fasaco, COALESCE(C9.t,0) Lisa, COALESCE(C10.t,0) Palometa, 
+                    COALESCE(C11.t,0) Pejerrey, COALESCE(C12.t,0) Sardina, COALESCE(C13.t,0) Tilapia, COALESCE(C14.t,0)  as Trucha, COALESCE(C15.t,0) as Zungaro
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_4 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_6 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_7 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_8 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_14 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_16 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_19 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_27 = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_29 = 1 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_32 = 1 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_35 = 1 group by nom_dd ) as C13 on DEP.ccdd  = C13.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_36 = 1 group by nom_dd ) as C14 on DEP.ccdd  = C14.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_6_40 = 1 group by nom_dd ) as C15 on DEP.ccdd  = C15.ccdd;
+        ");
     return $q;
 }
 
@@ -772,7 +890,12 @@ function get_report54($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');
-    $this->db->where('p5.S5_8_' . $a,1);        
+        if ($a>=1 && $a<=4) {
+    $this->db->where('p5.S5_8_' . $a,1); }
+        if ($a==5) {
+    $this->db->where('p5.S5_8_1',9); }  
+        if ($a==999) {
+    $this->db->where('p5.S5_8_1 is not null'); }        
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -784,7 +907,12 @@ function get_report55($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');
-    $this->db->where('p5.S5_9_' . $a,1);        
+        if ($a>=1 && $a<=15) {
+    $this->db->where('p5.S5_9_' . $a,1); }
+        if ($a==16) {
+    $this->db->where('p5.S5_9_1',9); }   
+        if ($a==999) {
+    $this->db->where('p5.S5_9_1 is not null'); }   
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -797,9 +925,8 @@ function get_report56($a = null, $b = null){
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion5 p5','p.id = p5.pescador_id','left');
     $this->db->where('p5.S5_10_1' ,$a);        
-    if(!is_null($b)){
-    $this->db->where('p.CCDD',$b);
-    }   
+        if(!is_null($b)){
+    $this->db->where('p.CCDD',$b); }   
     $q = $this->db->get();
     return $q;
 }
@@ -846,7 +973,12 @@ function get_report60($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion6 p6','p.id = p6.pescador_id','left');
-    $this->db->where('p6.S6_3_' . $a,1);        
+        if ($a>=1 && $a<=6) {
+    $this->db->where('p6.S6_3_' . $a,1);  }   
+        if ($a == 7) {
+    $this->db->where('p6.S6_3_1',9);  }  
+        if ($a == 999) {
+    $this->db->where('p6.S6_3_1 is not null');  }    
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -896,7 +1028,12 @@ function get_report64($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');
-    $this->db->where('p7.S7_10' . $a,1);        
+        if ($a>=1 && $a<=4) {
+    $this->db->where('p7.S7_10' . $a,1);  }
+        if ($a==5) {
+    $this->db->where('p7.S7_101',9);  }  
+        if ($a==999) {
+    $this->db->where('p7.S7_101 is not null');  }      
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -909,8 +1046,13 @@ function get_report65($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
     $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');
-    $this->db->where('p7.S7_101',1);        
-    $this->db->where('p7.S7_20' . $a,1);        
+    $this->db->where('p7.S7_101',1); 
+        if ($a>=1 && $a<=6) {       
+    $this->db->where('p7.S7_20' . $a,1);  }
+        if ($a==7) {       
+    $this->db->where('p7.S7_201',9);  } 
+        if ($a==999) {       
+    $this->db->where('p7.S7_201 is not null');  } 
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -922,8 +1064,13 @@ function get_report65($a = null, $b = null){
 function get_report66($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
-    $this->db->where('p7.S7_3_' . $a,1);        
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');   
+        if ($a>=1 && $a<=12) { 
+    $this->db->where('p7.S7_3_' . $a,1); }
+        if ($a==13) { 
+    $this->db->where('p7.S7_3_1',9); }  
+        if ($a==999) { 
+    $this->db->where('p7.S7_3_1 is not null'); }          
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -934,12 +1081,264 @@ function get_report66($a = null, $b = null){
 function get_report67($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
-    $this->db->where('p7.S7_4_' . $a,1);        
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');  
+        if ($a>=1 && $a<=4) {    
+    $this->db->where('p7.S7_4_' . $a,1); }      
+        if ($a==5) {    
+    $this->db->where('p7.S7_4_1',9); }   
+        if ($a==999) {    
+    $this->db->where('p7.S7_4_1 is not null'); }   
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
     $q = $this->db->get();
+    return $q;
+}
+
+function get_report68(){                    /* TABULADO N° 68 -------------------------- PECES QUE VENDIERON -------------------------*/
+    $q = $this->db->query("
+                    SELECT  table1.CCDD, table1.DEPARTAMENTO,  TOTAL,
+                    Acarahuazu , Bagre , Boquichico , Camaron_rio , Carachama , Carachi_amarillo , Doncella , Fasaco  , Lisa , Palometa , Pejerrey , Sabalo , Tilapia , Trucha , Zungaro  FROM
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, COALESCE(C0.t,0) as TOTAL, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Acarahuazu
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table1
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Bagre
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 2 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 2 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 2 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 2 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table2
+                    on table1.ccdd = table2.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Boquichico
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 4 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 4 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 4 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 4 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 4 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 4 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 4 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 4 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table3
+                    on table1.ccdd = table3.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Camaron_rio
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 6 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 6 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 6 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 6 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 6 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 6 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 6 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 6 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table4
+                    on table1.ccdd = table4.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Carachama
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 7 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 7 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 7 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 7 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 7 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 7 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 7 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 7 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 7 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table5
+                    on table1.ccdd = table5.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Carachi_amarillo
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 8 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 8 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 8 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 8 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 8 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 8 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 8 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 8 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 8 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 8 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table6
+                    on table1.ccdd = table6.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Doncella
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 14 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 14 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 14 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 14 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 14 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 14 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 14 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 14 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 14 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 14 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table7
+                    on table1.ccdd = table7.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Fasaco
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 16 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 16 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 16 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 16 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 16 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 16 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 16 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 16 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 16 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 16 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table8
+                    on table1.ccdd = table8.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Lisa
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 19 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 19 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 19 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 19 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 19 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 19 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 19 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 19 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 19 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 19 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table9
+                    on table1.ccdd = table9.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Palometa
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 27 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 27 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 27 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 27 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 27 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 27 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 27 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 27 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 27 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 27 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table10
+                    on table1.ccdd = table10.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Pejerrey
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 29 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 29 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 29 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 29 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 29 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 29 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 29 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 29 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 29 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 29 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table11
+                    on table1.ccdd = table11.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Sabalo
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 31 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 31 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 31 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 31 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 31 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 31 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 31 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 31 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 31 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 31 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table12
+                    on table1.ccdd = table12.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Tilapia
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 35 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 35 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 35 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 35 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 35 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 35 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 35 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 35 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 35 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 35 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table13
+                    on table1.ccdd = table13.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Trucha
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 36 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 36 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 36 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 36 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 36 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 36 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 36 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 36 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 36 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 36 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table14
+                    on table1.ccdd = table14.ccdd 
+                    INNER JOIN
+                    (select 
+                    DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
+                    COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0)  ) AS Zungaro
+                    from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_1_c = 40 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_2_c = 40 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_3_c = 40 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_4_c = 40 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_5_c = 40 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_6_c = 40 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_7_c = 40 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_8_c = 40 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_9_c = 40 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+                    left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_5_10_c = 40 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ) as table15
+                    on table1.ccdd = table15.ccdd;
+        ");
     return $q;
 }
 
@@ -956,11 +1355,19 @@ function get_report69($a = null, $b = null){
 }
 
 
+
+
+
 function get_report70($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
-    $this->db->where('p7.S7_7_' . $a,1);        
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');   
+        if ($a>=1 && $a<=4) {     
+    $this->db->where('p7.S7_7_' . $a,1); }   
+        if ($a==5) {     
+    $this->db->where('p7.S7_7_1',9); } 
+        if ($a==999) {     
+    $this->db->where('p7.S7_7_1 is not null'); }      
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -971,8 +1378,13 @@ function get_report70($a = null, $b = null){
 function get_report71($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
-    $this->db->where('p7.S7_8_' . $a,1);        
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');   
+        if ($a>=1 && $a<=6) {    
+    $this->db->where('p7.S7_8_' . $a,1);   }    
+        if ($a==7) {    
+    $this->db->where('p7.S7_8_1',9);   }  
+        if ($a==999) {    
+    $this->db->where('p7.S7_8_1 is not null');   }  
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -983,8 +1395,13 @@ function get_report71($a = null, $b = null){
 function get_report72($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
-    $this->db->where('p7.S7_9_' . $a,1);        
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left'); 
+        if ($a>=1 && $a<=4) {      
+    $this->db->where('p7.S7_9_' . $a,1);    }   
+        if ($a==5) {      
+    $this->db->where('p7.S7_9_1' ,9);    }  
+        if ($a==999) {      
+    $this->db->where('p7.S7_9_1 is not null');    }  
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -996,8 +1413,13 @@ function get_report72($a = null, $b = null){
 function get_report73($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');     
-    $this->db->where('p7.S7_10_' . $a,1);        
+    $this->db->join('pesc_seccion7 p7','p.id = p7.pescador_id','left');  
+        if ($a>=1 && $a<=4) {    
+    $this->db->where('p7.S7_10_' . $a,1);    }
+        if ($a==5) {    
+    $this->db->where('p7.S7_10_1',9);    } 
+        if ($a==999) {    
+    $this->db->where('p7.S7_10_1 is not null');    } 
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -1008,8 +1430,13 @@ function get_report73($a = null, $b = null){
 function get_report74($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion8 p8','p.id = p8.pescador_id','left');     
-    $this->db->where('p8.S8_1_' . $a,1);        
+    $this->db->join('pesc_seccion8 p8','p.id = p8.pescador_id','left'); 
+        if ($a>=1 && $a<=9) {     
+    $this->db->where('p8.S8_1_' . $a,1); } 
+        if ($a==10) {     
+    $this->db->where('p8.S8_1_1' ,9); } 
+        if ($a==999) {     
+    $this->db->where('p8.S8_1_1 is not null'); }         
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -1032,8 +1459,13 @@ function get_report75($a = null, $b = null){
 function get_report76($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion8 p8','p.id = p8.pescador_id','left');     
-    $this->db->where('p8.S8_3_' . $a, 1);        
+    $this->db->join('pesc_seccion8 p8','p.id = p8.pescador_id','left');   
+        if ($a>=1 && $a<=10) { 
+    $this->db->where('p8.S8_3_' . $a, 1); }  
+        if ($a==11) { 
+    $this->db->where('p8.S8_3_1', 9); } 
+        if ($a==999) { 
+    $this->db->where('p8.S8_3_1 is not null'); }      
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   
@@ -1044,8 +1476,13 @@ function get_report76($a = null, $b = null){
 function get_report77($a = null, $b = null){
     $this->db->select('COUNT(p.CCDD) as num');
     $this->db->from('pescador p');
-    $this->db->join('pesc_seccion8 p8','p.id = p8.pescador_id','left');     
-    $this->db->where('p8.S8_4_' . $a, 1);        
+    $this->db->join('pesc_seccion8 p8','p.id = p8.pescador_id','left');    
+        if ($a>=1 && $a<=9) {  
+    $this->db->where('p8.S8_4_' . $a, 1);  }   
+        if ($a==10) {   
+    $this->db->where('p8.S8_4_1' , 9);  }  
+        if ($a==999) {   
+    $this->db->where('p8.S8_4_1 is not null');  } 
     if(!is_null($b)){
     $this->db->where('p.CCDD',$b);
     }   

@@ -9,9 +9,12 @@ var $base_datos_p;
 
 function enlazar($base_datos_p1)
 {
-$servidor="mysql.dontemplates.com";
-$usuario="cenpesco";
-$clave="admin777";
+// $servidor="mysql.dontemplates.com";
+// $usuario="cenpesco";
+// $clave="admin777";
+$servidor="localhost";
+$usuario="root";
+$clave="";
 $base_datos=$base_datos_p1;
 
 mysql_connect($servidor,$usuario,$clave) or die("No hay servidor");

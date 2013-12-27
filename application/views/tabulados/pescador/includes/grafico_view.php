@@ -1,8 +1,10 @@
 
-<div class="span12" style="overflow:auto;">
-	
-	    <div class="chart-wrapper"><div class="chart-inner" id="chart_div" ></div></div>
-
+<div class="row-fluid"  style="width:100%; height: 100%; margin: 0 auto !important; position:relative;">
+<!-- <div class="span12" >
+ -->	
+	    <div class="chart-wrapper"><div class="chart-inner" id="chart_div"  ></div></div>
+    <!-- <div class="chart-wrapper"><div class="chart-inner" id="chart_div"  style="width:2030px; height: 840px; margin: 0 auto !important"></div></div> -->
+ 
 		<!-- <script src="http://code.highcharts.com/highcharts.js"></script>
 		<script src="http://code.highcharts.com/modules/exporting.js"></script> -->
 	    <script type="text/javascript" src="<?php echo base_url('js/highcharts/highcharts.js'); ?>"></script>
@@ -10,6 +12,7 @@
 	    <script type="text/javascript" src="<?php echo base_url('js/highcharts/modules/exporting.js'); ?>"></script>
 
 </div>
+
 
 
 <script type="text/javascript">
@@ -24,6 +27,9 @@
 
 	        $(document).ready(function() {
 	            chart = new Highcharts.Chart({
+
+	            	//$('#container').highcharts({
+
 	                chart: {
 	                    renderTo: 'chart_div',
 	                    type: '<?php echo $tipo; ?>',
@@ -129,7 +135,7 @@
 			                    },
 			                    formatter: function() {
 			                    	if (this.y > 0 && this.y < 1) { return Highcharts.numberFormat(this.y, 1);};
-			                    	if (this.y > 1 ) { return Highcharts.numberFormat(this.y, 2);};
+			                    	if (this.y > 1 ) { return Highcharts.numberFormat(this.y, 1);};
 			                        
 			                    },		                    		                    
 			                }			                
@@ -151,6 +157,15 @@
 				    	}		                    
 	                },	                	
 	            });
+
+
+
+				// $(window).resize(function() {
+				//     height = chart.height
+				//     width = $("#chartRow").width() / 2
+				//     chart.setSize(width, height, doAnimation = true);
+				// });
+
 
 				//tamaño especifico
 				chart.setSize( <?php echo $xx; ?>, <?php echo $yy; ?>);

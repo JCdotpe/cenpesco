@@ -1,0 +1,140 @@
+[ { "children" : [ ],
+    "data" : "Nacional",
+    "id" : 38949
+  },
+  { "children" : [ { "children" : [  
+  
+			  { "children" : [  ],
+			          "data" : "Imaza",
+			          "id" : 555
+			   },
+			  { "children" : [  ],
+			          "data" : "Aramango",
+			          "id" : 544545
+			   },			
+			  { "children" : [  ],
+			          "data" : "La Peca",
+			          "id" : 544545
+			   },
+			  { "children" : [  ],
+			          "data" : "Bagua",
+			          "id" : 544545
+			   },
+			  { "children" : [  ],
+			          "data" : "El Parco",
+			          "id" : 544545
+			   },
+			  { "children" : [  ],
+			          "data" : "Copallin",
+			          "id" : 544545
+			   }			     				   				     				   				     			   				      			   				      
+  
+  								],
+          "data" : "Bagua",
+          "id" : 38970
+        },
+        { "children" : [  ],
+          "data" : "Chachapoyas",
+          "id" : 38983
+        }
+      ],
+    "data" : "Amazonas",
+    "id" : 1
+  },
+  { "children" : [  ],
+    "data" : "Ancash",
+    "id" : 2
+  },
+  { "children" : [  ],
+    "data" : "Apurímac",
+    "id" : 3
+  },
+  { "children" : [  ],
+    "data" : "Arequipa",
+    "id" : 4
+  },
+  { "children" : [  ],
+    "data" : "Ayacucho",
+    "id" : 5
+  },
+  { "children" : [  ],
+    "data" : "Cajamarca",
+    "id" : 6
+  },
+  { "children" : [  ],
+    "data" : "Callao",
+    "id" : 7
+  },
+  { "children" : [  ],
+    "data" : "Cusco",
+    "id" : 8
+  },        
+  { "children" : [  ],
+    "data" : "Huancavelica",
+    "id" : 9
+  },
+  { "children" : [  ],
+    "data" : "Huánuco",
+    "id" : 10
+  },
+  { "children" : [  ],
+    "data" : "Ica",
+    "id" : 11
+  },
+  { "children" : [  ],
+    "data" : "Junín",
+    "id" : 12
+  },
+  { "children" : [  ],
+    "data" : "La Libertad",
+    "id" : 13
+  },
+  { "children" : [  ],
+    "data" : "Lambayeque",
+    "id" : 14
+  },
+  { "children" : [  ],
+    "data" : "Lima",
+    "id" : 15
+  },
+  { "children" : [  ],
+    "data" : "Loreto",
+    "id" : 16
+  },
+  { "children" : [  ],
+    "data" : "Madre de Dios",
+    "id" : 17
+  },
+  { "children" : [  ],
+    "data" : "Moquegua",
+    "id" : 18
+  },
+  { "children" : [  ],
+    "data" : "Pasco",
+    "id" : 19
+  },
+  { "children" : [  ],
+    "data" : "Pasco",
+    "id" : 20
+  },
+  { "children" : [  ],
+    "data" : "Puno",
+    "id" : 21
+  },        
+  { "children" : [  ],
+    "data" : "San Martín",
+    "id" : 22
+  },
+  { "children" : [  ],
+    "data" : "Tacna",
+    "id" : 23
+  },
+  { "children" : [  ],
+    "data" : "Tumbes",
+    "id" : 24
+  },
+  { "children" : [  ],
+    "data" : "Ucayali",
+    "id" : 25
+  }                                                                                                                                                                                                 
+]

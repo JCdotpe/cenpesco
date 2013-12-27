@@ -15,10 +15,13 @@
             <div class="row-fluid">
             <?php 
                 if ($user_ubigeo == 99) {
-                    echo anchor(site_url('seguimiento/avance_empadronador/export_especial'), 'Exportar Excel','class="btn btn-info pull-left " id="export_excel"');   
+                    //echo anchor(site_url('seguimiento/avance_empadronador/export_especial'), 'Exportar Excel','class="btn btn-info pull-left " id="export_excel"');   
                 }
 
             ?>
+            </div>
+            <div class="row-fluid" >
+                <?php $this->load->view('seguimiento/index_seguimiento_fijo_view.php');?>
             </div>
             <!-- Example row of columns -->
 <!--             <div class="row">

@@ -535,7 +535,7 @@ $dis_viv=$row['dis_viv'];
 				   while ($row = mysql_fetch_array($result)){
 
                 
-                        if ($s2_9_dd_co==$row['codigo']) {  echo '<option value="'.$row['codigo'].'" selected="selected">'.utf8_encode($row['detalle']).'</option>'; } else
+                        if ($s2_11_dd_cod==$row['codigo']) {  echo '<option value="'.$row['codigo'].'" selected="selected">'.utf8_encode($row['detalle']).'</option>'; } else
                     { echo'<option value="'.$row['codigo'].'">'.utf8_encode($row['detalle']).'</option>';  }
 					
 					 }

@@ -1,11 +1,15 @@
            <?php if(isset($fluid)){ ?>
        <div class="row-fluid breadcrumbs">
         <?php }else{ ?>  
-       <div class="row breadcrumbs">
+       <div class="row-fluid breadcrumbs">
         <?php } ?>  
         <div class="span6 navbar-text">
+
+
+
+
             <?php echo set_breadcrumb(); ?>
-            
+         
           </div>   
 
            <div class="span6">

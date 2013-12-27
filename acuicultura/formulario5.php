@@ -602,8 +602,8 @@ $s5_17_16=$row['s5_17_16'];
                 </tr>
                 <tr>
                   <td align="left" class="letra_frm">Otros</td>
-                  <td align="left"><input name="s5_13_8" type="text" id="s5_13_8" onchange="return na2('s5_13_','7','s5_13_8')"  onkeypress="return binario(event)" onblur="return saltar_b(this.name,'s5_13_8_u_oo','s5_14_1')" value="<?php echo $s5_13_8; ?>" size="2" maxlength="1"/></td>
-                  <td align="left"><input name="s5_13_8_c" type="text" id="s5_13_8_c" onkeypress="return numeros(event)" onkeyup="return otros('s5_13_8','s5_13_8_u_oo','1')" value="<?php echo $s5_13_8_c; ?>" size="4" maxlength="4"/></td>
+                  <td align="left"><input name="s5_13_8" type="text" id="s5_13_8" onchange="return na2('s5_13_','7','s5_13_8')"  onkeypress="return binario(event)" onblur="return saltar_b(this.name,'s5_13_8_e','s5_14_1')" value="<?php echo $s5_13_8; ?>" size="2" maxlength="1"/></td>
+                  <td align="left"><input name="s5_13_8_c" type="text" id="s5_13_8_c" onkeypress="return numeros(event)" onkeyup="return otros('s5_13_8','s5_13_8_e','1')" value="<?php echo $s5_13_8_c; ?>" size="4" maxlength="4"/></td>
                   <td align="left"><input name="s5_13_8_u" type="text" id="s5_13_8_u" onkeypress="return numeros12(event)" value="<?php echo $s5_13_8_u; ?>" size="2" maxlength="1" onkeyup="return saltar_b(this.name,'s5_13_8_ma','s5_13_8_u_o')"/></td>
                   <td align="left"><input name="s5_13_8_u_o" type="text" id="s5_13_8_u_o" value="<?php echo $s5_13_8_u_o; ?>" size="6" /></td>
                   <td align="left"><input name="s5_13_8_ma" type="text" id="s5_13_8_ma" value="<?php echo $s5_13_8_ma; ?>" size="5" maxlength="9" /></td>
@@ -611,7 +611,7 @@ $s5_17_16=$row['s5_17_16'];
                 </tr>
                 <tr>
                   <td align="left" class="letra_frm">Especifique </td>
-                  <td colspan="2" align="left"><input name="s5_13_8_u_oo" type="text" id="s5_13_8_u_oo" value="<?php echo $s5_13_8_u_oo; ?>" size="8" maxlength="80" onchange="return salton(this.name,'s5_13_8_c')"/></td>
+                  <td colspan="2" align="left"><input name="s5_13_8_e" type="text" id="s5_13_8_e" value="<?php echo $s5_13_8_e; ?>" size="8" maxlength="80" onchange="return salton(this.name,'s5_13_8_c')"/></td>
                   <td align="left">&nbsp;</td>
                   <td align="left">&nbsp;</td>
                   <td align="left">&nbsp;</td>

@@ -76,8 +76,9 @@ class Tank_auth
 								'user_id'	=> $user->id,
 								'username'	=> $user->username,
 								'status'	=> ($user->activated == 1) ? STATUS_ACTIVATED : STATUS_NOT_ACTIVATED,
-								'roles'	=> $roles,
+								'roles'		=> $roles,
 								'ubigeo'	=> $ubigeo,
+								'tipo'		=> $user->tipo,
 						));
 
 						if ($user->activated == 0) {							// fail - not activated
@@ -145,6 +146,8 @@ class Tank_auth
 		return $this->ci->session->userdata('user_id');
 	}
 
+
+
 	/**
 	 * Get username
 	 *
@@ -168,7 +171,10 @@ class Tank_auth
 	{
 		return $this->ci->session->userdata('ubigeo');
 	}
-
+	function get_user_tipo()
+	{
+		return $this->ci->session->userdata('tipo');
+	}
 	function get_maint()
 	{
 		return $this->ci->session->userdata('maint');

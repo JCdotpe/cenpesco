@@ -3692,7 +3692,7 @@ class Avance_empadronador extends CI_Controller {
 					}	
 					if (isset($res_dig_rechazo_pes)) { // pescador rechazo
 						foreach ($res_dig_rechazo_pes->result() as $pes) {
-							if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_dig_rechazo_pes = $pes->INCOMPLETO; break; }
+							if ( $celda->ODEI_COD == $pes->ODEI_COD) { $proc_dig_rechazo_pes = $pes->RECHAZO; break; }
 						}
 					}
 					if (isset($res_dig_completo_acui)) { 	// ACUICULTOR completo
@@ -3988,7 +3988,20 @@ class Avance_empadronador extends CI_Controller {
 
 
 
+ 	public function export_especial_2()
+ 	{
 
+		$filename = $file; //name of the file
+		$filepath = $file; //location of the file. I have put $file since your file is create on the same folder where this script is
+		header("Cache-control: private");
+		header("Content-type: application/force-download");
+		header("Content-transfer-encoding: binary\n");
+		header("Content-disposition: attachment; filename=\"$filename\"");
+		header("Content-Length: ".filesize($filepath));
+		readfile($filepath);
+		exit;
+
+ 	}
 
 
 

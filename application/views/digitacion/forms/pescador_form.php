@@ -471,7 +471,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 
 
  $.validator.addMethod("valmescen", function(value, element){
-    var dias = new Array('08','09');
+    var dias = new Array('08','09','10','11','12');
     var length = dias.length;
     var flag = false;
     for(var i = 0; i < length; i++) {

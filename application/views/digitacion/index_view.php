@@ -43,13 +43,20 @@
         'rows'=> 1);
 
       $usuariosArray = array(-1 => ' - ');
+
       foreach ($usuarios->result() as $key ) {
           $usuariosArray[$key->user_id . "-" . $key->dni] = $key->nombres . " \ " . $key->username; 
       }
+
       $sedesArray = array(-1 => ' - ');
+
+      if($tipo_global){ // habilitar opcion de sede GLOBAL (99) para SUPERVISORES
+            $sedesArray['99'] = 'Global';
+      }  
       foreach ($sedes->result() as $key ) {
           $sedesArray[$key->SEDE_COD]  = $key->NOM_SEDE; 
       }
+
 
   echo '<div id="form_reg_pes_mod" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
     echo '<div class="modal-header">';
@@ -219,7 +226,7 @@
                     success: function (json_data) {
                         if (json_data.afectados == 1) {
                             $("#send").removeAttr('disabled');
-                            alert("EXITOSO: Se cambió satisfactoriamente la SEDE");  if (json_data.insertados == 0) { alert("ERROR 000: No se guardó en el historial")};               
+                            alert("EXITOSO: Se cambió satisfactoriamente la SEDE. Vuelva a iniciar sesion para usar la SEDE");  if (json_data.insertados == 0) { alert("ERROR 000: No se guardó en el historial")};               
                         } else if (json_data.afectados == 0){
                             alert("ERROR 000: No se cambio la sede al usuario"); 
                         }else if (json_data.afectados > 1){

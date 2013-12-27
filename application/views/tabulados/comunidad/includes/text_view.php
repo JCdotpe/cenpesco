@@ -1,7 +1,7 @@
 <textarea class="span12" id="textn" name="textn" rows="5"><?php echo $texto; ?></textarea>
 
 <div class="row-fluid"  style="padding-bottom:10px;padding-top:7px" >
-	<input type="submit" class="btn btn-success pull-left" id="excel" value="↓ Excel" name="excel">
+	<!-- <input type="submit" class="btn btn-success pull-left" id="excel" value="↓ Excel" name="excel"> -->
 	<input type="button" class="btn btn-primary pull-right" id="btab" value="Guardar" name="guardar">
 	<input type="hidden"  id="excel_div"  name="excel_div" >
 	<input type="hidden"  id="reporte_n"  name="reporte_n" value= <?php  echo $opcion; ?> >	 
@@ -10,7 +10,19 @@
 <script type="text/javascript">
 
 	$(function(){
+		//Mueve la fila de los totales al inicio de los deps
+		$.fn.extend({ 
+		  moveRow: function(oldPosition, newPosition) { 
+		    return this.each(function(){ 
+		      var row = $(this).find('tr').eq(oldPosition).remove(); 
+		      $(this).find('tr').eq(newPosition).before(row); 
+		    }); 
+		   } 
+		 }); 
 
+		$('#tablet').moveRow(27, 3);
+
+		
       	//carga la tabla dentro del objeto
       	$("#excel_div").val( $("<div>").append( $("#tablet").eq(0).clone()).html());
 

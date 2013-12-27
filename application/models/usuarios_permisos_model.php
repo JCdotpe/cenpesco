@@ -14,6 +14,14 @@ class Usuarios_permisos_model extends CI_Model
 		return $q;
 	}
 
+	function get_users_by_id($id)
+	{
+		$q = $this->db->query("
+			select user_id, username, nombres, apellidos, dni  from user_profiles inner join users on user_profiles.user_id = users.id where user_id = ". $id . ";
+			");
+		return $q;
+	}
+
 	function get_sedes_operativas()
 	{
 		$q = $this->db->query("

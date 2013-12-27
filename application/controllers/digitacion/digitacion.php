@@ -47,12 +47,16 @@ class Digitacion extends CI_Controller {
 			$data['nav'] = TRUE;
 			$data['title'] = 'Digitacion';
 			$data['main_content'] = 'digitacion/index_view';
-			$data['usuarios'] = $this->usuarios_permisos_model->get_users_by_tipo(6);
+			//$data['usuarios'] = $this->usuarios_permisos_model->get_users_by_tipo(6);
+			$data['usuarios'] = $this->usuarios_permisos_model->get_users_by_id($this->tank_auth->get_user_id());
 			$data['sedes'] = $this->usuarios_permisos_model->get_sedes_operativas();
 			$u_id = $this->tank_auth->get_user_id();
-			$data['restriccion'] = ( ($u_id == 270) || ($u_id == 271) || ($u_id == 272) || ($u_id == 174) ) ? FALSE : TRUE ;
+			//$data['restriccion'] = ( ($u_id == 270) || ($u_id == 271) || ($u_id == 272) || ($u_id == 174) ) ? FALSE : TRUE ;
+			$data['restriccion'] = FALSE ;
+			//tipo de usuarios
+			$u_tipo = $this->tank_auth->get_user_tipo();
+			$data['tipo_global'] = ( ($u_tipo == 2) || ($u_tipo == 0) ) ? TRUE : FALSE ;
 			$this->load->view('backend/includes/template', $data);
-	       
 	}
 
 

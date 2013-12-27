@@ -50,8 +50,11 @@ class Pesc_seccion2 extends CI_Controller {
 					$c_data[$b] = ($this->input->post($b) == '') ? NULL : $this->input->post($b);
 				}
 			}	
+			$c_data['S2_10_DD_COD'] = ($this->input->post('S2_10_PAIS_COD') >25 && $this->input->post('S2_10_PAIS_COD')<>4028 ) ? $this->input->post('S2_10_PAIS_COD') : $this->input->post('S2_10_DD_COD');
+			$c_data['S2_10_DD'] = ($this->input->post('S2_10_PAIS_COD') >25 && $this->input->post('S2_10_PAIS_COD')<>4028 ) ? $this->input->post('S2_10_PAIS') : $this->input->post('S2_10_DD');
+			$c_data['S2_11_DD_COD'] = ($this->input->post('S2_11_PAIS_COD') >25 && $this->input->post('S2_11_PAIS_COD')<>4028 ) ? $this->input->post('S2_11_PAIS_COD') : $this->input->post('S2_11_DD_COD');
+			$c_data['S2_11_DD'] = ($this->input->post('S2_11_PAIS_COD') >25 && $this->input->post('S2_11_PAIS_COD')<>4028 ) ? $this->input->post('S2_11_PAIS') : $this->input->post('S2_11_DD');			
 			$c_data['user_id'] = $this->tank_auth->get_user_id();
-			$c_data['created'] = date('Y-m-d H:i:s');
 			$c_data['last_ip'] =  $this->input->ip_address();
 			$c_data['user_agent'] = $this->agent->agent_string();
 
@@ -64,12 +67,14 @@ class Pesc_seccion2 extends CI_Controller {
 			// }
 			if ($this->pescador_model->consulta_in_seccion($id,'pesc_seccion2')->num_rows() == 0) {
 				// inserta nuevo registro
+				$c_data['created'] = date('Y-m-d H:i:s');
 					if($this->pescador_model->insert_pesc_seccion('pesc_seccion2',$c_data) > 0){
 						$flag = 1;
 						$msg = 'Se ha registrado satisfactoriamente la Seccion II';
 					}
 			} else {
 				// actualiza
+				$c_data['modified'] = date('Y-m-d H:i:s');
 					if($this->pescador_model->update_pesc_seccion('pesc_seccion2',$c_data,$id) > 0){
 						$flag = 1;
 						$msg = 'Se ha modificado satisfactoriamente la Seccion II';

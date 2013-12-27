@@ -13,13 +13,128 @@ class Marco_ajax extends CI_Controller {
 		$this->load->model('pesca_model');
 		$this->load->model('pesca_piloto_model');
 		$this->load->model('marco_model');
-		$this->load->model('ubigeo_piloto_model');
+		$this->load->model('referenciacion_model');
 	}
 
 	public function index()
 	{
 		show_404();
 	}
+
+
+
+	// UBIGEO BASICOS con los totales de pescadores y acu **********************************************
+	public function get_ajax_prov_by_dep()
+	{
+		$this->output->cache(30);
+		$dep = $this->input->post('code');
+		$is_ajax = $this->input->post('ajax');
+		if ($is_ajax) {
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_prov($dep)->result();
+			$this->load->view('backend/json/json_view', $data);
+		}else {
+			show_404();			
+		}
+	}	
+	public function get_ajax_dist_by_dep_prov($c)
+	{
+		$this->output->cache(30);
+		$prov = $this->input->post('code');
+		$dep = $this->input->post('dep');
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_dist($dep,$prov)->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}	
+	public function get_ajax_ccpp_by_dep_prov_dist($c)
+	{
+		$this->output->cache(30);		
+		$dist = $this->input->post('code');
+		$prov = $this->input->post('prov');
+		$dep = $this->input->post('dep');
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_ccpp($dep,$prov,$dist)->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}
+
+	public function get_ajax_geo_ccpp()
+	{
+		$this->output->cache(9999999999);
+		$code = $this->input->post('code');
+		$dist = $this->input->post('dist');
+		$prov = $this->input->post('prov');
+		$dep = $this->input->post('dep');
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->marco_model->get_geo_ccpp($dep,$prov,$dist,$code)->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}
+
+	// BASICOS *************************************************************
+
+// totales de pescadores y acuicultores
+	public function get_ajax_pes_acu_by_dep()
+	{
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_dep()->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}
+	public function get_ajax_pes_acu_by_prov()
+	{
+		$code = $this->input->post('code');
+		$dep = $this->input->post('dep');		
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_prov($dep, $code)->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}
+	public function get_ajax_pes_acu_by_dist()
+	{
+		$code = $this->input->post('code');
+		$prov = $this->input->post('prov');
+		$dep = $this->input->post('dep');		
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_dist($dep, $prov, $code)->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}
+	public function get_ajax_pes_acu_by_ccpp()
+	{	
+		$code = $this->input->post('code');
+		$dep = $this->input->post('dep');
+		$prov= $this->input->post('prov');
+		$dist = $this->input->post('dist');
+		$is_ajax = $this->input->post('ajax');
+		if($is_ajax){
+			$data['datos'] = $this->referenciacion_model->get_pes_acu_by_ccpp($dep, $prov, $dist, $code)->result();
+			$this->load->view('backend/json/json_view', $data);	
+		}else{
+			show_404();
+		}
+	}
+// totales de pescadores y acuicultores
+
+
 
 
 	public function get_ajax_equipo($c)

@@ -1,16 +1,58 @@
 <?php
 class Marco_model extends CI_Model{
+    // ubigeo basico
+    function get_dptos(){
+    	$this->db->select('CCDD, DEPARTAMENTO');
+        $this->db->distinct('CCDD');
+    	$this->db->order_by('DEPARTAMENTO','asc');
+    	$q = $this->db->get('marco');
+		return $q;
+    }   
 
-  //   function get_dptos(){
-  //   	$this->db->select('COD_DEPARTAMENTO, DES_DISTRITO');
-  //   	$this->db->where_in('ID_DEPARTAMENTO', array(16,20,21));
-  //   	$this->db->where('ID_PROVINCIA',0);
-  //   	$this->db->where('ID_DISTRITO',0);
-  //   	$this->db->where('COD_DEPARTAMENTO !=','99');
-  //   	$this->db->order_by('DES_DISTRITO','asc');
-  //   	$q = $this->db->get('marco');
-		// return $q;
-  //   }   
+     function get_prov_by_dep($dep)
+    {
+        $this->db->select('CCPP, PROVINCIA');
+        $this->db->distinct('CCPP');
+        $this->db->where('CCDD',$dep);
+        $this->db->order_by('PROVINCIA','asc');
+        $q = $this->db->get('marco');
+        return $q;
+    }
+    function get_dist_by_dep_prov($dep,$prov)
+    {
+        $this->db->distinct('CCDI');
+        $this->db->select ('CCDI,DISTRITO');  
+        $this->db->where('CCDD',$dep);
+        $this->db->where('CCPP',$prov);
+        $this->db->order_by('DISTRITO','asc');
+        $q = $this->db->get('marco');
+        return $q;
+    }
+    function get_ccpp_by_dep_prov_dist ($dep,$prov,$dist)
+    {   
+        $this->db->distinct('CODCCPP');
+        $this->db->select('CODCCPP,CENTRO_POBLADO');
+        $this->db->where('CCDD',$dep);
+        $this->db->where('CCPP',$prov);
+        $this->db->where('CCDI',$dist);
+        $q = $this->db->get('marco');
+        return $q;
+    }
+
+    function get_geo_ccpp($dep,$prov,$dist,$cod_ccpp)
+    {
+        $this->db->where('codccpp',$cod_ccpp);
+        $this->db->where('ccdi',$dist);
+        $this->db->where('ccpp',$prov);
+        $this->db->where('ccdd',$dep);
+        $q = $this->db->get('cpv2007');
+        return $q;
+    }
+
+    // basicos
+
+
+
 
     function get_cod_odei_by_sede_dep($sede, $dep){// obtiene ODEI_COD mediante SEDE_COD y CCDD
         if ($sede == 99){$sede_s = range(1,26);}else{$sede_s = $sede;}
@@ -77,10 +119,13 @@ class Marco_model extends CI_Model{
 
     function get_prov_by_odei ($sede,$odei,$dep){
     	$this->db->distinct('CCPP');
-		$this->db->select('SEDE_COD, NOM_SEDE, ODEI_COD, NOM_ODEI,CCPP, PROVINCIA');
     	if ($sede < 99) {
+            $this->db->select('SEDE_COD, NOM_SEDE, ODEI_COD, NOM_ODEI,CCPP, PROVINCIA');
     		$this->db->where_in('SEDE_COD',$sede);	
-    	    $this->db->where_in('ODEI_COD',$odei); }		
+    	    $this->db->where_in('ODEI_COD',$odei); }
+        else{
+            $this->db->select('CCPP, PROVINCIA, CCDD, DEPARTAMENTO');
+            }		
 		$this->db->where('CCDD',$dep);
 		$this->db->order_by('PROVINCIA','asc');
 		$q = $this->db->get('marco');

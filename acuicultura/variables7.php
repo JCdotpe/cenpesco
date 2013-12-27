@@ -45,7 +45,7 @@ $formulario=1;
 ///actualizar datos
 if($frm7==1 and $opc7==2)
 {
-$sql= "UPDATE acu_seccion7 SET s7_1=".sprintf("%s",$s7_1).", s7_1_t=".sprintf("%s",$s7_1_t).", s7_1_h=".sprintf("%s",$s7_1_h).", s7_1_m=".sprintf("%s",$s7_1_m).", s7_1_t_p=".sprintf("%s",$s7_1_t_p).", s7_1_h_p=".sprintf("%s",$s7_1_h_p).", s7_1_m_p=".sprintf("%s",$s7_1_m_p).", s7_1_r_p=".sprintf("%s",$s7_1_r_p).", s7_1_t_e=".sprintf("%s",$s7_1_t_e).", s7_1_h_e=".sprintf("%s",$s7_1_h_e).", s7_1_m_e=".sprintf("%s",$s7_1_m_e).", s7_1_r_e=".sprintf("%s",$s7_1_r_e).", s7_2=".sprintf("%s",$s7_2).", s7_3=".sprintf("%s",$s7_3).", s7_3_c=".sprintf("%s",$s7_3_c).", s7_4=".sprintf("%s",$s7_4).", s7_4_c=".sprintf("%s",$s7_4_c)." WHERE id7='".$_SESSION['id1']."'";
+$sql= "UPDATE acu_seccion7 SET s7_1=".sprintf("%s",$s7_1).", s7_1_t=".sprintf("%s",$s7_1_t).", s7_1_h=".sprintf("%s",$s7_1_h).", s7_1_m=".sprintf("%s",$s7_1_m).", s7_1_t_p=".sprintf("%s",$s7_1_t_p).", s7_1_h_p=".sprintf("%s",$s7_1_h_p).", s7_1_m_p=".sprintf("%s",$s7_1_m_p).", s7_1_r_p=".sprintf("%s",$s7_1_r_p).", s7_1_t_e=".sprintf("%s",$s7_1_t_e).", s7_1_h_e=".sprintf("%s",$s7_1_h_e).", s7_1_m_e=".sprintf("%s",$s7_1_m_e).", s7_1_r_e=".sprintf("%s",$s7_1_r_e).", s7_2=".sprintf("%s",$s7_2).", s7_3=".sprintf("%s",$s7_3).", s7_3_c=".sprintf("%s",$s7_3_c).", s7_4=".sprintf("%s",$s7_4).", s7_4_c=".sprintf("%s",$s7_4_c). ", ff_rr7=".sprintf("%s",$ff_rr7). ", user7=".sprintf("%s",$user7)." WHERE id7='".$_SESSION['id1']."'";
 
 $result = mysql_query($sql);
 echo mysql_error ();	
