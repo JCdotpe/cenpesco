@@ -52,6 +52,7 @@ $route['supervision/to_excel_error'] = "digitacion/informe/to_excel_error";
 $route['consistencia'] = "consistencia/consistencia";
 $route['tabulados'] = "tabulados/tabulados";
 $route['ajax'] = "ajax/ajax.php";
+$route['bpr'] = "bpr/bpr";
 $route['404_override'] = '';
 
 

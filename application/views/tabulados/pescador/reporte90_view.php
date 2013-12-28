@@ -29,7 +29,7 @@
 									echo '<th rowspan="3">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="text-align:center">Total</th>';																																																																																										
 									echo '<th colspan="10" style="text-align:center">Frecuencia de mantenimiento</th>';	
-									echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especifica</th>';																																													
+									echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>';																																													
 									echo '</tr>';
 									echo '<tr>';									
 									echo '<th colspan="2" style="text-align:center">Cada 3 meses</th>';																					

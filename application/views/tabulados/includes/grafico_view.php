@@ -12,26 +12,42 @@
 		    <button data-toggle="dropdown" class="btn btn-warning dropdown-toggle"><span class="caret"></span></button>
 		    <ul id="combo-graf" class=" dropdown-menu">
 					<?php $v=0;
-						foreach ($series as  $y) {
-							foreach ($y as $i => $k) {
-								echo ( ($k == 'NEP') ? '<li  class="divider"></li>' : '');
-								echo ( ($i == 'name') ? ( ($k <> 'TOTAL') ? '<li value='. $v.'><a >'. $k.'</a></li>' :'' ) : '' );
-							}
-							$v++;
-						}
-						echo ( ( count($series)<=8 ) ?'<li  class="divider"></li><li  value=99><a >TODOS</a></li>' : '' );
+						// foreach ($series as  $y) {
+						// 	foreach ($y as $i => $k) {
+						// 		echo ( ($k == 'NEP') ? '<li  class="divider"></li>' : '');
+						// 		echo ( ($i == 'name') ? ( ($k <> 'TOTAL') ? '<li value='. $v.'><a >'. $k.'</a></li>' :'' ) : '' );
+						// 	}
+						// 	$v++;
+						// }
+
+						// echo ( ( count($series)<=8 ) ?'<li  class="divider"></li><li  value=99><a >TODOS</a></li>' : '' );
 				 	?>
+
+  					<?php $v=0;
+  						foreach ($series as  $y) {
+  							foreach ($y as $i => $k) {
+  								echo ( ($k == 'NEP') ? '<li  class="divider"></li>' : '');
+  								echo ( ($i == 'name' ) ? '<li value='.$v.'><a >'. $k.'</a></li>' :'' );
+  								echo ( ($k == 'TOTAL') ? '<li  class="divider"></li>' : '');
+  							}
+  							$v++;
+  						}
+  				 	?>
+
 		    </ul>
 		</div>
-		<input type="hidden" id="hd_variable" name="hd_variable" value="0"><button id="updateLegend">Remove Legend</button>
+		<input type="hidden" id="hd_variable" name="hd_variable" value="0" onchange="alert(5);">
 	</div>
 	<div class="span2" style="margin:0px;">
 		<div class="styled-select">
 		   <select id="cbo_type_graph">
 		      <option value="0">Gráfico barras</option>
 		      <option value="1">Gráfico de líneas</option>
-		      <option value="2">Gráfico de áreas</option>
-		      <option value="3">Gráfico de pie</option>
+		      <option value="2">Gráfico de líneas curveadas</option>
+		      <option value="3">Gráfico de áreas</option>
+		      <option value="4">Gráfico de áreas curveadas</option>
+		      <option value="5">Gráfico Scatter</option>
+		      <option value="6">Gráfico de barras</option>
 		   </select>
 		</div>
 	</div>
@@ -40,7 +56,7 @@
  <div class="row-fluid" style="overflow:auto;" id="chart_parent">
 	    <!-- <div class="chart-wrapper"><div class="chart-inner" id="chart_div"  ></div></div> -->
     <!-- <div class="chart-wrapper"style="width:1400px; height: 780px;"> -->
-    	<div class="chart-inner" id="chart_div" style=" height: 890px; margin: 0 auto;position:relative; "></div>
+    	<div class="chart-inner" id="chart_div" style=" height: 890px; margin: 0 auto;"></div>
     	<!-- <div class= id="chart_div"  ></div> -->
     <!-- </div> -->
  
@@ -56,14 +72,22 @@
 
 			//***************************************************************************************************
 	        var chart;
-	        var max_ancho = 30;// ancho de los plot 
-			var cant_variables = <?php echo count($series);?>;
-	       // $(document).ready(function() {
 
+			var cant_variables = <?php echo count($series);?>;
+			var valor_max_tab = 0; // max value del tab
+			var json_dep = <?php echo json_encode($series); ?>;  
+			for (var k =  0; k < valor_dep.length; k++) { // VALOR_DEP arreglo creado en mapa_view.php, contiene arreglos del php
+
+			    for (var i = 0; i < 24; i++) {
+			    	if (valor_dep[k][i] > valor_max_tab) {
+			    		valor_max_tab = valor_dep[k][i];
+			    	} 
+
+			    };	
+			};			
 
 	            chart = new Highcharts.Chart({
 	            //$('#container').highcharts({
-
 		                chart: {
 		                    renderTo: 'chart_div',
 		                    type: '<?php echo $tipo; ?>',
@@ -121,7 +145,6 @@
 									fontSize: '16px'
 								},	
 		                    },
-
 		                },
 		                legend: {
 		                	enabled:true,
@@ -161,10 +184,11 @@
 						            }
 						        },
 		                    },
-				            allowPointSelect: false, 		                    
+				            allowPointSelect: true, 		                    
 				            series: {
 				                groupPadding: 0,
 				                //pointWidth: max_ancho,
+				                animation: 4000,
 				                dataLabels: {
 				                    enabled: true,			                	
 				                    //borderRadius: 1,
@@ -182,7 +206,6 @@
 				                    //shadow: true,
 				                    //inside: true,
 				                    style: {
-				                        //fontWeight:'bold',
 				                        fontName:'arial narrow',
 				                    },
 				                    formatter: function() {
@@ -199,7 +222,8 @@
 		                	sourceHeight: <?php echo $yy; ?>,
 		                	sourceWidth: <?php echo $xx; ?>,
 		                },
-		                series: <?php echo json_encode($series); ?> ,
+		                //series: <?php echo json_encode($series[0]); ?> ,
+		                series: json_dep,
 		                credits: {
 		                    text: "<?php echo ($tipo == 'column') ? 'Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.' : 'I CENPESCO-2013' ; ?>",
 						    style: {
@@ -209,30 +233,21 @@
 	           		} 
 				);
 				//end chart
-			    var renderer = new Highcharts.Renderer(
-			        $('#chart_div')[0], 
-			        400,
-			        100
-			    );
+			    // var renderer = new Highcharts.Renderer(
+			    //     $('#chart_div')[0], 
+			    //     400,
+			    //     100
+			    // );
 			    
-			    renderer.image('http://highcharts.com/demo/gfx/sun.png', 100, 100, 30, 30)
-			        .add();
+			    // renderer.image('http://highcharts.com/demo/gfx/sun.png', 100, 100, 30, 30)
+			    //     .add();
 
 
 
 				//******************************************************************************************************************************************************************************************
 				//******************************************************************************************************************************************************************************************
 
-				var valor_max_tab = 0; // max value del tab
-				for (var k =  0; k < valor_dep.length; k++) { // VALOR_DEP arreglo creado en mapa_view.php, contiene arreglos del php
 
-				    for (var i = 0; i < 24; i++) {
-				    	if (valor_dep[k][i] > valor_max_tab) {
-				    		valor_max_tab = valor_dep[k][i];
-				    	} 
-
-				    };	
-				};
 
 				function set_max_y_value(var_num) {
 						if (var_num<99) {//el maximo de variable seleccionada
@@ -308,72 +323,97 @@
 					$("#hd_variable").val(99);
 				};
 
-
 				$("ul li").click(function(e) {
 					if( $(this).parent().attr('id') == "combo-graf"){
 						if( $(this).val() < 99 ){
 							var var_num = $(this).val();
-							$(chart.series).each(function(){
-							    this.setVisible(false, false);
-							});
-							chart.redraw(); 				
-							chart.series[var_num].show();	// show 1 variable
+							$("#hd_variable").val(var_num);							
+							// $(chart.series).each(function(){
+							//     this.setVisible(false, false);
+							// });
+							//chart.series[var_num].show();	// show 1 variable
 							chart.setTitle({text:'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + ''} ,{text:"<?php  echo $c_title; ?><br>[ " + name_var[var_num] + " ]"} );	
 							set_max_y_value(var_num);
-							
-							$("#hd_variable").val(var_num);	
-							$("#cbo_type_graph").trigger('change');
+	
 				            chart.legend.group.hide();// hide legend
 				            chart.legend.box.hide();
-
+				       
+				            $(chart.series).each(function(){
+				            	this.remove(true);
+				            	chart.redraw(); 
+				            })
+				            chart.addSeries(json_dep[var_num],true);
+				            $("#cbo_type_graph").trigger('change');
+							chart.redraw(); 
 
 						}else{
-
 							$(chart.series).each(function(){
-							    this.setVisible(true, true);chart.redraw(); // show all variables, < 8
+							    //this.setVisible(true, true); // show all variables, < 8
+							    this.remove(true); // show all variables, < 8
+							    chart.redraw();
 							});
 							chart.setTitle({text:'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + ''} ,{text:"<?php  echo $c_title; ?><br>" } );
 							set_max_y_value(99);
 							$("#hd_variable").val(99);
+							for (var i = 0; i < json_dep.length; i++) {
+								chart.addSeries(json_dep[i]);chart.redraw();
+							};
+
 							$("#cbo_type_graph").trigger('change');
 				            chart.legend.group.show(); // show legend
 				            chart.legend.box.show();
-
+							chart.redraw();
 			        	}
 
 					}
 				});
 
 				$("#cbo_type_graph").change(function(){ // cambia el tipo de grafico
-					var var_num = $("#hd_variable").val(); // num variable
+					//var var_num = $("#hd_variable").val(); // num variable
+					var var_num = 0; // num variable
 					if (var_num < 99) { // solo para una variables
 						var graph_num = $(this).val();
-						chart.redraw(); 
+						
 						if (graph_num == 0) {
 							chart.series[var_num].update({type:'column'});
 						}else if(graph_num == 1){
 							chart.series[var_num].update({type:'line'});
 						}else if(graph_num == 2){
-							chart.series[var_num].update({type:'area'});
+							chart.series[var_num].update({type:'spline'});
 						}else if(graph_num == 3){
-							chart.series[var_num].update({type:'pie'});
+							chart.series[var_num].update({type:'area'});
+						}else if(graph_num == 4){
+							chart.series[var_num].update({type:'areaspline'});
+						}else if(graph_num == 5){
+							chart.series[var_num].update({type:'scatter'});
+						}else if(graph_num == 6){
+							$("#chart_div").css('width:800px;height:2000px;');
+					        chart.inverted = true;
+					        chart.xAxis[0].update({}, false); set_max_y_value(var_num);
+					        chart.yAxis[0].update({}, false);							
+							chart.series[var_num].update({type:'bar'});
+							chart.redraw(); 
 						}
 			            chart.legend.group.hide();// hide legend
 			            chart.legend.box.hide();
+			            chart.redraw(); 
 					}else{
-						chart.redraw(); 
+						
 						$(chart.series).each(function(){
 							this.update({type:'column'});
 						});
-
+						chart.redraw(); 
 					}
 				})
 
 
+				function update_cbo_graph(){
+
+					alert( $("#hd_variable").val()  );
+				} 
 		
 
 
-	        //});
 			
 
 

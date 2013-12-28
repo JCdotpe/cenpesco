@@ -40,37 +40,53 @@
           if($this->tank_auth->is_logged_in()){
             $roles = $this->tank_auth->get_roles();
             if(!empty($roles)){
+
+
+
+
+              
       ?>
-        <ul class="nav">
-                    <?php
-                      $i = 1;
-                      foreach ($roles as $role) {
-                        $c = "";
-                        if($this->uri->segment(1) == $role->url){
-                          $c = ' class="active"';
-                        }
-                    ?>
-                    <li <?php echo $c; ?>><?php echo anchor(site_url('/')  . strtolower($role->url), $i++ . '. ' . $role->rolename); ?></li>
-                     <!-- <li class="divider-vertical cen-nav-divider"></li> -->
-                    <?php 
-                      } 
-                    ?>
- <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li>  
-          </ul>            
-              <?php } }elseif($this->uri->segment(1) == 'convocatoria' || isset($convocatoria)){?>
-                <ul class="nav"> 
-                  <!--  <li><a href="<?php //echo site_url('convocatoria/registro'); ?>">Inscripción</a></li>  -->
-                   <li><a href="<?php echo site_url('convocatoria/consulta'); ?>">Consulta de Inscripción</a></li>  
-                   <!-- <li><a href="<?php //echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>    -->
-                </ul>       
+                <ul class="nav">
+    <?php
+                            $i = 1;
+                            foreach ($roles as $role) {
+                                $c = "";
+                                if($this->uri->segment(1) == $role->url){
+                                  $c = ' class="active"';
+                                }
+
+                          ?>
+                      <li <?php echo $c; ?>><?php echo anchor(site_url('/')  . strtolower($role->url), $i++ . '. ' . $role->rolename); ?></li>
+                           <!-- <li class="divider-vertical cen-nav-divider"></li> -->
+                          <?php 
+                            } 
+                          ?>
+                      <!-- <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li> -->  
+                </ul>            
+    <?php 
+            } 
+          }elseif($this->uri->segment(1) == 'convocatoria' || isset($convocatoria)){?>
+                  <ul class="nav"> 
+                      <!--  <li><a href="<?php //echo site_url('convocatoria/registro'); ?>">Inscripción</a></li>  -->
+                      <li><a href="<?php echo site_url('convocatoria/consulta'); ?>">Consulta de Inscripción</a></li>  
+                      <!-- <li><a href="<?php //echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>    -->
+                  </ul>       
          
-            <?php }?>
+    <?php 
+          }
+
+    ?>
+
+
+
+
+
+
                 <!-- <ul class="nav">  -->
                   <!--  <li><a href="<?php //echo site_url('convocatoria/registro'); ?>">Inscripción</a></li>  -->
                    <!-- <li><a href="http://cenpesco.dontemplates.com/bpr">Blog de Preguntas</a></li>   -->
                    <!-- <li><a href="<?php //echo site_url('convocatoria/contacto'); ?>">Contacto</a></li>    -->
                 <!-- </ul>   -->
-
                                       
                     </div><!--/.nav-collapse -->
                 </div>

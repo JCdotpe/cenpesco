@@ -386,7 +386,17 @@ function letras(e)
 	enter2tab(e);
 }
 
-
+//LETRAS DEL ALAFABETO +  NUMEROS
+function alfa_numericos(e)
+{   
+    k=(document.all) ? e.keyCode : e.which;
+    if (k==8 || k==0) return true;
+    patron=/[1-9a-zA-Z ]/;
+    n = String.fromCharCode(k);
+    
+    return patron.test(n);
+    enter2tab(e);
+}
 
 //duo
 function duo(e)

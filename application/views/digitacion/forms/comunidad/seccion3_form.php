@@ -3974,6 +3974,7 @@ $.extend(jQuery.validator.messages, {
 		    		required: true,
 		            number: true,
 		            exactlength: 1,
+		            valzero:['S3_19_1','S3_19_2','S3_19_3','S3_19_4'],
 		        }, 					
 			//PREGUNTA 19
 				//pie

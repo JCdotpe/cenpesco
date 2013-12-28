@@ -1,4 +1,4 @@
-
+<div class="row-fluid" style="padding-bottom:34px"><h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5></div>
 <div class="row-fluid">
 	<h3>COMENTARIO</h3><hr>
 	<table>

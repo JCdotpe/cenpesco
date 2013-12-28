@@ -94,7 +94,7 @@
 													$diff = round( (100-array_sum($array_porc)),1);
 													array_pop($array_porc);//delete NEP
 													$array_porc =  array_filter($array_porc); //solo valores no ceros
-													$index = ( array_keys($array_porc,min($array_porc)) );//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
+													$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
 												}
 											}
 											foreach ($filas as  $key => $value) {
@@ -109,12 +109,12 @@
 											} $x = 1; $z = 0; $u++;
 
 											$array_porc=null; $index = null;$diff = 0;
-											
+											$total_dep[] = $filas->TOTAL;
 										echo '</tr>';
 									}	
 									//TOTALES
 									echo '<tr>';
-									echo '<td>Total</td>';	
+									echo '<td>Total</td>';						
 										if($respuesta_unica){// tabular al 100% en respuestas unicas
 											for ($i = 2; $i<=$cant_v ; $i++) {
 													$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 

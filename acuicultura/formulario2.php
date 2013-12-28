@@ -860,7 +860,7 @@ $dis_viv=$row['dis_viv'];
                         <input name="s2_18_8" type="text" id="s2_18_8" onkeypress="return binario(event)" onkeyup="return otros(this.name,'s2_18_8_o','1')" value="<?php echo $s2_18_8; ?>" size="3" maxlength="1"/>
                       </span></td>
                       <td align="left"><span class="texto">
-                        <input name="s2_18_8_o" type="text" id="s2_18_8_o" onkeypress="return letras(event)" value="<?php echo $s2_18_8_o; ?>" size="20" maxlength="100" readonly="readonly" />
+                        <input name="s2_18_8_o" type="text" id="s2_18_8_o" onkeypress="return alfa_numericos(event)" value="<?php echo $s2_18_8_o; ?>" size="20" maxlength="100" readonly="readonly" />
                       </span></td>
                     </tr>
                     <tr>

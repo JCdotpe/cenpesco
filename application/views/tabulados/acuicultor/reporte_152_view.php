@@ -104,6 +104,7 @@
 											} $x = 1; $z = 0; $u++;
 
 											$array_porc=null; $index = null;$diff = 0;
+											$total_dep[] = $filas->TOTAL;
 										echo '</tr>';
 									}	
 									//TOTALES
@@ -152,7 +153,8 @@
 										array("name" => $variable_14 	,"data" => $datas[13]), 
 										array("name" => $variable_15 	,"data" => $datas[14]), 
 										array("name" => $variable_16 	,"data" => $datas[15]),   );
-						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[16]) ); }
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+								array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho

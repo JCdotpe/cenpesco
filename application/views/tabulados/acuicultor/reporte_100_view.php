@@ -95,7 +95,7 @@
 									}	
 									//TOTALES
 									echo '<tr>';
-									echo '<td>Total</td>';	
+									echo '<td>Total</td>';						
 										if($respuesta_unica){// tabular al 100% en respuestas unicas
 											for ($i = 2; $i<=$cant_v ; $i++) {
 													$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
@@ -124,7 +124,7 @@
 												array("name" => $variable_1 	,"data" => $datas[0]),
 												array("name" => $variable_2 	,"data" => $datas[1]), 
 											);
-								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[2]) ); }
+								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 
 								$data['tipo'] =  'column';// << column >> or << bar >> 

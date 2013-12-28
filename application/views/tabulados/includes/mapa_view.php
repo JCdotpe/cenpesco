@@ -22,7 +22,7 @@
 					          						foreach ($series as  $y) {
 					          							foreach ($y as $i => $k) {
 					          								echo ( ($k == 'NEP') ? '<li  class="divider"></li>' : '');
-					          								echo ( ($i == 'name') ? '<li name='.$v.'><a >'. $k.'</a></li>' :'' );
+					          								echo ( ($i == 'name' ) ? '<li value='.$v.'><a >'. $k.'</a></li>' :'' );
 					          								echo ( ($k == 'TOTAL') ? '<li  class="divider"></li>' : '');
 					          							}
 					          							$v++;
@@ -180,9 +180,9 @@
 
 				$("ul li").click(function(e) {
 					if( $(this).parent().attr('id') == "combo-map"){
-						init_tematico($(this).attr('name')); 
+						init_tematico($(this).val()); 
 						$("#image_var").empty();
-						var url = "<?php echo  base_url('img/tabulados/cuadro'.$opcion); ?>" + "-" + (parseInt($(this).attr('name'))+1) + ".png";
+						var url = "<?php echo  base_url('img/tabulados/cuadro'.$opcion); ?>" + "-" + (parseInt($(this).val())) + ".png";
 						$("#image_var").html("<img style='margin-top: 2.5px;height: 168px;' src='"+ url +"'  /><hr size='3'>"); 
 					}
 				});
@@ -191,7 +191,7 @@
 
 				$(function(){// carga al inicio
 					//$("#combo_map").trigger('change');
-					init_tematico(0);
+					init_tematico(1);
 					var url = "<?php echo  base_url('img/tabulados/cuadro'.$opcion); ?>" + "-1.png";
 					$("#image_var").html("<img style='margin-top: 2.5px;height: 168px;' src='"+ url +"'  /><hr size='3'>"); 					
 				})	

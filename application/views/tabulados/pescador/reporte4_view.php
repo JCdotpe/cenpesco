@@ -44,16 +44,16 @@
 											echo '<tr>';
 												echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Amazonas') .'</th>';										
 												echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Ancash' ) .'</th>';						
-												echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Apurimac' ) .'</th>';						
+												echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Apurímac' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Arequipa' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Ayacucho' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Cajamarca' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Callao' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Cusco' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Huancavelica' ) .'</th>';						
-												echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Huanuco' ) .'</th>';						
+												echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Huánuco' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Ica' ) .'</th>';						
-												echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Junin' ) .'</th>';						
+												echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Junín' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'La Libertad' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Lambayeque' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'Lima' ) .'</th>';						
@@ -63,7 +63,7 @@
 												echo '<th colspan="2" style="text-align:center">'. ($variable_19 = 'Pasco' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_20 = 'Piura' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_21 = 'Puno' ) .'</th>';						
-												echo '<th colspan="2" style="text-align:center">'. ($variable_22 = 'San Martin' ) .'</th>';						
+												echo '<th colspan="2" style="text-align:center">'. ($variable_22 = 'San Martín' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_23 = 'Tacna' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_24 = 'Tumbes' ) .'</th>';						
 												echo '<th colspan="2" style="text-align:center">'. ($variable_25 = 'Ucayali' ) .'</th>';												

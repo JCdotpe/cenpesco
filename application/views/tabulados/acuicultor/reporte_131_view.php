@@ -73,9 +73,9 @@
 													$diff = round( (100-array_sum($array_porc)),1);
 												}else if( round(array_sum($array_porc),1) < 100){
 													$diff = round( (100-array_sum($array_porc)),1);
-													array_pop($array_porc);
-													$index = ( array_keys($array_porc,min($array_porc)) );
-													//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
+													array_pop($array_porc);//delete NEP
+													$array_porc =  array_filter($array_porc); //solo valores no ceros
+													$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
 												}
 											}
 											foreach ($filas as  $key => $value) {
@@ -90,6 +90,7 @@
 											} $x = 1; $z = 0; $u++;
 
 											$array_porc=null; $index = null;$diff = 0;
+											$total_dep[] = $filas->TOTAL;
 										echo '</tr>';
 									}	
 									//TOTALES
@@ -104,6 +105,8 @@
 												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
 											}else if( round(array_sum($array_porc_tot),1) < 100){
 												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+												array_pop($array_porc_tot);//delete NEP 
+												$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
 												$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
 											}
 										}							
@@ -122,7 +125,8 @@
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),);
-						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[2]) ); }
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+								array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 						
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho

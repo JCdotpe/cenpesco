@@ -42,7 +42,7 @@ class Pescador extends CI_Controller {
 		}
 		//dando restricciones para los comentarios 
 	    $u_id = $this->tank_auth->get_user_id();
-	    $this->restriccion = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) || ($u_id == 262) ) ? FALSE : TRUE ;
+	    $this->restriccion = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) || ($u_id == 262) || ($u_id == 267) ) ? FALSE : TRUE ;
 
 
 	}

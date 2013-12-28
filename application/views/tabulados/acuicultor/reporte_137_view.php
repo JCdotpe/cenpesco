@@ -61,62 +61,63 @@
 								$array_porc=null; $index = null;$diff = 0;
 								$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
 
-								foreach($tables->result() as $filas){
-									echo '<tr>';
-										if($respuesta_unica){// tabular al 100% en respuestas unicas
-											foreach ($filas as  $key => $value) {
-												if($key == 'CCDD' || $key == 'DEPARTAMENTO' || $key == 'TOTAL' ){}
-												else{
-													$array_porc[$key]= ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1)  : 0  ) ; 
+									foreach($tables->result() as $filas){
+										echo '<tr>';
+											if($respuesta_unica){// tabular al 100% en respuestas unicas
+												foreach ($filas as  $key => $value) {
+													if($key == 'CCDD' || $key == 'DEPARTAMENTO' || $key == 'TOTAL' ){}
+													else{
+														$array_porc[$key]= ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1)  : 0  ) ; 
+													}
+												}
+												if ( round(array_sum($array_porc),1) > 100 ) {
+													$index = array_keys($array_porc,max($array_porc));//echo  $filas->DEPARTAMENTO .   '_mayor_ '.$index[0] . '<br>';
+													$diff = round( (100-array_sum($array_porc)),1);
+												}else if( round(array_sum($array_porc),1) < 100){
+													$diff = round( (100-array_sum($array_porc)),1);
+													array_pop($array_porc);//delete NEP
+													$array_porc =  array_filter($array_porc); //solo valores no ceros
+													$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
 												}
 											}
-											if ( round(array_sum($array_porc),1) > 100 ) {
-												$index = array_keys($array_porc,max($array_porc));//echo  $filas->DEPARTAMENTO .   '_mayor_ '.$index[0] . '<br>';
-												$diff = round( (100-array_sum($array_porc)),1);
-											}else if( round(array_sum($array_porc),1) < 100){
-												$diff = round( (100-array_sum($array_porc)),1);
-												array_pop($array_porc);//delete NEP
-												$array_porc =  array_filter($array_porc); //solo valores no ceros
-												$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
-											}
-										}
-										foreach ($filas as  $key => $value) {
-											if($key != 'CCDD'){
-													if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
-												if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
-													if($key == 'NEP' && $NEP == 0 ){}else{
-														echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
-												};
-												
-											}
-										} $x = 1; $z = 0; $u++;
+											foreach ($filas as  $key => $value) {
+												if($key != 'CCDD'){
+														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
+													if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
+														if($key == 'NEP' && $NEP == 0 ){}else{
+															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
+													};
+													
+												}
+											} $x = 1; $z = 0; $u++;
 
-										$array_porc=null; $index = null;$diff = 0;
+											$array_porc=null; $index = null;$diff = 0;
+											$total_dep[] = $filas->TOTAL;
+										echo '</tr>';
+									}	
+									//TOTALES
+									echo '<tr>';
+									echo '<td>Total</td>';						
+										if($respuesta_unica){// tabular al 100% en respuestas unicas
+											for ($i = 2; $i<=$cant_v ; $i++) {
+													$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
+											}
+											if ( round(array_sum($array_porc_tot),1) > 100 ) {
+												$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
+												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+											}else if( round(array_sum($array_porc_tot),1) < 100){
+												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+												array_pop($array_porc_tot);//delete NEP 
+												$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
+												$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
+											}
+										}							
+
+										for ($i=1; $i <= $cant_v ; $i++) { 
+									echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
+									echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+										}
 									echo '</tr>';
-								}	
-								//TOTALES
-								echo '<tr>';
-								echo '<td>Total</td>';						
-									if($respuesta_unica){// tabular al 100% en respuestas unicas
-										for ($i = 2; $i<=$cant_v ; $i++) {
-												$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
-										}
-										if ( round(array_sum($array_porc_tot),1) > 100 ) {
-											$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
-											$diff_tot = round( (100-array_sum($array_porc_tot)),1);
-										}else if( round(array_sum($array_porc_tot),1) < 100){
-											$diff_tot = round( (100-array_sum($array_porc_tot)),1);
-											array_pop($array_porc_tot);//delete NEP 
-											$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
-											$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
-										}
-									}							
-
-									for ($i=1; $i <= $cant_v ; $i++) { 
-								echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
-								echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
-									}
-								echo '</tr>';
 
 							echo '</tbody>';
 						echo '</table></div>';
@@ -126,7 +127,8 @@
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
 										array("name" => $variable_4 	,"data" => $datas[3]), );
-						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[4]) ); }
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+								array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho

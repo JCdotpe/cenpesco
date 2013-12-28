@@ -42,8 +42,8 @@
 									echo '</tr>';
 
 									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'SI') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'NO' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';																				
 									echo '</tr>';
 
 									echo '<tr>';
@@ -97,27 +97,27 @@
 										}	
 										//TOTALES
 										echo '<tr>';
-										echo '<td>Total</td>';	
-											if($respuesta_unica){// tabular al 100% en respuestas unicas
-												for ($i = 2; $i<=$cant_v ; $i++) {
-														$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
-												}
-												if ( round(array_sum($array_porc_tot),1) > 100 ) {
-													$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
-													$diff_tot = round( (100-array_sum($array_porc_tot)),1);
-												}else if( round(array_sum($array_porc_tot),1) < 100){
-													$diff_tot = round( (100-array_sum($array_porc_tot)),1);
-													array_pop($array_porc_tot);//delete NEP 
-													$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
-													$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
-												}
-											}							
-
-											for ($i=1; $i <= $cant_v ; $i++) { 
-										echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
-										echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+									echo '<td>Total</td>';	
+										if($respuesta_unica){// tabular al 100% en respuestas unicas
+											for ($i = 2; $i<=$cant_v ; $i++) {
+													$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
 											}
-										echo '</tr>';
+											if ( round(array_sum($array_porc_tot),1) > 100 ) {
+												$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
+												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+											}else if( round(array_sum($array_porc_tot),1) < 100){
+												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+												array_pop($array_porc_tot);//delete NEP 
+												$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
+												$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
+											}
+										}							
+
+										for ($i=1; $i <= $cant_v ; $i++) { 
+									echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
+									echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+										}
+									echo '</tr>';
 
 									echo '</tbody>';
 							echo '</table></div>';			
@@ -126,7 +126,8 @@
 												array("name" => $variable_1 	,"data" => $datas[0]),
 												array("name" => $variable_2 	,"data" => $datas[1]), 
 											);
-								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[2]) ); }
+								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
+								array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 								
 								$data['tipo'] =  'column';// << column >> or << bar >> 
 								$data['xx'] =  2030; // ancho
