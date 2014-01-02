@@ -138,7 +138,7 @@ $S2_7 = array(
 $S2_8 = array(
 	'name'	=> 'S2_8',
 	'id'	=> 'S2_8',
-	'maxlength'	=> 7,
+	'maxlength'	=> 9,
 	'onkeypress'=>"return solo_numeros(event)",
 	'class' => $span_class,
 );
@@ -633,8 +633,8 @@ $("#seccion2").validate({
 		    	S2_8: {
 		            //required: true,
 		            number: true,
-		            range:[200000,8999999],
-		            maxlength:7,
+		            range:[200000,899999999],
+		            maxlength:9,
 		            minlength:6,
 		        }, 		
 		    	S2_9: {

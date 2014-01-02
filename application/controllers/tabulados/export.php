@@ -41,9 +41,12 @@ class Export extends CI_Controller
 		//echo '<img style="margin-top: 6.5px;" src=" '. base_url('img/inei.png') .'"/>';
 		
 		echo utf8_decode( $this->input->post("excel_div") );	
+  		echo utf8_decode("<tr><td colspan='15'><h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5></td></tr>");	
 	
 		echo "<br><h3>COMENTARIOS</h3><hr>";
 		echo utf8_decode( $this->input->post("textn"));
+		echo '<br>';
+		echo utf8_decode( $this->input->post("textn_2"));
 		//echo utf8_decode( $this->input->post("metadata_div") );	
 
 		echo '<h3>METADATOS<h3><hr>';

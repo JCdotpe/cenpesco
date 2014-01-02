@@ -54,10 +54,10 @@
 									echo '</thead>';
 									echo '<tbody>';
 
-										$x = 1; $z = 0;  $u = 0;
-										$totales = array_fill(1, 50,0); 
-										$array_porc=null; $index = null;$diff = 0;
-										$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
+									$x = 1; $z = 0;  $u = 0;
+									$totales = array_fill(1, 50,0); 
+									$array_porc=null; $index = null;$diff = 0;
+									$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
 
 									foreach($tables->result() as $filas){
 										echo '<tr>';

@@ -12,7 +12,16 @@
 		  	<div class="tab-pane active" id="tabulado">
 				<!-- INICIO TABULADO -->
 			    	<?php
-				    	echo form_open("/tabulados/export");
+			    			//EVALUAR NEP					
+								$NEP = 0;
+								foreach ($tables->result() as $value) {
+											$NEP += $value->NEP;
+									}
+								$cant_v = ($NEP == 0) ? 6 : 7; // cantidad de variables (incluir NEP y Total y/o ninguno)
+							// PREGUNTAS MULTIPLES
+								$respuesta_unica = TRUE;
+
+				    		echo form_open("/tabulados/export");
 				    			$c_title = 'PERÚ: EMBARCACIONES PESQUERAS POR TIPO TENENCIA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
@@ -26,109 +35,113 @@
 
 								echo '<thead>';
 									echo '<tr>';
-									echo '<th rowspan="3">Departamento</th>';					
-									echo '<th rowspan="2" colspan="2" style="text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="10" style="text-align:center">Tipo de tenencia</th>';	
-									echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>';																																													
+									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de tenencia</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';										
-									echo '<th colspan="2" style="text-align:center">Alquilada</th>';																					
-									echo '<th colspan="2" style="text-align:center">Prestada</th>';																					
-									echo '<th colspan="2" style="text-align:center">Propia totalmente pagada</th>';																					
-									echo '<th colspan="2" style="text-align:center">Propia pagádola a plazos</th>';																																																																																
-									echo '<th colspan="2" style="text-align:center">Autoconstruida</th>';																																																																																
+									echo '<tr>';	
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Alquilada') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Prestada' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Propia totalmente pagada' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Propia pagádola a plazos' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Autoconstruida' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
+										for ($i=1; $i <=$cant_v ; $i++) { 
 									echo '<th style="text-align:center">Abs</th>';										
-									echo '<th style="text-align:center;">%</th>';	
-									echo '<th style="text-align:center">Abs</th>';										
-									echo '<th style="text-align:center;">%</th>';	
-									echo '<th style="text-align:center">Abs</th>';																															
-									echo '<th style="text-align:center;">%</th>';	
-									echo '<th style="text-align:center">Abs</th>';										
-									echo '<th style="text-align:center;">%</th>';	
-									echo '<th style="text-align:center">Abs</th>';																															
-									echo '<th style="text-align:center;">%</th>';
-									echo '<th style="text-align:center">Abs</th>';										
-									echo '<th style="text-align:center;">%</th>';
-									echo '<th style="text-align:center">Abs</th>';										
-									echo '<th style="text-align:center;">%</th>';												
+									echo '<th style="text-align:center;">%</th>';					
+										}																															
 									echo '</tr>';
 								echo '</thead>';
 								echo '<tbody>';
-									foreach($dep->result() as $d){
+
+									$x = 1; $z = 0;  $u = 0;
+									$totales = array_fill(1, 50,0); 
+									$array_porc=null; $index = null;$diff = 0;
+									$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
+
+									foreach($tables->result() as $filas){
 										echo '<tr>';
-										echo '<td>' . $d->DEPARTAMENTO . '</td>';										
-										echo '<td style="text-align:center">' . number_format($td[$d->CCDD],0,',',' ') . '</td>';									
-										echo '<td style="text-align:center;">' . number_format( ( ($td[$d->CCDD]>0) ? 100 : 0 ),1,',',' ') . '</td>';			
+											if($respuesta_unica){// tabular al 100% en respuestas unicas
+												foreach ($filas as  $key => $value) {
+													if($key == 'CCDD' || $key == 'DEPARTAMENTO' || $key == 'TOTAL' ){}
+													else{
+														$array_porc[$key]= ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1)  : 0  ) ; 
+													}
+												}
+												if ( round(array_sum($array_porc),1) > 100 ) {
+													$index = array_keys($array_porc,max($array_porc));//echo  $filas->DEPARTAMENTO .   '_mayor_ '.$index[0] . '<br>';
+													$diff = round( (100-array_sum($array_porc)),1);
+												}else if( round(array_sum($array_porc),1) < 100){
+													$diff = round( (100-array_sum($array_porc)),1);
+													array_pop($array_porc);//delete NEP
+													$array_porc =  array_filter($array_porc); //solo valores no ceros
+													$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
+												}
+											}
+											foreach ($filas as  $key => $value) {
+												if($key != 'CCDD'){
+														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
+													if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
+														if($key == 'NEP' && $NEP == 0 ){}else{
+															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
+													};
+													
+												}
+											} $x = 1; $z = 0; $u++;
 
-											echo '<td style="text-align:center">' . number_format($e1[$d->CCDD],0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(( $serie_1[] =  ($td[$d->CCDD] > 0) ? round($e1[$d->CCDD]*100/$td[$d->CCDD],1) : 0 ),1,',',' ') . '</td>';	
-
-											echo '<td style="text-align:center">' . number_format($e2[$d->CCDD],0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(( $serie_2[] =  ($td[$d->CCDD] > 0) ? round($e2[$d->CCDD]*100/$td[$d->CCDD],1) : 0 ),1,',',' ') . '</td>';		
-
-											echo '<td style="text-align:center">' . number_format($e3[$d->CCDD],0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(( $serie_3[] =  ($td[$d->CCDD] > 0) ? round($e3[$d->CCDD]*100/$td[$d->CCDD],1) : 0 ),1,',',' ') . '</td>';		
-
-											echo '<td style="text-align:center">' . number_format($e4[$d->CCDD],0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(( $serie_4[] =  ($td[$d->CCDD] > 0) ? round($e4[$d->CCDD]*100/$td[$d->CCDD],1) : 0 ),1,',',' ') . '</td>';	
-
-											echo '<td style="text-align:center">' . number_format($e5[$d->CCDD],0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(( $serie_5[] =  ($td[$d->CCDD] > 0) ? round($e5[$d->CCDD]*100/$td[$d->CCDD],1) : 0 ),1,',',' ') . '</td>';		
-
-											echo '<td style="text-align:center">' . number_format($eNEP[$d->CCDD],0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(( $serie_6[] =  ($td[$d->CCDD] > 0) ? round($eNEP[$d->CCDD]*100/$td[$d->CCDD],1) : 0 ),1,',',' ') . '</td>';	
-
-
+											$array_porc=null; $index = null;$diff = 0;
+											$total_dep[] = $filas->TOTAL;
 										echo '</tr>';
-
-									}			
-
+									}	
+									//TOTALES
 									echo '<tr>';
-									echo '<td>Total</td>';										
-									echo '<td style="text-align:center">' . number_format($ttt,0,',',' ') . '</td>';										
-									echo '<td style="text-align:center;">100,0</td>';
+									echo '<td>Total</td>';						
+										if($respuesta_unica){// tabular al 100% en respuestas unicas
+											for ($i = 2; $i<=$cant_v ; $i++) {
+													$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
+											}
+											if ( round(array_sum($array_porc_tot),1) > 100 ) {
+												$index_tot = array_keys($array_porc_tot,max($array_porc_tot));
+												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+											}else if( round(array_sum($array_porc_tot),1) < 100){
+												$diff_tot = round( (100-array_sum($array_porc_tot)),1);
+												array_pop($array_porc_tot);//delete NEP 
+												$array_porc_tot =  array_filter($array_porc_tot);//solo valores no ceros
+												$index_tot = ( array_keys($array_porc_tot,min($array_porc_tot)) );
+											}
+										}							
 
-											echo '<td style="text-align:center">' . number_format($te1,0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(round($te1*100/$ttt,1),1,',',' ') . '</td>';	
-
-											echo '<td style="text-align:center">' . number_format($te2,0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(round($te2*100/$ttt,1),1,',',' ') . '</td>';	
-
-											echo '<td style="text-align:center">' . number_format($te3,0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(round($te3*100/$ttt,1),1,',',' ') . '</td>';	
-
-											echo '<td style="text-align:center">' . number_format($te4,0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(round($te4*100/$ttt,1),1,',',' ') . '</td>';	
-
-											echo '<td style="text-align:center">' . number_format($te5,0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format(round($te5*100/$ttt,1),1,',',' ') . '</td>';		
-
-											echo '<td style="text-align:center">' . number_format($teNEP,0,',',' ') . '</td>';										
-											echo '<td style="text-align:center;">' . number_format((round($teNEP*100/$ttt,1)),1,',',' ') . '</td>';																				
+										for ($i=1; $i <= $cant_v ; $i++) { 
+									echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
+									echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+										}
 									echo '</tr>';
 
 								echo '</tbody>';
 							echo '</table></div>';
+					?>
+					<?php 
 
-								$series = array(
-												array("name" => 'Alquilada'					,"data" => $serie_1),
-												array("name" => 'Prestada'					,"data" => $serie_2),
-												array("name" => 'Propia totalmente pagada'	,"data" => $serie_3),
-												array("name" => 'Propia pagádola a plazos'	,"data" => $serie_4),
-												array("name" => 'Autoconstruida'			,"data" => $serie_5),
-												array("name" => 'No especificado'						,"data" => $serie_6),
-												); 
-								$data['tipo'] =  'column';// << column >> or << bar >> 
-								$data['xx'] =  2030; // ancho
-								$data['yy'] =  840; // altura
-								$data['series'] =  $series;
-								$data['c_title'] = $c_title;
-								$this->load->view('tabulados/includes/text_view.php'); 
+						$series = array(
+										array("name" => $variable_1 	,"data" => $datas[0]),
+										array("name" => $variable_2 	,"data" => $datas[1]),
+										array("name" => $variable_3 	,"data" => $datas[2]),
+										array("name" => $variable_4 	,"data" => $datas[3]), 
+										array("name" => $variable_5 	,"data" => $datas[4]),  );
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+								//array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 
-								$this->load->view('tabulados/includes/metadata_view.php', $data); 
+						$data['tipo'] =  'column';// << column >> or << bar >> 
+						$data['xx'] =  2030; // ancho
+						$data['yy'] =  840; // altura
+						$data['series'] =  $series;
+						$data['c_title'] = $c_title;
+						$this->load->view('tabulados/includes/text_view.php'); 
+
+						$this->load->view('tabulados/includes/metadata_view.php', $data); 
 
 						echo form_close(); 
 					?>

@@ -4132,7 +4132,7 @@ $('#S2_9_DD_COD').trigger("change");
 		        S2_17_8_O:{
 		        	required:true,
 					maxlength: 100, 
-					digits:true,
+					//digits:true,
 		         },
 		        S2_17_9:{
 		            digits:true,

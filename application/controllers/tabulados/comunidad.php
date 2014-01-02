@@ -49,18 +49,21 @@ class Comunidad extends CI_Controller {
 	public function texto()
 	{
 		$texto = $this->input->post('texto');
+		$texto_2 = $this->input->post('texto_2');
 		$preg = $this->input->post('preg');
 		$is_ajax = $this->input->post('ajax');
 		if ($is_ajax) {
 			if( $this->tabulados_model->get_texto(3,$preg)->num_rows() == 1 ){
 					$c_data['user_id'] = $this->tank_auth->get_user_id();
 					$c_data['texto'] = $texto;
+					$c_data['texto_2'] = $texto_2;
 				$this->tabulados_model->update_texto(3,$preg,$c_data);	
 			}else{
 					$c_data['user_id'] = $this->tank_auth->get_user_id();
 					$c_data['tipo'] = 3;
 					$c_data['pregunta'] = $preg;
 					$c_data['texto'] = $texto;
+					$c_data['texto_2'] = $texto_2;
 				$this->tabulados_model->insert_texto($c_data);	
 			}
 		}else{
@@ -125,7 +128,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 198;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_200();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -152,7 +157,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 199;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_201();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -180,7 +187,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 200;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_202();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -207,7 +216,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 201;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_203();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 	 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 	 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -234,7 +245,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 202;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_204();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -261,7 +274,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 203;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_205();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -289,7 +304,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 204;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_206();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -315,7 +332,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 205;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_207();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -341,7 +360,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 206;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_208();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 	 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 	 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -367,7 +388,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 207;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_209();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 	 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 	 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -394,7 +417,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 208;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_210();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -421,7 +446,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 209;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_211();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -449,7 +476,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 210;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_212();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -476,7 +505,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 211;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_213();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -503,7 +534,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 212;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_214();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -530,7 +563,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 213;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_215();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -558,7 +593,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 214;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_216();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -584,7 +621,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 215;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_217();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -610,7 +649,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 216;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_218();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -636,7 +677,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 217;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_219();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -663,7 +706,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 218;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_220();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -690,7 +735,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 219;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_221();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -718,7 +765,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 220;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_222();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -745,7 +794,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 221;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_223();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -772,7 +823,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 222;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_224();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -799,7 +852,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 223;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_225();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -827,7 +882,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 224;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_226();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -853,7 +910,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 225;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_227();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -879,7 +938,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 226;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_228();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -905,7 +966,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 227;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_229();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -931,7 +994,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 228;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_230();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -957,7 +1022,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 229;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_231();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -984,7 +1051,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 230;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_232();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1011,7 +1080,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 231;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_233();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1037,7 +1108,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 232;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_234();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1064,7 +1137,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 233;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_235();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1091,7 +1166,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 234;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_236();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1117,7 +1194,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 235;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_237();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1143,7 +1222,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 236;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_238();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1170,7 +1251,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 237;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_239();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1197,7 +1280,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 238;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_240();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1224,7 +1309,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 239;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_241();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1251,7 +1338,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 240;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_242();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1278,7 +1367,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 241;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_243();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1305,7 +1396,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 242;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_244();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1332,7 +1425,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 243;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_245();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1358,7 +1453,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 244;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_246();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1385,7 +1482,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 245;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_247();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1412,7 +1511,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 246;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_248();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1439,7 +1540,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 247;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_249();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1466,7 +1569,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 248;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_250();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1493,7 +1598,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 249;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_251();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1520,7 +1627,9 @@ class Comunidad extends CI_Controller {
 			$data['opcion'] = 250;		
 			$data['tables'] = $this->comunidad_model->get_tabulado_252();
 			$texto = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto;  		
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(3,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(3,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  		
 
 			$metadata = $this->tabulados_model->get_metadata(3,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 

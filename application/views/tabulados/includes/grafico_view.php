@@ -27,7 +27,7 @@
   						foreach ($series as  $y) {
   							foreach ($y as $i => $k) {
   								echo ( ($k == 'NEP') ? '<li  class="divider"></li>' : '');
-  								echo ( ($i == 'name' ) ? '<li value='.$v.'><a >'. $k.'</a></li>' :'' );
+  								echo ( ($i == 'name' && $k != 'TOTAL') ? '<li value='.$v.'><a >'. $k.'</a></li>' :'' );
   								echo ( ($k == 'TOTAL') ? '<li  class="divider"></li>' : '');
   							}
   							$v++;
@@ -36,7 +36,7 @@
 
 		    </ul>
 		</div>
-		<input type="hidden" id="hd_variable" name="hd_variable" value="0" onchange="alert(5);">
+		<input type="hidden" id="hd_variable" name="hd_variable" value="0" >
 	</div>
 	<div class="span2" style="margin:0px;">
 		<div class="styled-select">
@@ -47,7 +47,7 @@
 		      <option value="3">Gráfico de áreas</option>
 		      <option value="4">Gráfico de áreas curveadas</option>
 		      <option value="5">Gráfico Scatter</option>
-		      <option value="6">Gráfico de barras</option>
+		      <!--<option value="6">Gráfico de barras</option>-->
 		   </select>
 		</div>
 	</div>
@@ -147,7 +147,7 @@
 		                    },
 		                },
 		                legend: {
-		                	enabled:true,
+		                	enabled:false,
 		                    backgroundColor: '#FFFFFF',
 		                    align:  "<?php echo ($tipo == 'column') ? 'center' : 'right' ; ?>" ,
 		                    layout: "<?php echo ($tipo == 'column') ? 'horizontal' : 'vertical' ; ?>" ,
@@ -176,7 +176,7 @@
 		                },
 		                plotOptions: {
 		                    column: {
-		                        pointPadding: 0,
+		                        pointWidth: 40,
 		                        borderWidth: 1,
 					            events: {
 						            legendItemClick: function () {
@@ -222,8 +222,8 @@
 		                	sourceHeight: <?php echo $yy; ?>,
 		                	sourceWidth: <?php echo $xx; ?>,
 		                },
-		                //series: <?php echo json_encode($series[0]); ?> ,
-		                series: json_dep,
+		                series: <?php echo json_encode($series); ?> ,
+		                //series: json_dep,
 		                credits: {
 		                    text: "<?php echo ($tipo == 'column') ? 'Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.' : 'I CENPESCO-2013' ; ?>",
 						    style: {
@@ -309,7 +309,7 @@
 
 				}
 
-				if ( cant_variables>8 ) {//muestra la primera serie
+				if ( cant_variables>=1 ) {//muestra la primera serie
 						$(chart.series).each(function(){
 						    this.setVisible(false, false);
 						});
@@ -317,6 +317,8 @@
 						chart.redraw(); 				
 						chart.series[0].show();	
 						set_max_y_value(0);
+				            //chart.legend.group.hide();// hide legend
+				            //chart.legend.box.hide();						
 						$("#hd_variable").val(0);
 				}else {
 					set_max_y_value(99);
@@ -335,33 +337,36 @@
 							chart.setTitle({text:'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + ''} ,{text:"<?php  echo $c_title; ?><br>[ " + name_var[var_num] + " ]"} );	
 							set_max_y_value(var_num);
 	
-				            chart.legend.group.hide();// hide legend
-				            chart.legend.box.hide();
+				            //chart.legend.group.hide();// hide legend
+				            //chart.legend.box.hide();
 				       
 				            $(chart.series).each(function(){
-				            	this.remove(true);
+				            	//this.remove(true);
+				            	this.setVisible(false, false);
 				            	chart.redraw(); 
 				            })
-				            chart.addSeries(json_dep[var_num],true);
+				            chart.series[var_num].show();	
+				            //chart.addSeries(json_dep[var_num],true);
 				            $("#cbo_type_graph").trigger('change');
 							chart.redraw(); 
 
 						}else{
 							$(chart.series).each(function(){
 							    //this.setVisible(true, true); // show all variables, < 8
-							    this.remove(true); // show all variables, < 8
-							    chart.redraw();
+							    //this.remove(true); // show all variables, < 8
+							    //chart.redraw();
+							    this.setVisible(true, true);chart.redraw();
 							});
 							chart.setTitle({text:'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + ''} ,{text:"<?php  echo $c_title; ?><br>" } );
 							set_max_y_value(99);
 							$("#hd_variable").val(99);
-							for (var i = 0; i < json_dep.length; i++) {
-								chart.addSeries(json_dep[i]);chart.redraw();
-							};
+							// for (var i = 0; i < json_dep.length; i++) {
+							// 	chart.addSeries(json_dep[i]);chart.redraw();
+							// };
 
 							$("#cbo_type_graph").trigger('change');
-				            chart.legend.group.show(); // show legend
-				            chart.legend.box.show();
+				            // chart.legend.group.show(); // show legend
+				            // chart.legend.box.show();
 							chart.redraw();
 			        	}
 
@@ -369,8 +374,8 @@
 				});
 
 				$("#cbo_type_graph").change(function(){ // cambia el tipo de grafico
-					//var var_num = $("#hd_variable").val(); // num variable
-					var var_num = 0; // num variable
+					var var_num = $("#hd_variable").val(); // num variable
+					//var var_num = 0; // num variable
 					if (var_num < 99) { // solo para una variables
 						var graph_num = $(this).val();
 						
@@ -394,8 +399,8 @@
 							chart.series[var_num].update({type:'bar'});
 							chart.redraw(); 
 						}
-			            chart.legend.group.hide();// hide legend
-			            chart.legend.box.hide();
+			            //chart.legend.group.hide();// hide legend
+			            //chart.legend.box.hide();
 			            chart.redraw(); 
 					}else{
 						
@@ -407,10 +412,8 @@
 				})
 
 
-				function update_cbo_graph(){
 
-					alert( $("#hd_variable").val()  );
-				} 
+
 		
 
 

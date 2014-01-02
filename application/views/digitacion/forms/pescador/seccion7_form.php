@@ -1553,8 +1553,10 @@ $('#S7_102').change(function() {
 
 	if(th == 1 && $('#S7_101').val() == 0){
 		des.removeAttr('disabled');
-		contrades.val('');
-		contrades.attr("disabled", "disabled"); 
+		
+		//contrades.attr("disabled", "disabled"); 
+		contrades.attr("readonly", "readonly"); 
+		contrades.val(0);
 		s7p2.val('')
 		s7p2.attr("disabled", "disabled"); 	
 		$('#S7_206').trigger('change');			
@@ -1563,16 +1565,16 @@ $('#S7_102').change(function() {
 	else if(th == 1  && $('#S7_101').val() == 1) {
 		des.removeAttr('disabled');
 		s7p2.removeAttr('disabled');
-		contrades.val('');
-		contrades.attr("disabled", "disabled"); 		
+		contrades.attr("readonly", "readonly"); 
+		contrades.val(0);		
 	}
 
 	else if(th == 0 && $('#S7_101').val() == 1){
 		des.val('')
 		des.attr("disabled", "disabled"); 
 		s7p2.removeAttr('disabled');
-		contrades.val('');
-		contrades.attr("disabled", "disabled"); 
+		contrades.attr("readonly", "readonly"); 
+		contrades.val(0);
 		$('#S7_206').trigger('change');
 	}
 	else if(th == 0 && $('#S7_101').val() == 0){
@@ -1580,7 +1582,8 @@ $('#S7_102').change(function() {
 		des.attr("disabled", "disabled"); 
 		s7p2.val('')
 		s7p2.attr("disabled", "disabled"); 	
-		contrades.removeAttr('disabled');
+		//contrades.val('');		
+		contrades.removeAttr('readonly');
 		$('#S7_206').trigger('change');
 	}	
 });

@@ -336,7 +336,7 @@ $s5_17_16=$row['s5_17_16'];
                   <td align="left">Otro</td>
                   <td align="left"><input name="s5_5_5" type="text" id="s5_5_5" onchange="return otros(this.name,'s5_5_5_o','1')" onkeypress="return binario(event)" onkeyup="return todos1(this.name,'s5_5_1','s5_5_2','s5_5_3','s5_5_4','s5_5_5','','','','','','','','','5','s5_5_5_o')" value="<?php echo $s5_5_5; ?>" size="3" maxlength="1"  /></td>
                   <td align="left">Especifique
-                    <input name="s5_5_5_o" type="text" id="s5_5_5_o" onkeypress="return letras(event)" value="<?php echo $s5_5_o; ?>" size="5" maxlength="12" readonly="readonly"/></td>
+                    <input name="s5_5_5_o" type="text" id="s5_5_5_o" onkeypress="return letras(event)" value="<?php echo $s5_5_o; ?>" size="5" maxlength="80" readonly="readonly"/></td>
                   </tr>
               </table></td>
             </tr>

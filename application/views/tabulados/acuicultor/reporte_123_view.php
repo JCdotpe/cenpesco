@@ -37,8 +37,7 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="16" style="text-align:center">Actividad que realizan</th>';
-									echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">Ninguno</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Actividad que realizan</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';
@@ -50,6 +49,7 @@
 										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Construcción' ) .'</th>';						
 										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Comercio' ) .'</th>';						
 										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Ninguno' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -137,7 +137,8 @@
 										array("name" => $variable_5 	,"data" => $datas[4]),
 										array("name" => $variable_6 	,"data" => $datas[5]),
 										array("name" => $variable_7 	,"data" => $datas[6]),
-										array("name" => $variable_8 	,"data" => $datas[7]), );
+										array("name" => $variable_8 	,"data" => $datas[7]), 
+										array("name" => $variable_9 	,"data" => $datas[8]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 

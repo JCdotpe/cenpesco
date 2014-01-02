@@ -48,18 +48,21 @@ class Acuicultor extends CI_Controller {
 	public function texto()
 	{
 		$texto = $this->input->post('texto');
+		$texto_2 = $this->input->post('texto_2');
 		$preg = $this->input->post('preg');
 		$is_ajax = $this->input->post('ajax');
 		if ($is_ajax) {
-			if( !is_null($this->tabulados_model->get_texto(2,$preg)->row()->texto) ){
+			if( $this->tabulados_model->get_texto(2,$preg)->num_rows() == 1 ){
 					$c_data['user_id'] = $this->tank_auth->get_user_id();
 					$c_data['texto'] = $texto;
+					$c_data['texto_2'] = $texto_2;
 				$this->tabulados_model->update_texto(2,$preg,$c_data);	
 			}else{
 					$c_data['user_id'] = $this->tank_auth->get_user_id();
 					$c_data['pregunta'] = $preg;
 					$c_data['tipo'] = 2;
 					$c_data['texto'] = $texto;				
+					$c_data['texto_2'] = $texto_2;				
 				$this->tabulados_model->insert_texto($c_data);	
 			}
 		}else{
@@ -125,6 +128,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2;  			
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -153,6 +158,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -182,6 +189,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -211,6 +220,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -240,6 +251,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -269,6 +282,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -297,6 +312,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -325,6 +342,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -353,6 +372,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -381,6 +402,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -409,6 +432,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -437,6 +462,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -465,6 +492,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -493,6 +522,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -521,6 +552,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -549,6 +582,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -577,6 +612,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -605,6 +642,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -634,6 +673,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -663,6 +704,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -692,6 +735,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -721,6 +766,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -749,6 +796,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -777,6 +826,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -805,6 +856,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -833,6 +886,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -861,6 +916,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -889,6 +946,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -917,6 +976,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -945,6 +1006,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -973,6 +1036,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1001,6 +1066,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1029,6 +1096,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1058,6 +1127,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1087,6 +1158,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1116,6 +1189,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1145,6 +1220,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1174,6 +1251,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1202,6 +1281,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1231,6 +1312,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1260,6 +1343,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1289,6 +1374,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1318,6 +1405,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1347,6 +1436,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1375,6 +1466,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1403,6 +1496,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1431,6 +1526,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1459,6 +1556,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1488,6 +1587,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1516,6 +1617,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1544,6 +1647,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1572,6 +1677,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1600,6 +1707,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1628,6 +1737,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1656,6 +1767,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1684,6 +1797,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1713,6 +1828,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1742,6 +1859,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1771,6 +1890,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1800,6 +1921,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1828,6 +1951,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1856,6 +1981,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1884,6 +2011,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1912,6 +2041,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1940,6 +2071,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1968,6 +2101,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1996,6 +2131,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2024,6 +2161,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2052,6 +2191,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2080,6 +2221,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2109,6 +2252,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2138,6 +2283,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2167,6 +2314,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2196,6 +2345,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2225,6 +2376,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2253,6 +2406,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2283,6 +2438,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2311,6 +2468,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2339,6 +2498,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2367,6 +2528,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2396,6 +2559,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2425,6 +2590,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2454,6 +2621,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2483,6 +2652,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2512,6 +2683,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2541,6 +2714,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2570,6 +2745,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2599,6 +2776,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2628,6 +2807,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2656,6 +2837,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2685,6 +2868,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2714,6 +2899,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2743,6 +2930,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2772,6 +2961,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2801,6 +2992,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2830,6 +3023,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2859,6 +3054,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2888,6 +3085,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2922,6 +3121,8 @@ class Acuicultor extends CI_Controller {
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 

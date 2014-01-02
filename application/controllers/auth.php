@@ -137,18 +137,18 @@ class Auth extends CI_Controller
 	}
 
 
-	// function change_password_by($user_name, $new_pass){
-	// 	$user_id = $this->users->users_cenpesco_by_name($user_name)->row('id');
-	// 	$data['msg'] = 'ERROR, No se pudo cambiar la constraseña  del Usuario "'.$user_name .'" ';
+	function change_password_by($user_name, $new_pass){
+		$user_id = $this->users->users_cenpesco_by_name($user_name)->row('id');
+		$data['msg'] = 'ERROR, No se pudo cambiar la constraseña  del Usuario "'.$user_name .'" ';
 
-	// 		if ($this->tank_auth->change_password_cenpesco($user_id,$new_pass) >= 1) {
-	// 			$data['msg'] = 'La contraseña del Usuario "'.$user_name .'" fue  actualizada';
-	// 		}
+			if ($this->tank_auth->change_password_cenpesco($user_id,$new_pass) >= 1) {
+				$data['msg'] = 'La contraseña del Usuario "'.$user_name .'" fue  actualizada';
+			}
 			
-	// 		$data['main_content'] = 'backend/login/passwd_change_view';
- //    		$this->load->view('backend/includes/template', $data);		
+			$data['main_content'] = 'backend/login/passwd_change_view';
+    		$this->load->view('backend/includes/template', $data);		
 
-	// }
+	}
 
 //*****************************************************************************
 	/**

@@ -92,7 +92,7 @@
 													$diff = round( (100-array_sum($array_porc)),1);
 													array_pop($array_porc);//delete NEP
 													$array_porc =  array_filter($array_porc); //solo valores no ceros
-													$index = ( array_keys($array_porc,min($array_porc)) );//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
+													$index = (!empty($array_porc)) ? ( array_keys($array_porc,min($array_porc)) ) :  null;//echo $filas->DEPARTAMENTO . '  '. $diff .'_menor_'.  $index[0] . '<br>';
 												}
 											}
 											foreach ($filas as  $key => $value) {
@@ -100,14 +100,14 @@
 														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
 													if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
 														if($key == 'NEP' && $NEP == 0 ){}else{
-															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? 100  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
+															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
 													};
 													
 												}
 											} $x = 1; $z = 0; $u++;
 
 											$array_porc=null; $index = null;$diff = 0;
-											
+											$total_dep[] = $filas->TOTAL;
 										echo '</tr>';
 									}	
 									//TOTALES
@@ -153,7 +153,8 @@
 										array("name" => $variable_13 	,"data" => $datas[12]),	
 										array("name" => $variable_14 	,"data" => $datas[13]),	
 										array("name" => $variable_15 	,"data" => $datas[14]),	);
-								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[15]) ); }
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+								//array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
 
 								$data['tipo'] =  'column';// << column >> or << bar >> 
 								$data['xx'] =  2030; // ancho

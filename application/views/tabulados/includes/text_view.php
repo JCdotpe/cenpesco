@@ -2,7 +2,8 @@
 <div class="row-fluid">
 	<h3>COMENTARIO</h3><hr>
 	<table>
-		<tr><td style='width="30px";'><textarea class="span12" id="textn" name="textn" rows="6" cols="183"  ><?php echo $texto; ?></textarea></td></tr>
+		<tr><td style='width="30px";'><textarea class="span12" id="textn" name="textn" rows="2" cols="183"  ><?php echo $texto; ?></textarea></td></tr>
+		<tr><td style='width="30px";'><textarea class="span12" id="textn_2" name="textn_2" rows="3" cols="183"  ><?php echo $texto_2; ?></textarea></td></tr>
 	</table>
 	
 </div>
@@ -37,6 +38,7 @@ $(function(){
       		if($restriccion){//para usuarios no permitidos (solo: Alan, Susan, Cecilia)
       	?>
       		$("#textn").attr('readonly','readonly');
+      		$("#textn_2").attr('readonly','readonly');
       		$("#btab").addClass('hide');
       	<?php
       		}
@@ -45,7 +47,7 @@ $(function(){
 		var direccion ;
 		<?php if ($opcion<100) {
 			echo 'direccion = "tabulados/pescador/texto" ;';
-		} else if ($opcion<200){
+		} else if ($opcion<198){
 			echo 'direccion = "tabulados/acuicultor/texto" ;';
 		}else if ($opcion<253){
 			echo 'direccion = "tabulados/comunidad/texto" ;';
@@ -55,6 +57,7 @@ $(function(){
 				    var t_data = {
 			            csrf_token_c: CI.cct,
 			            texto: $("#textn").val(),
+			            texto_2: $("#textn_2").val(),
 			            preg: <?php echo $opcion; ?>,
 			            tipo: 1,
 			            ajax:1							    	   
