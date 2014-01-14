@@ -646,42 +646,96 @@ min-height: 22px;
 
  }
 
-.chart-inner {
-/*/position: absolute;*/
-    
-}
+
+
 #chart_div {
+    background: none repeat scroll 0 0 #FFFFFF;
     position:relative;  
-    width: 100% !important; 
+    width: 100%; 
     height: 100%;
     padding-top: 10px;  
     /*width:100%;*/
     border-top: 50px;
+    /*display: block;*/
+    /*overflow: visible;*/
+    padding-bottom: 34px;
+    padding-top: 34px;    
 }
 
+#chart_div_nac {
+    background: none repeat scroll 0 0 #FFFFFF;
+    position:relative;  
+    width: 100%; 
+    height: 100%;
+    padding-top: 10px;  
+    /*width:100%;*/
+    border-top: 50px;
+    /*display: block;*/
+    /*overflow: visible;*/
+    padding-bottom: 34px;
+    padding-top: 34px;    
+}
 
 .styled-select select {
-   background: transparent;
+   background: transparent !important;
    width: 268px;
    padding: 5px;
    font-size: 16px;
    color: #FFFFFF;
    line-height: 1;
-   border: 0;
-   border-radius: 0;
+   border: 0px;
+   border-radius: 2px;
    height: 34px;
-   -webkit-appearance: none;
+   
    }
 
    .styled-select {
-   width: 200px;
+   width: 213px;
    height: 30px;
    overflow: hidden;
-   background: url(../img/sort_desc_disabled.png) no-repeat right #00A1C7 ;
-   border: 1px solid #ccc;
+   background: url(../img/sort_desc_disabled.png) no-repeat 95% 36% #00A1C7 ;
+   border: 0px solid #ccc;
+   border-radius: 31px;
+   -webkit-background-color: #00A1C7;
+   }
+   .styled-select select :active {
+      background:  #00BFC7 ;   
+      border: 1px solid #00A1C7;     
+   }
+   .styled-select select :hover{
+      background:  #0090C7 ;   
+   }   
+  .button-styles-graficos{
+    border: 1px solid #ccc;
+    border-radius: 31px;   
+    background:  #00A1C7 ; 
+    color: #FFFFFF;
+    padding: 4px 11px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
    }
 
+   .button-styles-graficos:active{
+      background:  #00BFC7 ;   
+      border: 1px solid #00A1C7;
+      -webkit-border-radius: 31px; 
+   }
 
+   .button-styles-graficos:hover{
+      background:  #0090C7 ;   
+   }
+
+   #data-print{
+      background: url(../img/printer.png) no-repeat 90% 50% #00A1C7 ;  
+      text-align: left;
+      width: 128px; 
+      background-size:32px;
+   }
+   #data-download{
+      background: url(../img/download.png) no-repeat 90% 50% #00A1C7 ;  
+      text-align: left;
+      width: 128px; 
+      background-size:32px;
+   }
 
 /* PARA GRAFICOS HIGHCHARTS******************************************************************************************/
 
@@ -804,7 +858,7 @@ min-height: 22px;
 
 
 
-/*MAPA TEMATICO*/
+/*MAPA TEMATICO >>>>>>>>>>>>>>>>>>>>>>>*/
 
 .inei .vol_mapa{
     bottom: 30px;
@@ -956,6 +1010,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##E26B0A', en
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 
+.tot_pescadores{
+    font-weight: bold;
+    font-size: 20px;
+    color:#F32C22;
+
+}
+
+.tot_acuicultores{
+    font-weight: bold;
+    font-size: 20px;
+    color: #436AD6
+
+}
+.tot_pes_acuicultores{
+    color: #05DA65;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+/*MAPA TEMATICO <<<<<<<<<<<<<<<<<<<<<<< */
 
 /*#tabulado {
     height:100%;
@@ -1019,6 +1093,8 @@ margin-bottom: 0;
 /* So we wont impact the original bootstrap menu
 or it's pseudo call-out arrow the menu is wrapped
 in a sub dropdown-menu with a chained scroll-menu */
+
+
 ul.scroll-menu {
     position: relative;
     display: inherit !important;
@@ -1089,39 +1165,16 @@ a.dropdown-toggle::after {
   display: block;
 }
 
-.tot_pescadores{
-    font-weight: bold;
-    font-size: 20px;
-    color:#F32C22;
 
-}
-
-.tot_acuicultores{
-    font-weight: bold;
-    font-size: 20px;
-    color: #436AD6
-
-}
-.tot_pes_acuicultores{
-    color: #05DA65;
-    font-weight: bold;
-    font-size: 20px;
-
-}
 
 
 #tabla_avance_fijo th {
   font-size: 15px;
 }
 
-@media print
-{
-body * { visibility: hidden; }
-.div2 * { visibility: visible; }
-.div2 { position: absolute; top: 40px; left: 30px; }
-}
 
 
+/* TEXT VIEW >>>>>>>>>>>>>>>>>>  */
 #textn,#textn_2,
 #txt_tabulado,
 #txt_contenido,
@@ -1134,3 +1187,5 @@ body * { visibility: hidden; }
 #txt_definiciones{
 font-size: 18px !important;
 }
+/* TEXT VIEW <<<<<<<<<<<<<<<<<*/
+

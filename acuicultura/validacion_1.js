@@ -403,7 +403,7 @@ function duo(e)
 { 
     k = (document.all) ? e.keyCode : e.which;
     if (k==8 || k==0) return true;
-    patron = /[1-2]/;
+    patron = /[1-2{9}]/;
     n = String.fromCharCode(k);
     return patron.test(n);
 
@@ -1707,23 +1707,23 @@ document.getElementById(n).focus();
 
 function salta_ie(anio,es,c1,c2,c3)
 {
-aan=document.getElementById(anio).value;
-ees=document.getElementById(es).value;
+    aan=document.getElementById(anio).value;
+    ees=document.getElementById(es).value;
 
-if(ees==1)
-{
-document.getElementById(c1).focus();
-}
+    if(ees==1 || ees==9)
+    {
+    document.getElementById(c1).focus();
+    }
 
-if(aan>=14 && ees==2)
-{
-document.getElementById(c2).focus();
-}
+    if(aan>=14 && ees==2)
+    {
+    document.getElementById(c2).focus();
+    }
 
-if(aan<14 && ees==2)
-{
-document.getElementById(c3).focus();
-}
+    if(aan<14 && ees==2)
+    {
+    document.getElementById(c3).focus();
+    }
 	
 }
 

@@ -187,6 +187,21 @@ class General_avance_by_seguimiento extends CI_Controller {
 
 				$filas['ODEI_COD'] = '';
 				$filas['NOM_ODEI'] = 'NACIONAL';
+				// AVANCE CAMPO SUB RUTAS, SEGUIMIENTO *****************************************************************************
+				foreach ($total_trab_pes_totales_by_odei->result() as  $seg) {
+					$nac_seg_trab_pes_totales = $nac_seg_trab_pes_totales + $seg->TOT_FORM  ; 
+				}	
+				$filas['SEG_PES'] = $nac_seg_trab_pes_totales;
+
+				foreach ($total_trab_acui_totales_by_odei->result() as  $seg) {
+					$nac_seg_trab_acui_totales = $nac_seg_trab_acui_totales + $seg->TOT_FORM  ; 
+				}	
+				$filas['SEG_ACUI'] = $nac_seg_trab_acui_totales;
+
+				foreach ($total_trab_com_totales_by_odei->result() as  $seg) {
+					$nac_seg_trab_com_totales = $nac_seg_trab_com_totales + $seg->TOT_FORM  ;
+				}
+				$filas['SEG_COM'] = $nac_seg_trab_com_totales;
 
 				foreach ($registros_udra_reg->result() as $reg) {
 				 	$nac_udra_reg = $nac_udra_reg +  $reg->TOTAL_FORM ;
@@ -242,21 +257,7 @@ class General_avance_by_seguimiento extends CI_Controller {
 				$nac_dig_total = $nac_dig_reg + $nac_dig_pes + $nac_dig_acui + $nac_dig_com;
 				$filas['DIG_TOTAL'] = $nac_dig_total;
 				$filas['AVANCE_TOTAL'] = ( $nac_udra_total>0 ) ? number_format( ( ($nac_dig_total*100)/$nac_udra_total ), 2,'.','') : 0 ;
-				// AVANCE CAMPO SUB RUTAS, SEGUIMIENTO *****************************************************************************
-				foreach ($total_trab_pes_totales_by_odei->result() as  $seg) {
-					$nac_seg_trab_pes_totales = $nac_seg_trab_pes_totales + $seg->TOT_FORM  ; 
-				}	
-				$filas['SEG_PES'] = $nac_seg_trab_pes_totales;
 
-				foreach ($total_trab_acui_totales_by_odei->result() as  $seg) {
-					$nac_seg_trab_acui_totales = $nac_seg_trab_acui_totales + $seg->TOT_FORM  ; 
-				}	
-				$filas['SEG_ACUI'] = $nac_seg_trab_acui_totales;
-
-				foreach ($total_trab_com_totales_by_odei->result() as  $seg) {
-					$nac_seg_trab_com_totales = $nac_seg_trab_com_totales + $seg->TOT_FORM  ;
-				}
-				$filas['SEG_COM'] = $nac_seg_trab_com_totales;
 				// TOTALES DIGITACION VS SEGUIMIENTO *******************************************************************************
 				$filas['SEG_AVAN_PES'] =  ( $nac_seg_trab_pes_totales > 0 ) ? number_format( ( ($nac_dig_pes*100)/$nac_seg_trab_pes_totales ),2, '.','' ) : 0 ;
 				$filas['SEG_AVAN_ACUI'] =  ( $nac_seg_trab_acui_totales > 0 ) ? number_format( ( ($nac_dig_acui*100)/$nac_seg_trab_acui_totales ),2, '.','' ) : 0 ;
@@ -280,6 +281,26 @@ class General_avance_by_seguimiento extends CI_Controller {
 
 				$filas['ODEI_COD'] = $value->ODEI_COD;
 				$filas['NOM_ODEI'] = $value->NOM_ODEI;
+
+				// AVANCE CAMPO SUB RUTAS, SEGUIMIENTO *****************************************************************************
+				foreach ($total_trab_pes_totales_by_odei->result() as  $seg) {
+					if ($value->ODEI_COD == $seg->COD_ODEI){ $seg_trab_pes_totales = $seg->TOT_FORM  ; break; }
+				}	
+				if ( !is_numeric($seg_trab_pes_totales) ){ $seg_trab_pes_totales = 0; }
+				$filas['SEG_PES'] = $seg_trab_pes_totales;
+
+				foreach ($total_trab_acui_totales_by_odei->result() as  $seg) {
+					if ($value->ODEI_COD == $seg->COD_ODEI){ $seg_trab_acui_totales = $seg->TOT_FORM  ; break; }
+				}	
+				if ( !is_numeric($seg_trab_acui_totales) ){ $seg_trab_acui_totales = 0; }
+				$filas['SEG_ACUI'] = $seg_trab_acui_totales;
+
+				foreach ($total_trab_com_totales_by_odei->result() as  $seg) {
+					if ($value->ODEI_COD == $seg->COD_ODEI){ $seg_trab_com_totales = $seg->TOT_FORM  ; break; }
+				}
+				if ( !is_numeric($seg_trab_com_totales) ){ $seg_trab_com_totales = 0; }
+				$filas['SEG_COM'] = $seg_trab_com_totales;
+
 				// REGISTRO DE PESCADORES Y ACUICULTORES **************************************************************************
 				foreach ($registros_udra_reg->result() as $reg) {
 				 	if ( $value->ODEI_COD == $reg->ODEI_COD) { $udra_reg = $reg->TOTAL_FORM; break; }
@@ -347,30 +368,11 @@ class General_avance_by_seguimiento extends CI_Controller {
 				$dig_total = $dig_reg + $dig_pes + $dig_acui + $dig_com;
 				$filas['DIG_TOTAL'] = $dig_total;
 				$filas['AVANCE_TOTAL'] = ( $udra_total>0 ) ? number_format( ( ($dig_total*100)/$udra_total ), 2,'.','') : 0 ;
-			
-				// AVANCE CAMPO SUB RUTAS, SEGUIMIENTO *****************************************************************************
-				foreach ($total_trab_pes_totales_by_odei->result() as  $seg) {
-					if ($value->ODEI_COD == $seg->COD_ODEI){ $seg_trab_pes_totales = $seg->TOT_FORM  ; break; }
-				}	
-				if ( !is_numeric($seg_trab_pes_totales) ){ $seg_trab_pes_totales = 0; }
-				$filas['SEG_PES'] = $seg_trab_pes_totales;
-
-				foreach ($total_trab_acui_totales_by_odei->result() as  $seg) {
-					if ($value->ODEI_COD == $seg->COD_ODEI){ $seg_trab_acui_totales = $seg->TOT_FORM  ; break; }
-				}	
-				if ( !is_numeric($seg_trab_acui_totales) ){ $seg_trab_acui_totales = 0; }
-				$filas['SEG_ACUI'] = $seg_trab_acui_totales;
-
-				foreach ($total_trab_com_totales_by_odei->result() as  $seg) {
-					if ($value->ODEI_COD == $seg->COD_ODEI){ $seg_trab_com_totales = $seg->TOT_FORM  ; break; }
-				}
-				if ( !is_numeric($seg_trab_com_totales) ){ $seg_trab_com_totales = 0; }
-				$filas['SEG_COM'] = $seg_trab_com_totales;
 
 				// TOTALES DIGITACION VS SEGUIMIENTO *******************************************************************************
 				$filas['SEG_AVAN_PES'] =  ( $seg_trab_pes_totales > 0 ) ? number_format( ( ($dig_pes*100)/$seg_trab_pes_totales ),2, '.','' ) : 0 ;
 				$filas['SEG_AVAN_ACUI'] =  ( $seg_trab_acui_totales > 0 ) ? number_format( ( ($dig_acui*100)/$seg_trab_acui_totales ),2, '.','' ) : 0 ;
-				$filas['SEG_AVAN_COM'] =  ( $seg_trab_com_totales > 0 ) ? number_format( ( ($dig_com*100)/$seg_trab_com_totales ),2, '.','' ) : 0 ;
+				$filas['SEG_AVAN_COM'] =  ( $seg_trab_com_totales > 0 ) ? number_format( ( ($dig_com*100)/$seg_trab_com_totales ),2, '.','' ) : 0 ;		
 
 				$tablas[] = $filas;//agrega un registro a la tabla
 
@@ -380,15 +382,6 @@ class General_avance_by_seguimiento extends CI_Controller {
 			//var_dump($tablas);
 			//var_dump($data['udra_acui']->result());
 			//var_dump($data['udra_pes']->result());
-
-
-
-
-
-
-
-	
-			
 
 			$data['tables'] = $tablas;
 			//$data['udra_total'] = $this->udra_acuicultor_model->get_udra_total_by_odei( $this->tank_auth->get_ubigeo() ); 

@@ -1593,8 +1593,8 @@ $('#S7_103').change(function() {
 	var des = $('#S7_104');
 	var s7p2 = $('#S7_201, #S7_202, #S7_203, #S7_204, #S7_205, #S7_206');
 	if(th == 1){
-		des.val('')
-		des.attr("disabled", "disabled"); 		
+		//des.val('')
+		//des.attr("disabled", "disabled"); 		
 		s7p2.val('')
 		s7p2.attr("disabled", "disabled"); 	
 		$('#S7_206').trigger('change');	

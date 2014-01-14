@@ -53,6 +53,20 @@ class Tabulados_model extends CI_MODEL
         return $this->db->affected_rows() > 0;
     }
     //TEXTO COMENTARIOS
+
+    //NOMBRE GRAFICOS
+
+    function get_nombre_mapa($cuadro)
+    {
+        $this->db->where('nu_cuadro',$cuadro);
+        $q = $this->db->get('tabulados_nombre_mapa');
+        return $q;
+    }
+
+
+    //NOMBRE GRAFICOS
+
+
 function get_dptos (){
 	$q = $this->db->query('
 		select  distinct(DEPARTAMENTO), CCDD from departamentos_tab order by DEPARTAMENTO; 
@@ -83,12 +97,21 @@ function get_dptos (){
 //     return $q;
 // }
 function get_report1(){//( coalesce(c1.t,0) + coalesce(c2.t,0) + coalesce( C3.t,0)) TOTAL,
-    $q = $this->db->query('
-        select  DEP.CCDD, DEPARTAMENTO,   coalesce(c1.t,0) PESCADOR, (coalesce(c2.t,0) -  coalesce(C3.t,0) ) ACUICULTOR, coalesce(C3.t,0) AMBOS 
+        /* //total de pescadores y acuicultores, incluyendo los ambos en cada uno
+        select  DEP.CCDD, DEPARTAMENTO,   coalesce(C1.t,0) PESCADOR, (coalesce(C2.t,0) -  coalesce(C3.t,0) ) ACUICULTOR, coalesce(C3.t,0) AMBOS 
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP
         left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=1 and res!=3 group by ccdd) as C1 on DEP.ccdd = C1.ccdd
         left join (select ccdd, count(*) as t from acu_seccion1 group by ccdd) as C2  on DEP.ccdd = C2.ccdd     
-        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=3 and res!=3 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;
+        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=3 and res!=3 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;       
+
+        */
+    $q = $this->db->query('
+        select  DEP.CCDD, DEPARTAMENTO, ( coalesce(c1.t,0) + coalesce(c2.t,0) ) TOTAL,  coalesce(c1.t,0) PESCADOR, (coalesce(c2.t,0)) ACUICULTOR, coalesce(C3.t,0) AMBOS
+        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP
+        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id  group by ccdd) as C1 on DEP.ccdd = C1.ccdd
+        left join (select ccdd, count(*) as t from acu_seccion1 group by ccdd) as C2  on DEP.ccdd = C2.ccdd     
+        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=0 and res!=0 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;         
+ 
                     ');
     return $q;
 }

@@ -700,7 +700,7 @@ $S2_23_10_1 = array(
 $S2_23_11_1 = array(
 	'name'	=> 'S2_23_11_1',
 	'id'	=> 'S2_23_11_1',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro1 hacti',
 );
 // especifique
@@ -795,7 +795,7 @@ $S2_23_10_2 = array(
 $S2_23_11_2 = array(
 	'name'	=> 'S2_23_11_2',
 	'id'	=> 'S2_23_11_2',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro2 hacti',
 );
 // escuela
@@ -889,7 +889,7 @@ $S2_23_10_3 = array(
 $S2_23_11_3 = array(
 	'name'	=> 'S2_23_11_3',
 	'id'	=> 'S2_23_11_3',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro3 hacti',
 );
 // escuela
@@ -981,7 +981,7 @@ $S2_23_10_4 = array(
 $S2_23_11_4 = array(
 	'name'	=> 'S2_23_11_4',
 	'id'	=> 'S2_23_11_4',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro4 hacti',
 );
 // escuela
@@ -1076,7 +1076,7 @@ $S2_23_10_5 = array(
 $S2_23_11_5 = array(
 	'name'	=> 'S2_23_11_5',
 	'id'	=> 'S2_23_11_5',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro5 hacti',
 );
 // escuela
@@ -1169,7 +1169,7 @@ $S2_23_10_6 = array(
 $S2_23_11_6 = array(
 	'name'	=> 'S2_23_11_6',
 	'id'	=> 'S2_23_11_6',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro6 hacti',
 );
 // escuela
@@ -1262,7 +1262,7 @@ $S2_23_10_7 = array(
 $S2_23_11_7 = array(
 	'name'	=> 'S2_23_11_7',
 	'id'	=> 'S2_23_11_7',
-	'maxlength'	=> 1,
+	'maxlength'	=> 2,
 	'class' => $span_class. ' hijo hnro7 hacti',
 );
 // escuela
@@ -1355,7 +1355,7 @@ $S2_23_10_8 = array(
 $S2_23_11_8 = array(
 	'name'	=> 'S2_23_11_8',
 	'id'	=> 'S2_23_11_8',
-	'maxlength'	=> 1,
+	'maxlength'	=> 8,
 	'class' => $span_class. ' hijo hnro8 hacti',
 );
 // escuela
@@ -1448,7 +1448,7 @@ $S2_23_10_9 = array(
 $S2_23_11_9 = array(
 	'name'	=> 'S2_23_11_9',
 	'id'	=> 'S2_23_11_9',
-	'maxlength'	=> 1,
+	'maxlength'	=> 9,
 	'class' => $span_class. ' hijo hnro9 hacti',
 );
 // escuela
@@ -1541,7 +1541,7 @@ $S2_23_10_10 = array(
 $S2_23_11_10 = array(
 	'name'	=> 'S2_23_11_10',
 	'id'	=> 'S2_23_11_10',
-	'maxlength'	=> 1,
+	'maxlength'	=> 10,
 	'class' => $span_class. ' hijo hnro10 hacti',
 );
 // escuela
@@ -3717,7 +3717,7 @@ $('.estudia').change(function() {
 	var npreg = pre.substring(8,10);
 	else
 	var npreg = pre.substring(8,9);
-	if($(this).val() == 1){
+	if($(this).val() == 1 || $(this).val() == 9){
 		$('#S2_23_10_' + npreg).removeAttr('disabled');
 	}else{
 		$('#S2_23_10_' + npreg).val('');
@@ -4254,7 +4254,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_1:{
 		            digits:true,
-		             valrango: [1,8,9],
+		            valrango: [1,9,99],
 		         },			         
 		        S2_23_11_1_O:{
 		        	required:true,
@@ -4309,7 +4309,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_2:{
 		            digits:true,
-		             valrango: [1,8,9],
+		            valrango: [1,9,99],
 		         },			         
 		        S2_23_11_2_O:{
 		        	required:true,
@@ -4364,7 +4364,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_3:{
 		            digits:true,
-		             valrango: [1,8,9],
+		            valrango: [1,9,99],
 		         },			         
 		        S2_23_11_3_O:{
 		        	required:true,
@@ -4419,7 +4419,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_4:{
 		            digits:true,
-		             valrango: [1,8,9],
+		             valrango: [1,9,99],
 		         },			         
 		        S2_23_11_4_O:{
 		        	required:true,
@@ -4474,7 +4474,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_5:{
 		            digits:true,
-		             valrango: [1,8,9],
+		             valrango: [1,9,99],
 		         },			         
 		        S2_23_11_5_O:{
 		        	required:true,
@@ -4529,7 +4529,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_6:{
 		            digits:true,
-		             valrango: [1,8,9],
+		             valrango: [1,9,99],
 		         },			         
 		        S2_23_11_6_O:{
 		        	required:true,
@@ -4584,7 +4584,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_7:{
 		            digits:true,
-		             valrango: [1,8,9],
+		             valrango: [1,9,99],
 		         },			         
 		        S2_23_11_7_O:{
 		        	required:true,
@@ -4639,7 +4639,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_8:{
 		            digits:true,
-		             valrango: [1,8,9],
+		            valrango: [1,9,99],
 		         },			         
 		        S2_23_11_8_O:{
 		        	required:true,
@@ -4694,7 +4694,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_9:{
 		            digits:true,
-		             valrango: [1,8,9],
+		            valrango: [1,9,99],
 		         },			         
 		        S2_23_11_9_O:{
 		        	required:true,
@@ -4749,7 +4749,7 @@ $('#S2_9_DD_COD').trigger("change");
 		         },	
 		        S2_23_11_10:{
 		            digits:true,
-		             valrango: [1,8,9],
+		            valrango: [1,9,99],
 		         },			         
 		        S2_23_11_10_O:{
 		        	required:true,

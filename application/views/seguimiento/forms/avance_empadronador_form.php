@@ -82,6 +82,7 @@ $span_class =  'span12';
 			'maxlength'	=> 4,
 			'class' => $span_class,
 			'readonly' => 'readonly',
+			'value' => 1,// dando valor por defecto 1
 		);		
 		$TOTAL_P = array(
 			'name'	=> 'TOTAL_P',
@@ -113,6 +114,7 @@ $span_class =  'span12';
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 			'onchange'=> "return complete_zero(this,2)",
+
 		);		
 		$P2_P = array(
 			'name'	=> 'P2_P',
@@ -121,13 +123,13 @@ $span_class =  'span12';
 			'class' => $span_class,
 			'onkeypress'=>"return solo_8_to_9(event)",
 			'onchange'=> "return complete_zero(this,2)",
+
 		);		
 		$P3_P = array(
 			'name'	=> 'P3_P',
 			'id'	=> 'P3_P',
 			'maxlength'	=> 4,
 			'class' => $span_class,
-			//'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P4_P = array(
@@ -193,6 +195,7 @@ $span_class =  'span12';
 			'class' => $span_class,
 			'onkeypress'=>"return solo_numeros(event)",
 			'onchange'=> "return complete_zero(this,2)",
+
 		);		
 		$P2_A = array(
 			'name'	=> 'P2_A',
@@ -207,7 +210,6 @@ $span_class =  'span12';
 			'id'	=> 'P3_A',
 			'maxlength'	=> 4,
 			'class' => $span_class,
-			//'readonly' => 'readonly',
 			'onkeypress'=>"return solo_numeros(event)",
 		);		
 		$P4_A = array(
@@ -1168,7 +1170,14 @@ $("#buscar").click(function(){
 				        			$("#EMP_FIN").val('');
 				        			$("#detalle :input").val('');
 				        			$("#ccpp_total :input").val('');
-				        			$("#totales :input").val('');
+				        			//$("#totales :input").val('');
+				        			//dando valores por defecto segun requerimiento
+				        				$("#P1_P,#P1_A,#P1_C").val('20');
+				        				$("#P2_P,#P2_A,#P2_C").val('12');
+				        				$("#P5_P,#P6_P,#P7_P,#P5_A,#P6_A,#P7_A,#P5_C,#P6_C,#P7_C").val('0');
+				        				$("#P8_P,#P8_A,#P8_C").val('0.00');
+				        				$("#P9_P,#P9_A,#P9_C").val('100.00');
+				        				$("#TOTAL_REG,#TOTAL_C").val('1');
 
 				            		$.each(json , function(i, data) {
 				            			$("#COD_ODEI").val(data.COD_ODEI);
@@ -1208,9 +1217,13 @@ $("#buscar").click(function(){
 									        		centro = $('<div class="row-fluid" style="width:140%" id="ccpp_div_'+i+'" name="ccpp_div_'+i+'" />' )
 									        		inputs1 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="CC_CCPP" name="CC_CCPP" class="span12" readonly="readonly" onkeypress="return solo_numeros(event)" maxlength=4/><input type="hidden" id="CC_CCPP_NUM" name="CC_CCPP_NUM"></div><div class="controls span9"><input type="text" id="NOM_CCPP" name="NOM_CCPP" class="span12" readonly="readonly" onblur="return mayusculas(this);" /></div>');
 									        		inputs2 = $('<div class="controls span1" >').html('<div class="controls span6"><input type="text" id="TIPO_IN" name="TIPO_IN" class="span12" readonly="readonly" onkeypress="return solo_a_b(event)" maxlength=1 /></div><div class="controls span6"><input type="text" id="TIPO_FIN" name="TIPO_FIN" class="span12" onkeypress="return solo_a_b(event)" maxlength=1 onblur="return mayusculas(this);" /></div>');
-									        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
-									        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)"  maxlength=1 >	</div>'		);
-									        		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" maxlength=1000 onblur="return mayusculas(this);" ></div>');
+									        		//inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
+									        		//input 3, REG dando por defecto 1, y fechas predeterminadas
+									        		inputs3 = $('<div class="controls span2" >').html('<div class="controls span3"><input type="text" id="REG" name="REG" class="span12 REG" onchange="actualizar_input(this);" value="1" onkeypress="return solo_0_to_1(event)" maxlength=1></div>	<div class="controls offset1 span3"><input type="text" id="REG_DIA" name="REG_DIA" value="20" class="span12 REG_DIA" onkeypress="return solo_numeros(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>	  <div class="controls offset1 span3"><input type="text" id="REG_MES" name="REG_MES" value="12" class="span12" onkeypress="return solo_8_to_9(event)" maxlength=2 onchange="return complete_zero(this,2)" ></div>'	);
+									        		inputs4 = $('<div class="controls span2" >').html('<div class="controls span4">	<input type="text" id="NUM_P" name="NUM_P" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div><div class="controls span4">	<input type="text" id="NUM_A" name="NUM_A" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_numeros(event)" maxlength=3 >	</div>      <div class="controls span4">	<input type="text" id="NUM_C" name="NUM_C" value="1" class="span12" onchange="actualizar_input(this);" onkeypress="return solo_0_to_1(event)"  maxlength=1 >	</div>'		);
+									        		//inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" maxlength=1000 onblur="return mayusculas(this);" ></div>');
+									        		// input 5 con value por defecto 0
+									        		inputs5 = $('<div class="controls span5" >').html('<div class="controls span2"><input type="text" id="NUEV_CCPP" name="NUEV_CCPP" value="0" class="span12" onkeypress="return solo_0_to_1(event)" maxlength=1 ></div><div class="controls span10"><input type="text" id="OBS" name="OBS" class="span12" maxlength=1000 onblur="return mayusculas(this);" ></div>');
 
 									        		centro.append(inputs1);
 									        		centro.append(inputs2);
@@ -2149,7 +2162,7 @@ $.validator.addMethod("peruDate",function(value, element) {
 		       REG_MES: {
 		           required: true,
 		           number: true,
-		           range: [8,9],
+		           range: [8,12],
 		           maxlength: 2,
 		           exactlength:2,           
 		         },	
@@ -2211,16 +2224,16 @@ $.validator.addMethod("peruDate",function(value, element) {
 		           maxlength: 4,
 		         },                                                  
 		       P1_P: {
-		           required: true,
+		           //required: true,
 		           number: true,
 		           range: [1,31],
 		           maxlength: 2,
 		           exactlength:2,           
 		         },  
 		       P2_P: {
-		           required: true,
+		           //required: true,
 		           number: true,
-		           range: [8,9],
+		           range: [8,12],
 		           maxlength: 2,
 		           exactlength:2,
 		         },   
@@ -2270,16 +2283,16 @@ $.validator.addMethod("peruDate",function(value, element) {
 		           maxlength: 1000,
 		         }, 
 		       P1_A: {
-		           required: true,
+		           //required: true,
 		           number: true,
 		           range: [1,31],
 		           maxlength: 2,
 		           exactlength:2,           
 		         },  
 		       P2_A: {
-		           required: true,
+		           //required: true,
 		           number: true,
-		           range: [8,9],
+		           range: [8,12],
 		           maxlength: 2,
 		           exactlength:2,
 		         },   
@@ -2329,16 +2342,16 @@ $.validator.addMethod("peruDate",function(value, element) {
 		           maxlength: 1000,
 		         }, 
 		       P1_C: {
-		           required: true,
+		           //required: true,
 		           number: true,
 		           range: [1,31],
 		           maxlength: 2,
 		           exactlength:2,           
 		         },  
 		       P2_C: {
-		           required: true,
+		           //required: true,
 		           number: true,
-		           range: [8,9],
+		           range: [8,12],
 		           maxlength: 2,
 		           exactlength:2,
 		         },   

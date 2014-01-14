@@ -57,7 +57,7 @@
 								echo '<tbody>';
 
 									$x = 1; $z = 0;  $u = 0;
-									$totales = array_fill(1, 50,0); 
+									$totales = array_fill(1, 4,0); 
 									$pes_porc=null;$acu_porc=null;$ambos_porc=null; $index_pes = null;$index_acu = null;$index_ambos = null;$diff_pes = 0;$diff_acu = 0;$diff_ambos = 0;
 									$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
 									$tot_pes = 0; $tot_acu = 0; $tot_ambos = 0;
@@ -74,9 +74,9 @@
 									//if($respuesta_unica){// tabular al 100% en respuestas unicas
 										foreach ($tables->result() as  $key => $value) {
 									
-												 $pes_porc[$value->CCDD]=  round( ($value->PESCADOR*100/ $tot_pes),1) ; 
-												 $acu_porc[$value->CCDD]=  round( ($value->ACUICULTOR*100/ $tot_acu),1) ; 
-												 $ambos_porc[$value->CCDD]=  round( ($value->AMBOS*100/ $tot_ambos),1) ;
+												 $pes_porc[$value->CCDD]=  ($tot_pes > 0) ? round( ($value->PESCADOR*100/ $tot_pes),1) : 0 ; 
+												 $acu_porc[$value->CCDD]=  ($tot_acu > 0) ? round( ($value->ACUICULTOR*100/ $tot_acu),1) : 0 ; 
+												 $ambos_porc[$value->CCDD]=  ($tot_ambos > 0) ? round( ($value->AMBOS*100/ $tot_ambos),1) : 0 ;
 										}
 										//bucando valores mayoyes y nmenores en los porcentajes
 										if ( round(array_sum($pes_porc),1) > 100 ) {
@@ -117,7 +117,7 @@
 											foreach ($filas as  $key => $value) {
 												if($key != 'CCDD'){
 														if( ($key == 'NEP' && $NEP == 0 ) || $key == 'TOTAL' ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
-													if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
+													if($key != 'DEPARTAMENTO'){ if(isset($totales[$x])){ $totales[$x]+= $value; $x++; } 
 														if($key == 'NEP' && $NEP == 0 ){}else{
 															//echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? 100  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
 															if($key == 'PESCADOR') { echo '<td style="text-align:center;">' .  number_format(( $datas[$z++][$u] = ( ( ($tot_pes>0) ? round( ($value*100/ $tot_pes),1) : 0 ) +  ( (  $filas->CCDD == $index_pes[0] ) ? $diff_pes : 0 ) ) ),1,',',' ') .'</td>'; }
@@ -153,11 +153,11 @@
 									// echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
 									// echo '<td style="text-align:center;"> '. (round( ( ($i==1) ? 100 : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ).'</td>';	
 									echo '<td style="text-align:center">'.number_format($tot_pes,0,',',' ') .'</td>';
-									echo '<td style="text-align:center">'. '100,0' .'</td>';
+									echo '<td style="text-align:center">'. (($tot_pes > 0) ? '100,0' : '0,0') .'</td>';
 									echo '<td style="text-align:center">'.number_format($tot_acu,0,',',' ') .'</td>';
-									echo '<td style="text-align:center">'. '100,0' .'</td>';
+									echo '<td style="text-align:center">'. (($tot_acu > 0) ? '100,0' : '0,0') .'</td>';
 									echo '<td style="text-align:center">'.number_format($tot_ambos,0,',',' ') .'</td>';
-									echo '<td style="text-align:center">'. '100,0' .'</td>';
+									echo '<td style="text-align:center">'. (($tot_ambos > 0) ? '100,0' : '0,0') .'</td>';
 										//}
 									echo '</tr>';
 

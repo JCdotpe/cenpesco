@@ -6,7 +6,7 @@
 									<caption><h3>
 													AVANCE DE CAMPO DE LA ETAPA DE CONTROL FINAL
 													<br><strong>
-													AL 19/12/2013 </strong>
+													AL 23/12/2013 </strong>
 									     </h3></caption>
 
 <thead style="font-size:15px">

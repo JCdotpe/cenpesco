@@ -3970,7 +3970,7 @@ $('.red5').change(function() {
 	var pre = $(this).attr('id');
 	var npreg = pre.substring(5,6);
 
-	if($(this).val() == 0){
+	if($(this).val() == 0 || $(this).val() == 9){
 		$('#S5_5_' + npreg + '_C').val('');
 		$('#S5_5_' + npreg + '_C').attr("disabled", "disabled"); 
 		$('#S5_5_' + npreg + '_1').val('');
@@ -4046,7 +4046,7 @@ $('.aparejo5').change(function() {
 	var pre = $(this).attr('id');
 	var npreg = pre.substring(5,7);
 
-	if($(this).val() == 0){
+	if($(this).val() == 0 || $(this).val() == 9){
 		$('#S5_5_' + npreg + '_C').val('');
 		$('#S5_5_' + npreg + '_C').attr("disabled", "disabled"); 
 	}else{
@@ -4116,7 +4116,7 @@ $('#S5_8_4').change(function() {
 
 $('#S5_2_PP_COD').change(function() {
     var ugo = $('#S5_2_PP_O');
-    if($(this).val() == -1 && $('#S5_2_2').val() !=0){
+    if($(this).val() == -1 && $('#S5_2_2').val() ==1){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -4127,7 +4127,7 @@ $('#S5_2_PP_COD').change(function() {
 
 $('#S5_2_DI_COD').change(function() {
     var ugo = $('#S5_2_DI_O');
-    if($(this).val() == -1 && $('#S5_2_2').val() !=0){
+    if($(this).val() == -1 && $('#S5_2_2').val() ==1){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -4138,7 +4138,7 @@ $('#S5_2_DI_COD').change(function() {
 
 $('#S5_2_CCPP_COD').change(function() {
     var ugo = $('#S5_2_CCPP_O');
-    if($(this).val() == -1 && $('#S5_2_2').val() !=0){
+    if($(this).val() == -1 && $('#S5_2_2').val() ==1){
 		ugo.removeAttr('disabled');
     }else{
  		ugo.val('');     
@@ -4301,7 +4301,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_1: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_1_C: {
 		            digits: true,
@@ -4332,7 +4332,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_2: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_2_C: {
 		            digits: true,
@@ -4363,7 +4363,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_3: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_3_C: {
 		            digits: true,
@@ -4394,7 +4394,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_4: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_4_C: {
 		            digits: true,
@@ -4425,7 +4425,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_5: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_5_C: {
 		            digits: true,
@@ -4457,7 +4457,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_6: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_6_C: {
 		            digits: true,
@@ -4488,7 +4488,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_7: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_7_C: {
 		            digits: true,
@@ -4519,7 +4519,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_8: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_8_C: {
 		            digits: true,
@@ -4550,7 +4550,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_9: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_9_O: {
 		    		required:true,
@@ -4588,7 +4588,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_10: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_10_C: {
 		            digits: true,
@@ -4599,7 +4599,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_11: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_11_C: {
 		            digits: true,
@@ -4610,7 +4610,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_12: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_12_C: {
 		            digits: true,
@@ -4622,7 +4622,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_13: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_13_C: {
 		            digits: true,
@@ -4633,7 +4633,7 @@ $('#S5_2_DD_COD').trigger("change");
 		    	S5_5_14: {
 		    		required:true,
 		            digits: true,
-		            range:[0,1],
+		            valrango:[0,1,9],
 		         },	
 		    	S5_5_14_O: {
 		    		required:true,

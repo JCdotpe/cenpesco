@@ -65,7 +65,7 @@
 								echo '<tbody>';
 
 									$x = 1; $z = 0;  $u = 0;
-									$totales = array_fill(1, 50,0); 
+									$totales = array_fill(1, $cant_v,0); 
 									$array_porc=null; $index = null;$diff = 0;
 									$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
 
@@ -91,7 +91,7 @@
 											foreach ($filas as  $key => $value) {
 												if($key != 'CCDD'){
 														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
-													if($key != 'DEPARTAMENTO'){ $totales[$x++] += $value; 
+													if($key != 'DEPARTAMENTO'){ if(isset($totales[$x])){ $totales[$x]+= $value; $x++; } 
 														if($key == 'NEP' && $NEP == 0 ){}else{
 															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
 													};
@@ -123,8 +123,9 @@
 
 										for ($i=1; $i <= $cant_v ; $i++) { 
 									echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
-									echo '<td style="text-align:center;"> '. number_format( (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
-										}
+									echo '<td style="text-align:center;"> '. number_format($totales_porc[$i] = (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+										}$totales_porc[1] = $totales[1];//guardando nacional (TECHO)
+									echo '</tr>';
 									echo '</tr>';
 
 								echo '</tbody>';
@@ -144,7 +145,7 @@
 										array("name" => $variable_9 	,"data" => $datas[8]), 
 										array("name" => $variable_10 	,"data" => $datas[9]),  );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
-								//array_unshift($series, array("name" => 'TOTAL'	,"data" => $total_dep));
+								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho

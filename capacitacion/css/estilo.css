@@ -1,0 +1,532 @@
+/*  CSS  para secciones  */
+.cuerpo
+{
+width:100%;height:100%;background-color:#F5F5F5; border-style:solid;border-width:1px; border-color:#C9C9C9; margin:0;padding:0;display:table; padding:1px;     text-align:center;
+}
+.cabecera
+{
+width: 100%; height:10%; background-color:#0C2158;  text-align:center; 
+height:140px;
+}
+
+#cabecera1
+{
+ width: 80%; height:80%; background-color:#0C2158;  
+
+text-align: center;
+margin:0 auto;
+
+}
+#cabecera1 img {width: 100%;
+height: 100%;
+
+}
+
+.panel
+{
+float:left; width: 78%; text-align:left; padding:2px; margin:4px;
+}
+
+
+.acceso
+{
+ moz-border-radius: 15px 15px 15px 15px;
+      /*para Safari y Chrome*/
+ webkit-border-radius: 15px 15px 10px 15px;
+      /*para IE */
+behavior:url(border.htc);
+      /* para Opera */
+ border-radius: 15px 15px 15px 15px;
+
+text-align:center;
+height: 780px;
+margin-top: 20px;
+width: 88%;
+margin-right: auto;
+margin-left: auto;
+background-color:#CDD5E0;
+
+}
+
+/* CSS  para Enlaces   */
+
+.enlace
+{
+font-family:13px;
+color:#0054A8;
+	
+}
+
+#menuv {
+float:left; 
+width: 20%; 
+/*border-width: 1px 1px 0 1px;*/
+
+text-align:left;
+
+
+font: 13px "Geneva", Arial, Helvetica, sans-serif;
+}
+#menuv ul, li {
+list-style-type: none;
+/*width: 180px; */
+}
+
+#menuv ul {
+margin: 0;
+padding: 0;
+
+}
+
+#menuv li {
+/*border-bottom: 1px solid #ACCFE8; */
+}
+
+#menuv a {
+text-decoration: none;
+/*color:#069;
+background:#CFE9F1; */
+display: block;
+padding: 27px 0px;
+
+}
+
+#menuv a:hover {
+/*background:#96C6E2; */
+font: 14px "Geneva", Arial, Helvetica, sans-serif;
+}
+
+#menuv a:active {
+/* background:#B9D7EE; */
+font: 12px "Geneva", Arial, Helvetica, sans-serif;
+}
+
+
+/* CSS  parafuentes   */
+
+.linked
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+border-bottom: 1px solid #F9C;
+background:#CC3
+}
+
+.titulo
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#FFF;	
+}
+
+.titulo1
+{
+font: 22px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.titulo2
+{
+font: 22px "Geneva", Arial, Helvetica, sans-serif;
+color:#06C;
+}
+
+.titulo3
+{
+font: 22px "Geneva", Arial, Helvetica, sans-serif;
+color:#F00;
+}
+.titulo4
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#060;
+}
+
+
+
+.subtitulo
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+.subtitu
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+.subtitle 
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#9F3;
+}
+#subtitle1 
+{
+font: 20px "Geneva", Arial, Helvetica, sans-serif;
+color:#9F3;
+}
+#subtitle1:link {text-decoration:none;color:#FFF;} 
+#subtitle1:visited{text-decoration:none;color:#FFF;} 
+#subtitle1 a:active{text-decoration:none;color:#FFF;} 
+#subtitle1 a:hover{text-decoration:none;color:#FFF;} 
+
+.subtitulo1
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.texto1
+{
+font: 14px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+
+.textin
+{
+font: 11px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+}
+.texto2
+{
+font: 15px "Geneva", Arial, Helvetica, sans-serif;
+color:#000;
+
+
+}
+.aviso
+{
+font: 16px "Geneva", Arial, Helvetica, sans-serif;
+color:#F00;
+}
+
+.title
+{
+font: 18px "Geneva", Arial, Helvetica, sans-serif;
+color:#06C;
+}
+
+
+.form1 h2 {
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-radius: 5px;
+    color:#069;
+    display: block;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 5px;
+    text-shadow: 1px 1px 1px #CCCCCC;
+    width: 433px;
+}
+
+
+.form1 ul {
+    width: 100%;
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+}
+.form1 li{
+    padding:5px;
+    border-bottom:1px solid #eee;
+    position:relative;
+}
+
+.form1 label {
+    color: #555555;
+    display: inline-block;
+    float: left;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 3px;
+    padding: 3px;
+    width: 150px;
+}
+
+.label_obligatorio {
+    color:#C30;
+    display: inline-block;
+    float: left;
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 3px;
+    padding: 3px;
+    width: 150px;
+}
+
+/*Menu cuenta */
+.cuenta {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 180px;
+}
+
+.cuenta a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 180px;
+	background-image: url("fondos/cuenta_1.jpg");
+}
+
+.cuenta a:hover {
+	background-image: url("fondos/cuenta_2.jpg");
+	color: #ffffcc;
+	
+}
+/* Menu examen */
+.examen {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 180px;
+}
+
+.examen a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 180px;
+	background-image: url("fondos/examen_1.jpg");
+}
+
+.examen a:hover {
+	background-image: url("fondos/examen_2.jpg");
+	color: #ffffcc;
+	
+}
+/* Menu archivo */
+.archivo {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 180px;
+}
+
+.archivo a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 180px;
+	background-image: url("fondos/archivo_1.jpg");
+}
+
+.archivo a:hover {
+	background-image: url("fondos/archivo_2.jpg");
+	color: #ffffcc;
+	
+}
+/* Menu recurso */
+.recurso {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 180px;
+}
+
+.recurso a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 180px;
+	background-image: url("fondos/recurso_1.jpg");
+}
+
+.recurso a:hover {
+	background-image: url("fondos/recurso_2.jpg");
+	color: #ffffcc;
+	
+}
+/* Menu ayuda */
+.ayuda {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 180px;
+}
+
+.ayuda a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 180px;
+	background-image: url("fondos/ayuda_1.jpg");
+}
+
+.ayuda a:hover {
+	background-image: url("fondos/ayuda_2.jpg");
+	color: #ffffcc;
+	
+}
+
+
+/* Menu inicio */
+.inicio {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 164px;
+	height:40px;
+}
+
+.inicio a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 164px;
+	height:40px;
+	background-image: url("fondos/inicio1.jpg");
+}
+
+.inicio a:hover {
+	background-image: url("fondos/inicio2.jpg");
+	color: #ffffcc;
+	height:40px;
+	
+}
+
+/* Menu perfiles */
+.perfiles {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 164px;
+	height:40px;
+}
+
+.perfiles a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 164px;
+	height:40px;
+	background-image: url("fondos/perfil1.jpg");
+}
+
+.perfiles a:hover {
+	background-image: url("fondos/perfil2.jpg");
+	color: #ffffcc;
+	height:40px;
+	
+}
+/* Menu calificacioness */
+.calificaciones {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 164px;
+	height:40px;
+}
+
+.calificaciones a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 164px;
+	height:40px;
+	background-image: url("fondos/calificacion1.jpg");
+}
+
+.calificaciones a:hover {
+	background-image: url("fondos/calificacion2.jpg");
+	color: #ffffcc;
+	height:40px;
+	
+}
+
+/* Menu perfiles */
+.salir {
+	font-weight: bold;
+	border: 0px solid #999999;
+
+	width: 164px;
+	height:40px;
+}
+
+.salir a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 164px;
+	height:40px;
+	background-image: url("fondos/salir1.jpg");
+}
+
+.salir a:hover {
+	background-image: url("fondos/salir2.jpg");
+	color: #ffffcc;
+	height:40px;
+	
+}
+
+/* Menu hora */
+.hora {
+	font-weight: bold;
+	border: 0px solid #999999;
+	margin:0 0 0 0px;
+	padding: 2px;
+	width: 148px;
+	height:58px;
+
+}
+
+.hora a{
+	color: #666666;
+	text-decoration: none;
+	display: block;
+	width: 148px;
+	height:58px;
+	background-image: url("fondos/asistencia_1.jpg");
+	
+}
+
+.hora a:hover {
+	background-image: url("fondos/asistencia_2.jpg");
+	color: #ffffcc;
+	width: 148px;
+	height:58px;
+
+}
+.navegador{
+float:left; 
+width: 148px; 
+/*border-width: 1px 1px 0 1px; */
+}
+
+.navegador1{
+width: 660px; 
+/*border-width: 1px 1px 0 1px; */
+
+.nav{
+float:left; 
+width: 148px; 
+height:58px;
+
+/*border-width: 1px 1px 0 1px; */
+ }
+ .normal{
+float:left; 
+
+/*border-width: 1px 1px 0 1px; */
+ }
+
+.boton{
+float:left; 
+width: 200px; 
+}
+
+.preg
+{
+margin-top: 5px;
+	border: 0px solid #999999;
+	margin:3 3 3 0px;
+	padding: 3px;
+}

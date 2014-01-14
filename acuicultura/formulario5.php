@@ -763,7 +763,7 @@ $s5_17_16=$row['s5_17_16'];
                   </tr>
                 <tr>
                   <td align="left">Contaminación del agua</td>
-                  <td align="left"><input name="s5_17_2" type="text" id="s5_17_2" onkeypress="return binario(event)" value="<?php echo $s5_17_1; ?>" size="3" maxlength="1"/></td>
+                  <td align="left"><input name="s5_17_2" type="text" id="s5_17_2" onkeypress="return binario(event)" value="<?php echo $s5_17_2; ?>" size="3" maxlength="1"/></td>
                   <td align="left">&nbsp;</td>
                   <td align="left">&nbsp;</td>
                   </tr>

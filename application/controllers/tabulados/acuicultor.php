@@ -19,7 +19,7 @@ class Acuicultor extends CI_Controller {
 	    //$this->table->set_template($tmpl);
 		//dando restricciones para los comentarios 
 	    $u_id = $this->tank_auth->get_user_id();
-	    $this->restriccion = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) || ($u_id == 262) || ($u_id == 267) ) ? FALSE : TRUE ;
+	    $this->restriccion = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) || ($u_id == 262) || ($u_id == 267) || ($u_id == 258) || ($u_id == 260) ) ? FALSE : TRUE ;
 
 
 		if (!$this->tank_auth->is_logged_in()) {
@@ -1999,7 +1999,7 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
-
+	//se corrio otro tabulado
 	public function reporte_162()
 	{
 			$data['restriccion'] = $this->restriccion ;

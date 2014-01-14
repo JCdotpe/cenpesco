@@ -42,7 +42,7 @@ class Pescador extends CI_Controller {
 		}
 		//dando restricciones para los comentarios 
 	    $u_id = $this->tank_auth->get_user_id();
-	    $this->restriccion = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) || ($u_id == 262) || ($u_id == 267) ) ? FALSE : TRUE ;
+	    $this->restriccion = ( ($u_id == 259) || ($u_id == 266) || ($u_id == 269) || ($u_id == 262) || ($u_id == 267) || ($u_id == 258) || ($u_id == 260) ) ? FALSE : TRUE ;
 
 
 	}
@@ -195,6 +195,7 @@ class Pescador extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -225,7 +226,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -256,7 +258,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -286,7 +289,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -316,7 +320,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -347,7 +352,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -377,7 +383,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -407,7 +414,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -439,7 +447,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -469,7 +478,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -500,7 +510,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -530,7 +541,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -560,7 +572,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -590,7 +603,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -620,7 +634,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -652,7 +667,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -682,7 +698,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -714,7 +731,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -744,7 +762,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -774,7 +793,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -804,7 +824,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -834,7 +855,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -864,7 +886,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -895,7 +918,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -927,7 +951,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -957,7 +982,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -988,7 +1014,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1020,7 +1047,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1051,7 +1079,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1081,7 +1110,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1111,7 +1141,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1141,7 +1172,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1171,7 +1203,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1202,7 +1235,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1233,7 +1267,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1264,7 +1299,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1294,7 +1330,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1324,7 +1361,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1354,7 +1392,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1385,7 +1424,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1416,7 +1456,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1446,7 +1487,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1476,7 +1518,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1506,7 +1549,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1537,7 +1581,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1567,7 +1612,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1597,7 +1643,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1627,7 +1674,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1656,7 +1704,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1687,7 +1736,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1718,7 +1768,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1749,7 +1800,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1780,7 +1832,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1810,7 +1863,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1840,7 +1894,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1870,7 +1925,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1901,7 +1957,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1931,7 +1988,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1961,7 +2019,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1992,7 +2051,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2022,7 +2082,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2052,7 +2113,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2082,7 +2144,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2112,7 +2175,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2142,7 +2206,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2173,7 +2238,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2203,7 +2269,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2232,7 +2299,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2263,7 +2331,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2295,7 +2364,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2326,7 +2396,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2357,7 +2428,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2387,7 +2459,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2417,7 +2490,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2447,7 +2521,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2477,7 +2552,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2507,7 +2583,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2537,7 +2614,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2568,7 +2646,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2598,7 +2677,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2628,7 +2708,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2658,7 +2739,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2688,7 +2770,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2718,7 +2801,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2748,7 +2832,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2779,7 +2864,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2810,7 +2896,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2841,7 +2928,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2871,7 +2959,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2903,7 +2992,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2934,7 +3024,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2965,7 +3056,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2995,7 +3087,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3025,7 +3118,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3056,7 +3150,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3088,7 +3183,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3119,7 +3215,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3150,7 +3247,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3181,7 +3279,8 @@ class Pescador extends CI_Controller {
 			$texto = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(1,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(1,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
 
 			$metadata = $this->tabulados_model->get_metadata(1,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 

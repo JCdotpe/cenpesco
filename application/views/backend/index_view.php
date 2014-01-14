@@ -21,7 +21,7 @@
             ?>
             </div>
             <div class="row-fluid" >
-                <?php $this->load->view('seguimiento/index_seguimiento_fijo_view.php');?>
+                <?php //$this->load->view('seguimiento/index_seguimiento_fijo_view.php');?>
             </div>
             <!-- Example row of columns -->
 <!--             <div class="row">
