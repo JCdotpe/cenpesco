@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 17 : 18; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR PROBLEMAS QUE AFECTAN SU ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR ORIGEN DE LAS SEMILLAS, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -34,29 +34,16 @@
 									     </h3></caption>';
 
 								echo '<thead>';
-									echo '<tr>';
+									echo '<tr>';			
+
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Problemas que afectan la actividad acuícola</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Origen de la semilla</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';	
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Cambios climáticos') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Contaminación del agua' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Falta de financiamiento	' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Altos costos de equipos, materiales	' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Falta de mecanismos que ayuden a preservar la calidad de su producción' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Falta de capacitación y asistencia técnica' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Infraestructura inadecuada' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Falta de vías de acceso' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Inseguridad ciudadana' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Altos costos de alimentos' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Altos costos de semillas' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Presencia de enfermedades en peces' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Dificultad para asociarse' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Falta de promoción de mercado' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'Otro' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_16 = 'Ninguno' ) .'</th>';						
+									echo '<tr>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Nacional') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Extranjero' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -139,21 +126,7 @@
 
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),
-										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]), 
-										array("name" => $variable_5 	,"data" => $datas[4]), 
-										array("name" => $variable_6 	,"data" => $datas[5]), 
-										array("name" => $variable_7 	,"data" => $datas[6]), 
-										array("name" => $variable_8 	,"data" => $datas[7]), 
-										array("name" => $variable_9 	,"data" => $datas[8]), 
-										array("name" => $variable_10 	,"data" => $datas[9]), 
-										array("name" => $variable_11 	,"data" => $datas[10]), 
-										array("name" => $variable_12 	,"data" => $datas[11]), 
-										array("name" => $variable_13 	,"data" => $datas[12]), 
-										array("name" => $variable_14 	,"data" => $datas[13]), 
-										array("name" => $variable_15 	,"data" => $datas[14]), 
-										array("name" => $variable_16 	,"data" => $datas[15]),   );
+										array("name" => $variable_2 	,"data" => $datas[1]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

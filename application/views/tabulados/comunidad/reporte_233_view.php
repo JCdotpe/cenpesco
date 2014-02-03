@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
 
 <?php $this->load->view('tabulados/includes/sidebar_view'); ?> <!-- SIDE BAR -->
@@ -14,16 +15,15 @@
 			    	<?php
 			    			//EVALUAR NEP					
 								$NEP = 0;
-								foreach ($tables->result() as $value) {
-											$NEP += $value->NEP;
-									}
-								$cant_v = ($NEP == 0) ? 4 : 6;
+								// foreach ($tables->result() as $value) {
+								// 			$NEP += $value->NEP;
+								// 	}
+								$cant_v = ($NEP == 0) ? 16 : 17;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES QUE REALIZAN LA PESCA POR TÉCNICAS QUE SE UTILIZAN EN LA ACTIVIDAD DIFERENTES A LAS TRADICIONALES, SEGÚN DEPARTAMENTO, 2013';
-
+				    			$c_title = 'PERÚ: COMUNIDADES QUE REALIZAN LA PESCA POR ESPECIES QUE GENERALMENTE SE EXTRAEN, SEGÚN DEPARTAMENTO, 2013';
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -36,16 +36,27 @@
 								echo '<thead>';
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
-									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Técnicas de pesca diferentes a las tradicionales</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																																										
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Especies que extraen generalmente en la comunidad</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
-							
+						
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Productos vegetales (Huaca, barbasco, etc.)') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Explosivos' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Otro' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Ninguno' ) .'</th>';																
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Bagre') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Boquichico' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Camarón de río' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Carachama   ' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Carachi amarillo ' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Doncella' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Fasaco' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Lisa' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Palometa' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Pejerrey ' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Sabalo' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Sardina' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Tilapia' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Trucha' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'Zungaro' ) .'</th>';												
 									echo '</tr>';
 
 									echo '<tr>';
@@ -129,7 +140,18 @@
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]), );
+										array("name" => $variable_4 	,"data" => $datas[3]),
+										array("name" => $variable_5 	,"data" => $datas[4]),
+										array("name" => $variable_6 	,"data" => $datas[5]),
+										array("name" => $variable_7 	,"data" => $datas[6]),	
+										array("name" => $variable_8 	,"data" => $datas[7]),	
+										array("name" => $variable_9 	,"data" => $datas[8]),	
+										array("name" => $variable_10 	,"data" => $datas[9]),	
+										array("name" => $variable_11 	,"data" => $datas[10]),	
+										array("name" => $variable_12 	,"data" => $datas[11]),	
+										array("name" => $variable_13 	,"data" => $datas[12]),	
+										array("name" => $variable_14 	,"data" => $datas[13]),	
+										array("name" => $variable_15 	,"data" => $datas[14]),	);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

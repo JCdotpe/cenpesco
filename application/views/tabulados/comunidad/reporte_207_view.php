@@ -1,4 +1,4 @@
-s<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
 
 <?php $this->load->view('tabulados/includes/sidebar_view'); ?> <!-- SIDE BAR -->
 <div class="row-fluid">
@@ -17,12 +17,12 @@ s<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 5 : 6;
+								$cant_v = ($NEP == 0) ? 6 : 7;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR RAZONES QUE CONSIDERAN DEFICIENTE EL SERVICIO DE AGUA POR RED PÚBLICA, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES QUE TIENEN ABASTECIMIENTO DE AGUA POR RED PÚBLICA, POR CALIFICACIÓN, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,15 +37,16 @@ s<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Razones que consideran deficiente el servicio de agua por red pública</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Calificación al servicio de agua por red pública</th>';	
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																													
 									echo '</tr>';
 
-									echo '<tr>';		
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Interrupciones / cortes de agua') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Servicio de agua restringido o limitado' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Costo elevado del servicio / tarifa elevada' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Otra' ) .'</th>';									
+									echo '<tr>';
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Muy Malo') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Malo' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Regular' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Bueno' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Muy Bueno' ) .'</th>';																				
 									echo '</tr>';
 
 									echo '<tr>';
@@ -54,8 +55,8 @@ s<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'
 										echo '<th style="text-align:center;">%</th>';					
 											}								
 									echo '</tr>';
-
 								echo '</thead>';
+								
 									echo '<tbody>';
 
 										$x = 1; $z = 0;  $u = 0; 
@@ -125,11 +126,14 @@ s<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'
 									echo '</tbody>';
 							echo '</table></div>';
 
+
+
 								$series = array(
 												array("name" => $variable_1 	,"data" => $datas[0]),
 												array("name" => $variable_2 	,"data" => $datas[1]), 
 												array("name" => $variable_3 	,"data" => $datas[2]), 
 												array("name" => $variable_4 	,"data" => $datas[3]), 
+												array("name" => $variable_5 	,"data" => $datas[4]), 
 											);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
@@ -144,8 +148,7 @@ s<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'
 								$this->load->view('tabulados/includes/metadata_view.php', $data);
 
 						echo form_close(); 
-					?>
-		  		
+					?>		  		
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  

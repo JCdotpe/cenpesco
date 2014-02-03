@@ -45,11 +45,11 @@ $(function(){
       	?>
 
 		var direccion ;
-		<?php if ($opcion<100) {
+		<?php if ($opcion<=101) {
 			echo 'direccion = "tabulados/pescador/texto" ;';
-		} else if ($opcion<198){
+		} else if ($opcion<=200){
 			echo 'direccion = "tabulados/acuicultor/texto" ;';
-		}else if ($opcion<253){
+		}else if ($opcion<=253){
 			echo 'direccion = "tabulados/comunidad/texto" ;';
 		}; ?>
 		$('#btab').click(function() {

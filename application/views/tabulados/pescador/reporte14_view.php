@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
+								$cant_v = ($NEP == 0) ? 10 : 11; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR TENENCIA DE HIJOS, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR ACTIVIDAD QUE REALIZA LA CÓNYUGE O CONVIVIENTE, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -32,17 +32,24 @@
 													<br><strong>
 													'. $c_title  .' </strong>
 									     </h3></caption>';
-
+									     
 								echo '<thead>';
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="4" style="text-align:center">Tenencia de hijos</th>';
+									echo '<th colspan="18" style="text-align:center">Actividad que realiza la cónyuge o conviviente</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';									
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Tiene') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No tiene' ) .'</th>';						
+									echo '<tr>';
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Al cuidado del hogar') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Agrícola' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Pecuaria' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Acuícola' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Pesca' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Caza' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Construcción' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Comercio' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Otro' ) .'</th>';																		
 									echo '</tr>';
 
 									echo '<tr>';
@@ -81,7 +88,7 @@
 											foreach ($filas as  $key => $value) {
 												if($key != 'CCDD'){
 														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
-													if($key != 'DEPARTAMENTO'){ if(isset($totales[$x])){ $totales[$x]+= $value; $x++; }  
+													if($key != 'DEPARTAMENTO'){ if(isset($totales[$x])){ $totales[$x]+= $value; $x++; } 
 														if($key == 'NEP' && $NEP == 0 ){}else{
 															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
 													};
@@ -125,7 +132,14 @@
 
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]), );
+										array("name" => $variable_2 	,"data" => $datas[1]),
+										array("name" => $variable_3 	,"data" => $datas[2]),
+										array("name" => $variable_4 	,"data" => $datas[3]),
+										array("name" => $variable_5 	,"data" => $datas[4]),
+										array("name" => $variable_6 	,"data" => $datas[5]),
+										array("name" => $variable_7 	,"data" => $datas[6]),
+										array("name" => $variable_8 	,"data" => $datas[7]),
+										array("name" => $variable_9 	,"data" => $datas[8]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -164,7 +178,6 @@
 	</div>
 </div>
 
- <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
+ <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>    	
 
 

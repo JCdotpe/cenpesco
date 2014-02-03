@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: BOTES DE PESCA ARTESANAL O COMERCIAL, POR TENENCIA DE NÚMERO DE MATRÍCULA, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: BOTES DE PESCA ARTESANAL O COMERCIAL, POR TENENCIA DE PERMISO DE PESCA, SEGÚN DEPARTAMENTO, 2013';
 
 						 		$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,7 +37,7 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tiene número de matrícula</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tiene permiso de pesca</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
 									echo '<tr>';									
@@ -166,5 +166,6 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
 
 

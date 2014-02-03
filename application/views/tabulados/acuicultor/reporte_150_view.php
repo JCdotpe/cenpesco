@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 10 : 11; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR ORIGEN DE LAS SEMILLAS, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR TIPO DE INSTALACIONES QUE UTILIZA EN SU ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -34,16 +34,22 @@
 									     </h3></caption>';
 
 								echo '<thead>';
-									echo '<tr>';			
-
+									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Origen de la semilla</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de instalaciones</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Nacional') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Extranjero' ) .'</th>';						
+									echo '<tr>';	
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Estanques naturales') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Estanques artificiales' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Jaulas flotantes artesanales' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Jaulas flotantes metálicas	' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Tanques' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Artesas' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Incubadoras' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Poza' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Otro' ) .'</th>';											
 									echo '</tr>';
 
 									echo '<tr>';
@@ -121,26 +127,33 @@
 
 								echo '</tbody>';
 							echo '</table></div>';
-					?>
-					<?php 
 
-						$series = array(
-										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]), );
-						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+
+								$series = array(
+												array("name" => $variable_1 	,"data" => $datas[0]),
+												array("name" => $variable_2 	,"data" => $datas[1]),
+												array("name" => $variable_3 	,"data" => $datas[2]),
+												array("name" => $variable_4 	,"data" => $datas[3]), 
+												array("name" => $variable_5 	,"data" => $datas[4]), 
+												array("name" => $variable_6 	,"data" => $datas[5]), 
+												array("name" => $variable_7 	,"data" => $datas[6]), 
+												array("name" => $variable_8 	,"data" => $datas[7]),   
+												array("name" => $variable_9 	,"data" => $datas[8]),   
+												);
+								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
-						$data['tipo'] =  'column';// << column >> or << bar >> 
-						$data['xx'] =  2030; // ancho
-						$data['yy'] =  840; // altura
-						$data['series'] =  $series;
-						$data['c_title'] = $c_title;
-						$this->load->view('tabulados/includes/text_view.php'); 
+								$data['tipo'] =  'column';// << column >> or << bar >> 
+								$data['xx'] =  2030; // ancho
+								$data['yy'] =  840; // altura
+								$data['series'] =  $series;
+								$data['c_title'] = $c_title;
+								$this->load->view('tabulados/includes/text_view.php'); 
 
-						$this->load->view('tabulados/includes/metadata_view.php', $data); 
+								$this->load->view('tabulados/includes/metadata_view.php', $data); 
 
 						echo form_close(); 
-					?>
+					?>					
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -166,8 +179,6 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
-
 
 
 

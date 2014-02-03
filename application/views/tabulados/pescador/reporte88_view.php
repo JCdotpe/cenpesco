@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 9 : 10; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 6 : 7; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: EMBARCACIONES PESQUERAS PROPIAS O AUTOCONSTRUIDAS, POR MATERIAL DE CONSTRUCCIÓN, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: EMBARCACIONES PESQUERAS POR TIPO TENENCIA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,18 +37,15 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Material de embarcación</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de tenencia</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';														
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Madera') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Fibra de vidrio' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Acero' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Madera y fibra de vidrio' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Madera y acero' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Aluminio' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Totora' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Plástico' ) .'</th>';						
+									echo '<tr>';	
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Alquilada') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Prestada' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Propia totalmente pagada' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Propia pagádola a plazos' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Autoconstruida' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -133,11 +130,8 @@
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]),
-										array("name" => $variable_5 	,"data" => $datas[4]),
-										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),
-										array("name" => $variable_8 	,"data" => $datas[7]),);
+										array("name" => $variable_4 	,"data" => $datas[3]), 
+										array("name" => $variable_5 	,"data" => $datas[4]),  );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -152,7 +146,6 @@
 
 						echo form_close(); 
 					?>
-
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -178,6 +171,7 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
 
 
 

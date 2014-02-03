@@ -19,7 +19,7 @@
 								// 	}
 								$cant_v = ($NEP == 0) ? 3 : 4;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = false;
+								//$respuesta_unica = false;
 
 				    		echo form_open("/tabulados/export");
 				    			$c_title = 'PERÚ: POBLACIÓN PESQUERA POR ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';

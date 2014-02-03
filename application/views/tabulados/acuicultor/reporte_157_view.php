@@ -14,15 +14,15 @@
 			    	<?php
 			    			//EVALUAR NEP					
 								$NEP = 0;
-								//foreach ($tables->result() as $value) {
-											//$NEP +=   $value->NEP ;
-									//}
+								foreach ($tables->result() as $value) {
+											$NEP += $value->NEP;
+									}
 								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: TRABAJADORES REMUNERADOS, POR CONDICIÓN LABORAL, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES QUE EN LOS ÚLTIMOS 12 MESES TUVIERON TRABAJADORES REMUNERADOS A SU CARGO, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,12 +37,12 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Condición laboral</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tuvieron trabajadores remunerados a su cargo</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';	
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Permanentes') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Eventuales' ) .'</th>';											
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';											
 									echo '</tr>';
 
 									echo '<tr>';

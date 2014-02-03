@@ -19,11 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			 $c_title = 'PERÚ: COMUNIDADES POR EXISTENCIA DE EMPRESAS QUE EXPLOTAN HIDROCARBUROS CERCANAS A LA COMUNIDAD, SEGÚN DEPARTAMENTO, 2013';
-
+				    			$c_title = 'PERÚ: COMUNIDADES POR EXISTENCIA DE MINAS CERCANAS A LA COMUNIDAD, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -38,13 +37,13 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Existen empresas que explotan hidrocarburos cerca a la comunidad</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Existen minas cerca a la comunidad</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';							
 									echo '</tr>';
 
 									echo '<tr>';		
 										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';																												
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';																											
 									echo '</tr>';
 									echo '<tr>';
 											for ($i=1; $i <=$cant_v ; $i++) { 
@@ -169,4 +168,6 @@
 </div>
 
 <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
+
 

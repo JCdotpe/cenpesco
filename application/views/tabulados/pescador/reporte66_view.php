@@ -9,7 +9,7 @@
 		<?php $this->load->view('tabulados/includes/tabs_view.php');?> <!--include tabs y logos	-->
 		
 		<div class="tab-content" style="clear:both">
-		  	<div class="tab-pane active" id="tabulado">
+		  	<div class="tab-pane active" id="tabulado">	
 				<!-- INICIO TABULADO -->
 			    	<?php
 			    			//EVALUAR NEP					
@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 13 : 14; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 5 : 6; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR MESES QUE REALIZA SU ACTIVIDAD DE PESCA, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR FUENTE DE FINANCIAMIENTO, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -33,26 +33,19 @@
 													'. $c_title  .' </strong>
 									     </h3></caption>';
 
-								echo '<thead>';
+								echo '<thead>';											
+
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Meses</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Fuente de financiamiento </th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';	
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Agosto') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Setiembre' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Octubre' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Noviembre' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Diciembre' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Enero' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Febrero' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Marzo' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Abril' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Mayo' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Junio' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Julio' ) .'</th>';												
+									echo '<tr>';
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Con dinero de terceros') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Con dinero propio' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'No financia' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'No trabajó en los últimos 12 meses' ) .'</th>';														
 									echo '</tr>';
 
 									echo '<tr>';
@@ -137,15 +130,7 @@
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]), 
-										array("name" => $variable_5 	,"data" => $datas[4]), 
-										array("name" => $variable_6 	,"data" => $datas[5]), 
-										array("name" => $variable_7 	,"data" => $datas[6]), 
-										array("name" => $variable_8 	,"data" => $datas[7]), 
-										array("name" => $variable_9 	,"data" => $datas[8]), 
-										array("name" => $variable_10 	,"data" => $datas[9]), 
-										array("name" => $variable_11 	,"data" => $datas[10]), 
-										array("name" => $variable_12 	,"data" => $datas[11]),   );
+										array("name" => $variable_4 	,"data" => $datas[3]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -160,6 +145,7 @@
 
 						echo form_close(); 
 					?>
+
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -185,5 +171,4 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 

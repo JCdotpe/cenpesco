@@ -11,18 +11,18 @@
 		<div class="tab-content" style="clear:both">
 		  	<div class="tab-pane active" id="tabulado">
 				<!-- INICIO TABULADO -->
-			    	<?php 
+			    	<?php
 			    			//EVALUAR NEP					
 								$NEP = 0;
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
+								$cant_v = ($NEP == 0) ? 7 : 8; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: HIJOS DE PESCADORES QUE VIVEN CON ÉL, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: HIJOS DE PESCADORES POR RANGOS DE EDAD, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,12 +37,16 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Vive con el pescador</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Grupo de edad</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';									
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';						
+									echo '<tr>';
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Menos de un año') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'De 1 a 5 años' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'De 6 a 10 años' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'De 11 a 15 años' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'De 16 a 20 años' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Más de 20 años' ) .'</th>';																												
 									echo '</tr>';
 
 									echo '<tr>';
@@ -125,10 +129,14 @@
 
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),);
+										array("name" => $variable_2 	,"data" => $datas[1]),
+										array("name" => $variable_3 	,"data" => $datas[2]),
+										array("name" => $variable_4 	,"data" => $datas[3]),
+										array("name" => $variable_5 	,"data" => $datas[4]),
+										array("name" => $variable_6 	,"data" => $datas[5]),  );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
-						
+
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho
 						$data['yy'] =  840; // altura
@@ -139,7 +147,7 @@
 						$this->load->view('tabulados/includes/metadata_view.php', $data); 
 
 						echo form_close(); 
-					?>
+					?>		  		
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -165,6 +173,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 
 

@@ -9,7 +9,7 @@ class Acuicultor_model extends CI_MODEL
   // T A B U L A D O S  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function get_tabulado_100()
+function get_tabulado_102()
 {     /* TABULADO N° 101 - sexo*/
       $q = $this->db->query('
           select 
@@ -24,7 +24,29 @@ function get_tabulado_100()
       return $q;
 }
 
-function get_tabulado_101()
+function get_tabulado_103()
+{         
+      $q = $this->db->query("
+          /* TABULADO N° 103 ---------------- grupo de edades ------------------------ new()*/
+          select 
+          DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t,0) AS TOTAL,  
+          COALESCE(C1.t,0) as '8_19', COALESCE(C2.t,0) as '20_31', COALESCE(C3.t,0) as '32_43', COALESCE(C4.t,0) as '44_55', COALESCE(C5.t,0) as '56_67',
+          COALESCE(C6.t,0) as '68_MAS', COALESCE(C7.t,0) as  NEP
+          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a != 9999 and (2013 - s2_3a)  between 8 and 19 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a != 9999 and(2013 - s2_3a)  between 20 and 31 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a != 9999 and(2013 - s2_3a)  between 32 and 43 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a != 9999 and(2013 - s2_3a)  between 44 and 55 group by nom_dd  ) as C4 on DEP.ccdd  = C4.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a != 9999 and(2013 - s2_3a)  between 56 and 67 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a != 9999 and(2013 - s2_3a)  between 68 and 98 group by nom_dd  ) as C6 on DEP.ccdd  = C6.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_3a = 9999 group by nom_dd  ) as C7 on DEP.ccdd  = C7.ccdd ;        
+        ");
+      return $q;
+}
+
+
+function get_tabulado_104()
 {          /* TABULADO N° 101 - tipo de persona*/
       $q = $this->db->query("
           select 
@@ -39,7 +61,7 @@ function get_tabulado_101()
       return $q;
 }
 
-function get_tabulado_102()
+function get_tabulado_105()
 {          /* TABULADO N° 102 - lugar de nacimiento*/
       $q = $this->db->query('
           select 
@@ -81,7 +103,7 @@ function get_tabulado_102()
       return $q;
 }
 
-function get_tabulado_103()
+function get_tabulado_106()
 {          /* TABULADO N° 103 - lugar de residencia en el 2007*/
       $q = $this->db->query('
           select 
@@ -125,7 +147,7 @@ function get_tabulado_103()
 
 
 
-function get_tabulado_104()
+function get_tabulado_107()
 {          /* TABULADO N° 104 ---------------- NIVEL DE estudios------------------------*/
       $q = $this->db->query('
           select 
@@ -149,7 +171,7 @@ function get_tabulado_104()
 
 
 
-function get_tabulado_105()
+function get_tabulado_108()
 {          /* TABULADO N° 105 - tipo de actividad*/
       $q = $this->db->query("
           select 
@@ -165,7 +187,7 @@ function get_tabulado_105()
 }
 
 
-function get_tabulado_106()
+function get_tabulado_109()
 {          /* TABULADO N° 106 - OTRO ACTIVIDAD*/
       $q = $this->db->query('
           select 
@@ -188,7 +210,7 @@ function get_tabulado_106()
 }
 
 
-function get_tabulado_107()
+function get_tabulado_110()
 {          /* TABULADO N° 107 ------------------------RAZON DE ELECCION  --------------------------------------*/
       $q = $this->db->query('
           select 
@@ -205,7 +227,7 @@ function get_tabulado_107()
       return $q;
 }
 
-function get_tabulado_108()
+function get_tabulado_111()
 {          /* TABULADO N° 108 ------------------------AÑOS DE ACTIVIDAD  --------------------------------------*/           
       $q = $this->db->query("
           select 
@@ -222,13 +244,13 @@ function get_tabulado_108()
       return $q;
 }
 
-function get_tabulado_109()
+function get_tabulado_112()
 {          /* TABULADO N° 109  ------------------------ PROGRAMA SOCIAL  --------------------------------------*/
       $q = $this->db->query('
           select 
           DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
           COALESCE(C1.t,0) as V_LECHE, COALESCE(C2.t,0) as C_POPULAR, COALESCE(C3.t,0) as QALI_WARMA, COALESCE(C4.t,0) as SIS, COALESCE(C5.t,0) as P_JUNTOS,
-          COALESCE(C6.t,0) as P_65, COALESCE(C7.t,0) as CUNA_MAS, COALESCE(C8.t,0) as OTRO, COALESCE(C9.t,0) NINGUNO, COALESCE(C10.t,0) NEP
+          COALESCE(C6.t,0) as P_65, COALESCE(C7.t,0) as CUNA_MAS, COALESCE(C8.t,0) FISE , COALESCE(C9.t,0) OTRO, COALESCE(C10.t,0) NINGUNO, COALESCE(C11.t,0) NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -240,12 +262,13 @@ function get_tabulado_109()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_9 = 9 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_10 = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion2 s on a.id1 = s.id2  where s2_18_10 = 9 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd ;
         ');
       return $q;
 }
 
-function get_tabulado_110()
+function get_tabulado_113()
 {/* TABULADO N° 110  ------------------------ ESTADO CIVIL  --------------------------------------*/
       $q = $this->db->query('
           select 
@@ -265,7 +288,7 @@ function get_tabulado_110()
       return $q;
 }
 
-function get_tabulado_111()
+function get_tabulado_114()
 {/* TABULADO N° 111 ---------------- NIVEL DE estudios CONYUGUE------------------------*/
       $q = $this->db->query('
           select 
@@ -287,7 +310,7 @@ function get_tabulado_111()
       return $q;
 }
 
-function get_tabulado_112()
+function get_tabulado_115()
 {/* TABULADO N° 112  ------------------------ OTRA ACTIVIDAD DEL CONYUGUE  --------------------------------------*/
       $q = $this->db->query("
           select 
@@ -310,7 +333,7 @@ function get_tabulado_112()
       return $q;
 }
 
-function get_tabulado_113()
+function get_tabulado_116()
 {/* TABULADO N° 113 ------------------- TENENCIA DE HIJOS -------------------------------*/
       $q = $this->db->query("
           select 
@@ -325,7 +348,7 @@ function get_tabulado_113()
       return $q;
 }
 
-function get_tabulado_114()
+function get_tabulado_117()
 {/* TABULADO N° 114  ------------------------ NUMERO DE HIJOS  --------------------------------------*/
       $q = $this->db->query("
           select 
@@ -349,7 +372,7 @@ function get_tabulado_114()
       return $q;
 }
 
-function get_tabulado_115()
+function get_tabulado_118()
 {/* TABULADO N° 115  ------------------------ SEXO DE HIJOS  --------------------------------------*/
       $q = $this->db->query('
           select 
@@ -400,7 +423,7 @@ function get_tabulado_115()
       return $q;
 }
 
-function get_tabulado_116()
+function get_tabulado_119()
 {          /* TABULADO N° 116  ------------------------ EDAD DE HIJOS  --------------------------------------*/       
       $q = $this->db->query("
           SELECT  table1.CCDD, table1.DEPARTAMENTO, (MENOS_1 + 1_5 + 6_10 +  11_15 + 16_20 + MAS_20 + NEP) as TOTAL, MENOS_1,1_5, 6_10, 11_15, 16_20, MAS_20, NEP FROM
@@ -519,7 +542,7 @@ function get_tabulado_116()
       return $q;
 }
 
-function get_tabulado_117()
+function get_tabulado_120()
 {          /* TABULADO N° 117  ------------------------ HIJOS VIVEN CON PESCADOR  --------------------------------------*/    
       $q = $this->db->query("
           select 
@@ -570,7 +593,7 @@ function get_tabulado_117()
       return $q;
 }
 
-function get_tabulado_118()
+function get_tabulado_121()
 {          /* TABULADO N° 118  ------------------------ HIJOS  DEPENDEN DEL PESCADOR  --------------------------------------*/    
       $q = $this->db->query("
           select 
@@ -621,7 +644,7 @@ function get_tabulado_118()
       return $q;
 }
 
-function get_tabulado_119()
+function get_tabulado_122()
 {          /* TABULADO N° 119  ------------------------ HIJOS   DEL PESCADOR CON LIMITACIONES  --------------------------------------*/
       $q = $this->db->query("
           select 
@@ -672,7 +695,7 @@ function get_tabulado_119()
       return $q;
 }
 
-function get_tabulado_120()
+function get_tabulado_123()
 {      /* TABULADO N° 120  ------------------------ NIVEL DE ESTUDIOS DE LOS HIJOS  --------------------------------------*/
                
       $q = $this->db->query("
@@ -858,7 +881,7 @@ function get_tabulado_120()
       return $q;
 }
 
-function get_tabulado_121()
+function get_tabulado_124()
 {          /* TABULADO N° 121  ------------------------ HIJOS   DEL PESCADOR ASISTEN AL COLEGIO  --------------------------------------*/    
       $q = $this->db->query("
           select 
@@ -909,7 +932,7 @@ function get_tabulado_121()
       return $q;
 }
 
-function get_tabulado_122()
+function get_tabulado_125()
 {          /* TABULADO N° 122  ------------------------ HIJOS   DEL PESCADOR TIPO COLEGIO  QUE ASISTEN  --------------------------------------*/    
       $q = $this->db->query("
           select 
@@ -960,7 +983,7 @@ function get_tabulado_122()
       return $q;
 }
 
-function get_tabulado_123()
+function get_tabulado_126()
 {          /* TABULADO N° 123  ------------------------ ACTIVIDAD DE LOS HIJOS  --------------------------------------*/         
       $q = $this->db->query("
           SELECT  table1.CCDD, table1.DEPARTAMENTO, 
@@ -1129,13 +1152,13 @@ function get_tabulado_123()
       return $q;
 }
 
-function get_tabulado_124()
-{          /* TABULADO N° 124 ---------------- LA VIVIEDSA que ocupa------------------------*/
+function get_tabulado_127()
+{          /* TABULADO N° 127 ---------------- LA VIVIEDSA que ocupa------------------------*/
       $q = $this->db->query("
           select 
           DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
           COALESCE(C1.t,0) as ALQUILADA, COALESCE(C2.t,0) as PROPIA_INV, COALESCE(C3.t,0) as PROPIA_PAG, COALESCE(C4.t,0) as PROPIA_TOT, COALESCE(C5.t,0) as CEDIDA,
-          COALESCE(C6.t,0) as OTRA, COALESCE(C7.t,0) as NEP
+          COALESCE(C6.t,0) as FAMILIAR, COALESCE(C7.t,0) as OTRA, COALESCE(C8.t,0) as NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1144,12 +1167,13 @@ function get_tabulado_124()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 9 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd  ;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd  
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where s3_100 = 9 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd  ;
         ");
       return $q;
 }
 
-function get_tabulado_125()
+function get_tabulado_128()
 {          
       $q = $this->db->query("
           /* TABULADO N° 125 ---------------- MATERIAL PAREDES------------------------*/
@@ -1172,7 +1196,7 @@ function get_tabulado_125()
       return $q;
 }
 
-function get_tabulado_126()
+function get_tabulado_129()
 {            
       $q = $this->db->query("
           /* TABULADO N° 126 ---------------- MATERIAL PISOS------------------------*/
@@ -1194,7 +1218,7 @@ function get_tabulado_126()
       return $q;
 }
 
-function get_tabulado_127()
+function get_tabulado_130()
 {   
       $q = $this->db->query("
           /* TABULADO N° 127 ---------------- MATERIAL TECHOS------------------------*/
@@ -1217,7 +1241,7 @@ function get_tabulado_127()
       return $q;
 }
 
-function get_tabulado_128()
+function get_tabulado_131()
 {               
       $q = $this->db->query("
           /* TABULADO N° 128 ---------------- ABASTECIMIENTO AGUA VIVIENDA------------------------*/
@@ -1240,7 +1264,7 @@ function get_tabulado_128()
       return $q;
 }
 
-function get_tabulado_129()
+function get_tabulado_132()
 {       
       $q = $this->db->query("
           /* TABULADO N° 129 -AGUA TODOS LOS DIAS*/
@@ -1256,7 +1280,7 @@ function get_tabulado_129()
       return $q;
 }
 
-function get_tabulado_130()
+function get_tabulado_133()
 {    
       $q = $this->db->query("
           /* TABULADO N° 130 ----------------TIPO DE SERVICIO DE LA VIVIEDA------------------------*/
@@ -1278,7 +1302,7 @@ function get_tabulado_130()
       return $q;
 }
 
-function get_tabulado_131()
+function get_tabulado_134()
 {              
       $q = $this->db->query("
           /* TABULADO N° 131 --------- ALUMBRADO TODOS LOS DIAS -----------------*/
@@ -1295,7 +1319,7 @@ function get_tabulado_131()
       return $q;
 }
 
-function get_tabulado_132()
+function get_tabulado_135()
 {             
       $q = $this->db->query("
           /* TABULADO N° 132 -------------------------- ELECTRODOMESTICOS-------------------------*/
@@ -1321,7 +1345,7 @@ function get_tabulado_132()
       return $q;
 }
 
-function get_tabulado_133()
+function get_tabulado_136()
 {   
       $q = $this->db->query("
           /* TABULADO N° 133 -------------------------- SERVICIOS DE COMUNICACION-------------------------*/
@@ -1341,7 +1365,7 @@ function get_tabulado_133()
       return $q;
 }
 
-function get_tabulado_134()
+function get_tabulado_137()
 {   
       $q = $this->db->query("
           /* TABULADO N° 134 --------- ESPACIO0 PARA OTROS INGRESOS -----------------*/
@@ -1357,7 +1381,7 @@ function get_tabulado_134()
       return $q;
 }
 
-function get_tabulado_135()
+function get_tabulado_138()
 { 
       $q = $this->db->query("
           /* TABULADO N° 135 ---------------- MEDIO DE TRANSPORTE------------------------*/
@@ -1380,7 +1404,7 @@ function get_tabulado_135()
       return $q;
 }
 
-function get_tabulado_136()
+function get_tabulado_139()
 { 
       $q = $this->db->query("
           /* TABULADO N° 136 -------------------------- ORIGEN DEL AGUA-------------------------*/
@@ -1400,7 +1424,7 @@ function get_tabulado_136()
       return $q;
 }
 
-function get_tabulado_137()
+function get_tabulado_140()
 {  
       $q = $this->db->query("
           /* TABULADO N° 137 -------------------------- REGIMEN TENENCIA-------------------------*/
@@ -1418,7 +1442,7 @@ function get_tabulado_137()
       return $q;
 }
 
-function get_tabulado_138()
+function get_tabulado_141()
 {   
       $q = $this->db->query("
           /* TABULADO N° 138 --------- CUENTA CON PERMISO-----------------*/
@@ -1434,7 +1458,7 @@ function get_tabulado_138()
       return $q;
 }
 
-function get_tabulado_139()
+function get_tabulado_142()
 {    
       $q = $this->db->query("
           /* TABULADO N° 139 -------------------------- TIEMPO EN TRAMITE -------------------------*/
@@ -1452,7 +1476,7 @@ function get_tabulado_139()
       return $q;
 }
 
-function get_tabulado_140()
+function get_tabulado_143()
 {   
       $q = $this->db->query("
           /* TABULADO N° 140 -------------------------- POR QUE NO CUENTA -------------------------*/
@@ -1472,7 +1496,7 @@ function get_tabulado_140()
       return $q;
 }
 
-function get_tabulado_141()
+function get_tabulado_144()
 {
       $q = $this->db->query("
           /* TABULADO N° 141 --------- CUENTA CON AUTORIZACION -----------------*/
@@ -1488,7 +1512,7 @@ function get_tabulado_141()
       return $q;
 }
 
-function get_tabulado_142()
+function get_tabulado_145()
 {  
       $q = $this->db->query("
           /* TABULADO N° 142 -------------------------- TIEMPO EN AUTORIZACION -------------------------*/
@@ -1506,7 +1530,7 @@ function get_tabulado_142()
       return $q;
 }
 
-function get_tabulado_143()
+function get_tabulado_146()
 {   
       $q = $this->db->query("
           /* TABULADO N° 143 -------------------------- TIPO DE MANEJO -------------------------*/
@@ -1523,7 +1547,7 @@ function get_tabulado_143()
       return $q;
 }
 
-function get_tabulado_144()
+function get_tabulado_147()
 {  
       $q = $this->db->query("
           /* TABULADO N° 144 -------------------------- ESPECIES DE CULTIUVO-------------------------*/
@@ -1554,7 +1578,7 @@ function get_tabulado_144()
       return $q;
 }
 
-function get_tabulado_145()
+function get_tabulado_148()
 { 
       $q = $this->db->query("
           /* TABULADO N° 145 -------------------------- TIPO DE MANEJO -------------------------*/
@@ -1571,7 +1595,7 @@ function get_tabulado_145()
       return $q;
 }
 
-function get_tabulado_146()
+function get_tabulado_149()
 {   
       $q = $this->db->query("
           /* TABULADO N° 146 -------------------------- TIPO DE MANEJO -------------------------*/
@@ -1588,14 +1612,14 @@ function get_tabulado_146()
       return $q;
 }
 
-function get_tabulado_147()
+function get_tabulado_150()
 {     
       $q = $this->db->query("
-          /* TABULADO N° 147 -------------------------- TIPO INSTALACIONES -------------------------*/
+          /* TABULADO N° 150 -------------------------- TIPO INSTALACIONES -------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
           COALESCE(C1.t,0) as ESTANQUES_N, COALESCE(C2.t,0) as ESTANQUES_A, COALESCE(C3.t,0) as JAULAS_A, COALESCE(C4.t,0) as JAULAS_M, COALESCE(C5.t,0) as TANQUES,
-          COALESCE(C6.t,0) as ARTESAS, COALESCE(C7.t,0) as INCUBADORAS, COALESCE(C8.t,0) as OTRO, COALESCE(C9.t,0)  NEP
+          COALESCE(C6.t,0) as ARTESAS, COALESCE(C7.t,0) as INCUBADORAS, COALESCE(C8.t,0) as POZO, COALESCE(C9.t,0)  OTRO, COALESCE(C10.t,0)  NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1606,22 +1630,14 @@ function get_tabulado_147()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_8 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_13_9 = 9 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd;
 
         ");
       return $q;
 }
 
-function get_tabulado_148()
-{         
-      $q = $this->db->query("
-
-
-        ");
-      return $q;
-}
-
-function get_tabulado_149()
+function get_tabulado_151()
 {         
       $q = $this->db->query("
           /* TABULADO N° 149 -------------------------- ETAPA CULTIVOS  -------------------------*/
@@ -1642,7 +1658,7 @@ function get_tabulado_149()
       return $q;
 }
 
-function get_tabulado_150()
+function get_tabulado_152()
 {          
       $q = $this->db->query("
           /* TABULADO N° 150 --------- ORIGEN SEMILLA -----------------*/
@@ -1658,14 +1674,15 @@ function get_tabulado_150()
       return $q;
 }
 
-function get_tabulado_151()
+function get_tabulado_153()
 { 
       $q = $this->db->query("
           /* TABULADO N° 151 -------------------------- ALIMENTOS EN CULTIVO -------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
           COALESCE(C1.t,0) as PLANCTON, COALESCE(C2.t,0) as ALEVINOS, COALESCE(C3.t,0) as HOJUELAS, COALESCE(C4.t,0) as PELLET, COALESCE(C5.t,0) as EXTRUSADO,
-          COALESCE(C6.t,0) as PRE_MEZCLAS, COALESCE(C7.t,0) as BIOFLOC, COALESCE(C8.t,0) as PREBIOTICOS, COALESCE(C9.t,0) OTRO, COALESCE(C10.t,0)  NEP
+          COALESCE(C6.t,0) as PRE_MEZCLAS, COALESCE(C7.t,0) as BIOFLOC, COALESCE(C8.t,0) as PREBIOTICOS, COALESCE(C9.t,0) DESPERDICIOS, COALESCE(C10.t,0)  CULTIVOS, 
+          COALESCE(C11.t,0) OTRO, COALESCE(C12.t,0)  NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1677,12 +1694,15 @@ function get_tabulado_151()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_9 = 9 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_10 = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_11 = 1 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion5 s on a.id1 = s.id5  where S5_16_11 = 9 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd ;
+
         ");
       return $q;
 }
 
-function get_tabulado_152()
+function get_tabulado_154()
 {
       $q = $this->db->query("
           /* TABULADO N° 152  -------------------------- PROBLEMAS EN ACTIVIDAD -------------------------*/
@@ -1715,7 +1735,7 @@ function get_tabulado_152()
       return $q;
 }
 
-function get_tabulado_153()
+function get_tabulado_155()
 {
       $q = $this->db->query("
           /* TABULADO N° 153 -------------------------- PARTICIPACION ORGANIZACION  -------------------------*/
@@ -1739,7 +1759,7 @@ function get_tabulado_153()
       return $q;
 }
 
-function get_tabulado_154()
+function get_tabulado_156()
 {
       $q = $this->db->query("
           /* TABULADO N° 154 -------------------------- BENEFICIADOS  -------------------------*/
@@ -1760,7 +1780,7 @@ function get_tabulado_154()
       return $q;
 }
 
-function get_tabulado_155()
+function get_tabulado_157()
 {
       $q = $this->db->query("
           /* TABULADO N° 155 --------- TIENE TRABAJADORES -----------------*/
@@ -1776,7 +1796,7 @@ function get_tabulado_155()
       return $q;
 }
 
-function get_tabulado_156()
+function get_tabulado_158()
 {
       $q = $this->db->query("
           /* TABULADO N° 156 --------- SEXO TRABAJADORES -----------------*/
@@ -1791,7 +1811,7 @@ function get_tabulado_156()
       return $q;
 }
 
-function get_tabulado_157()
+function get_tabulado_159()
 {
       $q = $this->db->query("
           /* TABULADO N° 157 --------- situacion TRABAJADORES -----------------*/
@@ -1805,7 +1825,7 @@ function get_tabulado_157()
       return $q;
 }
 
-function get_tabulado_158()
+function get_tabulado_160()
 {
       $q = $this->db->query("
           /* TABULADO N° 158 --------- SEXO TRABAJADORES permanentes -----------------*/
@@ -1820,7 +1840,7 @@ function get_tabulado_158()
       return $q;
 }
 
-function get_tabulado_159()
+function get_tabulado_161()
 {
       $q = $this->db->query("
           /* TABULADO N° 159 --------- SEXO TRABAJADORES eventuales -----------------*/
@@ -1835,7 +1855,7 @@ function get_tabulado_159()
       return $q;
 }
 
-function get_tabulado_160()
+function get_tabulado_162()
 {
       $q = $this->db->query("
           /* TABULADO N° 160 ---------  TRABAJADORES con seguro -----------------*/
@@ -1851,7 +1871,7 @@ function get_tabulado_160()
       return $q;
 }
 
-function get_tabulado_161()
+function get_tabulado_163()
 {
       $q = $this->db->query("
           /* TABULADO N° 161 ---------  TRABAJADORES con seguro -----------------*/
@@ -1867,7 +1887,7 @@ function get_tabulado_161()
       return $q;
 }
 
-function get_tabulado_162()
+function get_tabulado_164()
 {
       $q = $this->db->query("
           /* TABULADO N° 162 ---------  ayduante sin remuneracion -----------------*/
@@ -1883,15 +1903,8 @@ function get_tabulado_162()
       return $q;
 }
 
-function get_tabulado_163()
-{//repetyido con 162
-      $q = $this->db->query("
 
-        ");
-      return $q;
-}
-
-function get_tabulado_164()
+function get_tabulado_165()
 {
       $q = $this->db->query("
           /* TABULADO N° 164 -------------------------- FINANCIAMIENTO  -------------------------*/
@@ -1909,7 +1922,7 @@ function get_tabulado_164()
       return $q;
 }
 
-function get_tabulado_165()
+function get_tabulado_166()
 {
       $q = $this->db->query("
           /* TABULADO N° 165 -------------------------- FINANCIMIENTO OTORGADO POR  -------------------------*/
@@ -1932,7 +1945,7 @@ function get_tabulado_165()
       return $q;
 }
 
-function get_tabulado_166()
+function get_tabulado_167()
 {
       $q = $this->db->query("
           /* TABULADO N° 166 -------------------------- RECIBII COMO --------------------------------*/
@@ -1948,7 +1961,7 @@ function get_tabulado_166()
       return $q;
 }
 
-function get_tabulado_167()
+function get_tabulado_168()
 {
       $q = $this->db->query("
           /* TABULADO N° 167 -------------------------- FINANCIAMIENTO EN ESPECIE -------------------------*/
@@ -1966,7 +1979,7 @@ function get_tabulado_167()
       return $q;
 }
 
-function get_tabulado_168()
+function get_tabulado_169()
 {
       $q = $this->db->query("
           /* TABULADO N° 168 -------------------------- FINANCIMIENTO LO INVIRTIO PARA  -------------------------*/
@@ -1988,25 +2001,26 @@ function get_tabulado_168()
       return $q;
 }
 
-function get_tabulado_169()
+function get_tabulado_170()
 {
       $q = $this->db->query("
-          /* TABULADO N° 169 -------------------------- DESTINO DE PECES -------------------------*/
+          /* TABULADO N° 170 -------------------------- DESTINO DE PECES -------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
-          COALESCE(C1.t,0) as VENTA, COALESCE(C2.t,0) as AUTOCONSUMO, COALESCE(C3.t,0) as TRUEQUE, COALESCE(C4.t,0) as OTRO, COALESCE(C5.t,0) as  NEP
+          COALESCE(C1.t,0) as VENTA, COALESCE(C2.t,0) as AUTOCONSUMO, COALESCE(C3.t,0) as TRUEQUE, COALESCE(C4.t,0) as NO_COSECHA, COALESCE(C5.t,0) as  OTRO, COALESCE(C6.t,0) as  NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_4 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion8 s on a.id1 = s.id8  where S8_6_5 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd;
         ");
       return $q;
 }
 
-function get_tabulado_170()
+function get_tabulado_171()
 {
       $q = $this->db->query("
           /* TABULADO N° 170  -------------------------- ESPECIES QUE COSECHO -------------------------*/
@@ -2036,7 +2050,7 @@ function get_tabulado_170()
       return $q;
 }
 
-function get_tabulado_171()
+function get_tabulado_172()
 {
       $q = $this->db->query("
           /* TABULADO N° 171 -------------------------- LUGAR DE VENTAS -------------------------*/
@@ -2053,7 +2067,7 @@ function get_tabulado_171()
       return $q;
 }
 
-function get_tabulado_172()
+function get_tabulado_173()
 {
       $q = $this->db->query("
           /* TABULADO N° 172 -------------------------- AGENTES DE COMERCIALIZACION  -------------------------*/
@@ -2074,7 +2088,7 @@ function get_tabulado_172()
       return $q;
 }
 
-function get_tabulado_173()
+function get_tabulado_174()
 {
       $q = $this->db->query("
           /* TABULADO N° 173 -------------------------- TIPO PRODUCTO  -------------------------*/
@@ -2094,7 +2108,7 @@ function get_tabulado_173()
       return $q;
 }
 
-function get_tabulado_174()
+function get_tabulado_175()
 {
       $q = $this->db->query("
           /* TABULADO N° 174 -------------------------- TIPO PRESENTACION PRODUCTO  -------------------------*/
@@ -2114,7 +2128,7 @@ function get_tabulado_174()
       return $q;
 }
 
-function get_tabulado_175()
+function get_tabulado_176()
 {
       $q = $this->db->query("
           /* TABULADO N° 175 -------------------------- FORMAS DE COMERCIALIZACION  -------------------------*/
@@ -2135,7 +2149,7 @@ function get_tabulado_175()
       return $q;
 }
 
-function get_tabulado_176()
+function get_tabulado_177()
 {
       $q = $this->db->query("
           /* TABULADO N° 176 -------------------------- PROMEDIO MENSUAL  -------------------------*/
@@ -2155,7 +2169,7 @@ function get_tabulado_176()
       return $q;
 }
 
-function get_tabulado_177()
+function get_tabulado_178()
 {
       $q = $this->db->query("
           /* TABULADO N° 177 ---------  CONOCE SEGURO SALUD -----------------*/
@@ -2171,7 +2185,7 @@ function get_tabulado_177()
       return $q;
 }
 
-function get_tabulado_178()
+function get_tabulado_179()
 {
       $q = $this->db->query("
           /* TABULADO N° 178 -------------------------- CUALES CONOCE -------------------------*/
@@ -2189,7 +2203,7 @@ function get_tabulado_178()
       return $q;
 }
 
-function get_tabulado_179()
+function get_tabulado_180()
 {
       $q = $this->db->query("
           /* TABULADO N° 179 ---------  AFILIADO A ESSALUD -----------------*/
@@ -2205,7 +2219,7 @@ function get_tabulado_179()
       return $q;
 }
 
-function get_tabulado_180()
+function get_tabulado_181()
 {
       $q = $this->db->query("
           /* TABULADO N° 180 ---------  AFILIADO A SIS -----------------*/
@@ -2221,7 +2235,7 @@ function get_tabulado_180()
       return $q;
 }
 
-function get_tabulado_181()
+function get_tabulado_182()
 {
       $q = $this->db->query("
           /* TABULADO N° 181 ---------  AFILIADO A EPS  -----------------*/
@@ -2237,7 +2251,7 @@ function get_tabulado_181()
       return $q;
 }
 
-function get_tabulado_182()
+function get_tabulado_183()
 {
       $q = $this->db->query("
           /* TABULADO N° 182 -------------------------- CONOCE SEGURO -------------------------*/
@@ -2254,7 +2268,7 @@ function get_tabulado_182()
       return $q;
 }
 
-function get_tabulado_183()
+function get_tabulado_184()
 {
       $q = $this->db->query("
           /* TABULADO N° 183  -------------------------- EN 12 MESE ENFERMEDAD -------------------------*/
@@ -2270,7 +2284,7 @@ function get_tabulado_183()
       return $q;
 }
 
-function get_tabulado_184()
+function get_tabulado_185()
 {
       $q = $this->db->query("
           /* TABULADO N° 184  -------------------------- EN 12 MESE ACCIDENTE -------------------------*/
@@ -2286,7 +2300,7 @@ function get_tabulado_184()
       return $q;
 }
 
-function get_tabulado_185()
+function get_tabulado_186()
 {
       $q = $this->db->query("
           /* TABULADO N° 185 --------------------------  DIFICULTADES O LIMITACIONES   -------------------------*/
@@ -2307,7 +2321,7 @@ function get_tabulado_185()
       return $q;
 }
 
-function get_tabulado_186()
+function get_tabulado_187()
 {
       $q = $this->db->query("
           /* TABULADO N° 186  -------------------------- CONOCE TEMAS ACUICULOS -------------------------*/
@@ -2334,7 +2348,7 @@ function get_tabulado_186()
       return $q;
 }
 
-function get_tabulado_187()
+function get_tabulado_188()
 {
       $q = $this->db->query("
           /* TABULADO N° 187  -------------------------- RECIBIO CAPACITACION  -------------------------*/
@@ -2350,15 +2364,15 @@ function get_tabulado_187()
       return $q;
 }
 
-function get_tabulado_188()
+function get_tabulado_189()
 {
       $q = $this->db->query("
-          /* TABULADO N° 188  -------------------------- QUIEN BRINDO CAPACITACION -------------------------*/
+          /* TABULADO N° 189  -------------------------- QUIEN BRINDO CAPACITACION -------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
           COALESCE(C1.t,0) as PRODUCE, COALESCE(C2.t,0) as FONDEPES, COALESCE(C3.t,0) as IIAP, COALESCE(C4.t,0) as MINAM, COALESCE(C5.t,0) as SANIPES,
-          COALESCE(C6.t,0) as IMARPE, COALESCE(C7.t,0) as DIREPRO, COALESCE(C8.t,0) as GB, COALESCE(C9.t,0) ONG, COALESCE(C10.t,0) OTRO, 
-          COALESCE(C11.t,0) NEP
+          COALESCE(C6.t,0) as IMARPE, COALESCE(C7.t,0) as DIREPRO, COALESCE(C8.t,0) as GB, COALESCE(C9.t,0) ONG, COALESCE(C10.t,0) E_PRIVADA, 
+          COALESCE(C11.t,0) G_LOCAL,COALESCE(C12.t,0) MIN_AGRI,COALESCE(C13.t,0) UNI,COALESCE(C14.t,0) OTRO,COALESCE(C15.t,0) NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -2371,12 +2385,16 @@ function get_tabulado_188()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_10 = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_10 = 9 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd ;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_11 = 1 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_12 = 1 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_13 = 1 group by nom_dd ) as C13 on DEP.ccdd  = C13.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_14 = 1 group by nom_dd ) as C14 on DEP.ccdd  = C14.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_3_14 = 9 group by nom_dd ) as C15 on DEP.ccdd  = C15.ccdd ;
         ");
       return $q;
 }
 
-function get_tabulado_189()
+function get_tabulado_190()
 {
       $q = $this->db->query("
           /* TABULADO N° 189  -------------------------- QUE TEMAS SE CAPACITO -------------------------*/
@@ -2403,7 +2421,7 @@ function get_tabulado_189()
       return $q;
 }
 
-function get_tabulado_190()
+function get_tabulado_191()
 {
       $q = $this->db->query("
           /* TABULADO N° 190  -------------------------- RECIBIO ASITENCIA TECNICA  -------------------------*/
@@ -2419,7 +2437,7 @@ function get_tabulado_190()
       return $q;
 }
 
-function get_tabulado_191()
+function get_tabulado_192()
 {
       $q = $this->db->query("
           /* TABULADO N° 191  -------------------------- QUE TIPO DE ASISTENCIA -------------------------*/
@@ -2442,15 +2460,15 @@ function get_tabulado_191()
       return $q;
 }
 
-function get_tabulado_192()
+function get_tabulado_193()
 {
       $q = $this->db->query("
-          /* TABULADO N° 192  -------------------------- QUIEN BRINDO CAPACITACION -------------------------*/
+          /* TABULADO N° 193  -------------------------- QUIEN BRINDO CAPACITACION -------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
           COALESCE(C1.t,0) as PRODUCE, COALESCE(C2.t,0) as FONDEPES, COALESCE(C3.t,0) as IIAP, COALESCE(C4.t,0) as MINAM, COALESCE(C5.t,0) as SANIPES,
-          COALESCE(C6.t,0) as IMARPE, COALESCE(C7.t,0) as DIREPRO, COALESCE(C8.t,0) as GB, COALESCE(C9.t,0) ONG, COALESCE(C10.t,0) OTRO, 
-          COALESCE(C11.t,0) NEP
+          COALESCE(C6.t,0) as IMARPE, COALESCE(C7.t,0) as DIREPRO, COALESCE(C8.t,0) as GB, COALESCE(C9.t,0) ONG, COALESCE(C10.t,0) E_PRIVADA, 
+          COALESCE(C11.t,0) G_LOCAL,COALESCE(C12.t,0) MIN_AGRI,COALESCE(C13.t,0) UNI,COALESCE(C14.t,0) OTRO,COALESCE(C15.t,0) NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -2463,12 +2481,16 @@ function get_tabulado_192()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_10 = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_10 = 9 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd ;
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_11 = 1 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_12 = 1 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_13 = 1 group by nom_dd ) as C13 on DEP.ccdd  = C13.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_14 = 1 group by nom_dd ) as C14 on DEP.ccdd  = C14.ccdd 
+          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion10 s on a.id1 = s.id10  where S10_8_14 = 9 group by nom_dd ) as C15 on DEP.ccdd  = C15.ccdd ;
         ");
       return $q;
 }
 
-function get_tabulado_193()
+function get_tabulado_194()
 {
       $q = $this->db->query("
           /* TABULADO N° 193  -------------------------- TIENE EMBARCACIONES  -------------------------*/
@@ -2484,7 +2506,7 @@ function get_tabulado_193()
       return $q;
 }
 
-function get_tabulado_194()
+function get_tabulado_195()
 {
       $q = $this->db->query("
           /* TABULADO N° 194  -------------------------- CALIFICACION APOYO AL MINISTERIO  -------------------------*/
@@ -2505,7 +2527,7 @@ function get_tabulado_194()
       return $q;
 }
 
-function get_tabulado_195()
+function get_tabulado_196()
 {
       $q = $this->db->query("
           /* TABULADO N° 195  -------------------------- CALIFICACION APOYO AL FONDEPES  -------------------------*/
@@ -2526,7 +2548,7 @@ function get_tabulado_195()
       return $q;
 }
 
-function get_tabulado_196()
+function get_tabulado_197()
 {
       $q = $this->db->query("
           /* TABULADO N° 196  -------------------------- CALIFICACION APOYO AL ITP  -------------------------*/
@@ -2547,7 +2569,7 @@ function get_tabulado_196()
       return $q;
 }
 
-function get_tabulado_197()
+function get_tabulado_198()
 {
       $q = $this->db->query("
           /* TABULADO N° 197  -------------------------- CALIFICACION APOYO AL IMARPE  -------------------------*/
@@ -2568,7 +2590,7 @@ function get_tabulado_197()
       return $q;
 }
 
-function get_tabulado_198()
+function get_tabulado_199()
 {
       $q = $this->db->query("
           /* TABULADO N° 198  -------------------------- CALIFICACION APOYO AL MINAM  -------------------------*/
@@ -2588,7 +2610,7 @@ function get_tabulado_198()
         ");
       return $q;
 }
-function get_tabulado_199()
+function get_tabulado_200()
 {
       $q = $this->db->query("
           /* TABULADO N° 199  -------------------------- CALIFICACION APOYO AL SANPES  -------------------------*/

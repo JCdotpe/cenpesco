@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 12 : 13; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 7 : 8; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR CONOCIMIENTO DE TEMAS ACUÍCOLAS, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR TIPO DE DIFICULTAD O LIMITACIÓN PERMANENTE, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,22 +37,16 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Conocimiento de temas acuícolas</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de dificultad o limitación permanente</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';																					
-				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Normatividad para la acuicultura') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Normas sanitarias acuícolas' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Tecnología acuícola' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Manejo ambiental en granjas' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Programas de producción y/o alimentación' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Manejo de residuos sólidos' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Formalización' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Comercialización' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Gestión empresarial' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Biocomercio, acuicultura orgánica, comercio justo' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'No conoce' ) .'</th>';						
+									echo '<tr>';
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Para ver, aún usando lentes') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Para oír, aún usando audífonos para sordera' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Para hablar (entonar / vocalizar)' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Para usar brazos y manos / piernas y pies' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Alguna otra dificultad o limitación' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Ninguna' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -139,12 +133,7 @@
 										array("name" => $variable_3 	,"data" => $datas[2]),
 										array("name" => $variable_4 	,"data" => $datas[3]), 
 										array("name" => $variable_5 	,"data" => $datas[4]), 
-										array("name" => $variable_6 	,"data" => $datas[5]), 
-										array("name" => $variable_7 	,"data" => $datas[6]), 
-										array("name" => $variable_8 	,"data" => $datas[7]), 
-										array("name" => $variable_9 	,"data" => $datas[8]), 
-										array("name" => $variable_10 	,"data" => $datas[9]), 
-										array("name" => $variable_11 	,"data" => $datas[10]),  );
+										array("name" => $variable_6 	,"data" => $datas[5]),    );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -184,6 +173,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 
 

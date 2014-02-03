@@ -11,18 +11,18 @@
 		<div class="tab-content" style="clear:both">
 		  	<div class="tab-pane active" id="tabulado">
 				<!-- INICIO TABULADO -->
-			    	<?php
+			    	<?php 
 			    			//EVALUAR NEP					
 								$NEP = 0;
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR CONOCIMIENTO DE ALGÚN TIPO DE SEGURO DE SALUD, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR USO DE ALGÚN ESPACIO DE LA VIVIENDA PARA REALIZAR ALGUNA ACTIVIDAD QUE PROPORCIONE OTROS INGRESOS, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,12 +37,12 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Conoce algún tipo de seguro de salud</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Uso de algún espacio de la vivienda para realizar alguna actividad que proporcione otros ingresos</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';	
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';											
+									echo '<tr>';									
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si utiliza') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No utiliza' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -125,10 +125,10 @@
 
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),  );
+										array("name" => $variable_2 	,"data" => $datas[1]),);
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
-
+						
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho
 						$data['yy'] =  840; // altura
@@ -165,6 +165,4 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
-
 

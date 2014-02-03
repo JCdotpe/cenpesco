@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
 
 <?php $this->load->view('tabulados/includes/sidebar_view'); ?> <!-- SIDE BAR -->
@@ -18,12 +17,13 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 13 : 14;
+								$cant_v = ($NEP == 0) ? 4 : 6;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE INFRAESTRUCTURA Y EQUIPAMIENTO DEL PUNTO DE DESEMBARQUE, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE PUNTO DE DESEMBARQUE, SEGÚN DEPARTAMENTO, 2013';
+
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -36,24 +36,16 @@
 								echo '<thead>';
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
-									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de infraestructura y equipamiento del punto de desembarque</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de punto de desembarque</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																																										
 									echo '</tr>';
 							
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Almacén') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Servicios higiénicos' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Sala de manipuleo' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Productor de hielo' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Cámara de conservación' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Tanque elevado' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Motobombas' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Grupo electrógeno' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Sistema de alumbrado' ) .'</th>';
-									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Servicio de recojo de residuos' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Zona de comercialización' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Otro' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Puerto') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Playa' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Desembarcadero pesquero artesanal' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Otro' ) .'</th>';																
 									echo '</tr>';
 
 									echo '<tr>';
@@ -137,15 +129,7 @@
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]),
-										array("name" => $variable_5 	,"data" => $datas[4]),
-										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),	
-										array("name" => $variable_8 	,"data" => $datas[7]),	
-										array("name" => $variable_9 	,"data" => $datas[8]),	
-										array("name" => $variable_10 	,"data" => $datas[9]),	
-										array("name" => $variable_11 	,"data" => $datas[10]),	
-										array("name" => $variable_12 	,"data" => $datas[11]),		);
+										array("name" => $variable_4 	,"data" => $datas[3]), );
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

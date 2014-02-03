@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR SI HA SUFRIDO ALGÚN ACCIDENTE DURANTE SU TRABAJO, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR SI HA SUFRIDO ALGUNA ENFERMEDAD PRODUCTO DE SU TRABAJO, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,7 +37,7 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Ha sufrido algún accidente durante su trabajo</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Ha sufrido alguna enfermedad producto de su trabajo</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';	
@@ -52,7 +52,7 @@
 										}																															
 									echo '</tr>';
 								echo '</thead>';
-								echo '<tbody>';
+								echo '<tbody>'; 
 
 									$x = 1; $z = 0;  $u = 0;
 									$totales = array_fill(1, $cant_v,0); 

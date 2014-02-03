@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 6 : 7;
+								$cant_v = ($NEP == 0) ? 7 : 8;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR DESTINO FINAL DE LOS DESAGÜES, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE SERVICIO HIGIÉNICO QUE CUENTAN LAS VIVIENDAS, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,15 +37,17 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Destino final de los desagües</th>';	
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de servicio higiénico que tienen las viviendas</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																													
 									echo '</tr>';
+
 									echo '<tr>';		
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Río') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Bosque, monte' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Laguna de oxidación' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Canal, acequia' ) .'</th>';									
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Otro' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Red pública de desagüe') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Letrina' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Pozo séptico' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Pozo ciego o negro' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Río, acequia o canal' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'No tienen' ) .'</th>';									
 									echo '</tr>';
 									echo '<tr>';
 											for ($i=1; $i <=$cant_v ; $i++) { 
@@ -53,8 +55,8 @@
 										echo '<th style="text-align:center;">%</th>';					
 											}								
 									echo '</tr>';
-
 								echo '</thead>';
+
 									echo '<tbody>';
 
 										$x = 1; $z = 0;  $u = 0; 
@@ -62,7 +64,7 @@
 										$array_porc=null; $index = null;$diff = 0;
 										$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
 
-										foreach($tables->result() as $filas){
+									foreach($tables->result() as $filas){
 										echo '<tr>';
 											if($respuesta_unica){// tabular al 100% en respuestas unicas
 												foreach ($filas as  $key => $value) {
@@ -124,17 +126,17 @@
 									echo '</tbody>';
 							echo '</table></div>';
 
-
 								$series = array(
 												array("name" => $variable_1 	,"data" => $datas[0]),
 												array("name" => $variable_2 	,"data" => $datas[1]), 
 												array("name" => $variable_3 	,"data" => $datas[2]), 
 												array("name" => $variable_4 	,"data" => $datas[3]), 
 												array("name" => $variable_5 	,"data" => $datas[4]), 
+												array("name" => $variable_6 	,"data" => $datas[5]), 
 											);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
-								
+
 								$data['tipo'] =  'column';// << column >> or << bar >> 
 								$data['xx'] =  2030; // ancho
 								$data['yy'] =  840; // altura

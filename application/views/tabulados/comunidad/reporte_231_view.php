@@ -20,10 +20,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 13 : 14;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES QUE REALIZAN LA PESCA POR MESES DE MAYOR PRODUCCIÓN, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES QUE REALIZAN LA PESCA POR MESES QUE GENERALMENTE REALIZAN SU ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';

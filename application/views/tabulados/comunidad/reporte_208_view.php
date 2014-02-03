@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 7 : 8;
+								$cant_v = ($NEP == 0) ? 6 : 7;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE SERVICIO HIGIÉNICO QUE CUENTAN LAS VIVIENDAS, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR RAZONES QUE CONSIDERAN DEFICIENTE EL SERVICIO DE AGUA POR RED PÚBLICA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,26 +37,26 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de servicio higiénico que tienen las viviendas</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																													
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Razones que consideran deficiente el servicio de agua por red pública</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 
 									echo '<tr>';		
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Red pública de desagüe') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Letrina' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Pozo séptico' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Pozo ciego o negro' ) .'</th>';									
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Río, acequia o canal' ) .'</th>';									
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'No tienen' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Interrupciones / cortes de agua') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Servicio de agua restringido o limitado' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Costo elevado del servicio / tarifa elevada' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Falta de mantenimiento' ) .'</th>';																				
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Otra' ) .'</th>';									
 									echo '</tr>';
+
 									echo '<tr>';
 											for ($i=1; $i <=$cant_v ; $i++) { 
 										echo '<th style="text-align:center">Abs</th>';										
 										echo '<th style="text-align:center;">%</th>';					
 											}								
 									echo '</tr>';
-								echo '</thead>';
 
+								echo '</thead>';
 									echo '<tbody>';
 
 										$x = 1; $z = 0;  $u = 0; 
@@ -132,7 +132,6 @@
 												array("name" => $variable_3 	,"data" => $datas[2]), 
 												array("name" => $variable_4 	,"data" => $datas[3]), 
 												array("name" => $variable_5 	,"data" => $datas[4]), 
-												array("name" => $variable_6 	,"data" => $datas[5]), 
 											);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
@@ -147,7 +146,8 @@
 								$this->load->view('tabulados/includes/metadata_view.php', $data);
 
 						echo form_close(); 
-					?>		  		
+					?>
+		  		
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  

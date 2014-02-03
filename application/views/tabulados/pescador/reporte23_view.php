@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: HIJOS DE PESCADORES POR TIPO DE INSTITUCIÓN EDUCATIVA A LA QUE ASISTE, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: HIJOS DE PESCADORES POR ASISTENCIA ACTUAL A UNA INSTITUCIÓN EDUCATIVA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,12 +37,12 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de institución educativa a la que asiste</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Asiste actualmente a una institución educativa</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';									
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Estatal') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Privada' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -140,7 +140,6 @@
 
 						echo form_close(); 
 					?>
-
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -166,6 +165,4 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
-
 

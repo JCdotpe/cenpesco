@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 10 : 11; // cantidad de variables (incluir NEP y Total)
+								$cant_v = ($NEP == 0) ? 5 : 6; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR PROGRAMAS SOCIALES QUE HAN BENEFICIADO SU HOGAR, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR AÑOS DE DEDICACIÓN A LA ACTIVIDAD DE PESCA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,19 +37,14 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="16" style="text-align:center">Programas sociales que han beneficiado su hogar</th>';
-									echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">Ninguno</th>';																																														
+									echo '<th colspan="8" style="text-align:center">Años de dedicación a la actividad de pesca</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Vaso de leche') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Comedor popular' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Desayuno o alimentación escolar (Qali warma)' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Seguro Integral de Salud (SIS)' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Programa Juntos' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Programa bono de gratitud (Pensión 65)' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Programa Cuna Más' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Hasta un año') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'De 2 a 5 años' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'De 6 a 10 años' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Más de 10 años' ) .'</th>';																												
 									echo '</tr>';
 
 									echo '<tr>';
@@ -123,37 +118,30 @@
 									echo '<td style="text-align:center;"> '. number_format($totales_porc[$i] = (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
 										}$totales_porc[1] = $totales[1];//guardando nacional (TECHO)
 									echo '</tr>';
+									echo '</tr>';
 
-								echo '</tbody>';
-							echo '</table></div>';
-					?>
-					<?php
+									echo '</tbody>';
+								echo '</table></div>';
 
-						$series = array(
-										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),
-										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]),
-										array("name" => $variable_5 	,"data" => $datas[4]),
-										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),
-										array("name" => $variable_8 	,"data" => $datas[7]),
-										array("name" => 'Ninguno' 		,"data" => $datas[8]) );	
-						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+								$series = array(
+												array("name" => $variable_1 	,"data" => $datas[0]),
+												array("name" => $variable_2 	,"data" => $datas[1]),
+												array("name" => $variable_3 	,"data" => $datas[2]),
+												array("name" => $variable_4 	,"data" => $datas[3]),);
+								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
+								
+								$data['tipo'] =  'column';// << column >> or << bar >> 
+								$data['xx'] =  2030; // ancho
+								$data['yy'] =  840; // altura
+								$data['series'] =  $series;
+								$data['c_title'] = $c_title;
+								$this->load->view('tabulados/includes/text_view.php'); 
 
-						$data['tipo'] =  'column';// << column >> or << bar >> 
-						$data['xx'] =  2030; // ancho
-						$data['yy'] =  840; // altura
-						$data['series'] =  $series;
-						$data['c_title'] = $c_title;
-						$this->load->view('tabulados/includes/text_view.php'); 
-
-						$this->load->view('tabulados/includes/metadata_view.php', $data); //arsort($series[0]['data']);
+								$this->load->view('tabulados/includes/metadata_view.php', $data); 
 
 						echo form_close(); 
-					?>
-		  		
+					?>		  		
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -179,10 +167,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
-
-
-
-
 
 

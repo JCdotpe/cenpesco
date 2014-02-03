@@ -11,18 +11,18 @@
 		<div class="tab-content" style="clear:both">
 		  	<div class="tab-pane active" id="tabulado">
 				<!-- INICIO TABULADO -->
-			    	<?php
+			    	<?php 
 			    			//EVALUAR NEP					
 								$NEP = 0;
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 10 : 11; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: HIJOS DE PESCADORES POR ACTIVIDAD QUE REALIZAN, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: HIJOS DE PESCADORES POR TIPO DE INSTITUCIÓN EDUCATIVA A LA QUE ASISTE, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,19 +37,12 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Actividad que realizan</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de institución educativa a la que asiste</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Agrícola') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Pecuaria' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Acuícola' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Pesca' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Caza' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Construcción' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Comercio' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Ninguno' ) .'</th>';						
+									echo '<tr>';									
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Estatal') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Privada' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -132,17 +125,10 @@
 
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),
-										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]),
-										array("name" => $variable_5 	,"data" => $datas[4]),
-										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),
-										array("name" => $variable_8 	,"data" => $datas[7]), 
-										array("name" => $variable_9 	,"data" => $datas[8]), );
+										array("name" => $variable_2 	,"data" => $datas[1]),);
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
-
+						
 						$data['tipo'] =  'column';// << column >> or << bar >> 
 						$data['xx'] =  2030; // ancho
 						$data['yy'] =  840; // altura
@@ -154,6 +140,7 @@
 
 						echo form_close(); 
 					?>
+
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  

@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="<?php echo base_url('css/bootstrap.datepicker.css'); ?>">
 
 <?php $this->load->view('tabulados/includes/sidebar_view'); ?> <!-- SIDE BAR -->
@@ -14,16 +15,15 @@
 			    	<?php
 			    			//EVALUAR NEP					
 								$NEP = 0;
-								foreach ($tables->result() as $value) {
-											$NEP += $value->NEP;
-									}
-								$cant_v = ($NEP == 0) ? 5 : 6; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								// foreach ($tables->result() as $value) {
+								// 			$NEP += $value->NEP;
+								// 	}
+								$cant_v = ($NEP == 0) ? 16 : 17;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR LUGAR DE DESEMBARQUE, SEGÚN DEPARTAMENTO, 2013';
-
+				    			$c_title = 'PERÚ: PESCADORES POR ESPECIES QUE EXTRAEN MAYORMENTE DURANTE SU FAENA DE PESCA, SEGÚN DEPARTAMENTO, 2013';
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -33,31 +33,45 @@
 													'. $c_title  .' </strong>
 									     </h3></caption>';
 
-								echo '<thead>';											
-
+								echo '<thead>';
 									echo '<tr>';
-									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
-									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Lugar de desembarque </th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
+									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Especies que extraen mayormente durante su faena de pesca</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
-									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Puerto') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Playa' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Desembarcadero pesquero artesanal' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Otro' ) .'</th>';														
+																													
+																													
+							
+									echo '<tr>';															
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Acarahuazu') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Bagre' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Boquichico' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Camarón de río ' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Carachama ' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Carachi amarillo' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Doncella' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Fasaco ' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Lisa ' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Palometa ' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Pejerrey' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Sabalo' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Tilapia' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Trucha ' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'Zungaro' ) .'</th>';												
 									echo '</tr>';
 
 									echo '<tr>';
 										for ($i=1; $i <=$cant_v ; $i++) { 
 									echo '<th style="text-align:center">Abs</th>';										
 									echo '<th style="text-align:center;">%</th>';					
-										}																															
-									echo '</tr>';
+										}						
+									echo '</tr>';									
 								echo '</thead>';
+
 								echo '<tbody>';
 
-									$x = 1; $z = 0;  $u = 0;
+									$x = 1; $z = 0;  $u = 0; 
 									$totales = array_fill(1, $cant_v,0); 
 									$array_porc=null; $index = null;$diff = 0;
 									$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
@@ -98,7 +112,7 @@
 									}	
 									//TOTALES
 									echo '<tr>';
-									echo '<td>Total</td>';						
+									echo '<td>Total</td>';	
 										if($respuesta_unica){// tabular al 100% en respuestas unicas
 											for ($i = 2; $i<=$cant_v ; $i++) {
 													$array_porc_tot[$i]=  round( ($totales[$i]*100/$totales[1] ),1); 
@@ -123,29 +137,39 @@
 
 								echo '</tbody>';
 							echo '</table></div>';
-					?>
-					<?php 
 
-						$series = array(
+								$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]), );
+										array("name" => $variable_4 	,"data" => $datas[3]),
+										array("name" => $variable_5 	,"data" => $datas[4]),
+										array("name" => $variable_6 	,"data" => $datas[5]),
+										array("name" => $variable_7 	,"data" => $datas[6]),	
+										array("name" => $variable_8 	,"data" => $datas[7]),	
+										array("name" => $variable_9 	,"data" => $datas[8]),	
+										array("name" => $variable_10 	,"data" => $datas[9]),	
+										array("name" => $variable_11 	,"data" => $datas[10]),	
+										array("name" => $variable_12 	,"data" => $datas[11]),	
+										array("name" => $variable_13 	,"data" => $datas[12]),	
+										array("name" => $variable_14 	,"data" => $datas[13]),	
+										array("name" => $variable_15 	,"data" => $datas[14]),	);
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
-						$data['tipo'] =  'column';// << column >> or << bar >> 
-						$data['xx'] =  2030; // ancho
-						$data['yy'] =  840; // altura
-						$data['series'] =  $series;
-						$data['c_title'] = $c_title;
-						$this->load->view('tabulados/includes/text_view.php'); 
+								$data['tipo'] =  'column';// << column >> or << bar >> 
+								$data['xx'] =  2030; // ancho
+								$data['yy'] =  840; // altura
+								$data['series'] =  $series;
+								$data['c_title'] = $c_title;
+								$this->load->view('tabulados/includes/text_view.php'); 
 
-						$this->load->view('tabulados/includes/metadata_view.php', $data); 
+								$this->load->view('tabulados/includes/metadata_view.php', $data);
+
 
 						echo form_close(); 
 					?>
-
+		  		
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -171,6 +195,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 
 

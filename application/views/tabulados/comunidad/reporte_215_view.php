@@ -17,12 +17,13 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 6 : 7;
+								$cant_v = ($NEP == 0) ? 3 : 4;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE CONTAMINACIÓN AMBIENTAL QUE EXISTE, SEGÚN DEPARTAMENTO, 2013';
+	    						$c_title = 'PERÚ: COMUNIDADES POR EXISTENCIA DE CONTAMINACIÓN AMBIENTAL, SEGÚN DEPARTAMENTO, 2013';
+
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,15 +38,13 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de contaminación ambiental</th>';	
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Existe contaminación ambiental</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';							
 									echo '</tr>';
+
 									echo '<tr>';		
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Contaminación del río, lago, etc.') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Contaminación del suelo' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Contaminación del aire' ) .'</th>';																				
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Contaminación acústica' ) .'</th>';									
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Otro' ) .'</th>';									
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';																												
 									echo '</tr>';
 									echo '<tr>';
 											for ($i=1; $i <=$cant_v ; $i++) { 
@@ -62,7 +61,7 @@
 										$array_porc=null; $index = null;$diff = 0;
 										$array_porc_tot=null; $index_tot = null;$diff_tot = 0;
 
-										foreach($tables->result() as $filas){
+									foreach($tables->result() as $filas){
 										echo '<tr>';
 											if($respuesta_unica){// tabular al 100% en respuestas unicas
 												foreach ($filas as  $key => $value) {
@@ -128,13 +127,10 @@
 								$series = array(
 												array("name" => $variable_1 	,"data" => $datas[0]),
 												array("name" => $variable_2 	,"data" => $datas[1]), 
-												array("name" => $variable_3 	,"data" => $datas[2]), 
-												array("name" => $variable_4 	,"data" => $datas[3]), 
-												array("name" => $variable_5 	,"data" => $datas[4]), 
 											);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
-								
+
 								$data['tipo'] =  'column';// << column >> or << bar >> 
 								$data['xx'] =  2030; // ancho
 								$data['yy'] =  840; // altura
@@ -175,5 +171,3 @@
 <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
 
 
-
-	    			

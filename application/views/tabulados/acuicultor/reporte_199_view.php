@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 7 : 8; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR CALIFICACIÓN AL SERVICIO NACIONAL DE SANIDAD PESQUERA SOBRE EL APOYO AL SECTOR PESQUERO, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR CALIFICACIÓN AL MINISTERIO DEL AMBIENTE SOBRE EL APOYO AL SECTOR PESQUERO, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,7 +37,7 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Calificación al Servicio Nacional de Sanidad Pesquera</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Calificación al Ministerio del Ambiente</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';									
@@ -149,6 +149,7 @@
 
 						echo form_close(); 
 					?>
+
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  

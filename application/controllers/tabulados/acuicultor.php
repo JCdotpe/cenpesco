@@ -117,66 +117,7 @@ class Acuicultor extends CI_Controller {
 		}			
 	}
 
-	public function reporte_100()
-	{
-			$data['restriccion'] = $this->restriccion ;
-			$data['nav'] = TRUE;
-			$data['title'] = 'Tabulados Acuicultor';	
-			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 100;		
-			$data['tables'] = $this->acuicultor_model->get_tabulado_100();
 
-			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 
-			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2;  			
-
-			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
-			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
-			$data['txt_contenido'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->contenido  :  ''; 
-			$data['txt_casos'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->casos  :  ''; 
-			$data['txt_variables'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->variable  :  ''; 
-			$data['txt_alternativas'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->alternativas  :  ''; 
-			$data['txt_otro'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->otro  :  ''; 
-			$data['txt_faltantes'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->faltantes  :  ''; 
-			$data['txt_productor'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->productor :  ''; 
-			$data['txt_definiciones'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->definiciones  :  '';	
-
-			$data['main_content'] = 'tabulados/acuicultor/reporte_100_view';
-
-			$this->load->view('backend/includes/template', $data);		
-	}
-
-	public function reporte_101()
-	{
-			$data['restriccion'] = $this->restriccion ;
-			$data['nav'] = TRUE;
-			$data['title'] = 'Tabulados Acuicultor';	
-			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 101;		
-			$data['tables'] = $this->acuicultor_model->get_tabulado_101();
-
-			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
-			$data['texto'] =  $texto; 
-			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
-			$data['texto_2'] =  $texto_2; 
-
-			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
-			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
-			$data['txt_contenido'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->contenido  :  ''; 
-			$data['txt_casos'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->casos  :  ''; 
-			$data['txt_variables'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->variable  :  ''; 
-			$data['txt_alternativas'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->alternativas  :  ''; 
-			$data['txt_otro'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->otro  :  ''; 
-			$data['txt_faltantes'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->faltantes  :  ''; 
-			$data['txt_productor'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->productor :  ''; 
-			$data['txt_definiciones'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->definiciones  :  '';	
-
-			$data['main_content'] = 'tabulados/acuicultor/reporte_101_view';
-
-			$this->load->view('backend/includes/template', $data);		
-	}
-	
 
 	public function reporte_102()
 	{
@@ -191,6 +132,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -222,6 +165,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -253,6 +198,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -284,6 +231,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -314,6 +263,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -344,6 +295,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -374,6 +327,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -404,6 +359,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -434,6 +391,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -464,6 +423,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -494,6 +455,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -524,6 +487,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -554,6 +519,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -584,6 +551,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -614,6 +583,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -644,6 +615,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -675,6 +648,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -706,6 +681,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -737,6 +714,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -768,6 +747,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -798,6 +779,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -828,6 +811,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -858,6 +843,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -888,6 +875,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -918,6 +907,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -948,6 +939,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -978,6 +971,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1008,6 +1003,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1038,6 +1035,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1068,6 +1067,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1098,6 +1099,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1129,6 +1132,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1160,6 +1165,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1191,6 +1198,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1222,6 +1231,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1253,6 +1264,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1283,6 +1296,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1314,6 +1329,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1345,6 +1362,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1376,6 +1395,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1407,6 +1428,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1438,6 +1461,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1468,6 +1493,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1498,6 +1525,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1528,6 +1557,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1558,6 +1589,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1574,7 +1607,7 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
-		// se corrio un tabulado
+
 	public function reporte_148()
 	{
 
@@ -1583,12 +1616,46 @@ class Acuicultor extends CI_Controller {
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
 			$data['opcion'] = 148;		
+			$data['tables'] = $this->acuicultor_model->get_tabulado_148();
+
+			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
+
+			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
+			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
+			$data['txt_contenido'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->contenido  :  ''; 
+			$data['txt_casos'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->casos  :  ''; 
+			$data['txt_variables'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->variable  :  ''; 
+			$data['txt_alternativas'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->alternativas  :  ''; 
+			$data['txt_otro'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->otro  :  ''; 
+			$data['txt_faltantes'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->faltantes  :  ''; 
+			$data['txt_productor'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->productor :  ''; 
+			$data['txt_definiciones'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->definiciones  :  '';	
+
+			$data['main_content'] = 'tabulados/acuicultor/reporte_148_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_149()
+	{
+			$data['restriccion'] = $this->restriccion ;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados Acuicultor';	
+			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
+			$data['opcion'] = 149;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_149();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1606,19 +1673,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_149()
+	public function reporte_150()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 149;		
+			$data['opcion'] = 150;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_150();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1636,19 +1705,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_150()
+	public function reporte_151()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 150;		
+			$data['opcion'] = 151;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_151();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1666,19 +1737,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_151()
+	public function reporte_152()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 151;		
+			$data['opcion'] = 152;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_152();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1696,19 +1769,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_152()
+	public function reporte_153()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 152;		
+			$data['opcion'] = 153;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_153();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1726,19 +1801,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_153()
+	public function reporte_154()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 153;		
+			$data['opcion'] = 154;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_154();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1756,19 +1833,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_154()
+	public function reporte_155()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 154;		
+			$data['opcion'] = 155;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_155();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1785,20 +1864,23 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
+	
 
-	public function reporte_155()
+	public function reporte_156()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 155;		
+			$data['opcion'] = 156;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_156();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1815,21 +1897,23 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
-	
 
-	public function reporte_156()
+
+	public function reporte_157()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 156;		
+			$data['opcion'] = 157;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_157();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1848,19 +1932,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_157()
+	public function reporte_158()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 157;		
+			$data['opcion'] = 158;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_158();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1879,19 +1965,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_158()
+	public function reporte_159()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 158;		
+			$data['opcion'] = 159;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_159();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1909,20 +1997,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-	public function reporte_159()
+	public function reporte_160()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 159;		
+			$data['opcion'] = 160;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_160();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1940,19 +2029,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_160()
+	public function reporte_161()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 160;		
+			$data['opcion'] = 161;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_161();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1969,20 +2060,22 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
-
-	public function reporte_161()
+	//se corrio otro tabulado
+	public function reporte_162()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 161;		
+			$data['opcion'] = 162;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_162();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -1999,20 +2092,54 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
-	//se corrio otro tabulado
-	public function reporte_162()
+
+	public function reporte_163()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 162;		
+			$data['opcion'] = 163;		
+			$data['tables'] = $this->acuicultor_model->get_tabulado_163();
+
+			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
+
+			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
+			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
+			$data['txt_contenido'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->contenido  :  ''; 
+			$data['txt_casos'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->casos  :  ''; 
+			$data['txt_variables'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->variable  :  ''; 
+			$data['txt_alternativas'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->alternativas  :  ''; 
+			$data['txt_otro'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->otro  :  ''; 
+			$data['txt_faltantes'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->faltantes  :  ''; 
+			$data['txt_productor'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->productor :  ''; 
+			$data['txt_definiciones'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->definiciones  :  '';	
+
+			$data['main_content'] = 'tabulados/acuicultor/reporte_163_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
+
+	public function reporte_164()
+	{
+			$data['restriccion'] = $this->restriccion ;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados Acuicultor';	
+			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
+			$data['opcion'] = 164;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_164();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2030,19 +2157,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_163()
+	public function reporte_165()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 163;		
+			$data['opcion'] = 165;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_165();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2060,19 +2189,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_164()
+	public function reporte_166()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 164;		
+			$data['opcion'] = 166;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_166();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2090,19 +2221,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_165()
+	public function reporte_167()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 165;		
+			$data['opcion'] = 167;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_167();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2120,19 +2253,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_166()
+	public function reporte_168()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 166;		
+			$data['opcion'] = 168;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_168();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2150,19 +2285,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_167()
+	public function reporte_169()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 167;		
+			$data['opcion'] = 169;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_169();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2180,19 +2317,22 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_168()
+
+	public function reporte_170()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 168;		
+			$data['opcion'] = 170;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_170();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2209,20 +2349,23 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
+	
 
-	public function reporte_169()
+	public function reporte_171()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 169;		
+			$data['opcion'] = 171;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_171();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2241,19 +2384,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_170()
+	public function reporte_172()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 170;		
+			$data['opcion'] = 172;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_172();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2270,21 +2415,23 @@ class Acuicultor extends CI_Controller {
 
 			$this->load->view('backend/includes/template', $data);		
 	}
-	
 
-	public function reporte_171()
+
+	public function reporte_173()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 171;		
+			$data['opcion'] = 173;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_173();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2303,19 +2450,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_172()
+	public function reporte_174()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 172;		
+			$data['opcion'] = 174;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_174();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2333,20 +2482,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-	public function reporte_173()
+	public function reporte_175()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 173;		
+			$data['opcion'] = 175;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_175();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2365,19 +2515,22 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_174()
+
+	public function reporte_176()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 174;		
+			$data['opcion'] = 176;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_176();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2395,19 +2548,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_175()
+	public function reporte_177()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 175;		
+			$data['opcion'] = 177;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_177();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2425,21 +2580,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-
-	public function reporte_176()
+	public function reporte_178()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 176;		
+			$data['opcion'] = 178;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_178();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2457,19 +2612,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_177()
+	public function reporte_179()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 177;		
+			$data['opcion'] = 179;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_179();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2487,19 +2644,22 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_178()
+
+	public function reporte_180()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 178;		
+			$data['opcion'] = 180;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_180();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2517,19 +2677,22 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_179()
+
+	public function reporte_181()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 179;		
+			$data['opcion'] = 181;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_181();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2548,19 +2711,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_180()
+	public function reporte_182()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 180;		
+			$data['opcion'] = 182;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_182();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2579,19 +2744,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_181()
+	public function reporte_183()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 181;		
+			$data['opcion'] = 183;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_183();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2610,19 +2777,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_182()
+	public function reporte_184()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 182;		
+			$data['opcion'] = 184;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_184();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2641,19 +2810,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_183()
+	public function reporte_185()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 183;		
+			$data['opcion'] = 185;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_185();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2672,19 +2843,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_184()
+	public function reporte_186()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 184;		
+			$data['opcion'] = 186;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_186();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2703,19 +2876,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_185()
+	public function reporte_187()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 185;		
+			$data['opcion'] = 187;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_187();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2734,19 +2909,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_186()
+	public function reporte_188()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 186;		
+			$data['opcion'] = 188;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_188();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2764,20 +2941,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-	public function reporte_187()
+	public function reporte_189()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 187;		
+			$data['opcion'] = 189;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_189();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2796,19 +2974,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_188()
+	public function reporte_190()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 188;		
+			$data['opcion'] = 190;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_190();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2826,19 +3006,22 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-	public function reporte_189()
+
+	public function reporte_191()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 189;		
+			$data['opcion'] = 191;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_191();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2857,19 +3040,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_190()
+	public function reporte_192()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 190;		
+			$data['opcion'] = 192;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_192();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2888,19 +3073,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_191()
+	public function reporte_193()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 191;		
+			$data['opcion'] = 193;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_193();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2919,19 +3106,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_192()
+	public function reporte_194()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 192;		
+			$data['opcion'] = 194;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_194();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2950,19 +3139,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_193()
+	public function reporte_195()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 193;		
+			$data['opcion'] = 195;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_195();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -2981,19 +3172,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_194()
+	public function reporte_196()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 194;		
+			$data['opcion'] = 196;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_196();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3012,19 +3205,21 @@ class Acuicultor extends CI_Controller {
 	}
 
 
-	public function reporte_195()
+	public function reporte_197()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 195;		
+			$data['opcion'] = 197;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_197();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3042,20 +3237,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-	public function reporte_196()
+	public function reporte_198()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 196;		
+			$data['opcion'] = 198;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_198();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3073,20 +3269,21 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
-
-	public function reporte_197()
+	public function reporte_199()
 	{
 			$data['restriccion'] = $this->restriccion ;
 			$data['nav'] = TRUE;
 			$data['title'] = 'Tabulados Acuicultor';	
 			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
-			$data['opcion'] = 197;		
+			$data['opcion'] = 199;		
 			$data['tables'] = $this->acuicultor_model->get_tabulado_199();
 
 			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
@@ -3104,7 +3301,37 @@ class Acuicultor extends CI_Controller {
 			$this->load->view('backend/includes/template', $data);		
 	}
 
+	public function reporte_200()
+	{
+			$data['restriccion'] = $this->restriccion ;
+			$data['nav'] = TRUE;
+			$data['title'] = 'Tabulados Acuicultor';	
+			$data['nom_tabulados'] = $this->tabulados_model->get_nombre_tabulados();	
+			$data['opcion'] = 200;		
+			$data['tables'] = $this->acuicultor_model->get_tabulado_200();
 
+			$texto = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto  :  '';
+			$data['texto'] =  $texto; 
+			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
+			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
+
+			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
+			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 
+			$data['txt_contenido'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->contenido  :  ''; 
+			$data['txt_casos'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->casos  :  ''; 
+			$data['txt_variables'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->variable  :  ''; 
+			$data['txt_alternativas'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->alternativas  :  ''; 
+			$data['txt_otro'] 		= ( $metadata->num_rows()==1 )  ?  $metadata->row()->otro  :  ''; 
+			$data['txt_faltantes'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->faltantes  :  ''; 
+			$data['txt_productor'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->productor :  ''; 
+			$data['txt_definiciones'] = ( $metadata->num_rows()==1 )  ?  $metadata->row()->definiciones  :  '';	
+
+			$data['main_content'] = 'tabulados/acuicultor/reporte_200_view';
+
+			$this->load->view('backend/includes/template', $data);		
+	}
 
 
 
@@ -3123,6 +3350,8 @@ class Acuicultor extends CI_Controller {
 			$data['texto'] =  $texto; 
 			$texto_2 = ($this->tabulados_model->get_texto(2,$data['opcion'])->num_rows() > 0)  ?  $texto_2 = $this->tabulados_model->get_texto(2,$data['opcion'])->row()->texto_2  :  '';
 			$data['texto_2'] =  $texto_2; 
+			$data['nombres_mapa'] = $this->tabulados_model->get_nombre_mapa($data['opcion']); // nombre de los tabulados
+			$data['respuesta_unica'] = $this->tabulados_model->get_tipo_respuesta($data['opcion']);
 
 			$metadata = $this->tabulados_model->get_metadata(2,$data['opcion']); 
 			$data['txt_tabulado'] 	= ( $metadata->num_rows()==1 )  ?  $metadata->row()->tabulado  :  ''; 

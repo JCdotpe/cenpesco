@@ -18,12 +18,13 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 18 : 19;
+								$cant_v = ($NEP == 0) ? 8 : 9;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE ENFERMEDADES Y/O ACCIDENTES, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE LOCALES DE SALUD, SEGÚN DEPARTAMENTO, 2013';
+
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -36,29 +37,19 @@
 								echo '<thead>';
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
-									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Enfermedades y/o accidentes</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Locales de salud</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																																										
 									echo '</tr>';
 							
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Tuberculosis') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Neumonía' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Cólera' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Vómitos, diarrea' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Desnutrición, anemia' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Parasitosis' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Uta' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Chupos, granos' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Malaria, paludismo' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Fiebre amarilla' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Hepatitis' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Tifoidea' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Sarampión' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Enfermedades de transmisíon  sexual' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'Mordeduras de serpientes, picaduras' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_16 = 'Fracturas, golpes' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_17 = 'Otro' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Centro de salud') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Puesto de salud' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Consultorio médico' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Farmacia' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Botica' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Botiquín comunal' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Otro' ) .'</th>';																		
 									echo '</tr>';
 
 									echo '<tr>';
@@ -145,17 +136,7 @@
 										array("name" => $variable_4 	,"data" => $datas[3]),
 										array("name" => $variable_5 	,"data" => $datas[4]),
 										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),	
-										array("name" => $variable_8 	,"data" => $datas[7]),	
-										array("name" => $variable_9 	,"data" => $datas[8]),	
-										array("name" => $variable_10 	,"data" => $datas[9]),	
-										array("name" => $variable_11 	,"data" => $datas[10]),	
-										array("name" => $variable_12 	,"data" => $datas[11]),	
-										array("name" => $variable_13 	,"data" => $datas[12]),	
-										array("name" => $variable_14 	,"data" => $datas[13]),	
-										array("name" => $variable_15 	,"data" => $datas[14]),	
-										array("name" => $variable_16 	,"data" => $datas[15]),	
-										array("name" => $variable_17 	,"data" => $datas[16]),	);
+										array("name" => $variable_7 	,"data" => $datas[6]),);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

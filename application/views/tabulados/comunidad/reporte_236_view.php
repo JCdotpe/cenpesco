@@ -18,12 +18,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 13 : 15;
+								$cant_v = ($NEP == 0) ? 20 : 21;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR ESTRATEGIAS QUE SE HAN IMPLEMENTADO PARA AFRONTAR LOS PROBLEMAS QUE DIFICULTAN EL DESARROLLO DE LA ACTIVIDAD DE PESCA Y/O ACUICULTURA, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR PROBLEMAS QUE DIFICULTAN EL DESARROLLO DE LA ACTIVIDAD DE PESCA Y/O ACUICULTURA, SEGÚN DEPARTAMENTO, 2013';
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -37,24 +37,30 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Estrategias que se han implementado para afrontar los problemas que dificultan el desarrollo de la actividad de pesca y/o acuicultura</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Problemas que dificultan la actividad de pesca y/o acuicultura</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
 							
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Convenios con instituciones, organizaciones,etc.') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Creación de gremios' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Prohibición de uso de productos Tóxicos' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Prohibición de uso de explosivos' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Control de artes de pesca' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Respetar las tallas mínimas' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Respetar las vedas' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Vigilancia de fuentes hídricas' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Uso compartido de fuentes hídricas entre comunidades' ) .'</th>';
-									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Gestionar equipos que ayuden a preservar los productos hidrobiológicos' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Reciclaje de residuos sólidos' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Proyeccción de relleno sanitario' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Otro' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Cambios climáticos') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Contaminación del agua' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Falta de financiamiento' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Altos costos de equipos, materiales e insumos' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Conflictos por utilización de las fuentes hídricas' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Falta de sistemas de frío para preservar la producción' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Falta de capacitación y asistencia técnica' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Infraestructura inadecuada' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Falta de vías de acceso' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Pesca indiscriminada' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Inseguridad ciudadana' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Uso de productos tóxicos' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Uso de explosivos' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Altos costos de alimentos' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'Altos costos de semilla' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_16 = 'Presencia de enfermedades en peces' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_17 = 'Dificultad para asociarse' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_18 = 'Otro' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_19 = 'Ninguna' ) .'</th>';												
 									echo '</tr>';
 
 									echo '<tr>';
@@ -147,7 +153,13 @@
 										array("name" => $variable_10 	,"data" => $datas[9]),	
 										array("name" => $variable_11 	,"data" => $datas[10]),	
 										array("name" => $variable_12 	,"data" => $datas[11]),	
-										array("name" => $variable_13 	,"data" => $datas[12]),		 );
+										array("name" => $variable_13 	,"data" => $datas[12]),	
+										array("name" => $variable_14 	,"data" => $datas[13]),	
+										array("name" => $variable_15 	,"data" => $datas[14]),	
+										array("name" => $variable_16 	,"data" => $datas[15]),	
+										array("name" => $variable_17 	,"data" => $datas[16]),	
+										array("name" => $variable_18 	,"data" => $datas[17]),	
+										array("name" => $variable_19 	,"data" => $datas[18]),	);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

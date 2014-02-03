@@ -11,11 +11,21 @@ class Export extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper('security');
-		//$this->load->library('PHPExcel');
+		$this->load->library('PHPExcel');
 	}
 
 	public function index()
 	{	
+/*
+		$objReader = PHPExcel_IOFactory::createReader('HTML');
+		$objPHPExcel = $objReader->load($this->input->post("excel_div"));
+
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+		$objWriter->save("myExcelFile.xlsx");
+	*/
+		
+
+
 		$opcion = $this->input->post('reporte_n');
 		if ($opcion >=1 && $opcion <= 99 ) {
 			$filename = "pescador_";
@@ -31,6 +41,8 @@ class Export extends CI_Controller
 		header("Cache-Control: max-age=0");
 		header("Pragma: no-cache");
 		header("Expires: 0");
+
+		$cantidad_var =  ( ($this->input->post("cantidad_var")*2) + (  ($this->input->post("nombre_var") == 'Si' || $this->input->post("nombre_var") == 'SI' ) ? 1 : 0  ) );
 		//echo "</br></br>";<img src="http://192.168.201.217/cenpesco/img/cenpesco.jpg" style="margin-top: 6.5px;">
 		echo  '<table><tr><td width="63px" rowspan="4" colspan="'. ( ($this->input->post("cantidad_var")*2) + (  ($this->input->post("nombre_var") == 'Si' || $this->input->post("nombre_var") == 'SI' ) ? 1 : 0  ) ).'">
 				<img src="'. base_url('img/inei_2.jpeg') .'"  width="195" height="96" />
@@ -41,47 +53,46 @@ class Export extends CI_Controller
 		//echo '<img style="margin-top: 6.5px;" src=" '. base_url('img/inei.png') .'"/>';
 		
 		echo utf8_decode( $this->input->post("excel_div") );	
-  		echo utf8_decode("<tr><td colspan='15'><h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5></td></tr>");	
+		echo "<tr><td colspan='".$cantidad_var."'><h5>". utf8_decode('Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.'). "</h5></td></tr>";	
 	
 		echo "<br><h3>COMENTARIOS</h3><hr>";
-		echo utf8_decode( $this->input->post("textn"));
-		echo '<br>';
-		echo utf8_decode( $this->input->post("textn_2"));
+		echo '<table><tr><td colspan="'.($cantidad_var+1).'" >'. utf8_decode( $this->input->post("textn")) . '</td></tr>';
+		echo '<tr><td colspan="'.($cantidad_var+1).'" >'. utf8_decode( $this->input->post("textn_2")) . '</td></tr></table>';
 		//echo utf8_decode( $this->input->post("metadata_div") );	
 
 		echo '<h3>METADATOS<h3><hr>';
 		echo '<table id="tab_meta" name="tab_meta" >
 			<tr>
-				<td width="30px"><h5>TABULADO </h5></td><td colspan="10" style="padding-left:2em">'. utf8_decode($this->input->post("txt_tabulado") ). '</td>
+				<td width="30px"><h5>TABULADO </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">'. utf8_decode($this->input->post("txt_tabulado") ). '</td>
 			</tr>
 			<tr>
-				<td width="30px"><h5>CONTENIDO </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_contenido") ). '</td>
+				<td width="30px"><h5>CONTENIDO </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_contenido") ). '</td>
 			</tr>
 			<tr>
-				<td width="30px"><h5>CASOS </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_casos") ). '</td>
+				<td width="30px"><h5>CASOS </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_casos") ). '</td>
 			</tr>
 			<tr>
-				<td width="30px"><h5>VARIABLES </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_variables") ). '</td>
+				<td width="30px"><h5>VARIABLES </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_variables") ). '</td>
 			</tr>
 			<tr>
-				<td width="30px"><h5>ALTERNATIVAS </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_alternativas") ). '</td>
+				<td width="30px"><h5>ALTERNATIVAS </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_alternativas") ). '</td>
 			</tr>
 			<tr>
-				<td width="30px"><h5>OTRO </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_otro") ). '</td>
+				<td width="30px"><h5>OTRO </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_otro") ). '</td>
 			</tr>		
 			<tr>
-				<td width="30px"><h5>DATOS FALTANTES </h5></td><td colspan="10" style="padding-left:2em">' .utf8_decode( $this->input->post("txt_faltantes") ). '</td>
+				<td width="30px"><h5>DATOS FALTANTES </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em;vertical-align:middle;">' .utf8_decode( $this->input->post("txt_faltantes") ). '</td>
 			</tr>
 			<tr>
-				<td width="30px"><h5>INSTITUCION </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_productor") ).  '</td>
+				<td width="30px" style="vertical-align:middle;"><h5>INSTITUCION </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_productor") ).  '</td>
 			</tr>		
 			<tr>
-				<td width="30px"><h5>DEFINICIONES </h5></td><td colspan="10" style="padding-left:2em">' . utf8_decode($this->input->post("txt_definiciones") ). '</td>
+				<td width="30px" style="vertical-align:middle;"><h5>DEFINICIONES </h5></td><td colspan="'.$cantidad_var.'" style="padding-left:2em">' . utf8_decode($this->input->post("txt_definiciones") ). '</td>
 			</tr>
 		</table>';
 
 		echo '<br><hr>';
-		echo utf8_decode("<tr><td colspan='15'><h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5></td></tr>");	
+		echo "<tr><td colspan='".$cantidad_var."'><h5>". utf8_decode('Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.'). "</h5></td></tr>";	
 
 
 

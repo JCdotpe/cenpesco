@@ -69,11 +69,11 @@ $(function(){
       		}
       	?>
 		var direccion ;
-		<?php if ($opcion<100) {
+		<?php if ($opcion<=101) {
 			echo 'direccion = "tabulados/pescador/metadata" ;';
-		} else if ($opcion<198){
+		} else if ($opcion<=200){
 			echo 'direccion = "tabulados/acuicultor/metadata" ;';
-		}else if ($opcion<253){
+		}else if ($opcion<=253){
 			echo 'direccion = "tabulados/comunidad/metadata" ;';
 		}; ?>
 	

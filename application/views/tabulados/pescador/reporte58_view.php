@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 4 : 5; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR PERCEPCIÓN EN LA VARIACIÓN DEL TAMAÑO DE LOS PECES, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR PERCEPCIÓN EN LA VARIACIÓN DE LA CANTIDAD DE PECES, SEGÚN DEPARTAMENTO, 2013';
 
 									$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,7 +37,7 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Percepción en la variación del tamaño de los peces</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Percepción en la variación de la cantidad de peces</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';	
@@ -167,6 +167,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 
 

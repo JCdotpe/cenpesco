@@ -18,12 +18,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 13 : 14;
+								$cant_v = ($NEP == 0) ? 10 : 11;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES QUE REALIZAN LA PESCA POR MESES QUE GENERALMENTE REALIZAN SU ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES QUE REALIZAN PESCA Y/O ACUICULTURA POR FUENTES HÍDRICAS DONDE REALIZAN LA EXTRACCIÓN DE ESPECIES HIDROBIOLÓGICAS, SEGÚN DEPARTAMENTO, 2013';
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -37,23 +37,20 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Meses</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Fuentes hídricas donde realizan la extracción de especies hidrobiológicas</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
 							
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Enero') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Febrero' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Marzo' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Abril' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Mayo' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Junio' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Julio' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Agosto' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Setiembre' ) .'</th>';
-									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Octubre' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Noviembre' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Diciembre' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Río') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Lago' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Laguna' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Marisma' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Quebrada' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Cocha' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Reservorio' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'No realizan pesca' ) .'</th>';
 									echo '</tr>';
 
 									echo '<tr>';
@@ -142,10 +139,7 @@
 										array("name" => $variable_6 	,"data" => $datas[5]),
 										array("name" => $variable_7 	,"data" => $datas[6]),	
 										array("name" => $variable_8 	,"data" => $datas[7]),	
-										array("name" => $variable_9 	,"data" => $datas[8]),	
-										array("name" => $variable_10 	,"data" => $datas[9]),	
-										array("name" => $variable_11 	,"data" => $datas[10]),	
-										array("name" => $variable_12 	,"data" => $datas[11]),		);
+										array("name" => $variable_9 	,"data" => $datas[8]),		);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

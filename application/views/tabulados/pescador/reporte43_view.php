@@ -17,32 +17,33 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 4 : 5; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR SI HA SUFRIDO ALGÚN ACCIDENTE DURANTE SU TRABAJO, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR AFILIACIÓN A ALGÚN TIPO DE SEGURO, SEGÚN DEPARTAMENTO, 2013';
 
-								$this->load->view('tabulados/includes/tab_logo_view.php');
+									$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
-									echo '<caption><h3>
-													CUADRO N° '. sprintf("%02d",$opcion) .'
-													<br><strong>
-													'. $c_title  .' </strong>
-									     </h3></caption>';
+										echo '<caption><h3>
+														CUADRO N° '. sprintf("%02d",$opcion) .'
+														<br><strong>
+														'. $c_title  .' </strong>
+										     </h3></caption>';
 
 								echo '<thead>';
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Ha sufrido algún accidente durante su trabajo</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de seguro</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';	
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';											
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Seguro de Vida') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Seguro de Pensiones' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'No esta afiliado' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -125,7 +126,8 @@
 
 						$series = array(
 										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),  );
+										array("name" => $variable_2 	,"data" => $datas[1]),
+										array("name" => $variable_3 	,"data" => $datas[2]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

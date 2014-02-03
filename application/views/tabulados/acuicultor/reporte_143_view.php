@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 4 : 5; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 6 : 7; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
-				    	echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR TIPO DE MANEJO DEL CULTIVO, SEGÚN DEPARTAMENTO, 2013';
+				    		echo form_open("/tabulados/export");
+				    			$c_title = 'PERÚ: ACUICULTORES QUE NO CUENTAN CON PERMISO DE CONCESIÓN, POR RAZONES POR LA QUE NO OBTUVO EL PERMISO, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,14 +37,15 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de manejo</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Razones por la que no obtuvo el permiso</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';						
-
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Extensivo') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Semi-intensivo' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Intensivo' ) .'</th>';						
+									echo '<tr>';	
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'No tiene interés') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Razones económicas' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Trámites engorrosos' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'No conoce el trámite	' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Otro' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -122,25 +123,29 @@
 
 								echo '</tbody>';
 							echo '</table></div>';
+					?>
+					<?php 
 
-							$series = array(
-											array("name" => $variable_1 	,"data" => $datas[0]),
-											array("name" => $variable_2 	,"data" => $datas[1]),
-											array("name" => $variable_3 	,"data" => $datas[2]), );
-							if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+						$series = array(
+										array("name" => $variable_1 	,"data" => $datas[0]),
+										array("name" => $variable_2 	,"data" => $datas[1]),
+										array("name" => $variable_3 	,"data" => $datas[2]),
+										array("name" => $variable_4 	,"data" => $datas[3]), 
+										array("name" => $variable_5 	,"data" => $datas[4]), );
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
-							$data['tipo'] =  'column';// << column >> or << bar >> 
-							$data['xx'] =  2030; // ancho
-							$data['yy'] =  840; // altura
-							$data['series'] =  $series;
-							$data['c_title'] = $c_title;
-							$this->load->view('tabulados/includes/text_view.php'); 
+						$data['tipo'] =  'column';// << column >> or << bar >> 
+						$data['xx'] =  2030; // ancho
+						$data['yy'] =  840; // altura
+						$data['series'] =  $series;
+						$data['c_title'] = $c_title;
+						$this->load->view('tabulados/includes/text_view.php'); 
 
-							$this->load->view('tabulados/includes/metadata_view.php', $data); 
+						$this->load->view('tabulados/includes/metadata_view.php', $data); 
 
 						echo form_close(); 
-					?>					
+					?>
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -166,6 +171,8 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
+
 
 
 

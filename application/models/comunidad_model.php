@@ -212,7 +212,7 @@ class Comunidad_model extends CI_MODEL
   // T A B U L A D O S  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function get_tabulado_200()
+function get_tabulado_201()
 {
       $q = $this->db->query('
           select 
@@ -229,7 +229,7 @@ function get_tabulado_200()
       return $q;
 }
 
-function get_tabulado_201()
+function get_tabulado_202()
 {
       $q = $this->db->query("
           select 
@@ -243,7 +243,7 @@ function get_tabulado_201()
       return $q;
 }
 
-function get_tabulado_202()
+function get_tabulado_203()
 {
       $q = $this->db->query('
           select 
@@ -261,7 +261,7 @@ function get_tabulado_202()
       return $q;
 }
 
-function get_tabulado_203()
+function get_tabulado_204()
 {
       $q = $this->db->query('
           select 
@@ -280,7 +280,7 @@ function get_tabulado_203()
 
 
 
-function get_tabulado_204()
+function get_tabulado_205()
 {
       $q = $this->db->query('
           select 
@@ -298,7 +298,7 @@ function get_tabulado_204()
 
 
 
-function get_tabulado_205()
+function get_tabulado_206()
 {
       $q = $this->db->query('
           select 
@@ -317,7 +317,7 @@ function get_tabulado_205()
 }
 
 
-function get_tabulado_206()
+function get_tabulado_207()
 {
       $q = $this->db->query('
           select 
@@ -336,24 +336,25 @@ function get_tabulado_206()
 }
 
 
-function get_tabulado_207()
+function get_tabulado_208()
 {
       $q = $this->db->query('
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
-          COALESCE(C1.t,0) as INTERRUPCION, COALESCE(C2.t,0) as RESTRINGIDO, COALESCE(C3.t,0) as COSTO,  COALESCE(C4.t,0) as OTRA,  COALESCE(C5.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          DEP.CCDD, DEPARTAMENTO, CO.t  AS TOTAL,  
+          COALESCE(C1.t,0) as INTERRUPCION, COALESCE(C2.t,0) as RESTRINGIDO, COALESCE(C3.t,0) as COSTO,  COALESCE(C4.t,0) as F_MANTENIMIENTO ,  COALESCE(C5.t,0) as OTRA,  COALESCE(C6.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_4 = 9 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_8_5 = 9 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd ;
         ');
       return $q;
 }
 
-function get_tabulado_208()
+function get_tabulado_209()
 {           
       $q = $this->db->query('
           select 
@@ -373,25 +374,27 @@ function get_tabulado_208()
       return $q;
 }
 
-function get_tabulado_209()
+function get_tabulado_210()
 {           /* TABULADO N° 10 ---->destino del desague*/
       $q = $this->db->query('
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
-          COALESCE(C1.t,0) as RIO, COALESCE(C2.t,0) as BOSQUE, COALESCE(C3.t,0) as LAGUNA,  COALESCE(C4.t,0) as CANAL,  COALESCE(C5.t,0) as OTRO,  COALESCE(C6.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,  
+          COALESCE(C1.t,0) as RIO, COALESCE(C2.t,0) as BOSQUE, COALESCE(C3.t,0) as LAGUNA,  COALESCE(C4.t,0) as CANAL,  COALESCE(C5.t,0) as MAR,  COALESCE(C6.t,0) as POZO,  COALESCE(C7.t,0) as OTRO,  COALESCE(C8.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_5 = 9 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd ; 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_10_7 = 9 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd ;
         ');
       return $q;
 }
 
-function get_tabulado_210()
+function get_tabulado_211()
 {         /* TABULADO N° 210 ---->serviocios de la comunicacion */
       $q = $this->db->query('
           select 
@@ -410,14 +413,14 @@ function get_tabulado_210()
       return $q;
 }
 
-function get_tabulado_211()
+function get_tabulado_212()
 {         /* TABULADO N° 12 ---->destino final basura */
       $q = $this->db->query('
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
+          DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,  
           COALESCE(C1.t,0) as RELLENO, COALESCE(C2.t,0) as BOTADERO, COALESCE(C3.t,0) as VERTIDOS,  COALESCE(C4.t,0) as RECICLAJE,  COALESCE(C5.t,0) as QUEMADA,  
-          COALESCE(C6.t,0) as OTRO,COALESCE(C7.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C6.t,0) as ENTERRADA,COALESCE(C7.t,0) as OTRO,COALESCE(C8.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -425,12 +428,13 @@ function get_tabulado_211()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_6 = 9 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd  ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_12_7 = 9 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd   ;
         ');
       return $q;
 }
 
-function get_tabulado_212()
+function get_tabulado_213()
 {         /* TABULADO N° 13 -------> existen minas */
       $q = $this->db->query("
           select 
@@ -445,7 +449,7 @@ function get_tabulado_212()
       return $q;
 }
 
-function get_tabulado_213()
+function get_tabulado_214()
 {         /* TABULADO N° 14 -------> existen hidrocarburos */
       $q = $this->db->query("
           select 
@@ -460,7 +464,7 @@ function get_tabulado_213()
       return $q;
 }
 
-function get_tabulado_214()
+function get_tabulado_215()
 {         /* TABULADO N° 15 -------> existen contaminacion */
       $q = $this->db->query("
           select 
@@ -475,7 +479,7 @@ function get_tabulado_214()
       return $q;
 }
 
-function get_tabulado_215()
+function get_tabulado_216()
 {       /* TABULADO N° 16 ---->tipo de contaminacion*/
       $q = $this->db->query('
           select 
@@ -493,14 +497,14 @@ function get_tabulado_215()
       return $q;
 }
 
-function get_tabulado_216()
+function get_tabulado_217()
 {         /* TABULADO N° 17 ---->origen contaminacion */
       $q = $this->db->query('
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
+          DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,  
           COALESCE(C1.t,0) as BASURA, COALESCE(C2.t,0) as DESAGUES, COALESCE(C3.t,0) as PETROLERAS,  COALESCE(C4.t,0) as MINERAS,  COALESCE(C5.t,0) as PESQUERAS,  COALESCE(C6.t,0) as AGRICOLAS,  
-          COALESCE(C7.t,0) as DETERGENTE, (COALESCE(C8.t,0)  + COALESCE(C9.t,0) ) as OTRO,  COALESCE(C10.t,0) as NEP 
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C7.t,0) as DETERGENTE, COALESCE(C8.t,0) as FABRICA , COALESCE(C9.t,0) as COMERCIO,  COALESCE(C10.t,0) as PECUARIA,  COALESCE(C11.t,0) as TRANSPORTE,  COALESCE(C12.t,0) as QUEMA,  COALESCE(C13.t,0) as OTRO,  COALESCE(C14.t,0) as NEP 
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_1  is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -511,12 +515,16 @@ function get_tabulado_216()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_9 = 1 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_9 = 9 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd  ;  
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_10 = 1 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_11 = 1 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_12 = 1 group by nom_dd) as C12 on DEP.ccdd  = C12.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_13 = 1 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion3 s on c.id = s.comunidad_id  where S3_17_13 = 9 group by nom_dd) as C14 on DEP.ccdd  = C14.ccdd  ;
         ');
       return $q;
 }
 
-function get_tabulado_217()
+function get_tabulado_218()
 {     /* TABULADO N° 18 ---->origen contaminacion */
       $q = $this->db->query('
           select 
@@ -538,7 +546,7 @@ function get_tabulado_217()
       return $q;
 }
 
-function get_tabulado_218()
+function get_tabulado_219()
 {       /* TABULADO N° 19 ---->tipo de violencia*/
       $q = $this->db->query('
           select 
@@ -556,7 +564,7 @@ function get_tabulado_218()
       return $q;
 }
 
-function get_tabulado_219()
+function get_tabulado_220()
 {       /* TABULADO N° 20 ------->  existe centros educativos */
       $q = $this->db->query("
           select 
@@ -571,7 +579,7 @@ function get_tabulado_219()
       return $q;
 }
 
-function get_tabulado_220()
+function get_tabulado_221()
 {          /* TABULADO N° 220 ---->tipo de educacion*/       
       $q = $this->db->query("
           select 
@@ -589,7 +597,7 @@ function get_tabulado_220()
       return $q;
 }
 
-function get_tabulado_221()
+function get_tabulado_222()
 {           /* TABULADO N° 22 ---->servicios en las instituciones*/      
       $q = $this->db->query("
           select 
@@ -617,7 +625,7 @@ function get_tabulado_221()
       return $q;
 }
 
-function get_tabulado_222()
+function get_tabulado_223()
 {          /* TABULADO N° 23 ------->  existe locales de salud */       
       $q = $this->db->query("
           select 
@@ -632,7 +640,7 @@ function get_tabulado_222()
       return $q;
 }
 
-function get_tabulado_223()
+function get_tabulado_224()
 {          /* TABULADO N° 223 ---->origen contaminacion */       
       $q = $this->db->query("
           select 
@@ -653,16 +661,16 @@ function get_tabulado_223()
       return $q;
 }
 
-function get_tabulado_224()
+function get_tabulado_225()
 {          /* TABULADO N° 25 ---->enfermedades accidentes*/       
       $q = $this->db->query("
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL, 
-          COALESCE(C1.t,0) as   TUBERCULOSIS, COALESCE(C2.t,0) as NEUMONIA, COALESCE(C3.t,0) as COLERA,  COALESCE(C4.t,0) as VOMITOS,  COALESCE(C5.t,0) as DESNUTRICION,
+          DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,   
+          COALESCE(C1.t,0) as   TBC, COALESCE(C2.t,0) as NEUMONIA, COALESCE(C3.t,0) as COLERA,  COALESCE(C4.t,0) as VOMITOS,  COALESCE(C5.t,0) as DESNUTRICION,
           COALESCE(C6.t,0) as PARASITOSIS, COALESCE(C7.t,0) as UTA, COALESCE(C8.t,0) as CHUPOS,  COALESCE(C9.t,0) as MALARIA,  COALESCE(C10.t,0) as FIEBRE,
           COALESCE(C11.t,0) as HEPATITIS, COALESCE(C12.t,0) as TIFOIDEA, COALESCE(C13.t,0) as SARAMPION, COALESCE(C14.t,0) as ETS, COALESCE(C15.t,0) as MORDEDURAS, 
-          COALESCE(C16.t,0) as FRACTURAS, COALESCE(C17.t,0) as OTRO, COALESCE(C18.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C16.t,0) as FRACTURAS, COALESCE(C17.t,0) as RESPIRATORIAS, COALESCE(C18.t,0) as OTRO, COALESCE(C19.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_1  is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -681,12 +689,13 @@ function get_tabulado_224()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_15 = 1 group by nom_dd) as C15 on DEP.ccdd  = C15.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_16 = 1 group by nom_dd) as C16 on DEP.ccdd  = C16.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_17 = 1 group by nom_dd) as C17 on DEP.ccdd  = C17.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_1   = 9 group by nom_dd) as C18 on DEP.ccdd  = C18.ccdd ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_18   = 1 group by nom_dd) as C18 on DEP.ccdd  = C18.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_3_18   = 9 group by nom_dd) as C19 on DEP.ccdd  = C19.ccdd ;
         ");
       return $q;
 }
 
-function get_tabulado_225()
+function get_tabulado_226()
 {          /* TABULADO N° 26 ------->  existe afiliacion */       
       $q = $this->db->query("
           select 
@@ -701,14 +710,14 @@ function get_tabulado_225()
       return $q;
 }
 
-function get_tabulado_226()
+function get_tabulado_227()
 {          /* TABULADO N° 27 ---->que organizaciones  */       
       $q = $this->db->query("
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
+          DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,   
           COALESCE(C1.t,0) as C_MADRES, COALESCE(C2.t,0) as A_PADRES, COALESCE(C3.t,0) as RONDAS,  COALESCE(C4.t,0) as A_PESCADORES,  COALESCE(C5.t,0) as A_ACUICULTORES,
-          COALESCE(C6.t,0) as OTRO,  COALESCE(C7.t,0)  as NINGUNO,  COALESCE(C8.t,0)  as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C6.t,0) as A_AGRICULTORES,  COALESCE(C7.t,0)  as OTRO,  COALESCE(C8.t,0)  as NINGUNO,  COALESCE(C9.t,0)  as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -717,49 +726,54 @@ function get_tabulado_226()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_1 = 9 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd ;
-        ");
-      return $q;
-}
-
-function get_tabulado_227()
-{          /* TABULADO N° 28 ---->beneficiados programas*/       
-      $q = $this->db->query("
-          select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL, 
-          COALESCE(C1.t,0) as   V_LECHE, COALESCE(C2.t,0) as C_ALIMENTARIA, COALESCE(C3.t,0) as C_POPULAR,  COALESCE(C4.t,0) as Q_WARMA,  COALESCE(C5.t,0) as TEXTOS,
-          COALESCE(C6.t,0) as SIS, COALESCE(C7.t,0) as PRONAMA, COALESCE(C8.t,0) as P_FAMILIAR,  COALESCE(C9.t,0) as PANTBC,  COALESCE(C10.t,0) as INMUNIZACIONES,
-          COALESCE(C11.t,0) as P_JUNTOS, COALESCE(C12.t,0) as P_SEMBRANDO, COALESCE(C13.t,0) as P_65, COALESCE(C14.t,0) as CUNAMAS, COALESCE(C15.t,0) as OTRO, COALESCE(C16.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_9 = 1 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd  
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_10 = 1 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_11 = 1 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_12 = 1 group by nom_dd) as C12 on DEP.ccdd  = C12.ccdd  
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_13 = 1 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_14 = 1 group by nom_dd) as C14 on DEP.ccdd  = C14.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_15 = 1 group by nom_dd) as C15 on DEP.ccdd  = C15.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_1   = 9 group by nom_dd) as C16 on DEP.ccdd  = C16.ccdd  ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_3_8 = 9 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd ;
         ");
       return $q;
 }
 
 function get_tabulado_228()
-{          /* TABULADO N° 29 ---->actividad*/       
+{          /* TABULADO N° 28 ---->beneficiados programas*/       
+      $q = $this->db->query("
+            select 
+            DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,   
+            COALESCE(C1.t,0) as   V_LECHE, COALESCE(C2.t,0) as C_ALIMENTARIA, COALESCE(C3.t,0) as C_POPULAR,  COALESCE(C4.t,0) as Q_WARMA,  COALESCE(C5.t,0) as TEXTOS,
+            COALESCE(C6.t,0) as SIS, COALESCE(C7.t,0) as PRONAMA, COALESCE(C8.t,0) as P_FAMILIAR,  COALESCE(C9.t,0) as PANTBC,  COALESCE(C10.t,0) as INMUNIZACIONES,
+            COALESCE(C11.t,0) as P_JUNTOS, COALESCE(C12.t,0) as P_SEMBRANDO, COALESCE(C13.t,0) as P_65, COALESCE(C14.t,0) as CUNAMAS, COALESCE(C15.t,0) as FISE, COALESCE(C16.t,0) as OTRO,
+            COALESCE(C17.t,0) as NINGUNO, COALESCE(C18.t,0) as NEP
+            from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_3 = 1 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_9 = 1 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd  
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_10 = 1 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_11 = 1 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_12 = 1 group by nom_dd) as C12 on DEP.ccdd  = C12.ccdd  
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_13 = 1 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_14 = 1 group by nom_dd) as C14 on DEP.ccdd  = C14.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_15 = 1 group by nom_dd) as C15 on DEP.ccdd  = C15.ccdd
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_16   = 1 group by nom_dd) as C16 on DEP.ccdd  = C16.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_17   = 1 group by nom_dd) as C17 on DEP.ccdd  = C17.ccdd 
+            left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion6 s on c.id = s.comunidad_id  where S6_4_17   = 9 group by nom_dd) as C18 on DEP.ccdd  = C18.ccdd  ;
+        ");
+      return $q;
+}
+
+function get_tabulado_229()
+{          /* TABULADO N° 229 ---->actividad*/       
       $q = $this->db->query("
           select 
-          DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL, 
+          DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,   
           COALESCE(C1.t,0) as P_CONTINENTAL, COALESCE(C2.t,0) as A_CONTINENTAL, COALESCE(C3.t,0) as AGRICOLA,  COALESCE(C4.t,0) as PECUARIA,  COALESCE(C5.t,0) as MINERIA,
-          COALESCE(C6.t,0) as CAZA, COALESCE(C7.t,0) as RECOLECCION, COALESCE(C8.t,0) as ARTESANIA,  COALESCE(C9.t,0) as OTRO,  COALESCE(C10.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C6.t,0) as CAZA, COALESCE(C7.t,0) as RECOLECCION, COALESCE(C8.t,0) as ARTESANIA,  COALESCE(C9.t,0) as COMERCIO,  COALESCE(C10.t,0) as CONSTRUCCION,  
+          COALESCE(C11.t,0) as P_MARITIMA,  COALESCE(C12.t,0) as OTRO,  COALESCE(C13.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_1  is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -770,12 +784,15 @@ function get_tabulado_228()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_9 = 1 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_1 = 9 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_10 = 1 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_11 = 1 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_12 = 1 group by nom_dd) as C12 on DEP.ccdd  = C12.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_1_12 = 9 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd ;
         ");
       return $q;
 }
 
-function get_tabulado_229()
+function get_tabulado_230()
 {           /* TABULADO N° 30 ---->pesca en*/      
       $q = $this->db->query("
           select 
@@ -798,7 +815,7 @@ function get_tabulado_229()
       return $q;
 }
 
-function get_tabulado_230()
+function get_tabulado_231()
 {          /* TABULADO N° 31 ---->meses que realizan*/       
       $q = $this->db->query("
           select 
@@ -825,7 +842,7 @@ function get_tabulado_230()
       return $q;
 }
 
-function get_tabulado_231()
+function get_tabulado_232()
 {          /* TABULADO N° 32 ---->meses de mayor productividad*/       
       $q = $this->db->query("
           select 
@@ -852,7 +869,7 @@ function get_tabulado_231()
       return $q;
 }
 
-function get_tabulado_232()
+function get_tabulado_233()
 {          /* TABULADO N° 232 ---->que pezcan? */       
       $q = $this->db->query("
           select 
@@ -881,7 +898,7 @@ function get_tabulado_232()
       return $q;
 }
 
-function get_tabulado_233()
+function get_tabulado_234()
 {            /* TABULADO N° 233 ----> tecnicas*/  
       $q = $this->db->query("
           select 
@@ -898,7 +915,7 @@ function get_tabulado_233()
       return $q;
 }
 
-function get_tabulado_234()
+function get_tabulado_235()
 {          /* TABULADO N° 234 ---->especies acuicolas*/
       $q = $this->db->query("
           select 
@@ -930,7 +947,7 @@ function get_tabulado_234()
       return $q;
 }
 
-function get_tabulado_235()
+function get_tabulado_236()
 {            /* TABULADO N° 235 ---->enfermedades accidentes*/
       $q = $this->db->query("
           select 
@@ -965,15 +982,15 @@ function get_tabulado_235()
       return $q;
 }
 
-function get_tabulado_236()
-{          /* TABULADO N° 236 ---->beneficiados programas*/
+function get_tabulado_237()
+{          /* TABULADO N° 236 ---->afrotnar los problemas*/
       $q = $this->db->query("
           select 
           DEP.CCDD, DEPARTAMENTO, CO.t AS TOTAL,  
           COALESCE(C1.t,0) as   CONVENIOS, COALESCE(C2.t,0) as GREMIOS, COALESCE(C3.t,0) as P_TOXICOS,  COALESCE(C4.t,0) as P_EXPLOSIVOS,  COALESCE(C5.t,0) as CONTROL,
           COALESCE(C6.t,0) as R_TALLAS, COALESCE(C7.t,0) as R_VEDAS, COALESCE(C8.t,0) as VIGILANCIA,  COALESCE(C9.t,0) as F_HIDRICAS,  COALESCE(C10.t,0) as EQUIPOS,
-          COALESCE(C11.t,0) as RECICLAJE, COALESCE(C12.t,0) as R_SANITARIO, COALESCE(C13.t,0) as OTRO, COALESCE(C14.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C11.t,0) as RECICLAJE, COALESCE(C12.t,0) as R_SANITARIO, COALESCE(C13.t,0) as OTRO, COALESCE(C14.t,0) as NINGUNO, COALESCE(C15.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -988,19 +1005,20 @@ function get_tabulado_236()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_11 = 1 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_12 = 1 group by nom_dd) as C12 on DEP.ccdd  = C12.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_13 = 1 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_13 = 9 group by nom_dd) as C14 on DEP.ccdd  = C14.ccdd ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_14 = 1 group by nom_dd) as C14 on DEP.ccdd  = C14.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_9_14 = 9 group by nom_dd) as C15 on DEP.ccdd  = C15.ccdd ;
         ");
       return $q;
 }
 
-function get_tabulado_237()
+function get_tabulado_238()
 {          /* TABULADO N° 237 ---->ESTABLECIMIENTOS*/
       $q = $this->db->query("
           select 
           DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
           COALESCE(C1.t,0) as V_HIELO, COALESCE(C2.t,0) as V_ALIMENTOS, COALESCE(C3.t,0) as V_MEDICAMENTOS,  COALESCE(C4.t,0) as V_ACEITE,  COALESCE(C5.t,0) as V_GASOLINA,
-          COALESCE(C6.t,0) as V_FERRETERIA, COALESCE(C7.t,0) as FRIGORIFICO, COALESCE(C8.t,0) as R_MOTORES,  COALESCE(C9.t,0) as OTRO,  COALESCE(C10.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C6.t,0) as V_FERRETERIA, COALESCE(C7.t,0) as FRIGORIFICO, COALESCE(C8.t,0) as R_MOTORES,  COALESCE(C9.t,0) as OTRO,  COALESCE(C10.t,0) as NINGUNO,  COALESCE(C11.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -1011,12 +1029,13 @@ function get_tabulado_237()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_8 = 1 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_9 = 1 group by nom_dd) as C9 on DEP.ccdd  = C9.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_9 = 9 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_10 = 1 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_10_10 = 9 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd;
         ");
       return $q;
 }
 
-function get_tabulado_238()
+function get_tabulado_239()
 {          /* TABULADO N° 238 -------> existen punto desembarque */
       $q = $this->db->query("
           select 
@@ -1031,7 +1050,7 @@ function get_tabulado_238()
       return $q;
 }
 
-function get_tabulado_239()
+function get_tabulado_240()
 {          /* TABULADO N° 239 ----> tipo de punto desembarque*/
       $q = $this->db->query("
           select 
@@ -1048,15 +1067,16 @@ function get_tabulado_239()
       return $q;
 }
 
-function get_tabulado_240()
-{          /* TABULADO N° 240 ---->equipamiento*/
+function get_tabulado_241()
+{          /* TABULADO N° 241 ---->equipamiento*/
       $q = $this->db->query("
+          /* TABULADO N° 241 ---->equipamiento*/
           select 
           DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
           COALESCE(C1.t,0) as   ALMACEN, COALESCE(C2.t,0) as SSHH, COALESCE(C3.t,0) as S_MANIPULEO,  COALESCE(C4.t,0) as P_HIELO,  COALESCE(C5.t,0) as C_CONSERVACION,
           COALESCE(C6.t,0) as TANQUE, COALESCE(C7.t,0) as MOTOBOMBAS, COALESCE(C8.t,0) as G_ELECTROGENO,  COALESCE(C9.t,0) as S_ALUMBRADO,  COALESCE(C10.t,0) as R_RESIDUOS,
-          COALESCE(C11.t,0) as Z_COMERCIALIZACION, COALESCE(C12.t,0) as OTRO,  COALESCE(C13.t,0) as NEP
-          from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+          COALESCE(C11.t,0) as Z_COMERCIALIZACION, COALESCE(C12.t,0) as OTRO,  COALESCE(C13.t,0) as NINGUNO,  COALESCE(C14.t,0) as NEP
+          from (select  distinct(departamento), ccdd from marco order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_2 = 1 group by nom_dd) as C2 on DEP.ccdd  = C2.ccdd 
@@ -1070,12 +1090,14 @@ function get_tabulado_240()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_10 = 1 group by nom_dd) as C10 on DEP.ccdd  = C10.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_11 = 1 group by nom_dd) as C11 on DEP.ccdd  = C11.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_12 = 1 group by nom_dd) as C12 on DEP.ccdd  = C12.ccdd
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_12 = 9 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd ;
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_13 = 1 group by nom_dd) as C13 on DEP.ccdd  = C13.ccdd 
+          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_13_13 = 9 group by nom_dd) as C14 on DEP.ccdd  = C14.ccdd ;
+
                   ");
       return $q;
 }
 
-function get_tabulado_241()
+function get_tabulado_242()
 {          /* TABULADO N° 241 -------> oficina administrativa */
       $q = $this->db->query("
           select 
@@ -1090,7 +1112,7 @@ function get_tabulado_241()
       return $q;
 }
 
-function get_tabulado_242()
+function get_tabulado_243()
 {          /* TABULADO N° 242 ---->quien lo administra  */
       $q = $this->db->query("
           select 
@@ -1110,7 +1132,7 @@ function get_tabulado_242()
       return $q;
 }
 
-function get_tabulado_243()
+function get_tabulado_244()
 {          /* TABULADO N° 243 ---->servicios de comunicacion  */
       $q = $this->db->query("
           select 
@@ -1128,7 +1150,7 @@ function get_tabulado_243()
       return $q;
 }
 
-function get_tabulado_244()
+function get_tabulado_245()
 {          /* TABULADO N° 244 ------->  capacitacion ? */
       $q = $this->db->query("
           select 
@@ -1143,7 +1165,7 @@ function get_tabulado_244()
       return $q;
 }
 
-function get_tabulado_245()
+function get_tabulado_246()
 {          /* TABULADO N° 245 ---->temas de capacitacion*/
       $q = $this->db->query("
           select 
@@ -1170,7 +1192,7 @@ function get_tabulado_245()
       return $q;
 }
 
-function get_tabulado_246()
+function get_tabulado_247()
 {          /* TABULADO N° 246 ---->quienes capacitaron*/
       $q = $this->db->query("
           select 
@@ -1194,7 +1216,7 @@ function get_tabulado_246()
       return $q;
 }
 
-function get_tabulado_247()
+function get_tabulado_248()
 {          /* TABULADO N° 247 ----> calificacion del ministerio de produccion*/
       $q = $this->db->query("
           select 
@@ -1213,7 +1235,7 @@ function get_tabulado_247()
       return $q;
 }
 
-function get_tabulado_248()
+function get_tabulado_249()
 {          /* TABULADO N° 248 ----> calificacion de FONDOPES*/
       $q = $this->db->query("
           select 
@@ -1233,7 +1255,7 @@ function get_tabulado_248()
       return $q;
 }
 
-function get_tabulado_249()
+function get_tabulado_250()
 {          /* TABULADO N° 249 ----> calificacion de ITP*/
       $q = $this->db->query("
           select 
@@ -1252,7 +1274,7 @@ function get_tabulado_249()
       return $q;
 }
 
-function get_tabulado_250()
+function get_tabulado_251()
 {          /* TABULADO N° 250 ----> calificacion de IMARPE*/
       $q = $this->db->query("
           select 
@@ -1271,7 +1293,7 @@ function get_tabulado_250()
       return $q;
 }
 
-function get_tabulado_251()
+function get_tabulado_252()
 {          /* TABULADO N° 251 ----> calificacion de MINAM*/
       $q = $this->db->query("
           select 
@@ -1290,7 +1312,7 @@ function get_tabulado_251()
       return $q;
 }
 
-function get_tabulado_252()
+function get_tabulado_253()
 {          /* TABULADO N° 252 ----> calificacion de SANIPES*/
       $q = $this->db->query("
           select 

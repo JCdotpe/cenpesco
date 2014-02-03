@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 7 : 8; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 6 : 7; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR AGENTES DE COMERCIALIZACIÓN, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR GANANCIA NETA PROMEDIO MENSUAL, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,16 +37,15 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Agentes de comercialización</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Ganancia neta promedio mensual</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Público en general') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Comerciante minorista' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Comerciante mayorista' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Intermediario nacional' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Intermediario extranjero' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'A los hoteles y restaurantes' ) .'</th>';						
+									echo '<tr>';	
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Hasta S/. 500') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Desde S/. 501 hasta S/. 1,000' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Desde S/. 1,001 hasta S/. 2,000' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Desde S/. 2,001 hasta S/. 3,000' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Más de S/. 3,000' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -132,8 +131,7 @@
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
 										array("name" => $variable_4 	,"data" => $datas[3]), 
-										array("name" => $variable_5 	,"data" => $datas[4]), 
-										array("name" => $variable_6 	,"data" => $datas[5]),    );
+										array("name" => $variable_5 	,"data" => $datas[4]),  );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -173,4 +171,6 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
+
 

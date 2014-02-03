@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 9 : 10; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR TIPO DE ABASTECIMIENTO DE AGUA EN LA VIVIENDA, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR MATERIAL DE CONSTRUCCIÓN PREDOMINANTE EN LAS PAREDES EXTERIORES DE LA VIVIENDA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,18 +37,18 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de abastecimiento de agua en la vivienda</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Material predominante en las paredes exteriores de la vivienda</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';		
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Red pública dentro de la vivienda (agua potable)') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Red pública fuera de la vivienda, pero dentro de la edificación (agua potable)' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Pilón de uso público (agua potable)	' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Camión cisterna u otra similar' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Pozo' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Rio, acequia, manantial, ojo de agua o similar' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Vecino' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro' ) .'</th>';						
+									echo '<tr>';														
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Ladrillo o bloque de cemento') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Piedra o sillar con cal o cemento' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Adobe o tapia' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Caña con barro, ichu con barro' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Piedra con barro' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Madera' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Estera' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro material' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -177,7 +177,6 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 
 
 

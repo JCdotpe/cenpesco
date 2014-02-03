@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR TENENCIA DE PERMISO PARA DESARROLLAR SU ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR PERTENENCIA A ALGUNA ORGANIZACIÓN DE PESCADORES, SEGÚN DEPARTAMENTO, 2013';
 
 						 		$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,7 +37,7 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tiene permiso para desarrollar su actividad de pesca</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Pertenece a alguna organización de pescadores</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
 									echo '<tr>';									
@@ -166,5 +166,4 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
-
 

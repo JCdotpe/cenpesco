@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 6 : 7;
+								$cant_v = ($NEP == 0) ? 7 : 8;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR TIPO DE SERVICIOS DE COMUNICACIÓN CON QUE CUENTA LA OFICINA ADMINISTRATIVA DEL PUNTO DE DESEMBARQUE, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR INSTITUCIÓN U ORGANIZACIÓN QUE ADMINISTRA LA OFICINA ADMINISTRATIVA DEL PUNTO DE DESEMBARQUE, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,16 +37,17 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tipo de servicios de comunicación con que cuenta la oficina administrativa del punto de desembarque</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Institución u organización que administra la oficina administrativa del punto de desembarque</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																																										
 									echo '</tr>';
 							
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Radiofonía') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Telefonía fija' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Telefonía celular' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Internet' ) .'</th>';																
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Ninguno' ) .'</th>';																
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Organización Social de Pescadores Artesanales (OSPA)') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Dirección Regional de Producción (DIREPRO)' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Ministerio de la Producción (PRODUCE)' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Fondo Nacional de Desarrollo Pesquero (FONDEPES)' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Particular o privada' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Otro' ) .'</th>';												
 									echo '</tr>';
 
 									echo '<tr>';
@@ -130,8 +131,9 @@
 										array("name" => $variable_1 	,"data" => $datas[0]),
 										array("name" => $variable_2 	,"data" => $datas[1]),
 										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]), 
-										array("name" => $variable_5 	,"data" => $datas[4]), );
+										array("name" => $variable_4 	,"data" => $datas[3]),
+										array("name" => $variable_5 	,"data" => $datas[4]),
+										array("name" => $variable_6 	,"data" => $datas[5]),	);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

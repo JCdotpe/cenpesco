@@ -20,10 +20,10 @@
 									// 	}
 									$cant_v = ($NEP == 0) ? 27 : 28; // cantidad de variables (incluir NEP y Total)
 								// PREGUNTAS MULTIPLES
-									$respuesta_unica = TRUE;
+									//$respuesta_unica = TRUE;
 
 					    	echo form_open("/tabulados/export");
-					    			$c_title = 'PERÚ: PESCADORES POR LUGAR DE RESIDENCIA EN EL AÑO 2007, SEGÚN DEPARTAMENTO, 2013';
+					    			$c_title = 'PERÚ: PESCADORES POR LUGAR DE NACIMIENTO, SEGÚN DEPARTAMENTO, 2013';
 
 									$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -38,7 +38,7 @@
 											echo '<tr>';
 											echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 											echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-											echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Lugar de residencia en el año 2007</th>';
+											echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Lugar de nacimiento</th>';
 											//echo '<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>';																																														
 											echo '</tr>';
 											echo '<tr>';

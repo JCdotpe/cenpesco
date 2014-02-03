@@ -18,12 +18,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 11 : 12;
+								$cant_v = ($NEP == 0) ? 13 : 14;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES QUE SU POBLACIÓN RECIBIÓ CAPACITACIÓN, POR INSTITUCIÓN QUE LA BRINDÓ, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES QUE SU POBLACIÓN RECIBIÓ CAPACITACIÓN, POR CURSOS O TEMAS RECIBIDOS, SEGÚN DEPARTAMENTO, 2013';
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
 								echo '<div class="row-fluid" style="overflow:auto;"><table border="1" class="table table-striped box-header" id="tabul" >';
@@ -37,21 +37,23 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';	
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Instituciones que brindaron la capacitación</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Cursos o temas recibidos</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';
 									echo '</tr>';
 							
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Ministerio de la Producción') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Fondo Nacional de Desarrollo Pesquero' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Instituto de Investigación de la Amazonía Peruana' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Ministerio del Ambiente' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Servicio Nacional de Sanidad Pesquera' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Instituto del Mar del Perú' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Dirección Regional de la Producción' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Gobierno Regional' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Organización No Gubernamental' ) .'</th>';
-									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Otro' ) .'</th>';																						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Pesca sostenible') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Normatividad' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Normas sanitarias' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Tecnología' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Manejo ambiental' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Programas de producción y/o alimentación' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Manejo de residuos sólidos' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Formalización' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Comercialización' ) .'</th>';
+									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Gestión empresarial' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Biocomercio, comercio justo, acuicultura orgánica' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Otro' ) .'</th>';												
 									echo '</tr>';
 
 									echo '<tr>';
@@ -141,7 +143,9 @@
 										array("name" => $variable_7 	,"data" => $datas[6]),	
 										array("name" => $variable_8 	,"data" => $datas[7]),	
 										array("name" => $variable_9 	,"data" => $datas[8]),	
-										array("name" => $variable_10 	,"data" => $datas[9]),	);
+										array("name" => $variable_10 	,"data" => $datas[9]),	
+										array("name" => $variable_11 	,"data" => $datas[10]),	
+										array("name" => $variable_12 	,"data" => $datas[11]),		);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

@@ -14,15 +14,15 @@
 			    	<?php
 			    			//EVALUAR NEP					
 								$NEP = 0;
-								// foreach ($tables->result() as $value) {
-								// 			$value->NEP ;
-								// }
+								foreach ($tables->result() as $value) {
+											//$NEP += (!isset($value->NEP)) ?  $value->NEP : 0;
+									}
 								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: TRABAJADORES PERMANENTES, POR SEXO, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES QUE EN LOS ÚLTIMOS 12 MESES TUVIERON TRABAJADORES REMUNERADOS A SU CARGO, POR SEXO, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -165,6 +165,7 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
 
 
 

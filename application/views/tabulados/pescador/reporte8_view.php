@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 5 : 6; // cantidad de variables (incluir NEP y Total)
+								$cant_v = ($NEP == 0) ? 9 : 10; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR RAZÓN POR LA QUE ELIGIÓ DESARROLLAR ESTA ACTIVIDAD, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR ACTIVIDAD ECONÓMICA ADICIONAL QUE REALIZA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,14 +37,18 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="8" style="text-align:center">Razón  por lo que eligió ser pescador</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																															
+									echo '<th colspan="16" style="text-align:center">Actividad adicional que realiza</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Tradición familiar') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Posibilidad de desarrollo' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Necesidad económica' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Otro' ) .'</th>';																												
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Agrícola') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Pecuaria' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Acuícola' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Caza' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Construcción' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Comercio' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Otro' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'No tiene otra actividad' ) .'</th>';																							
 									echo '</tr>';
 
 									echo '<tr>';
@@ -127,7 +131,11 @@
 												array("name" => $variable_1 	,"data" => $datas[0]),
 												array("name" => $variable_2 	,"data" => $datas[1]),
 												array("name" => $variable_3 	,"data" => $datas[2]),
-												array("name" => $variable_4 	,"data" => $datas[3]),);
+												array("name" => $variable_4 	,"data" => $datas[3]),
+												array("name" => $variable_5 	,"data" => $datas[4]),
+												array("name" => $variable_6 	,"data" => $datas[5]),
+												array("name" => $variable_7 	,"data" => $datas[6]),
+												array("name" => $variable_8 	,"data" => $datas[7]),	);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -161,11 +169,10 @@
 				  	<!-- FIN MAPA -->
 			</div>
 
-
-
 		</div>
 
 	</div>
-
 </div>
+
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+

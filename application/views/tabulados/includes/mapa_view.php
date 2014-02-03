@@ -1,4 +1,10 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/OpenLayers.js"></script>
+<!-- <script src="<?php echo base_url('js/vendor/jquery.printElement.min.js'); ?>"></script>-->
+<script src="<?php echo base_url('js/vendor/jquery.printElement.js'); ?>"></script>
+
+<link rel="stylesheet"   media="all" href="<?php echo base_url('css/bootstrap.min.css'); ?>">
+<link rel="stylesheet"  type="text/css" media="print,screen" href="<?php echo base_url('css/main.css'); ?>">
+
 <!--<script type="text/javascript"  src="<?php echo base_url('js/openlayers/OpenLayers.js'); ?>"></script>-->
 <!--<script type="text/javascript"  src="cenpesco/js/openlayers/OpenLayers.js"></script>-->
 
@@ -12,7 +18,6 @@
           <div id="feature_map" class="hidden-phone tab-pane active" >
           		<div class="row-fluid">
           				<div class="span2" style="position:relative;top:210px;">
-
 			          			<div> 
 								    <div class="btn-group">
 								        <button class="btn btn-warning">Variables del tabulado</button>
@@ -28,18 +33,20 @@
 				          				 	?>
 								        </ul>
 								    </div>
-
-
 			          			</div >
 			          			<hr>
-
           				</div>
-						<div class="span7">	<div id="map-tematico" class="hidden-phone" style="height:1160px; width:928px; margin: 0 auto !important; border=2px; border-color="> </div> </div>
-						<div class="span3" style="margin-left:0px;"><input class="btn-warning btn" type="button" value="IMPRIMIR" onclick="PrintElem('#map-tematico');" /><div id="image_var" style="position:relative;top:550px;"></div></div>
+						<div class="span7">	<div id="map-tematico" class="hidden-phone" style="height:1020px; width:928px; margin: 0 auto !important;"> </div> </div>
+						<div class="span3" ><input class="btn-warning btn" type="button" value="IMPRIMIR" id="btn_imprimir" /><div id="image_var" style="position:relative;top:550px;"></div></div>
 				</div>
           </div>
 
     </div>
+
+ 
+
+
+
 
 	<script type="text/javascript">
 		var mi_json;
@@ -88,9 +95,11 @@
 			    var tipo_dato = 'PORCENTAJE %'; var resto = 0.1;
 			    if(valor_max>100){tipo_dato = 'ABSOLUTO'; resto = 1;};
 
-			    $("#map-tematico").html('<div><div style="position:absolute;"><div id="img_mapa"style="position:absolute;" class="row-fluid"> </div>  <div id="title"></div> 	</div>	<div id="porcentaje"> <strong>' + tipo_dato + '</strong> </div> 	<div id="cuadro_uno"><div class="cuadro_porc" id="cuadro_num1"></div> </div> <div id="cuadro_dos"><div class="cuadro_porc" id="cuadro_num2"></div> </div>  <div id="cuadro_tres"><div class="cuadro_porc" id="cuadro_num3"></div> </div>  </div>');
-			    $("#img_mapa").append('<div class = "span3" style = "position:relative"><img style="margin-top: 2.5px;height: 103px;" src="<?php echo  base_url('img/inei.gif'); ?>"/>');
-			    $("#img_mapa").append('<div class = "span3 offset6" style = "position:relative;left:120px"><img style="margin-top: 2.5px;height: 103px;" src="<?php echo  base_url('img/cenpesco.png'); ?>"/>');
+			    //$("#map-tematico").html('<div><div style="position:absolute;"><div id="img_mapa"style="position:absolute;" class="row-fluid"> </div>  <div id="title"></div> 	</div>	<div id="porcentaje"> <strong>' + tipo_dato + '</strong> </div> 	<div id="cuadro_uno"><div class="cuadro_porc" id="cuadro_num1"></div> </div> <div id="cuadro_dos"><div class="cuadro_porc" id="cuadro_num2"></div> </div>  <div id="cuadro_tres"><div class="cuadro_porc" id="cuadro_num3"></div> </div>  </div>');
+			    $("#map-tematico").html('<div style="position:relative;"><div ><div id="img_mapa"style="position:absolute;" class="span12"> </div>  </div>	<div id="porcentaje"> <strong>' + tipo_dato + '</strong> </div> 	<div id="cuadro_uno"><div class="cuadro_porc" id="cuadro_num1"></div> </div> <div id="cuadro_dos"><div class="cuadro_porc" id="cuadro_num2"></div> </div>  <div id="cuadro_tres"><div class="cuadro_porc" id="cuadro_num3"></div> </div>  </div>');
+			    $("#img_mapa").append('<div class = "span2" style = "position:relative"><img style="margin-top: 2.5px;height: 103px;" src="<?php echo  base_url('img/inei.gif'); ?>"/>');
+			    $("#img_mapa").append("<div id='title' class='span8' style='margin:0px;'><h3><strong> "+ name_mapa[var_num] + "</strong></h3><div>");			    
+			    $("#img_mapa").append('<div class = "span2" style ="position:relative;"><img style="margin-top: 2.5px;height: 105px;" src="<?php echo  base_url('img/cenpesco.png'); ?>"/>');
 
 			 	// var imagen = new Image();
 			 	// imagen.src = "<?php echo  base_url('img/tabulados/cuadro'.$opcion.'.jpg'); ?>";
@@ -99,12 +108,18 @@
 
 				// }
 
-			    $("#title").html("<h3>MAPA TEMÁTICO N° <?php echo sprintf('%02d', $opcion); ?> </h3><h3><strong> "+ name_mapa[var_num] + "</strong></h3>");
+			    //$("#title").html("<h3>MAPA TEMÁTICO N° <?php echo sprintf('%02d', $opcion); ?> </h3><h3><strong> "+ name_mapa[var_num] + "</strong></h3>");
 			    $("#cuadro_num1").html("<strong>De "+valor_min+" - "+ (valor_medio-resto)+" </strong>");
 			    $("#cuadro_num2").html("<strong>De "+valor_medio+" - "+ (valor_max-resto)+" </strong>");
 			    $("#cuadro_num3").html("<strong>De "+valor_max+" a más </strong>");
 
-			    map_thematic = new OpenLayers.Map('map-tematico', {controls:[]});
+    var options = { 
+
+                  };
+			    map_thematic = new OpenLayers.Map('map-tematico',{
+			    	    controls: [
+				    ]},
+    			options);
 			    var vectors = new OpenLayers.Layer.Vector("vector", {isBaseLayer: true});
 			    map_thematic.addLayers([vectors]);
 
@@ -140,7 +155,7 @@
 						        //    
 					    		
 					    		//createPOLYGON.style = {fill: true, fillColor: thematic, strokeWidth: "1", strokeColor: "#e1e1e1", label:nom};
-					    		createPOLYGON.style = {fill: true, fillColor: thematic, strokeWidth: "1", strokeColor: "#A4A4A4", label:nom};
+					    		createPOLYGON.style = {fill: true, fillColor: thematic, strokeWidth: "1", strokeColor: "#F3C768", label:nom, fontSize:"14"};
 
 					    		vectors.addFeatures(createPOLYGON);
 
@@ -149,10 +164,10 @@
 
 			    // Map Center 
 			    var lon = -75.240009714081; 
-			    var lat = -8.06036873877975;
+			    var lat = -9.050000000075;
 			    var zoom = 6;
-			   
 			    map_thematic.setCenter(new OpenLayers.LonLat(lon, lat), zoom);
+			   //map_thematic.size.h = 300;
 			    
 			} // end init
 
@@ -182,55 +197,47 @@
 					error:function(){console.log('error de imagen al cargar')}, 
 					success: function(){ $("#image_var").html("<img style='margin-top: 2.5px;height: 168px;' src='"+ url +"'  /><hr size='3'>") },
 			});
-			// var image = new Image(); 
-			// image.src = url; alert(url);
-			// if (image.width == 0) {
-			//   alert("no image");
-			// }else{
-			// 	$("#image_var").html("<img style='margin-top: 2.5px;height: 168px;' src='"+ url +"'  /><hr size='3'>");
-			// }
 
 
 
 
 
 
-				
-		    function PrintElem(elem)
-		    {
 
-					// $("#map-tematico").printThis({
-					//       debug: false,              //* show the iframe for debugging
-					//       importCSS: true,          //* import page CSS
-					//       printContainer: true,      //* grab outer container as well as the contents of the selector
-					//       loadCSS: "path/to/my.css", //* path to additional css file
-					//       pageTitle: "",             //* add title to print page
-					//       removeInline: false        //* remove all inline styles from print elements
-					//   });
+		
+
+		    $("#btn_imprimir").click(function () {
+
+		    	$("#map-tematico").printElement({printMode:'popup'});
+
+				// $("#map-tematico").printElement(
+				//             {printMode:'popup',
+				//             overrideElementCSS:[
+				// 		"<?php echo base_url('css/bootstrap.min.css'); ?>",
+				// 		{ href:"<?php echo base_url('css/main.css'); ?>",media:'print'}]
+				//             });
 
 
+		    })
+		    
+		    // function Popup(data) 
+		    // {
+		    //     var mywindow = window.open('', 'my div', 'height=1160,width=928');
+		    //     mywindow.document.write('<html><head><title>my div</title>');
+		    //     /*optional stylesheet*/ //
+		    //     mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>" type="text/css" />');
+		    //     mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />');
+		    //     mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.spacelab.css'); ?>" />');
+		    //     mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/bootstrap-responsive.min.css'); ?>" />');
+		    //     mywindow.document.write('</head><body >');
+		    //     mywindow.document.write(data);
+		    //     mywindow.document.write('</body></html>');
 
-		       		Popup($(elem).html());
-		    }
+		    //     mywindow.print();
+		    //     mywindow.close();
 
-		    function Popup(data) 
-		    {
-		        var mywindow = window.open('', 'my div', 'height=1160,width=928');
-		        mywindow.document.write('<html><head><title>my div</title>');
-		        /*optional stylesheet*/ //
-		        mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/main.css'); ?>" type="text/css" />');
-		        mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.min.css'); ?>" />');
-		        mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/bootstrap.spacelab.css'); ?>" />');
-		        mywindow.document.write('<link rel="stylesheet" href="<?php echo base_url('css/bootstrap-responsive.min.css'); ?>" />');
-		        mywindow.document.write('</head><body >');
-		        mywindow.document.write(data);
-		        mywindow.document.write('</body></html>');
-
-		        mywindow.print();
-		        mywindow.close();
-
-		        return true;
-		    }
+		    //     return true;
+		    // }
 
 		})	
 	</script>

@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 9 : 10; // cantidad de variables (incluir NEP y Total y/o ninguno)
+								$cant_v = ($NEP == 0) ? 8 : 9; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR MATERIAL DE CONSTRUCCIÓN PREDOMINANTE EN LOS TECHOS DE LA VIVIENDA, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR MATERIAL DE CONSTRUCCIÓN PREDOMINANTE EN LOS PISOS DE LA VIVIENDA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,18 +37,18 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Material predominante en los techos de la vivienda</th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Material predominante en los pisos de la vivienda</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
-									echo '<tr>';														
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Concreto armado') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Madera' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Tejas' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Planchas de calamina, fibra de cemento o similares' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Caña o estera con torta de barro' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Estera' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Paja, hojas de palmera, etc' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Otro material' ) .'</th>';						
+									echo '<tr>';													
+																	
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Parquet o madera pulida') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Láminas asfálticas, vinilicos o similares' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Losetas, terrazos o similares' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Madera (entablados)' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Cemento' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Tierra' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Otro material' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -136,8 +136,7 @@
 										array("name" => $variable_4 	,"data" => $datas[3]),
 										array("name" => $variable_5 	,"data" => $datas[4]),
 										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),
-										array("name" => $variable_8 	,"data" => $datas[7]), );
+										array("name" => $variable_7 	,"data" => $datas[6]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -152,7 +151,6 @@
 
 						echo form_close(); 
 					?>
-
 		  		<!-- FIN TABULADO -->
 		  	</div>
 		  
@@ -178,4 +176,6 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
+
 

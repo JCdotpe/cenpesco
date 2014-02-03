@@ -649,31 +649,31 @@ min-height: 22px;
 
 
 #chart_div {
-    background: none repeat scroll 0 0 #FFFFFF;
+    /*background: none repeat scroll 0 0 #FFFFFF;*/
     position:relative;  
     width: 100%; 
     height: 100%;
     padding-top: 10px;  
     /*width:100%;*/
-    border-top: 50px;
     /*display: block;*/
     /*overflow: visible;*/
     padding-bottom: 34px;
-    padding-top: 34px;    
 }
 
 #chart_div_nac {
-    background: none repeat scroll 0 0 #FFFFFF;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /*width: 8em;*/
+    /*background: none repeat scroll 0 0 #FFFFFF;*/
     position:relative;  
     width: 100%; 
     height: 100%;
     padding-top: 10px;  
     /*width:100%;*/
-    border-top: 50px;
     /*display: block;*/
     /*overflow: visible;*/
     padding-bottom: 34px;
-    padding-top: 34px;    
 }
 
 .styled-select select {
@@ -897,18 +897,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF2F2', end
 }
 
 #porcentaje {
-    top: 835px;
+    top: 800px;
     height: 20px;
-    left: 190px;
+    left: 185px;
     position: relative;
-    width: 95px;
+    width: 150px;
+    font-size: 17px !important;
 
 }
 
 #cuadro_uno {
-    top: 840px;
+    top: 810px;
     height: 20px;
-    left: 190px;
+    left: 185px;
     position: relative;
     width: 50px;
 background: #D8E4BC; /* Old browsers */
@@ -931,9 +932,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#D8E4BC', end
 }
 
 #cuadro_dos {
-    top: 855px;
+    top: 825px;
     height: 20px;
-    left: 190px;
+    left: 185px;
     position: relative;
     width: 50px;
 background: #95B3D7 ; /* Old browsers */
@@ -955,9 +956,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#95B3D7', end
 }
 
 #cuadro_tres {
-    top: 870px;
+    top: 840px;
     height: 20px;
-    left: 190px;
+    left: 185px;
     position: relative;
     width: 50px;
 background: #E26B0A; /* Old browsers */
@@ -980,7 +981,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##E26B0A', en
 .cuadro_porc {
     left: 65px;
     position: relative;
-    width: 150px;
+    width: 180px;
+    font-size: 17px !important;
 }
 
 
@@ -988,19 +990,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##E26B0A', en
     font-size: 18px;
     position: relative;
     text-align: center;
-    top: 60px;
-    width: 916px;  
+
 }
 
 #img_mapa{
-      height: 250px;
-      position: absolute;
+      /*height: 150px;
+      position: absolute;*/
      /* left: 182px;
       top: 1000px;  */
 }
 
 #map-tematico{
-    border: 3px solid black;
+    /*border: 3px solid black;*/
     background: #FFFFFF;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;

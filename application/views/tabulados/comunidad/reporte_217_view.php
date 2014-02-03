@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 8 : 9;
+								$cant_v = ($NEP == 0) ? 14 : 15;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = FALSE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: COMUNIDADES POR CONOCIMIENTO DE LAS CONSECUENCIAS DE LA CONTAMINACIÓN AMBIENTAL QUE EXISTE, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: COMUNIDADES POR ORIGEN DE LA CONTAMINACIÓN AMBIENTAL QUE EXISTE, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,18 +37,24 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Consecuencias de la contaminación ambiental</th>';
-									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																																										
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Origen de la contaminación ambiental</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																																									
 									echo '</tr>';
-							
+																		
 									echo '<tr>';															
-									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Deforestación') .'</th>';										
-									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Enfermedades' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Mortandad de peces' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Alejamiento de animales' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Pérdida de biodiversidad' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Alteración del ecosistema acuático' ) .'</th>';						
-									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Otro' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Basura') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Desagües' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Actividades de empresas petroleras' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Actividades de empresas mineras' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Actividades de empresas pesqueras' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Uso de productos agrícolas' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Lavado de ropa (Detergentes)' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Actividades de fabrica' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_9 = 'Actividades comerciales' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Actividades pecuarías' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Actividades de transportes' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Quema de vegetación pastizales rastrojos' ) .'</th>';						
+									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Otro' ) .'</th>';						
 									echo '</tr>';
 
 									echo '<tr>';
@@ -56,9 +62,9 @@
 									echo '<th style="text-align:center">Abs</th>';										
 									echo '<th style="text-align:center;">%</th>';					
 										}						
-									echo '</tr>';									
-								echo '</thead>';
+									echo '</tr>';
 
+								echo '</thead>';
 								echo '<tbody>';
 
 									$x = 1; $z = 0;  $u = 0; 
@@ -129,13 +135,20 @@
 							echo '</table></div>';
 
 								$series = array(
-										array("name" => $variable_1 	,"data" => $datas[0]),
-										array("name" => $variable_2 	,"data" => $datas[1]),
-										array("name" => $variable_3 	,"data" => $datas[2]),
-										array("name" => $variable_4 	,"data" => $datas[3]),
-										array("name" => $variable_5 	,"data" => $datas[4]),
-										array("name" => $variable_6 	,"data" => $datas[5]),
-										array("name" => $variable_7 	,"data" => $datas[6]),	);
+												array("name" => $variable_1 	,"data" => $datas[0]),
+												array("name" => $variable_2 	,"data" => $datas[1]),
+												array("name" => $variable_3 	,"data" => $datas[2]),
+												array("name" => $variable_4 	,"data" => $datas[3]),
+												array("name" => $variable_5 	,"data" => $datas[4]),
+												array("name" => $variable_6 	,"data" => $datas[5]),
+												array("name" => $variable_7 	,"data" => $datas[6]),
+												array("name" => $variable_8 	,"data" => $datas[7]),	
+												array("name" => $variable_9 	,"data" => $datas[7]),	
+												array("name" => $variable_10 	,"data" => $datas[9]),	
+												array("name" => $variable_11 	,"data" => $datas[10]),	
+												array("name" => $variable_12 	,"data" => $datas[11]),	
+												array("name" => $variable_13 	,"data" => $datas[12]),	
+												);
 								if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 
@@ -148,9 +161,8 @@
 
 								$this->load->view('tabulados/includes/metadata_view.php', $data);
 
-
 						echo form_close(); 
-					?>
+					?>					
 		  		
 		  		<!-- FIN TABULADO -->
 		  	</div>

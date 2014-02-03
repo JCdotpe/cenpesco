@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES QUE CONOCEN EL SEGURO INTEGRAL DE SALUD, POR AFILIACIÓN, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES QUE CONOCEN EL RÉGIMEN ESPECIAL DE SEGURO MÉDICO DEL PESCADOR EN ESSALUD, POR AFILIACIÓN, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -165,4 +165,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
 

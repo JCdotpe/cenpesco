@@ -11,18 +11,18 @@
 		<div class="tab-content" style="clear:both">
 		  	<div class="tab-pane active" id="tabulado">
 				<!-- INICIO TABULADO -->
-				    	<?php 
-				    			//EVALUAR NEP					
-									$NEP = 0;
-									foreach ($tables->result() as $value) {
-												$NEP += $value->NEP;
-										}
-									$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
-								// PREGUNTAS MULTIPLES
-									$respuesta_unica = TRUE;
+			    	<?php 
+			    			//EVALUAR NEP					
+								$NEP = 0;
+								foreach ($tables->result() as $value) {
+											$NEP += $value->NEP;
+									}
+								$cant_v = ($NEP == 0) ? 3 : 4; // cantidad de variables (incluir NEP y Total)
+							// PREGUNTAS MULTIPLES
+								//$respuesta_unica = TRUE;
 
-					    		echo form_open("/tabulados/export");
-					    			$c_title = 'PERÚ: HIJOS DE PESCADORES QUE TIENEN ALGÚN TIPO DE DIFICULTAD O LIMITACIÓN PERMANENTE PARA DESARROLLAR SUS ACTIVIDADES DIARIAS, SEGÚN DEPARTAMENTO, 2013';
+				    		echo form_open("/tabulados/export");
+				    			$c_title = 'PERÚ: HIJOS DE PESCADORES QUE DEPENDEN ECONÓMICAMENTE DE ÉL, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -33,26 +33,26 @@
 													'. $c_title  .' </strong>
 									     </h3></caption>';
 
-									echo '<thead>';
-										echo '<tr>';
-										echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
-										echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-										echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Tiene algún tipo de dificultad o limitación permanente para desarrollar sus actividades diarias</th>';
-										echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
-										echo '</tr>';
-										echo '<tr>';									
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';						
-										echo '</tr>';
+								echo '<thead>';
+									echo '<tr>';
+									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
+									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Depende económicamente del pescador</th>';
+									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
+									echo '</tr>';
+									echo '<tr>';									
+									echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Si') .'</th>';										
+									echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'No' ) .'</th>';						
+									echo '</tr>';
 
-										echo '<tr>';
-											for ($i=1; $i <=$cant_v ; $i++) { 
-										echo '<th style="text-align:center">Abs</th>';										
-										echo '<th style="text-align:center;">%</th>';					
-											}																															
-										echo '</tr>';
-									echo '</thead>';
-									echo '<tbody>';
+									echo '<tr>';
+										for ($i=1; $i <=$cant_v ; $i++) { 
+									echo '<th style="text-align:center">Abs</th>';										
+									echo '<th style="text-align:center;">%</th>';					
+										}																															
+									echo '</tr>';
+								echo '</thead>';
+								echo '<tbody>';
 
 									$x = 1; $z = 0;  $u = 0;
 									$totales = array_fill(1, $cant_v,0); 
@@ -118,28 +118,28 @@
 									echo '</tr>';
 									echo '</tr>';
 
-									echo '</tbody>';
-								echo '</table></div>';
-						?>
-						<?php 
+								echo '</tbody>';
+							echo '</table></div>';
+					?>
+					<?php 
 
-							$series = array(
-											array("name" => $variable_1 	,"data" => $datas[0]),
-											array("name" => $variable_2 	,"data" => $datas[1]),);
-							if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
+						$series = array(
+										array("name" => $variable_1 	,"data" => $datas[0]),
+										array("name" => $variable_2 	,"data" => $datas[1]),);
+						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
-							
-							$data['tipo'] =  'column';// << column >> or << bar >> 
-							$data['xx'] =  2030; // ancho
-							$data['yy'] =  840; // altura
-							$data['series'] =  $series;
-							$data['c_title'] = $c_title;
-							$this->load->view('tabulados/includes/text_view.php'); 
+						
+						$data['tipo'] =  'column';// << column >> or << bar >> 
+						$data['xx'] =  2030; // ancho
+						$data['yy'] =  840; // altura
+						$data['series'] =  $series;
+						$data['c_title'] = $c_title;
+						$this->load->view('tabulados/includes/text_view.php'); 
 
-							$this->load->view('tabulados/includes/metadata_view.php', $data); 
+						$this->load->view('tabulados/includes/metadata_view.php', $data); 
 
-							echo form_close(); 
-						?>
+						echo form_close(); 
+					?>
 
 		  		<!-- FIN TABULADO -->
 		  	</div>
@@ -166,4 +166,5 @@
 </div>
 
  <?php $this->load->view('convocatoria/includes/footer_view.php'); ?>
+
 

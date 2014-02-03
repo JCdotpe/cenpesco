@@ -78,10 +78,27 @@ function get_dptos (){
     function get_nombre_tabulados()
     {
     $q = $this->db->query('
-        select * from nombre_tabulados order by n; 
+        select * from tabulados_nombre order by n; 
     ');
     return $q;
     }
+    //TIPO DE GRAFICO
+function get_tipo_respuesta($nu_tab){
+    $this->db->select('fl_respuesta');
+    $this->db->where('nu_cuadro',$nu_tab);
+    $q = $this->db->get('tabulados_tipo_respuesta');
+    if ($q->num_rows()==1) {
+        if ($q->row('fl_respuesta') == 'UNICO' || $q->row('fl_respuesta') == 'ÚNICO') {
+            return true;
+        }else{
+            return false;
+        }
+    }else{
+        return false;
+    }
+}
+
+
 
 /* TABULADO 01*/
 // function get_report1($a = null, $b = null){
@@ -97,22 +114,23 @@ function get_dptos (){
 //     return $q;
 // }
 function get_report1(){//( coalesce(c1.t,0) + coalesce(c2.t,0) + coalesce( C3.t,0)) TOTAL,
-        /* //total de pescadores y acuicultores, incluyendo los ambos en cada uno
+        /* //total de pescadores y acuicultores, incluyendo los ambos en cada uno*/
+    $q = $this->db->query('
         select  DEP.CCDD, DEPARTAMENTO,   coalesce(C1.t,0) PESCADOR, (coalesce(C2.t,0) -  coalesce(C3.t,0) ) ACUICULTOR, coalesce(C3.t,0) AMBOS 
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP
         left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=1 and res!=3 group by ccdd) as C1 on DEP.ccdd = C1.ccdd
         left join (select ccdd, count(*) as t from acu_seccion1 group by ccdd) as C2  on DEP.ccdd = C2.ccdd     
         left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=3 and res!=3 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;       
-
-        */
-    $q = $this->db->query('
-        select  DEP.CCDD, DEPARTAMENTO, ( coalesce(c1.t,0) + coalesce(c2.t,0) ) TOTAL,  coalesce(c1.t,0) PESCADOR, (coalesce(c2.t,0)) ACUICULTOR, coalesce(C3.t,0) AMBOS
-        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP
-        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id  group by ccdd) as C1 on DEP.ccdd = C1.ccdd
-        left join (select ccdd, count(*) as t from acu_seccion1 group by ccdd) as C2  on DEP.ccdd = C2.ccdd     
-        left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=0 and res!=0 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;         
- 
                     ');
+        
+    // $q = $this->db->query('
+    //     select  DEP.CCDD, DEPARTAMENTO, ( coalesce(c1.t,0) + coalesce(c2.t,0) ) TOTAL,  coalesce(c1.t,0) PESCADOR, (coalesce(c2.t,0)) ACUICULTOR, coalesce(C3.t,0) AMBOS
+    //     from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP
+    //     left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id  group by ccdd) as C1 on DEP.ccdd = C1.ccdd
+    //     left join (select ccdd, count(*) as t from acu_seccion1 group by ccdd) as C2  on DEP.ccdd = C2.ccdd     
+    //     left join (select ccdd, count(*) as t from pescador p inner join  pesc_info s on p.id = s.pescador_id where  tac=0 and res!=0 group by ccdd) as C3 on DEP.ccdd = C3.ccdd;         
+    //                 ');
+
     return $q;
 }
 
@@ -132,8 +150,28 @@ function get_report2(){
     return $q;
 }
 
+function get_report3(){
+    $q = $this->db->query("     
+        /* TABULADO N° 03 ---------------- grupo de edades ------------------------ new()*/
+        select 
+        DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t,0) AS TOTAL,  
+        COALESCE(C1.t,0) as '8_19', COALESCE(C2.t,0) as '20_31', COALESCE(C3.t,0) as '32_43', COALESCE(C4.t,0) as '44_55', COALESCE(C5.t,0) as '56_67',
+        COALESCE(C6.t,0) as '68_MAS', COALESCE(C7.t,0) as  NEP
+        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A != 9999 and (2013 - s2_2A)  between 8 and 19 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A != 9999 and(2013 - s2_2A)  between 20 and 31 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A != 9999 and(2013 - s2_2A)  between 32 and 43 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A != 9999 and(2013 - s2_2A)  between 44 and 55 group by nom_dd  ) as C4 on DEP.ccdd  = C4.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A != 9999 and(2013 - s2_2A)  between 56 and 67 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A != 9999 and(2013 - s2_2A)  between 68 and 98 group by nom_dd  ) as C6 on DEP.ccdd  = C6.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_2A = 9999 group by nom_dd  ) as C7 on DEP.ccdd  = C7.ccdd ;
+        ");
+    return $q;
+}
 
-function get_report3(){ /* TABULADO N° 03 - lugar de nacimiento*/
+
+function get_report4(){ /* TABULADO N° 03 - lugar de nacimiento*/
 	$q = $this->db->query("       
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t,0) AS TOTAL,  
@@ -174,7 +212,7 @@ function get_report3(){ /* TABULADO N° 03 - lugar de nacimiento*/
     return $q;
 }
 
-function get_report4(){/* TABULADO N° 04 - en el 2007*/
+function get_report5(){/* TABULADO N° 04 - en el 2007*/
     $q = $this->db->query("       
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t,0) AS TOTAL,  
@@ -215,7 +253,7 @@ function get_report4(){/* TABULADO N° 04 - en el 2007*/
     return $q;
 }
 
-function get_report5(){
+function get_report6(){
 	$q = $this->db->query("
         /* TABULADO N° 05 ---------------- NIVEL DE estudios------------------------*/
         select 
@@ -237,7 +275,7 @@ function get_report5(){
     return $q;
 }
 
-function get_report6(){
+function get_report7(){
     $q = $this->db->query("
         /* TABULADO N° 06 - tipo de actividad*/
         select 
@@ -253,7 +291,7 @@ function get_report6(){
 }
 
 
-function get_report7(){
+function get_report8(){
     $q = $this->db->query("
         /* TABULADO N° 07 - OTRO ACTIVIDAD*/
         select 
@@ -276,24 +314,25 @@ function get_report7(){
 }
 
 
-function get_report8(){
+function get_report9(){
     $q = $this->db->query("
         /* TABULADO N° 08 ------------------------RAZON DE ELECCION  --------------------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
-        COALESCE(C1.t,0) as T_FAMILIAR, COALESCE(C2.t,0) as P_DESARROLLO, COALESCE(C3.t,0) as N_ECONOMICA, COALESCE(C4.t,0) as OTRO, COALESCE(C5.t,0) NEP
+        COALESCE(C1.t,0) as T_FAMILIAR, COALESCE(C2.t,0) as P_DESARROLLO, COALESCE(C3.t,0) as N_ECONOMICA, COALESCE(C4.t,0) as AFICCION, COALESCE(C5.t,0) OTRO, COALESCE(C6.t,0) NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_15 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ;
         ");
     return $q;
 }
 
-function get_report9(){
+function get_report10(){
     $q = $this->db->query("
         /* TABULADO N° 09 ------------------------AÑOS DE ACTIVIDAD  --------------------------------------*/
         select 
@@ -311,13 +350,13 @@ function get_report9(){
 }
 
 
-function get_report10(){
+function get_report11(){
     $q = $this->db->query("
         /* TABULADO N° 10  ------------------------ PROGRAMA SOCIAL  --------------------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
         COALESCE(C1.t,0) as V_LECHE, COALESCE(C2.t,0) as C_POPULAR, COALESCE(C3.t,0) as QALI_WARMA, COALESCE(C4.t,0) as SIS, COALESCE(C5.t,0) as P_JUNTOS,
-        COALESCE(C6.t,0) as P_65, COALESCE(C7.t,0) as CUNA_MAS, COALESCE(C8.t,0) as OTRO, COALESCE(C9.t,0) NINGUNO, COALESCE(C10.t,0) NEP
+        COALESCE(C6.t,0) as P_65, COALESCE(C7.t,0) as CUNA_MAS, COALESCE(C8.t,0) as FISE, COALESCE(C9.t,0) TECHO_DIGNO, COALESCE(C10.t,0) OTRO, COALESCE(C11.t,0) NINGUNO, COALESCE(C12.t,0) NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -329,12 +368,14 @@ function get_report10(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_9 = 9 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_10 = 1 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_11 = 1 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion2 s on a.id = s.pescador_id  where s2_17_11 = 9 group by nom_dd ) as C12 on DEP.ccdd  = C12.ccdd ;
         ");
     return $q;
 }
 
-function get_report11(){
+function get_report12(){
     $q = $this->db->query("
         /* TABULADO N° 11  ------------------------ ESTADO CIVIL  --------------------------------------*/
         select 
@@ -355,7 +396,7 @@ function get_report11(){
 }
 
 
-function get_report12(){
+function get_report13(){
     $q = $this->db->query("
         /* TABULADO N° 12 ---------------- NIVEL DE estudios CONYUGUE------------------------*/
         select 
@@ -377,7 +418,7 @@ function get_report12(){
     return $q;
 }
 
-function get_report13(){
+function get_report14(){
     $q = $this->db->query("
         /* TABULADO N° 13  ------------------------ OTRA ACTIVIDAD DEL CONYUGUE  --------------------------------------*/
         select 
@@ -401,7 +442,7 @@ function get_report13(){
 }
 
 
-function get_report14(){
+function get_report15(){
     $q = $this->db->query("
         /* TABULADO N° 14 ------------------- TENENCIA DE HIJOS -------------------------------*/
         select 
@@ -416,7 +457,7 @@ function get_report14(){
     return $q;
 }
 
-function get_report15(){
+function get_report16(){
     $q = $this->db->query("
         /* TABULADO N° 15  ------------------------ NUMERO DE HIJOS  --------------------------------------*/
         select 
@@ -440,7 +481,7 @@ function get_report15(){
     return $q;
 }
 
-function get_report16(){
+function get_report17(){
     $q = $this->db->query("
         /* TABULADO N° 16  ------------------------ SEXO DE HIJOS  --------------------------------------*/
         select 
@@ -491,7 +532,7 @@ function get_report16(){
     return $q;
 }
 
-function get_report17(){
+function get_report18(){
     $q = $this->db->query("
         /* TABULADO N° 17  ------------------------ EDAD DE HIJOS  --------------------------------------*/
         SELECT  table1.CCDD, table1.DEPARTAMENTO, (MENOS_1 + 1_5 + 6_10 +  11_15 + 16_20 + MAS_20 + NEP) as TOTAL, MENOS_1,1_5, 6_10, 11_15, 16_20, MAS_20, NEP FROM
@@ -609,7 +650,7 @@ function get_report17(){
     return $q;
 }
 
-function get_report18(){
+function get_report19(){
     $q = $this->db->query("
         /* TABULADO N° 18  ------------------------ HIJOS VIVEN CON PESCADOR  --------------------------------------*/
         select 
@@ -660,7 +701,7 @@ function get_report18(){
     return $q;
 }
 
-function get_report19(){
+function get_report20(){
     $q = $this->db->query("
         /* TABULADO N° 19  ------------------------ HIJOS  DEPENDEN DEL PESCADOR  --------------------------------------*/
         select 
@@ -711,7 +752,7 @@ function get_report19(){
     return $q;
 }
 
-function get_report20(){
+function get_report21(){
     $q = $this->db->query("
         /* TABULADO N° 20  ------------------------ HIJOS   DEL PESCADOR CON LIMITACIONES  --------------------------------------*/
         select 
@@ -762,7 +803,7 @@ function get_report20(){
     return $q;
 }
 
-function get_report21(){
+function get_report22(){
     $q = $this->db->query("
         /* TABULADO N° 21  ------------------------ NIVEL DE ESTUDIOS DE LOS HIJOS  --------------------------------------*/
         SELECT  table1.CCDD, table1.DEPARTAMENTO, 
@@ -947,7 +988,7 @@ function get_report21(){
     return $q;
 }
 
-function get_report22(){
+function get_report23(){
     $q = $this->db->query("
         /* TABULADO N° 22  ------------------------ HIJOS   DEL PESCADOR ASISTEN AL COLEGIO  --------------------------------------*/
         select 
@@ -997,7 +1038,7 @@ function get_report22(){
     return $q;
 }
 
-function get_report23(){
+function get_report24(){
     $q = $this->db->query("
         /* TABULADO N° 23  ------------------------ HIJOS   DEL PESCADOR TIPO COLEGIO  QUE ASISTEN  --------------------------------------*/
         select 
@@ -1046,7 +1087,7 @@ function get_report23(){
     return $q;
 }
 
-function get_report24(){
+function get_report25(){
     $q = $this->db->query("
         /* TABULADO N° 24  ------------------------ ACTIVIDAD DE LOS HIJOS  --------------------------------------*/
         SELECT  table1.CCDD, table1.DEPARTAMENTO, 
@@ -1215,13 +1256,13 @@ function get_report24(){
     return $q;
 }
 
-function get_report25(){
+function get_report26(){
     $q = $this->db->query("
         /* TABULADO N° 25 ---------------- LA VIVIEDSA que ocupa------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
         COALESCE(C1.t,0) as ALQUILADA, COALESCE(C2.t,0) as PROPIA_INV, COALESCE(C3.t,0) as PROPIA_PAG, COALESCE(C4.t,0) as PROPIA_TOT, COALESCE(C5.t,0) as CEDIDA,
-        COALESCE(C6.t,0) as OTRA, COALESCE(C7.t,0) as NEP
+        COALESCE(C6.t,0) as FAMILIAR, COALESCE(C7.t,0) as OTRA, COALESCE(C8.t,0) as NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1230,18 +1271,19 @@ function get_report25(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 9 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd  ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 9 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd  ;
         ");
     return $q;
 }
 
-function get_report26(){
+function get_report27(){
     $q = $this->db->query("
         /* TABULADO N° 26 ---------------- MATERIAL PAREDES------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
-        COALESCE(C1.t,0) as LADRILLO, COALESCE(C2.t,0) as PIEDRA, COALESCE(C3.t,0) as ADOBE, COALESCE(C4.t,0) as CAÑA, COALESCE(C5.t,0) as PIEDRA_BARRO,
-        COALESCE(C6.t,0) as MADERA, COALESCE(C7.t,0) as ESTERA, COALESCE(C8.t,0) as OTRA, COALESCE(C9.t,0) NEP
+        COALESCE(C1.t,0) as LADRILLO, COALESCE(C2.t,0) as PIEDRA, COALESCE(C3.t,0) as ADOBE, COALESCE(C4.t,0) as CANIA, COALESCE(C5.t,0) as PIEDRA_BARRO,
+        COALESCE(C6.t,0) as MADERA, COALESCE(C7.t,0) as ESTERA, COALESCE(C8.t,0) as CANIA_SIN_BARRO, COALESCE(C9.t,0) OTRA, COALESCE(C10.t,0) NO_TIENE, COALESCE(C11.t,0) NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1252,12 +1294,14 @@ function get_report26(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 8 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 10 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_200 = 99 group by nom_dd ) as C11 on DEP.ccdd  = C11.ccdd ;
         ");
     return $q;
 }
 
-function get_report27(){
+function get_report28(){
     $q = $this->db->query("
         /* TABULADO N° 27 ---------------- MATERIAL PISOS------------------------*/
         select 
@@ -1278,7 +1322,7 @@ function get_report27(){
     return $q;
 }
 
-function get_report28(){
+function get_report29(){
     $q = $this->db->query("
         /* TABULADO N° 28 ---------------- MATERIAL TECHOS------------------------*/
         select 
@@ -1300,7 +1344,7 @@ function get_report28(){
     return $q;
 }
 
-function get_report29(){
+function get_report30(){
     $q = $this->db->query("
         /* TABULADO N° 29 ---------------- ABASTECIMIENTO AGUA VIVIENDA------------------------*/
         select 
@@ -1322,7 +1366,7 @@ function get_report29(){
     return $q;
 }
 
-function get_report30(){
+function get_report31(){
     $q = $this->db->query("
         /* TABULADO N° 30 -AGUA TODOS LOS DIAS*/
         select 
@@ -1337,7 +1381,7 @@ function get_report30(){
     return $q;
 }
 
-function get_report31(){
+function get_report32(){
     $q = $this->db->query("
         /* TABULADO N° 31 ----------------TIPO DE SERVICIO DE LA VIVIEDA------------------------*/
         select 
@@ -1358,7 +1402,7 @@ function get_report31(){
     return $q;
 }
 
-function get_report32(){
+function get_report33(){
     $q = $this->db->query("
         /* TABULADO N° 32 --------- ALUMBRADO TODOS LOS DIAS -----------------*/
         select 
@@ -1373,7 +1417,7 @@ function get_report32(){
     return $q;
 }
 
-function get_report33(){
+function get_report34(){
     $q = $this->db->query("
         /* TABULADO N° 33 -------------------------- ELECTRODOMESTICOS-------------------------*/
         select 
@@ -1398,7 +1442,7 @@ function get_report33(){
     return $q;
 }
 
-function get_report34(){
+function get_report35(){
     $q = $this->db->query("
         /* TABULADO N° 34 -------------------------- SERVICIOS DE COMUNICACION-------------------------*/
         select 
@@ -1417,7 +1461,7 @@ function get_report34(){
     return $q;
 }
 
-function get_report35(){
+function get_report36(){
     $q = $this->db->query("
         /* TABULADO N° 35 --------- ESPACIO0 PARA OTROS INGRESOS -----------------*/
         select 
@@ -1432,7 +1476,7 @@ function get_report35(){
     return $q;
 }
 
-function get_report36(){
+function get_report37(){
     $q = $this->db->query("
         /* TABULADO N° 36 ---------  CONOCE SEGURO SALUD -----------------*/
         select 
@@ -1447,24 +1491,25 @@ function get_report36(){
     return $q;
 }
 
-function get_report37(){
+function get_report38(){
     $q = $this->db->query("
         /* TABULADO N° 37 -------------------------- CUALES CONOCE -------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
-        COALESCE(C1.t,0) as ESSALUD, COALESCE(C2.t,0) as SIS, COALESCE(C3.t,0) as EPS, COALESCE(C4.t,0) as OTRO, COALESCE(C5.t,0) as  NEP
+        COALESCE(C1.t,0) as PES_ESSALUD, COALESCE(C2.t,0) as SIS, COALESCE(C3.t,0) as EPS, COALESCE(C4.t,0) as ESSALUD, COALESCE(C5.t,0) as  OTRO, COALESCE(C6.t,0) as  NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_4 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where s4_2_5 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd;
         ");
     return $q;
 }
 
-function get_report38(){
+function get_report39(){
     $q = $this->db->query("
         /* TABULADO N° 38 ---------  AFILIADO A ESSALUD -----------------*/
         select 
@@ -1479,7 +1524,7 @@ function get_report38(){
     return $q;
 }
 
-function get_report39(){
+function get_report40(){
     $q = $this->db->query("
         /* TABULADO N° 39 ---------  AFILIADO A SIS -----------------*/
         select 
@@ -1494,7 +1539,7 @@ function get_report39(){
     return $q;
 }
 
-function get_report40(){
+function get_report41(){
     $q = $this->db->query("
         /* TABULADO N° 40 ---------  AFILIADO A EPS  -----------------*/
         select 
@@ -1509,9 +1554,22 @@ function get_report40(){
     return $q;
 }
 
+function get_report42(){
+    $q = $this->db->query("
+        /* TABULADO N° 42 ---------  AFILIADO A ESSALUD  ----------------- NEW*/
+        select 
+        DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL,  
+        COALESCE(C1.t,0) as SI, COALESCE(C2.t,0) as 'NO',  COALESCE(C3.t,0) NEP
+        from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where S4_2_4 =1 group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where S4_2_4_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where S4_2_4_1 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion4 s on a.id = s.pescador_id  where S4_2_4_1 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd ;        
+        ");
+    return $q;
+}
 
-
-function get_report41(){
+function get_report43(){
     $q = $this->db->query("
         /* TABULADO N° 41 -------------------------- CONOCE SEGURO -------------------------*/
         select 
@@ -1527,7 +1585,7 @@ function get_report41(){
     return $q;
 }
 
-function get_report42(){
+function get_report44(){
     $q = $this->db->query("
         /* TABULADO N° 42  -------------------------- EN 12 MESE ENFERMEDAD -------------------------*/
         select 
@@ -1542,7 +1600,7 @@ function get_report42(){
     return $q;
 }
 
-function get_report43(){
+function get_report45(){
     $q = $this->db->query("
         /* TABULADO N° 43  -------------------------- EN 12 MESE ACCIDENTE -------------------------*/
         select 
@@ -1559,7 +1617,7 @@ function get_report43(){
 
 
 
-function get_report44(){
+function get_report46(){
     $q = $this->db->query("
         /* TABULADO N° 44  --------------------------  DIFICULTADES O LIMITACIONES   -------------------------*/
         select 
@@ -1580,13 +1638,13 @@ function get_report44(){
 }
 
 
-function get_report45(){
+function get_report47(){
     $q = $this->db->query("
         /* TABULADO N° 45 -------------------------- FUENTE -------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
         COALESCE(C1.t,0) as RIO, COALESCE(C2.t,0) as LAGO, COALESCE(C3.t,0) as LAGUNA, COALESCE(C4.t,0) as MARISMA, COALESCE(C5.t,0) as QUEBRADA,
-        COALESCE(C6.t,0) as COCHA, COALESCE(C7.t,0) as RESERVORIO, COALESCE(C8.t,0) as OTRO, COALESCE(C9.t,0)  NEP
+        COALESCE(C6.t,0) as COCHA, COALESCE(C7.t,0) as RESERVORIO, COALESCE(C8.t,0) as CANAL, COALESCE(C9.t,0)  OTRO, COALESCE(C10.t,0)  NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1597,12 +1655,13 @@ function get_report45(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_8 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_9 = 1 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_1_9 = 9 group by nom_dd ) as C10 on DEP.ccdd  = C10.ccdd;
         ");
     return $q;
 }
 
-function get_report46(){
+function get_report48(){
     $q = $this->db->query("
         /* TABULADO N° 46 --------- ZONA PESCA  -----------------*/
         select 
@@ -1617,7 +1676,7 @@ function get_report46(){
     return $q;
 }
 
-function get_report47(){
+function get_report49(){
     $q = $this->db->query("
         /* TABULADO N° 47 -------------------------- TIEMPO DESPLAZARSE  -------------------------*/
         select 
@@ -1635,7 +1694,7 @@ function get_report47(){
 }
 
 
-function get_report48(){
+function get_report50(){
     $q = $this->db->query("
         /* TABULADO N° 48 -------------------------- TIEMPO FAENAS  -------------------------*/
         select 
@@ -1652,7 +1711,7 @@ function get_report48(){
     return $q;
 }
 
-function get_report49(){
+function get_report51(){
     $q = $this->db->query("
         /* TABULADO N° 49 -------------------------- REDES  -------------------------*/
         select 
@@ -1675,13 +1734,13 @@ function get_report49(){
     return $q;
 }
 
-function get_report50(){
+function get_report52(){
     $q = $this->db->query("
-        /* TABULADO N° 50 -------------------------- APAREJOS -------------------------*/
+        /* TABULADO N° 52 -------------------------- APAREJOS -------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
-        COALESCE(C1.t,0) as LINEAS, COALESCE(C2.t,0) as ARPON, COALESCE(C3.t,0) as FARPA, COALESCE(C4.t,0) as ESPINELES, COALESCE(C5.t,0) as OTRO,
-        COALESCE(C6.t,0) as NEP
+        COALESCE(C1.t,0) as LINEAS, COALESCE(C2.t,0) as ARPON, COALESCE(C3.t,0) as FARPA, COALESCE(C4.t,0) as ESPINELES, COALESCE(C5.t,0) as FLECHAS,
+        COALESCE(C6.t,0) as OTRO,COALESCE(C6.t,0) as NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_10 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_10 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1689,29 +1748,32 @@ function get_report50(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_12 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_13 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_14 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_14 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_15 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_5_15 = 9 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd;
+
         ");
     return $q;
 }
 
-function get_report51(){
+function get_report53(){
     $q = $this->db->query("
-        /* TABULADO N° 51 -------------------------- TRAMPA -------------------------*/
+        /* TABULADO N° 53 -------------------------- TRAMPA -------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL,    
-        COALESCE(C1.t,0) as NASA, COALESCE(C2.t,0) as TAPAJE, COALESCE(C3.t,0) as OTRO, COALESCE(C4.t,0)  as NEP
+        COALESCE(C1.t,0) as NASA, COALESCE(C2.t,0) as TAPAJE, COALESCE(C3.t,0) as MANUAL, COALESCE(C4.t,0) as OTRO, COALESCE(C5.t,0)  as NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_15 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_15 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_16 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_17 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_17 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_16 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_16 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_17 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_18 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_19 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where S5_5_19 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ;
         ");
     return $q;
 }
 
 
-function get_report52(){
+function get_report54(){
     $q = $this->db->query("
                     select 
                     DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
@@ -1740,7 +1802,7 @@ function get_report52(){
 }
 
 
-function get_report53(){
+function get_report55(){
     $q = $this->db->query("
         /* TABULADO N° 53 --------- CONDICION   -----------------*/
         select 
@@ -1756,24 +1818,25 @@ function get_report53(){
 }
 
 
-function get_report54(){
+function get_report56(){
     $q = $this->db->query("
-        /* TABULADO N° 54 -------------------------- LUGAR DE DESEMBARQUE -------------------------*/
+        /* TABULADO N° 56 -------------------------- LUGAR DE DESEMBARQUE -------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL,
-        COALESCE(C1.t,0) as PUERTO, COALESCE(C2.t,0) as PLAYA, COALESCE(C3.t,0) as DESEMBARQUERO, COALESCE(C4.t,0) as OTRO, COALESCE(C5.t,0) as  NEP
+        COALESCE(C1.t,0) as PUERTO, COALESCE(C2.t,0) as PLAYA, COALESCE(C3.t,0) as DESEMBARQUERO, COALESCE(C4.t,0) as RIBERA, COALESCE(C5.t,0) as  OTRO, COALESCE(C6.t,0) as  NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_4 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion5 s on a.id = s.pescador_id  where s5_8_5 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd;
         ");
     return $q;
 }
 
-function get_report55(){
+function get_report57(){
     $q = $this->db->query("
         /* TABULADO N° 55  -------------------------- PROBLEMAS EN ACTIVIDAD -------------------------*/
         select 
@@ -1804,7 +1867,7 @@ function get_report55(){
     return $q;
 }
 
-function get_report56(){
+function get_report58(){
     $q = $this->db->query("
         /* TABULADO N° 56 -------------------------- PERCEPCION  CANTIDAD -------------------------*/
         select 
@@ -1821,7 +1884,7 @@ function get_report56(){
 }
 
 
-function get_report57(){
+function get_report59(){
     $q = $this->db->query("
         /* TABULADO N° 57 -------------------------- PERCEPCION  TAMAÑO -------------------------*/
         select 
@@ -1838,7 +1901,7 @@ function get_report57(){
 }
 
 
-function get_report58(){
+function get_report60(){
     $q = $this->db->query("
         /* TABULADO N° 58 -------------------------- PERCEPCION  VARIEDAD -------------------------*/
         select 
@@ -1854,7 +1917,7 @@ function get_report58(){
     return $q;
 }
 
-function get_report59(){
+function get_report61(){
     $q = $this->db->query("
         /* TABULADO N° 59 --------- PERTENECE ORGANIZACION  -----------------*/
         select 
@@ -1869,7 +1932,7 @@ function get_report59(){
     return $q;
 }
 
-function get_report60(){
+function get_report62(){
     $q = $this->db->query("
         /* TABULADO N° 60 -------------------------- BENEFICIOS  -------------------------*/
         select 
@@ -1889,7 +1952,7 @@ function get_report60(){
     return $q;
 }
 
-function get_report61(){
+function get_report63(){
     $q = $this->db->query("
         /* TABULADO N° 61 --------- CUENTA CON PERMISO -----------------*/
         select 
@@ -1905,7 +1968,7 @@ function get_report61(){
 }
 
 
-function get_report62(){
+function get_report64(){
     $q = $this->db->query("
         /* TABULADO N° 62 ---------   PERMISO VIGENTE  -----------------*/
         select 
@@ -1921,7 +1984,7 @@ function get_report62(){
 }
 
 
-function get_report63(){
+function get_report65(){
     $q = $this->db->query("
         /* TABULADO N° 63 ---------   PERTENECE A MAS ORGANIZACIONES  -----------------*/
         select 
@@ -1936,7 +1999,7 @@ function get_report63(){
     return $q;
 }
 
-function get_report64(){
+function get_report66(){
     $q = $this->db->query("
         /* TABULADO N° 64 -------------------------- COMO FINANCIO -------------------------*/
         select 
@@ -1954,7 +2017,7 @@ function get_report64(){
 }
 
 
-function get_report65(){
+function get_report67(){
     $q = $this->db->query("
         /* TABULADO N° 65 -------------------------- FUE OTORGADO   -------------------------*/
         select 
@@ -1975,7 +2038,7 @@ function get_report65(){
 }
 
 
-function get_report66(){
+function get_report68(){
     $q = $this->db->query("
         /* TABULADO N° 66  -------------------------- MESES MAYOR PRODUCCION -------------------------*/
         select 
@@ -2002,7 +2065,7 @@ function get_report66(){
     return $q;
 }
 
-function get_report67(){
+function get_report69(){
     $q = $this->db->query("
         /* TABULADO N° 67 -------------------------- DESTINO PESCA -------------------------*/
         select 
@@ -2019,7 +2082,7 @@ function get_report67(){
     return $q;
 }
 
-function get_report68(){                    /* TABULADO N° 68 -------------------------- PECES QUE VENDIERON -------------------------*/
+function get_report70(){                    /* TABULADO N° 68 -------------------------- PECES QUE VENDIERON -------------------------*/
     $q = $this->db->query("
                     SELECT  table1.CCDD, table1.DEPARTAMENTO,  TOTAL,
                     Acarahuazu , Bagre , Boquichico , Camaron_rio , Carachama , Carachi_amarillo , Doncella , Fasaco  , Lisa , Palometa , Pejerrey , Sabalo , Tilapia , Trucha , Zungaro  FROM
@@ -2266,7 +2329,7 @@ function get_report68(){                    /* TABULADO N° 68 -----------------
     return $q;
 }
 
-function get_report69(){
+function get_report71(){
     $q = $this->db->query("
         /* TABULADO N° 69 -------------------------- GANANCIA PROMEDIO   -------------------------*/
         select 
@@ -2287,7 +2350,7 @@ function get_report69(){
 
 
 
-function get_report70(){
+function get_report72(){
     $q = $this->db->query("
         /* TABULADO N° 70 -------------------------- DONDE VENDIO  -------------------------*/
         select 
@@ -2304,7 +2367,7 @@ function get_report70(){
     return $q;
 }
 
-function get_report71(){
+function get_report73(){
     $q = $this->db->query("
         /* TABULADO N° 71 ----------------QUIEN VENDIO ------------------------*/
         select 
@@ -2324,7 +2387,7 @@ function get_report71(){
     return $q;
 }
 
-function get_report72(){
+function get_report74(){
     $q = $this->db->query("
         /* TABULADO N° 72 ----------------COMO VENDIO  ------------------------*/
         select 
@@ -2336,13 +2399,13 @@ function get_report72(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_9_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_9_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_9_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_9_4 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion7 s on a.id = s.pescador_id  where S7_9_4 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ;
         ");
     return $q;
 }
 
 
-function get_report73(){
+function get_report75(){
     $q = $this->db->query("
         /* TABULADO N° 73 ---------------- PRESENTACION   ------------------------*/
         select 
@@ -2359,7 +2422,7 @@ function get_report73(){
     return $q;
 }
 
-function get_report74(){
+function get_report76(){
     $q = $this->db->query("
         /* TABULADO N° 74  -------------------------- CONOCE TEMAS : -------------------------*/
         select 
@@ -2382,7 +2445,7 @@ function get_report74(){
     return $q;
 }
 
-function get_report75(){
+function get_report77(){
     $q = $this->db->query("
         /* TABULADO N° 75  -------------------------- RECIBIO CAPACITACION  -------------------------*/
         select 
@@ -2397,7 +2460,7 @@ function get_report75(){
     return $q;
 }
 
-function get_report76(){
+function get_report78(){
     $q = $this->db->query("
         /* TABULADO N° 76  -------------------------- QUIEN BRINDO CAPACITACION -------------------------*/
         select 
@@ -2422,7 +2485,7 @@ function get_report76(){
     return $q;
 }
 
-function get_report77(){
+function get_report79(){
     $q = $this->db->query("
         /* TABULADO N° 77  -------------------------- CONOCE TEMAS : -------------------------*/
         select 
@@ -2445,7 +2508,7 @@ function get_report77(){
     return $q;
 }
 
-function get_report78(){
+function get_report80(){
     $q = $this->db->query("
         /* TABULADO N° 78  -------------------------- CALIFICACION APOYO AL MINISTERIO  -------------------------*/
         select 
@@ -2465,7 +2528,7 @@ function get_report78(){
     return $q;
 }
 
-function get_report79(){
+function get_report81(){
     $q = $this->db->query("
         /* TABULADO N° 79  -------------------------- CALIFICACION APOYO AL FONDEPES  -------------------------*/
         select 
@@ -2485,7 +2548,7 @@ function get_report79(){
     return $q;
 }
 
-function get_report80(){
+function get_report82(){
     $q = $this->db->query("
         /* TABULADO N° 80  -------------------------- CALIFICACION APOYO AL ITP  -------------------------*/
         select 
@@ -2506,7 +2569,7 @@ function get_report80(){
 }
 
 
-function get_report81(){
+function get_report83(){
     $q = $this->db->query("
         /* TABULADO N° 81  -------------------------- CALIFICACION APOYO AL IMARPE  -------------------------*/
         select 
@@ -2526,7 +2589,7 @@ function get_report81(){
     return $q;
 }
 
-function get_report82(){
+function get_report84(){
     $q = $this->db->query("
         /* TABULADO N° 82  -------------------------- CALIFICACION APOYO AL MINAM  -------------------------*/
         select 
@@ -2546,7 +2609,7 @@ function get_report82(){
     return $q;
 }
 
-function get_report83(){
+function get_report85(){
     $q = $this->db->query("
         /* TABULADO N° 83  -------------------------- CALIFICACION APOYO AL SANPES  -------------------------*/
         select 
@@ -2566,7 +2629,7 @@ function get_report83(){
     return $q;
 }
 
-function get_report84(){
+function get_report86(){
     $q = $this->db->query("
         /* TABULADO N° 84 ---------  TRABAJA CON EMBARCACIONES  -----------------*/
         select 
@@ -2581,7 +2644,7 @@ function get_report84(){
     return $q;
 }
 
-function get_report85(){
+function get_report87(){
     $q = $this->db->query("
         /* TABULADO N° 85  -------------------------- NUMERO EMBARCACIONES  -------------------------*/
         select 
@@ -2600,7 +2663,7 @@ function get_report85(){
     return $q;
 }
 
-function get_report86(){
+function get_report88(){
     $q = $this->db->query("
         /* TABULADO N° 86 --------------------------  EMBARCACION  ES : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -2691,7 +2754,7 @@ function get_report86(){
     return $q;
 }
 
-function get_report87(){
+function get_report89(){
     $q = $this->db->query("
         /* TABULADO N° 87 -------------------------- TIPO EMBARCACION  -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -2806,7 +2869,7 @@ function get_report87(){
     return $q;
 }
 
-function get_report88(){
+function get_report90(){
     $q = $this->db->query("
         /* TABULADO N° 88 -------------------------- TIPO MATERIAL  -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -2933,7 +2996,7 @@ function get_report88(){
     return $q;
 }
 
-function get_report89(){
+function get_report91(){
     $q = $this->db->query("
         /* TABULADO N° 89 --------------------------  EMBARCACION  ESTADO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3013,7 +3076,7 @@ function get_report89(){
 }
 
 
-function get_report90(){
+function get_report92(){
     $q = $this->db->query("
         /* TABULADO N° 90  --------------------------  EMBARCACION EN MANTENIMIENTO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3104,7 +3167,7 @@ function get_report90(){
     return $q;
 }
 
-function get_report91(){
+function get_report93(){
     $q = $this->db->query("
         /* TABULADO N° 91 --------------------------  EMBARCACION  PERMISO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3159,7 +3222,7 @@ function get_report91(){
     return $q;
 }
 
-function get_report92(){
+function get_report94(){
     $q = $this->db->query("
         /* TABULADO N° 92 --------------------------  EMBARCACION  PROTOCOLO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3215,7 +3278,7 @@ function get_report92(){
 }
 
 
-function get_report93(){
+function get_report95(){
     $q = $this->db->query("
         /* TABULADO N° 93 --------------------------  EMBARCACION  PROTOCOLO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3271,7 +3334,7 @@ function get_report93(){
 }
 
 
-function get_report94(){
+function get_report96(){
     $q = $this->db->query("
         /* TABULADO N° 94 --------------------------  SE DESPLAZA : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3338,7 +3401,7 @@ function get_report94(){
     return $q;
 }
 
-function get_report95(){
+function get_report97(){
     $q = $this->db->query("
         /* TABULADO N° 95 --------------------------  EMBARCACION  MOTOR : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3394,7 +3457,7 @@ function get_report95(){
 }
 
 
-function get_report96(){
+function get_report98(){
     $q = $this->db->query("
         /* TABULADO N° 96 --------------------------  EMBARCACION  TIPO COMBUSTIBLE : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3449,7 +3512,7 @@ function get_report96(){
     return $q;
 }
 
-function get_report97(){
+function get_report99(){
     $q = $this->db->query("
         /* TABULADO N° 97 --------------------------  EMBARCACION TIPO BODEGA : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3528,7 +3591,7 @@ function get_report97(){
     return $q;
 }
 
-function get_report98(){
+function get_report100(){
     $q = $this->db->query("
         /* TABULADO N° 98 --------------------------  BODEGA INSULADA : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
@@ -3583,7 +3646,7 @@ function get_report98(){
     return $q;
 }
 
-function get_report99(){
+function get_report101(){
     $q = $this->db->query("
         /* TABULADO N° 99 --------------------------  TIPO HIELO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,

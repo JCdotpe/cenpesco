@@ -45,8 +45,7 @@
 			<div class="styled-select">
 			   <select id="cbo_type_graph_nac">
 			      <option value="0">Gráfico de barras</option>
-			      <option value="1">Gráfico de paste</option>
-			      <!-- <option value="6">Gráfico de barras</option> -->
+			      <?php if($respuesta_unica){echo '<option value="1">Gráfico de paste</option>'; } ?>
 			   </select>
 			</div>
 		</div>		
@@ -65,8 +64,8 @@
 </div>
 <div  class="row-fluid" style="overflow:auto;" id="chart_parent">
 
-    	<div class="chart-inner" id="chart_div" style=" height: 800px; margin: 0 auto;"></div>
-    	<div class="chart-inner" id="chart_div_nac" style="width:1200px;margin-left:260px;"></div>
+    	<div class="chart-inner" id="chart_div" style=" height: 720px; margin: 0 auto;"></div>
+    	<div class="chart-inner" id="chart_div_nac" style="width:1200px;"></div><!--margin-left:260px;-->
 
 </div>
 
@@ -76,7 +75,8 @@
 	// variables declarados para MAPA y GRAFICOS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 	// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-		var cant_variables 	= <?php echo count($series);?>;
+		var cant_variables 	= <?php echo ( ($opcion==1) ? count($series) : count($series)-1 ) ;?>;
+		var tipo_graph_nac = 'column';
 		var num_tabulado = <?php echo $opcion;?>;
 		var name_dep = ['Amazonas','Ancash','Apurímac','Arequipa','Ayacucho','Cajamarca','Cusco','Huancavelica','Huánuco','Ica','Junín','La Libertad','Lambayeque','Lima','Loreto','Madre de Dios','Moquegua','Pasco','Piura','Puno' ,'San Martín','Tacna','Tumbes', 'Ucayali'];
 		var name_dep_sorter = new Array();
@@ -85,6 +85,7 @@
 
 		var valor_nac 		= []; // arreglo de valores nacionales
 		var valor_nac_sorter 		= []; // arreglo de valores nacionales
+		var data_pie_valor_nac = [];
 		var valor_nac_abs 	= new Array(); // arreglo de valores nacionales
 		var valor_nac_abs_sorter 	= new Array(); // arreglo de valores nacionales
 		var valor_dep  = new Array();			
@@ -103,7 +104,9 @@
 	// <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 	$(function(){
-
+			if (cant_variables>7){
+				tipo_graph_nac = 'bar';
+			}
 	        var chart;
 	        var chart_nac;
 			
@@ -123,41 +126,64 @@
 					$v++;
 				}						
 				
-					
-
-
-				// GUARDANDO LOS VALORES NACIONALES Y NOMBRES VARIABLES,  EN SORTER
-				$cant_variables = count($series);
-				arsort($series[$cant_variables-1]['data']);
-				$cc = 0;
-				foreach ($series[$cant_variables-1]['data'] as $key => $value) {
-					if ($key == 1){
-						echo 'total_nacional = '. $value . ';';
-					}else{
-						echo 'valor_nac_sorter['. $cc .'] = '. $value . ';';
-						echo 'name_var_sorter['. $cc .'] = name_var['. ($key-2) . '];';$cc++;
-					}
-				}
-				array_pop($series);// QUITANDO LOS TOTALES
-
 				// GUARDANDO ABSOLUTO Y PORCENTUAL NACIONALES  ----------------------------------------------------
+				$cant_variables = count($series);
 				if($opcion >1){
 				$a = 3; 
-				$p = 4;}
+				$p = 4;
+				$cant_variables-=1;}// << no contar los totales
 				else{// totales especiales solo TAB N°1
 				$a = 1; 
 				$p = 2;}
 				
-				for ($i=0; $i < count($series); $i++) {
+				for ($i=0; $i < $cant_variables; $i++) {
 					$a = 1 + $a; 
 					$p = 1 + $p;
 					echo 'valor_nac_abs['.$i.']  =  ($("#tabul tbody tr:first-child td:nth-child('.$a.')").html()).replace(" ","");';
 					echo 'valor_nac['.$i.']  = parseFloat((($("#tabul tbody tr:first-child td:nth-child('.$p.')").html()).replace(",",".") ).replace(" ",""));';
+					echo 'data_pie_valor_nac['.$i.'] = [name_var['. $i .'],valor_nac['. $i .']];';
 					$a++;
 					$p++;
+				}					
+
+
+				// GUARDANDO LOS VALORES NACIONALES Y NOMBRES VARIABLES,  EN SORTER
+				if($opcion >1 ){
+					$cant_variables = count($series);
+					arsort($series[$cant_variables-1]['data']);
+					$cc = 0;
+					foreach ($series[$cant_variables-1]['data'] as $key => $value) {
+						if ($key == 1){
+							echo 'total_nacional = '. $value . ';';
+						}else{
+							echo 'valor_nac_sorter['. $cc .'] = '. $value . ';';
+							echo 'valor_nac_abs_sorter['. $cc .'] = valor_nac_abs[ '. ($key-2). '];';
+							echo 'name_var_sorter['. $cc .'] = name_var['. ($key-2) . '];';$cc++;
+							//echo 'data_pie_valor_nac['.$cc.'] = [name_var_sorter['. $cc .'],valor_nac_sorter['. $cc .']];';
+						}
+					}
+					array_pop($series);// QUITANDO LOS TOTALES
+				}else{
+					echo 	'name_var_sorter = name_var;';
+					echo 	'valor_nac_abs_sorter = valor_nac_abs;';
+					echo 	'var sum_nac = 0;var sum_nac_2 = 0;';
+					echo 	'for(var i = 0; i < valor_nac_abs.length; i++) {
+							    sum_nac += parseInt(valor_nac_abs[i]);
+							}';					
+					echo 	'for(var i = 0; i < valor_nac_abs.length; i++) {
+							    valor_nac_sorter[i] = parseFloat(((parseInt(valor_nac_abs[i])*100)/sum_nac).toFixed(1));
+							}';
+					echo 	'for(var i = 0; i < valor_nac_sorter.length; i++) {
+							    sum_nac_2 += parseFloat(valor_nac_sorter[i]);
+							}';	
+					echo 	'var nac_diff = (100-sum_nac_2).toFixed(1);';
+					echo 	'if(nac_diff>0){valor_nac_sorter[valor_nac_sorter.length-1] += parseFloat(nac_diff);alert(nac_diff);}
+							else if(nac_diff<0){valor_nac_sorter[0] += parseFloat(nac_diff); }';
+
+					echo 	'for(var i = 0; i < valor_nac_sorter.length; i++) {
+							    data_pie_valor_nac[i] = [name_var_sorter[i],valor_nac_sorter[i]];
+							}';	
 				}
-
-
 
 				// GUARDANDO ABSOLUTO DE LOS DEPARTAMENTALES -----------------------------------------------------
 				if($opcion >1){ $d = 3; }// totales especiales solo TAB N°1
@@ -203,11 +229,11 @@
 			    	} 
 			    };	
 			};	
+			console.log(valor_nac_sorter);
 
-			//$(document).ready(function() {
 			//******************************************************************************************************************************************************************************************
 			//******************************************************************************************************************************************************************************************		
-			//START chart
+			//START chart DEPARTAMENTAL
 	            chart = new Highcharts.Chart({
 
 		                chart: {
@@ -215,34 +241,29 @@
 		                    type: '<?php echo $tipo; ?>',
 		                    plotBorderWidth: 0,
 		                    marginRight: <?php echo (string) ($tipo == 'bar') ? 210 : 10 ; ?>,
-		                    marginBottom:  170,
-		                    marginTop:160,
+		                    marginLeft:80,
+		                    marginBottom:  120,
+		                    marginTop:150,
 		                    paddingTop:20,
-
 		                },
 		                title: {
-		                    text: 'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + '', 
+		                	//useHTML: true,
+		                	y:40,
+		                	text: name_mapa[0]  ,
+		                    //text: 'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + '', 
 		                    style: {
-								//color: '#3E576F',
-								fontSize: '28px',							
-							},  
-							marginTop:'60',         
-		                },	                
-		                subtitle: {
-		                    text: name_mapa[0] + "<br>[Porcentaje]",
-		                    useHTML: true,
-						    style: {
-						        //color: '#000000',
-						        //fontWeight: 'bold',
-						        fontSize:  "<?php echo ( ( strlen($c_title)<94) ? '32px' : '23px' ) ; ?>" , 
 				                'white-space': 'normal',
 				                left: '0px',
 				                top: '0px',
-				                position: 'absolute',						        
-					    	}		                    
-		                },			                
+				                position: 'absolute',			                    	
+								fontSize:  "<?php echo ( ( strlen($c_title)<94) ? '26px' : '22px' ) ; ?>" ,
+								color: '#000000',						
+							},  
+							//marginTop:'60',         
+		                },	                		                
 		                xAxis: {
-		                	lineWidth:2,
+		                   	lineWidth:1,
+		                    lineColor:'black',	
 						    title: {
 						        //text: 'DEPARTAMENTOS',
 			                    style: {
@@ -256,19 +277,23 @@
 					    	labels: {
 					    		rotation:330,
 						        style: {
-						            fontSize: '16px',
+						            fontSize: '13px',
+						            color: '#000000',
 						        }					    		
 					    	},	
 		                    tickLength: 1,
 		                    tickWidth: 1,					    				    	                    
 						},
 		                yAxis: {
+		                	allowDecimals: false,
+		                	tickInterval: 10,
 		                    min: 0,
 		                    max:100,
 		                    gridLineWidth: 0,
-		                    lineWidth:2,
+		                   	lineWidth:1,
+		                    lineColor:'black',	
 		                    title: {
-		                        text: ' PORCENTAJE %',
+		                        text: false,
 			                    style: {
 									//color: '#3E576F',
 									fontSize: '20px'
@@ -276,7 +301,8 @@
 		                    },
 		                    labels:{
 			                    style: {
-									fontSize: '16px'
+									fontSize: '16px',
+									color: '#000000',
 								},	
 		                    },
 		                },
@@ -326,24 +352,26 @@
 				                animation: 4000,
 				                dataLabels: {
 				                    //enabled: true,			                	
-				                    //borderRadius: 1,
+				                    borderRadius: 5,
 				                    //color:'black',
-				                    overflow: 'none',
+				                    crop:false,//labels overflow, lo muestra 
+				                    overflow: 'none',//labels overflow, lo muestra 
 				                    backgroundColor: 'rgba(252, 255, 255,255)',
-				                    padding: 2,
+				                    padding: 0,
 					                animation: {
 					                    duration: 4000,
 					                },			                    
 				                    //borderWidth: 2,
 				                    //borderColor: 'rgba(252, 255, 0, 0)',
-				                    //y: 30,
+				                    y: -8,
 				                    x: 1,		                	
 				                    //shadow: true,
 				                    //inside: true,
 				                    style: {
 				                        fontName:'arial narrow',
 				                        //fontWeight:'bold',
-				                        fontSize:'15px',
+				                        fontSize:'14px',
+				                        color: '#000000',
 				                    },
 				                    formatter: function() {
 				                    	 return Highcharts.numberFormat(this.y, 1,',',' ')+ '%<br>['  + valor_dep_abs_sorter[this.series.index][this.point.x] + ']';
@@ -366,11 +394,18 @@
 		                series: [{data: <?php echo json_encode(array_values($series[0]['data'])); ?> } ] ,// por defecto cogera el primer arreglo de SERIES, array_values: para hacer json de solo values sin indices.
 		                //series: json_dep,
 		                credits: {
-		                    text: "<?php echo ($tipo == 'column') ? 'Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.' : 'I CENPESCO-2013' ; ?>",
+		                    text: 'Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.',
 						    style: {
-						        fontSize: '14px'
-					    	}		                    
-		                }              	
+						        fontSize: '14px',
+					    	},
+							position: {
+								align: 'right',
+								x: -10,
+								verticalAlign: 'bottom',
+								y: -25
+							},				    	
+							href:'http://www.inei.gob.pe',		                    
+		                },            	
 	           	});
 				
 			    // var renderer = new Highcharts.Renderer(
@@ -381,8 +416,7 @@
 			    
 			    // renderer.image('http://highcharts.com/demo/gfx/sun.png', 100, 100, 30, 30)
 			    //     .add();
-
-			//end chart
+			//end chart DEPARTAMENTAL
 			//******************************************************************************************************************************************************************************************
 			//******************************************************************************************************************************************************************************************
 
@@ -394,50 +428,56 @@
 			//******************************************************************************************************************************************************************************************
 			//START chart	NACIONAL
 
+    	// Radialize the colors
+				Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
+				    return {
+				        radialGradient: { cx: 0.5, cy: 0.3, r: 0.7 },
+				        stops: [
+				            [0, color],
+				            [1, Highcharts.Color(color).brighten(-0.3).get('rgb')] // darken
+				        ]
+				    };
+				});
+
+
 	            chart_nac = new Highcharts.Chart({
 	            //$('#container').highcharts({
 		                chart: {		                	
 		                    renderTo: 'chart_div_nac',
-		                    type: 'bar',
+		                    //type: tipo_graph_nac,
 		                    marginRight:60,
 		                    marginTop:130,
 		                    marginLeft:200,
-		                    marginBottom:120,
-		                    plotShadow: true,	                    
+		                    marginBottom:135,
+			                plotBackgroundColor: null,
+			                plotBorderWidth: null,
+			                plotShadow: false,		                    
+		                    //plotShadow: true,
+			                  events: {
+			                    load: function(event) {
+			                        $('.highcharts-legend-item').last().append('<br/><div style="width:200px"><hr/> <span style="float:left"> Total </span><span style="float:right"> ' + 100 + '</span> </div>')
+			                    }
+			                  },                   
 		                },
 		                title: {
-		                    text: 'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + '', 
-		                    style: {
+		                	y:40,
+		                	text: "<?php echo str_replace('SEGÚN DEPARTAMENTO,','',$c_title) ?>",
+		                    //text: 'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + '', 
+		                    style: {marginTop: 100,
 								//color: '#3E576F',
-								fontSize: '28px',
+								fontSize:  "<?php echo ( ( strlen($c_title)<90) ? '24px' : '21px' ) ; ?>" ,
 								padding:'12', 
-							},  
+								color: '#000000',
+								width: '20%',
+							},  							
 							//marginTop:'60',  
 							//height:100,      
-		                },	                
-		                subtitle: {
-		                    //useHTML:true,		                	
-		                    text: "<?php echo str_replace('SEGÚN DEPARTAMENTO,','',$c_title); ?>" + "<br>[Porcentaje]",
-				            align: 'center',
-				            x: 1,
-						    style: {
-						    	height:'250px',
-						        //color: '#000000',
-						        //fontWeight: 'bold',
-						       fontSize:  "<?php echo ( ( strlen($c_title)<90) ? '30px' : '20px' ) ; ?>" , 
-				                'white-space': 'nowrap',
-				                left: '0px',
-				                top: '0px',
-				                position: 'absolute',
-				                //fontFamily: 'serif',
-					    	}		                    
-		                },			                
+		                },	                		                
 		                xAxis: {
-		                    categories: name_var_sorter,
 		                    tickLength: 1,
 		                    tickWidth: 2,
-		                    //lineWidth:2,
-		                    useHTML:true,
+		                   	lineWidth:1,
+		                    lineColor:'black',	
 					    	labels: {
 							    //step: 2,
 							    // formatter: function () {
@@ -445,75 +485,101 @@
 							    // },				    		
 						        style: {
 						        	'white-space': 'normal',
-						            fontSize: '18px',
+						            //fontSize: '16px Helvetica',
+						            fontSize: '13px',
+						            //font: 'Trebuchet MS, Verdana, sans-serif',
 					                left: '0px',
 					                top: '0px',
-					                position: 'absolute',						            
+					                position: 'absolute',	
+									color: '#000000',													                					            
 						        }	
 					    	}	                    
 						},
 		                yAxis: {
+		                	allowDecimals: false,
+		                	tickInterval: 10,
 		                    min: 0,
 		                    //max:100,
-		                    //lineWidth:2,
+		                   	lineWidth:1,
+		                    lineColor:'black',		                   	
 		                    gridLineWidth: 0,
 		                    title: {
 		                        text: false,
 
 			                  	style: {
-									//color: '#3E576F',
 									fontSize: '18px'
 								},	                        
 		                    },
 		                    labels:{
+		                    	y:20,
 			                    style: {
 									fontSize: '16px',
+									color: '#000000',									
 								},	
 		                    },
 		                },
 		                plotOptions: {
-
 		                	bar:{
 		                		allowPointSelect: true,
 		                		//pointWidth: 30,
 		                		borderWidth: 0,
-		                		//showInLegend: false,
+		                		showInLegend: false,
 		                		grouping: false,
+		                	},		                	
+		                	column:{
+		                		allowPointSelect: true,
+		                		//pointWidth: 30,
+		                		borderWidth: 0,
+		                		showInLegend: false,
+		                		grouping: false,
+				                dataLabels: {
+						            // crop:true,
+						            // overflow:'justify',	
+						            //y:5,			                	
+				                },		                		
 		                	},
 					        pie: {
-					        	grouping: false,
-					        	cursor: 'pointer',
+					        	//grouping: true,
+					        	//cursor: 'pointer',
 					        	allowPointSelect: true,
-					            //size:600,
+					            size:500,
 					            dataLabels: {
-					                //verticalAlign:'top',
-					            },
-					            //showInLegend: true,
+					                fontSize: '22px',
+				                    style: {
+				                        width: '250px',
+				                    },					                
+					            },				            
+					            showInLegend: false,
+						        states: {
+									select:{
+										color:'gray' ,
+									},
+						        },					            
 					        },	                	
 				            series: {
 				                groupPadding: 0,
 				                animation: 4000,
 					           // innerSize: 200,
-					            slicedOffset: 40,
-					            //startAngle: -125,			                
 				                dataLabels: {
+						            crop:false,
+						            overflow:'none',					                	
 				                	enabled:true,
 				                    //borderRadius: 1,
 				                    //color:'black',
-				                    overflow: 'none',
-				                    backgroundColor: 'rgba(252, 255, 255,255)',
-				                    padding: 2,
+				                    //backgroundColor: 'rgba(252, 255, 255,255)',
+				                    //padding: 2,
 					                animation: {
 					                    duration: 4000,
 					                },			                    
 				                    //borderWidth: 2,
 				                    //borderColor: 'rgba(252, 255, 0, 0)',
-				                    //y: 30,
+				                    y: -8,
 				                    x: 1,		                	
 				                    style: {
 				                        fontName:'arial narrow',
 				                        //fontWeight:'bold',
-				                        fontSize:'15px',
+				                        fontSize:'14px',
+				                        color: '#000000',
 				                    },
 				                    formatter: function() {
 				                    	 return  Highcharts.numberFormat(this.y, 1,',',' ')+ '%<br>['  + valor_dep_abs_sorter[this.series.index][this.point.x] + ']';
@@ -523,22 +589,23 @@
 		                },
 		                tooltip: {
 		                    formatter: function() {//console.log(this);
-		                        return ''+ '<strong>' +  chart_nac.xAxis[0].categories[this.point.x] +'</strong>:<br>'+  this.y + '%';
+		                        return  '<strong>' +  chart_nac.xAxis[0].categories[this.point.x] +'</strong>:<br>'+  this.y + '%';
 		                    }
 		                },
-				       //  lang: {
-				       //  	printChart: 'Imprimir Grafico',
-				       //      downloadPNG: 'Descargar imagen como PNG',
-				       //      downloadJPEG: 'Descargar imagen como JPEG',
-				       //      downloadPDF: 'Descargar imagen como PDF',
-				       //      downloadSVG: 'Descargar imagen como SVG'
-				      	// }, 		                
-		                series: [{type:'pie',showInLegend: true,data:valor_nac_sorter}],
+		                series: [{type:tipo_graph_nac,name: 'Browser share',data:data_pie_valor_nac}],
+		                //series: [{type:'bar',name: 'Browser share',data:data_pie_valor_nac}],
 		                credits: {
-		                    text: 'Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.',
+		                    text: '<?php if(!$respuesta_unica){echo "Nota: La suma de los porcentajes no totaliza el 100%, debido a que la información analizada corresponde a respuesta MÚLTIPLE.<br>";}; ?> Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.',
 						    style: {
 						        fontSize: '14px',
-					    	}		                    
+					    	},
+							position: {
+								align: 'right',
+								x: -10,
+								verticalAlign: 'bottom',
+								y: -38
+							},				    	
+							href:'http://www.inei.gob.pe',		                    
 		                },
 				        navigation: {
 				            buttonOptions: {
@@ -546,43 +613,66 @@
 				            }
 				        },		
 		                legend: {
-		                	enabled:false,
 		                    backgroundColor: '#FFFFFF',
-		                    align:   'right',
+		                    align:   'left',
 		                    layout: 'vertical',
 		                    verticalAlign: 'middle',
 		                    //x: 0,
-		                   	y: -10,
+		                   	x: 30,
 		                    floating: true,
 		                    shadow: false,
+				            itemStyle: {
+				                paddingBottom: '10px',
+				                fontSize:'15px',
+				            },	
+							labelFormatter: function() {
+							    var words = this.name.split(/[\s]+/);
+							    var numWordsPerLine = 4;
+							    var str = [];
+
+							    for (var word in words) {
+							        if (word > 0 && word % numWordsPerLine == 0)
+							            str.push('<br>');
+
+							        str.push(words[word]);
+							    }
+
+							    return  '['+ this.y + '%] '+ str.join(' ') ;
+							},	   
+							// labelFormatter: function() {
+			    //                 //total += this.y;
+							// 	return '<div style="width:200px"><span style="float:left">' + this.name + '</span><span style="float:right">' + this.y + '%</span></div>';
+							// },								                 
 		                },				        	                
-		                // exporting: {
-		                // 	scale: 2000,
-		                // 	//filename: 'cenpesco_nac',
-		                // 	sourceHeight: 800,
-		                // 	sourceWidth: 1200,
-		                // },		                                
+		                                
 	           		} 
 				);
 				
-			    // var renderer = new Highcharts.Renderer(
-			    //     $('#chart_div')[0], 
-			    //     400,
-			    //     100
-			    // );
-			    
-			    // renderer.image('http://highcharts.com/demo/gfx/sun.png', 100, 100, 30, 30)
-			    //     .add();
-
 			//end chart nac
 			//******************************************************************************************************************************************************************************************
 			//******************************************************************************************************************************************************************************************
 
 			//*****
-				size_nacional[1] = valor_nac.length*80 + chart_nac.margin[0] + chart_nac.marginBottom;
-				if(size_nacional[1] > 1600){ size_nacional[1] = 1600;} 
-				//chart_nac.setSize(size_nacional[0], size_nacional[1], doAnimation = true);
+				if (tipo_graph_nac == 'bar' ) {
+					size_nacional[0] = 1200; //ancho
+					size_nacional[1] = valor_nac.length*80 + chart_nac.margin[0] + chart_nac.marginBottom; // alto
+					if(size_nacional[1] > 1600){ size_nacional[1] = 1600;} 					
+				}else{ // column
+					size_nacional[0] = valor_nac.length*80 +  chart_nac.margin[3]  +  chart_nac.margin[1] + 40;// ancho
+					size_nacional[1] = 720; //alto
+					if(size_nacional[0] < 800){ size_nacional[0] = 900;} // ancho limite min 					
+					else if(size_nacional[0] > 2100){ size_nacional[0] = 2100;} //ancho limite max
+				}
+				// Verificando el maximo valor de Y
+					if(chart_nac.yAxis[0].getExtremes().dataMax>90 && chart_nac.yAxis[0].getExtremes().dataMax<=100){// si el max pasa 100, ajusta
+						chart_nac.yAxis[0].setExtremes(0,100);
+					}
+				// configurando el rango de intervalo del nacional
+					if(valor_nac_sorter[0]>60){
+						chart_nac.yAxis[0].options.tickInterval = 20;
+					}console.log(chart_nac.yAxis[0]);
 				//
+
 					var valor_max = chart.yAxis[0].getExtremes().dataMax;
 					function set_max_y_value(var_num) {
 							if (var_num<99) {//el maximo de variable seleccionada
@@ -592,45 +682,47 @@
 							    		valor_max = valor_dep[var_num][i];
 							    	} 
 							    };	
-							    if (valor_max<5) {
+							    if (valor_max<3) {
 							    	valor_max = 5;
-							    	chart.yAxis[0].setExtremes(0,5);
+							    	chart.yAxis[0].setExtremes(0,3); chart.yAxis[0].options.tickInterval = 1; 
+							    }else if (valor_max<6) {
+							    	valor_max = 5;
+							    	chart.yAxis[0].setExtremes(0,6); chart.yAxis[0].options.tickInterval = 2; 
 							    }else if (valor_max<10) {
 							    	valor_max = 10;
-							    	chart.yAxis[0].setExtremes(0,10);
+							    	chart.yAxis[0].setExtremes(0,10); chart.yAxis[0].options.tickInterval = 2; 
 							    }else if (valor_max<20) {
 							    	valor_max = 20;
-							    	chart.yAxis[0].setExtremes(0,20);
+							    	chart.yAxis[0].setExtremes(0,20); chart.yAxis[0].options.tickInterval = 5; 
 							    }else if (valor_max<30) {
 							    	valor_max = 30;
-							    	chart.yAxis[0].setExtremes(0,30);
+							    	chart.yAxis[0].setExtremes(0,30); chart.yAxis[0].options.tickInterval = 5; 
 							    }else if (valor_max<40) {
 							    	valor_max = 40;
-							    	chart.yAxis[0].setExtremes(0,40);
+							    	chart.yAxis[0].setExtremes(0,40); chart.yAxis[0].options.tickInterval = 5; 
 							    }else if (valor_max<50) {
 							    	valor_max = 50;
-							    	chart.yAxis[0].setExtremes(0,50);
+							    	chart.yAxis[0].setExtremes(0,50); chart.yAxis[0].options.tickInterval = 10; 
 							    }else if (valor_max<60) {
 							    	valor_max = 60;
-							    	chart.yAxis[0].setExtremes(0,60);
+							    	chart.yAxis[0].setExtremes(0,60); chart.yAxis[0].options.tickInterval = 10; 
 							    }else if (valor_max<70) {
 							    	valor_max = 70;
-							    	chart.yAxis[0].setExtremes(0,70);
+							    	chart.yAxis[0].setExtremes(0,70); chart.yAxis[0].options.tickInterval = 20; 
 							    }else if (valor_max<80) {
 							    	valor_max = 80;
-							    	chart.yAxis[0].setExtremes(0,80);
+							    	chart.yAxis[0].setExtremes(0,80); chart.yAxis[0].options.tickInterval = 20;
 							    }else if (valor_max<90) {
 							    	valor_max = 90;
-							    	chart.yAxis[0].setExtremes(0,90);
+							    	chart.yAxis[0].setExtremes(0,90); chart.yAxis[0].options.tickInterval = 20;
 							    }else if (valor_max<=100) {
 							    	valor_max = 100;
-							    	chart.yAxis[0].setExtremes(0,100);
+							    	chart.yAxis[0].setExtremes(0,100); chart.yAxis[0].options.tickInterval = 20;
 							    };	
 							}
 					}
 
 				    // TTipo de grafico NAC / DEP	
-	    			
 				    $('#cbo_nac_dep').change(function() {
 				    	chart_nac.redraw();					    	
 				    	if($(this).val() == 0 ){
@@ -664,7 +756,7 @@
 								var var_num = $(this).val();
 								$("#hd_variable").val(var_num);	
 
-								chart.setTitle({text:'GRÁFICO N° '+ "<?php echo sprintf('%02d',$opcion); ?>" + ''} ,{text: name_mapa[var_num]  + "<br>[Porcentaje]"} );	
+								chart.setTitle({text: name_mapa[var_num] });	
 								set_max_y_value(var_num);
 					       
 					            $(chart.series).each(function(){
@@ -687,7 +779,7 @@
 						}
 					});
 
-					$("#cbo_type_graph").change(function(){ // cambia el tipo de grafico
+					$("#cbo_type_graph").change(function(){ // cambia el tipo de grafico DEPARTAMENTAL
 						var var_num = 0; // num variable
 						//var var_num = 0; // num variable
 						if (var_num < 99) { // solo para una variables
@@ -712,69 +804,100 @@
 						}
 					})
 
-					$("#cbo_type_graph_nac").change(function(){ // cambia el tipo de grafico del nacional
+					$("#cbo_type_graph_nac").change(function(){ // cambia el tipo de grafico del NACIONAL
 						//var var_num = 0; // num variable
 							var graph_num = $(this).val();
-							if (graph_num == 0) {
-								chart_nac.series[0].update({type:'bar'});
+				            $(chart_nac.series).each(function(){
+				            	this.remove(true);
+				            	chart_nac.redraw(); 
+				            });	
+
+							if (graph_num == 0) {// bar || column
+					            chart_nac.addSeries({type:tipo_graph_nac,name: 'Browser share',data:valor_nac_sorter});
+					            chart_nac.xAxis[0].setCategories(name_var_sorter);
 								chart_nac.margin[0] = 140; // margen TOP del chart
-								//chart_nac.setSize(size_nacional[0],size_nacional[1]);
-								chart_nac.setSize(size_nacional[0],size_nacional[1]);
-							}else if(graph_num == 1){
-								chart_nac.series[0].update({type:'pie'});
-								chart_nac.margin[0] = 150; // margen TOP del chart
-								chart_nac.setSize(size_nacional[0],900);
+								if(tipo_graph_nac == 'bar'){// bar
+									//chart_nac.margin[0] = 120; // margen TOP del chart
+									chart_nac.margin[3] = 170; // margen LEFT del chart
+									chart_nac.margin[2] = 90; // margen BOTTOM del chart
+									chart_nac.setSize(size_nacional[0],size_nacional[1]);	chart_nac.redraw();
+								}else{// column
+									chart_nac.margin[3] = 80; // margen LEFT del chart									
+									if(valor_nac.length<4){
+										chart_nac.margin[3] = 215;
+										chart_nac.margin[1] = 215;
+									}else if(valor_nac.length<=5){
+										chart_nac.margin[3] = 200;
+										chart_nac.margin[1] = 200;
+									}else if(valor_nac.length==6){
+										chart_nac.margin[3] = 180;
+										chart_nac.margin[1] = 280;
+									}
+									chart_nac.setSize(size_nacional[0],size_nacional[1]);	chart_nac.redraw(); 
+									$("#chart_div_nac").css("width",size_nacional[0]);
+								}
+								
+							}else if(graph_num == 1){ // pie
+								chart_nac.xAxis[0].setCategories(name_var);
+					            chart_nac.addSeries({type:'pie',data:data_pie_valor_nac,startAngle: 90});								
+								chart_nac.margin[0] = 155; // margen TOP del chart
+								chart_nac.margin[3] = 100; // margen LEFT del chart
+								chart_nac.setSize(1200,800);
+								$("#chart_div_nac").css("width",1200);
 							}
 				            enableDataLabels = true; $('#data-labels').trigger('click') ;
+				            num_color = 0; $('#btn_data-color').trigger('click');
 				            chart_nac.redraw();
 					})
 				    // etiquetas de valores
 				    $('#data-labels').click(function() {
-				        	if(enableDataLabels){  $(this).html('Quitar  etiquetas '); } else{ $(this).html('Mostrar etiquetas');}					        	
+				        	if(enableDataLabels){ $(this).html('Quitar  etiquetas '); } else{ $(this).html('Mostrar etiquetas');}					        	
 							if($("#cbo_nac_dep").val()== 0){
-								console.log(chart_nac.yAxis[0].options);
+								var fontsize_esp = '17px';
 								if($("#cbo_type_graph_nac").val()==0){ 
-									//Highcharts.charts[0].xAxis[0].update({categories:['some','new','categories']}, true);
 									//chart_nac.yAxis[0].options.title.text = "PORCENTAJE  %";
 									chart_nac.yAxis[0].options.lineWidth = 2;
 									chart_nac.xAxis[0].options.lineWidth = 2;
-									//chart_nac.yAxis[0].update({title:'PORCENTAJE %',});	
-									chart_nac.redraw();
+									//chart_nac.yAxis[0].update({title:'PORCENTAJE %',});
+							        chart_nac.series[0].update({
+							            dataLabels: {
+							            	enabled: enableDataLabels,
+							            	//align: 'center',
+							                distance: 50, // distancias del label
+						                    formatter: function() {					                    	
+						                    	 	return '<center>'+ Highcharts.numberFormat(this.y, 1,',',' ') +'%</center>' + '<br><center>['  + Highcharts.numberFormat(valor_nac_abs_sorter[this.point.x], 0,',',' ') + ']</center>'; 
+						                    },			                
+							            }
+							        });	
 								}else{
 									chart_nac.xAxis[0].update({lineWidth:0,});
-									chart_nac.yAxis[0].update({lineWidth:0,});									
+									chart_nac.yAxis[0].update({lineWidth:0,});	
+							        chart_nac.series[0].update({
+							            dataLabels: {
+							            	enabled: enableDataLabels,
+							            	style:{
+							            		fontSize: '16px',
+							            	},
+							                distance: 50, // distancias del label
+						                    formatter: function() {					                    	
+						                    		return chart_nac.xAxis[0].categories[this.point.x] + '%<br>'+ Highcharts.numberFormat(this.y, 1,',',' ') + ' ['  + Highcharts.numberFormat(valor_nac_abs[this.point.x], 0,',',' ') + ']';
+						                    },			                
+							            }
+							        });	
 								}
-								
-						        chart_nac.series[0].update({
-						            dataLabels: {
-						                enabled: enableDataLabels,
-						                connectorWidth: 2,
-						                verticalAlign:'top',
-						                backgroundColor: 'none',
-						                //y:20,
-						                distance: 60, // distancias del label
-					                    formatter: function() {
-					                    	var x=0;
-					                    	if($("#cbo_type_graph_nac").val()==0){ 
-					                    	 	//return Highcharts.numberFormat(this.y, 1,',',' ')+ '%<br>['  + valor_dep_abs_sorter[$("#hd_variable").val()][this.point.x] + ']'; }
-					                    	 	return Highcharts.numberFormat(this.y, 1,',',' ')  + '%'; }
-					                    	else{
-					                    		//return   chart_nac.xAxis[0].categories[this.point.x] + '<br>'+ Highcharts.numberFormat(this.y, 1,',',' ')+ '%<br>['  + valor_dep_abs_sorter[$("#hd_variable").val()][this.point.x] + ']';}
-					                    		return   chart_nac.xAxis[0].categories[this.point.x] + '<br>'+ Highcharts.numberFormat(this.y, 1,',',' ')+ '%';}
-					                    },			                
-						            }
-						        });							
+
 							}else{
 						        chart.series[0].update({
 						            dataLabels: {
 						                enabled: enableDataLabels,
 					                    formatter: function() {
 					                    	var x=0;
-					                    	 return Highcharts.numberFormat(this.y, 1,',',' ')+ '%<br>['  + valor_dep_abs_sorter[$("#hd_variable").val()][this.point.x] + ']';
+					                    	 return Highcharts.numberFormat(this.y, 1,',',' ') + '%<br>[' + valor_dep_abs_sorter[$("#hd_variable").val()][this.point.x] + ']';
 					                    },			                
 						            }
 						        });	
 							}	
+							chart_nac.redraw();
 							enableDataLabels = !enableDataLabels; 
 				    });
 
@@ -817,27 +940,29 @@
 
 				    $('#data-download').click(function() {
 				    	if($("#cbo_nac_dep").val()== 0){// grafico nacional
-				    		if ($("#cbo_type_graph_nac").val()== 0) {
 				    			chart_nac.exportChart({
 				    				type: "image/png",
-				                	sourceHeight:size_nacional[1],
-				                	sourceWidth:size_nacional[0],				    			
+				                	sourceHeight:chart_nac.chartHeight,
+				                	sourceWidth:chart_nac.chartWidth,				    			
 				                	scale:2000,	
 				                	filename: 'CENPESCO-'+ num_tabulado ,			    			
 				                }); 
-				    		}else{
-				    			chart_nac.exportChart({
-				    				type: "image/png",
-				                	sourceHeight:1000,
-				                	sourceWidth:1200,				    			
-				                	scale:2000,	
-				                	filename: 'CENPESCO-'+ num_tabulado ,			    			
-				                }); 
-				    		}	
+
+				    		// if ($("#cbo_type_graph_nac").val()== 0) {
+
+				    		// }else{
+				    		// 	chart_nac.exportChart({
+				    		// 		type: "image/png",
+				      //           	sourceHeight:1000,
+				      //           	sourceWidth:1200,				    			
+				      //           	scale:2000,	
+				      //           	filename: 'CENPESCO-'+ num_tabulado ,			    			
+				      //           }); 
+				    		// }	
 				    	}else{
 							chart.exportChart({
 								type: "image/png",
-								filename: 'CENPESCO_' + num_tabulado + '-' + $("hd_variable").val(),
+								filename: 'CENPESCO_' + num_tabulado + '-' + $("#hd_variable").val(),
 							});
 						}
 				    });

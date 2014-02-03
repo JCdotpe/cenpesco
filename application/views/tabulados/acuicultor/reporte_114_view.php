@@ -17,12 +17,12 @@
 								foreach ($tables->result() as $value) {
 											$NEP += $value->NEP;
 									}
-								$cant_v = ($NEP == 0) ? 11 : 12; // cantidad de variables (incluir NEP y Total)
+								$cant_v = ($NEP == 0) ? 8 : 10; // cantidad de variables (incluir NEP y Total)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: ACUICULTORES POR NÚMERO DE HIJOS, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: ACUICULTORES POR NIVEL DE ESTUDIOS ALCANZADO POR LA CÓNYUGE O CONVIVIENTE, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -37,20 +37,18 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="20" style="text-align:center">Número de hijos</th>';
+									echo '<th colspan="16" style="text-align:center">Nivel de estudios alcanzado por la cónyuge o conviviente</th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = '1') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = '2' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = '3' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = '4' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = '5' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = '6' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = '7' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = '8' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_9 = '9' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'De 10 a más' ) .'</th>';																		
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Sin nivel') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Inicial' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Primaria' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Secundaria' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_5 = 'Superior no universitaria incompleta' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_6 = 'Superior no universitaria completa' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_7 = 'Superior universitaria incompleta' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_8 = 'Superior universitaria completa' ) .'</th>';																							
 									echo '</tr>';
 
 									echo '<tr>';
@@ -139,9 +137,7 @@
 										array("name" => $variable_5 	,"data" => $datas[4]),
 										array("name" => $variable_6 	,"data" => $datas[5]),
 										array("name" => $variable_7 	,"data" => $datas[6]),
-										array("name" => $variable_8 	,"data" => $datas[7]),
-										array("name" => $variable_9 	,"data" => $datas[8]),
-										array("name" => $variable_10 	,"data" => $datas[9]), );
+										array("name" => $variable_8 	,"data" => $datas[7]), );
 						if ($NEP > 0) { array_push( $series, array("name" => 'No especificado'	,"data" => $datas[($cant_v-2)]) ); }//agrega NEP al arreglo para los graficos
 								array_push($series, array("name" => 'TOTAL'	,"data" => $totales_porc));
 

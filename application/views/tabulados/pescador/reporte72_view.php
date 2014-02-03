@@ -19,10 +19,10 @@
 									}
 								$cant_v = ($NEP == 0) ? 5 : 6; // cantidad de variables (incluir NEP y Total y/o ninguno)
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = FALSE;
 
 				    		echo form_open("/tabulados/export");
-				    			$c_title = 'PERÚ: PESCADORES POR FORMAS DE COMERCIALIZACIÓN, SEGÚN DEPARTAMENTO, 2013';
+				    			$c_title = 'PERÚ: PESCADORES POR LUGAR DE VENTA, SEGÚN DEPARTAMENTO, 2013';
 
 								$this->load->view('tabulados/includes/tab_logo_view.php');
 
@@ -38,14 +38,14 @@
 									echo '<tr>';
 									echo '<th rowspan="3" style="vertical-align:middle;text-align:center">Departamento</th>';					
 									echo '<th rowspan="2" colspan="2" style="vertical-align:middle;text-align:center">Total</th>';																																																																																										
-									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Formas de comercialización </th>';
+									echo '<th colspan="'. ( ($NEP == 0) ? ($cant_v - 1)*2 : ($cant_v - 2)*2 ).'" style="text-align:center">Lugar de venta </th>';
 									echo ($NEP>0) ? ('<th colspan="2" rowspan="2" style="vertical-align:middle;text-align:center">No especificado</th>'): '';																																														
 									echo '</tr>';
 									echo '<tr>';
-										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'Individualmente') .'</th>';										
-										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'Eventualmente en asociación con otros pescadores' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'Por medio de una organización de pescadores' ) .'</th>';						
-										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Por medio de un comité de comercialización' ) .'</th>';														
+										echo '<th colspan="2" style="text-align:center">'. ($variable_1 = 'En el punto de desembarque') .'</th>';										
+										echo '<th colspan="2" style="text-align:center">'. ($variable_2 = 'En la feria' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_3 = 'En el mercado' ) .'</th>';						
+										echo '<th colspan="2" style="text-align:center">'. ($variable_4 = 'Venta por vivienda' ) .'</th>';														
 									echo '</tr>';
 
 									echo '<tr>';

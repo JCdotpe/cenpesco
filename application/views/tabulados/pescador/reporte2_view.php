@@ -19,7 +19,7 @@
 									}
 								$cant_v = ($NEP == 0) ? 3 : 4;
 							// PREGUNTAS MULTIPLES
-								$respuesta_unica = TRUE;
+								//$respuesta_unica = TRUE;
 
 				    		echo form_open("/tabulados/export");
 				    			$c_title = 'PERÚ: PESCADORES POR SEXO, SEGÚN DEPARTAMENTO, 2013';
