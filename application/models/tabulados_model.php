@@ -995,7 +995,9 @@ function get_report23(){
         DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
         COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0) +
         COALESCE(C11.t,0) + COALESCE(C12.t,0) + COALESCE(C13.t,0) + COALESCE(C14.t,0) + COALESCE(C15.t,0) +
-        COALESCE(C16.t,0) + COALESCE(C17.t,0) + COALESCE(C18.t,0) + COALESCE(C19.t,0) + COALESCE(C20.t,0)  ) AS TOTAL,
+        COALESCE(C16.t,0) + COALESCE(C17.t,0) + COALESCE(C18.t,0) + COALESCE(C19.t,0) + COALESCE(C20.t,0) +
+        COALESCE(C21.t,0) + COALESCE(C22.t,0) + COALESCE(C23.t,0) + COALESCE(C24.t,0) + COALESCE(C25.t,0) +
+        COALESCE(C26.t,0) + COALESCE(C27.t,0) + COALESCE(C28.t,0) + COALESCE(C29.t,0) + COALESCE(C30.t,0) ) AS TOTAL,
         ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
         COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0) ) as 'SI',  
         (COALESCE(C11.t,0) + COALESCE(C12.t,0) + COALESCE(C13.t,0) + COALESCE(C14.t,0) + COALESCE(C15.t,0) +
@@ -1040,12 +1042,14 @@ function get_report23(){
 
 function get_report24(){
     $q = $this->db->query("
-        /* TABULADO N° 23  ------------------------ HIJOS   DEL PESCADOR TIPO COLEGIO  QUE ASISTEN  --------------------------------------*/
+        /* TABULADO N° 24  ------------------------ HIJOS   DEL PESCADOR TIPO COLEGIO  QUE ASISTEN  --------------------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
         COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0) +
         COALESCE(C11.t,0) + COALESCE(C12.t,0) + COALESCE(C13.t,0) + COALESCE(C14.t,0) + COALESCE(C15.t,0) +
-        COALESCE(C16.t,0) + COALESCE(C17.t,0) + COALESCE(C18.t,0) + COALESCE(C19.t,0) + COALESCE(C20.t,0)  ) AS TOTAL,
+        COALESCE(C16.t,0) + COALESCE(C17.t,0) + COALESCE(C18.t,0) + COALESCE(C19.t,0) + COALESCE(C20.t,0)  +
+        COALESCE(C21.t,0) + COALESCE(C22.t,0) + COALESCE(C23.t,0) + COALESCE(C24.t,0) + COALESCE(C25.t,0) +
+        COALESCE(C26.t,0) + COALESCE(C27.t,0) + COALESCE(C28.t,0) + COALESCE(C29.t,0) + COALESCE(C30.t,0)) AS TOTAL,
         ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
         COALESCE(C6.t,0) + COALESCE(C7.t,0) + COALESCE(C8.t,0) +  COALESCE(C9.t,0)  + COALESCE(C10.t,0) ) as 'ESTATAL',  
         (COALESCE(C11.t,0) + COALESCE(C12.t,0) + COALESCE(C13.t,0) + COALESCE(C14.t,0) + COALESCE(C15.t,0) +
@@ -1256,13 +1260,13 @@ function get_report25(){
     return $q;
 }
 
-function get_report26(){
+function get_report26(){// Oojo, se saca ka variable otro, segun SUSANNE  ---- COALESCE(C7.t,0) as OTRA,
     $q = $this->db->query("
         /* TABULADO N° 25 ---------------- LA VIVIEDSA que ocupa------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
         COALESCE(C1.t,0) as ALQUILADA, COALESCE(C2.t,0) as PROPIA_INV, COALESCE(C3.t,0) as PROPIA_PAG, COALESCE(C4.t,0) as PROPIA_TOT, COALESCE(C5.t,0) as CEDIDA,
-        COALESCE(C6.t,0) as FAMILIAR, COALESCE(C7.t,0) as OTRA, COALESCE(C8.t,0) as NEP
+        COALESCE(C6.t,0) as FAMILIAR,  COALESCE(C8.t,0) as NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1271,7 +1275,6 @@ function get_report26(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where s3_100 = 9 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd  ;
         ");
     return $q;
@@ -1303,11 +1306,11 @@ function get_report27(){
 
 function get_report28(){
     $q = $this->db->query("
-        /* TABULADO N° 27 ---------------- MATERIAL PISOS------------------------*/
+        /* TABULADO N° 28 ---------------- MATERIAL PISOS------------------------*/
         select 
         DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
         COALESCE(C1.t,0) as PARQUET, COALESCE(C2.t,0) as LAMINAS, COALESCE(C3.t,0) as LOSETAS, COALESCE(C4.t,0) as MADERA, COALESCE(C5.t,0) as CEMENTO,
-        COALESCE(C6.t,0) as TIERRA, COALESCE(C7.t,0) as OTRA, COALESCE(C8.t,0) as  NEP
+        COALESCE(C6.t,0) as TIERRA, COALESCE(C7.t,0) as TOTORA , COALESCE(C8.t,0) as  OTRA, COALESCE(C9.t,0) as  NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1317,7 +1320,8 @@ function get_report28(){
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 8 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 8 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion3 s on a.id = s.pescador_id  where S3_300 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd;
         ");
     return $q;
 }
@@ -2665,90 +2669,76 @@ function get_report87(){
 
 function get_report88(){
     $q = $this->db->query("
-        /* TABULADO N° 86 --------------------------  EMBARCACION  ES : -------------------------*/
+        /* TABULADO N° 88 --------------------------  EMBARCACION  ES : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         ALQUILADA , PRESTADA , PAGADA , PAGANDOLA , AUTOCONSTRUIDA , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd  ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS ALQUILADA
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS ALQUILADA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd  ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS PRESTADA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS PRESTADA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS PAGADA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS PAGADA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS PAGANDOLA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS PAGANDOLA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 = 4 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 = 4 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 = 4 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 = 4 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS AUTOCONSTRUIDA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS AUTOCONSTRUIDA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 = 5 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 = 5 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 = 5 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 = 5 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 = 5 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table6
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_4_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table6
         on table0.ccdd = table6.ccdd ;
         ");
     return $q;
@@ -2756,114 +2746,96 @@ function get_report88(){
 
 function get_report89(){
     $q = $this->db->query("
-        /* TABULADO N° 87 -------------------------- TIPO EMBARCACION  -------------------------*/
+        /* TABULADO N° 89 -------------------------- TIPO EMBARCACION  -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         BOTE_PESCA , BOTE_COMERCIAL , CANOA , TOTORA , BALSA , PEQUE, OTRO, NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd  ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS BOTE_PESCA
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS BOTE_PESCA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS BOTE_COMERCIAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS BOTE_COMERCIAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS CANOA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS CANOA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS TOTORA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS TOTORA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 4 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 4 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 4 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 4 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS BALSA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS BALSA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 5 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 5 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 5 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 5 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 5 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS PEQUE
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS PEQUE
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 6 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 6 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 6 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 6 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table6
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table6
         on table0.ccdd = table6.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS OTRO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS OTRO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 7 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 7 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 7 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 7 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 7 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 7 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table7
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 7 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table7
         on table0.ccdd = table7.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0)  ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table8
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_5_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd  ) as table8
         on table0.ccdd = table8.ccdd ;
         ");
     return $q;
@@ -2871,126 +2843,106 @@ function get_report89(){
 
 function get_report90(){
     $q = $this->db->query("
-        /* TABULADO N° 88 -------------------------- TIPO MATERIAL  -------------------------*/
+        /* TABULADO N° 90 -------------------------- TIPO MATERIAL  -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         MADERA , FIBRA , ACERO , MADERA_FIBRA , MADERA_ACERO , ALUMINIO, TOTORA, PLASTICO, NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  )AS MADERA
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) )AS MADERA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS FIBRA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS FIBRA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS ACERO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS ACERO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS MADERA_FIBRA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS MADERA_FIBRA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 4 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 4 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 4 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 4 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS MADERA_ACERO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS MADERA_ACERO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 5 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 5 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 5 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 5 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 5 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS ALUMINIO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS ALUMINIO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 6 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 6 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 6 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 6 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table6
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table6
         on table0.ccdd = table6.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTORA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTORA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 7 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 7 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 7 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 7 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 7 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 7 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table7
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 7 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table7
         on table0.ccdd = table7.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS PLASTICO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS PLASTICO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 8 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 8 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 8 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 8 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 8 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 8 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table8
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 8 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table8
         on table0.ccdd = table8.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)   ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table9
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_6_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table9
         on table0.ccdd = table9.ccdd ;
         ");
     return $q;
@@ -3002,74 +2954,62 @@ function get_report91(){
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         OPERATIVA , REPARACION , ABANDONO , CONSTRUCCION , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS OPERATIVA
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS OPERATIVA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS REPARACION
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS REPARACION
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS ABANDONO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS ABANDONO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_1 = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_2 = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_3 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_4 = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_6 = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS CONSTRUCCION
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS CONSTRUCCION
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_1 = 4 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_2 = 4 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_3 = 4 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_4 = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_6 = 4 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_7_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd ;
         ");
     return $q;
@@ -3078,91 +3018,77 @@ function get_report91(){
 
 function get_report92(){
     $q = $this->db->query("
-        /* TABULADO N° 90  --------------------------  EMBARCACION EN MANTENIMIENTO : -------------------------*/
+        /* TABULADO N° 92  --------------------------  EMBARCACION EN MANTENIMIENTO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         _6_MESES , _11_MESES , _1_2_ANOS , _3_4_ANOS , _5_MAS, NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS _6_MESES
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _6_MESES
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A = 0 AND S9_9_1_M <6 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A = 0 AND S9_9_2_M <6 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A = 0 AND S9_9_3_M <6 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A = 0 AND S9_9_4_M <6 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A = 0 AND S9_9_5_M <6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A = 0 AND S9_9_6_M <6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A = 0 AND S9_9_5_M <6 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _11_MESES
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _11_MESES
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A = 0 AND S9_9_1_M >= 6 AND S9_9_1_M <=11 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A = 0 AND S9_9_2_M >= 6 AND S9_9_2_M <=11 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A = 0 AND S9_9_3_M >= 6 AND S9_9_3_M <=11 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A = 0 AND S9_9_4_M >= 6 AND S9_9_4_M <=11 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A = 0 AND S9_9_5_M >= 6 AND S9_9_5_M <=11 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A = 0 AND S9_9_6_M >= 6 AND S9_9_6_M <=11 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A = 0 AND S9_9_5_M >= 6 AND S9_9_5_M <=11 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _1_2_ANOS
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _1_2_ANOS
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A >=1 AND S9_9_1_A <= 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A >=1 AND S9_9_2_A <= 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A >=1 AND S9_9_3_A <= 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A >=1 AND S9_9_4_A <= 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A >=1 AND S9_9_5_A <= 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A >=1 AND S9_9_6_A <= 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A >=1 AND S9_9_5_A <= 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _3_4_ANOS
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _3_4_ANOS
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A >= 3 AND  S9_9_1_A <= 4  group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A >= 3 AND  S9_9_2_A <= 4  group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A >= 3 AND  S9_9_3_A <= 4  group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A >= 3 AND  S9_9_4_A <= 4  group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A >= 3 AND  S9_9_5_A <= 4  group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A >= 3 AND  S9_9_6_A <= 4  group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A >= 3 AND  S9_9_5_A <= 4  group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _5_MAS
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _5_MAS
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A >= 5 AND S9_9_1_A < 99 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A >= 5 AND S9_9_2_A < 99 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A >= 5 AND S9_9_3_A < 99 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A >= 5 AND S9_9_4_A < 99 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A >= 5 AND S9_9_5_A < 99 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A >= 5 AND S9_9_6_A < 99 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A >= 5 AND S9_9_5_A < 99 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_1_A = 99 AND S9_9_1_M = 99  group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_2_A = 99 AND S9_9_2_M = 99  group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_3_A = 99 AND S9_9_3_M = 99  group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_4_A = 99 AND S9_9_4_M = 99  group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A = 99 AND S9_9_5_M = 99  group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_6_A = 99 AND S9_9_6_M = 99  group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table6
-        on table0.ccdd = table6.ccdd ;
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_9_5_A = 99 AND S9_9_5_M = 99  group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table6
+        on table0.ccdd = table6.ccdd 
         ");
     return $q;
 }
@@ -3173,50 +3099,42 @@ function get_report93(){
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         _SI , _NO , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS _SI
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _SI
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _NO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _NO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_11_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd ;
         ");
     return $q;
@@ -3224,54 +3142,46 @@ function get_report93(){
 
 function get_report94(){
     $q = $this->db->query("
-        /* TABULADO N° 92 --------------------------  EMBARCACION  PROTOCOLO : -------------------------*/
+        /* TABULADO N° 94 --------------------------  EMBARCACION  PROTOCOLO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         _SI , _NO , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS _SI
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _SI
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _NO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _NO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_12_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd ;
         ");
     return $q;
@@ -3280,54 +3190,46 @@ function get_report94(){
 
 function get_report95(){
     $q = $this->db->query("
-        /* TABULADO N° 93 --------------------------  EMBARCACION  PROTOCOLO : -------------------------*/
+        /* TABULADO N° 95 --------------------------  EMBARCACION  PROTOCOLO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         _SI , _NO , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS _SI
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _SI
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _NO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _NO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_13_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd ;
         ");
     return $q;
@@ -3336,66 +3238,56 @@ function get_report95(){
 
 function get_report96(){
     $q = $this->db->query("
-        /* TABULADO N° 94 --------------------------  SE DESPLAZA : -------------------------*/
+        /* TABULADO N° 96 --------------------------  SE DESPLAZA : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         REMO , VELA , MOTOR ,  NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS REMO
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS REMO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS VELA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS VELA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS MOTOR
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS MOTOR
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_1 = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_2 = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_3 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_4 = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_6 = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_15_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd ;
         ");
     return $q;
@@ -3407,50 +3299,42 @@ function get_report97(){
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         MARINO , AUTOMOTRIZ , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS MARINO
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS MARINO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS AUTOMOTRIZ
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS AUTOMOTRIZ
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_16_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd ;
         ");
     return $q;
@@ -3459,54 +3343,46 @@ function get_report97(){
 
 function get_report98(){
     $q = $this->db->query("
-        /* TABULADO N° 96 --------------------------  EMBARCACION  TIPO COMBUSTIBLE : -------------------------*/
+        /* TABULADO N° 98 --------------------------  EMBARCACION  TIPO COMBUSTIBLE : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         GASOLINA , PETROLEO , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS GASOLINA
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS GASOLINA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS PETROLEO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS PETROLEO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_18_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd ;
         ");
     return $q;
@@ -3518,74 +3394,62 @@ function get_report99(){
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         ABIERTO , TABICADO_A , TABICADO_C , CAJON , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_1_T IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_2_T IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_3_T IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_4_T IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_6_T IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS ABIERTO
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS ABIERTO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_1_T = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_2_T = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_3_T = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_4_T = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_6_T = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS TABICADO_A
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TABICADO_A
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_1_T = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_2_T = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_3_T = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_4_T = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_6_T = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS TABICADO_C
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TABICADO_C
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_1_T = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_2_T = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_3_T = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_4_T = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_6_T = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS CAJON
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS CAJON
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_1_T = 4 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_2_T = 4 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_3_T = 4 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_4_T = 4 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_6_T = 4 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table4
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 4 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table4
         on table0.ccdd = table4.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_1_T = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_2_T = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_3_T = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_4_T = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_6_T = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_20_5_T = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd ;
         ");
     return $q;
@@ -3593,54 +3457,46 @@ function get_report99(){
 
 function get_report100(){
     $q = $this->db->query("
-        /* TABULADO N° 98 --------------------------  BODEGA INSULADA : -------------------------*/
+        /* TABULADO N° 100 --------------------------  BODEGA INSULADA : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         _SI , _NO , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS _SI
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _SI
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS _NO
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS _NO
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_21_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd ;
         ");
     return $q;
@@ -3648,66 +3504,56 @@ function get_report100(){
 
 function get_report101(){
     $q = $this->db->query("
-        /* TABULADO N° 99 --------------------------  TIPO HIELO : -------------------------*/
+        /* TABULADO N° 101 --------------------------  TIPO HIELO : -------------------------*/
         SELECT  table0.CCDD, table0.DEPARTAMENTO,  TOTAL,
         BLOQUE , ESCAMA , NO_UTILIZA  , NEP    FROM
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS TOTAL
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS TOTAL
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_1 IS NOT NULL group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_2 IS NOT NULL group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_3 IS NOT NULL group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_4 IS NOT NULL group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_6 IS NOT NULL group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd  ) as table0
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 IS NOT NULL group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table0
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0) ) AS BLOQUE
+        DEP.CCDD, DEPARTAMENTO,  ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS BLOQUE
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_2 = 1 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_3 = 1 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table1
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table1
         on table0.ccdd = table1.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS ESCAMA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS ESCAMA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_1 = 2 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_2 = 2 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_3 = 2 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_4 = 2 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_6 = 2 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table2
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 2 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table2
         on table0.ccdd = table2.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NO_UTILIZA
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NO_UTILIZA
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_1 = 3 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_2 = 3 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_3 = 3 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_4 = 3 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_6 = 3 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd ) as table3
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 3 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table3
         on table0.ccdd = table3.ccdd 
         INNER JOIN
         (select 
-        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) +  
-        COALESCE(C6.t,0)  ) AS NEP
+        DEP.CCDD, DEPARTAMENTO, ( COALESCE(C1.t,0) + COALESCE(C2.t,0) + COALESCE(C3.t,0) +  COALESCE(C4.t,0) +  COALESCE(C5.t,0) ) AS NEP
         from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_1 = 9 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_2 = 9 group by nom_dd ) as C2 on DEP.ccdd  = C2.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_3 = 9 group by nom_dd ) as C3 on DEP.ccdd  = C3.ccdd 
         left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_4 = 9 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
-        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_6 = 9 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd) as table5
+        left join (select ccdd,  count(*) as t  from pescador a inner join pesc_seccion9 s on a.id = s.pescador_id  where S9_23_5 = 9 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd ) as table5
         on table0.ccdd = table5.ccdd ;
         ");
     return $q;

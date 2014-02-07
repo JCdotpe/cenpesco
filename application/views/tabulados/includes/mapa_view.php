@@ -36,7 +36,7 @@
 			          			</div >
 			          			<hr>
           				</div>
-						<div class="span7">	<div id="map-tematico" class="hidden-phone" style="height:1020px; width:928px; margin: 0 auto !important;"> </div> </div>
+						<div class="span7">	<div id="map-tematico" class="hidden-phone" style="height:1052px; width:910px; margin: 0 auto !important;"> </div> </div>
 						<div class="span3" ><input class="btn-warning btn" type="button" value="IMPRIMIR" id="btn_imprimir" /><div id="image_var" style="position:relative;top:550px;"></div></div>
 				</div>
           </div>
@@ -97,9 +97,10 @@
 
 			    //$("#map-tematico").html('<div><div style="position:absolute;"><div id="img_mapa"style="position:absolute;" class="row-fluid"> </div>  <div id="title"></div> 	</div>	<div id="porcentaje"> <strong>' + tipo_dato + '</strong> </div> 	<div id="cuadro_uno"><div class="cuadro_porc" id="cuadro_num1"></div> </div> <div id="cuadro_dos"><div class="cuadro_porc" id="cuadro_num2"></div> </div>  <div id="cuadro_tres"><div class="cuadro_porc" id="cuadro_num3"></div> </div>  </div>');
 			    $("#map-tematico").html('<div style="position:relative;"><div ><div id="img_mapa"style="position:absolute;" class="span12"> </div>  </div>	<div id="porcentaje"> <strong>' + tipo_dato + '</strong> </div> 	<div id="cuadro_uno"><div class="cuadro_porc" id="cuadro_num1"></div> </div> <div id="cuadro_dos"><div class="cuadro_porc" id="cuadro_num2"></div> </div>  <div id="cuadro_tres"><div class="cuadro_porc" id="cuadro_num3"></div> </div>  </div>');
-			    $("#img_mapa").append('<div class = "span2" style = "position:relative"><img style="margin-top: 2.5px;height: 103px;" src="<?php echo  base_url('img/inei.gif'); ?>"/>');
-			    $("#img_mapa").append("<div id='title' class='span8' style='margin:0px;'><h3><strong> "+ name_mapa[var_num] + "</strong></h3><div>");			    
-			    $("#img_mapa").append('<div class = "span2" style ="position:relative;"><img style="margin-top: 2.5px;height: 105px;" src="<?php echo  base_url('img/cenpesco.png'); ?>"/>');
+			    $("#img_mapa").append('<div class = "span2" style = "position:relative"><img style="margin-top: 2.5px;height: 90px;" src="<?php echo  base_url('img/inei.gif'); ?>"/>');
+			    $("#img_mapa").append("<div id='title' class='span8' style='margin:0px;'><h3> "+ name_mapa[var_num] + "</h3></div>");			    
+			    $("#img_mapa").append('<div id="img_mapa_left" class="span2" ><img style="margin-top: 2.5px;height: 90px;width: 82px;" src="<?php echo  base_url('img/cenpesco.png'); ?>"/></div>');
+			    //$("#img_mapa").append('<div id="img_mapa_left" class = "span2" ></div>');
 
 			 	// var imagen = new Image();
 			 	// imagen.src = "<?php echo  base_url('img/tabulados/cuadro'.$opcion.'.jpg'); ?>";

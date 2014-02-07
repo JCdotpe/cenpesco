@@ -640,13 +640,13 @@ function get_tabulado_223()
       return $q;
 }
 
-function get_tabulado_224()
+function get_tabulado_224()// se quito OTROS, segun sussane, COALESCE(C7.t,0)  as OTRO, 
 {          /* TABULADO N° 223 ---->origen contaminacion */       
       $q = $this->db->query("
           select 
           DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
           COALESCE(C1.t,0) as C_SALUD, COALESCE(C2.t,0) as P_SALUD, COALESCE(C3.t,0) as CONSULTORIO,  COALESCE(C4.t,0) as FARMACIA,  COALESCE(C5.t,0) as BOTICA,
-          COALESCE(C6.t,0) as BOTIQUIN,  COALESCE(C7.t,0)  as OTRO,  COALESCE(C8.t,0)  as NEP
+          COALESCE(C6.t,0) as BOTIQUIN,   COALESCE(C8.t,0)  as NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_1 is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_1 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
@@ -655,7 +655,6 @@ function get_tabulado_224()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_4 = 1 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_5 = 1 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_6 = 1 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd 
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_7 = 1 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion5 s on c.id = s.comunidad_id  where S5_2_1 = 9 group by nom_dd) as C8 on DEP.ccdd  = C8.ccdd  ;
         ");
       return $q;
@@ -1112,13 +1111,13 @@ function get_tabulado_242()
       return $q;
 }
 
-function get_tabulado_243()
+function get_tabulado_243()//se quito OTROS, segun susanne / COALESCE(C6.t,0) as OTRO, 
 {          /* TABULADO N° 242 ---->quien lo administra  */
       $q = $this->db->query("
           select 
           DEP.CCDD, DEPARTAMENTO, COALESCE(CO.t,0) AS TOTAL,
           COALESCE(C1.t,0) as OSPA, COALESCE(C2.t,0) as DIREPRO, COALESCE(C3.t,0) as PRODUCE,  COALESCE(C4.t,0) as FONDEPES,  COALESCE(C5.t,0) as PARTICULAR,
-          COALESCE(C6.t,0) as OTRO, COALESCE(C7.t,0) as NEP
+          COALESCE(C7.t,0) as NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15  is not null group by nom_dd) as CO on DEP.ccdd  = CO.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15 = 1 group by nom_dd) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1126,7 +1125,6 @@ function get_tabulado_243()
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15 = 3 group by nom_dd) as C3 on DEP.ccdd  = C3.ccdd
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15 = 4 group by nom_dd) as C4 on DEP.ccdd  = C4.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15 = 5 group by nom_dd) as C5 on DEP.ccdd  = C5.ccdd  
-          left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15 = 6 group by nom_dd) as C6 on DEP.ccdd  = C6.ccdd  
           left join (select ccdd,  count(*) as t  from comunidad c inner join comunidad_seccion7 s on c.id = s.comunidad_id  where S7_15 = 9 group by nom_dd) as C7 on DEP.ccdd  = C7.ccdd ;
         ");
       return $q;

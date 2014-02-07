@@ -987,9 +987,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##E26B0A', en
 
 
 #title {
-    font-size: 18px;
+    font-size: 24px;
     position: relative;
-    text-align: center;
+    text-align: -moz-center;
+    white-space: normal;
 
 }
 
@@ -1010,6 +1011,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##E26B0A', en
      -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
 }
+
+#img_mapa_left{
+    height: 90px;
+    /*background: url(../img/cenpesco.png) no-repeat 35% 86% ;*/  
+    text-align: inherit;
+    /*background-size:auto;*/
+    /*background-size:90px 60px;*/
+   /* background-repeat:no-repeat; */   
+   float: right;
+}
+
 
 .tot_pescadores{
     font-weight: bold;
@@ -1042,18 +1054,24 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##E26B0A', en
 
 #tabul td, th{
   font-size: 15px;
+
 }
-/*#tabul { table-layout: fixed; }*/
+#tabul { margin-bottom: 0px; }
 
 
 #tabul tbody {
- white-space: nowrap;
+  white-space: nowrap;
 }
 
+#tabul tbody tr td:not(:first-child) {
+    /*width: 160px;*/
+    padding-right: 10px;
+}
 
 /*#tabul tr td:first-child {*/
 #tabul tr td:not(:first-child) {
     width: 160px;
+    text-align: right;
 }
 #tabul tr td:first-child {
     width: 150px !important;

@@ -1241,14 +1241,14 @@ function get_tabulado_130()
       return $q;
 }
 
-function get_tabulado_131()
+function get_tabulado_131()//se quita OTROS, segun sussane / COALESCE(C8.t,0) as OTRA,
 {               
       $q = $this->db->query("
-          /* TABULADO N° 128 ---------------- ABASTECIMIENTO AGUA VIVIENDA------------------------*/
+          /* TABULADO N° 131 ---------------- ABASTECIMIENTO AGUA VIVIENDA------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  C0.t AS TOTAL,  
           COALESCE(C1.t,0) as AGUA_POTABLE, COALESCE(C2.t,0) as MADERA, COALESCE(C3.t,0) as TEJAS, COALESCE(C4.t,0) as PLANCHAS, COALESCE(C5.t,0) as CAÑA,
-          COALESCE(C6.t,0) as ESTERA, COALESCE(C7.t,0) as PAJA, COALESCE(C8.t,0) as OTRA, COALESCE(C9.t,0) NEP
+          COALESCE(C6.t,0) as ESTERA, COALESCE(C7.t,0) as PAJA, COALESCE(C9.t,0) NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1258,7 +1258,6 @@ function get_tabulado_131()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 = 5 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 = 6 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 = 7 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 = 8 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion3 s on a.id1 = s.id3  where S3_500 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd ;
         ");
       return $q;
@@ -1735,14 +1734,14 @@ function get_tabulado_154()
       return $q;
 }
 
-function get_tabulado_155()
+function get_tabulado_155()// se quita OTROS, segun susanne / COALESCE(C7.t,0) as OTRO, /left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
 {
       $q = $this->db->query("
           /* TABULADO N° 153 -------------------------- PARTICIPACION ORGANIZACION  -------------------------*/
           select 
           DEP.CCDD, DEPARTAMENTO,  COALESCE(C0.t ,0) AS TOTAL, 
           COALESCE(C1.t,0) as SINDICATO, COALESCE(C2.t,0) as GREMIO, COALESCE(C3.t,0) as ASOCIACION, COALESCE(C4.t,0) as ORGANIZACION_C, COALESCE(C5.t,0) as CONSORCIO,
-          COALESCE(C6.t,0) as COOPERATIVA, COALESCE(C7.t,0) as OTRO, COALESCE(C8.t,0) as NINGUNA, COALESCE(C9.t,0)  NEP
+          COALESCE(C6.t,0) as COOPERATIVA, COALESCE(C8.t,0) as NINGUNA, COALESCE(C9.t,0)  NEP
           from (select  distinct(departamento), ccdd from departamentos_tab order by departamento) as DEP 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_1 is not null group by nom_dd ) as C0 on DEP.ccdd  = C0.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_1 = 1 group by nom_dd ) as C1 on DEP.ccdd  = C1.ccdd 
@@ -1751,7 +1750,6 @@ function get_tabulado_155()
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_4 = 1 group by nom_dd ) as C4 on DEP.ccdd  = C4.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_5 = 1 group by nom_dd ) as C5 on DEP.ccdd  = C5.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_6 = 1 group by nom_dd ) as C6 on DEP.ccdd  = C6.ccdd 
-          left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_7 = 1 group by nom_dd ) as C7 on DEP.ccdd  = C7.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_8 = 1 group by nom_dd ) as C8 on DEP.ccdd  = C8.ccdd 
           left join (select ccdd,  count(*) as t  from acu_seccion1 a inner join acu_seccion6 s on a.id1 = s.id6  where S6_1_8 = 9 group by nom_dd ) as C9 on DEP.ccdd  = C9.ccdd;
 

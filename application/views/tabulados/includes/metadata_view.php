@@ -1,8 +1,49 @@
 
 
 <div class="row-fluid"  style="padding-bottom:10px;padding-top:10px" ></div>
-	<h3>METADATOS</h3><hr>
+	<h3>METADATOS N°<?php echo sprintf("%02d",$opcion); ?></h3><hr>
 <table id="tab_meta"  >
+	<?php 	$num = 1;
+		if($num == 5){// bloquea TEXT AREA para su modificacion
+		//if($restriccion){// bloquea TEXT AREA para su modificacion
+			if(!is_null($txt_tabulado) || strlen($txt_tabulado)>0 ){ ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. TABULADO </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_tabulado" name="txt_tabulado" rows="1" cols="160"><?php echo $txt_tabulado; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_contenido) || strlen($txt_contenido)>0 ){ ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. CONTENIDO </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_contenido" name="txt_contenido" rows="1" cols="160"><?php echo $txt_contenido; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_casos) || strlen($txt_casos)>0 ){ ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. CASOS </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_casos" name="txt_casos" rows="1" cols="160"><?php echo $txt_casos; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_variables) || strlen($txt_variables)>0 ){ ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. VARIABLES </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_variables" name="txt_variables" rows="1" cols="160"><?php echo $txt_variables; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_alternativas) || strlen($txt_alternativas)>0 ){ $lineas = explode("\n", $txt_alternativas ); ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. ALTERNATIVAS </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_alternativas" name="txt_alternativas" rows="<?php echo (count($lineas)+1); ?>" cols="160"><?php echo $txt_alternativas; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_otro) || strlen($txt_otro)>0 ){ ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. OTRO </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_otro" name="txt_otro" rows="1" cols="160"><?php echo $txt_otro; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_faltantes) || strlen($txt_faltantes)>0 ){ $lineas = explode("\n", $txt_faltantes ); ?>		
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. DATOS FALTANTES </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_faltantes" name="txt_faltantes" rows="<?php echo (count($lineas)+1); ?>" cols="160"><?php echo $txt_faltantes; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_productor) || strlen($txt_productor)>0 ){ ?>
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. INSTITUCIÓN </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_productor" name="txt_productor" rows="1" cols="160"><?php echo $txt_productor; ?></textarea></td>
+	</tr>
+	<?php } if(!is_null($txt_definiciones) || strlen($txt_definiciones)>0 ){ $lineas = explode("\n", $txt_definiciones ); ?>		
+	<tr>
+		<td style='width="30px";'><h5><?php echo $num++; ?>. DEFINICIONES </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_definiciones" name="txt_definiciones" rows="<?php echo (count($lineas)+1); ?>" cols="160"><?php echo $txt_definiciones; ?></textarea></td>
+	</tr>
+	<?php } 
+		}else{  // muestra TEXT AREA editables ?>
 	<tr>
 		<td style='width="30px";'><h5>1. TABULADO </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_tabulado" name="txt_tabulado" rows="1" cols="160"><?php echo $txt_tabulado; ?></textarea></td>
 	</tr>
@@ -30,6 +71,7 @@
 	<tr>
 		<td style='width="30px";'><h5>9. DEFINICIONES </h5></td><td colspan="10" style="padding-left:2em"><textarea class="span12" id="txt_definiciones" name="txt_definiciones" rows="10" cols="160"><?php echo $txt_definiciones; ?></textarea></td>
 	</tr>
+	<?php } ?>
 </table>
 <input type="hidden" id="cantidad_var" name="cantidad_var" value="<?php echo count($series); ?>">
 <input type="hidden" id="nombre_var" name="nombre_var" value="<?php echo $series[0]['name']; ?>">

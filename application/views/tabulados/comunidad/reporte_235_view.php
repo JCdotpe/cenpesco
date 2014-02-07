@@ -54,7 +54,7 @@
 									echo '<th colspan="2" style="text-align:center">'. ($variable_10 = 'Carpa' ) .'</th>';												
 									echo '<th colspan="2" style="text-align:center">'. ($variable_11 = 'Carachama' ) .'</th>';												
 									echo '<th colspan="2" style="text-align:center">'. ($variable_12 = 'Sabalo' ) .'</th>';												
-									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Sarampión' ) .'</th>';												
+									echo '<th colspan="2" style="text-align:center">'. ($variable_13 = 'Peces Ornamentales' ) .'</th>';												
 									echo '<th colspan="2" style="text-align:center">'. ($variable_14 = 'Otro' ) .'</th>';												
 									echo '<th colspan="2" style="text-align:center">'. ($variable_15 = 'No cultivan' ) .'</th>';												
 									echo '</tr>';
@@ -95,10 +95,10 @@
 											}
 											foreach ($filas as  $key => $value) {
 												if($key != 'CCDD'){
-														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
+														if($key == 'NEP' && $NEP == 0 ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'right') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
 													if($key != 'DEPARTAMENTO'){ if(isset($totales[$x])){ $totales[$x]+= $value; $x++; } 
 														if($key == 'NEP' && $NEP == 0 ){}else{
-															echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
+															echo '<td style="text-align:right;">' . number_format( ( ($key == 'TOTAL') ? ( ($filas->TOTAL==0) ? 0 : 100 )  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
 													};
 													
 												}
@@ -127,8 +127,8 @@
 										}							
 
 										for ($i=1; $i <= $cant_v ; $i++) { 
-									echo '<td style="text-align:center">' . number_format($totales[$i],0,',',' ') . '</td>';										
-									echo '<td style="text-align:center;"> '. number_format($totales_porc[$i] = (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
+									echo '<td style="text-align:right">' . number_format($totales[$i],0,',',' ') . '</td>';										
+									echo '<td style="text-align:right;"> '. number_format($totales_porc[$i] = (round( ( ($i==1) ? ( ($filas->TOTAL==0) ? 0 : 100 ) : $totales[$i]*100/$totales[1] ),1) + ( ($diff_tot<>0 && $i == $index_tot[0]) ? $diff_tot : 0 ) ),1,',', ' ' ).'</td>';	
 										}$totales_porc[1] = $totales[1];//guardando nacional (TECHO)
 									echo '</tr>';
 									echo '</tr>';

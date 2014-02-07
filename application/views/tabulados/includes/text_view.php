@@ -1,9 +1,10 @@
 <div class="row-fluid" style="padding-bottom:34px"><h5>Fuente: Instituto Nacional de Estadística e Informática - Primer Censo Nacional de Pesca Continental 2013.</h5></div>
 <div class="row-fluid">
-	<h3>COMENTARIO</h3><hr>
+	<h3>COMENTARIO N°<?php echo sprintf("%02d",$opcion); ?></h3><hr>
 	<table>
-		<tr><td style='width="30px";'><textarea class="span12" id="textn" name="textn" rows="2" cols="183"  ><?php echo $texto; ?></textarea></td></tr>
-		<tr><td style='width="30px";'><textarea class="span12" id="textn_2" name="textn_2" rows="3" cols="183"  ><?php echo $texto_2; ?></textarea></td></tr>
+		<?php $lineas1 = explode("\n", $texto ); $lineas2 = explode("\n", $texto_2 );?>
+		<tr><td style='width="30px";'><textarea class="span12" id="textn" name="textn" rows="<?php echo (count($lineas1)+1); ?>" cols="183"  ><?php echo $texto; ?></textarea></td></tr>
+		<tr><td style='width="30px";'><textarea class="span12" id="textn_2" name="textn_2" rows="<?php echo (count($lineas2)+1); ?>" cols="183"  ><?php echo $texto_2; ?></textarea></td></tr>
 	</table>
 	
 </div>

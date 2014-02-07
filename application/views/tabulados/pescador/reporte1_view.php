@@ -116,7 +116,7 @@
 											
 											foreach ($filas as  $key => $value) {
 												if($key != 'CCDD'){
-														if( ($key == 'NEP' && $NEP == 0 ) || $key == 'TOTAL' ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'center') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
+														if( ($key == 'NEP' && $NEP == 0 ) || $key == 'TOTAL' ){}else{echo '<td style="text-align:'. ( ($key == 'DEPARTAMENTO') ? 'left' : 'right') .'">' . ( ( $key == 'DEPARTAMENTO') ? $value : number_format( $value, 0 ,',',' ') ) . '</td>';}	
 													if($key != 'DEPARTAMENTO'){ if(isset($totales[$x])){ $totales[$x]+= $value; $x++; } 
 														if($key == 'NEP' && $NEP == 0 ){}else{
 															//echo '<td style="text-align:center;">' . number_format( ( ($key == 'TOTAL') ? 100  :  $datas[$z++][$u] = ( ( ($filas->TOTAL>0) ? round( ($value*100/ $filas->TOTAL),1) : 0 ) +  ( ( $diff<>0 && $key == $index[0] ) ? $diff : 0 ) ) ),1,',',' ' ) .'</td>'; }
